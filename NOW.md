@@ -11,8 +11,9 @@ Who is working on what. Read it at the start of a session; update your own block
 
 ## Scale
 
-- **Doing:** moving the scale track's docs, log and harness into this repo. Then carrying the branch from r19c onto main as `scale/S12`.
-- **Branch:** —
-- **Latest tag:** —
+- **Doing:** moved in: the harness is in `scale/`, the log, README and change list in `docs/scale/`, and the seed ranges in `docs/seeds.md` (PR `scale/move-in`). Next: S12, carrying the branch from r19c onto main, pre-registered once `rH25` is tagged.
+- **Branch:** `scale/move-in`
+- **Latest tag:** `scale-s11b` (reference, never merged). Its commit is pushed on the branch `scale-s11b-ref`; the tag and release still have to be made by hand, because this session cannot create tags or releases.
 - **Needs:**
-  - From the lab: the engine on main, tagged, so the branch can be carried onto it.
+  - From the lab: the engine on main, tagged `rH25`, so the branch can be carried onto it.
+  - From Øystein: tag `scale-s11b` on the head of `scale-s11b-ref`, attach `scale-s11b-raw-results.tgz` to its release, then delete the branch.
