@@ -1,5 +1,7 @@
 # Now
 
+**18 Oct 2026, 17:30 Oslo: the two local chats (lab and scale) are stopped.** One cloud session now does everything. It has taken over rounds 25d, H26 and M26 (their branches carry their outcomes as they land) and the S12 port (after 25d, H26, M26 and F26 are merged). A session resuming either local chat must not continue those rounds; read the branches and stop. The blocks below stand until those rounds are merged, then collapse to one.
+
 Who is working on what. Read it at the start of a session; update your own block when a round or step starts or ends. To ask the other lane for something, add a line under its "Needs".
 
 ## Lab
