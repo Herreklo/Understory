@@ -1,8 +1,9 @@
 // Readers for the scoreboard. Each predicts a decision from what the witness could know; none reads hidden state.
 // Pure: no reader touches the world's random stream, so switching the scoreboard on never changes a history.
 
-import { score, witnessView, type Option, type View } from '../decide';
+import { score, witnessView, seenBy, type Option, type View } from '../decide';
 import { peekBond, belief, type World, type Person } from '../world';
+import { hash } from '../rng';
 import { knows } from '../witness';
 
 // The witness cannot see how erratic someone is; readers use the population's typical value.
@@ -62,6 +63,19 @@ function swappedView(w: World, holder: number, from: number): View {
     facet: (p, k, t, f) => (p.id === holder ? v.facet(p, k, t, f) : v.facet(stand, k, t, f)),
     value: (p, k) => (p.id === holder ? v.value(p, k) : v.value(stand, k)),
   };
+}
+// The null control (round M26): for each decision, another person the witness holds settled beliefs about, drawn afresh (hash-keyed).
+function donorFor(w: World, holder: number, subject: number, key: string): number | undefined {
+  const bm = w.beliefs.get(holder);
+  if (!bm) return undefined;
+  const ids = new Set<number>();
+  for (const [k, b] of bm) {
+    if (b.n < 2) continue;
+    const sid = +k.split('|')[0];
+    if (sid !== holder && sid !== subject && w.byId.get(sid)?.status === 'in') ids.add(sid);
+  }
+  const list = [...ids].sort((a, b) => a - b);
+  return list.length ? list[hash(w.seed, w.t, subject, key) % list.length] : undefined;
 }
 // Someone else the witness knows about as well as this person: the known person with the nearest number of settled beliefs.
 function standIn(w: World, holder: number, subject: number): number | undefined {
@@ -226,6 +240,7 @@ export interface Guesses {
   text: string;
   comb: string;
   swap: string;
+  donor: string;
   tend: string;
   oracle: string;
   mind: string;
@@ -241,9 +256,10 @@ export interface Guesses {
 }
 
 export function makePredictor(table: BaseTable, sink: (w: World, g: Guesses) => void, tend: Tendencies = new Tendencies()) {
-  return (w: World, p: Person, options: Option[], chosenId: string, rec: any) => {
-    if (w.witness == null || w.witness === p.id || options.length < 2) return;
+  return (w: World, p: Person, truth: Option[], chosenId: string, rec: any) => {
+    if (w.witness == null || w.witness === p.id || truth.length < 2) return;
     const h = w.witness;
+    const options = seenBy(truth);
     const base = baseGuess(table, rec.trigger, options);
     const sitScored = score(options, situationView(w, h), TYPICAL_VARIABILITY);
     const sit = argmax(sitScored);
@@ -258,6 +274,9 @@ export function makePredictor(table: BaseTable, sink: (w: World, g: Guesses) => 
     const si = standIn(w, h, p.id);
     const swapP = si != null ? calibrated(bp, score(options, swappedView(w, h, si), TYPICAL_VARIABILITY), sitScored) : calP;
     const swap = argmax(swapP);
+    const di = donorFor(w, h, p.id, rec.trigger);
+    const donorP = di != null ? calibrated(bp, score(options, swappedView(w, h, di), TYPICAL_VARIABILITY), sitScored) : calP;
+    const donor = argmax(donorP);
     const tendP = tend.predict(p.id, bp, options);
     const tendG = argmax(tendP);
     const baseP = options.map(o => ({ id: o.id, p: bp.get(o.id)! }));
@@ -301,6 +320,7 @@ export function makePredictor(table: BaseTable, sink: (w: World, g: Guesses) => 
       text,
       comb,
       swap,
+      donor,
       tend: tendG,
       oracle,
       mind,
