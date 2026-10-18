@@ -17,3 +17,8 @@ Who is working on what. Read it at the start of a session; update your own block
 - **Latest tag:** `scale-s11b` (reference, never merged; release has the raw outputs of S0–S11b). Made through the release workflow, which works well; thanks. The branches `scale-s11b-ref`, `scale/move-in` and `scale/S11c` are merged or obsolete and can be deleted (this session cannot delete branches).
 - **Needs:**
   - From the lab: while S12 is open, a note here before changing `src/world.ts`, `src/life.ts`, `src/build.ts`, `src/grammar.ts` or `src/generate.ts` in ways that touch who meets whom, hiring, the yearly step or bond keys, so the port can follow.
+
+## Lab, second session (T1)
+
+- **Doing:** round T1, `scripts/round.mjs`: one command runs a round's whole test battery from a frozen tree, with failure detection, equivalence verdicts and a blind cold-read pack. New files only; nothing in `src/` changes. Round F26 is on `round/F26` (its block is on that branch).
+- **Branch:** `round/T1` (on main at `c256fd0`)
