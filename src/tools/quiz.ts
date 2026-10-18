@@ -25,9 +25,9 @@ const BASE_DIR = process.env.BASE_DIR ?? 'out-9b';
 
 // Questions, by kind of situation. Each is built only from what was visible: the event or circumstance that prompted the decision and
 // the people in it. A kind is asked only when its prompt carries no trait of the person (temptation and obligation cite one, so they are left out).
-type Pr = { he: string; his: string; him: string; tHe: string; tHis: string; tHim: string };
+export type Pr = { he: string; his: string; him: string; tHe: string; tHis: string; tHim: string };
 type Q = { ask: (P: string, T: string, sit: string, pr: Pr) => string; opts: Record<string, string> };
-const Q: Record<string, Q> = {
+export const Q: Record<string, Q> = {
   asked: {
     ask: (P, T, _s, pr) => `${T} asks ${P} what ${pr.he} really thinks of ${pr.tHis} plan.`,
     opts: { honesty: '{P} tells {T} plainly what is wrong with it', dishonesty: '{P} tells {T} what {T} wants to hear' },
@@ -91,7 +91,7 @@ const Q: Record<string, Q> = {
 const verb = (v: string) =>
   (({ is: 'be', "isn't": 'not be', has: 'have', does: 'do', goes: 'go' }) as Record<string, string>)[v] ??
   (/ies$/.test(v) ? v.replace(/ies$/, 'y') : /(ch|sh|ss|x)es$/.test(v) ? v.replace(/es$/, '') : v.replace(/s$/, ''));
-const bare = (s: string) =>
+export const bare = (s: string) =>
   s
     .replace(/^(\S+)/, (_, v) => verb(v))
     .replace(/, (or|and) (\S+)/g, (_, c, v) => `, ${c} ${verb(v)}`)
@@ -99,12 +99,13 @@ const bare = (s: string) =>
     .replace(/ and (\w+s)\b/g, (m, v) => (/^(his|this|its|hers)$/.test(v) ? m : ` and ${verb(v)}`))
     .replace(/\b(himself|herself)\b/g, 'themselves');
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
-const trigKey = (t: string) => t.replace(/:.*$/, '');
+export const trigKey = (t: string) => t.replace(/:.*$/, '');
 
 export interface Item {
   id?: string;
   seed: number;
   year: number;
+  t?: number; // month index, for ordering
   trigger: string;
   you: { first: string; job: string };
   person: { name: string; first: string; age: number; job: string; how: string; facts: string[] };
@@ -127,7 +128,7 @@ export function who(w: World, id: number, witness: number): string {
   const twin = w.people.some(x => x !== q && x.first === q.first && x.status !== 'dead');
   return twin ? `${q.first} ${q.last.charAt(0)}.` : q.first;
 }
-const sentence = (s: string) => (s.charAt(0).toUpperCase() + s.slice(1)).replace(/\.\.(?=\s|$)/g, '.'); // an initial that ends a sentence keeps one full stop
+export const sentence = (s: string) => (s.charAt(0).toUpperCase() + s.slice(1)).replace(/\.\.(?=\s|$)/g, '.'); // an initial that ends a sentence keeps one full stop
 // Ledger lines need a noun where the act had one: what kind of thing, by the situation the act answered.
 export const LEDGER_THING: Record<string, string> = {
   deadline: 'the work',
@@ -137,7 +138,7 @@ export const LEDGER_THING: Record<string, string> = {
   temptation: 'something',
   authorship: 'song',
 };
-function pageOf(w: World, p: Person, witness: number) {
+export function pageOf(w: World, p: Person, witness: number) {
   const name = (s: string) => sentence(s.replace(/@(\d+)/g, (_, id) => who(w, +id, witness)));
   const known = (e: Event) => e.knownBy.has(witness) || e.who.includes(witness);
   const b = peekBond(w, witness, p.id);
@@ -192,7 +193,7 @@ function pageOf(w: World, p: Person, witness: number) {
 // The other person, as the witness would know them at that moment: who they are to the person, how the two seem to get on (the witness's
 // belief about what one feels for the other, built from what passed between them; family, partners and friendships are public), and the
 // events between the two that the witness knows of.
-function otherOf(w: World, p: Person, t: Person, witness: number) {
+export function otherOf(w: World, p: Person, t: Person, witness: number) {
   // Names stay as @id placeholders until the item is written, so the page and the question name people the same way.
   const T = `@${t.id}`,
     P = `@${p.id}`;
@@ -260,7 +261,7 @@ function otherOf(w: World, p: Person, t: Person, witness: number) {
 
 // The reasons the record gives, in plain words, for the reveal: the trait's pole ('lets go of wrongs'; 'though …' when it argued against),
 // a bond by its sign at the moment ('fond of Rolf'), and nothing for a middling trait or for the situation the question already stated.
-function whyOf(causes: { kind: string; label: string }[], bond: any, sit: string, name: (s: string) => string): string[] {
+export function whyOf(causes: { kind: string; label: string }[], bond: any, sit: string, name: (s: string) => string): string[] {
   const out: string[] = [];
   for (const c of causes) {
     const raw = name(c.label).replace(/(?<! [A-Z])\.$/, '');
@@ -298,23 +299,27 @@ function whyOf(causes: { kind: string; label: string }[], bond: any, sit: string
   return out.slice(0, 3);
 }
 
-const mode = process.argv[2];
-if (mode === 'run') {
-  const A = +process.argv[3],
-    B = +process.argv[4];
+// The base rates: what people in twenty other worlds did in each kind of spot, from the scoreboard's base-*.json files.
+export function readBase(dir: string): BaseTable {
   const table: BaseTable = new Map();
-  for (const f of readdirSync(BASE_DIR).filter(f => f.startsWith('base-'))) {
-    const j = JSON.parse(readFileSync(`${BASE_DIR}/${f}`, 'utf8'));
+  for (const f of readdirSync(dir).filter(f => f.startsWith('base-'))) {
+    const j = JSON.parse(readFileSync(`${dir}/${f}`, 'utf8'));
     for (const [k, m] of j.base as [string, [string, number][]][]) {
       const t = table.get(k) ?? new Map();
       for (const [o, n] of m) t.set(o, (t.get(o) ?? 0) + n);
       table.set(k, t);
     }
   }
+  return table;
+}
+
+// The items of one world: every key-slice decision that a question exists for, frozen at its moment. perPerson caps how many items one
+// person gives (the quiz takes one, so no person is read twice; the play page takes several, so a player can get to know someone).
+export function itemsOf(seed: number, table: BaseTable, perPerson = 1, cap = 10): { items: Item[]; withT: number; dropped: number } {
   const items: Item[] = [];
   let withT = 0,
     dropped = 0;
-  for (let seed = A; seed <= B; seed++) {
+  {
     const w = buildWorld(seed, 1);
     const wit = pickWitness(w);
     const pending: {
@@ -326,12 +331,12 @@ if (mode === 'run') {
       tid?: number;
       at: { name: string; age: number; job: string; youJob: string; bond: any };
     }[] = [];
-    const used = new Set<number>();
+    const used = new Map<number, number>();
     let current: { p: Person; rec: any } | null = null;
     const pred = makePredictor(
       table,
       (_w2, g) => {
-        if (!current || w.t < w.startPresent + 24 || used.has(current.p.id) || pending.length >= 10) return;
+        if (!current || w.t < w.startPresent + 24 || (used.get(current.p.id) ?? 0) >= perPerson || pending.length >= cap) return;
         if (!(g.known && g.novel && g.contested) || !Q[trigKey(g.trigger)] || g.n > 3) return;
         const page = pageOf(w, current.p, wit.id);
         if (page.known.length < 6 || !page.sense.length) return;
@@ -344,7 +349,7 @@ if (mode === 'run') {
           youJob: wit.job ? w.placeById.get(wit.job)!.name : 'not working',
           bond: tq ? { ...(peekBond(w, current.p.id, tq.id) ?? { like: 0, trust: 0, respect: 0 }) } : null,
         }; // as they stood at the decision
-        used.add(current.p.id);
+        used.set(current.p.id, (used.get(current.p.id) ?? 0) + 1);
         pending.push({ g: { ...g }, p: current.p, page, rec: current.rec, other: tq ? otherOf(w, current.p, tq, wit.id) : null, tid: tq?.id, at });
       },
       new Tendencies(),
@@ -402,6 +407,7 @@ if (mode === 'run') {
       items.push({
         seed,
         year: year(e.t),
+        t: e.t,
         trigger: trigKey(g.trigger),
         you: { first: wit.first, job: at.youJob },
         person: { name: at.name, first: P, age: at.age, job: at.job, how: page.how, facts: page.facts },
@@ -436,6 +442,23 @@ if (mode === 'run') {
         },
       });
     }
+  }
+  return { items, withT, dropped };
+}
+
+const mode = process.argv[2];
+if (mode === 'run') {
+  const A = +process.argv[3],
+    B = +process.argv[4];
+  const table = readBase(BASE_DIR);
+  const items: Item[] = [];
+  let withT = 0,
+    dropped = 0;
+  for (let seed = A; seed <= B; seed++) {
+    const r = itemsOf(seed, table);
+    items.push(...r.items);
+    withT += r.withT;
+    dropped += r.dropped;
     console.error(`quiz: world ${seed}: ${items.filter(i => i.seed === seed).length} items`);
   }
   writeFileSync(`${OUT}/items-${A}-${B}.json`, JSON.stringify(items));
