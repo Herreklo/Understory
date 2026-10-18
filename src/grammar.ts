@@ -402,7 +402,7 @@ function identityC(p: Person, fam: Family): Consideration | null {
 
 // ---------- wiring: considerations generated from features and family ----------
 // Each family has a few facets that most decide it; the features add theirs. Capped at four per option.
-const FAMILY_FACETS: Record<Family, Partial<Record<string, number>>> = {
+export const FAMILY_FACETS: Record<Family, Partial<Record<string, number>>> = {
   anger: { patience: -1, forgiveness: -0.5 },
   withdrawal: { sociability: -0.8, dependence: -0.5 },
   seeking: { dependence: 1 },

@@ -26,3 +26,18 @@ Who is working on what. Read it at the start of a session; update your own block
 - **Branch:** `round/F26` (on main at `c256fd0`)
 - **Merge order:** after 25d, H26 and M26, so their tests stay valid; F26 then merges main in and re-runs its gate.
 - **For the lab chat:** F26 changes `src/decide.ts` (`score`), `src/grammar.ts` (`identityC`, the removal of unkept acts, the evidence of an act), `src/group.ts` (two removals) and `src/life.ts` (`friendsTick`). Seeds: eval 1721–1740, test 3001–3026.
+
+## Lab, second session (T2)
+
+- **Doing:** round T2, three human patterns (one act against many; friendship's tail and triangles; what the witness finds easy to judge), pre-registered in BOARD with pass bands. A new tool only; nothing in `src/` outside `src/tools/` changes.
+- **Branch:** `round/T2` (on main at `c256fd0`). Seeds: test 3101–3120.
+
+## Lab, second session (T1)
+
+- **Doing:** round T1, `scripts/round.mjs`: one command runs a round's whole test battery from a frozen tree, with failure detection, equivalence verdicts and a blind cold-read pack. New files only; nothing in `src/` changes. Round F26 is on `round/F26` (its block is on that branch).
+- **Branch:** `round/T1` (on main at `c256fd0`)
+
+## Lab, second session (T3)
+
+- **Doing:** round T3, property-based tests over many seeds (`src/tools/props.ts`, `fast-check`). Tests only; nothing in the engine changes.
+- **Branch:** `round/T3` (on main at `12b9186`). Throwaway seeds 9201–9250.

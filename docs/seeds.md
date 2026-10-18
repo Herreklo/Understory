@@ -81,6 +81,7 @@ Uses: `train`, `eval` (scoreboard), `test` (fresh worlds for a round), `quiz`, `
 | 1001 | 1030 | scale | train | background odds fit (r19c) |
 | 1721 | 1740 | lab | eval | F26 |
 | 3001 | 3026 | lab | test | F26 |
+| 3101 | 3120 | lab | test | T2 |
 | 9001 | 9999 | all | smoke | |
 
 Next free: eval **1691**, test **2877**. Scale: test **101**.
