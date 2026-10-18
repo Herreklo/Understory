@@ -20,7 +20,7 @@ The branch reproduces a town exactly. On town-sized worlds it is identical to th
 - Everything its people are stays exactly as it was. Promotion only adds texture: routines, neighbours, friends, and backstory replayed by the engine's own contact rule.
 - Promoted people match people always in focus on friends, the friendless share, people known well, routines and partnership. They carry about half to two thirds of the marks from history.
 
-**The twin test.** The same founding is lived twice: once in focus, once in the background and then promoted. The background copy carries about seven eighths of what thirty years of full life change in how a person chooses. The missing eighth is the learned if-then habits and self-story that monthly life forms.
+**The twin test.** The same founding is lived twice: once in focus, once in the background and then promoted. In the test's sixteen situations, most of what thirty years change in how a person chooses comes from growing older, which both tiers share. Of the change that comes from lived experience, the background keeps only part: about a third for choices, on one seed so far. It also has about a quarter fewer learned if-then habits, a fifth less self-story and a quarter fewer marks. What the background loses is acquired individuality. The test cannot yet see bonds, money or strain in decisions.
 
 **A city of 100,000.** It builds in 2–3.5 minutes, lives a background year in 3–7 seconds and uses about 1.1 GB. The background adds about 25% to an ordinary month of the town inside it. Timings vary by about 45% between hosts, so compare them only within one sitting.
 

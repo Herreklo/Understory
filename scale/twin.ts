@@ -18,7 +18,8 @@ import { hoods } from '../src/scale';
 import { promoteHood } from '../src/coarse';
 import { score, truthView, type Option, type Consideration } from '../src/decide';
 import { wiringC, identityC, pickExpression, type Instance } from '../src/grammar';
-import type { Family, Feature } from '../src/families';
+import type { Family } from '../src/families';
+import type { Feature } from '../src/features';
 import { generatePerson } from '../src/generate';
 const ADULTS = +(process.argv[2] ?? 300),
   SEED = +(process.argv[3] ?? 91);
