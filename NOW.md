@@ -20,7 +20,7 @@ Who is working on what. Read it at the start of a session; update your own block
 
 ## Lab, second session (F26)
 
-- **Doing:** round F26, five corrections from the outside review (PR 3), pre-registered in BOARD. Started while the lab chat is paused for about a day; it does not touch 25d, H26 or M26.
+- **Doing:** round F26 is tested and recorded in BOARD (kept, all four switches on); its PR waits to be merged after 25d, H26 and M26. It does not touch their branches.
 - **Branch:** `round/F26` (on main at `c256fd0`)
 - **Merge order:** after 25d, H26 and M26, so their tests stay valid; F26 then merges main in and re-runs its gate.
 - **For the lab chat:** F26 changes `src/decide.ts` (`score`), `src/grammar.ts` (`identityC`, the removal of unkept acts, the evidence of an act), `src/group.ts` (two removals) and `src/life.ts` (`friendsTick`). Seeds: eval 1721–1740, test 3001–3026.
