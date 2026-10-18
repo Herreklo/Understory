@@ -1245,3 +1245,19 @@ Outcome of round F26 (18 Oct 2026, 14:55 Oslo). Fault counts on 3021–3024 (`re
 6. Cold read: 3.0 against 2.8 out of five, the same faults in both arms ✓. Every life the reader saw carried faults of the page itself (reasons that do not fit the act, first-person reasons that reverse who did what, a goal dated two ways, acts at a place the person had left, repeats, broken words); these are not this round's, and they are listed in `reports/coldread-f26.txt` for the round that takes them.
 7. `npm test` passes, with the new invariant (every thread event on its people's own lists) ✓.
 Read by the rules set beforehand: the arcs moved beyond their bound, so the count of considerations was quietly shaping lives. Answers that carried fewer considerations had been winning close calls; scored fairly, arcs and rivalries rise by about six points each. Which answers gained is not yet traced. That is the finding, and STATUS is restated from the on arm. The gate passes as written; the equivalence miss on decisions that are not a couple's is `countfair`'s, and it changes the readers' own scorer as much as the people, so part of it is the readers relearning. **Kept**, all four switches on; `honestev` makes BOARD's "no reader has a route to hidden truth" true of the evidence at no measurable cost. STATUS also now says what the code does where it said otherwise: an answer keeps its first five considerations in build order, not its five strongest.
+
+## Round T3 — properties over many seeds (pre-registered 18 Oct 2026, 18:20 Oslo, before its code)
+
+Process, not model. `npm test` checks the invariants on three fixed worlds. A deterministic engine whose only input is a seed is the ideal case for property-based testing: the same invariants, run over a range of seeds by `fast-check`, which also shrinks a failure to its smallest case. Round F26's lost thread events (1.8% of removals) and the self-story reading that let a weaker entry win were both invariant breaks that three worlds never showed. T3 adds `src/tools/props.ts`, a property suite over throwaway seeds (9201 and up, never a test range), with these properties, each checked at the end of the past and every present month:
+1. the record is in time order, every event's people exist, and every event's `who` is on the own list of each person in it, once;
+2. a decision's chosen answer is among its options, and every reason's `who` exists;
+3. friendship is mutual among the living, and partnership is mutual;
+4. the consistency audit (`audit.ts`) finds nothing;
+5. nobody dead or departed decides, is hired, befriended or married after they died or left;
+6. a bond's two ends exist, and no bond key exceeds the contract's bound;
+7. the same seed twice gives the same signature (`sig.ts`'s), on every seed, not only one.
+Two runs: `npm test` gains a short one (5 seeds, 2 present years each, under two minutes); `npm run props` runs 50 seeds (9201–9250) with 3 present years, for a round that touches the engine.
+Expected:
+1. The 50-seed run passes every property on main at `12b9186`, or every failure it finds is a real fault, recorded here with its seed and the shrunk case; no property is weakened to pass.
+2. `npm test` passes and takes no more than two minutes longer.
+What would change our minds: a property that fails on main is kept as a known fault and listed in STATUS, not removed; if more than three properties fail on main, the suite is still kept and the faults become a round of their own before any engine round.

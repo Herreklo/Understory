@@ -26,3 +26,8 @@ Who is working on what. Read it at the start of a session; update your own block
 - **Branch:** `round/F26` (on main at `c256fd0`)
 - **Merge order:** after 25d, H26 and M26, so their tests stay valid; F26 then merges main in and re-runs its gate.
 - **For the lab chat:** F26 changes `src/decide.ts` (`score`), `src/grammar.ts` (`identityC`, the removal of unkept acts, the evidence of an act), `src/group.ts` (two removals) and `src/life.ts` (`friendsTick`). Seeds: eval 1721–1740, test 3001–3026.
+
+## Lab, second session (T3)
+
+- **Doing:** round T3, property-based tests over many seeds (`src/tools/props.ts`, `fast-check`). Tests only; nothing in the engine changes.
+- **Branch:** `round/T3` (on main at `12b9186`). Throwaway seeds 9201–9250.
