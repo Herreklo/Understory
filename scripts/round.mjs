@@ -43,6 +43,7 @@ const BASE = git('rev-parse', args.base ?? 'origin/main');
 
 // A frozen tree: a detached worktree at the commit, so editing the working tree during a run changes nothing in it.
 function tree(dir, commit) {
+  git('worktree', 'prune'); // a registered worktree whose folder is gone would block the add
   if (existsSync(dir)) {
     try {
       git('worktree', 'remove', '--force', dir);
