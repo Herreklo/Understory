@@ -223,7 +223,13 @@ function stats(xs) {
 const pts = x => (100 * x).toFixed(1);
 const fmt = s => `${pts(s.m)} ±${pts(s.h95)}`;
 const verdict = s =>
-  100 * (s.m + s.h95) < 0 ? 'REGRESSION' : 100 * (s.m - s.h90) >= -2 && 100 * (s.m + s.h90) <= 2 ? 'equivalent within ±2' : 'not shown either way';
+  s.n < 3
+    ? 'too few worlds for a verdict'
+    : 100 * (s.m + s.h95) < 0
+      ? 'REGRESSION'
+      : 100 * (s.m - s.h90) >= -2 && 100 * (s.m + s.h90) <= 2
+        ? 'equivalent within ±2'
+        : 'not shown either way';
 const load = arm => {
   const dir = join(OUT, `board-${arm}`),
     m = new Map();
