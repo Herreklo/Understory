@@ -173,7 +173,7 @@ await new Promise(done => {
         running--;
         j.log = Buffer.concat(out).toString();
         writeFileSync(logOf(j), j.log);
-        const present = f => (typeof f === 'string' ? existsSync(f) : f.any.every(x => existsSync(x)) || existsSync(f.any[0]));
+        const present = f => (typeof f === 'string' ? existsSync(f) : existsSync(f.any[0]) || f.any.slice(1).every(x => existsSync(x)));
         const missing = j.outputs.filter(f => !present(f));
         j.code = code;
         j.state = (code === 0 || (j.result && code === 1)) && !missing.length ? 'done' : 'failed';
