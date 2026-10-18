@@ -523,3 +523,22 @@ The code did not get slower. The machine did: this session's workspace was resta
 - **Acts: not as expected** (0.93 against the 0.9 bar). Noise between the two full lives is 14%, so acts cannot separate B from a full life.
 
 **Reading.** By the only measure that can see a loss, a person who spent thirty years in the background carries about seven eighths of what thirty years of full life change in how they choose. The missing eighth fits the learned if-thens and self-story they lack. This battery is blind to strain, money, bonds and marks, so it says nothing about those. That needs the engine's real situations (see S11).
+
+## External review of S11b (18 Oct 2026, 80/100)
+
+Checked against the code and a run before anything changed.
+
+- **The twin harness does not typecheck on its own.** It imports `Feature` from `families.ts`, which does not export it. This is real. It runs anyway because tsx does not check types, and the repo's typecheck covers `src/` only. Fixed in the harness: it now imports from `features.ts`.
+- **Growing older explains most of what the battery sees.** The review aged the same founders thirty years with `mature()` alone and found 65–80% of a full life's change in choices. This was checked on throwaway seed 91 (26 twins) by adding a fifth copy, **C**: the founding aged by `mature()` only.
+
+  | Distance in choices (acts) | |
+  |---|---|
+  | C from the founding (ageing alone) | 0.018 (0.015) |
+  | A from the founding (a full life) | 0.030 (0.057) |
+  | **Beyond ageing:** A from C | 0.015 (0.044) |
+  | Beyond ageing: A2 from C | 0.011 (0.037) |
+  | Beyond ageing: **B** from C | **0.004** (0.023) |
+
+  Ageing alone is 60% of a full life's change in choices here, in line with the review. Measured against ageing, the background keeps about **a third of the change that lived experience makes in choices**, and about 0.6 in acts. **S11b's "seven eighths" overstated it,** because it counted the ageing both tiers share, and that claim is withdrawn from the docs and the report. These are numbers from one throwaway seed. The proper test needs an ageing arm, fresh seeds and the engine's real situations, which have bonds, money and strain in them; it comes after S12 puts the branch on the current engine.
+- Also taken up: report how many founders' lives diverge between tiers (died, left), not only matched survivors.
+- **For the lab, not this track:** a battery whose answers barely move with lived experience cannot show that experience changes behaviour. The review's question, whether experiences transform behaviour in the situations where they ought to matter, is the engine's.
