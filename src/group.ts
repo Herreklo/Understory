@@ -26,7 +26,7 @@ import {
   logistic,
 } from './world';
 import { z01 } from './decide';
-import { run, decide, friendsOf, family, traitCause, stateCause, eventCause, ev, facetC, bondC, pubC, privC, learned } from './grammar';
+import { run, decide, friendsOf, family, traitCause, stateCause, eventCause, ev, facetC, bondC, pubC, privC, learned, unlist } from './grammar';
 import { pursuing, practise, resolveWants, formHabit } from './time';
 import { regard } from './regard';
 
@@ -484,7 +484,7 @@ function work(w: World, g: Group, k: Kind) {
     g.events.push(e.id);
   } else {
     e.w = 0.2;
-    for (const id of e.who) P(w, id).events.pop();
+    unlist(w, e);
   }
   for (const p of ms) practise(p, k.skills.find(s => p.skills[s]) ?? k.skills[0], 0.6);
   // Authorship: each of the others answers. Mostly nothing; sometimes pride, sometimes worse.
@@ -615,7 +615,7 @@ function show(w: World, g: Group, k: Kind) {
     g.events.push(e.id);
   } else {
     e.w = 0.2;
-    for (const id of e.who) P(w, id).events.pop();
+    unlist(w, e);
   }
   g.standing = clamp(g.standing * 0.85 + (q - 0.4), -1, 3);
   for (const p of ms)
