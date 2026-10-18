@@ -192,6 +192,10 @@ export function score(options: Option[], view: View, variability: number, neutra
   return out;
 }
 
+// What an observer can know is there: a decision as a witness sees it, without the considerations whose very presence depends on what it
+// cannot know (the self-story). Round M26; OFF=seenonly gives observers the true structure again.
+export const seenBy = (options: Option[]): Option[] =>
+  OFF.has('seenonly') ? options : options.map(o => ({ ...o, considerations: o.considerations.filter(c => c.id !== 'identity') }));
 export type ChoiceCtx = { t: number; who: number; kind: string; nudge: () => void };
 export function choose(scored: Scored[], r: () => number, ctx?: ChoiceCtx): Scored {
   let x = r();

@@ -1,0 +1,24 @@
+# Round M26: test battery
+
+Tree baf0976; base 806c8c4. Switches: `seenonly`. Scoreboard: base rates 1501–1520, evaluation 1681–1690, 10 years. Lives 2873–2876. 6 minutes on 3 parallel jobs.
+
+**4 job(s) did not finish:** eval on 1681 (failed, missing 1 output(s)); eval on 1686 (failed, missing 1 output(s)); eval off 1681 (failed, missing 1 output(s)); eval off 1686 (failed, missing 1 output(s)). Numbers resting on them are marked missing.
+
+## Gate: the calibrated witness, on minus off, paired by world
+
+| Slice | on − off (95%) | 90% interval | Verdict | Decisions on / off |
+| --- | --- | --- | --- | --- |
+| all decisions | missing | | | |
+| not a couple's (row, row-answer, stay left out) | missing | | | |
+| novel · contested · known (key) | missing | | | |
+
+## Within each arm (mean over worlds, 95%)
+
+| Arm | Slice | Calibrated | − notebook | − tendency learner | Lift as a share of base rate → mind-reader |
+| --- | --- | --- | --- | --- | --- |
+| on | | missing | | | |
+| off | | missing | | | |
+
+## Cold read
+
+not run. Give the pack to a reader before anyone reads the numbers above.

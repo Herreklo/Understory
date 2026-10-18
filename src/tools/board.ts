@@ -99,6 +99,7 @@ if (mode === 'train') {
     ['noteOrBase', 'Notebook'],
     ['wit', 'Witness'],
     ['cal', 'Calibrated'],
+    ['donor', 'Donor (null)'],
     ['text', 'Page-annotation'],
     ['comb', 'Combined'],
     ['swap', 'Swapped'],
@@ -157,6 +158,7 @@ if (mode === 'train') {
   console.log('\nPaired differences per world (points), mean ± 95% interval. * = interval excludes zero.');
   const PAIRS: [string, string, string][] = [
     ['cal', 'noteOrBase', 'calibrated − notebook'],
+    ['donor', 'noteOrBase', 'donor − notebook'],
     ['text', 'noteOrBase', 'page-annot − notebook'],
     ['cal', 'text', 'calibrated − page-anid'],
     ['comb', 'cal', 'combined − calibrated'],

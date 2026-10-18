@@ -49,6 +49,7 @@ import {
   circOnlyView,
   curves,
   z01,
+  seenBy,
   type Option,
   type Consideration,
   type Know,
@@ -293,7 +294,7 @@ function recordStats(w: World, p: Person, options: Option[], chosenId: string, r
   }
   if (w.witness != null && w.witness !== p.id) {
     // The in-engine witness: evidence-limited, like the scoreboard's. It cannot know how erratic a person is, so it uses the population's typical variability.
-    const ws = score(options, witnessView(w, w.witness), TYPICAL_VARIABILITY);
+    const ws = score(seenBy(options), witnessView(w, w.witness), TYPICAL_VARIABILITY);
     rec.pWitness = ws.find(o => o.id === chosenId)!.p;
     rec.witnessGuess = ws.slice().sort((a, b) => b.p - a.p)[0].id;
     const hit = rec.witnessGuess === chosenId;
@@ -311,7 +312,7 @@ function recordStats(w: World, p: Person, options: Option[], chosenId: string, r
     rec.traitGuess = score(options, traitOnlyView(w), TYPICAL_VARIABILITY)
       .slice()
       .sort((a, b) => b.p - a.p)[0].id; // diagnostic: true general traits
-    rec.circGuess = score(options, circOnlyView(w), TYPICAL_VARIABILITY)
+    rec.circGuess = score(seenBy(options), circOnlyView(w), TYPICAL_VARIABILITY)
       .slice()
       .sort((a, b) => b.p - a.p)[0].id; // diagnostic: circumstances only
     const bm = w.beliefs.get(w.witness);

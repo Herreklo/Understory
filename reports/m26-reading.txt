@@ -1,0 +1,26 @@
+Round M26: the paired reading's sensitivity on a known contrast (18 Oct 2026).
+Sixteen people (the four most eventful adults of each of worlds 2873-2876), each shown as their true page (ten present years, with reasons) against the same
+lines in a shuffled order of years; A/B order random per pair (src/tools/diag/m26pair.ts). Three blind readers of different backgrounds (a novelist, a social
+worker, a player of simulation games), each told only that the two are two versions. Scores 1-5 and a preference per version.
+
+pair  true  r1(A,B,pref)  r2(A,B,pref)  r3(A,B,pref)  majority-true
+P01   A     4,2,A        4,1,A        4,1,A      yes
+P02   A     4,2,A        4,2,A        4,2,A      yes
+P03   A     4,2,A        4,2,A        4,2,A      yes
+P04   A     4,2,A        4,2,A        4,2,A      yes
+P05   B     2,4,B        1,4,B        1,3,B      yes
+P06   B     2,4,B        2,4,B        1,4,B      yes
+P07   B     2,4,B        1,3,B        1,3,B      yes
+P08   B     2,4,B        2,3,B        1,4,B      yes
+P09   B     1,3,B        1,3,B        1,3,B      yes
+P10   B     2,3,B        2,3,B        1,3,B      yes
+P11   B     2,3,B        2,4,B        1,3,B      yes
+P12   B     2,4,B        2,4,B        2,4,B      yes
+P13   A     4,2,A        4,2,A        4,1,A      yes
+P14   B     1,3,B        1,3,B        1,3,B      yes
+P15   B     2,4,B        2,4,B        1,3,B      yes
+P16   B     2,4,B        2,4,B        1,3,B      yes
+
+Majority preferred the true page in 16 of 16 (pass: at least 13). Mean paired difference, true minus shuffled: 2.04 points.
+Krippendorff's alpha over all 32 version scores: ordinal 0.866 [0.765, 0.912], interval 0.871 [0.808, 0.915] (pass: at least .667). scripts/alpha.py.
+Reader means: 2.81, 2.69, 2.38. Scores in reports/m26-reading-scores.json; the key in reports/m26-reading-key.json.

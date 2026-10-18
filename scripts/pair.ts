@@ -1,4 +1,4 @@
-// Paired scoreboard gate: the same evaluation worlds scored under two out dirs (e.g. a mechanism on and off). Per world, accuracy of the
+// Paired scoreboard gate (with an equivalence verdict, round M26): the same evaluation worlds scored under two out dirs (e.g. a mechanism on and off). Per world, accuracy of the
 // calibrated witness and of calibrated − notebook, A minus B, mean ± 95% over worlds, on the key slice and overall.
 //   tsx scripts/pair.ts out-A out-B
 import { readFileSync, readdirSync } from 'fs';
@@ -22,6 +22,17 @@ const ci = (xs: number[]) => {
   const sd = Math.sqrt(xs.reduce((s, x) => s + (x - m) ** 2, 0) / Math.max(1, n - 1));
   return `${(100 * m).toFixed(1)} ±${((100 * T(n) * sd) / Math.sqrt(n)).toFixed(1)}`;
 };
+// Round M26: equivalence said as such. Equivalent: the 90% interval lies within ±2 points (two one-sided tests); regression: the 95%
+// interval lies wholly below 0; otherwise not shown either way.
+const T90 = (n: number) =>
+  [0, 6.31, 2.92, 2.35, 2.13, 2.02, 1.94, 1.89, 1.86, 1.83, 1.81, 1.8, 1.78, 1.77, 1.76, 1.75, 1.75, 1.74, 1.73, 1.73][n - 1] ?? 1.7;
+const verdict = (xs: number[]) => {
+  const n = xs.length;
+  const m = xs.reduce((s, x) => s + x, 0) / n;
+  const se = Math.sqrt(xs.reduce((s, x) => s + (x - m) ** 2, 0) / Math.max(1, n - 1)) / Math.sqrt(n);
+  if (100 * (m + T(n) * se) < 0) return 'REGRESSION';
+  return Math.abs(100 * (m - T90(n) * se)) <= 2 && Math.abs(100 * (m + T90(n) * se)) <= 2 ? 'equivalent ±2' : 'not shown either way';
+};
 const acc = (g: any[], k: string) => g.filter(x => x[k] === x.chosen).length / Math.max(1, g.length);
 const SL: [string, (x: any) => boolean][] = [
   ['all', () => true],
@@ -32,6 +43,6 @@ for (const [name, f] of SL) {
   const a = seeds.map(s => A.get(s)!.filter(f)),
     b = seeds.map(s => B.get(s)!.filter(f));
   console.log(
-    `  ${name.padEnd(34)} calibrated ${ci(a.map((g, i) => acc(g, 'cal') - acc(b[i], 'cal'))).padStart(12)} · calibrated−notebook ${ci(a.map((g, i) => acc(g, 'cal') - acc(g, 'noteOrBase') - (acc(b[i], 'cal') - acc(b[i], 'noteOrBase')))).padStart(12)} · page-annot ${ci(a.map((g, i) => acc(g, 'text') - acc(b[i], 'text'))).padStart(12)} · decisions ${a.reduce((s, g) => s + g.length, 0)}/${b.reduce((s, g) => s + g.length, 0)}`,
+    `  ${name.padEnd(34)} calibrated ${ci(a.map((g, i) => acc(g, 'cal') - acc(b[i], 'cal'))).padStart(12)} (${verdict(a.map((g, i) => acc(g, 'cal') - acc(b[i], 'cal')))}) · calibrated−notebook ${ci(a.map((g, i) => acc(g, 'cal') - acc(g, 'noteOrBase') - (acc(b[i], 'cal') - acc(b[i], 'noteOrBase')))).padStart(12)} · page-annot ${ci(a.map((g, i) => acc(g, 'text') - acc(b[i], 'text'))).padStart(12)} · decisions ${a.reduce((s, g) => s + g.length, 0)}/${b.reduce((s, g) => s + g.length, 0)}`,
   );
 }

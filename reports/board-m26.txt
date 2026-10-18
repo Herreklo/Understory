@@ -1,0 +1,6 @@
+Round M26, scoreboard paired on 1681-1690 (base rates 1501-1520), seenonly on against off, on the round's tree (25d + M26 at a90520a + the reading commit).
+Calibrated witness, on minus off: all decisions -0.2 ±0.4 (90%: -0.5 to +0.2, equivalent within ±2); not a couple's -0.3 ±0.4 (90%: -0.6 to +0.1, equivalent); key slice -0.7 ±0.8 (90%: -1.4 to -0.1).
+Key slice, on: calibrated - notebook +4.3 ±3.9; donor (null control) - notebook -4.9 ±2.4; calibrated - donor +9.3 ±2.1.
+Key slice, off: calibrated - notebook +4.4 ±3.8; donor - notebook -4.8 ±2.3; calibrated - donor +9.1 ±2.0.
+All decisions, on: calibrated - notebook +2.2 ±1.1; donor - notebook -7.6 ±1.3.
+Raw files: eval-1681..1690 per arm, in the round's release.
