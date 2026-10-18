@@ -1,6 +1,6 @@
 # The Lab
 
-A setting-free model of people, and the work of scaling it from a town to a city.
+A setting-free model of people, and the work of scaling it from a town to a city, to a world. 
 
 People here have HEXACO personalities, values, aptitudes, histories and relationships. Each decision they make is logged with its reasons. A witness learns about them only from what it could plausibly observe. The question the lab measures is whether knowing a person beats guessing from the situation, while people still surprise for reasons that make sense afterwards.
 
