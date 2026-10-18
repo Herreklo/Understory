@@ -115,7 +115,15 @@ if (!SKIP.has('lives'))
         ['cons', 'out-cons'],
       ])
         job(`${tool} ${rule === 'on' ? 'on' : 'off'} ${a}`, T, run(`src/tools/${tool === 'cons' ? 'consequences' : tool}.ts`, 'run', a, b, rule), {
-          outputs: [join(T, dir, `${prefix[tool]}${a}-${b}.json`)],
+          // One file for the chunk, or one per world (the lives tools from round 25d write world by world).
+          outputs: [
+            {
+              any: [
+                join(T, dir, `${prefix[tool]}${a}-${b}.json`),
+                ...Array.from({ length: b - a + 1 }, (_, i) => join(T, dir, `${prefix[tool]}${a + i}-${a + i}.json`)),
+              ],
+            },
+          ],
         });
 if (FAULTS && FAULTS_RANGE)
   for (const [arm, off] of ARMS.slice(0, 2))
