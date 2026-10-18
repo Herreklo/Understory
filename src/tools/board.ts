@@ -40,6 +40,7 @@ if (mode === 'train') {
   }
   const worlds: { seed: number; g: (Guesses & { ex?: string })[] }[] = [];
   for (let seed = A; seed <= B; seed++) {
+    if (existsSync(`${OUT}/eval-${seed}-${seed}.json`)) continue; // done before: a stopped run resumes where it was
     const w = buildWorld(seed, 1);
     pickWitness(w);
     const g: (Guesses & { ex?: string })[] = [];
@@ -81,8 +82,8 @@ if (mode === 'train') {
       delete x.rec;
     }
     worlds.push({ seed, g });
+    writeFileSync(`${OUT}/eval-${seed}-${seed}.json`, JSON.stringify([worlds[worlds.length - 1]]));
   }
-  writeFileSync(`${OUT}/eval-${A}-${B}.json`, JSON.stringify(worlds));
   console.log(`evaluated ${A}-${B}: ${worlds.reduce((s, x) => s + x.g.length, 0)} decisions`);
 } else if (mode === 'report') {
   const worlds: { seed: number; g: (Guesses & { ex?: string })[] }[] = [];

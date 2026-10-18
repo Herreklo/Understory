@@ -2,7 +2,7 @@
 // descendants (later events that cite it, directly or through a chain), turns (descendants that change something that does not
 // revert by itself), how deep the chains go and how far they reach. Counts traceable consequences only.
 //   tsx src/tools/consequences.ts run A B → out-cons/A-B.json ;  tsx src/tools/consequences.ts report
-import { mkdirSync, readFileSync, writeFileSync, readdirSync } from 'fs';
+import { mkdirSync, readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
 import { buildWorld, runYears } from '../build';
 import { pickWitness } from '../witness';
 import { OFF, type World, type Event } from '../world';
@@ -82,6 +82,7 @@ if (process.argv[2] === 'run') {
     rule = process.argv[5] ?? 'on';
   const out: { seed: number; rows: Row[]; wantCaused: number; wantOrigin: number; wants: number }[] = [];
   for (let seed = A; seed <= B; seed++) {
+    if (existsSync(`${OUT}/${rule === 'on' ? '' : rule + '-'}${seed}-${seed}.json`)) continue; // done before: a stopped run resumes where it was
     OFF.clear();
     if (rule !== 'on') for (const x of rule.split('+')) OFF.add(x);
     const w = buildWorld(seed, 1);
@@ -131,10 +132,11 @@ if (process.argv[2] === 'run') {
     }
     const pres = w.events.filter(e => e.t >= t0 && weighty(e));
     out.push({ seed, rows, wantCaused: pres.filter(e => e.causes.some(c => c.kind === 'want')).length, wantOrigin: 0, wants: pres.length });
+    writeFileSync(`${OUT}/${rule === 'on' ? '' : rule + '-'}${seed}-${seed}.json`, JSON.stringify([out[out.length - 1]]));
     console.error(`consequences: world ${seed}`);
   }
   OFF.clear();
-  writeFileSync(`${OUT}/${rule === 'on' ? '' : rule + '-'}${A}-${B}.json`, JSON.stringify(out));
+  // Each world was written when it was done.
 } else {
   const rule = process.argv[3] ?? 'on';
   const all: { seed: number; rows: Row[]; wantCaused: number; wants: number }[] = [];
