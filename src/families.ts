@@ -207,7 +207,7 @@ export const EXPRESSIONS: Expression[] = [
         v,
         `${a} told ${t} how bad things had got`,
         `${a} told ${t} everything, the parts nobody else knew`,
-        `${a} finally said it out loud, to ${t}`,
+        `${a} finally told ${t} what had been kept back`,
       ),
     evidence: { dependence: 1 },
     like: 0.15,

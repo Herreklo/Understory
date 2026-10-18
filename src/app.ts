@@ -1,7 +1,7 @@
 // The lab page: build a world, run it, read lives from both sides of the wall.
 import { buildWorld, runYears } from './build';
 import { pickWitness, scoreAll, hunches, hindsight } from './witness';
-import { age, fullName, year, live, mood, topSources, peekBond, belief, facet, type World, type Person, type Event, nameOf } from './world';
+import { titleAt, age, fullName, year, live, mood, topSources, peekBond, belief, facet, type World, type Person, type Event, nameOf } from './world';
 import { FACETS, FACET_BY_ID, VALUES, APTITUDES, DIMS } from './core';
 import { SETTING } from './setting';
 import { EXPR } from './families';
@@ -34,7 +34,7 @@ function statusOf(p: Person): string {
   if (a < 18) return 'at school';
   if (p.job) {
     const pl = W.placeById.get(p.job)!;
-    return p.lead ? `${pl.title} at ${pl.name}` : `${pl.role} at ${pl.name}`;
+    return p.lead ? titleAt(pl) : `${pl.role} at ${pl.name}`;
   }
   if (p.retired) return 'retired';
   if (p.givenUp) return 'not working';

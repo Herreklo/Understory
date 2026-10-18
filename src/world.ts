@@ -352,6 +352,9 @@ export const age = (w: World, p: Person) => ((p.status === 'dead' ? p.diedAt! : 
 export const live = (w: World) => w.people.filter(p => p.status === 'in');
 export const P = (w: World, id: number) => w.byId.get(id)!;
 export const fullName = (p: Person) => `${p.first} ${p.last}`;
+// A post at a place, for a sentence: "foreman at the sawmill", but "head of the clinic", never "head of the clinic at the clinic".
+export const titleAt = (pl: { title: string; name: string }) =>
+  pl.title.includes(pl.name.replace(/^the /, '')) ? pl.title : `${pl.title} at ${pl.name}`;
 export const logistic = (z: number, k = 1.2) => 1 / (1 + Math.exp(-k * z));
 
 // Plasticity: how much life still moves a person. Heredity is set at birth and never changes; what fades with age is the environment's grip.

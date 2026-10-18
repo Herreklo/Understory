@@ -6,6 +6,7 @@ import { clamp } from './rng';
 import { SETTING } from './setting';
 import { VALUES, FACETS, FACET_BY_ID } from './core';
 import {
+  titleAt,
   OFF,
   type World,
   type Person,
@@ -60,7 +61,7 @@ export function wantLabel(w: World, p: Person, x: Want): string {
     case 'attain': {
       if (x.target === 'work') return 'to find work';
       const pl = w.placeById.get(x.target);
-      return pl ? `to become ${pl.title} at ${pl.name}` : 'to get on';
+      return pl ? `to become ${titleAt(pl)}` : 'to get on';
     }
     case 'create':
       return 'a child';

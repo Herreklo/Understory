@@ -9,6 +9,7 @@
 // Every act cites where the rivalry started, so the record tells one story rather than many unrelated ones.
 import { clamp } from './rng';
 import {
+  titleAt,
   OFF,
   type World,
   type Person,
@@ -137,7 +138,7 @@ function announce(w: World, pl: any, lead: Person) {
   const e = addEvent(w, {
     type: 'stepdown',
     who: [lead.id],
-    text: `@${lead.id} will step down as ${pl.title} at ${pl.name} next year.`,
+    text: `@${lead.id} will step down as ${titleAt(pl)} next year.`,
     causes: [stateCause(why === 'getting on' ? `${Math.floor(age(w, lead))}, and tired` : why === 'not well' ? 'not well' : 'has had enough', 0.6)],
     vis: 'public',
     evidence: [],
