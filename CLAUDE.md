@@ -9,6 +9,8 @@ Every session that works here reads this first. It says how a round runs in git,
 
 Then read `NOW.md`. If a round is open on another branch and touches the files you were about to change, finish or merge it first.
 
+Read `WHY.md` before pre-registering a round. It says why the lab exists and names the ways a project like this goes wrong; the round's pre-registration says which of its warnings the round risks.
+
 ## One session at a time
 
 One session changes the engine. Others may read, measure and review, but not edit `src/`, `scale/` or the docs while a round is open. The city-scale work is ordinary rounds on `main` (`scale/<step>`, numbered `S12`, `S13`), each behind a switch and each passing the identity check, so the scale code never falls behind the engine again.
