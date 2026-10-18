@@ -96,6 +96,11 @@ function bonds(w: World, b: Breaks) {
 // run fails only on anything else. The round that fixes one removes its line, and the property then guards it.
 const KNOWN: { pattern: RegExp; what: string; round: string }[] = [
   {
+    pattern: /^dead: .* is in "(night:[a-z]+|group:[a-z]+)" \d+ months after dying/,
+    what: 'a group keeps a member who has died until its next clearing, so a show can name the dead (seed 9211, Alex Holmes)',
+    round: 'the coherence floor',
+  },
+  {
     pattern: /^record: event \d+ \(group:(formed|hole)\) is on \d+ of \d+/,
     what: "a group's event shares the group's live member list, so who 'started' it changes as people join and leave",
     round: 'the coherence floor',
