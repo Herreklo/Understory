@@ -61,6 +61,8 @@ A world is built by `buildWorld` (founders, families, jobs at year zero) and the
 
 `OFF.has(name)` switches a mechanism off for an ablation; `ON.has(name)` is the reverse, for a mechanism from a round that did not meet its expectations: it stays in the code, off by default, and `ON=<name>` turns it on for a test. Every new mechanism gets one, named in STATUS.md. When a round settles a fix or a rewording, the old path is removed: the tag of each round keeps the old behaviour reproducible.
 
+States (round 27, `ON=states`, off by default): with it on, every facet a decision reads through `truthView` is the person's level plus a deviation for the month, `spreadOf(p)` (0.3 to 1.0, set from their variability) times a draw from a stream keyed by the seed, the person, the month and the facet (`stateOf`, world.ts), and the top reason of a decision says "more/less so than usual that month" when the state passed 0.8 of a standard deviation (`noteState`, grammar.ts). Nothing else reads it.
+
 ## Checks
 
 - `npm test`: types, the page bundle, determinism, two worlds at once, groups, invariants (with the consistency audit), demography, a short batch. The invariants include that every thread event stays on its people's own lists: an act that is not kept comes off them through `unlist` in `grammar.ts`, never by taking the last entry.

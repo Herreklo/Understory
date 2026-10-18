@@ -1,0 +1,237 @@
+Round 27: the paired reading, states on against off (19 Oct 2026).
+Twelve people (the three most eventful adults of each of worlds 2921-2924 in the off arm, found again in the on arm by name and birth), each shown as the
+engine writes them with states on and with states off (ten present years, with reasons, folded as the page folds them); A/B order random per pair
+(src/tools/diag/pairarm.ts states 2921 2924 3). Three blind readers of different backgrounds (a novelist, a social worker, a player of simulation games),
+each told only that the two are two versions of the same person's life. Scores 1-5 and a preference per version, up to three faults quoted per version.
+
+pair  on       novelist    socialwork        player  majority-on
+P01   A          3,3,B         3,3,B         3,3,A   no
+P02   A          4,2,A         4,2,A         4,2,A   yes
+P03   A          3,4,B         3,4,B         3,4,B   no
+P04   A          4,3,A         3,4,B         3,4,B   no
+P05   A          2,3,B         2,3,B         2,4,B   no
+P06   B          3,3,A         4,2,A         4,3,A   no
+P07   B          3,4,B         3,3,B         3,3,A   yes
+P08   A          4,2,A         4,3,A         4,3,A   yes
+P09   B          3,2,A         4,2,A         3,2,A   no
+P10   B          2,3,B         2,3,B         2,3,B   yes
+P11   A          3,4,B         3,4,B         3,3,A   no
+P12   B          4,2,A         3,2,A         4,2,A   no
+
+Majority preferred the on arm in 4 of 12. Mean paired difference, on minus off: -0.22 points over 36 reader-pairs.
+  novelist       on 3.08  off 3.00  diff +0.08
+  socialworker   on 2.83  off 3.25  diff -0.42
+  player         on 2.92  off 3.25  diff -0.33
+faults on: total 102 · unfit reason 45, repeat 18, wording 15, out of nowhere 12, false line 12
+faults off: total 104 · repeat 36, unfit reason 33, out of nowhere 16, wording 10, false line 9
+
+ordinal  alpha 0.728  95% [0.467, 0.881]  (3 readers, 24 lives)
+interval alpha 0.739  95% [0.496, 0.871]  (3 readers, 24 lives)
+
+Faults quoted, by arm (pair, arm, reader, kind, quote):
+P01 on  novelist       unfit reason  Arthur froze while the others went in for Olive Reed
+P01 on  novelist       unfit reason  is not one to hang back; not one to start things
+P01 on  novelist       repeat        told Arthur to count her in for the summer festival
+P01 off novelist       repeat        Arthur got there: to make things right with
+P01 off novelist       out of nowhere Arthur and Susie stopped seeing each other, and that was that
+P01 off novelist       unfit reason  Arthur picked holes in Sam's work in front of everyone
+P02 on  novelist       unfit reason  is not one to hang back; not one to start things
+P02 on  novelist       out of nowhere Sam and Oscar Vaughan drifted out of each other's lives
+P02 off novelist       unfit reason  Sam picked holes in Sarah's work in front of everyone
+P02 off novelist       repeat        Nobody was surprised any more: it had been happening since
+P02 off novelist       unfit reason  Sam goes out of his way to avoid Sarah
+P03 on  novelist       out of nowhere Thea took it badly, and let everyone see it
+P03 on  novelist       unfit reason  sentimentality: detached, moves on easily that month
+P03 on  novelist       false line    Arthur made sure everyone knew Thea had carried the sawmill
+P03 off novelist       false line    puts other people first; is fond of Hal
+P03 off novelist       unfit reason  that is who Thea is: someone who says it straight
+P03 off novelist       out of nowhere Thea sulked about it for months
+P04 on  novelist       false line    in debt; Tom buried himself in work
+P04 on  novelist       unfit reason  patience: short fuse, more so than usual that month
+P04 on  novelist       repeat        Tom brought a song to the Lanterns
+P04 off novelist       repeat        who did what in the house
+P04 off novelist       repeat        Una Tanner would not play Tom's song the way it was written
+P04 off novelist       out of nowhere Ellen and Tom started seeing each other
+P05 on  novelist       false line    Oliver Baker turned down a job in the city
+P05 on  novelist       unfit reason  worth claiming; though he never thinks it is about him
+P05 on  novelist       repeat        everyone knew at once it was the best thing they had
+P05 off novelist       false line    Hannah Baker asked Oliver straight out for money
+P05 off novelist       unfit reason  not worn down; the kind who goes after things
+P06 off novelist       out of nowhere Sylvia had a heart attack
+P06 off novelist       wording       Ellen and Colin lost the money they had put into the café
+P06 off novelist       unfit reason  worth claiming; though he thinks highly of Peter Brook
+P06 on  novelist       false line    wants to make things right with Sylvia Baker (since 2023)
+P06 on  novelist       unfit reason  Colin is no longer first in at work every morning
+P06 on  novelist       repeat        and it did not come to much
+P07 off novelist       repeat        The council turned down
+P07 off novelist       unfit reason  Lynn Sayer congratulated Neil and meant it
+P07 off novelist       false line    took the credit for a year that Mona had carried
+P07 on  novelist       unfit reason  Lynn Sayer is no longer first in at work every morning
+P07 on  novelist       wording       Lynn Sayer cannot be in a room with Lynn Scott
+P07 on  novelist       unfit reason  told Ruth how bad things had got
+P08 on  novelist       unfit reason  Mark Nash went to Neil and offered to put the old business
+P08 on  novelist       unfit reason  Neil stopped drinking
+P08 on  novelist       wording       criticism: says what is wrong with people, not with what they did
+P08 off novelist       false line    though he likes things in order; does no more than he has to
+P08 off novelist       repeat        Neil blames Lynn Sayer for what happened to the summer festival
+P08 off novelist       unfit reason  not one to start things; is not one to hang back
+P09 off novelist       repeat        told Agnes to count her in for the summer festival
+P09 off novelist       unfit reason  though she likes Lynn Sayer
+P09 on  novelist       unfit reason  thinks the world of Mark Nash; looks after her own first
+P09 on  novelist       unfit reason  thought rules are for people who get caught
+P09 on  novelist       repeat        (and 3 more times between)
+P10 off novelist       repeat        was the best night the town had had in years
+P10 off novelist       false line    making jokes about being passed over since the week it happened
+P10 off novelist       unfit reason  danger has never stopped her
+P10 on  novelist       wording       not who Amelia thinks she is: the one who holds things together
+P10 on  novelist       repeat        Amelia seemed lighter than in a long while
+P11 on  novelist       out of nowhere Harry confronted Maisie Dale about it in front of everyone
+P11 on  novelist       out of nowhere Harry took it badly, and let everyone see it
+P11 on  novelist       false line    Harry deflects credit
+P11 off novelist       out of nowhere Instead, Harry Vale put his name down for the open night
+P11 off novelist       unfit reason  Harry Vale froze while the others went in for Evan Sutton
+P11 off novelist       repeat        and it did not come to much
+P12 off novelist       unfit reason  the first to help when someone is really in trouble
+P12 off novelist       wording       Ellen went straight to Harry Vale with what Ellen had heard
+P12 off novelist       false line    had been saving since 2032
+P12 on  novelist       wording       Ellen has the biggest the garden fence on the street
+P12 on  novelist       unfit reason  the first to help when someone is really in trouble
+P12 on  novelist       unfit reason  despite: nothing much had built up
+P01 on  socialworker   unfit reason  is not one to hang back; not one to start things
+P01 on  socialworker   unfit reason  froze while the others went in for Olive Reed
+P01 on  socialworker   repeat        told Arthur to count her in for the summer festival
+P01 off socialworker   repeat        started trying to put things right with
+P01 off socialworker   unfit reason  kept away just when Eve needed people
+P01 off socialworker   wording       It was the third time, after 2026 and 2029
+P02 on  socialworker   unfit reason  is not one to hang back; not one to start things
+P02 on  socialworker   unfit reason  Sam came through it, after 10 months of illness
+P02 off socialworker   unfit reason  Sam goes out of his way to avoid Sarah
+P02 off socialworker   repeat        picked holes in
+P02 off socialworker   out of nowhere Sam and Arthur buried the hatchet
+P03 on  socialworker   out of nowhere Thea took it badly, and let everyone see it
+P03 on  socialworker   wording       modesty: feels entitled to more, less so than usual
+P03 on  socialworker   repeat        was back to normal with Thea, as if
+P03 off socialworker   repeat        took the credit for a year that Tara Kemp had carried
+P03 off socialworker   out of nowhere Thea sulked about it for months
+P03 off socialworker   unfit reason  Thea was civil to Hal for weeks, and nothing more
+P04 on  socialworker   false line    Susie had promised Tom to help with the garden, and did it
+P04 on  socialworker   false line    in debt; Tom buried himself in work
+P04 on  socialworker   wording       Susie was the first to say Tom's it was
+P04 off socialworker   repeat        Tom brings up old slights
+P04 off socialworker   unfit reason  Ellen and Tom started seeing each other.  [has energy for everything]
+P04 off socialworker   out of nowhere Tom and Hilda became friends
+P05 on  socialworker   false line    Oliver Baker turned down a job in the city
+P05 on  socialworker   repeat        everyone knew at once it was the best thing they had
+P05 on  socialworker   unfit reason  worth claiming; though he never thinks it is about him
+P05 off socialworker   false line    Hannah Baker asked Oliver straight out for money
+P05 off socialworker   unfit reason  made sure Nora knew the cost.  [money has never meant much
+P05 off socialworker   repeat        Oliver deflects credit
+P06 off socialworker   out of nowhere Colin can't stand Sid
+P06 off socialworker   wording       Molly brought a song to Pirate Radio, "Keeping Still on a Saturday"
+P06 on  socialworker   false line    make things right with Sylvia Baker, after 11 years of wanting it
+P06 on  socialworker   unfit reason  no longer first in at work every morning.  [John died
+P06 on  socialworker   repeat        and it did not come to much
+P07 off socialworker   unfit reason  Lynn Sayer congratulated Neil and meant it
+P07 off socialworker   repeat        blames Lynn Sayer for what happened to the summer festival
+P07 off socialworker   wording       not who Lynn Sayer thinks she is: the one who holds
+P07 on  socialworker   wording       modesty: sees themselves as ordinary, more so than usual
+P07 on  socialworker   unfit reason  no longer first in at work every morning.  [Toby Vale died
+P07 on  socialworker   unfit reason  took the credit for a year that Mark Moore had carried
+P08 on  socialworker   unfit reason  Neil stopped drinking.  [likes things done properly and on time]
+P08 on  socialworker   unfit reason  not worn down; not one to chase things
+P08 off socialworker   unfit reason  not one to start things; is not one to hang back
+P08 off socialworker   unfit reason  The harbour day was chaos
+P08 off socialworker   repeat        Neil took the credit for a year that
+P09 off socialworker   out of nowhere Agnes blames Mona for what happened to the summer festival
+P09 off socialworker   repeat        told Agnes to count her in for the summer festival
+P09 on  socialworker   out of nowhere Sean and Agnes got married
+P09 on  socialworker   unfit reason  went in after Mark Nash without a second's thought. It had happened before
+P09 on  socialworker   repeat        (and 3 more times between)
+P10 off socialworker   repeat        was the best night the town had had in years
+P10 off socialworker   false line    making jokes about being passed over since the week it happened
+P10 off socialworker   unfit reason  takes the front door out in a storm to see what it will do
+P10 on  socialworker   wording       not who Amelia thinks she is: the one who holds things together
+P10 on  socialworker   out of nowhere Amelia seemed lighter than in a long while
+P11 on  socialworker   unfit reason  Harry deflects credit.  [though he felt it was owed]
+P11 on  socialworker   out of nowhere Harry took it badly, and let everyone see it.  [wanted to put things right with Ian
+P11 on  socialworker   wording       dependence: copes alone that month, more than usual
+P11 off socialworker   out of nowhere Instead, Harry Vale put his name down for the open night
+P11 off socialworker   repeat        Alice brought a song to Pirate Radio
+P11 off socialworker   wording       changed their plans for everyone else again.  [wanted to keep the peace]
+P12 off socialworker   unfit reason  wasn't there for Mark when it mattered.  [Mark was ill; the first to help
+P12 off socialworker   out of nowhere Ellen took a little from the till
+P12 off socialworker   repeat        talks about a house of her own the way other people talk
+P12 on  socialworker   wording       Ellen has the biggest the garden fence on the street
+P12 on  socialworker   unfit reason  sentimentality: detached, moves on easily that month
+P12 on  socialworker   wording       greed avoidance: wants wealth and the best of everything
+P01 on  player         unfit reason  Arthur froze while the others went in for Olive Reed
+P01 on  player         unfit reason  is not one to hang back; not one to start things
+P01 on  player         repeat        told Arthur to count her in for the summer festival
+P01 off player         repeat        started trying to put things right with Beth, and tells everyone
+P01 off player         repeat        not worn down; wants it, but not badly
+P01 off player         unfit reason  Arthur kept away just when Eve needed people
+P02 on  player         unfit reason  is not one to hang back; not one to start things
+P02 on  player         repeat        told Sam to count him in for the summer festival
+P02 off player         unfit reason  Sam picked holes in Sarah's work in front of everyone
+P02 off player         repeat        Sam has found his people: Ralph and Lily, from the choir
+P02 off player         unfit reason  Sam goes out of his way to avoid Sarah
+P03 on  player         unfit reason  Thea took it badly, and let everyone see it
+P03 on  player         unfit reason  has energy for everything
+P03 on  player         out of nowhere Arthur made sure everyone knew Thea had carried the sawmill
+P03 off player         unfit reason  Tara Kemp found reasons to be busy while Thea was going through it
+P03 off player         repeat        Thea has not been herself for months
+P03 off player         repeat        Thea went quiet when Lily's name came up
+P04 on  player         wording       Susie was the first to say Tom's it was the best
+P04 on  player         false line    Tom buried himself in work.
+P04 on  player         unfit reason  patience: short fuse, more so than usual that month
+P04 off player         repeat        Una Tanner would not play Tom's song the way it was written
+P04 off player         repeat        Tom brings up old slights.
+P04 off player         out of nowhere Ellen and Tom started seeing each other.
+P05 on  player         false line    Oliver Baker turned down a job in the city.
+P05 on  player         false line    walks the same shore path every evening, and has for years
+P05 on  player         repeat        everyone knew at once it was the best thing they had
+P05 off player         repeat        Oliver deflects credit.
+P05 off player         repeat        Ivy and Oliver have become friends.
+P05 off player         unfit reason  though money has never meant much to him
+P06 off player         wording       has the the gutters on a rota pinned
+P06 off player         out of nowhere Colin can't stand Sid.
+P06 off player         unfit reason  respects Peter Brook; puts other people first
+P06 on  player         unfit reason  wants to make things right with Sylvia Baker (since 2023)
+P06 on  player         unfit reason  Colin is no longer first in at work every morning.
+P06 on  player         repeat        brought a song to Low Tide, "Quay and Rain", and it did not come to much
+P07 off player         repeat        blames Lynn Sayer for what happened to the summer festival
+P07 off player         unfit reason  Lynn Sayer congratulated Neil and meant it.
+P07 off player         wording       not who Lynn Sayer thinks she is: the one who holds things together
+P07 on  player         unfit reason  modesty: sees themselves as ordinary, more so than usual that month
+P07 on  player         unfit reason  Lynn Sayer is no longer first in at work every morning.
+P07 on  player         wording       Lynn Sayer cannot be in a room with Lynn Scott for long.
+P08 on  player         unfit reason  Neil stopped drinking.
+P08 on  player         unfit reason  not worn down; not one to chase things
+P08 on  player         out of nowhere Mark Nash resigned on the spot.
+P08 off player         unfit reason  though he likes things in order; does no more than he has to
+P08 off player         repeat        Neil blames Lynn Sayer for what happened to the summer festival
+P08 off player         repeat        Neil took the credit for a year that Tara Berry had carried
+P09 off player         out of nowhere Agnes blames Mona for what happened to the summer festival.
+P09 off player         repeat        The council turned down Agnes's summer festival.
+P09 off player         unfit reason  though she thinks the world of Lily Vale
+P09 on  player         repeat        told Agnes to count her in for the summer festival
+P09 on  player         out of nowhere Agnes blames Owen Vale for what happened to the summer festival.
+P09 on  player         unfit reason  thinks the world of Mark Nash; looks after her own first
+P10 off player         repeat        was the best night the town had had in years
+P10 off player         unfit reason  Amelia has been making jokes about being passed over
+P10 off player         false line    buried the hatchet, 1 year after the skipper's job
+P10 on  player         wording       not who Amelia thinks she is: the one who holds things together
+P10 on  player         unfit reason  though she has never been fussy about rules
+P10 on  player         out of nowhere Amelia let Thea Vale take the blame for a mistake at work.
+P11 on  player         repeat        Harry is back to normal the next day.
+P11 on  player         unfit reason  modesty: feels entitled to more, less so than usual that month
+P11 on  player         repeat        both after the head mechanic's job, and it shows
+P11 off player         out of nowhere Instead, Harry Vale put his name down for the open night.
+P11 off player         wording       Harry Vale froze while the others went in for Evan Sutton.
+P11 off player         repeat        Harry Vale took the credit for a year that Sean Sutton had carried
+P12 off player         unfit reason  the first to help when someone is really in trouble
+P12 off player         wording       Ellen went straight to Harry Vale with what Ellen had heard.
+P12 off player         repeat        Olive Sands was the first to say Ellen's song was the best
+P12 on  player         wording       Ellen has the biggest the garden fence on the street
+P12 on  player         unfit reason  Ellen wasn't there for Mark Scott when it mattered.
+P12 on  player         unfit reason  Ellen went out into the storm.

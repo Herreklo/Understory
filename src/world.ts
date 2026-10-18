@@ -370,12 +370,13 @@ export const OFF = new Set<string>();
 export const ON = new Set<string>();
 // Round F27, the coherence floor: the engine-side fixes sit behind one switch, so the round can be measured with and without them.
 export const floorOn = () => !OFF.has('floor');
-// Round 27, states: a person varies within themselves from month to month (Fleeson 2001). The spread is the person's own, set from
+// Round 27, states (behind ON=states): a person varies within themselves from month to month (Fleeson 2001). The spread is the person's own, set from
 // their variability (drawn at generation, wider for the anxious): about 0.6 of a facet's standard deviation, 0.3 to 1.0. A state is this
 // month's deviation on one facet, drawn from a stream of the person's own (the world seed in the past, the run seed in the present, the
-// person, the month, the facet), so it moves nobody else's dice and OFF=states leaves everything else identical. Only a decision reads it
-// (truthView in decide.ts); evidence, manner, persona and beliefs read the level.
-export const statesOn = () => !OFF.has('states');
+// person, the month, the facet), so it moves nobody else's dice and the default (states off) is identical to the engine before them. Only
+// a decision reads it (truthView in decide.ts); evidence, manner, persona and beliefs read the level. Off unless ON=states: the round did
+// not meet its expectations (single-act r moved .39 → .36, not into the band; blind readers preferred the on arm in 4 of 12; births fell).
+export const statesOn = () => ON.has('states');
 export const spreadOf = (p: Person) => clamp(0.6 + 0.7 * (p.variability - 0.7), 0.3, 1.0);
 const states = new WeakMap<World, Map<string, { t: number; v: number }>>();
 export function stateOf(w: World, p: Person, key: string): number {

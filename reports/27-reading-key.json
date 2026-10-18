@@ -1,0 +1,74 @@
+{
+ "P01": {
+  "seed": 2921,
+  "person": 58,
+  "name": "Arthur",
+  "onIs": "A"
+ },
+ "P02": {
+  "seed": 2921,
+  "person": 51,
+  "name": "Sam",
+  "onIs": "A"
+ },
+ "P03": {
+  "seed": 2921,
+  "person": 10,
+  "name": "Thea",
+  "onIs": "A"
+ },
+ "P04": {
+  "seed": 2922,
+  "person": 70,
+  "name": "Tom",
+  "onIs": "A"
+ },
+ "P05": {
+  "seed": 2922,
+  "person": 71,
+  "name": "Oliver",
+  "onIs": "A"
+ },
+ "P06": {
+  "seed": 2922,
+  "person": 3,
+  "name": "Colin",
+  "onIs": "B"
+ },
+ "P07": {
+  "seed": 2923,
+  "person": 59,
+  "name": "Lynn Sayer",
+  "onIs": "B"
+ },
+ "P08": {
+  "seed": 2923,
+  "person": 3,
+  "name": "Neil",
+  "onIs": "A"
+ },
+ "P09": {
+  "seed": 2923,
+  "person": 57,
+  "name": "Agnes",
+  "onIs": "B"
+ },
+ "P10": {
+  "seed": 2924,
+  "person": 59,
+  "name": "Amelia",
+  "onIs": "B"
+ },
+ "P11": {
+  "seed": 2924,
+  "person": 23,
+  "name": "Harry Vale",
+  "onIs": "A"
+ },
+ "P12": {
+  "seed": 2924,
+  "person": 31,
+  "name": "Ellen",
+  "onIs": "B"
+ }
+}
