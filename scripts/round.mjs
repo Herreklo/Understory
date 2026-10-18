@@ -5,9 +5,9 @@
 // expected output missing, is named and makes the command exit nonzero. A separate agent still re-derives the headline numbers.
 //   node scripts/round.mjs --id F26 --switches countfair,eventfix --train 1501-1520 --eval 1721-1740 --test 3001-3020
 //        [--faults src/tools/diag/f26.ts --faults-range 3021-3024] [--cold 3025-3026] [--commit HEAD] [--base origin/main]
-//        [--out out-round-F26] [--jobs 4] [--years 10] [--chunk 5] [--skip ident,npmtest,lives,loo,cold]
+//        [--out out-round-F26] [--jobs 4] [--years 10] [--chunk 5] [--skip ident,npmtest,lives,loo,cold,board]
 import { execFileSync, spawn } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { cpus } from 'node:os';
 import { join, resolve } from 'node:path';
 
@@ -82,7 +82,7 @@ if (COLD && !SKIP.has('cold'))
   for (const [arm, off] of ARMS.slice(0, 2))
     for (let s = COLD[0]; s <= COLD[1]; s++)
       job(`cold ${arm} ${s}`, T, run('src/tools/read.ts', s), { env: { OFF: off.join(',') }, outputs: [], result: false });
-for (const [arm, off] of ARMS) {
+for (const [arm, off] of SKIP.has('board') ? [] : ARMS) {
   const dir = join(OUT, `board-${arm}`);
   mkdirSync(dir, { recursive: true });
   const trains = chunks(TRAIN).map(([a, b]) => {
@@ -245,7 +245,7 @@ const SLICES = [
   ['novel · contested · known (key)', x => x.novel && x.contested && x.known],
 ];
 const acc = (g, k) => g.filter(x => x[k] === x.chosen).length / Math.max(1, g.length);
-const boards = Object.fromEntries(ARMS.map(([a]) => [a, ok(`train ${a}`) && ok(`eval ${a}`) ? load(a) : null]));
+const boards = Object.fromEntries(ARMS.map(([a]) => [a, !SKIP.has('board') && ok(`train ${a}`) && ok(`eval ${a}`) ? load(a) : null]));
 const seeds = [...(boards.on?.keys() ?? [])].sort((a, b) => a - b);
 const lines = [];
 const say = s => lines.push(s);
@@ -351,7 +351,7 @@ const block = (title, text) => {
 };
 if (!SKIP.has('lives')) {
   block('Lives: story (on / off)', ok('story') ? sh(T, run('src/tools/story.ts', 'report', 'on', RULE_OFF)) : 'missing');
-  block('Lives: friends', ok('friends') ? sh(T, run('src/tools/friends.ts', 'report')) : 'missing');
+  block('Lives: friends', ok('friends') ? sh(T, run('src/tools/friends.ts', 'report', 'on', RULE_OFF)) : 'missing');
   block(
     'Lives: consequences (on)',
     ok('cons')
@@ -398,5 +398,6 @@ say('');
 say(`${coldNote}. Give the pack to a reader before anyone reads the numbers above.`);
 writeFileSync(join(OUT, 'summary.md'), lines.join('\n') + '\n');
 console.error(`round: summary in ${join(OUT, 'summary.md')}`);
+for (const d of readdirSync(T).filter(f => f.startsWith('out-'))) cpSync(join(T, d), join(OUT, d), { recursive: true });
 for (const d of [T, B].filter(Boolean)) git('worktree', 'remove', '--force', d);
 process.exit(failed.length ? 1 : 0);
