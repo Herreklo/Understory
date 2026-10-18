@@ -6,6 +6,7 @@ import { clamp } from './rng';
 import { SETTING } from './setting';
 import {
   OFF,
+  ON,
   type World,
   type Person,
   type Want,
@@ -584,7 +585,7 @@ export const onStage = (p: Person): Want | undefined =>
   steering() ? p.wants.find(x => !x.done && x.kind === 'prove' && x.pursuit && !x.pursuit.owner && (x.pursuit as Pu).way === 'stage') : undefined;
 
 // ---------- everyone wants something (round 25d) ----------
-export const everyone = () => steering() && !OFF.has('everyone');
+export const everyone = () => steering() && ON.has('everyone'); // round 25d did not meet its expectations: on only when asked for
 function propose(w: World, p: Person, x: Want) {
   const q = P(w, +x.target);
   if (p.partner !== q.id || p.pstat !== 'dating' || q.status !== 'in') return null;

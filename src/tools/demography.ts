@@ -2,8 +2,9 @@
 // A small rural town has more deaths than births and lives on people moving in; births at least 60% of deaths, population within -20%..+35% over the run.
 //   tsx src/tools/demography.ts [worlds] [years]
 import { buildWorld, runYears } from '../build';
-import { OFF } from '../world';
+import { OFF, ON } from '../world';
 for (const x of (process.env.OFF ?? '').split(',').filter(Boolean)) OFF.add(x); // ablation, as in board.ts
+for (const x of (process.env.ON ?? '').split(',').filter(Boolean)) ON.add(x);
 import { pickWitness } from '../witness';
 import { live, age } from '../world';
 const N = +(process.argv[2] ?? 12),
