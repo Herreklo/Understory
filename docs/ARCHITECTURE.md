@@ -59,7 +59,7 @@ A world is built by `buildWorld` (founders, families, jobs at year zero) and the
 
 ## Switches
 
-`OFF.has(name)` switches a mechanism off for an ablation. Every new mechanism gets one, named in STATUS.md. When a round settles a fix or a rewording, the old path is removed: the tag of each round keeps the old behaviour reproducible.
+`OFF.has(name)` switches a mechanism off for an ablation; `ON.has(name)` is the reverse, for a mechanism from a round that did not meet its expectations: it stays in the code, off by default, and `ON=<name>` turns it on for a test. Every new mechanism gets one, named in STATUS.md. When a round settles a fix or a rewording, the old path is removed: the tag of each round keeps the old behaviour reproducible.
 
 ## Checks
 

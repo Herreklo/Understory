@@ -362,6 +362,9 @@ export const plasticity = (w: World, p: Person) => (OFF.has('plasticity') ? 1 : 
 // plus any exception toward a specific other person.
 // Ablation switches, for tests that turn one system off to see what it was doing. Empty in normal runs.
 export const OFF = new Set<string>();
+// Mechanisms that are off unless asked for: a round that did not meet its expectations keeps its code behind one of these, so the
+// default model is the one before it. Turned on for a test with ON=<name>, as OFF=<name> turns a kept one off.
+export const ON = new Set<string>();
 // A name a reader can follow: the first name, with the surname when someone else in town (or away) has the same first name, and the
 // year of birth when they share both. Rendering only.
 export function nameOf(w: World, id: number): string {

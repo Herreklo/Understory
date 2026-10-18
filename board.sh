@@ -6,7 +6,8 @@ OUT=${BOARD_OUT:-out}; YEARS=${1:-10}
 TRAIN=${TRAIN:-101-120}; EVAL=${EVAL:-1-20}
 TA=${TRAIN%-*}; TB=${TRAIN#*-}; EA=${EVAL%-*}; EB=${EVAL#*-}
 TM=$(( (TA + TB) / 2 )); EM=$(( (EA + EB) / 2 ))
-rm -rf "$OUT"; mkdir -p "$OUT"
+# RESUME=1 keeps what a stopped run had finished (each world is written when done).
+[ -n "$RESUME" ] || rm -rf "$OUT"; mkdir -p "$OUT"
 ./run.sh src/tools/board.ts train $TA $TM $YEARS & ./run.sh src/tools/board.ts train $((TM + 1)) $TB $YEARS & wait
 ./run.sh src/tools/board.ts eval $EA $EM $YEARS & ./run.sh src/tools/board.ts eval $((EM + 1)) $EB $YEARS & wait
 ./run.sh src/tools/board.ts report

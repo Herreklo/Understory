@@ -1,0 +1,5 @@
+Re-derivation of round 25d by a separate agent from the raw files (script rederive.py), no summary read.
+Calibrated on − off, paired by world 1671–1680: all −1.42 ±1.80 (n 17719/17595); not a couple's −1.20 ±1.77 (13538/13116); key −2.32 ±2.90 (9095/9066). Per-world not-couple diffs: +0.7 −7.0 −0.6 +0.3 −0.4 −2.0 −1.4 −2.9 −2.6 +4.0; world 1672 the outlier (−7.0). Seven of ten worlds negative on the gate slice.
+Lives, 20 worlds per arm: dead lives 4.0 ±1.2% on, 4.6 ±1.3% off; median weighty events 18.18 ±0.75 on, 16.57 ±0.83 off (+1.60 ±0.73 paired).
+Sanity: all worlds present in both arms, arms differ in every world; world 1673 off has 1342 decisions (fewest, next 1568).
+Agrees with the runner's summary (−1.4 / −1.2 / −2.3; dead lives 0.04 / 0.05; median 18.4 / 16.6, the runner's median taken per world then averaged differently by a few tenths).

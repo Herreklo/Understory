@@ -1298,6 +1298,29 @@ function gossip(w: World) {
 }
 
 // ---------- romance and family ----------
+// Two who are seeing each other marry. `why` replaces the usual reasons (round 25d: one of them asked).
+export function marry(w: World, p: Person, q: Person, why?: Cause[]) {
+  const dur = w.t - p.psince;
+  p.pstat = q.pstat = 'married';
+  p.psince = q.psince = w.t;
+  const e = addEvent(w, {
+    type: 'married',
+    who: [p.id, q.id],
+    text: `@${p.id} and @${q.id} got married.`,
+    causes: why ?? [stateCause(`together since ${year(p.psince - dur)}`, 0.5), { kind: 'bond', label: 'they had grown close', weight: 0.5 }],
+    vis: 'public',
+    evidence: [ev(p.id, 'bond:' + q.id, 1, 1, 0.8), ev(q.id, 'bond:' + p.id, 1, 1, 0.8)],
+    w: 2,
+  });
+  broadcast(w, e);
+  addEmotion(w, p, 'wed', 'newly married', 0.2, 18, e.id);
+  addEmotion(w, q, 'wed', 'newly married', 0.2, 18, e.id);
+  remember(w, p, q, e.id, 0.15, 0.1, 0.2, 'married');
+  remember(w, q, p, e.id, 0.15, 0.1, 0.2, 'married');
+  resolveWants(w, p, 'win', String(q.id), 'achieved', e.id);
+  resolveWants(w, q, 'win', String(p.id), 'achieved', e.id);
+  return e;
+}
 function romanceTick(w: World) {
   const L = live(w);
   for (const p of L) {
@@ -1314,26 +1337,8 @@ function romanceTick(w: World) {
       if (p.stress > 0.75) remember(w, q, p, -1, -0.015, 0, 0, 'always on edge');
       if (q.stress > 0.75) remember(w, p, q, -1, -0.015, 0, 0, 'always on edge');
       if (p.pstat === 'dating') {
-        if (dur >= 10 && o1 > 0.5 && o2 > 0.5 && w.rng.chance(0.03 * (z01(p.values.lovedOnes) + z01(q.values.lovedOnes)))) {
-          p.pstat = q.pstat = 'married';
-          p.psince = q.psince = w.t;
-          const e = addEvent(w, {
-            type: 'married',
-            who: [p.id, q.id],
-            text: `@${p.id} and @${q.id} got married.`,
-            causes: [stateCause(`together since ${year(p.psince - dur)}`, 0.5), { kind: 'bond', label: 'they had grown close', weight: 0.5 }],
-            vis: 'public',
-            evidence: [ev(p.id, 'bond:' + q.id, 1, 1, 0.8), ev(q.id, 'bond:' + p.id, 1, 1, 0.8)],
-            w: 2,
-          });
-          broadcast(w, e);
-          addEmotion(w, p, 'wed', 'newly married', 0.2, 18, e.id);
-          addEmotion(w, q, 'wed', 'newly married', 0.2, 18, e.id);
-          remember(w, p, q, e.id, 0.15, 0.1, 0.2, 'married');
-          remember(w, q, p, e.id, 0.15, 0.1, 0.2, 'married');
-          resolveWants(w, p, 'win', String(q.id), 'achieved', e.id);
-          resolveWants(w, q, 'win', String(p.id), 'achieved', e.id);
-        } else if (Math.min(o1, o2) < 0.15 && w.rng.chance(0.08)) split(w, p, q, false);
+        if (dur >= 10 && o1 > 0.5 && o2 > 0.5 && w.rng.chance(0.03 * (z01(p.values.lovedOnes) + z01(q.values.lovedOnes)))) marry(w, p, q);
+        else if (Math.min(o1, o2) < 0.15 && w.rng.chance(0.08)) split(w, p, q, false);
       } else if ((OFF.has('love') || OFF.has('leaving')) && Math.min(o1, o2) < 0 && w.rng.chance(0.025)) split(w, p, q, true); // with love.ts, ending a marriage is a decision (round 20b)
       continue;
     }

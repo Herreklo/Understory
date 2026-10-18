@@ -1,6 +1,6 @@
 // Round 25c measures: how people go after what they want (ways, obstacles, changes of course, getting there), ten present years.
 //   ./run.sh src/tools/diag/r25c.ts run A B [rule] → out-r25c/<rule>-A-B.json ;  ./run.sh src/tools/diag/r25c.ts report
-import { mkdirSync, readFileSync, writeFileSync, readdirSync } from 'fs';
+import { mkdirSync, readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
 import { buildWorld, runYears } from '../../build';
 import { pickWitness } from '../../witness';
 import { OFF, age, live } from '../../world';
@@ -26,6 +26,7 @@ if (process.argv[2] === 'run') {
     rule = process.argv[5] ?? 'on';
   const out: Row[] = [];
   for (let seed = A; seed <= B; seed++) {
+    if (existsSync(`${OUT}/${rule}-${seed}-${seed}.json`)) continue; // done before: a stopped run resumes where it was
     OFF.clear();
     if (rule !== 'on') for (const x of rule.split('+')) OFF.add(x);
     const w = buildWorld(seed, 1);
@@ -76,10 +77,11 @@ if (process.argv[2] === 'run') {
         if (!p.wants.some(x => x.pursuit && !x.pursuit.owner && x.pursuit.start >= t0)) row.neverPursued++;
       }
     out.push(row);
+    writeFileSync(`${OUT}/${rule}-${seed}-${seed}.json`, JSON.stringify([out[out.length - 1]]));
     console.error(`r25c ${rule}: world ${seed}`);
   }
   OFF.clear();
-  writeFileSync(`${OUT}/${rule}-${A}-${B}.json`, JSON.stringify(out));
+  // Each world was written when it was done.
 } else {
   const files = readdirSync(OUT).filter(f => f.endsWith('.json'));
   const rules = [...new Set(files.map(f => f.replace(/-\d+-\d+\.json$/, '')))];
@@ -114,6 +116,10 @@ if (process.argv[2] === 'run') {
       ).toFixed(1)}%`,
     );
     const T = [
+      'married',
+      'born',
+      'proposed',
+      'notready',
       'moved',
       'backed',
       'notyet',

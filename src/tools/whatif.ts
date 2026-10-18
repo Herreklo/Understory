@@ -11,7 +11,7 @@ import { createHash } from 'crypto';
 import { buildWorld, runYears } from '../build';
 import { tick } from '../life';
 import { pickWitness } from '../witness';
-import { age, OFF, P, type Person, type World } from '../world';
+import { age, OFF, ON, P, type Person, type World } from '../world';
 import { Rng } from '../rng';
 import { cloneWorld } from './clone';
 
@@ -78,6 +78,7 @@ export function kindOf(raw: string): string {
 function fresh(seed: number) {
   OFF.clear();
   for (const x of (process.env.OFF ?? '').split(',').filter(Boolean)) OFF.add(x);
+  for (const x of (process.env.ON ?? '').split(',').filter(Boolean)) ON.add(x);
   G.WHATIF = undefined;
   const w = buildWorld(seed, 1);
   pickWitness(w);
@@ -134,8 +135,10 @@ if (mode === 'check') {
     N = +(process.argv[5] ?? 40),
     TOPUP = +(process.argv[6] ?? 5);
   mkdirSync(OUT, { recursive: true });
-  const rows: any[] = [];
+  // Each world is written as soon as it is done (out/<seed>.json), and a world already written is skipped, so a stopped run resumes.
   for (let seed = A; seed <= B; seed++) {
+    if (readdirSync(OUT).includes(`${seed}.json`)) continue;
+    const rows: any[] = [];
     const t1 = Date.now();
     // Pass 1: the factual run, counting every choice.
     let w = fresh(seed);
@@ -213,13 +216,13 @@ if (mode === 'check') {
         });
       }
     }
+    writeFileSync(`${OUT}/${seed}.json`, JSON.stringify(rows));
     console.error(`whatif: world ${seed}: ${eligible.length} eligible, ${samples.length} tested, ${((Date.now() - t1) / 1000).toFixed(0)} s`);
   }
-  writeFileSync(`${OUT}/${A}-${B}.json`, JSON.stringify(rows));
 } else if (mode === 'report') {
   const dir = process.argv[3] ?? OUT;
   const rows: any[] = readdirSync(dir)
-    .filter(f => /^\d+-\d+\.json$/.test(f))
+    .filter(f => /^\d+(-\d+)?\.json$/.test(f))
     .flatMap(f => JSON.parse(readFileSync(`${dir}/${f}`, 'utf8')))
     .map((r: any) => ({ ...r, kind: kindOf(r.raw) }));
   const seeds = [...new Set(rows.map(r => r.seed))];
