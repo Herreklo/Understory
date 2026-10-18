@@ -1229,3 +1229,23 @@ Expected:
 What would change our minds: if far more people pursue something but the what-ifs do not move (under +1 point pooled), ordinary wants are chores, not choices: the town's doors (work to change to, places to move to, things to start) are what is missing, and that comes before more wanting.
 
 Amendment to round 25d (18 Oct 2026, 08:12 Oslo, after the smoke run on 9001–9002, before any test run). With "getting out" as a door for freedom (under 40) and thrill (under 32), `npm test`'s demography check failed (births to deaths 0.58, under-20s 16% over twenty years): handing every young person who values freedom a want to leave empties the town of the people who would have had its children. Getting out stays a want only by the route it had before (round 2: valuing freedom or thrill, under 32, single); the doors for freedom and thrill are now a boat or the big trip, things to have here. With that, `npm test` passes. The smoke run also showed that the condition as registered, an adult *with no open want of their own*, leaves out anyone holding a want they never act on; that is part of the design under test and stays as written. Expectations unchanged.
+
+## Round H26 — the record, second pass (pre-registered 18 Oct 2026, 08:42 Oslo, **after** its code)
+
+*Written in the working tree before this repository existed, at the time in its heading, and, as it says, after its code. Committed here unchanged.*
+
+Written after its code, in a working copy, while round 25d's runs held the main tree: the same breach of order as round 24a, said plainly. All but one change are words only, and the faults were traced in the code from what the round 25c and 25d readers flagged, before any of it was run. Words only, checked with `sig.ts` against round 25d with the one switch below off:
+1. "Took a little from undefined": a place opened in the present (the café) has no named money; it now has a till.
+2. "Got there … after 12 years of trying [had been working toward it since 2031]": trying is now counted from the pursuit, wanting from the want.
+3. Reasons from memory were in the holder's own words ("went to me and apologised", "let me put it right") and one event could be given three times; they are now said from outside ("Stuart went to Alex and apologised") and once per event.
+4. "Nothing had changed since 2015 [together since 2023]": "together since" counted from the wedding; it now counts from when they began seeing each other.
+5. "Both after the foreman's job, and it shows" was still the reason years after the post went to one of them; once the post is decided it is a grievance ("still sore about the foreman's job").
+6. "Got there: to be heard playing guitar" was said when someone got good from practising, before anyone heard them; it now says that people have started to talk about their playing.
+7. "After 9 months of in debt"; "despite: nothing in the way"; "has two pints at the Anchor after every shift" for someone with no shift; a row about the drinking raised by the one who drinks.
+One changes behaviour, behind a switch:
+8. **No burying yourself in work without work** (`OFF=jobact`): retired and jobless people could answer strain by "burying themselves in work"; now only those with a job can.
+Test: the fault counter on four fresh worlds 2853–2856, round 25d's tree for the before; `npm test`; the consequence map on and off on 2853–2872. No scoreboard: the one behaviour change removes one rare answer for people without work, and its count is reported.
+Expected:
+1. `jobact` off: `sig.ts` identical to round 25d.
+2. Each fault falls to **0**: "from undefined"; "years of trying" longer than the pursuit; a reason in the first person; a reason giving the same remembered event twice; "nothing had changed since" earlier than the "together since" of the same line; "both after" a post already decided; "months of in"; the drinking raised by the drinker; burying oneself in work without a job.
+3. The consequence map's weighty descendants and turns within ±1 point; `npm test` passes.
