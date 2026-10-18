@@ -887,7 +887,7 @@ const TYPES: SituationType[] = [
         if (!p.job || age(w, p) < 18 || !w.rng.chance(0.012)) continue;
         const pl = w.placeById.get(p.job)!;
         const money = w.rng.chance(0.55);
-        const thing = money ? SETTING.resources[pl.id] : 'a mistake at work';
+        const thing = money ? (SETTING.resources[pl.id] ?? 'the till') : 'a mistake at work'; // a place opened in the present (a café) has a till
         const feats = new Set<Feature>(['private', money ? 'money' : 'standing']);
         if (!money) feats.add('challenged');
         const lead = pl.lead != null && pl.lead !== p.id ? P(w, pl.lead) : null;
@@ -1159,7 +1159,7 @@ const TYPES: SituationType[] = [
                     ? `under strain (${topSources(p, 1)
                         .map(x => x.label)
                         .join('')})`
-                    : 'nothing in the way',
+                    : 'nothing was in the way',
                   p.stress > 0.5 ? 0.8 : 0.15,
                 ),
               ],

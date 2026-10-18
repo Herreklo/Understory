@@ -330,7 +330,7 @@ function subjectOf(w: World, p: Person, q: Person) {
   const Lp = loving(w, p);
   const r = new Rng(hash(w.seed, p.id, q.id, 'row', w.t));
   const now: string[] = [];
-  if (p.drinks || q.drinks) now.push('the drinking', 'the drinking');
+  if (q.drinks) now.push('the drinking', 'the drinking'); // the one who raises it is not the one who drinks (round H26, words only)
   if (p.savings < -3 || q.savings < -3) now.push('money', 'the bills');
   if (q.stress > 0.6) now.push(`${her(q)} moods`);
   if (Lp.anxiety > CUT_ANX) now.push('how little time they had together', `whether ${she(q)} still cared`);
@@ -606,7 +606,10 @@ function notePattern(w: World, p: Person, q: Person, s: string, r: string, ref: 
     text: said
       ? (t => `Nothing had changed since ${year(firstSaid[key])}: ${t[0] === '@' ? t : t[0].toLowerCase() + t.slice(1)}`)(PATTERN[key](p, q))
       : PATTERN[key](p, q),
-    causes: [eventCause(w, ref, 0.5), stateCause(`together since ${year(Math.min(p.psince ?? w.t, q.psince ?? w.t))}`, 0.3)],
+    causes: [
+      eventCause(w, ref, 0.5),
+      stateCause(`together since ${year(Math.min((p as any).pairSince ?? p.psince ?? w.t, (q as any).pairSince ?? q.psince ?? w.t))}`, 0.3),
+    ],
     vis: 'local',
     evidence: [...evid, ev(p.id, 'bond:' + q.id, key.startsWith('soft>repair') || key === 'harsh>repair' ? 1 : -1, 0.5, 0.6)],
     w: 1.2,
@@ -686,7 +689,7 @@ export function loveTick(w: World) {
             key: 'love:responsive',
             who: a.id,
           },
-          stateCause(`together since ${year(a.psince)}`, 0.3),
+          stateCause(`together since ${year((a as any).pairSince ?? a.psince)}`, 0.3),
         ],
         vis: 'local',
         evidence: [ev(a.id, 'bond:' + b.id, 1, 0.6, 0.7), ev(a.id, 'love:responsive', 1, 0.5, 0.5)],
@@ -701,7 +704,7 @@ export function loveTick(w: World) {
         type: 'couple:apart',
         who: [p.id, q.id],
         text: `@${p.id} and @${q.id} had stopped talking about anything that mattered; they were polite with each other, and that was all.`,
-        causes: [stateCause(`together since ${year(p.psince)}`, 0.3)],
+        causes: [stateCause(`together since ${year((p as any).pairSince ?? p.psince)}`, 0.3)],
         vis: 'local',
         evidence: [ev(p.id, 'bond:' + q.id, -1, 0.5, 0.6), ev(q.id, 'bond:' + p.id, -1, 0.5, 0.6)],
         w: 1.2,

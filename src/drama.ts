@@ -280,7 +280,7 @@ function act(w: World, r: Rivalry, x: Person, y: Person) {
   const post = r.stake === 'post';
   const feats = new Set<Feature>(['standing', post ? 'public' : 'private', 'challenged']);
   const since = year(w.events[r.first].t);
-  const label = post ? `both after ${r.about}` : `still sore about ${r.about} (${since})`;
+  const label = post && r.winner == null ? `both after ${r.about}` : `still sore about ${r.about} (${since})`; // once the post is decided, it is a grievance
   const heatC = privC('heat', r.heat > 0.6 ? 'it has got personal' : 'it is still about the job', r.heat, 1, 0.2, undefined, 0.4);
   const peaceLately = w.t - (x.tried['peace:' + r.id]?.t ?? -99) < 24;
   const burned = w.t - (x.tried['found:' + r.id]?.t ?? -99) < 24; // found out lately: not again, not soon
