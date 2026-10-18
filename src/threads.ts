@@ -69,7 +69,7 @@ export function threadStep(w: World, p: Person, fam: Family, expr: Expression, t
         who: [p.id],
         text,
         causes: [
-          stateCause(`years of ${source}`, 0.6),
+          stateCause(`years of ${source.replace(/^in /, '')}`, 0.6),
           traitCause(p, fam === 'withdrawal' ? 'sociability' : fam === 'anger' ? 'patience' : 'dependence', 0.4, fam === 'seeking' ? 1 : -1),
         ],
         vis: 'local',

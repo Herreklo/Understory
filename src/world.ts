@@ -352,6 +352,9 @@ export const age = (w: World, p: Person) => ((p.status === 'dead' ? p.diedAt! : 
 export const live = (w: World) => w.people.filter(p => p.status === 'in');
 export const P = (w: World, id: number) => w.byId.get(id)!;
 export const fullName = (p: Person) => `${p.first} ${p.last}`;
+// A post at a place, for a sentence: "foreman at the sawmill", but "head of the clinic", never "head of the clinic at the clinic".
+export const titleAt = (pl: { title: string; name: string }) =>
+  pl.title.includes(pl.name.replace(/^the /, '')) ? pl.title : `${pl.title} at ${pl.name}`;
 export const logistic = (z: number, k = 1.2) => 1 / (1 + Math.exp(-k * z));
 
 // Plasticity: how much life still moves a person. Heredity is set at birth and never changes; what fades with age is the environment's grip.
@@ -365,6 +368,8 @@ export const OFF = new Set<string>();
 // Mechanisms that are off unless asked for: a round that did not meet its expectations keeps its code behind one of these, so the
 // default model is the one before it. Turned on for a test with ON=<name>, as OFF=<name> turns a kept one off.
 export const ON = new Set<string>();
+// Round F27, the coherence floor: the engine-side fixes sit behind one switch, so the round can be measured with and without them.
+export const floorOn = () => !OFF.has('floor');
 // A name a reader can follow: the first name, with the surname when someone else in town (or away) has the same first name, and the
 // year of birth when they share both. Rendering only.
 export function nameOf(w: World, id: number): string {
@@ -401,6 +406,15 @@ export function remember(w: World, holder: Person, other: Person, ev: number, li
   const r = bond(w, holder.id, other.id);
   const neg = like + trust < 0;
   const k = neg ? 0.8 : 0.5;
+  if (floorOn() && ev >= 0) {
+    // Round F27: an act's generic effect and the situation's own effect could both remember one event. The second write keeps
+    // its words (the situation's are the more particular) and adds nothing to the bond: the first write already did.
+    const i = r.mem.findIndex(m => m.ev === ev);
+    if (i >= 0) {
+      r.mem[i].text = text;
+      return;
+    }
+  }
   r.mem.push({ t: w.t, ev, like, respect, trust, text });
   r.like = clamp(r.like + like * k, -1, 1);
   r.respect = clamp(r.respect + respect * k, -1, 1);

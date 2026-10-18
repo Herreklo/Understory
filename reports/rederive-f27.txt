@@ -1,0 +1,5 @@
+Re-derivation of round F27 by a separate agent from the raw files (rederive.py), no summary read. Definitions checked against predict.ts and story.ts.
+Calibrated on − off, paired by world 1691–1710 (t(19)): all −0.71 ±1.88 (n 33174/33298); not a couple's −0.78 ±1.72 (24962/24588); key −0.51 ±1.97 (16409/16671). Gate-slice per-world diffs: +1.8 −2.2 −5.3 +2.3 −3.2 −0.2 −2.8 −0.6 +0.4 −2.0 +0.5 +8.5 −8.9 +4.2 +1.4 −0.0 −2.9 +0.4 −3.8 −3.3. Every interval covers zero; all three within ±2.
+Lives, 20 worlds per arm (2881–2900): dead lives 4.5 ±1.2% on, 3.7 ±1.1% off (+0.7 ±1.7 paired); median weighty events per life 16.25 ±0.84 on, 16.85 ±0.78 off (−0.60 ±0.97).
+Sanity: all worlds present in both arms, arms differ everywhere, decision counts 1376–2016 without outlier. World 1710 on has a "known" share of 0.49 against 0.68–0.94 elsewhere (key slice 482 against 722 off). Three story seeds differ in adult count by 7–9 lives (world drift, not a missing file).
+Agrees with the runner's summary (−0.7 / −0.8 / −0.5; dead lives 0.04 / 0.04; median 16.4 / 17.0).

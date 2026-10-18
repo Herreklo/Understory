@@ -591,7 +591,8 @@ function notePattern(w: World, p: Person, q: Person, s: string, r: string, ref: 
   const again = ((p as any)['rowsaid:' + q.id] ??= []) as string[];
   const firstSaid = ((p as any)['rowsaidT:' + q.id] ??= {}) as Record<string, number>; // when each pattern was first said, so a repeat can say since when
   // A pattern from an earlier partnership between the same two is not this one's (round H25, words only).
-  const began = (p as any).pairSince ?? -Infinity;
+  // The same date the line's "together since" uses, so a repeat is never dated before it (round F27, words only).
+  const began = Math.min((p as any).pairSince ?? p.psince ?? w.t, (q as any).pairSince ?? q.psince ?? w.t);
   const said = again.includes(key) && (firstSaid[key] ?? -Infinity) >= began;
   again.push(key);
   if (!said) firstSaid[key] = w.t;

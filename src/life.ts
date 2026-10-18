@@ -6,6 +6,7 @@ import { SETTING } from './setting';
 import { VALUES, FACET_BY_ID } from './core';
 import type { Cause, Person, World, Want } from './world';
 import {
+  titleAt,
   OFF,
   recentEvents,
   setObsEvent,
@@ -378,7 +379,7 @@ function promote(w: World, pl: any, staff: Person[]) {
   const e = addEvent(w, {
     type: 'promoted',
     who: [win.id],
-    text: `@${win.id} became ${pl.title} at ${pl.name}.`,
+    text: `@${win.id} became ${titleAt(pl)}.`,
     causes: [
       ...why,
       stateCause(pool.length > 1 ? `the strongest record of ${pool.length}` : 'the only one in the running', 0.6),

@@ -1,4 +1,5 @@
 import { buildWorld, runYears } from '../build';
+import { againNote, pageLines } from '../page';
 import { pickWitness, scoreAll, hunches, hindsight } from '../witness';
 import { age, fullName, year, type World, type Person, nameOf, OFF, ON } from '../world';
 import { FACET_BY_ID, VALUES } from '../core';
@@ -20,9 +21,8 @@ for (const p of w.people
   console.log(
     `== ${fullName(p)}, ${Math.floor(age(w, p))} · TRUTH: ${p.signatures.map(s => FACET_BY_ID[s.facet].name + (s.z > 0 ? '+' : '−')).join(', ')} · values ${p.coreValues.map(v => VN[v]).join(', ')}${p.tension ? ' · ' + p.tension.label : ''}\n   if-then: ${p.ifThens.map(x => x.words).join('; ')}\n   self: ${p.selfStory.map(x => x.text).join('; ') || '(none)'}${p.founder && p.foundingPast.length ? '\n   past: ' + p.foundingPast.join('; ') : ''}${p.marks.length ? '\n   marks: ' + p.marks.map(m => m.text).join('; ') : ''}${p.exceptions.length ? '\n   exceptions: ' + p.exceptions.map(x => plain(x.text)).join('; ') : ''}`,
   );
-  for (const i of p.events) {
-    const e = w.events[i];
-    if (e.t < w.startPresent - 120) continue;
+  const events = p.events.map(i => w.events[i]).filter(e => e.t >= w.startPresent - 120);
+  for (const { e, cited, again } of pageLines(w, events, new Set(p.events))) {
     const past = e.t < w.startPresent ? '  ' : '  ';
     console.log(
       `${past}${year(e.t)}: ${plain(e.text)}${
@@ -34,8 +34,9 @@ for (const p of w.people
               .join('; ') +
             ']'
           : ''
-      }${e.surprise != null && e.surprise > 0.5 ? `  ← surprise ${e.surprise.toFixed(2)} / explain ${(e.explain ?? 0).toFixed(2)}` : ''}`,
+      }${again ? `  (${againNote(again)})` : ''}${e.surprise != null && e.surprise > 0.5 ? `  ← surprise ${e.surprise.toFixed(2)} / explain ${(e.explain ?? 0).toFixed(2)}` : ''}`,
     );
+    for (const x of cited) console.log(`      ↳ ${year(x.t)}: ${plain(x.text)}`);
   }
   const h = hunches(w, p);
   console.log(`   WITNESS: ${h.length ? h.map(x => x.text + (x.right ? '' : ' (wrong)')).join(' ') : 'no real sense of them yet'}`);

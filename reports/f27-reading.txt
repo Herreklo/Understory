@@ -1,0 +1,41 @@
+Round F27: the blind cold read (18 Oct 2026). Twenty-four lives: the three most eventful adults of each of worlds 2881–2884, in each arm (floor on, floor off),
+shuffled and coded by scripts/round.mjs; the key was kept outside the folder the readers were given. Three blind readers of different backgrounds (a novelist,
+a social worker, a player of simulation games), each told only that the lives come from two versions of the program, scored each life 1–5 (1 'a list of acts,
+could be anyone', 5 'I could tell you who this person is, and the life hangs together') and quoted what broke their trust, by kind.
+
+life  arm  novelist  social-worker  player  mean
+L01   on      4            4          4     4.00
+L02   off     3            3          3     3.00
+L03   on      4            4          4     4.00
+L04   off     3            3          3     3.00
+L05   on      3            3          4     3.33
+L06   on      3            4          4     3.67
+L07   on      3            3          3     3.00
+L08   on      4            3          3     3.33
+L09   on      4            4          4     4.00
+L10   off     4            3          3     3.33
+L11   off     2            2          2     2.00
+L12   off     3            3          2     2.67
+L13   off     3            3          3     3.00
+L14   on      3            3          3     3.00
+L15   on      3            4          3     3.33
+L16   off     3            3          3     3.00
+L17   on      3            4          4     3.67
+L18   off     4            4          4     4.00
+L19   on      3            3          3     3.00
+L20   off     3            4          3     3.33
+L21   off     4            4          4     4.00
+L22   off     3            3          3     3.00
+L23   on      3            3          3     3.00
+L24   off     3            3          3     3.00
+on: mean 3.44 over 12 lives × 3 readers
+off: mean 3.11 over 12 lives × 3 readers
+by reader, on / off: novelist 3.33 / 3.17; social worker 3.50 / 3.17; player 3.50 / 3.00
+
+Faults quoted, by kind (reader-labelled), on / off:
+  on: total 215 · contradiction 63, reason 50, repeat 31, uncited 27, broken 25, names 13, impossible 5, other 1
+  off: total 224 · contradiction 73, reason 37, uncited 33, repeat 32, broken 31, names 8, impossible 7, other 3
+
+novelist: Most of these people are recognisable but none fully hangs together: the same templated lines recur across lives, reasons are often pasted in without fitting the act, 'wanting' loops restart after being satisfied, and several people go on being criticised or criticising at workplaces they have left.
+social worker: The pages share one set of tics: stock reasons pasted where they do not fit, people acting at workplaces they had left, promotions where the winner had both the strongest record and the loser's better work, and goals that restart after 'got there'; the lives with a real arc (a job won and frozen in, a friend never made up with before death) read as people, the rest read as logs.
+player: 

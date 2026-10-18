@@ -1034,7 +1034,7 @@ const TYPES: SituationType[] = [
           features: new Set<Feature>(['public', 'watched', 'standing']),
           families: ['openness', 'reluctance'],
           only: { openness: ['seize'], reluctance: ['shyaway'] },
-          causeLabel: `has been playing ${sk} for years`,
+          causeLabel: `has been ${sk === 'vocals' ? 'singing' : `playing ${sk}`} for years`,
           place: 'the Anchor',
           w: 1.5,
           familyExtra: {

@@ -1,7 +1,8 @@
 // The lab page: build a world, run it, read lives from both sides of the wall.
 import { buildWorld, runYears } from './build';
+import { againNote, pageLines } from './page';
 import { pickWitness, scoreAll, hunches, hindsight } from './witness';
-import { age, fullName, year, live, mood, topSources, peekBond, belief, facet, type World, type Person, type Event, nameOf } from './world';
+import { titleAt, age, fullName, year, live, mood, topSources, peekBond, belief, facet, type World, type Person, type Event, nameOf } from './world';
 import { FACETS, FACET_BY_ID, VALUES, APTITUDES, DIMS } from './core';
 import { SETTING } from './setting';
 import { EXPR } from './families';
@@ -34,7 +35,7 @@ function statusOf(p: Person): string {
   if (a < 18) return 'at school';
   if (p.job) {
     const pl = W.placeById.get(p.job)!;
-    return p.lead ? `${pl.title} at ${pl.name}` : `${pl.role} at ${pl.name}`;
+    return p.lead ? titleAt(pl) : `${pl.role} at ${pl.name}`;
   }
   if (p.retired) return 'retired';
   if (p.givenUp) return 'not working';
@@ -102,6 +103,17 @@ function renderList() {
     .join('');
 }
 
+// A list of a life's events as the page shows them: repeats folded, a reason's cited event shown under it (src/page.ts).
+function lifeList(events: Event[], showWhy: boolean, p: Person, shown: Set<number>) {
+  return pageLines(W, events, shown)
+    .map(
+      ({ e, cited, again }) =>
+        eventLine(e, showWhy, p) +
+        (again ? `<li class="again"><span class="d"></span><div class="w">${againNote(again)}</div></li>` : '') +
+        cited.map(x => `<li class="cited"><span class="d">${year(x.t)}</span><div class="w">${linkify(x.text)}</div></li>`).join(''),
+    )
+    .join('');
+}
 function eventLine(e: Event, showWhy: boolean, p?: Person) {
   const age0 = p ? ` · ${Math.floor((e.t - p.born) / 12)}` : '';
   const twist = e.surprise != null && e.w >= 1 && e.surprise > 0.5 && (e.explain ?? 0) > 0.5;
@@ -234,7 +246,7 @@ function renderFelt(p: Person) {
     <section><h3>Your sense of them</h3>${hs.length || learnedIf.length ? `<ul class="hunch">${hs.map(h => `<li>${esc(h.text)}</li>`).join('')}${learnedIf.map(x => `<li>You have noticed: ${esc(x)}.</li>`).join('')}</ul>` : '<p class="note">You have no real sense of them yet. You would need to see them under pressure.</p>'}</section>
     ${seenActs.length ? `<section><h3>What you have seen them do</h3><ul class="hunch">${seenActs.map(x => `<li>${esc(p.first)} ${esc(x)}</li>`).join('')}</ul></section>` : ''}
     ${days.length || stopped.length || after.length ? `<section><h3>Their days</h3><ul class="hunch">${[...after, ...days, ...stopped].map(x => `<li>${linkify(x)}</li>`).join('')}</ul></section>` : ''}
-    <section><h3>What you've seen and heard</h3>${known.length ? `<ol class="story">${known.map(e => eventLine(e, false, p)).join('')}</ol>` : '<p class="note">Nothing yet.</p>'}</section>
+    <section><h3>What you've seen and heard</h3>${known.length ? `<ol class="story">${lifeList(known, false, p, new Set(known.map(e => e.id)))}</ol>` : '<p class="note">Nothing yet.</p>'}</section>
     ${
       big.length
         ? `<section><h3>Looking back</h3>${big
@@ -351,10 +363,12 @@ function renderTruth(p: Person) {
     <section><h3>Skills</h3><div class="rows">${skills || '<p class="note">Nothing beyond the basics.</p>'}</div></section>
     <section><h3>Bonds (their view)</h3>${bondHtml || '<p class="note">Knows nobody well.</p>'}</section>
     <section><h3>What the witness believes about them</h3>${witnessBeliefs.length ? `<p class="prose mono">${witnessBeliefs.join(' · ')}</p>` : '<p class="note">Nothing.</p>'}</section>
-    <section><h3>Everything that happened</h3><ol class="story">${p.events
-      .map(i => W.events[i])
-      .map(e => eventLine(e, true, p))
-      .join('')}</ol></section>`;
+    <section><h3>Everything that happened</h3><ol class="story">${lifeList(
+      p.events.map(i => W.events[i]),
+      true,
+      p,
+      new Set(p.events),
+    )}</ol></section>`;
 }
 
 function renderDetail() {
