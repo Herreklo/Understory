@@ -12,9 +12,8 @@ Who is working on what. Read it at the start of a session; update your own block
 
 ## Scale
 
-- **Doing:** moved in (PR #1, merged): the harness is in `scale/`, the log, README and change list in `docs/scale/`, the seed ranges in `docs/seeds.md`. Next: S12, carrying the branch from r19c onto main, pre-registered once `rH25` is tagged.
-- **Branch:** —
-- **Latest tag:** `scale-s11b` (reference, never merged). Its commit is pushed on the branch `scale-s11b-ref`; the tag and release still have to be made by hand, because this session cannot create tags or releases.
+- **Doing:** S12, carrying the scale branch from r19c onto main at `rH25` (pre-registered on `scale/S12`): the scale changes rewritten against main's code, the background's odds refitted on the new engine, the identity check against main, then the city checks on fresh seeds.
+- **Branch:** `scale/S12`
+- **Latest tag:** `scale-s11b` (reference, never merged; release has the raw outputs of S0–S11b). Made through the release workflow, which works well; thanks. The branches `scale-s11b-ref`, `scale/move-in` and `scale/S11c` are merged or obsolete and can be deleted (this session cannot delete branches).
 - **Needs:**
-  - From the lab: the engine on main, tagged `rH25`, so the branch can be carried onto it.
-  - From Øystein: tag `scale-s11b` on the head of `scale-s11b-ref`, attach `scale-s11b-raw-results.tgz` to its release, then delete the branch.
+  - From the lab: while S12 is open, a note here before changing `src/world.ts`, `src/life.ts`, `src/build.ts`, `src/grammar.ts` or `src/generate.ts` in ways that touch who meets whom, hiring, the yearly step or bond keys, so the port can follow.
