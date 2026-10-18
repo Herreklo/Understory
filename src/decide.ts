@@ -159,16 +159,23 @@ export interface Scored {
 }
 
 export function score(options: Option[], view: View, variability: number, neutralise?: string): Scored[] {
+  // How many considerations an answer carries must not decide it (round F26): every answer is scored as if it had as many as the one
+  // with most, each missing one at the answer's own geometric mean, and the compensation is applied once, for that number.
+  const fair = !OFF.has('countfair');
+  const nAll = Math.max(1, ...options.map(o => o.considerations.length));
   const out: Scored[] = options.map(o => {
     let s = o.base ?? 1;
+    let logSum = 0;
     const parts = o.considerations.map(c => {
       const x = c.id === neutralise ? (c.neutral ?? 0.5) : Math.max(0, Math.min(1, c.input(view)));
       const y = Math.max(0.01, Math.min(1, c.curve(x)));
       s *= y;
+      logSum += Math.log(y);
       return { c, x, y };
     });
+    if (fair && parts.length) s = (o.base ?? 1) * Math.exp((logSum / parts.length) * nAll);
     // Compensation, so options with more considerations aren't unfairly lowered.
-    const n = Math.max(1, o.considerations.length);
+    const n = fair ? nAll : Math.max(1, o.considerations.length);
     const mod = 1 - 1 / n;
     s = s + (1 - s) * mod * s;
     return { id: o.id, label: o.label, score: s, p: 0, parts };

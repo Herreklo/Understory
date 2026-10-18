@@ -1,0 +1,16 @@
+20 worlds · adults at the end of ten present years · on / nobudget (OFF=budget)
+  on: close friends in town per adult: median 3, top tenth 10, most 24, none 15%
+      made per adult a year 0.29 ±0.03 · ended per adult a year 0.26 ±0.03 · of year-0 friendships with both in town at 10, ended 16% of 1863
+      friendship lines 1876; reasons: they work together at … 26% · has energy for everything 24% · does not like to judge 20% · they want the same things from life 16% · they run in the same crowd 13% · they kept seeking each other out 9%
+      familiar pairs where one dislikes the other: 5.2%
+      aged 18–29 with no friend in town: 20% of 129
+      share of contact to the top five (last year, adults to 70): median 58%
+      strain, least-contacted tenth 0.07 ±0.04 · births ÷ deaths 1.06 ±0.30 · population 80.6 ±5.0
+  countfair+eventfix+identfix+honestev: close friends in town per adult: median 3, top tenth 9, most 21, none 15%
+      made per adult a year 0.27 ±0.02 · ended per adult a year 0.25 ±0.03 · of year-0 friendships with both in town at 10, ended 17% of 1919
+      friendship lines 1808; reasons: has energy for everything 25% · they work together at … 25% · they want the same things from life 20% · does not like to judge 19% · they run in the same crowd 13% · Fridays at … 9%
+      familiar pairs where one dislikes the other: 5.0%
+      aged 18–29 with no friend in town: 23% of 135
+      share of contact to the top five (last year, adults to 70): median 57%
+      strain, least-contacted tenth 0.08 ±0.03 · births ÷ deaths 1.20 ±0.35 · population 82.0 ±5.1
+  paired, on − off: strain of the least-contacted tenth -0.01 ±0.04

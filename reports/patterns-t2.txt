@@ -1,0 +1,39 @@
+Round T2: three human patterns · worlds 3101–3120 · 10 present years · adults
+
+1. One act against many (pass: single acts .10 to .30, aggregates .40 to .70; medians over kinds of answer)
+   anger        −patience         single  0.27 ( 11290 decisions) · aggregate  0.47 (474 people)
+   withdrawal   −sociability      single  0.22 ( 13442 decisions) · aggregate  0.36 (570 people)
+   seeking      +dependence       single  0.46 (  4066 decisions) · aggregate  0.60 (131 people)
+   honesty      +fairness         single  0.52 (  1524 decisions) · aggregate     – (0 people)
+   dishonesty   −fairness         single  0.44 (  2115 decisions) · aggregate     – (5 people)
+   generosity   +altruism         single  0.53 (  3021 decisions) · aggregate     – (12 people)
+   refusal      −altruism         single  0.53 (  3021 decisions) · aggregate     – (12 people)
+   courage      −fearfulness      single  0.42 (   672 decisions) · aggregate     – (0 people)
+   caution      +fearfulness      single  0.44 (   575 decisions) · aggregate     – (0 people)
+   pride        −modesty          single  0.46 (  6432 decisions) · aggregate  0.68 (209 people)
+   humility     +modesty          single  0.25 ( 12007 decisions) · aggregate  0.45 (514 people)
+   duty         +organisation     single  0.51 (  3579 decisions) · aggregate     – (10 people)
+   lapse        −organisation     single  0.42 (  5586 decisions) · aggregate  0.55 (74 people)
+   discretion   +sincerity        single  0.59 (   237 decisions) · aggregate     – (0 people)
+   disclosure   +sociability      single  0.17 (   237 decisions) · aggregate     – (0 people)
+   openness     +inquisitiveness  single  0.18 (   499 decisions) · aggregate     – (0 people)
+   reluctance   +sentimentality   single  0.14 (   499 decisions) · aggregate     – (0 people)
+   leniency     +altruism         single  0.36 (  1282 decisions) · aggregate     – (1 people)
+   severity     −gentleness       single  0.41 (  1268 decisions) · aggregate     – (1 people)
+   warmth       +gentleness       single  0.31 (  2784 decisions) · aggregate  0.72 (27 people)
+   median: single 0.42 FAIL · aggregate 0.55 PASS
+
+2. Friendship
+   (a) close friends in town per adult: median 3, top tenth 9, most 23 · top tenth ÷ median 3.00 (pass ≤ 2.5) FAIL · most ÷ median 7.67 (pass ≤ 4) FAIL
+   (b) becoming friends in a month: with a friend in common 0.85 per thousand pairs (825 of 974471), with none 0.18 (636 of 3511925) · ratio 4.67 (pass ≥ 3) PASS
+
+3. What is easy to judge (correlation of belief with truth across known people, averaged over each dimension’s facets)
+   known people 1095 (pooled), familiarity median 0.22
+   H  all 0.44 · less familiar 0.40 · more familiar 0.47 · gain 0.06
+   E  all 0.41 · less familiar 0.38 · more familiar 0.44 · gain 0.06
+   X  all 0.46 · less familiar 0.45 · more familiar 0.46 · gain 0.02
+   A  all 0.47 · less familiar 0.43 · more familiar 0.51 · gain 0.07
+   C  all 0.44 · less familiar 0.42 · more familiar 0.47 · gain 0.05
+   O  all 0.42 · less familiar 0.40 · more familiar 0.45 · gain 0.05
+   order: A > X > C > H > O > E
+   extraversion first or second PASS · conscientiousness in the top three PASS · emotionality below extraversion among the less familiar PASS · emotionality gains more from familiarity than extraversion PASS
