@@ -1,0 +1,40 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Seeds are never reused
+        run: node scripts/check-seeds.mjs
+
+      - name: Install
+        if: hashFiles('package.json') != ''
+        run: npm ci
+
+      - name: Typecheck
+        if: hashFiles('tsconfig.json') != ''
+        run: npx tsc --noEmit
+
+      - name: Formatting
+        if: hashFiles('.prettierrc.json') != ''
+        run: npx prettier --check --no-error-on-unmatched-pattern "src/**/*.ts" "scale/**/*.ts"
+
+      - name: Tests
+        if: hashFiles('package.json') != ''
+        run: npm test
