@@ -36,3 +36,8 @@ Who is working on what. Read it at the start of a session; update your own block
 
 - **Doing:** round T1, `scripts/round.mjs`: one command runs a round's whole test battery from a frozen tree, with failure detection, equivalence verdicts and a blind cold-read pack. New files only; nothing in `src/` changes. Round F26 is on `round/F26` (its block is on that branch).
 - **Branch:** `round/T1` (on main at `c256fd0`)
+
+## Lab, second session (T3)
+
+- **Doing:** round T3, property-based tests over many seeds (`src/tools/props.ts`, `fast-check`). Tests only; nothing in the engine changes.
+- **Branch:** `round/T3` (on main at `12b9186`). Throwaway seeds 9201–9250.

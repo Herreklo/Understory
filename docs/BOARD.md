@@ -1283,3 +1283,24 @@ Outcome of round T1 (18 Oct 2026, 19:40 Oslo). The runner on round F26's tree (`
 3. Wall time **47 minutes** on four jobs, against the expected "within 10% of about 70": the expectation was mis-stated (it summed stages that run in parallel), and the runner is faster than the hand-run battery by about a third (**✗** as written, in the good direction).
 Running it on round 25d's tree, after this outcome was written, found two more: the lives tools there also write one file per world, so a lives chunk may be either; and a registered worktree whose folder is gone is pruned before a new one is added. Both fixed.
 **Kept.** `scripts/round.mjs` is how a round's battery runs from here on; the cold-read pack it writes first is the pack a reader gets; `--skip board` gives a lives-only run.
+
+## Round T3 — properties over many seeds (pre-registered 18 Oct 2026, 18:20 Oslo, before its code)
+
+Process, not model. `npm test` checks the invariants on three fixed worlds. A deterministic engine whose only input is a seed is the ideal case for property-based testing: the same invariants, run over a range of seeds by `fast-check`, which also shrinks a failure to its smallest case. Round F26's lost thread events (1.8% of removals) and the self-story reading that let a weaker entry win were both invariant breaks that three worlds never showed. T3 adds `src/tools/props.ts`, a property suite over throwaway seeds (9201 and up, never a test range), with these properties, each checked at the end of the past and every present month:
+1. the record is in time order, every event's people exist, and every event's `who` is on the own list of each person in it, once;
+2. a decision's chosen answer is among its options, and every reason's `who` exists;
+3. friendship is mutual among the living, and partnership is mutual;
+4. the consistency audit (`audit.ts`) finds nothing;
+5. nobody dead or departed decides, is hired, befriended or married after they died or left;
+6. a bond's two ends exist, and no bond key exceeds the contract's bound;
+7. the same seed twice gives the same signature (`sig.ts`'s), on every seed, not only one.
+Two runs: `npm test` gains a short one (5 seeds, 2 present years each, under two minutes); `npm run props` runs 50 seeds (9201–9250) with 3 present years, for a round that touches the engine.
+Expected:
+1. The 50-seed run passes every property on main at `12b9186`, or every failure it finds is a real fault, recorded here with its seed and the shrunk case; no property is weakened to pass.
+2. `npm test` passes and takes no more than two minutes longer.
+What would change our minds: a property that fails on main is kept as a known fault and listed in STATUS, not removed; if more than three properties fail on main, the suite is still kept and the faults become a round of their own before any engine round.
+
+Outcome of round T3 (18 Oct 2026, 20:30 Oslo). `reports/props-t3.txt`.
+1. The 50-seed run (9201–9250, three present years each, 1,200 s under load): every property holds except two real faults, both recorded and kept as named known faults in the suite and in STATUS (weakness 11): a group's event shares the group's live member list (`who: g.members` in `group.ts`), so who "started" it changes as members join and leave and later members never get it on their own list, 80 distinct events; and a dead member stays in a group's show for a month or two (seed 9211, Alex Holmes, "night:good" two months after dying), though the group code clears the dead monthly, so the cause is in the order of the month and is for the coherence round to trace. No property was weakened ✓. Two things the suite's own first run taught: an act the record does not keep is meant to be off every own list, so the property is "on everyone's list or on nobody's, and a kept event on everyone's", which still catches round F26's bug class; and a known fault is counted by distinct events, not by monthly re-checks.
+2. `npm test` gains the 5-seed run: **127 s** on a machine running the 25d battery beside it (load 10 on 4 cores), so under two minutes unloaded is likely but not measured ✓ (provisionally; `reports/props-t3-5.txt`).
+**Kept.** `npm run props` is part of any round that touches the engine; a round that fixes a known fault removes its line, and the property then guards it.
