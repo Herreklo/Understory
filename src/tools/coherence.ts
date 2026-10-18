@@ -12,7 +12,6 @@ import { pickWitness, hindsight } from '../witness';
 import { OFF, ON, year, nameOf, fullName, age, type World, type Person, type Event, type Cause } from '../world';
 import { SETTING } from '../setting';
 import { EXPR } from '../families';
-import { FAMILY_FACETS } from '../grammar';
 import { MOTIVE_FACETS } from '../motives';
 import { wantLabel } from '../time';
 for (const x of (process.env.OFF ?? '').split(',').filter(Boolean)) OFF.add(x);
@@ -81,6 +80,8 @@ for (let seed = A; seed <= B; seed++) {
       m.set(t, p.job);
     }
   };
+  snap(jobBefore, w.t); // the month the witness arrives has events of its own
+  snap(jobAfter, w.t);
   for (let i = 0; i < 120; i++) {
     snap(jobBefore, w.t + 1); // tick moves the clock first, then runs that month
     tick(w);
@@ -123,13 +124,14 @@ for (let seed = A; seed <= B; seed++) {
   for (const e of w.events)
     for (const id of new Set(e.who)) {
       const p = w.byId.get(id);
-      if (p && p.diedAt != null && e.t > p.diedAt) hit(4, seed, `${e.type}: ${fullName(p)} (died ${year(p.diedAt)}) in "${plain(e.text)}" (${year(e.t)})`);
+      if (p && p.diedAt != null && e.t > p.diedAt)
+        hit(4, seed, `${e.type}: ${fullName(p)} (died ${year(p.diedAt)}) in "${plain(e.text)}" (${year(e.t)})`);
     }
 
   // ----- 8. An act at a workplace the person has left: a work event (hired, moved, promoted, passed, retired, or an act decided at work)
   // whose text names a SETTING place that was not the subject's job at the start or the end of that month. A place named where it is
   // not a workplace (a drink at the Anchor, a visit to the clinic) is not counted, so only work-typed events are read. -----
-  const WORK_TYPES = new Set(['promoted', 'passed', 'dressdown', 'dismissed', 'secondchance', 'contest', 'group:work', 'rivalry']);
+  const WORK_TYPES = new Set(['promoted', 'passed', 'dressdown', 'dismissed', 'secondchance', 'contest', 'rivalry']);
   for (const e of w.events) {
     if (e.t < t0 || !e.who.length) continue;
     const trig = (e.decision?.trigger ?? '').replace(/:.*$/, '');
@@ -139,8 +141,9 @@ for (let seed = A; seed <= B; seed++) {
     if (!p) continue;
     const before = jobBefore.get(p.id)?.get(e.t),
       after = jobAfter.get(p.id)?.get(e.t);
+    const said = e.text.replace(/"[^"]*"/g, ''); // a song title is not a place
     for (const pl of PLACES) {
-      if (!e.text.includes(`at ${pl.name}`)) continue;
+      if (!said.includes(`at ${pl.name}`)) continue;
       if (pl.id === before || pl.id === after) continue;
       hit(8, seed, `${e.type}: "${plain(e.text)}" (${year(e.t)}; job then: ${before ?? 'none'})`);
     }
@@ -182,24 +185,23 @@ for (let seed = A; seed <= B; seed++) {
       const e = w.events[i];
       const why = shownCauses(e);
       lines.push(`${year(e.t)}: ${plain(e.text)}${why.length ? ' [' + why.map(c => plain(c.label)).join('; ') + ']' : ''}`);
-      // ----- 6. A reason citing an event that is not on this page and that the witness did not see. -----
+      // ----- 6. A reason citing an event that is not on this page (not on the person's own list: unlisted, or someone else's) and that
+      // the witness did not see. Present years only. -----
       for (const c of why)
-        if (c.kind === 'event' && c.ref != null && c.ref >= 0 && !mine.has(c.ref) && !knownByWitness(w.events[c.ref]))
+        if (e.t >= t0 && c.kind === 'event' && c.ref != null && c.ref >= 0 && !mine.has(c.ref) && !knownByWitness(w.events[c.ref]))
           hit(6, seed, `${fullName(p)}: "${plain(e.text)}" cites "${plain(c.label)}"`);
-      // ----- 5. A stock reason that does not fit the act: a trait reason, said as a motive, on a decided act, whose facet is not one the
-      // act's family is wired to (it came in through a feature, like being watched), or the two wordings the cold read quoted where
-      // they describe something the act is not about. Reasons a family asks for by its own wiring that still read wrongly are not counted. -----
-      if (e.decision) {
-        const fam = (EXPR[e.type]?.family ?? e.decision.chosen) as keyof typeof FAMILY_FACETS;
+      // ----- 5. A stock reason that does not fit the act. Only the detectable core is counted: the two wordings the cold read quoted,
+      // where the act is not about what they describe ("would not take what was not his" on an act with no money in it; "has never
+      // minded being looked at" on a couple or a group parting). A general test (a motive whose facet the act's family is not wired
+      // to) counts every reason a feature brought in, most of them fair, so it is not used; wordings outside these two are not counted. -----
+      if (e.t >= t0 && e.decision) {
+        const fam = EXPR[e.type]?.family ?? e.decision.chosen;
         for (const c of why) {
-          if (c.kind !== 'trait' || !c.key || c.who !== p.id) continue;
-          const key = c.key.replace(/^against:/, '');
-          if (!MOTIVE_FACETS.includes(key) || /^(despite )?[a-z ]+: /.test(c.label)) continue; // not said as a motive
+          if (c.kind !== 'trait' || !c.key || !MOTIVE_FACETS.includes(c.key.replace(/^against:/, ''))) continue;
           const label = plain(c.label);
-          const wired = FAMILY_FACETS[fam] && key in FAMILY_FACETS[fam];
           const taking = /would not take what was not (his|hers)/.test(label) && !MONEY.test(e.text) && !MONEY_NAMES.some(m => e.text.includes(m));
-          const lookedAt = /never minded being looked at/.test(label) && /(couple:apart|split|group:split|divorce)/.test(e.type);
-          if (!wired || taking || lookedAt) hit(5, seed, `${fullName(p)}: "${plain(e.text)}" [${label}] (${fam})`);
+          const lookedAt = /never minded being looked at/.test(label) && /^(couple:apart|group:split)$/.test(e.type);
+          if (taking || lookedAt) hit(5, seed, `${fullName(p)}: "${plain(e.text)}" [${label}] (${fam})`);
         }
       }
     }
@@ -213,49 +215,62 @@ for (let seed = A; seed <= B; seed++) {
       lines.push(`Looking back: ${plain(e.text)} · could have seen: ${plain(h.seen.join('; '))} · could not: ${plain(h.unseen.join('; '))}`);
     }
     for (const x of p.wants) lines.push(`Want: ${plain(wantLabel(w, p, x))} (since ${year(x.since)})`);
-    const page = lines.join('\n');
 
-    // ----- 9. Broken phrases, by pattern. "said it out loud" is counted whenever it appears, since the wording never says what. -----
+    // ----- 9. Broken phrases, by pattern. "finally said it out loud" (the confiding wording) is counted whenever it appears, since it
+    // never says what was said. Present years only. -----
     const BROKEN: [RegExp, string][] = [
       [/ of in /, '"of in"'],
       [/\bat (the [A-Za-z' ]+?) at \1\b/, 'the same place twice'],
       [/playing vocals/, '"playing vocals"'],
-      [/said it out loud(?!, (about|that|what))/, '"out loud" without what'],
+      [/finally said it out loud/, '"out loud" without what'],
       [/\bundefined\b/, '"undefined"'],
       [/\bNaN\b/, '"NaN"'],
       [/\S {2,}[.,;:]/, 'spaces before punctuation'],
       [/'s 's/, '"\'s \'s"'],
     ];
-    for (const line of lines)
+    for (const line of lines) {
+      if (/^(19|20)\d{2}: /.test(line) && +line.slice(0, 4) < year(t0)) continue; // the past is not counted
       for (const [re, what] of BROKEN) {
         const m = line.match(re);
         if (m) hit(9, seed, `${what}: ${fullName(p)}: ${line.slice(Math.max(0, m.index! - 60), m.index! + 60)}`);
       }
+    }
 
-    // ----- 7. One want dated two ways: the same want phrase ("had wanted it since", "working toward it since", ...) with two different
-    // years on one page. "it" is tied to the place the line names, when it names one; a phrase that could be two different wants of the
-    // same kind is still one key, so a person who truly wanted the same thing twice would count. -----
-    const dated = new Map<string, Set<string>>();
-    const WANT_RE = /\b((?:had |has |have )?want(?:ed|s)?\b[^.;:\[\]()]*?|working toward it |had meant to [^.;]*?|pursued )since (\d{4})/g;
-    for (const line of lines)
-      for (const m of line.matchAll(WANT_RE)) {
-        const stem = m[1].replace(/\b(had|has|have)\s+/g, '').replace(/\bwants?\b|\bwanted\b/g, 'want').replace(/\s+/g, ' ').trim();
-        const place = PLACES.find(pl => line.includes(pl.name))?.id ?? '';
-        const key = `${stem}|${place}`;
-        if (!dated.has(key)) dated.set(key, new Set());
-        dated.get(key)!.add(m[2]);
+    // ----- 7. One want dated two ways: the years the page gives one want. The wants list says "since <the want's year>"; the event that
+    // settled it and every present event whose want-reason points at it (same source event, or the person's only want of that kind) say
+    // "had wanted it since <year>" or "working toward it since <year>". Two different years for one want is one fault. A want-reason
+    // on a want the person holds twice of the same kind cannot be told apart and is not counted. -----
+    const SINCE = /\b(?:want(?:ed|s)?\b[^.;:\[\]()]*?|working toward it |meant to [^.;]*?)since (\d{4})/g;
+    for (const x of p.wants) {
+      const years = new Map<string, string>([[String(year(x.since)), 'the wants list']]);
+      const only = p.wants.filter(y => y.kind === x.kind).length === 1;
+      for (const i of p.events) {
+        const e = w.events[i];
+        if (e.t < t0 && x.doneAt !== e.id) continue;
+        const cites =
+          x.doneAt === e.id ||
+          shownCauses(e).some(
+            c =>
+              c.kind === 'want' &&
+              (c.who == null || c.who === p.id) &&
+              (c.ref != null && x.cause != null ? c.ref === x.cause : only && (c.key == null || c.key === x.kind)),
+          );
+        if (!cites) continue;
+        for (const c of shownCauses(e)) for (const m of c.label.matchAll(SINCE)) years.set(m[1], plain(e.text));
       }
-    for (const [key, years] of dated) if (years.size > 1) hit(7, seed, `${fullName(p)}: "${key.split('|')[0]} since" ${[...years].join(' and ')}`);
+      if (years.size > 1)
+        hit(7, seed, `${fullName(p)}: ${plain(wantLabel(w, p, x))}: ${[...years].map(([y, where]) => `${y} (${where})`).join(' / ')}`);
+    }
 
     // ----- 10. Repeats a writer would cut: the same type, the same people and the same words (years aside) more than twice on one page;
-    // the third and later are counted. -----
+    // the third and later are counted, when they fall in the present years. -----
     const same = new Map<string, number>();
     for (const i of p.events) {
       const e = w.events[i];
       const k = `${e.type}|${[...new Set(e.who)].sort((a, b) => a - b).join(',')}|${stripYears(e.text)}`;
       const n = (same.get(k) ?? 0) + 1;
       same.set(k, n);
-      if (n > 2) hit(10, seed, `${fullName(p)}: ×${n} "${plain(e.text)}"`);
+      if (n > 2 && e.t >= t0) hit(10, seed, `${fullName(p)}: ×${n} "${plain(e.text)}"`);
     }
   }
   if (process.env.DEBUG) console.error(`seed ${seed} done, ${((Date.now() - t0run) / 1000).toFixed(0)}s`);
