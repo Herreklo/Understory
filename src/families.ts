@@ -3,6 +3,7 @@
 
 import type { Feature } from './features';
 import type { Person } from './world';
+import { OFF } from './world';
 
 export type Family =
   | 'anger'
@@ -169,6 +170,7 @@ export const EXPRESSIONS: Expression[] = [
   E({
     solo: true,
     id: 'work',
+    onlyIf: p => p.job != null || OFF.has('jobact'), // round H26: there is no work to bury yourself in without a job
     family: 'withdrawal',
     intensity: 0.4,
     prefers: { diligence: 1, dependence: -0.5 },

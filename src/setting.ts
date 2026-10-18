@@ -566,7 +566,7 @@ export const SETTING = {
     {
       id: 'drink',
       shows: { prudence: -1, sociability: 0.5 },
-      label: 'has two pints at the Anchor after every shift',
+      label: 'has two pints at the Anchor most evenings',
       kind: 'body',
       place: 'bar',
       fit: (p: any) => 0.4 * p.facets.sociability - 0.4 * p.facets.prudence + 0.3 * p.values.pleasure,

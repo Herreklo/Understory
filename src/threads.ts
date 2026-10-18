@@ -251,7 +251,7 @@ function end(w: World, p: Person, th: Thread, how: string, ref: number) {
     const e = addEvent(w, {
       type: 'thread:through',
       who: [p.id],
-      text: `@${p.id} came through it, after ${months >= 18 ? Math.round(months / 12) + ' years' : months + ' months'} of ${th.source === 'ill' ? 'illness' : th.source}.`,
+      text: `@${p.id} came through it, after ${months >= 18 ? Math.round(months / 12) + ' years' : months + ' months'} of ${th.source === 'ill' ? 'illness' : th.source.replace(/^in /, '')}.`,
       causes: [eventCause(w, th.events[0], 0.4), stateCause(p.stress < 0.25 ? 'the pressure had eased' : 'learned to carry it', 0.6)],
       vis: 'local',
       evidence: [ev(p.id, 'state:low', -1, 1, 0.7)],
