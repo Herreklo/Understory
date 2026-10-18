@@ -1,0 +1,344 @@
+<title>City Scale</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column like an engineering memo, with wide figures breaking out to a broader measure. */
+:root {
+  --bg: #f1f3f4; --surface: #ffffff; --ink: #15212b; --muted: #586873; --rule: #d3dade;
+  --harbour: #1d3a5c; --eng: #7a6ca8; --br: #0d7a84; --ok: #1f7a4a; --no: #b2452d; --cost: #8a6a12;
+  --c-social: #0d7a84; --c-situations: #4f9ab0; --c-work: #7a6ca8; --c-time: #b08bc4; --c-groups: #c99a3b; --c-romance: #d9b46f; --c-persona: #8aa37a; --c-family: #b7c6a5; --c-other: #c9d0d4;
+  --display: "Big Shoulders Text", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0e1418; --surface: #151e24; --ink: #e2e8ec; --muted: #94a3ad; --rule: #28343c;
+  --harbour: #9cc3e6; --eng: #ada3dc; --br: #43b9c2; --ok: #5cc28a; --no: #ee8a70; --cost: #e2c25e;
+  --c-social: #43b9c2; --c-situations: #6fb3c8; --c-work: #ada3dc; --c-time: #c9a8da; --c-groups: #d8ad55; --c-romance: #e6c88a; --c-persona: #a3bd93; --c-family: #c9d6b8; --c-other: #4a565e; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0e1418; --surface: #151e24; --ink: #e2e8ec; --muted: #94a3ad; --rule: #28343c;
+  --harbour: #9cc3e6; --eng: #ada3dc; --br: #43b9c2; --ok: #5cc28a; --no: #ee8a70; --cost: #e2c25e;
+  --c-social: #43b9c2; --c-situations: #6fb3c8; --c-work: #ada3dc; --c-time: #c9a8da; --c-groups: #d8ad55; --c-romance: #e6c88a; --c-persona: #a3bd93; --c-family: #c9d6b8; --c-other: #4a565e; color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--ink); font: 400 16px/1.6 var(--body); }
+.wrap { max-width: 1040px; margin: 0 auto; padding-block: 40px 72px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.col { max-width: 680px; }
+h1, h2 { font-family: var(--display); color: var(--harbour); text-wrap: balance; letter-spacing: .01em; margin: 0; }
+h1 { font-weight: 800; font-size: clamp(56px, 11vw, 112px); line-height: .9; text-transform: uppercase; }
+h2 { font-weight: 800; font-size: clamp(30px, 5vw, 42px); line-height: 1; text-transform: uppercase; }
+h3 { font: 600 17px/1.3 var(--body); margin: 0 0 6px; }
+p { margin: 0 0 14px; max-width: 66ch; }
+.eyebrow { font: 500 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; display: block; }
+.lede { font-size: 19px; line-height: 1.5; max-width: 60ch; margin-top: 18px; }
+.muted { color: var(--muted); }
+header { border-bottom: 2px solid var(--harbour); padding-bottom: 28px; margin-bottom: 8px; }
+.meta { font: 400 13px/1.5 var(--mono); color: var(--muted); margin-top: 18px; }
+section { padding-top: 48px; display: grid; gap: 14px; }
+.figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 28px; }
+.fig { background: var(--surface); padding: 18px 18px 16px; display: grid; gap: 4px; align-content: start; }
+.fig .big { font: 800 44px/1 var(--display); color: var(--harbour); font-variant-numeric: tabular-nums; }
+.fig .big small { font: 500 15px var(--mono); color: var(--muted); margin-left: 4px; }
+.fig .cap { font-size: 14px; color: var(--muted); line-height: 1.45; }
+.panel { background: var(--surface); border: 1px solid var(--rule); padding: 18px; min-width: 0; }
+.chartbox { overflow-x: auto; }
+.chartbox svg { width: 100%; min-width: 520px; height: auto; display: block; }
+svg .grid { stroke: var(--rule); stroke-width: 1; }
+svg .ax { fill: var(--muted); font: 400 11px var(--mono); }
+svg .ref { stroke: var(--muted); stroke-dasharray: 4 4; stroke-width: 1; fill: none; }
+svg .ln { fill: none; stroke-width: 2.2; }
+svg .ln.eng { stroke: var(--eng); } svg .ln.br { stroke: var(--br); }
+svg .pt.eng { fill: var(--eng); } svg .pt.br { fill: var(--br); }
+svg .lab { font: 600 13px var(--body); } svg .lab.eng { fill: var(--eng); } svg .lab.br { fill: var(--br); }
+.barrow { display: grid; grid-template-columns: 70px 1fr 64px; gap: 10px; align-items: center; margin-bottom: 10px; }
+.barlab { font: 500 13px var(--body); } .barval { font: 500 13px var(--mono); text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: flex; height: 22px; background: var(--bg); min-width: 0; }
+.seg { display: block; height: 100%; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 8px; font: 400 12px var(--mono); color: var(--muted); }
+.lg { display: inline-flex; align-items: center; gap: 6px; } .lg i { width: 10px; height: 10px; display: inline-block; }
+.s-social { background: var(--c-social) } .s-situations { background: var(--c-situations) } .s-work { background: var(--c-work) } .s-time { background: var(--c-time) } .s-groups { background: var(--c-groups) } .s-romance { background: var(--c-romance) } .s-persona { background: var(--c-persona) } .s-family { background: var(--c-family) } .s-other { background: var(--c-other) }
+.tablebox { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th { text-align: left; font: 500 11px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--ink); padding: 6px 10px 6px 0; }
+td { border-bottom: 1px solid var(--rule); padding: 8px 10px 8px 0; vertical-align: top; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--mono); font-size: 13px; }
+td.mono { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+tr.cost td { color: var(--muted); }
+.chip { display: inline-block; font: 500 11px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 4px 7px; border: 1px solid currentColor; white-space: nowrap; }
+.chip.ok { color: var(--ok); } .chip.no { color: var(--no); } .chip.cost { color: var(--cost); }
+th.grp { text-align: center; border-bottom: 1px solid var(--rule); }
+.life { margin: 0; padding: 0; list-style: none; }
+.life li { display: grid; grid-template-columns: 3.2em 1fr; gap: 8px; padding: 3px 0; border-bottom: 1px solid var(--rule); font-size: 14px; }
+.life .yr { color: var(--muted); font-family: "IBM Plex Mono", monospace; font-size: 12px; padding-top: 2px; }
+.who2 { font-weight: 600; margin: 0 0 4px; }
+.tex { font-size: 14px; margin: 6px 0 0; }
+.tex b { font-weight: 600; }
+.three { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 16px; }
+.three .panel { margin: 0; }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+.two > * { min-width: 0; }
+.tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+.tier { border-top: 4px solid var(--harbour); background: var(--surface); padding: 14px 16px; }
+.tier.view { border-top-color: var(--br); } .tier.bg { border-top-color: var(--rule); }
+.tier .who { font: 500 12px var(--mono); color: var(--muted); margin-bottom: 8px; }
+ul { margin: 0; padding-left: 18px; } li { margin-bottom: 6px; max-width: 66ch; }
+ol.rules { counter-reset: r; list-style: none; padding: 0; display: grid; gap: 12px; }
+ol.rules li { counter-increment: r; display: grid; grid-template-columns: 34px 1fr; gap: 8px; }
+ol.rules li::before { content: counter(r); font: 800 26px/1 var(--display); color: var(--br); }
+code, .path { font-family: var(--mono); font-size: .88em; }
+.note { font-size: 14px; color: var(--muted); }
+footer { margin-top: 56px; border-top: 1px solid var(--rule); padding-top: 16px; font: 400 13px var(--mono); color: var(--muted); }
+@media (max-width: 520px) { .barrow { grid-template-columns: 56px 1fr 52px; } .fig .big { font-size: 38px; } }
+</style>
+<div class="wrap">
+<header>
+  <span class="eyebrow">Person Model Lab · scale track · base round 19c</span>
+  <h1>City Scale</h1>
+  <p class="lede">From a 75-person town to a city of 100,000. In the monthly world, people meet through settings instead of the whole town. Every neighbourhood has its own workplaces, and work is bounded by the jobs there are. The rest of the city lives once a year: by the engine's own rules for what is one person's alone, and by odds learned from the engine for what depends on others. A neighbourhood comes into focus when the player's story reaches it, and nothing outside it changes its past.</p>
+  <div class="meta">S0 measure · S1 design · S2 social layer · S3 background and promotion · S4 a city of 100,000 · S7 institutions · S8 independence · S9 marks · S10 faithful promotion · S11 the twin test · 17–18 Oct 2026</div>
+  <div class="figures">
+    <div class="fig"><span class="big">17.4<small>s</small> → 1.7<small>s</small></span><span class="cap">One simulated month at about 2,628 people, engine against branch: 10× faster.</span></div>
+    <div class="fig"><span class="big">1.95 → 1.20</span><span class="cap">How cost grows with population, as the exponent from 270 people up. 1.0 is linear.</span></div>
+    <div class="fig"><span class="big">6<small>of 6</small> · 10<small>of 10</small></span><span class="cap">The background matches the monthly world on all six checks, and promoted people match people always in focus on all ten (S10, five fresh cities).</span></div>
+    <div class="fig"><span class="big">0.87</span><span class="cap">How much of what thirty years of full life change in a person's choices a background life keeps (the twin test, 100 twins).</span></div>
+    <div class="fig"><span class="big">10<small>of 10</small></span><span class="cap">Town-sized worlds where the branch's 40-year run is identical to the engine's: every person, event, bond and belief.</span></div>
+  </div>
+</header>
+
+<section>
+  <span class="eyebrow">S0 · Measure</span>
+  <h2>Where the town stops scaling</h2>
+  <div class="col">
+    <p>The engine was timed system by system at four sizes, from 68 to about 2,628 people. Each size had the same five-year past and twelve timed months, and runs went one at a time. Cost grows with population to the power 1.95. At the largest size a month takes 17.4 s, building the world takes 11 minutes, and memory holds 2.4 million beliefs in 1,414 MB.</p>
+    <p>The causes are loops over the whole town, done for everyone. Company is sought from every adult, each scored by regard, and this alone is 30% of all time at 1,000 people. The others:</p>
+    <ul>
+      <li>school pairs over every child, 70,000 contacts a month at 2,600 people;</li>
+      <li>a family scan over every pair;</li>
+      <li>public news heard by everyone over 14;</li>
+      <li>workplace lookups that scan the town once per place;</li>
+      <li>history re-read every month.</li>
+    </ul>
+  </div>
+  <div class="panel chartbox"><svg viewBox="0 0 640 340" role="img" aria-label="Time per simulated month against people, engine and branch, log scales"><line x1="64" x2="620" y1="294.0" y2="294.0" class="grid"/><text x="56" y="298.0" class="ax" text-anchor="end">10 ms</text><line x1="64" x2="620" y1="214.6" y2="214.6" class="grid"/><text x="56" y="218.6" class="ax" text-anchor="end">100 ms</text><line x1="64" x2="620" y1="135.2" y2="135.2" class="grid"/><text x="56" y="139.2" class="ax" text-anchor="end">1 s</text><line x1="64" x2="620" y1="55.9" y2="55.9" class="grid"/><text x="56" y="59.9" class="ax" text-anchor="end">10 s</text><line x1="64.0" x2="64.0" y1="18" y2="294" class="grid"/><text x="64.0" y="312" class="ax" text-anchor="middle">50</text><line x1="156.0" x2="156.0" y1="18" y2="294" class="grid"/><text x="156.0" y="312" class="ax" text-anchor="middle">100</text><line x1="301.8" x2="301.8" y1="18" y2="294" class="grid"/><text x="301.8" y="312" class="ax" text-anchor="middle">300</text><line x1="461.6" x2="461.6" y1="18" y2="294" class="grid"/><text x="461.6" y="312" class="ax" text-anchor="middle">1,000</text><line x1="607.4" x2="607.4" y1="18" y2="294" class="grid"/><text x="607.4" y="312" class="ax" text-anchor="middle">3,000</text><text x="342" y="332" class="ax" text-anchor="middle">people in the monthly world (log scale)</text><line x1="104.8" y1="255.6" x2="607.4" y2="125.1" class="ref"/><text x="603.4" y="141.1" class="ax" text-anchor="end">linear</text><polyline points="104.8,250.8 285.2,191.8 445.0,122.9 589.8,36.8" class="ln eng"/><circle cx="114.2" cy="251.4" r="3.2" class="pt eng"/><circle cx="102.8" cy="248.6" r="3.2" class="pt eng"/><circle cx="96.8" cy="252.6" r="3.2" class="pt eng"/><circle cx="286.8" cy="192.5" r="3.2" class="pt eng"/><circle cx="283.8" cy="187.3" r="3.2" class="pt eng"/><circle cx="284.8" cy="196.2" r="3.2" class="pt eng"/><circle cx="448.0" cy="120.6" r="3.2" class="pt eng"/><circle cx="441.9" cy="125.3" r="3.2" class="pt eng"/><circle cx="588.7" cy="37.6" r="3.2" class="pt eng"/><circle cx="590.8" cy="36.0" r="3.2" class="pt eng"/><text x="581.8" y="26.8" class="lab eng" text-anchor="end">engine</text><polyline points="104.8,255.6 287.0,211.8 443.8,164.5 590.4,116.9" class="ln br"/><circle cx="114.2" cy="247.1" r="3.2" class="pt br"/><circle cx="102.8" cy="260.5" r="3.2" class="pt br"/><circle cx="96.8" cy="261.2" r="3.2" class="pt br"/><circle cx="285.3" cy="211.5" r="3.2" class="pt br"/><circle cx="290.7" cy="213.5" r="3.2" class="pt br"/><circle cx="284.8" cy="210.3" r="3.2" class="pt br"/><circle cx="443.1" cy="164.9" r="3.2" class="pt br"/><circle cx="444.6" cy="164.2" r="3.2" class="pt br"/><circle cx="589.6" cy="117.4" r="3.2" class="pt br"/><circle cx="591.2" cy="116.3" r="3.2" class="pt br"/><text x="582.4" y="106.9" class="lab br" text-anchor="end">branch</text></svg></div>
+  <p class="note">Each dot is one world. Lines join the means at each size. The dashed line is linear growth from the smallest branch world. Branch figures are from the S2b runs.</p>
+</section>
+
+<section>
+  <span class="eyebrow">S2 · S7 · The social layer at scale</span>
+  <h2>Many towns, each with its own work</h2>
+  <div class="col">
+    <p>The branch splits a city into neighbourhoods of about 80 people, roughly one town each.</p>
+    <ul>
+      <li>A household lives together, and moves when people move in together.</li>
+      <li>School, routines, hobbies, romance and the company people seek happen inside a neighbourhood.</li>
+      <li>Every neighbourhood has its own workplaces: one of each kind the setting has, each with the kind's capacity, its staff and its leader. A workplace takes on people from its own neighbourhood first, then from across the city, and a venture opens where its founder lives.</li>
+      <li>News reaches the neighbourhoods of the people involved.</li>
+      <li>No code creates a bond with a stranger just by looking at them.</li>
+    </ul>
+    <p>Per person, the branch does the same work at every size: about 8 contacts a month, 60 bonds and 225 beliefs, from 270 people to 2,640. What still grows is the cost of each lookup in bigger maps. That is why the exponent stops at 1.20 rather than 1.0.</p>
+  </div>
+  <div class="panel"><h3>Where a month goes at about 2,628 people</h3><div class="barrow"><div class="barlab">Engine</div><div class="bar"><span class="seg s-social" style="width:72.02%" title="social: 12,526 ms"></span><span class="seg s-situations" style="width:10.46%" title="situations: 1,819 ms"></span><span class="seg s-work" style="width:6.61%" title="work: 1,150 ms"></span><span class="seg s-time" style="width:5.42%" title="time: 943 ms"></span><span class="seg s-groups" style="width:1.13%" title="groups: 196 ms"></span><span class="seg s-romance" style="width:1.04%" title="romance: 181 ms"></span><span class="seg s-persona" style="width:0.65%" title="persona: 114 ms"></span><span class="seg s-family" style="width:0.59%" title="family: 103 ms"></span><span class="seg s-other" style="width:2.07%" title="other: 359 ms"></span></div><div class="barval">17.4 s</div></div><div class="barrow"><div class="barlab">Branch</div><div class="bar"><span class="seg s-social" style="width:6.01%" title="social: 1,046 ms"></span><span class="seg s-situations" style="width:1.66%" title="situations: 289 ms"></span><span class="seg s-work" style="width:0.20%" title="work: 34 ms"></span><span class="seg s-time" style="width:0.37%" title="time: 65 ms"></span><span class="seg s-groups" style="width:0.47%" title="groups: 81 ms"></span><span class="seg s-romance" style="width:0.08%" title="romance: 15 ms"></span><span class="seg s-persona" style="width:0.23%" title="persona: 41 ms"></span><span class="seg s-family" style="width:0.12%" title="family: 20 ms"></span><span class="seg s-other" style="width:0.65%" title="other: 113 ms"></span></div><div class="barval">1.7 s</div></div><div class="legend"><span class="lg"><i class="s-social"></i>social</span><span class="lg"><i class="s-situations"></i>situations</span><span class="lg"><i class="s-work"></i>work</span><span class="lg"><i class="s-time"></i>time</span><span class="lg"><i class="s-groups"></i>groups</span><span class="lg"><i class="s-romance"></i>romance</span><span class="lg"><i class="s-persona"></i>persona</span><span class="lg"><i class="s-family"></i>family</span><span class="lg"><i class="s-other"></i>other</span></div></div>
+  <div class="two">
+    <div>
+      <h3>The town stays the town</h3>
+      <p>A town under about 120 people is one neighbourhood, with exactly the setting's workplaces. Every new path then returns the whole town in the engine's order, so the dice fall the same way. Each run is fingerprinted whole, after a thirty-year past and ten present years: every field of every person, every event with its causes and who knew it, every bond with its memories, every belief, the groups, workplaces and counters.</p>
+      <div class="tablebox"><table><thead><tr><th class="num">Seed</th><th class="num">People</th><th class="num">Events</th><th>Engine</th><th>Branch</th><th></th></tr></thead><tbody><tr><td class="num">1</td><td class="num">136</td><td class="num">6,945</td><td class="mono">5a046a62·4ef8·0592</td><td class="mono">5a046a62·4ef8·0592</td><td><span class="chip ok">pass</span></td></tr><tr><td class="num">2</td><td class="num">123</td><td class="num">6,313</td><td class="mono">262f0eb0·24c5·b215</td><td class="mono">262f0eb0·24c5·b215</td><td><span class="chip ok">pass</span></td></tr><tr><td class="num">3</td><td class="num">123</td><td class="num">5,655</td><td class="mono">e5efb93b·b865·02f1</td><td class="mono">e5efb93b·b865·02f1</td><td><span class="chip ok">pass</span></td></tr><tr><td class="num">4</td><td class="num">118</td><td class="num">7,253</td><td class="mono">c448428b·eec8·4203</td><td class="mono">c448428b·eec8·4203</td><td><span class="chip ok">pass</span></td></tr><tr><td class="num">5</td><td class="num">126</td><td class="num">6,909</td><td class="mono">60ca993f·3e69·0062</td><td class="mono">60ca993f·3e69·0062</td><td><span class="chip ok">pass</span></td></tr><tr><td class="num">6</td><td class="num">135</td><td class="num">7,940</td><td class="mono">4723b5fa·e167·bb64</td><td class="mono">4723b5fa·e167·bb64</td><td><span class="chip ok">pass</span></td></tr><tr><td class="num">7</td><td class="num">107</td><td class="num">6,335</td><td class="mono">612fd64f·4d8d·cb67</td><td class="mono">612fd64f·4d8d·cb67</td><td><span class="chip ok">pass</span></td></tr><tr><td class="num">8</td><td class="num">125</td><td class="num">7,217</td><td class="mono">d0ea273e·502c·4b69</td><td class="mono">d0ea273e·502c·4b69</td><td><span class="chip ok">pass</span></td></tr><tr><td class="num">9</td><td class="num">119</td><td class="num">7,649</td><td class="mono">be2ac704·8bd8·216a</td><td class="mono">be2ac704·8bd8·216a</td><td><span class="chip ok">pass</span></td></tr><tr><td class="num">10</td><td class="num">129</td><td class="num">7,288</td><td class="mono">63cd60ae·cad4·19c4</td><td class="mono">63cd60ae·cad4·19c4</td><td><span class="chip ok">pass</span></td></tr></tbody></table></div>
+    </div>
+    <div>
+      <h3>A person's world stays town-sized</h3>
+      <p>Social life per person in the branch, in the fifth present year, as the city grows. A town of about 70 is the first row.</p>
+      <div class="tablebox"><table><thead><tr><th class="num">People</th><th class="num">Friends</th><th class="num">Friendless</th><th class="num">Known well</th><th class="num">Contacts/mo</th></tr></thead><tbody><tr><td class="num">68</td><td class="num">2.7</td><td class="num">26%</td><td class="num">20</td><td class="num">16.8</td></tr><tr><td class="num">274</td><td class="num">3.6</td><td class="num">15%</td><td class="num">20</td><td class="num">16.5</td></tr><tr><td class="num">876</td><td class="num">3.4</td><td class="num">13%</td><td class="num">20</td><td class="num">18.2</td></tr><tr><td class="num">2,558</td><td class="num">3.3</td><td class="num">13%</td><td class="num">20</td><td class="num">17.7</td></tr></tbody></table></div>
+      <p class="note">In the engine at 870 people, contacts per person rise to 43 a month and friends fall to 2.5. Everyone brushes past everyone, and nobody gets close.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">S1 · Design</span>
+  <h2>Detail follows what the player could know</h2>
+  <div class="col"><p>The player only ever sees the felt side of the world. Someone the player cannot reach needs to be true, not detailed. Everyone in the city is a full person, with traits, values, family and a seed. Only how often they are simulated differs.</p></div>
+  <div class="tiers">
+    <div class="tier"><div class="who">in focus · monthly</div><h3>Every system runs</h3><p class="note">Whole neighbourhoods: the player's own and every one the player's story reaches. Typically 1,000 to 3,000 people.</p></div>
+    <div class="tier view"><div class="who">in view · as counterparts · designed</div><h3>People in the room</h3><p class="note">A colleague at a big workplace, or the bar staff at a regular venue. Full people form bonds with them. They make no decisions of their own until their neighbourhood comes into focus.</p></div>
+    <div class="tier bg"><div class="who">background · yearly</div><h3>A year lived at once</h3><p class="note">They grow older, fall ill, work, lead, partner, have children, leave, come home or die. Every big event is written into the record, and nothing outside their neighbourhood changes it.</p></div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">S3 · S7 · S8 · The background</span>
+  <h2>A background that lives by the engine's rules</h2>
+  <div class="col">
+    <p>A background year has two kinds of rule.</p>
+    <ul>
+      <li><b>What is one person's alone runs by the engine's own formulas</b>, month by month through the year. That covers growing older (personality maturing, aptitudes and skill ceilings moving with age), health, illness, retirement, death, the strain that is the person's own, and the steadying that comes with becoming a parent. S7 found why this matters. Odds fitted to these drift as soon as the population they are applied to drifts. The background had never matured, because the engine's yearly step ran only over the monthly world, and its old people died at half the engine's rate.</li>
+      <li><b>What depends on other people is drawn from odds learned from the engine</b>: finding a partner, splitting up, a child, leaving or coming home, drinking, losing a job. Thirty full towns were logged year by year, and the odds were checked on towns the fit never saw. One script refits them after any engine change.</li>
+      <li><b>Work comes from the institutions.</b> Each year a background workplace with room takes on the best-suited job seeker of its neighbourhood. A slot nobody local can fill draws a newcomer, by the town's own rule: that is the only way people arrive, as in the town. A workplace without a leader makes one, with the town's succession events: the promotion, the first staff meeting, and those passed over.</li>
+    </ul>
+  </div>
+  <div class="two">
+    <div class="panel tablebox"><h3>Odds learned from the engine, checked on held-out towns</h3><table><thead><tr><th>Outcome</th><th class="num">Events</th><th class="num">Yearly rate</th><th class="num">AUC</th></tr></thead><tbody><tr><td>Leaving</td><td class="num">636</td><td class="num">1.3%</td><td class="num">0.83</td></tr><tr><td>Finding a partner</td><td class="num">604</td><td class="num">4.2%</td><td class="num">0.73</td></tr><tr><td>Separating</td><td class="num">232</td><td class="num">0.9%</td><td class="num">0.72</td></tr><tr><td>A child</td><td class="num">436</td><td class="num">7.7%</td><td class="num">0.80</td></tr><tr><td>Losing work</td><td class="num">41</td><td class="num">0.2%</td><td class="num">0.90</td></tr><tr><td>Starting to drink</td><td class="num">286</td><td class="num">0.7%</td><td class="num">0.86</td></tr><tr><td>Stopping drinking</td><td class="num">192</td><td class="num">13.0%</td><td class="num">0.52</td></tr><tr><td>Coming home</td><td class="num">531</td><td class="num">3.8%</td><td class="num">0.77</td></tr></tbody></table><p class="note" style="margin-top:10px">AUC is how well the odds rank who it happens to. 0.5 is chance.</p></div>
+    <div class="panel tablebox"><h3>The engine's rules, holding in the background</h3><p class="note">Deaths per person-year in the background, pooled over each step's five cities, against the full engine's thirty towns.</p><table><thead><tr><th>Age</th><th class="num">Engine</th><th class="num">S7</th><th class="num">S8</th><th></th></tr></thead><tbody><tr><td>65–79</td><td class="num">1.86%</td><td class="num">1.62%</td><td class="num">1.68%</td><td><span class="chip ok">pass</span></td></tr><tr><td>80 and over</td><td class="num">9.03%</td><td class="num">9.93%</td><td class="num">9.81%</td><td><span class="chip ok">pass</span></td></tr><tr><td>Under 65</td><td class="num">0.10%</td><td class="num">0.10%</td><td class="num">0.08%</td><td><span class="chip ok">pass</span></td></tr></tbody></table><p class="note" style="margin-top:10px">Before S7 the background died at about half the engine's rate at 65–79.</p></div>
+  </div>
+  <div class="panel tablebox"><h3>Coarse matches full</h3><p class="note">Cities of about 1,300–1,500 people, half monthly and half background from their founding, compared after thirty years. Five fresh seeds per step. Tolerance: 5 points on shares, 25% on counts.</p>
+    <table><thead><tr><th></th><th class="grp" colspan="3">S3</th><th class="grp" colspan="3">S8</th><th class="grp" colspan="3">S10</th></tr><tr><th></th><th class="num">Monthly</th><th class="num">Coarse</th><th></th><th class="num">Monthly</th><th class="num">Coarse</th><th></th><th class="num">Monthly</th><th class="num">Coarse</th><th></th></tr></thead><tbody><tr><td>Under 20</td><td class="num">22%</td><td class="num">18%</td><td><span class="chip ok">pass</span></td><td class="num">21%</td><td class="num">18%</td><td><span class="chip ok">pass</span></td><td class="num">18%</td><td class="num">17%</td><td><span class="chip ok">pass</span></td></tr><tr><td>Over 65</td><td class="num">27%</td><td class="num">25%</td><td><span class="chip ok">pass</span></td><td class="num">28%</td><td class="num">29%</td><td><span class="chip ok">pass</span></td><td class="num">28%</td><td class="num">29%</td><td><span class="chip ok">pass</span></td></tr><tr><td>Partnered (adults)</td><td class="num">67%</td><td class="num">69%</td><td><span class="chip ok">pass</span></td><td class="num">71%</td><td class="num">69%</td><td><span class="chip ok">pass</span></td><td class="num">67%</td><td class="num">67%</td><td><span class="chip ok">pass</span></td></tr><tr><td>Working (20–64)</td><td class="num">86%</td><td class="num">74%</td><td><span class="chip no">fail</span></td><td class="num">84%</td><td class="num">86%</td><td><span class="chip ok">pass</span></td><td class="num">86%</td><td class="num">84%</td><td><span class="chip ok">pass</span></td></tr><tr><td>Drinkers (adults)</td><td class="num">3%</td><td class="num">5%</td><td><span class="chip ok">pass</span></td><td class="num">3%</td><td class="num">5%</td><td><span class="chip ok">pass</span></td><td class="num">3%</td><td class="num">5%</td><td><span class="chip ok">pass</span></td></tr><tr><td>Children of 40–54s</td><td class="num">1.40</td><td class="num">1.22</td><td><span class="chip ok">pass</span></td><td class="num">1.33</td><td class="num">1.34</td><td><span class="chip ok">pass</span></td><td class="num">1.18</td><td class="num">1.36</td><td><span class="chip ok">pass</span></td></tr></tbody></table></div>
+</section>
+
+<section>
+  <span class="eyebrow">S3 · S8 · Promotion</span>
+  <h2>A neighbourhood comes into focus</h2>
+  <div class="col">
+    <p>When the player's story reaches someone, their whole neighbourhood comes into focus, so everyone in it arrives among the people they live with. A background life has a <b>spine</b> and a <b>texture</b>.</p>
+    <ul>
+      <li><b>The spine</b> is every big event with its date. It is fixed once lived and stands as it is.</li>
+      <li><b>The texture</b> is the small things that make someone known: friends, dislikes, routines. It is made at promotion. The years they lived there are replayed by the engine's own contact rule over their settings, on a clock set back to when those months happened, so every rule that counts time sees months.</li>
+    </ul>
+    <p>The neighbourhood's workplaces come into focus with their staff and leaders. Marks such as fears, sore spots, pride and rules to live by follow from the spine, through the same rules as everyone else's.</p>
+  </div>
+  <div style="min-width:0">
+    <div class="panel tablebox"><h3>Right after promotion</h3><table><thead><tr><th></th><th class="grp" colspan="3">S3</th><th class="grp" colspan="3">S8</th><th class="grp" colspan="3">S10</th></tr><tr><th></th><th class="num">Always</th><th class="num">Promoted</th><th></th><th class="num">Always</th><th class="num">Promoted</th><th></th><th class="num">Always</th><th class="num">Promoted</th><th></th></tr></thead><tbody><tr><td>Friends per adult</td><td class="num">4.5</td><td class="num">4.7</td><td><span class="chip ok">pass</span></td><td class="num">5.0</td><td class="num">5.3</td><td><span class="chip ok">pass</span></td><td class="num">4.3</td><td class="num">4.9</td><td><span class="chip ok">pass</span></td></tr><tr><td>Friendless adults</td><td class="num">14%</td><td class="num">16%</td><td><span class="chip ok">pass</span></td><td class="num">11%</td><td class="num">10%</td><td><span class="chip ok">pass</span></td><td class="num">15%</td><td class="num">14%</td><td><span class="chip ok">pass</span></td></tr><tr><td>People known well</td><td class="num">25.7</td><td class="num">19.2</td><td><span class="chip no">fail</span></td><td class="num">27.1</td><td class="num">23.1</td><td><span class="chip ok">pass</span></td><td class="num">27.1</td><td class="num">22.1</td><td><span class="chip ok">pass</span></td></tr><tr><td>Routines</td><td class="num">2.8</td><td class="num">2.6</td><td><span class="chip ok">pass</span></td><td class="num">2.8</td><td class="num">2.7</td><td><span class="chip ok">pass</span></td><td class="num">2.8</td><td class="num">2.6</td><td><span class="chip ok">pass</span></td></tr><tr><td>Partnered</td><td class="num">67%</td><td class="num">68%</td><td><span class="chip ok">pass</span></td><td class="num">71%</td><td class="num">70%</td><td><span class="chip ok">pass</span></td><td class="num">67%</td><td class="num">67%</td><td><span class="chip ok">pass</span></td></tr><tr class="cost"><td>Marks from history, per over-40</td><td class="num">0.68</td><td class="num">0.22</td><td><span class="chip cost">expected loss</span></td><td class="num">0.71</td><td class="num">0.29</td><td><span class="chip cost">expected loss</span></td><td class="num">0.78</td><td class="num">0.34</td><td><span class="chip cost">expected loss</span></td></tr></tbody></table></div>
+    <div class="panel tablebox" style="margin-top:18px"><h3>Two years later</h3><table><thead><tr><th></th><th class="grp" colspan="3">S3</th><th class="grp" colspan="3">S8</th><th class="grp" colspan="3">S10</th></tr><tr><th></th><th class="num">Always</th><th class="num">Promoted</th><th></th><th class="num">Always</th><th class="num">Promoted</th><th></th><th class="num">Always</th><th class="num">Promoted</th><th></th></tr></thead><tbody><tr><td>Friends per adult</td><td class="num">4.5</td><td class="num">5.2</td><td><span class="chip ok">pass</span></td><td class="num">4.9</td><td class="num">5.2</td><td><span class="chip ok">pass</span></td><td class="num">4.4</td><td class="num">4.8</td><td><span class="chip ok">pass</span></td></tr><tr><td>Friendless adults</td><td class="num">13%</td><td class="num">12%</td><td><span class="chip ok">pass</span></td><td class="num">11%</td><td class="num">8%</td><td><span class="chip ok">pass</span></td><td class="num">14%</td><td class="num">14%</td><td><span class="chip ok">pass</span></td></tr><tr><td>People known well</td><td class="num">26.4</td><td class="num">20.5</td><td><span class="chip ok">pass</span></td><td class="num">27.2</td><td class="num">23.6</td><td><span class="chip ok">pass</span></td><td class="num">27.6</td><td class="num">22.7</td><td><span class="chip ok">pass</span></td></tr><tr><td>Routines</td><td class="num">2.9</td><td class="num">2.5</td><td><span class="chip ok">pass</span></td><td class="num">2.8</td><td class="num">2.6</td><td><span class="chip ok">pass</span></td><td class="num">2.8</td><td class="num">2.4</td><td><span class="chip ok">pass</span></td></tr><tr><td>Partnered</td><td class="num">68%</td><td class="num">71%</td><td><span class="chip ok">pass</span></td><td class="num">70%</td><td class="num">72%</td><td><span class="chip ok">pass</span></td><td class="num">67%</td><td class="num">72%</td><td><span class="chip ok">pass</span></td></tr><tr class="cost"><td>Marks from history, per over-40</td><td class="num">0.68</td><td class="num">0.29</td><td><span class="chip cost">expected loss</span></td><td class="num">0.72</td><td class="num">0.35</td><td><span class="chip cost">expected loss</span></td><td class="num">0.77</td><td class="num">0.40</td><td><span class="chip cost">expected loss</span></td></tr></tbody></table></div>
+  </div>
+  <p class="note">S7 failed on friends: promoted people had 30% more, because their workplaces were staffed only by neighbours while monthly workplaces hired across the city. S8 gave both tiers one hiring rule, neighbourhood first, and the gap closed to 6%. S9 gave the background the town's succession events and kept how widely each event would have been seen. Marks rose from 0.24 to 0.35 per over-40, still half of focus.</p>
+</section>
+
+<section>
+  <span class="eyebrow">An example</span>
+  <h2>Westfield, before and after</h2>
+  <div class="col"><p>One background neighbourhood of a throwaway city (seed 61, 69 people), read straight from the record. Below are three of its residents: their lives as the background lived them, then what promotion made of them. Names of places are the base round's.</p></div>
+  <div class="panel tablebox"><h3>Its workplaces</h3><table><thead><tr><th>Workplace</th><th>Led by</th><th class="num">Staff</th></tr></thead><tbody><tr><td>Brekke Sawmill in Westfield</td><td>Live Dahl, foreman</td><td class="num">6/6</td></tr><tr><td>the harbour fleet in Westfield</td><td>Astrid Solberg, skipper</td><td class="num">6/6</td></tr><tr><td>Skarvik Garage in Westfield</td><td>Turid Skog, head mechanic</td><td class="num">3/3</td></tr><tr><td>the clinic in Westfield</td><td>Per Moen, head of the clinic</td><td class="num">5/5</td></tr><tr><td>Skarvik School in Westfield</td><td>Amalie Rød, headteacher</td><td class="num">5/5</td></tr><tr><td>Skarvik Tidende in Westfield</td><td>Thea Bakke, editor</td><td class="num">3/3</td></tr><tr><td>the Anchor in Westfield</td><td>Vigdis Bakke, manager</td><td class="num">4/4</td></tr><tr><td>the council office in Westfield</td><td>Linn Berg, chief officer</td><td class="num">4/4</td></tr></tbody></table></div>
+  <div class="three"><div class="panel"><p class="who2">Karin Lie, 69 · retired</p><h3>The spine: as the background lived it</h3><ul class="life"><li><span class="yr">1999</span><span>Karin Lie moved to the city for a job at Skarvik School in Westfield.</span></li><li><span class="yr">2001</span><span>Karin Lie moved away.</span></li><li><span class="yr">2006</span><span>Karin Lie came back to the city.</span></li><li><span class="yr">2009</span><span>Karin Lie started work at the council office in Westfield.</span></li><li><span class="yr">2016</span><span>Karin Lie and Kjetil Lund got together.</span></li><li><span class="yr">2020</span><span>Kjetil Lund had a heart attack.</span></li><li><span class="yr">2020</span><span>Karin Lie became chief officer at the council office in Westfield.</span></li><li><span class="yr">2020</span><span>Trond Berg was passed over for chief officer; Karin Lie got the job.</span></li><li><span class="yr">2024</span><span>Karin Lie retired.</span></li></ul><h3 style="margin-top:14px">The texture: made when the neighbourhood came into focus</h3><p class="tex"><b>Friends:</b> Per Moen, Mona Hagen, Live Dahl, Eva Brekke</p><p class="tex"><b>Routines:</b> swims in the harbour every morning, whatever the weather; has Sunday dinner with the family every week; is out in the garden every morning from spring to autumn</p><p class="tex"><b>Proud of:</b> the year she made chief officer (2020)</p></div><div class="panel"><p class="who2">Astrid Solberg, 43 · the harbour fleet in Westfield</p><h3>The spine: as the background lived it</h3><ul class="life"><li><span class="yr">2001</span><span>Astrid Solberg started work at the harbour fleet in Westfield.</span></li><li><span class="yr">2009</span><span>Astrid Solberg and Sindre Bakke got together.</span></li><li><span class="yr">2011</span><span>Frida Bakke was born to Astrid Solberg and Sindre Bakke.</span></li><li><span class="yr">2012</span><span>Marit Bakke was born to Astrid Solberg and Sindre Bakke.</span></li><li><span class="yr">2013</span><span>Astrid Solberg and Sindre Bakke split up.</span></li><li><span class="yr">2017</span><span>Astrid Solberg became skipper at the harbour fleet in Westfield.</span></li><li><span class="yr">2017</span><span>Astrid Solberg froze at the first staff meeting.</span></li><li><span class="yr">2017</span><span>Jon Hagen was passed over for skipper; Astrid Solberg got the job.</span></li><li><span class="yr">2018</span><span>Astrid Solberg and Sindre Bakke got together.</span></li></ul><h3 style="margin-top:14px">The texture: made when the neighbourhood came into focus</h3><p class="tex"><b>Friends:</b> Rut Brekke, Jon Hagen, Ellen Skog, Aksel Hagen, Ragnhild Lie, Vigdis Bakke, Thea Bakke, Sindre Dahl, Svein Eide</p><p class="tex"><b>Routines:</b> spends every spare hour fixing something in the shed; is out in the garden every morning from spring to autumn; has Sunday dinner with the family every week</p><p class="tex"><b>Marked:</b> afraid of being left, since 2013</p><p class="tex"><b>Proud of:</b> the year she made skipper (2017)</p></div><div class="panel"><p class="who2">Tove Bakke, 32 · Skarvik Tidende in Westfield</p><h3>The spine: as the background lived it</h3><ul class="life"><li><span class="yr">2010</span><span>Tove Bakke and Håkon Brekke got together.</span></li><li><span class="yr">2013</span><span>Håkon Brekke and Tove Bakke split up.</span></li><li><span class="yr">2016</span><span>Tove Bakke and Håkon Brekke got together.</span></li><li><span class="yr">2021</span><span>Tove Bakke started work at Skarvik Tidende in Westfield.</span></li><li><span class="yr">2022</span><span>Rune Brekke was born to Tove Bakke and Håkon Brekke.</span></li><li><span class="yr">2023</span><span>Gro Brekke was born to Tove Bakke and Håkon Brekke.</span></li><li><span class="yr">2024</span><span>Håkon Brekke was signed off with a bad back.</span></li></ul><h3 style="margin-top:14px">The texture: made when the neighbourhood came into focus</h3><p class="tex"><b>Friends:</b> none yet</p><p class="tex"><b>Routines:</b> is out in the garden every morning from spring to autumn</p><p class="tex"><b>Marked:</b> afraid of being left, since 2013</p></div></div>
+</section>
+
+<section>
+  <span class="eyebrow">S11 · The twin test</span>
+  <h2>Does a background life leave the same person?</h2>
+  <div class="col">
+    <p>Four cities from one founding: the same people, the same traits and families at year 0. One neighbourhood lives its thirty-year past in full (<b>A</b>), in full on other dice (<b>A2</b>, a different full life), or in the background and is then promoted (<b>B</b>). The founding itself is the fourth (<b>Z</b>, the same people thirty years younger). Every adult founder who is alive in all of them is asked the engine's sixteen kinds of situation. The answers are built and scored by the engine's own decision rules, from the person's true state.</p>
+    <p>The question is how far each copy's answers moved from who the person was at the founding. If the background keeps a life, B moves as far as A and A2.</p>
+  </div>
+  <div class="two">
+    <div class="panel tablebox"><h3>How far answers moved in thirty years</h3><table><thead><tr><th></th><th class="num">A</th><th class="num">A2</th><th class="num">B</th><th class="num">B against full</th></tr></thead><tbody>
+      <tr><td>Choices (which kind of answer)</td><td class="num">0.029</td><td class="num">0.029</td><td class="num">0.026</td><td class="num">0.87</td></tr>
+      <tr><td>Acts (what exactly they do)</td><td class="num">0.052</td><td class="num">0.045</td><td class="num">0.045</td><td class="num">0.93</td></tr>
+      <tr><td>Between two different people</td><td class="num" colspan="3">0.44 choices · 0.50 acts</td><td></td></tr>
+    </tbody></table><p class="note" style="margin-top:10px">100 twins over four fresh cities. Distances are total variation on the answer probabilities, and disagreement on the acts.</p></div>
+    <div class="panel"><h3>What it shows</h3>
+      <p class="note">A person who spent thirty years in the background carries about seven eighths of what thirty years of full life change in how they choose. In every city, B moved less than both full lives. The missing eighth fits what monthly life forms and the background does not: learned if-then habits (about a quarter fewer) and the self-story people tell about who they are (a fifth shorter).</p>
+      <p class="note">Two limits. In these situations a lived life moves answers only about 7% of the distance between two people, because inborn traits set most of them. And the battery cannot see strain, money, bonds or marks. Testing those needs the engine's real situations, which belongs after the merge with the lab's engine.</p>
+      <p class="note">The first version of this test (S11) used a bar that could not fail. The independent check caught it, and the directional measure here (S11b) replaced it.</p></div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">S8 · Independence</span>
+  <h2>Nothing outside a neighbourhood changes its past</h2>
+  <div class="col">
+    <p>A background neighbourhood draws everything from itself:</p>
+    <ul>
+      <li>its dice, keyed to each person or to the neighbourhood and year;</li>
+      <li>the ids and first names of people born or arriving there;</li>
+      <li>partners from its own residents;</li>
+      <li>workers from its own job seekers;</li>
+      <li>newcomers for its own vacancies.</li>
+    </ul>
+    <p>The bonds its people hold are put away with them until they come back into focus, because no contact happens in the background.</p>
+    <p>The test builds two cities from one seed. In the second, the monthly world lives a different thirty-year past and a different present, and one background neighbourhood is promoted. Every other background neighbourhood must come out identical: every field of every person, every event about them, every bond and belief they hold, and their workplaces.</p>
+  </div>
+  <div class="figures">
+    <div class="fig"><span class="big">6<small>of 6</small></span><span class="cap">Background neighbourhoods identical, while the focus around them lived differently (S8b, seeds 56–58).</span></div>
+    <div class="fig"><span class="big">2<small>of 2</small></span><span class="cap">Neighbourhoods that differ on the S7 tree, which still drew ids from one city-wide counter: the test sees a dependence when there is one.</span></div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">S8 · A city of 100,000</span>
+  <h2>The whole city, running</h2>
+  <div class="col"><p>A town of 184 founding adults simulated monthly, inside a background founded with 100,000 people in households shaped like the town's own. After a thirty-year past, the background holds 89,350 people in 1,237 neighbourhoods with 9,897 workplaces, and the monthly town 222. The background is kept apart from the monthly world's list of people, so nothing that runs each month walks past it.</p></div>
+  <div class="figures">
+    <div class="fig"><span class="big">2.3<small>min</small></span><span class="cap">To found the city and run its thirty-year past.</span></div>
+    <div class="fig"><span class="big">3.3<small>s</small></span><span class="cap">For a year of the whole background, with the body lived month by month.</span></div>
+    <div class="fig"><span class="big">146<small>ms</small></span><span class="cap">For an ordinary month of the 222-person town, with the city around it.</span></div>
+    <div class="fig"><span class="big">5.0<small>s</small></span><span class="cap">To bring a background neighbourhood of 77 people into focus.</span></div>
+  </div>
+  <div class="two">
+    <div class="panel tablebox"><table><thead><tr><th>After thirty years</th><th class="num">Monthly town</th><th class="num">Background</th><th></th></tr></thead><tbody>
+      <tr><td>Under 20</td><td class="num">22%</td><td class="num">18%</td><td><span class="chip ok">pass</span></td></tr>
+      <tr><td>Over 65</td><td class="num">28%</td><td class="num">29%</td><td><span class="chip ok">pass</span></td></tr>
+      <tr><td>Partnered adults</td><td class="num">70%</td><td class="num">67%</td><td><span class="chip ok">pass</span></td></tr>
+      <tr><td>Working, 20–64</td><td class="num">85%</td><td class="num">89%</td><td></td></tr>
+      <tr><td>Memory, events in the record</td><td class="num" colspan="2">1,124 MB · 370,557 events</td><td></td></tr>
+    </tbody></table></div>
+    <div class="panel"><h3>What the background costs a month</h3>
+      <p class="note">The pre-registered bar, within 50% of 0.41 ms per person, fails: 0.66 ms. The independent check found that S4 and S7 had divided by the wrong number of people, and they fail too (0.72 and 0.74 ms). The bar also compared unlike towns: the 0.41 reference had a five-year past, the city a thirty-year one.</p>
+      <p class="note">The same 240-person town timed alone and inside 100,000, alternating, one run at a time: alone 0.87, 0.62, 0.59 ms per person; in the city 0.88, 0.80, 0.71. By the medians the background adds about 30% to an ordinary month, likely garbage collection on a larger heap. That is within the noise between runs.</p>
+      <p class="note">Absolute timings depend on the machine. After a restart onto a slower host, the same code built this city in about 200 s instead of 138 s, so timings are compared only within one sitting.</p></div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">Scorecard</span>
+  <h2>Every expectation, as written beforehand</h2>
+  <div class="col"><p>Each expectation was written down before its runs, in <span class="path">SCALE.md</span>. S2b, S3b and S8b are follow-ups after fixes, and count as exploration rather than confirmation. Since S8, a separate agent re-derives the headline numbers from the raw output before they are recorded.</p></div>
+  <div class="panel tablebox"><table><thead><tr><th>Step</th><th>Expectation</th><th class="num">Measured</th><th></th></tr></thead><tbody><tr><td class="mono">S2</td><td>A town replays exactly as the engine does</td><td class="num">10 of 10 seeds identical</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S2</td><td>Cost exponent at most 1.15</td><td class="num">1.30</td><td><span class="chip no">fail</span></td></tr><tr><td class="mono">S2</td><td>At least 10× faster at about 2,600 people</td><td class="num">7.8×</td><td><span class="chip no">fail</span></td></tr><tr><td class="mono">S2b</td><td>Cost exponent at most 1.15</td><td class="num">1.20</td><td><span class="chip no">fail</span></td></tr><tr><td class="mono">S2b</td><td>At least 10× faster at about 2,600 people</td><td class="num">10.2×</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S3</td><td>Background matches the monthly half (6 checks)</td><td class="num">5 of 6</td><td><span class="chip no">fail</span></td></tr><tr><td class="mono">S3</td><td>Promoted people match, right after (5 checks)</td><td class="num">4 of 5</td><td><span class="chip no">fail</span></td></tr><tr><td class="mono">S3b</td><td>Background matches the monthly half (6 checks)</td><td class="num">4 of 6</td><td><span class="chip no">fail</span></td></tr><tr><td class="mono">S3b</td><td>Promoted people match, both times (10 checks)</td><td class="num">10 of 10</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S4</td><td>A city of 100,000 builds in under 15 minutes</td><td class="num">2.5 min</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S4</td><td>A coarse year for the whole background under 10 s</td><td class="num">4.5 s</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S4</td><td>An ordinary month within 50% of the town alone, per person (corrected)</td><td class="num">0.72 against 0.41 ms</td><td><span class="chip no">fail</span></td></tr><tr><td class="mono">S4</td><td>Background demography within 5 points (3 checks)</td><td class="num">2 of 3</td><td><span class="chip no">fail</span></td></tr><tr><td class="mono">S7</td><td>No workplace over capacity; every background workplace led</td><td class="num">all ten checks</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S7</td><td>Background matches the monthly half (6 checks)</td><td class="num">6 of 6</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S7</td><td>Background deaths at 65–79 and 80+ within 25% of the engine</td><td class="num">0.87 and 1.10</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S7</td><td>Promoted people match, both times (10 checks)</td><td class="num">8 of 10</td><td><span class="chip no">fail</span></td></tr><tr><td class="mono">S7</td><td>An ordinary month at 100,000 within 50% of 0.41 ms (corrected)</td><td class="num">0.74 ms</td><td><span class="chip no">fail</span></td></tr><tr><td class="mono">S8</td><td>Background neighbourhoods independent of everything else</td><td class="num">5 of 5</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S8</td><td>Background matches the monthly half (6 checks)</td><td class="num">6 of 6</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S8</td><td>Background deaths at 65–79 and 80+ within 25% of the engine</td><td class="num">0.90 and 1.09</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S8</td><td>Promoted people match, both times (10 checks)</td><td class="num">10 of 10</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S9</td><td>Promoted marks per over-40 at least 0.30</td><td class="num">0.35</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S8</td><td>Every staffed background workplace has a leader</td><td class="num">1 missing (bug, fixed)</td><td><span class="chip no">fail</span></td></tr><tr><td class="mono">S8</td><td>A city of 100,000: build, coarse year, memory, demography</td><td class="num">138 s · 3.3 s · 1,124 MB · 3 of 3</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S8</td><td>An ordinary month at 100,000 within 50% of 0.41 ms</td><td class="num">0.66 ms</td><td><span class="chip no">fail</span></td></tr><tr><td class="mono">S8</td><td>Identity, whole world</td><td class="num">10 of 10</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S8b</td><td>Independence with a different past from year 0, bonds and beliefs compared</td><td class="num">6 of 6; focus differs: yes</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S8b</td><td>Capacity and leaders, strict check</td><td class="num">all checks</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S10</td><td>Promotion changes nothing but texture</td><td class="num">8 neighbourhoods, 626 people: health, illness, strain, savings moved 0</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S10</td><td>Promoted marks per over-40 at least 0.38</td><td class="num">0.41</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S10</td><td>No regression: background, promotion, capacity, deaths</td><td class="num">6 of 6 · 10 of 10 · clean · 0.99/1.12</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S10</td><td>Independence and identity</td><td class="num">5 of 5 · 10 of 10</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S11</td><td>Twin gap ratio within 0.10 (a bar that could not fail)</td><td class="num">uninformative</td><td><span class="chip no">fail</span></td></tr><tr><td class="mono">S11b</td><td>Background twin moved less than full lives: choices under 0.9</td><td class="num">0.87</td><td><span class="chip ok">pass</span></td></tr><tr><td class="mono">S11b</td><td>Background twin moved less than full lives: acts under 0.9</td><td class="num">0.93 (noise 0.86)</td><td><span class="chip no">fail</span></td></tr></tbody></table></div>
+</section>
+
+<section>
+  <span class="eyebrow">The cost</span>
+  <h2>What the background does not keep, and what is unresolved</h2>
+  <div class="col"><ul>
+    <li><b>Small acts and their evidence.</b> A promoted person arrives with friends and dislikes, but nobody has seen them do anything. The player starts from nothing about them, as with any stranger.</li>
+    <li><b>Marks from small public moments.</b> Being shown up, let down or found out leaves a mark only in focus. Promoted over-40s carry about half to two thirds of the marks.</li>
+    <li><b>Habits of mind formed by monthly life.</b> Learned if-then habits and self-story come from living in focus. Promoted people have about a quarter fewer if-thens and a fifth less self-story, and the twin test shows about an eighth of a life's change in their choices missing.</li>
+    <li><b>Strain from other people.</b> Grief, loneliness and trouble at home are not lived in the background.</li>
+    <li><b>Texture depends on when.</b> The same neighbourhood promoted in a different year has the same spine, but its friendships are drawn afresh. Nobody had seen them.</li>
+    <li><b>Backstory dates.</b> Friendships formed during catch-up enter the record dated to the promotion and marked as backstory, because the record must stay in time order.</li>
+    <li><b>Unresolved: the month's cost at 100,000.</b> It is about 25% over the same town alone, near the noise between runs.</li>
+    <li><b>Unresolved: drinking.</b> The background drinks at about 1.5 times the monthly rate. That is within the 5-point bar, but a real difference.</li>
+    <li><b>Not built: demotion.</b> A neighbourhood that leaves the story stays in focus.</li>
+    <li><b>The engine has moved on.</b> The lab is past round 23 and has reformatted its code. This branch is round 19c and will be carried onto the lab's next archive.</li>
+  </ul></div>
+</section>
+
+<section>
+  <span class="eyebrow">For the engine</span>
+  <h2>The scaling contract</h2>
+  <div class="col"><p>Rules for new engine code, so it scales and a town stays exactly as it is. The full text is in the project, at <span class="path">claude/scale/contract.md</span>.</p>
+  <ol class="rules">
+    <li><div><b>People meet through settings, never through the town.</b> Household, workplace, school class, neighbourhood, venue, group, or the person's own ties.</div></li>
+    <li><div><b>No loop over people inside a loop over people.</b> A step for one person or one event takes others from that person's settings.</div></li>
+    <li><div><b>Looking at a bond must not create one.</b></div></li>
+    <li><div><b>News travels by setting and reach.</b> For someone notable, reach should grow with fame. Fame then becomes how far news about you travels.</div></li>
+    <li><div><b>Read recent history from the end.</b></div></li>
+    <li><div><b>Membership changes are tracked</b>, so indexes stay right without rebuilding.</div></li>
+    <li><div><b>Dice belong to people.</b> A background life never depends on who else is simulated.</div></li>
+    <li><div><b>Ids must fit a city.</b> Bond keys are widened to room for 67 million people.</div></li>
+    <li><div><b>A rule about one person is written once.</b> Put it in a function that takes the person, so the background can live it too, as the yearly maturing step now is.</div></li>
+    <li><div><b>Workplaces are asked for by kind.</b> Code that wants "the bar" asks for the bar in a person's neighbourhood, never for a fixed id.</div></li>
+    <li><div><b>The town stays the town.</b> Every scaling change passes the identity test.</div></li>
+  </ol></div>
+</section>
+
+<section>
+  <span class="eyebrow">Method</span>
+  <h2>How it was measured, and what was not</h2>
+  <div class="col">
+    <ul>
+      <li><b>Machine and runs.</b> Two cores and 7 GB, Node 22 with tsx. Timed runs ran one at a time.</li>
+      <li><b>Workplaces.</b> Until S4, harnesses copied the setting's eight places in proportion to the town. Since S7, every neighbourhood has its own set and nothing is copied.</li>
+      <li><b>What a system's time means.</b> It runs from the moment the monthly tick switches to that system's random stream until the next switch. The engine is not edited to measure it.</li>
+      <li><b>The branch.</b> Round 19c plus the changes listed in <span class="path">docs/branch-changes.md</span>. The lab's own files were not touched. All work lives in the scale folder and in <span class="path">claude/scale/</span>.</li>
+      <li><b>Seeds.</b> Every step's test runs on fresh seeds, after smoke runs on throwaway ones. Each step's tree is frozen before its runs.</li>
+    </ul>
+    <p><b>Not measured:</b></p>
+    <ul>
+      <li>speed in a browser, where the game may run;</li>
+      <li>monthly worlds larger than about 2,700 people;</li>
+      <li>memory over many decades;</li>
+      <li>the in-view tier and fame-driven reach, which are designed but not built;</li>
+      <li>a human cold read of promoted lives against always-full ones.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>City scale track · base: Person Model Lab round 19c · source, harness, logs and SCALE.md in the scale archive</footer>
+</div>

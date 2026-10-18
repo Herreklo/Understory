@@ -1,0 +1,24 @@
+{
+  "name": "lab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc --noEmit && npm run -s build && node scripts/browser-check.mjs && tsx src/replay.ts && tsx src/twoworlds.ts && tsx src/grouptest.ts && tsx src/demography.ts 6 20 && tsx src/test.ts 6 5",
+    "check": "tsc --noEmit",
+    "batch": "tsx src/test.ts 40 10",
+    "board": "./board.sh",
+    "ablate": "tsx src/ablate.ts 8 10",
+    "build": "esbuild src/app.ts --bundle --format=iife --target=es2020 --minify --outfile=/tmp/lab-bundle.js && node -e \"const fs=require('fs');const b=fs.readFileSync('/tmp/lab-bundle.js','utf8');if(b.includes('</script')||/\\\\bprocess\\\\./.test(b))throw new Error('bundle not browser-safe');fs.writeFileSync('index.html',fs.readFileSync('page.html','utf8').replace('__BUNDLE__',()=>b))\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "esbuild": "^0.24.0",
+    "playwright": "^1.47.2",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
