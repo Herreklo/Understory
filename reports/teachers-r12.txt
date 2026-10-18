@@ -1,0 +1,7 @@
+20 worlds · ties at least three years old, or taken
+  pupils 250 (music 61, trade 189); teachers 195; taken on 267 ties written down, stopped under a harsh teacher 40; teachers with a legacy line (2+ took) 0
+  routes: family friend 156 · town 71 · school 22 · work 18
+  took, by the teacher's warmth (gentleness+patience)/2: warm (>0) 17% of 149 · middling 12% of 52 · harsh (<−0.5) 6% of 49
+  warm ÷ harsh take-rate, pooled, bootstrap over worlds: 2.85 [1.33–160.00]
+  young workers (20–35) ever apprenticed: 24% of 138
+  adult players (15–60) whose love came from a teacher: 4% of 157

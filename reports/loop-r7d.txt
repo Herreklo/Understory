@@ -1,0 +1,28 @@
+10 worlds · 392 adults aged 20–70, standing at year 5 (relative to their age band) under the full rule, then years 6–10 with regard deciding (full) and with neutral choice (none)
+
+Link 1: standing → what comes to them (years 6–10). Levels full / none, then the same person full − none (± 95% over people).
+  times sought out as company
+    bottom quarter  39.38 / 42.71   Δ -3.34 ±3.35
+    top quarter     23.30 / 19.51   Δ +3.79 ±1.82
+    corr(standing at 5, sought in 6–10)  full -0.14  none -0.25
+  chosen-events (hired, asked, confided in, visited…)
+    bottom quarter  0.99 / 0.81   Δ +0.18 ±0.34
+    top quarter     1.60 / 1.92   Δ -0.32 ±0.67
+    corr(standing at 5, opp in 6–10)  full 0.11  none 0.13
+
+Link 2: what comes to them → what they do and become (years 6–10).
+  strain at year 10 (0–1)
+    bottom quarter  0.18 / 0.17   Δ +0.01 ±0.03
+    top quarter     0.00 / 0.00   Δ +0.00 ±0.00
+  withdrawal threads begun
+    bottom quarter  0.52 / 0.57   Δ -0.05 ±0.14
+    top quarter     0.16 / 0.21   Δ -0.05 ±0.11
+  withdrawal and anger acts
+    bottom quarter  2.59 / 2.54   Δ +0.05 ±0.33
+    top quarter     0.48 / 0.46   Δ +0.02 ±0.14
+  warm, generous, open acts
+    bottom quarter  1.59 / 1.57   Δ +0.02 ±0.28
+    top quarter     3.33 / 3.43   Δ -0.10 ±0.46
+
+Reputation persists: corr(standing at 5, standing at 10)  full 0.95  none 0.95
+Nobody locked in: of the bottom quarter at year 5, share above the median at year 10  full 2%  none 2%

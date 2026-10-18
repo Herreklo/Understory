@@ -1,0 +1,41 @@
+
+== on · 20 worlds · ten present years
+  self-story: options it applies to 23961, cut from 0.0%
+  where the self-story favours one answer, that answer is chosen: 80.2% [79.2, 81.2] of 5839
+  circumstances, pooled      toward the answer it favours: strong 72.6% [68.8, 76.1] (n 584) · weak 39.7% [38.3, 41.1] (n 4577)
+  the hat (short of money)   toward the answer it favours: strong 69.1% [61.3, 76.0] (n 149) · weak 46.1% [43.8, 48.4] (n 1830)
+  deadline (stretched)       toward the answer it favours: strong 75.9% [57.9, 87.8] (n 29) · weak 34.9% [30.5, 39.6] (n 421)
+  temptation                 toward the answer it favours: strong 50.0% [32.6, 67.4] (n 28) · weak 29.7% [27.0, 32.6] (n 1010)
+  risk                       toward the answer it favours: strong 78.6% [52.4, 92.4] (n 14) · weak 40.3% [35.4, 45.3] (n 370)
+  offer                      toward the answer it favours: strong 78.5% [72.6, 83.5] (n 219) · weak 43.0% [33.7, 52.8] (n 100)
+  chance                     toward the answer it favours: strong 68.4% [55.5, 79.0] (n 57) · weak 47.6% [40.6, 54.7] (n 189)
+  harbourday                 toward the answer it favours: strong 71.4% [35.9, 91.8] (n 7) · weak 21.3% [16.5, 26.9] (n 235)
+  contest                    toward the answer it favours: strong 87.2% [73.3, 94.4] (n 39) · weak 0.0% [NaN, NaN] (n 0)
+  threat                     toward the answer it favours: strong 69.2% [50.0, 83.5] (n 26) · weak 0.0% [NaN, NaN] (n 0)
+  rivalry                    toward the answer it favours: strong 0.0% [0.0, 79.3] (n 1) · weak 8.0% [2.2, 25.0] (n 25)
+  grudge                     toward the answer it favours: strong 40.0% [19.8, 64.3] (n 15) · weak 48.6% [43.7, 53.5] (n 397)
+  circumstance given among the reasons: 50.3% [48.9, 51.6] of 5420 decisions
+  examples:
+    Ralph shied away from a spot at the Anchor's open night. — has been playing guitar for years; guitar getting good
+    Ken took a little from the timber account. — sincerity: flatters and manoeuvres; fairness: bends rules when nobody looks; despite: money is fine
+    Greta studied her shoes when they asked who would organise the harbour day. — the harbour day needed someone to run it; organisation: disorganised; already stretched; social boldness: shy in groups
+    Tara took on organising the harbour day when nobody else would. — the harbour day needed someone to run it; anxiety: calm under pressure; had room for it; despite organisation: disorganised; social boldness: at ease in front of people
+    Nora owned up about the medicine cupboard. — money is fine
+    Hannah did the end-of-year figures twice over until it was right, and nearly missed the deadline doing it. — the end-of-year figures landed on the harbour fleet; social boldness: at ease in front of people; had room for it
+
+== selfkept+pushes · 20 worlds · ten present years
+  self-story: options it applies to 13304, cut from 49.4%
+  where the self-story favours one answer, that answer is chosen: 74.9% [73.8, 76.0] of 5761
+  circumstances, pooled      toward the answer it favours: strong 55.7% [51.6, 59.7] (n 582) · weak 48.1% [46.7, 49.6] (n 4537)
+  the hat (short of money)   toward the answer it favours: strong 55.4% [47.8, 62.8] (n 166) · weak 50.1% [47.9, 52.4] (n 1855)
+  deadline (stretched)       toward the answer it favours: strong 54.2% [35.1, 72.1] (n 24) · weak 54.8% [49.8, 59.7] (n 387)
+  temptation                 toward the answer it favours: strong 50.0% [33.2, 66.8] (n 30) · weak 36.3% [33.4, 39.4] (n 1002)
+  risk                       toward the answer it favours: strong 16.7% [3.0, 56.4] (n 6) · weak 46.5% [40.9, 52.3] (n 288)
+  offer                      toward the answer it favours: strong 58.5% [51.0, 65.6] (n 171) · weak 67.0% [57.0, 75.7] (n 94)
+  chance                     toward the answer it favours: strong 45.2% [33.4, 57.5] (n 62) · weak 54.2% [47.1, 61.1] (n 190)
+  harbourday                 toward the answer it favours: strong 36.4% [15.2, 64.6] (n 11) · weak 33.3% [27.9, 39.3] (n 261)
+  contest                    toward the answer it favours: strong 61.2% [47.2, 73.6] (n 49) · weak 0.0% [NaN, NaN] (n 0)
+  threat                     toward the answer it favours: strong 74.4% [58.9, 85.4] (n 39) · weak 0.0% [NaN, NaN] (n 0)
+  rivalry                    toward the answer it favours: strong 0.0% [NaN, NaN] (n 0) · weak 26.7% [10.9, 52.0] (n 15)
+  grudge                     toward the answer it favours: strong 50.0% [31.4, 68.6] (n 24) · weak 64.3% [59.7, 68.6] (n 445)
+  circumstance given among the reasons: 0.0% [0.0, 0.1] of 5409 decisions

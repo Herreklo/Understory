@@ -1,0 +1,151 @@
+20 worlds · weighty events in the first seven present years, followed for three years · 16044 sources
+  with any weighty descendant   0.22 ±0.01
+  with a turn                   0.08 ±0.01
+  chain depth (weighty): median 0, 90th 1, max 7 · reaching someone outside the source: 0.05 ±0.00
+  weighty events that give a want as a reason: 6% (a want records no event it came from, so these chains stop at the want)
+
+By part of the model (at least 30 sources), sorted by turn share; DEAD END = turns < 5% and weighty descendants < 15%
+  kind                           n  weighty desc    turn  depth≥2   reach
+  situation:whether to go ahead    56          100%     95%      63%    100%
+  situation:stay                39           49%     49%      33%     28%
+  situation:offer              183           45%     45%      20%     15%
+  drama                        526           51%     34%      16%     16%
+  friendship                  2256           21%     18%       5%      0%
+  home                         316           47%     16%       8%     40%
+  life                        1010           23%      9%       8%      9%
+  situation:authorship         161           29%      9%      10%      1%
+  situation:asked              255           26%      8%       5%      0%
+  plans                        343           16%      7%       6%      6%
+  situation:danger              85           32%      7%       6%      0%
+  situation:harbourday         156           82%      7%       8%      8%
+  situation:newcomer           134           10%      6%       1%      0%
+  work                         983           16%      5%       5%      5%
+  other                        962           19%      5%       4%      7%
+  situation:request             49           61%      4%       8%      0%
+  situation:answer              74           30%      4%      15%      4%
+  wants                       1414            5%      4%       0%      2%  DEAD END
+  situation:oldwound           492           21%      4%       4%      1%
+  couples                     2312           26%      4%       2%      2%
+  situation:notice             117           63%      3%      23%      3%
+  situation:confide            134           75%      3%      15%      2%
+  situation:request-answer     268           20%      3%       2%      1%
+  threads                      470           36%      2%      22%     29%
+  situation:temptation         517           15%      2%       8%      9%
+  situation:collection         829            3%      2%       0%      0%  DEAD END
+  groups                       473           12%      2%       5%      1%  DEAD END
+  situation:provocation        292           11%      1%       3%      0%  DEAD END
+  situation:obligation         324            6%      0%       0%      0%  DEAD END
+  situation:discovery          144            0%      0%       0%      0%  DEAD END
+  persona                      438            8%      0%       1%      0%  DEAD END
+  situation:chance             137           42%      0%       0%      0%
+  situation:whether to allow the summer festival    51            0%      0%       0%      0%  DEAD END
+  situation:hometruth           32            6%      0%       3%      0%  DEAD END
+
+By kind of event (at least 30 sources), sorted by turn share; DEAD END = turns < 5% and weighty descendants < 15%
+  kind                           n  weighty desc    turn  depth≥2   reach
+  mended                       133          100%    100%       0%      0%
+  take                          82          100%    100%      45%     34%
+  bought                        34          100%    100%       0%      6%
+  apologise                    123          100%     99%      99%      0%
+  plan                          56          100%     95%      63%    100%
+  makepeace                     51          100%     67%       8%      0%
+  split                         35           91%     60%      49%     69%
+  married                       60           60%     55%       5%      0%
+  passed                        46          100%     52%      41%      4%
+  stepdown                      76           57%     50%      32%     57%
+  promoted                     116           47%     47%       0%     27%
+  death                         87           67%     44%      40%     67%
+  left                         107           36%     36%       0%     16%
+  cooled                       470           40%     24%       0%      1%
+  whisper                       38           26%     24%      18%     16%
+  plan:failed                   32           72%     22%      38%     41%
+  born                         106           15%     15%       0%      8%
+  backsong                      77           18%     14%       1%      0%
+  rescue                        35           23%     14%       0%      0%
+  harbour:ran                   86           15%     14%       2%     15%
+  caught                        58           72%     14%      33%     67%
+  hired                        217           13%     13%       0%      0%
+  blame                         54           76%     11%      28%     28%
+  welcome                       83           11%     10%       1%      0%
+  rough                         42           19%     10%       0%     10%
+  needle                        32           44%      9%       9%      0%
+  absent                       267           39%      9%       4%      0%
+  arrived                       98           76%      9%      20%     76%
+  flatter                       99           19%      9%       4%      0%
+  stepup                       128          100%      9%       9%      9%
+  rose                          70            9%      9%       0%      9%
+  confront                      76           74%      8%      28%      0%
+  straighttalk                 156           30%      8%       5%      0%
+  contempt                     146           49%      8%       6%      2%
+  thread:cost                   43           33%      7%      12%      2%
+  group:work                   101           46%      7%      20%      0%
+  pitchin                      159            9%      7%       1%      0%
+  dating                       108           10%      6%       2%      2%
+  letgo                        161           11%      6%       1%      0%
+  redo                          69            9%      6%       0%      9%
+  home                          74           49%      5%       5%     49%
+  ask                           42           76%      5%      14%      5%
+  askwhat                       98           74%      4%      27%      3%
+  credit                       124           18%      4%       4%      2%
+  refuse                        57           54%      4%       4%      2%
+  cold                          86           30%      3%      12%      2%
+  deliver                      116            7%      3%       3%      6%  DEAD END
+  friends                     1115            3%      3%       0%      0%  DEAD END
+  excuse                        60           20%      3%       3%      2%
+  resentsong                    32           38%      3%      16%      3%
+  council:no                    32            3%      3%       3%      3%  DEAD END
+  brushoff                      35           23%      3%       3%      0%
+  quietgive                    107            3%      3%       0%      0%  DEAD END
+  late                          74           27%      3%      15%     26%
+  chipin                       428            3%      3%       0%      0%  DEAD END
+  confide                      275           47%      3%      12%      3%
+  thread:pattern               164           78%      2%      52%     77%
+  rake                         331           26%      2%       5%      1%
+  give                         130            8%      2%       0%      0%  DEAD END
+  skim                         131           24%      2%      16%     21%
+  visit                        403           10%      2%       4%      0%  DEAD END
+  go                            51           10%      2%      10%     10%  DEAD END
+  token                        150            3%      1%       1%      0%  DEAD END
+  criticise                    617           43%      1%       2%      0%
+  nocredit                     124           46%      1%      10%      1%
+  soften                       296           55%      1%       2%      0%
+  froze                        203           15%      0%       2%      0%  DEAD END
+  stonewall                    240            2%      0%       1%      0%  DEAD END
+  show                         266            0%      0%       0%      0%  DEAD END
+  thread:chronic                93            0%      0%       0%      0%  DEAD END
+  keepsecret                   141            0%      0%       0%      0%  DEAD END
+  group:joined                  58            0%      0%       0%      0%  DEAD END
+  ownup                        307            0%      0%       0%      0%  DEAD END
+  humour                       412            9%      0%       1%      0%  DEAD END
+  sarcasm                       90           27%      0%       8%      1%
+  pursuit                      439            5%      0%       0%      5%  DEAD END
+  goforit                       76            0%      0%       0%      0%  DEAD END
+  defend                       226            0%      0%       0%      0%  DEAD END
+  want:achieved                402            0%      0%       0%      0%  DEAD END
+  takenup                      246            0%      0%       0%      0%  DEAD END
+  coolto                        51           10%      0%       0%      0%  DEAD END
+  group:show                   101            5%      0%       0%      5%  DEAD END
+  hearout                       94            0%      0%       0%      0%  DEAD END
+  couple:pattern               402            0%      0%       0%      0%  DEAD END
+  gaveup                        92            2%      0%       0%      2%  DEAD END
+  sulk                         343            0%      0%       0%      0%  DEAD END
+  decline                      101            0%      0%       0%      0%  DEAD END
+  work                          69            6%      0%       4%      4%  DEAD END
+  digin                         53            2%      0%       0%      0%  DEAD END
+  retired                      191            0%      0%       0%      0%  DEAD END
+  want:failed                   48            0%      0%       0%      0%  DEAD END
+  group:left                    45            0%      0%       0%      0%  DEAD END
+  nowallet                     144            0%      0%       0%      0%  DEAD END
+  couple:apart                 113            0%      0%       0%      0%  DEAD END
+  thread:through                88            0%      0%       0%      0%  DEAD END
+  pushon                        53            0%      0%       0%      0%  DEAD END
+  seize                         58          100%      0%       0%      0%
+  performed                     94            0%      0%       0%      0%  DEAD END
+  dislike                      224            0%      0%       0%      0%  DEAD END
+  sober                         51            0%      0%       0%      0%  DEAD END
+  numb                          41            2%      0%       2%      2%  DEAD END
+  doubt                         72            0%      0%       0%      0%  DEAD END
+  hangback                      38            0%      0%       0%      0%  DEAD END
+  shyaway                       79            0%      0%       0%      0%  DEAD END
+  repairjoke                    69            0%      0%       0%      0%  DEAD END
+  peace                         35            0%      0%       0%      0%  DEAD END

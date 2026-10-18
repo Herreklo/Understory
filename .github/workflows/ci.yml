@@ -35,6 +35,10 @@ jobs:
         if: hashFiles('.prettierrc.json') != ''
         run: npx prettier --check --no-error-on-unmatched-pattern "src/**/*.ts" "scale/**/*.ts"
 
+      - name: Browser for the page check
+        if: hashFiles('package.json') != ''
+        run: npx playwright install --with-deps chromium
+
       - name: Tests
         if: hashFiles('package.json') != ''
         run: npm test

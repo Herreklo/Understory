@@ -1,0 +1,3 @@
+10 paired worlds · out-r16-on − out-r16-off (points)
+  all                                calibrated    -0.2 ±2.3 · calibrated−notebook     1.2 ±1.9 · page-evid    -1.1 ±2.6 · decisions 9741/9527
+  novel · contested · known (key)    calibrated    -3.4 ±5.6 · calibrated−notebook     3.3 ±5.1 · page-evid    -3.8 ±6.3 · decisions 2037/1999

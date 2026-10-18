@@ -1,0 +1,3 @@
+10 paired worlds · out-r20-on − out-r20-off (points)
+  all                                calibrated     0.1 ±1.1 · calibrated−notebook    -1.1 ±1.3 · page-evid     0.1 ±1.9 · decisions 12139/12242
+  novel · contested · known (key)    calibrated     1.1 ±3.8 · calibrated−notebook    -1.1 ±2.7 · page-evid     2.9 ±2.8 · decisions 2686/2454

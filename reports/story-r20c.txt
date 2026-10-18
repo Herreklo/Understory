@@ -1,0 +1,20 @@
+20 worlds · adults (25+) present through ten years · on / friction+couplelearn+disengage+leaving
+  dead lives (fewer than 5 weighty events in 10 years)            0.04 ±0.01        0.06 ±0.02
+  weighty events per life, median                                  16.1 ±0.7         14.1 ±0.5
+  callbacks: share of weighty events tied to own past             0.25 ±0.01        0.26 ±0.01
+  repeats: share of weighty events of a type already had          0.23 ±0.01        0.23 ±0.01
+  distinct kinds of weighty event per life                         12.8 ±0.4         11.2 ±0.4
+  adults with a named rival                                       0.13 ±0.03        0.15 ±0.03
+  arcs per adult (obstacle and outcome in the window)             0.24 ±0.04        0.27 ±0.07
+  adults with at least one arc                                    0.16 ±0.03        0.16 ±0.03
+  from round 19d: a life is what the person did and what was done to them; an arc needs the pursuit's own obstacle
+    dead lives (did or done to)                                   0.01 ±0.01        0.02 ±0.01
+    repeats (did or done to)                                      0.33 ±0.01        0.33 ±0.01
+    arcs per adult (own obstacle)                                 0.17 ±0.03        0.19 ±0.05
+    adults with at least one arc (own obstacle)                   0.13 ±0.03        0.13 ±0.03
+  kinds of weighty event in the town                                  138 ±2            133 ±4
+  acts giving a sore spot or fear as a reason, per world           10.7 ±2.5          9.8 ±2.8
+  acts giving a rule to live by as a reason, per world             12.4 ±4.2         13.2 ±2.9
+  moments of humour, per world                                     31.4 ±3.9         33.0 ±3.0
+  on: 56 kinds of decision, entropy 4.52 bits; top: row 16% · row-answer 10% · obligation 8% · support 7% · collection 6% · request 4%
+  friction+couplelearn+disengage+leaving: 55 kinds of decision, entropy 4.78 bits; top: obligation 10% · collection 8% · support 8% · row 6% · confide 5% · request 5%

@@ -1,0 +1,11 @@
+4 worlds
+at the end of the past (one snapshot per world): 
+  wants: open want aimed at the dead (restore): 4
+      world 1873, month 360: Magnus Hovland (in, 34) → Terje Kvam (dead, 67)
+      world 1873, month 360: Aud Sæther (in, 74) → Terje Kvam (dead, 67)
+      world 1874, month 360: Rolf Tangen (in, 54) → Turid Dahl (dead, 71)
+every month of the present (480 world-months; counts are person-months): 
+  wants: open want aimed at the dead (restore): 668
+      world 1871, month 428: Mats Bakke (in, 46) → Stian Haugen (dead, 76)
+      world 1871, month 429: Mats Bakke (in, 46) → Stian Haugen (dead, 76)
+      world 1871, month 430: Mats Bakke (in, 46) → Stian Haugen (dead, 76)

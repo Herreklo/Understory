@@ -1,0 +1,146 @@
+<title>Person Model Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a register of lives. Controls and totals on top; a people index beside one person's file, which can be read from the felt side or the truth side. */
+:root {
+  --bg: #e9ebe7; --paper: #f8f8f5; --ink: #1a212b; --ink2: #58626d; --rule: rgba(26,33,43,.14);
+  --accent: #2d49a8; --warn: #b5601a; --bad: #a73434; --good: #2b7650; --chip: rgba(26,33,43,.06); --twist: rgba(45,73,168,.08);
+  --s1: #a73434; --s2: #8a7a3a; --s3: #2b7650; --s4: #2d49a8;
+  --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif; --serif: "Source Serif 4", Georgia, serif; --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #0f1418; --paper: #161d22; --ink: #e2e7e5; --ink2: #96a1a9; --rule: rgba(226,231,229,.13); --accent: #93a9ff; --warn: #e49a55; --bad: #e27474; --good: #6ec79b; --chip: rgba(226,231,229,.07); --twist: rgba(147,169,255,.1); --s1: #e27474; --s2: #cbb86a; --s3: #6ec79b; --s4: #93a9ff; color-scheme: dark; } }
+:root[data-theme="dark"] { --bg: #0f1418; --paper: #161d22; --ink: #e2e7e5; --ink2: #96a1a9; --rule: rgba(226,231,229,.13); --accent: #93a9ff; --warn: #e49a55; --bad: #e27474; --good: #6ec79b; --chip: rgba(226,231,229,.07); --twist: rgba(147,169,255,.1); --s1: #e27474; --s2: #cbb86a; --s3: #6ec79b; --s4: #93a9ff; color-scheme: dark; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { background: var(--bg); color: var(--ink); font-family: var(--display); font-size: 14px; }
+.app { max-width: 1240px; margin: 0 auto; padding-block: 22px 60px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 18px; }
+.top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 14px; }
+.brand h1 { margin: 0; font-size: clamp(28px, 5vw, 40px); font-weight: 700; letter-spacing: -.02em; line-height: 1; }
+.brand p { margin: 6px 0 0; color: var(--ink2); max-width: 66ch; line-height: 1.5; font-size: 13.5px; }
+.ctl { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.ctl label { font-family: var(--mono); font-size: 11px; color: var(--ink2); letter-spacing: .08em; text-transform: uppercase; display: flex; gap: 6px; align-items: center; }
+input, select { font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 7px 9px; }
+#seed { width: 90px; font-family: var(--mono); }
+button { font: inherit; color: inherit; cursor: pointer; }
+.btn { background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 8px 13px; font-weight: 600; }
+.btn.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.yr { font-family: var(--mono); font-size: 12px; color: var(--ink2); width: 100%; }
+.sum { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); overflow: hidden; }
+.sum div { padding: 10px 12px; border-right: 1px solid var(--rule); display: grid; gap: 2px; }
+.sum b { font-family: var(--mono); font-size: 20px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.sum span { font-size: 11.5px; color: var(--ink2); }
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--rule); }
+.tabs button { background: none; border: 0; padding: 9px 12px; font-weight: 600; color: var(--ink2); border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.tabs button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+.grid { display: grid; grid-template-columns: 290px minmax(0, 1fr); gap: 18px; align-items: start; }
+@media (max-width: 860px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.list { background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; position: sticky; top: env(safe-area-inset-top, 0px); }
+@media (max-width: 860px) { .list { position: static; } }
+.lf { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px; border-bottom: 1px solid var(--rule); align-items: center; }
+.seg { display: flex; flex-wrap: wrap; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; width: fit-content; max-width: 100%; }
+.seg button { background: none; border: 0; padding: 6px 10px; font-size: 12.5px; color: var(--ink2); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.lf select { padding: 5px 7px; font-size: 12.5px; }
+#plist { list-style: none; margin: 0; padding: 0; max-height: min(78vh, 900px); overflow-y: auto; }
+@media (max-width: 860px) { #plist { max-height: 320px; } }
+#plist button { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 8px; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--rule); padding: 9px 12px; }
+#plist button[aria-current="true"] { background: var(--chip); box-shadow: inset 3px 0 0 var(--accent); }
+#plist .n { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#plist .m { grid-column: 1 / -1; font-size: 12px; color: var(--ink2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#plist .e { font-family: var(--mono); font-size: 11px; color: var(--ink2); }
+.gone .n { color: var(--ink2); font-weight: 400; }
+.chip { font-size: 11px; padding: 1px 7px; border-radius: 999px; background: var(--chip); color: var(--ink2); white-space: nowrap; vertical-align: middle; }
+.chip.acc { color: var(--accent); }
+.detail, .chron { background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 22px clamp(16px, 3vw, 28px); display: grid; gap: 16px; min-width: 0; }
+.detail h2 { margin: 0; font-size: clamp(24px, 3.4vw, 32px); letter-spacing: -.015em; line-height: 1.1; text-wrap: balance; }
+.sub { margin: 4px 0 0; color: var(--ink2); line-height: 1.5; }
+h3 { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--ink2); margin: 0 0 8px; }
+h4 { font-size: 13px; margin: 10px 0 4px; display: flex; justify-content: space-between; }
+h4 .v { font-family: var(--mono); font-weight: 400; color: var(--ink2); }
+.pane { display: grid; gap: 20px; }
+.pane section.two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 700px) { .pane section.two { grid-template-columns: 1fr; } }
+.prose { font-family: var(--serif); font-size: 16px; line-height: 1.55; margin: 0; max-width: 68ch; }
+.prose.mono { font-family: var(--mono); font-size: 12px; line-height: 1.6; color: var(--ink2); }
+.note { color: var(--ink2); font-size: 13px; line-height: 1.5; max-width: 70ch; margin: 0; }
+.hunch { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-family: var(--serif); font-size: 15.5px; line-height: 1.45; }
+.hunch li::before { content: "— "; color: var(--ink2); }
+.plainlist { margin: 0; padding-left: 18px; line-height: 1.6; }
+.story { list-style: none; margin: 0; padding: 0; font-family: var(--serif); }
+.story li { display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: 12px; padding: 8px 0; border-top: 1px solid var(--rule); }
+.story li.twist { background: var(--twist); margin: 0 -8px; padding-inline: 8px; border-radius: 6px; }
+.story .d { font-family: var(--mono); font-size: 11.5px; color: var(--ink2); padding-top: 3px; line-height: 1.35; }
+.story .d small { font-size: 10px; }
+.story .t { font-size: 15.5px; line-height: 1.45; }
+.story .w { font-size: 13px; color: var(--ink2); line-height: 1.45; margin-top: 3px; }
+.story .w::before { content: "Why: "; font-style: italic; }
+.story li.hi .t { font-weight: 600; }
+.hind { border-top: 1px solid var(--rule); padding: 8px 0; font-family: var(--serif); }
+.hind .t { font-size: 15.5px; } .hind .w { font-size: 13.5px; color: var(--ink2); line-height: 1.45; margin-top: 3px; }
+.nm { background: none; border: 0; padding: 0; color: var(--accent); font: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent); text-underline-offset: 2px; }
+.rows { display: grid; gap: 1px; }
+.row { display: grid; grid-template-columns: minmax(0, 1.3fr) 44px minmax(0, 1fr); gap: 10px; align-items: center; padding: 3px 0; font-size: 13px; }
+.row .v { font-family: var(--mono); font-weight: 500; text-align: right; font-variant-numeric: tabular-nums; }
+.row .x { color: var(--ink2); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.b1 { color: var(--s1); } .b2 { color: var(--s2); } .b3 { color: var(--s3); } .b4 { color: var(--s4); }
+.dim { break-inside: avoid; }
+.rel { display: grid; gap: 3px; padding: 7px 0; border-top: 1px solid var(--rule); font-size: 13px; }
+.rel .h { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.rel .o { font-family: var(--mono); font-size: 11.5px; color: var(--ink2); }
+.rel .why { color: var(--ink2); font-size: 12.5px; line-height: 1.45; }
+.chron .yh { font-family: var(--mono); font-size: 13px; font-weight: 500; padding-top: 10px; }
+
+.dl { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; font-family: var(--mono); font-size: 12.5px; margin-top: 10px; color: var(--ink2); }
+.dlh { text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
+.lnk { background: none; border: 0; padding: 0; font: inherit; color: var(--acc, #1a4fb3); text-decoration: underline; cursor: pointer; }
+.src summary { cursor: pointer; }
+.src span a { margin-right: 10px; }
+</style>
+
+<div class="app">
+  <header class="top">
+    <div class="brand">
+      <h1>Person Model Lab</h1>
+      <p>A small town, simulated for thirty years before you arrive and ten more after. Nothing is scripted: situations are matched against the world and answered through each person's traits, if-then signatures and self-story. Every event says why it happened. Read each person from the <em>felt</em> side, which shows only what one witness in town could know, or the <em>truth</em> side, which shows everything. The gap between the two is the game.</p>
+    </div>
+    <form class="ctl" id="ctl">
+      <label for="seed">World <input id="seed" type="number" min="1" step="1" inputmode="numeric"></label>
+      <button class="btn" type="submit">Build</button>
+      <button class="btn" id="newtown" type="button">New world</button>
+      <button class="btn" id="refate" type="button" title="Same people and past, a different future">Same world, new fate</button>
+      <button class="btn primary" id="more" type="button">Run 10 more years</button>
+      <span class="yr" id="yr"></span>
+    </form>
+    <div class="dl" id="dl">
+      <span class="dlh">For reviewers</span>
+      <button class="lnk" id="dlworld" type="button">Download this world as text</button>
+      <button class="lnk" id="dllife" type="button">Download this person's life (felt + truth)</button>
+      <button class="lnk" id="dljson" type="button">Download world data (JSON)</button>
+      <button class="lnk" type="button" data-doc="REVIEWERS.md">Guide for reviewers</button> <button class="lnk" type="button" data-doc="STATUS.md">Status and test results</button> <button class="lnk" type="button" data-doc="BOARD.md">The scoreboard</button>
+      <details class="src"><summary>Source files</summary><span id="srclist"></span></details>
+    </div>
+  </header>
+  <section class="sum" id="sum" aria-label="Totals for the years since the witness arrived"></section>
+  <nav class="tabs" aria-label="View">
+    <button type="button" data-v="people" aria-pressed="true">People</button>
+    <button type="button" data-v="chronicle" aria-pressed="false">Chronicle</button>
+  </nav>
+  <div class="grid" id="peopleView">
+    <aside class="list" aria-label="People">
+      <div class="lf">
+        <div class="seg" id="filt"><button type="button" data-f="in" aria-pressed="true">In town</button><button type="button" data-f="all" aria-pressed="false">Everyone</button></div>
+        <select id="sort" aria-label="Sort people"><option value="eventful">Most eventful</option><option value="known">Best known</option><option value="age">Oldest</option><option value="name">Name</option></select>
+      </div>
+      <ol id="plist"></ol>
+    </aside>
+    <article class="detail" id="detail" aria-live="polite"></article>
+  </div>
+  <section class="chron" id="chron" hidden></section>
+</div>
+<script>
+__BUNDLE__
+</script>

@@ -1,0 +1,28 @@
+10 worlds · 378 adults aged 20–70, standing at year 5 (relative to their age band) under the full rule, then years 6–10 under the full model and with the consequence mechanisms off (memorable acts, company feeding strain)
+
+Link 1: standing → what comes to them (years 6–10). Levels full / compared, then the same person full − none (± 95% over worlds, since people in one town are not independent).
+  times sought out as company
+    bottom quarter  36.85 / 37.59   Δ -0.41 ±4.26 (10 worlds)
+    top quarter     25.76 / 24.30   Δ +1.62 ±3.09 (10 worlds)
+    corr(standing at 5, sought in 6–10)  full -0.13  nocons -0.15
+  chosen-events (hired, asked, confided in, visited…)
+    bottom quarter  0.78 / 0.79   Δ -0.12 ±0.54 (10 worlds)
+    top quarter     1.76 / 1.59   Δ +0.22 ±0.61 (10 worlds)
+    corr(standing at 5, opp in 6–10)  full 0.17  nocons 0.13
+
+Link 2: what comes to them → what they do and become (years 6–10).
+  strain at year 10 (0–1)
+    bottom quarter  0.19 / 0.19   Δ -0.01 ±0.06 (10 worlds)
+    top quarter     0.02 / 0.00   Δ +0.02 ±0.02 (10 worlds)
+  withdrawal threads begun
+    bottom quarter  0.65 / 0.67   Δ +0.03 ±0.26 (10 worlds)
+    top quarter     0.30 / 0.35   Δ -0.06 ±0.12 (10 worlds)
+  withdrawal and anger acts
+    bottom quarter  2.84 / 3.03   Δ -0.25 ±0.54 (10 worlds)
+    top quarter     0.57 / 0.67   Δ -0.08 ±0.27 (10 worlds)
+  warm, generous, open acts
+    bottom quarter  1.78 / 1.78   Δ +0.08 ±0.43 (10 worlds)
+    top quarter     3.48 / 3.61   Δ -0.11 ±0.70 (10 worlds)
+
+Reputation persists: corr(standing at 5, standing at 10)  full 0.94  nocons 0.94
+Nobody locked in: of the bottom quarter at year 5, share above the median at year 10  full 3%  nocons 3%

@@ -1,0 +1,12 @@
+20 worlds · adults (25+) present through ten years · on / drama
+  dead lives (fewer than 5 weighty events in 10 years)            0.17 ±0.02        0.17 ±0.02
+  weighty events per life, median                                   9.8 ±0.4          9.7 ±0.5
+  callbacks: share of weighty events tied to own past             0.24 ±0.01        0.22 ±0.01
+  repeats: share of weighty events of a type already had          0.19 ±0.01        0.19 ±0.01
+  distinct kinds of weighty event per life                          8.7 ±0.4          8.4 ±0.3
+  adults with a named rival                                       0.13 ±0.04        0.00 ±0.00
+  arcs per adult (obstacle and outcome in the window)             0.17 ±0.06        0.01 ±0.01
+  adults with at least one arc                                    0.11 ±0.04        0.01 ±0.01
+  kinds of weighty event in the town                                  112 ±4            106 ±2
+  on: 46 kinds of decision, entropy 4.55 bits; top: obligation 13% · collection 9% · support 8% · request 7% · confide 6% · oldwound 5%
+  drama: 36 kinds of decision, entropy 4.44 bits; top: obligation 13% · collection 10% · request 9% · support 8% · oldwound 5% · temptation 5%

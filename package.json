@@ -1,0 +1,25 @@
+{
+  "name": "the-lab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc --noEmit && npm run -s build && node scripts/browser-check.mjs && tsx src/tools/replay.ts && tsx src/tools/twoworlds.ts && tsx src/tools/grouptest.ts && tsx src/tools/invariants.ts && tsx src/tools/demography.ts 6 20 && tsx src/tools/test.ts 6 5",
+    "check": "tsc --noEmit",
+    "batch": "tsx src/tools/test.ts 40 10",
+    "board": "./board.sh",
+    "ablate": "tsx src/tools/ablate.ts 8 10",
+    "build": "esbuild src/app.ts --bundle --format=iife --target=es2020 --minify --outfile=/tmp/lab-bundle.js && node -e \"const fs=require('fs');const b=fs.readFileSync('/tmp/lab-bundle.js','utf8');if(b.includes('</script')||/\\\\bprocess\\\\./.test(b))throw new Error('bundle not browser-safe');fs.mkdirSync('dist',{recursive:true});fs.writeFileSync('dist/index.html',fs.readFileSync('page.html','utf8').replace('__BUNDLE__',()=>b))\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "esbuild": "^0.24.0",
+    "playwright": "^1.47.2",
+    "prettier": "^3.3.3",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

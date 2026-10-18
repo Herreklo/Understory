@@ -1,0 +1,20 @@
+20 worlds · adults (25+) present through ten years · on / love
+  dead lives (fewer than 5 weighty events in 10 years)            0.06 ±0.02        0.07 ±0.02
+  weighty events per life, median                                  14.0 ±0.4         12.6 ±0.5
+  callbacks: share of weighty events tied to own past             0.26 ±0.01        0.26 ±0.01
+  repeats: share of weighty events of a type already had          0.22 ±0.01        0.23 ±0.01
+  distinct kinds of weighty event per life                         11.4 ±0.3         10.4 ±0.4
+  adults with a named rival                                       0.14 ±0.03        0.11 ±0.03
+  arcs per adult (obstacle and outcome in the window)             0.25 ±0.04        0.21 ±0.07
+  adults with at least one arc                                    0.15 ±0.02        0.14 ±0.04
+  from round 19d: a life is what the person did and what was done to them; an arc needs the pursuit's own obstacle
+    dead lives (did or done to)                                   0.02 ±0.01        0.02 ±0.01
+    repeats (did or done to)                                      0.32 ±0.01        0.32 ±0.01
+    arcs per adult (own obstacle)                                 0.19 ±0.03        0.15 ±0.05
+    adults with at least one arc (own obstacle)                   0.13 ±0.02        0.11 ±0.03
+  kinds of weighty event in the town                                  133 ±2            120 ±3
+  acts giving a sore spot or fear as a reason, per world           11.7 ±3.1          9.3 ±2.6
+  acts giving a rule to live by as a reason, per world              9.6 ±2.9          9.6 ±3.1
+  moments of humour, per world                                     29.6 ±3.4         29.6 ±2.7
+  on: 55 kinds of decision, entropy 4.78 bits; top: obligation 10% · support 7% · collection 7% · row 6% · request 6% · confide 5%
+  love: 53 kinds of decision, entropy 4.64 bits; top: obligation 11% · support 9% · collection 9% · request 6% · confide 6% · reachout 5%

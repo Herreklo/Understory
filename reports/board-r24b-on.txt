@@ -1,0 +1,91 @@
+trained out-r24b-on/base-1501-1510.json
+trained out-r24b-on/base-1511-1520.json
+evaluated 1631-1635: 8675 decisions
+evaluated 1636-1640: 8633 decisions
+
+10 worlds · 17308 decisions · accuracy per world, mean ± 95% interval
+
+slice                       share     Base rateSituation reader    Notebook     Witness  CalibratedPage-annotation    Combined     Swapped    TendencyTrait oracle Mind-reader
+all                          100%    59.1 ±2.1   53.9 ±1.2   61.6 ±1.7   62.2 ±0.7   64.6 ±1.3   62.2 ±1.6   64.9 ±1.3   54.2 ±1.2   60.0 ±2.2   74.6 ±0.9   79.1 ±1.1 
+eventually witnessed          19%    48.4 ±2.9   47.3 ±1.9   57.6 ±2.8   59.4 ±3.1   60.2 ±2.8   55.6 ±2.2   61.8 ±2.7   46.7 ±2.9   54.1 ±3.7   71.6 ±2.2   76.7 ±1.5 
+never witnessed               81%    61.6 ±2.3   55.5 ±1.8   62.5 ±2.1   62.7 ±1.0   65.6 ±1.2   63.7 ±1.9   65.6 ±1.3   56.0 ±1.8   61.3 ±2.7   75.4 ±0.7   79.6 ±1.0 
+known                         80%    58.9 ±2.0   53.6 ±1.0   61.8 ±1.6   62.7 ±1.1   64.9 ±1.5   62.4 ±1.6   65.1 ±1.6   54.1 ±1.1   60.1 ±2.3   74.4 ±1.2   78.5 ±1.5 
+strangers                     20%    59.6 ±3.8   55.1 ±3.4   60.2 ±3.6   59.8 ±2.3   63.4 ±2.9   61.2 ±3.4   63.7 ±2.9   54.8 ±3.3   59.1 ±2.8   76.0 ±1.9   81.1 ±2.1 
+novel                         81%    61.5 ±2.1   55.5 ±1.8   61.5 ±2.1   61.8 ±1.2   65.2 ±1.3   63.1 ±1.9   65.2 ±1.3   55.8 ±1.6   60.7 ±2.7   75.5 ±1.0   79.9 ±1.2 
+novel · known                 63%    61.8 ±2.0   55.6 ±1.6   61.8 ±2.0   62.3 ±1.2   65.4 ±1.7   63.4 ±2.0   65.4 ±1.7   55.9 ±1.5   60.8 ±2.7   75.3 ±1.3   79.3 ±1.6 
+familiar                      19%    48.4 ±3.3   47.0 ±2.6   61.7 ±3.3   63.5 ±4.3   61.9 ±3.4   58.1 ±3.2   63.5 ±2.5   47.1 ±3.7   56.5 ±3.3   71.4 ±3.2   76.0 ±3.3 
+contested                     56%    48.9 ±2.7   44.1 ±1.2   53.1 ±2.5   55.7 ±1.4   57.4 ±2.0   53.9 ±1.5   58.0 ±2.0   46.1 ±1.1   51.1 ±2.7   68.0 ±1.5   71.9 ±1.6 
+contested · known             46%    48.6 ±2.6   43.9 ±1.8   53.6 ±2.5   56.5 ±1.7   57.8 ±2.1   54.3 ±1.6   58.3 ±2.2   46.0 ±1.1   51.6 ±2.8   67.7 ±2.0   71.5 ±2.0 
+novel · contested · known     32%    49.9 ±3.1   43.7 ±2.7   49.9 ±3.1   53.3 ±1.9   55.8 ±2.4   52.8 ±2.4   55.8 ±2.4   46.1 ±1.8   49.2 ±3.7   66.7 ±2.0   70.3 ±2.2 
+witnessed · contested · known   13%    50.1 ±3.1   48.1 ±2.6   60.3 ±3.3   62.4 ±3.4   62.3 ±3.1   58.3 ±2.6   63.5 ±3.4   46.9 ±3.8   56.6 ±4.2   72.9 ±2.2   75.7 ±2.3 
+round-4 situations · novel · contested · known   28%    49.2 ±3.3   42.4 ±3.6   49.2 ±3.3   52.1 ±2.2   54.9 ±2.5   51.8 ±2.6   54.9 ±2.5   45.2 ±1.9   48.0 ±4.0   65.1 ±2.2   69.2 ±2.4 
+tendency-blind · contested · known   29%    49.5 ±3.7   44.2 ±3.4   52.3 ±3.8   56.5 ±2.1   58.2 ±2.8   55.4 ±2.6   58.4 ±2.8   46.6 ±1.8   50.1 ±3.3   68.7 ±1.9   72.7 ±2.6 
+
+Paired differences per world (points), mean ± 95% interval. * = interval excludes zero.
+slice                        calibrated − noteboo  page-annot − noteboo  calibrated − page-an  combined − calibrate  calibrated − tendenc        swapped − base     calibrated − base  calibrated − witness    mind − base (room)
+all                                    3.0 ±1.3 *            0.6 ±0.9              2.4 ±1.1 *            0.3 ±0.5              4.6 ±1.7 *           -4.9 ±2.0 *            5.5 ±1.8 *            2.5 ±1.1 *           19.9 ±1.8 *
+eventually witnessed                   2.6 ±2.2 *           -2.0 ±1.7 *            4.6 ±1.8 *            1.6 ±1.4 *            6.1 ±3.2 *           -1.7 ±2.6             11.8 ±2.8 *            0.8 ±1.6             28.3 ±3.2 *
+never witnessed                        3.1 ±1.6 *            1.2 ±1.0 *            1.9 ±1.4 *           -0.0 ±0.7              4.3 ±2.1 *           -5.7 ±2.2 *            4.0 ±1.8 *            2.9 ±1.3 *           18.0 ±2.0 *
+known                                  3.0 ±1.3 *            0.6 ±1.0              2.5 ±1.1 *            0.2 ±0.6              4.7 ±1.8 *           -4.7 ±1.8 *            6.0 ±1.8 *            2.1 ±1.4 *           19.7 ±1.8 *
+strangers                              3.2 ±2.8 *            1.0 ±2.1              2.2 ±1.3 *            0.4 ±0.9              4.3 ±2.5 *           -4.9 ±4.1 *            3.7 ±3.0 *            3.6 ±2.4 *           21.5 ±4.1 *
+novel                                  3.6 ±1.8 *            1.5 ±0.8 *            2.1 ±1.3 *            0.0 ±0.0              4.5 ±2.1 *           -5.8 ±1.8 *            3.6 ±1.8 *            3.3 ±1.3 *           18.3 ±1.7 *
+novel · known                          3.6 ±2.0 *            1.6 ±1.2 *            2.0 ±1.5 *            0.0 ±0.0              4.7 ±2.2 *           -5.9 ±1.5 *            3.6 ±2.0 *            3.1 ±1.7 *           17.5 ±1.5 *
+familiar                               0.1 ±3.8             -3.7 ±3.7              3.8 ±2.0 *            1.6 ±2.6              5.4 ±4.4 *           -1.2 ±2.6             13.5 ±5.2 *           -1.6 ±2.9             27.6 ±3.9 *
+contested                              4.2 ±1.7 *            0.8 ±1.6              3.4 ±1.3 *            0.6 ±0.9              6.3 ±2.0 *           -2.8 ±2.8 *            8.5 ±2.4 *            1.7 ±1.6 *           23.0 ±2.4 *
+contested · known                      4.1 ±1.7 *            0.7 ±1.6              3.5 ±1.3 *            0.6 ±0.9              6.2 ±2.4 *           -2.6 ±2.5 *            9.1 ±2.4 *            1.3 ±1.6             22.9 ±2.5 *
+novel · contested · known              5.9 ±2.0 *            2.9 ±1.7 *            3.0 ±1.4 *            0.0 ±0.0              6.5 ±2.5 *           -3.8 ±2.6 *            5.9 ±2.0 *            2.5 ±1.6 *           20.4 ±2.5 *
+witnessed · contested · known            2.1 ±3.0             -1.9 ±2.7              4.0 ±2.6 *            1.2 ±1.9              5.7 ±3.8 *           -3.2 ±3.5             12.2 ±3.2 *           -0.0 ±2.3             25.6 ±3.6 *
+round-4 situations · novel · contested · known            5.8 ±2.0 *            2.6 ±1.9 *            3.2 ±1.6 *            0.0 ±0.0              6.9 ±2.8 *           -3.9 ±2.8 *            5.8 ±2.0 *            2.8 ±1.7 *           20.1 ±2.5 *
+tendency-blind · contested · known            5.9 ±2.7 *            3.1 ±2.5 *            2.8 ±1.5 *            0.2 ±0.7              8.1 ±2.0 *           -2.9 ±2.5 *            8.7 ±2.9 *            1.7 ±1.6 *           23.2 ±3.1 *
+
+Calibration: accuracy of the top guess by the confidence the reader gave it (all decisions, pooled). Ideal: accuracy ≈ confidence.
+  Calibrated witness     50–60%:  54% (n  3025, said 55%) · 60–70%:  65% (n  2585, said 65%) · 70–80%:  74% (n  2209, said 75%) · 80–90%:  79% (n  2365, said 85%) · 90–100%:  88% (n  2707, said 95%)
+  Page-annotation reader 50–60%:  55% (n  3280, said 56%) · 60–70%:  66% (n  2797, said 65%) · 70–80%:  74% (n  2051, said 75%) · 80–90%:  78% (n  2675, said 84%) · 90–100%:  86% (n  1719, said 95%)
+  Base rate              50–60%:  54% (n  3541, said 57%) · 60–70%:  65% (n  2816, said 65%) · 70–80%:  75% (n  1496, said 77%) · 80–90%:  81% (n  3899, said 83%) · 90–100%:   —   (n     0, said —)
+
+Scoring rules, mean per world: Brier (sum of squared errors over options; 0 perfect, 0.5 = coin flip on two) · log loss (−ln p of the chosen option)
+slice                          Base rate B / LL     Tendency B / LL   Calibrated B / LLPage-annotation B / LL     Combined B / LL  Mind-reader B / LL
+all                               0.499 / 0.791       0.518 / 0.838       0.460 / 0.744       0.482 / 0.774       0.460 / 0.745       0.277 / 0.465
+eventually witnessed              0.563 / 0.844       0.553 / 0.871       0.496 / 0.773       0.533 / 0.816       0.490 / 0.771       0.315 / 0.510
+never witnessed                   0.484 / 0.779       0.511 / 0.832       0.452 / 0.738       0.471 / 0.764       0.453 / 0.739       0.268 / 0.453
+known                             0.501 / 0.795       0.522 / 0.849       0.459 / 0.746       0.483 / 0.778       0.459 / 0.747       0.282 / 0.473
+strangers                         0.498 / 0.777       0.506 / 0.794       0.467 / 0.736       0.482 / 0.757       0.467 / 0.737       0.254 / 0.427
+novel                             0.481 / 0.761       0.504 / 0.806       0.454 / 0.730       0.471 / 0.753       0.454 / 0.730       0.264 / 0.443
+novel · known                     0.479 / 0.760       0.507 / 0.814       0.452 / 0.730       0.470 / 0.754       0.452 / 0.730       0.268 / 0.449
+familiar                          0.581 / 0.921       0.581 / 0.973       0.489 / 0.805       0.533 / 0.864       0.488 / 0.809       0.329 / 0.552
+contested                         0.586 / 0.959       0.609 / 1.021       0.536 / 0.894       0.560 / 0.928       0.535 / 0.894       0.365 / 0.623
+contested · known                 0.587 / 0.961       0.613 / 1.032       0.533 / 0.892       0.559 / 0.928       0.532 / 0.891       0.368 / 0.628
+novel · contested · known         0.581 / 0.957       0.623 / 1.038       0.549 / 0.915       0.565 / 0.940       0.549 / 0.915       0.377 / 0.643
+witnessed · contested · known       0.562 / 0.871       0.557 / 0.917       0.485 / 0.782       0.522 / 0.826       0.482 / 0.784       0.326 / 0.538
+round-4 situations · novel · contested · known       0.593 / 0.990       0.641 / 1.083       0.561 / 0.947       0.578 / 0.974       0.561 / 0.947       0.389 / 0.670
+tendency-blind · contested · known       0.575 / 0.928       0.568 / 0.919       0.528 / 0.869       0.548 / 0.897       0.529 / 0.872       0.357 / 0.604
+
+Novel decisions about known people, by kind of situation (pooled):
+situation                    n   base    sit    cal   mind
+row                       1615    42%    42%    47%    55%
+obligation                1037    82%    82%    83%    93%
+row-answer                 934    37%    20%    42%    63%
+support                    923    80%    71%    81%    88%
+request                    664    71%    71%    61%    83%
+reachout                   625    84%    84%    84%    94%
+a want                     525    65%    65%    71%    83%
+confide                    422    73%    35%    77%    94%
+provocation                417    43%    41%    57%    76%
+loss                       366    58%    58%    63%    89%
+temptation                 353    69%    65%    71%    82%
+whether to go on           291    85%    85%    85%    88%
+collection                 289    54%    51%    58%    79%
+oldwound                   254    52%    51%    63%    76%
+request-answer             253    79%    21%    83%    92%
+backing                    202    72%    29%    73%    95%
+grudge                     201    32%    31%    36%    71%
+asked                      129    53%    55%    73%    88%
+
+Examples, novel and contested, known person. Character read right where circumstance said otherwise (697 of 5459):
+  2026 · Grace Shaw · support · options warmth/lapse → chose lapse; base said warmth, situation said warmth
+  2031 · Oliver Eden · provocation · options anger/humility/pride → chose pride; base said humility, situation said humility
+  2033 · Eric Lane · provocation · options anger/humility/pride → chose pride; base said humility, situation said humility
+Missed, though the truth would have called it (1198):
+  2026 · Sam Scott · row · options anger/humility/withdrawal → chose anger; reader said withdrawal
+  2035 · Harry Hughes · row · options anger/humility/withdrawal → chose withdrawal; reader said anger
+  2031 · Beth Lane · temptation · options dishonesty/honesty → chose dishonesty; reader said honesty

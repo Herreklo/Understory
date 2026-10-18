@@ -1,0 +1,10 @@
+20 worlds · adults at the end of ten present years · on / off (OFF=friendcap)
+  on: close friends in town per adult: median 3, top tenth 13, most 24, none 21%
+      made per adult a year 0.26 ±0.03 · ended per adult a year 0.20 ±0.04 · of year-0 friendships with both in town at 10, ended 3% of 1906
+      friendship lines 1710; reasons: Fridays at … 29% · liveliness: energetic and upbeat 28% · they want the same things from life 25% · gentleness: mild in judging others 21% · cards on Tuesdays at … 21% · they work together at … 17%
+      strain, least-contacted tenth 0.12 ±0.03 · births ÷ deaths 1.19 ±0.34 · population 80.2 ±4.1
+  off: close friends in town per adult: median 3, top tenth 12, most 27, none 18%
+      made per adult a year 0.22 ±0.03 · ended per adult a year 0.16 ±0.05 · of year-0 friendships with both in town at 10, ended 1% of 1863
+      friendship lines 1398; reasons: they want the same things from life 89% · liveliness: energetic and upbeat 31% · they work together at … 23% · gentleness: mild in judging others 21% · both live for … 8% · made me welcome (year) 2%
+      strain, least-contacted tenth 0.11 ±0.04 · births ÷ deaths 1.20 ±0.41 · population 78.5 ±3.7
+  paired, on − off: strain of the least-contacted tenth 0.01 ±0.04

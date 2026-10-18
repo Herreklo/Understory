@@ -1,0 +1,210 @@
+{
+ "on/11": {
+  "events": "27dc27e29df4",
+  "people": "70c28bc6234a",
+  "bonds": "785852712b8f",
+  "beliefs": "f8ad8972402b",
+  "rest": "c33dc1f706db",
+  "n": 8591
+ },
+ "on/12": {
+  "events": "084a71f39d8a",
+  "people": "1c28ff102ef9",
+  "bonds": "333dbee0a303",
+  "beliefs": "2fe23bae4eb5",
+  "rest": "45eb3350983e",
+  "n": 7770
+ },
+ "on/13": {
+  "events": "c37a3c97ad31",
+  "people": "dbc58b6d3189",
+  "bonds": "59feaae0abd1",
+  "beliefs": "297babffb9a2",
+  "rest": "499532116a2f",
+  "n": 10493
+ },
+ "lovefix/11": {
+  "events": "94d022b25586",
+  "people": "4b23297fb35e",
+  "bonds": "f339e2150702",
+  "beliefs": "6f660a767c18",
+  "rest": "b792c1b509fc",
+  "n": 8686
+ },
+ "manner/11": {
+  "events": "70b8a4b793a8",
+  "people": "92738077bb24",
+  "bonds": "d0848b409963",
+  "beliefs": "1a5d5a661be2",
+  "rest": "9d2a21d680a2",
+  "n": 7613
+ },
+ "mannernoise/11": {
+  "events": "80ecd91e7396",
+  "people": "2e433702292d",
+  "bonds": "1b3b957f9519",
+  "beliefs": "efba37839d55",
+  "rest": "70ad6a4ce4ee",
+  "n": 8418
+ },
+ "marks/11": {
+  "events": "223ad3094cb8",
+  "people": "8d6fc20a5c0a",
+  "bonds": "b43d771510c4",
+  "beliefs": "73a88d2dac25",
+  "rest": "0477e06b5442",
+  "n": 8581
+ },
+ "moments/11": {
+  "events": "1fa44104b9ab",
+  "people": "69e75533eb8c",
+  "bonds": "f65f05801d49",
+  "beliefs": "6dd82b9f8a79",
+  "rest": "6f8bd754e247",
+  "n": 8349
+ },
+ "nocite/11": {
+  "events": "7f47ab3299b0",
+  "people": "347bda57cf5e",
+  "bonds": "785852712b8f",
+  "beliefs": "f8ad8972402b",
+  "rest": "c33dc1f706db",
+  "n": 8591
+ },
+ "oldwords/11": {
+  "events": "ab63d0540682",
+  "people": "70c28bc6234a",
+  "bonds": "4f8616214692",
+  "beliefs": "f8ad8972402b",
+  "rest": "c33dc1f706db",
+  "n": 8591
+ },
+ "onepool/11": {
+  "events": "50ef25a04803",
+  "people": "426a949b35f6",
+  "bonds": "eb35aec751f6",
+  "beliefs": "7eab1d1f6eec",
+  "rest": "4eed779ad6bd",
+  "n": 8802
+ },
+ "persona/11": {
+  "events": "441a779cef3e",
+  "people": "a79e41710cb4",
+  "bonds": "e5fee1fe781a",
+  "beliefs": "3be4885ced97",
+  "rest": "9ba2b62f89ee",
+  "n": 8846
+ },
+ "plasticity/11": {
+  "events": "c545db234431",
+  "people": "98255cc6ce18",
+  "bonds": "f13b33854c1c",
+  "beliefs": "f783d5778a02",
+  "rest": "cfe86e155114",
+  "n": 8054
+ },
+ "projects/11": {
+  "events": "0f031b20a228",
+  "people": "ec2e37181d1c",
+  "bonds": "4e3af7ac9965",
+  "beliefs": "1c14817e0a09",
+  "rest": "1e1516b87801",
+  "n": 7233
+ },
+ "pursuits/11": {
+  "events": "2f6ca1316602",
+  "people": "463a55c7206e",
+  "bonds": "8403f411d509",
+  "beliefs": "2d8e0efbaa0d",
+  "rest": "4b9f206a7ce7",
+  "n": 7641
+ },
+ "recent/11": {
+  "events": "634fe96d84d9",
+  "people": "351add4c92e2",
+  "bonds": "8b74ff3c3249",
+  "beliefs": "ace06f99b44b",
+  "rest": "6332dbfc7ad1",
+  "n": 7950
+ },
+ "regard/11": {
+  "events": "93cdf02cef11",
+  "people": "b294a8884e17",
+  "bonds": "e027f1b32534",
+  "beliefs": "b9660ca18cb5",
+  "rest": "846106266e0c",
+  "n": 8150
+ },
+ "regard:beliefs/11": {
+  "events": "3ed5aade1a75",
+  "people": "37ec450308df",
+  "bonds": "bfae91da616d",
+  "beliefs": "62b955ec0769",
+  "rest": "3f2061da8042",
+  "n": 7903
+ },
+ "relbar/11": {
+  "events": "0d87310e31e6",
+  "people": "70c1c799b70e",
+  "bonds": "e45333f3a264",
+  "beliefs": "c829094756e4",
+  "rest": "b3196210aa64",
+  "n": 8441
+ },
+ "respond/11": {
+  "events": "f8dbd68df186",
+  "people": "825765841985",
+  "bonds": "9eab3318f9ef",
+  "beliefs": "bb45d7270a60",
+  "rest": "565e7f7b12d7",
+  "n": 8708
+ },
+ "school/11": {
+  "events": "bf9f85649402",
+  "people": "f3835f221c14",
+  "bonds": "62e76a7878e6",
+  "beliefs": "1df4997227bc",
+  "rest": "09b61d04f42c",
+  "n": 8411
+ },
+ "selfstory/11": {
+  "events": "b621526d45ba",
+  "people": "338489091faa",
+  "bonds": "f6d3129045ee",
+  "beliefs": "8549c681e9fb",
+  "rest": "cbad4aa76995",
+  "n": 8392
+ },
+ "shownews/11": {
+  "events": "91b8b79a272d",
+  "people": "fea6ae277eba",
+  "bonds": "beb4f0fbbbdc",
+  "beliefs": "29895890acd6",
+  "rest": "43e2195493a0",
+  "n": 8309
+ },
+ "teacher/11": {
+  "events": "27dc27e29df4",
+  "people": "70c28bc6234a",
+  "bonds": "785852712b8f",
+  "beliefs": "f8ad8972402b",
+  "rest": "c33dc1f706db",
+  "n": 8591
+ },
+ "threads/11": {
+  "events": "f2d3c9ef7ece",
+  "people": "ae48df203267",
+  "bonds": "61f548b76c72",
+  "beliefs": "caf9642e52ce",
+  "rest": "9d29c09421cd",
+  "n": 8847
+ },
+ "townquirks/11": {
+  "events": "133a9fbde7d0",
+  "people": "ef4f393774ad",
+  "bonds": "785852712b8f",
+  "beliefs": "f8ad8972402b",
+  "rest": "c33dc1f706db",
+  "n": 8591
+ }
+}

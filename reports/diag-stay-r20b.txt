@@ -1,0 +1,9 @@
+married partners' liking for each other, sampled yearly: median 0.89, 25th 0.67, 10th 0.52; below 0.3: 2%
+all decisions                            n   77 · ended 38%
+only: liking under 0.3                   n   18 · ended 33%
+drifted apart (> 0.5)                    n   45 · ended 40%
+shown contempt in the last year          n   14 · ended 36%
+children at home                         n   46 · ended 30%
+no children at home                      n   31 · ended 48%
+liking 0.15 or more                      n   64 · ended 36%
+liking below zero                        n    8 · ended 25%

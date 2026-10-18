@@ -1,0 +1,54 @@
+== what a choice changes, three years on · 20 worlds · 3168 choices tested
+
+every eligible choice (weighted)   3168  any: flip  52.5 placebo  47.1 effect   5.3 [  0.8,  9.4]  major: flip  29.3 placebo  26.7 effect   2.6 [ -1.0,  6.1]
+
+by what changed (weighted; share of lives):
+  status   flip   7.6 placebo   7.0 effect   0.7
+  job      flip   4.5 placebo   3.5 effect   1.0
+  partner  flip  10.8 placebo   9.4 effect   1.5
+  home     flip  13.2 placebo  12.1 effect   1.1
+  friends  flip  11.1 placebo   9.3 effect   1.9
+  money    flip   8.7 placebo   7.1 effect   1.6
+  wants    flip  24.2 placebo  20.9 effect   3.3
+
+by kind of choice (kinds with at least 20 tested):
+offer                                99  any: flip  83.8 placebo  37.4 effect  46.5 [ 34.7, 57.0]  major: flip  82.8 placebo  27.3 effect  55.6 [ 40.4, 69.0]
+thinking of home                     50  any: flip  84.0 placebo  38.0 effect  46.0 [ 28.6, 62.5]  major: flip  84.0 placebo  32.0 effect  52.0 [ 34.1, 69.5]
+stay                                 32  any: flip  84.4 placebo  46.9 effect  37.5 [ 14.7, 58.1]  major: flip  81.3 placebo  40.6 effect  40.6 [ 16.7, 60.9]
+criticised                           96  any: flip  59.4 placebo  31.3 effect  28.1 [ 19.0, 36.5]  major: flip  36.5 placebo  14.6 effect  21.9 [ 13.0, 31.0]
+turneddown                           20  any: flip  60.0 placebo  30.0 effect  30.0 [  0.0, 52.9]  major: flip  25.0 placebo   5.0 effect  20.0 [  4.8, 38.1]
+contest                              45  any: flip  77.8 placebo  53.3 effect  24.4 [  2.4, 43.5]  major: flip  57.8 placebo  40.0 effect  17.8 [  0.0, 35.9]
+hometruth                            20  any: flip  75.0 placebo  45.0 effect  30.0 [ -5.9, 52.9]  major: flip  45.0 placebo  30.0 effect  15.0 [-15.4, 41.7]
+go ahead with a plan                 21  any: flip  57.1 placebo  33.3 effect  23.8 [ -4.0, 50.0]  major: flip  14.3 placebo   0.0 effect  14.3 [  0.0, 33.3]
+harbourday                           64  any: flip  70.3 placebo  51.6 effect  18.8 [  4.1, 34.8]  major: flip  42.2 placebo  28.1 effect  14.1 [  0.0, 28.6]
+request-answer                       76  any: flip  53.9 placebo  46.1 effect   7.9 [ -7.1, 23.4]  major: flip  27.6 placebo  14.5 effect  13.2 [  4.1, 23.2]
+go for a post                        93  any: flip  66.7 placebo  48.4 effect  18.3 [  7.1, 29.7]  major: flip  39.8 placebo  28.0 effect  11.8 [ -1.1, 25.3]
+chance                               89  any: flip  42.7 placebo  29.2 effect  13.5 [  1.1, 26.1]  major: flip  23.6 placebo  12.4 effect  11.2 [  1.1, 22.0]
+judgement                            41  any: flip  58.5 placebo  36.6 effect  22.0 [  2.4, 38.3]  major: flip  26.8 placebo  17.1 effect   9.8 [ -6.9, 23.7]
+risk                                 84  any: flip  47.6 placebo  33.3 effect  14.3 [  0.0, 27.6]  major: flip  33.3 placebo  23.8 effect   9.5 [ -1.2, 19.8]
+loss                                 95  any: flip  56.8 placebo  52.6 effect   4.2 [ -6.0, 14.0]  major: flip  37.9 placebo  28.4 effect   9.5 [  0.0, 19.1]
+deadline                             97  any: flip  51.5 placebo  41.2 effect  10.3 [  0.0, 22.0]  major: flip  28.9 placebo  19.6 effect   9.3 [  0.0, 18.7]
+backing                              44  any: flip  47.7 placebo  45.5 effect   2.3 [-15.4, 18.2]  major: flip  29.5 placebo  20.5 effect   9.1 [ -5.4, 21.2]
+confide                              91  any: flip  57.1 placebo  44.0 effect  13.2 [  3.5, 23.4]  major: flip  35.2 placebo  26.4 effect   8.8 [  1.1, 16.5]
+strain                               92  any: flip  48.9 placebo  37.0 effect  12.0 [  2.1, 23.0]  major: flip  21.7 placebo  13.0 effect   8.7 [  0.0, 18.9]
+keep at a want                       99  any: flip  82.8 placebo  49.5 effect  33.3 [ 20.0, 45.9]  major: flip  21.2 placebo  16.2 effect   5.1 [ -2.0, 13.0]
+oldwound                            100  any: flip  62.0 placebo  45.0 effect  17.0 [  8.0, 27.0]  major: flip  29.0 placebo  24.0 effect   5.0 [ -3.0, 12.0]
+collection                          100  any: flip  37.0 placebo  32.0 effect   5.0 [ -5.0, 16.0]  major: flip  17.0 placebo  14.0 effect   3.0 [ -3.0, 10.0]
+temptation                          100  any: flip  53.0 placebo  55.0 effect  -2.0 [ -9.0,  7.0]  major: flip  36.0 placebo  33.0 effect   3.0 [ -7.0, 13.0]
+go after a want                     100  any: flip  70.0 placebo  50.0 effect  20.0 [  9.0, 30.0]  major: flip  27.0 placebo  25.0 effect   2.0 [ -9.0, 11.0]
+request                             100  any: flip  52.0 placebo  52.0 effect   0.0 [-11.0, 10.0]  major: flip  28.0 placebo  26.0 effect   2.0 [ -6.0, 12.0]
+support                             101  any: flip  49.5 placebo  51.5 effect  -2.0 [-13.9, 10.8]  major: flip  28.7 placebo  27.7 effect   1.0 [-10.0, 11.7]
+authorship                           88  any: flip  38.6 placebo  35.2 effect   3.4 [ -9.6, 15.1]  major: flip  23.9 placebo  25.0 effect  -1.1 [-11.5,  7.6]
+provocation                         100  any: flip  46.0 placebo  55.0 effect  -9.0 [-21.0,  1.0]  major: flip  29.0 placebo  31.0 effect  -2.0 [-11.0,  8.0]
+grudge                               94  any: flip  54.3 placebo  45.7 effect   8.5 [ -4.3, 21.3]  major: flip  24.5 placebo  26.6 effect  -2.1 [ -9.6,  6.0]
+row                                 216  any: flip  47.7 placebo  50.0 effect  -2.3 [ -9.8,  4.8]  major: flip  28.7 placebo  31.0 effect  -2.3 [ -9.9,  5.4]
+danger                               42  any: flip  54.8 placebo  40.5 effect  14.3 [ -2.4, 27.3]  major: flip  21.4 placebo  23.8 effect  -2.4 [-18.2, 13.3]
+newcomer                             82  any: flip  35.4 placebo  52.4 effect -17.1 [-28.8, -2.5]  major: flip  19.5 placebo  22.0 effect  -2.4 [-12.6,  9.3]
+answer                               40  any: flip  62.5 placebo  60.0 effect   2.5 [-14.6, 16.3]  major: flip  30.0 placebo  32.5 effect  -2.5 [-19.6, 14.6]
+row-answer                          110  any: flip  47.3 placebo  44.5 effect   2.7 [ -8.2, 14.4]  major: flip  23.6 placebo  26.4 effect  -2.7 [-10.4,  5.8]
+reachout                             72  any: flip  56.9 placebo  54.2 effect   2.8 [-13.4, 17.5]  major: flip   9.7 placebo  12.5 effect  -2.8 [-12.2,  7.2]
+pitch                                29  any: flip  24.1 placebo  20.7 effect   3.4 [-12.1, 20.0]  major: flip  10.3 placebo  13.8 effect  -3.4 [-16.7,  8.3]
+obligation                          100  any: flip  50.0 placebo  53.0 effect  -3.0 [-11.0,  5.0]  major: flip  26.0 placebo  30.0 effect  -4.0 [ -9.0,  1.0]
+notice                               57  any: flip  45.6 placebo  42.1 effect   3.5 [ -8.8, 16.3]  major: flip  24.6 placebo  29.8 effect  -5.3 [-14.0,  4.5]
+asked                                81  any: flip  38.3 placebo  54.3 effect -16.0 [-33.8, -1.2]  major: flip  18.5 placebo  32.1 effect -13.6 [-25.3, -3.6]
+discovery                            28  any: flip  42.9 placebo  57.1 effect -14.3 [-31.0,  4.0]  major: flip  10.7 placebo  25.0 effect -14.3 [-26.1,  0.0]

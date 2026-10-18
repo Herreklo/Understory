@@ -1,0 +1,16 @@
+
+== on · 20 worlds · ten present years (per world)
+  pursuits started 38.7 · met an obstacle 3.5 · changed course (another way or aimed lower) 2.1 (59% of those that met one)
+  got there 18.9: restore 9.2 · attain 3.6 · acquire 2.5 · belong 1.6 · prove 1.6 · escape 0.5
+  at an obstacle: giveup 6.4 · push 3.6 · other 1.8 · lower 0.6
+  ways: restore:one way 17.1 · attain:one way 5.6 · acquire:extra 2.5 · prove:practise 2.2 · belong:ask 2.0 · attain:work 1.9 · prove:stage 1.4 · attain:ask 1.3 · escape:extra 1.3 · acquire:save 1.2 · acquire:family 0.5 · attain:elsewhere 0.5 · belong:show 0.4 · attain:wait 0.3 · attain:around 0.3 · escape:save 0.3 · escape:family 0.1
+  departures 4.6 · adults who never pursued anything 61.9%
+  events: moved 0.5 · backed 1.3 · notyet 0.1 · helped 0.6 · refusedhelp 0.1 · broughtalong 1.7 · putoff 0.3 · otherway 2.4 · aimlower 0.6 · gaveup 6.7 · pushon 3.6 · performed 7.5 · hired 14.6 · promoted 7.8
+
+== steer · 20 worlds · ten present years (per world)
+  pursuits started 37.0 · met an obstacle 0.0 · changed course (another way or aimed lower) 0.0 (–% of those that met one)
+  got there 16.4: restore 8.3 · attain 3.3 · acquire 1.8 · belong 1.5 · escape 0.8 · prove 0.8
+  at an obstacle: giveup 6.3 · push 3.4
+  ways: restore:one way 17.4 · attain:one way 8.7 · prove:one way 3.3 · acquire:one way 3.0 · belong:one way 2.5 · escape:one way 2.0
+  departures 4.7 · adults who never pursued anything 61.7%
+  events: moved 0.0 · backed 0.0 · notyet 0.0 · helped 0.0 · refusedhelp 0.0 · broughtalong 0.0 · putoff 0.0 · otherway 0.0 · aimlower 0.0 · gaveup 6.5 · pushon 3.4 · performed 7.2 · hired 13.1 · promoted 6.5

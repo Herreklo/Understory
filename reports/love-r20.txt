@@ -1,0 +1,42 @@
+40 worlds · ten present years · on / off / nocontempt
+
+== on
+  attachment at the end (adults 2734): secure 61%, anxious 18%, avoidant 18%, fearful 3%
+  corr: attachment anxiety–anxiety facet 0.43 ±0.03 · avoidance–sociability -0.21 ±0.04 · anxiety–avoidance -0.14 ±0.04 · anxiety–age -0.04 ±0.04
+  parents parted before 16: 185 adults; anxiety gap over the rest 0.44 ±0.22 (36 worlds with two or more)
+  divorce: 27 in 6639 married couple-years = 0.41% a year [0.26, 0.57] · dating splits 43 in 1330 = 3.2% a year
+  after contempt: 11 divorces in 365 married years; without: 16 in 6274; ratio 11.81 [6.06, 22.44]
+  rows per couple-year (couples together a year or more, 1073): median 0.00, top tenth 1.00, none 54%
+  starts: soften 36%, criticise 33%, letslide 25%, contempt 7% · answers: defend 29%, stonewall 29%, hearout 14%, criticise 13%, repairjoke 12%, contempt 3% · in company 8%
+  repairs that landed: when liked (> 0.4) 227/241, when not (< 0.1) 4/12
+  care: 0.37 acts per couple-year, 34.3 lines per world · patterns per world 9.3
+    "@ had stopped bringing things up with @.…" 60 · "Years on, nothing had changed: @ had sto…" 39 · "Somewhere along the way @ had stopped re…" 35 · "Years on, nothing had changed: every row…" 33 · "@ and @ could have a row and be laughing…" 24 · "Years on, nothing had changed: @ and @ c…" 22 · "Every row between @ and @ went the same …" 22 · "Years on, nothing had changed: @ kept tr…" 20 · "Years on, nothing had changed: somewhere…" 15 · "Years on, nothing had changed: their row…" 15 · "Their rows went the same way every time …" 13 · "Years on, nothing had changed: @ and @ h…" 13 · "@ and @ had stopped arguing about anythi…" 12 · "However gently @ put things, @ heard an …" 11 · "@ kept trying to talk to @, gently, and …" 11 · "Years on, nothing had changed: however g…" 10 · "@ flared up at @ often, and @ always fou…" 9 · "Years on, nothing had changed: @ flared …" 5 · "@ would bring something up gently and @ …" 2 · "Years on, nothing had changed: @ would b…" 2
+  single at 25+: 34.5% · births per world 9.0 ±1.1 · population 84.5 ±2.8
+
+== off
+  attachment at the end (adults 2781): secure 63%, anxious 17%, avoidant 18%, fearful 3%
+  corr: attachment anxiety–anxiety facet 0.44 ±0.04 · avoidance–sociability -0.22 ±0.03 · anxiety–avoidance -0.13 ±0.04 · anxiety–age -0.02 ±0.04
+  parents parted before 16: 106 adults; anxiety gap over the rest 0.31 ±0.24 (28 worlds with two or more)
+  divorce: 18 in 7233 married couple-years = 0.25% a year [0.13, 0.41] · dating splits 21 in 1491 = 1.4% a year
+  after contempt: 0 divorces in 0 married years; without: 18 in 7233; ratio NaN [undefined, undefined]
+  rows per couple-year (couples together a year or more, 1134): median 0.00, top tenth 0.00, none 100%
+  starts:  · answers:  · in company 0%
+  repairs that landed: when liked (> 0.4) 0/0, when not (< 0.1) 0/0
+  care: 0.00 acts per couple-year, 0.0 lines per world · patterns per world 0.0
+  single at 25+: 31.4% · births per world 9.5 ±1.0 · population 86.8 ±2.2
+
+== nocontempt
+  attachment at the end (adults 2682): secure 61%, anxious 18%, avoidant 18%, fearful 3%
+  corr: attachment anxiety–anxiety facet 0.44 ±0.03 · avoidance–sociability -0.22 ±0.04 · anxiety–avoidance -0.15 ±0.04 · anxiety–age -0.04 ±0.04
+  parents parted before 16: 161 adults; anxiety gap over the rest 0.31 ±0.17 (32 worlds with two or more)
+  divorce: 20 in 6744 married couple-years = 0.30% a year [0.18, 0.43] · dating splits 36 in 1403 = 2.6% a year
+  after contempt: 0 divorces in 0 married years; without: 20 in 6744; ratio NaN [undefined, undefined]
+  rows per couple-year (couples together a year or more, 1077): median 0.00, top tenth 1.03, none 55%
+  starts: criticise 44%, soften 32%, letslide 24% · answers: defend 32%, stonewall 27%, criticise 17%, hearout 13%, repairjoke 10% · in company 7%
+  repairs that landed: when liked (> 0.4) 229/242, when not (< 0.1) 2/2
+  care: 0.37 acts per couple-year, 34.7 lines per world · patterns per world 9.4
+    "Years on, nothing had changed: @ had sto…" 69 · "Years on, nothing had changed: every row…" 53 · "@ had stopped bringing things up with @.…" 47 · "Every row between @ and @ went the same …" 29 · "@ and @ could have a row and be laughing…" 26 · "Years on, nothing had changed: their row…" 19 · "Their rows went the same way every time …" 18 · "Years on, nothing had changed: @ and @ c…" 18 · "Years on, nothing had changed: @ and @ h…" 14 · "@ and @ had stopped arguing about anythi…" 14 · "@ kept trying to talk to @, gently, and …" 13 · "Years on, nothing had changed: @ kept tr…" 12 · "@ flared up at @ often, and @ always fou…" 11 · "However gently @ put things, @ heard an …" 9 · "Years on, nothing had changed: however g…" 9 · "Years on, nothing had changed: @ would b…" 7 · "Years on, nothing had changed: @ flared …" 6 · "@ would bring something up gently and @ …" 3
+  single at 25+: 33.5% · births per world 8.0 ±0.9 · population 83.1 ±2.9
+
+paired on − off: single at 25+ 3.1 ±2.7 points · births -0.6 ±1.3
+nocontempt ÷ on divorce rate: 0.73 [0.43, 1.19]

@@ -1,0 +1,8 @@
+5157 adults (20+)
+1. quirks identical to another adult's (among 4714 with quirks): 18.03%
+   full surface identical to another's: 0.04% · nothing at all: 0.1% · quirks per adult: 1.62 · distinct quirk texts 3887 of 8340
+2. nearest neighbours in traits share a surface feature 65.2%, random pairs 40.4% (ratio 1.61)
+3. warm–sociability 0.55 · cutting–gentleness -0.50 · self-mocking–anxiety 0.42 · coping–anxiety -0.36 · quirks–unconventionality 0.71
+4. adults 40+ with a mark from their own history: 46.9% · nearest neighbours whose marks differ: 98.2% of 1288
+   marks: f:illness 760 · f:loss 523 · s:shownup 497 · f:danger 424 · r:kind 303 · f:left 288 · r:rooted 256 · s:letdown 212 · s:overlooked 76 · s:betrayed 47 · r:self-reliant 35 · f:workless 28 · r:honest 27 · f:money 3
+   most common quirk patterns: "has forgotten what {person} did in {year}, and means it" 233 · "has the {chore} on a rota pinned to {door}, and {person} is on it" 191 · "labels the jars in {room}, including the one that says "labels"" 190 · "keeps a notebook of every {count} since {year}" 166 · "has been untangling {thing} on Sunday afternoons since {year}" 144

@@ -1,0 +1,15 @@
+20 worlds · adults (25+) present through ten years · on / persona
+  dead lives (fewer than 5 weighty events in 10 years)            0.13 ±0.02        0.15 ±0.03
+  weighty events per life, median                                  11.2 ±0.7         10.7 ±0.6
+  callbacks: share of weighty events tied to own past             0.25 ±0.01        0.25 ±0.01
+  repeats: share of weighty events of a type already had          0.21 ±0.01        0.19 ±0.01
+  distinct kinds of weighty event per life                          9.6 ±0.4          9.4 ±0.4
+  adults with a named rival                                       0.16 ±0.03        0.13 ±0.03
+  arcs per adult (obstacle and outcome in the window)             0.24 ±0.06        0.25 ±0.06
+  adults with at least one arc                                    0.15 ±0.03        0.15 ±0.03
+  kinds of weighty event in the town                                  123 ±4            121 ±2
+  acts giving a sore spot or fear as a reason, per world           10.3 ±2.8          0.0 ±0.0
+  acts giving a rule to live by as a reason, per world             17.3 ±3.7          0.0 ±0.0
+  moments of humour, per world                                     33.1 ±4.2          0.0 ±0.0
+  on: 53 kinds of decision, entropy 4.68 bits; top: obligation 11% · collection 9% · support 8% · request 6% · strain 6% · provocation 6%
+  persona: 53 kinds of decision, entropy 4.66 bits; top: obligation 12% · collection 9% · support 8% · confide 6% · request 6% · strain 6%

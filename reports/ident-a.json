@@ -1,0 +1,218 @@
+{
+ "on/11": {
+  "events": "27dc27e29df4",
+  "people": "70c28bc6234a",
+  "bonds": "785852712b8f",
+  "beliefs": "f8ad8972402b",
+  "rest": "c33dc1f706db",
+  "n": 8591
+ },
+ "on/12": {
+  "events": "084a71f39d8a",
+  "people": "1c28ff102ef9",
+  "bonds": "333dbee0a303",
+  "beliefs": "2fe23bae4eb5",
+  "rest": "45eb3350983e",
+  "n": 7770
+ },
+ "on/13": {
+  "events": "c37a3c97ad31",
+  "people": "dbc58b6d3189",
+  "bonds": "59feaae0abd1",
+  "beliefs": "297babffb9a2",
+  "rest": "499532116a2f",
+  "n": 10493
+ },
+ "attach/11": {
+  "events": "01442b5b037e",
+  "people": "b68955fda906",
+  "bonds": "33c557a089ca",
+  "beliefs": "b9528aab9ef1",
+  "rest": "80396bd8a811",
+  "n": 8957
+ },
+ "bias/11": {
+  "events": "2b78c1ca8881",
+  "people": "c169d21d1fe8",
+  "bonds": "faa2d98f0187",
+  "beliefs": "6be2b2ba69ed",
+  "rest": "c421f752f19f",
+  "n": 7832
+ },
+ "budget/11": {
+  "events": "fea50e719169",
+  "people": "18cf67fd122e",
+  "bonds": "28a544f03514",
+  "beliefs": "5a318552c7e5",
+  "rest": "c11679968c90",
+  "n": 8257
+ },
+ "contempt/11": {
+  "events": "e6c65ad00fd8",
+  "people": "e738ed7c4ffd",
+  "bonds": "3908ba9ad8a8",
+  "beliefs": "3904e65343d9",
+  "rest": "10d16767b9b2",
+  "n": 9021
+ },
+ "couplelearn/11": {
+  "events": "2e1981a19c89",
+  "people": "160d1375d570",
+  "bonds": "4f40b6b88dc8",
+  "beliefs": "cd25dae7dd3a",
+  "rest": "6a6395859dbc",
+  "n": 8348
+ },
+ "disengage/11": {
+  "events": "fd379eea789d",
+  "people": "45ef1735955b",
+  "bonds": "f12860c5ad27",
+  "beliefs": "8910f9d343a4",
+  "rest": "bb9289722726",
+  "n": 8692
+ },
+ "doubts/11": {
+  "events": "0ac8f2cb6e15",
+  "people": "b31fc4479004",
+  "bonds": "7c3e1c20b08f",
+  "beliefs": "bf81314cfbd5",
+  "rest": "3050726fa70b",
+  "n": 8789
+ },
+ "drama/11": {
+  "events": "9e253a764684",
+  "people": "aacd735e3ea4",
+  "bonds": "4e5a200d5730",
+  "beliefs": "45a87ea49c88",
+  "rest": "76c7b88071b7",
+  "n": 8224
+ },
+ "everyday/11": {
+  "events": "4622e2ab8522",
+  "people": "6742dc591132",
+  "bonds": "9432453817f7",
+  "beliefs": "3875b2e82f67",
+  "rest": "fca4c02e1f0e",
+  "n": 8050
+ },
+ "exposure/11": {
+  "events": "b6bc87ef9803",
+  "people": "f06c8c8754c8",
+  "bonds": "ba45118b6cd6",
+  "beliefs": "d3c95c74b255",
+  "rest": "01c04ab04367",
+  "n": 8556
+ },
+ "forget/11": {
+  "events": "d99e5572a9d3",
+  "people": "bb5c41584e92",
+  "bonds": "722b7e407e72",
+  "beliefs": "6a89cea1bfed",
+  "rest": "f29da4f15527",
+  "n": 9174
+ },
+ "friction/11": {
+  "events": "834ee587f0a8",
+  "people": "67924ca5d9ee",
+  "bonds": "3a6388dd8d8a",
+  "beliefs": "86fd6b645610",
+  "rest": "04e9763a3e21",
+  "n": 7478
+ },
+ "friendbug/11": {
+  "events": "d98127cf78ca",
+  "people": "c50cdffffd3d",
+  "bonds": "acd67a1a1c52",
+  "beliefs": "35eec24e17ae",
+  "rest": "82db51b6643d",
+  "n": 7927
+ },
+ "friendcap/11": {
+  "events": "6cd1321ca435",
+  "people": "70c28bc6234a",
+  "bonds": "785852712b8f",
+  "beliefs": "f8ad8972402b",
+  "rest": "c33dc1f706db",
+  "n": 8591
+ },
+ "groups/11": {
+  "events": "3863dde221ca",
+  "people": "e683437661f8",
+  "bonds": "053d89730d50",
+  "beliefs": "8dba9fd138b7",
+  "rest": "9ca1743a0fd6",
+  "n": 8405
+ },
+ "habits/11": {
+  "events": "a156fd1b1e9a",
+  "people": "332dcc022612",
+  "bonds": "8bde9345ea21",
+  "beliefs": "d38e37c17140",
+  "rest": "4f688d9baa6b",
+  "n": 8053
+ },
+ "household/11": {
+  "events": "78dacc3b022e",
+  "people": "fa182ee02387",
+  "bonds": "6b92a7ad5795",
+  "beliefs": "6a8f72e5b343",
+  "rest": "a0fb03bb53a3",
+  "n": 8944
+ },
+ "hyg19d/11": {
+  "events": "1b73686b76b5",
+  "people": "e2138157211b",
+  "bonds": "f2d0d31f319e",
+  "beliefs": "67a6ae9aef4d",
+  "rest": "eaea6515672d",
+  "n": 9078
+ },
+ "hyg21/11": {
+  "events": "52124e3054ee",
+  "people": "7dfedb975bf9",
+  "bonds": "f59f72abc5f9",
+  "beliefs": "f6e2400ccf0b",
+  "rest": "e4e7f5fe6ead",
+  "n": 8246
+ },
+ "ifthens/11": {
+  "events": "6cbf89afb76a",
+  "people": "c1c98a8d0848",
+  "bonds": "22bb30b94043",
+  "beliefs": "561fc0fe6422",
+  "rest": "02751895109a",
+  "n": 8802
+ },
+ "latent/11": {
+  "events": "57c872c8b4a9",
+  "people": "9b4bb77a0a53",
+  "bonds": "b2cbf00f588f",
+  "beliefs": "7251a002e4e4",
+  "rest": "b3cfedfc0670",
+  "n": 8281
+ },
+ "latentall/11": {
+  "events": "0e67c622735d",
+  "people": "844c12252459",
+  "bonds": "80e215677953",
+  "beliefs": "cdc2fe8a95e5",
+  "rest": "f5a85b7d8885",
+  "n": 7651
+ },
+ "leaving/11": {
+  "events": "fa2a9b052ed0",
+  "people": "3f6c24bc3fa3",
+  "bonds": "120379183c25",
+  "beliefs": "419fe0519424",
+  "rest": "ae0d39148a91",
+  "n": 8307
+ },
+ "love/11": {
+  "events": "ef1901c7b9ca",
+  "people": "a7d038b820a5",
+  "bonds": "4169e08ce1a5",
+  "beliefs": "ba4cefacc7f5",
+  "rest": "bd3444516bc9",
+  "n": 6177
+ }
+}

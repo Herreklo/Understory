@@ -1,0 +1,29 @@
+10 worlds · 384 adults aged 20–70, standing at year 5 (relative to their age band) under the full rule, then years 6–10 under the full model and with neutral choice (regard off)
+
+Link 1: standing → what comes to them (years 6–10). Levels full / compared, then the same person full − none (± 95% over worlds, since people in one town are not independent).
+  times sought out as company
+    bottom quarter  38.54 / 42.76   Δ -4.23 ±4.42 (10 worlds)
+    top quarter     27.35 / 23.18   Δ +4.61 ±5.04 (10 worlds)
+    corr(standing at 5, sought in 6–10)  full -0.15  none -0.24
+  chosen-events (hired, asked, confided in, visited…)
+    bottom quarter  0.86 / 0.71   Δ +0.16 ±0.36 (10 worlds)
+    top quarter     2.26 / 1.70   Δ +0.57 ±0.68 (10 worlds)
+    corr(standing at 5, opp in 6–10)  full 0.20  none 0.19
+
+Link 2: what comes to them → what they do and become (years 6–10).
+  strain at year 10 (0–1)
+    bottom quarter  0.20 / 0.16   Δ +0.04 ±0.05 (10 worlds)
+    top quarter     0.00 / 0.00   Δ -0.00 ±0.01 (10 worlds)
+  withdrawal threads begun
+    bottom quarter  0.79 / 0.74   Δ +0.05 ±0.20 (10 worlds)
+    top quarter     0.41 / 0.25   Δ +0.16 ±0.09 (10 worlds)
+  withdrawal and anger acts
+    bottom quarter  3.02 / 2.76   Δ +0.24 ±0.29 (10 worlds)
+    top quarter     0.77 / 0.51   Δ +0.27 ±0.26 (10 worlds)
+  warm, generous, open acts
+    bottom quarter  1.90 / 1.88   Δ +0.03 ±0.23 (10 worlds)
+    top quarter     3.58 / 3.59   Δ +0.01 ±0.39 (10 worlds)
+
+Reputation persists: corr(standing at 5, standing at 10)  full 0.94  none 0.94
+Nobody locked in: of the bottom quarter at year 5, share above the median at year 10  full 0%  none 1%
+Company concentration (full): the least-sought tenth receive 1% of all company, the most-sought tenth 37% (equal shares would be 10% each); median 15 times in five years, range 1–176.

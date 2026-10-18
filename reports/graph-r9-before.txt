@@ -1,0 +1,23 @@
+10 worlds × 5 years · 506 adults aged 20–75 at the end (contact intensity received, summed over the period)
+
+Where contact comes from (share of all contact received):
+  work 21% · home 18% · family 1% · hobby 3% · circle 9% · habit 40% · group 2% · sought 2% · public 5%
+
+By partnership and age: mean contact received, all channels and the sought channel; then the sought channel decomposed.
+  group                     n     all  sought   initiative (draws/mo)  access (pool)  draws kept
+  single, under 40         62     565    43.8   1.94                   10             83%
+  single, 40+              82     593    29.0   1.00                   9              79%
+  partnered, under 40     107     677    10.8   1.21                   54             45%
+  partnered, 40+          255     794     6.9   0.66                   60             43%
+
+Concentration: all channels least-received tenth 1.9%, most-received tenth 20% · sought only least-received tenth 1.2%, most-received tenth 37%
+
+What predicts contact received (correlation within each world, mean ± 95% over worlds):
+  partnered    all channels +0.22 ±0.11   sought -0.71 ±0.05
+  age          all channels +0.07 ±0.10   sought -0.32 ±0.12
+  sociability  all channels +0.35 ±0.12   sought -0.15 ±0.12
+  standing     all channels +0.16 ±0.12   sought -0.16 ±0.10
+
+Who is isolated (bottom tenth of all-channel contact received, within each world):
+  isolated  n 47 · partnered 53% · mean age 47 · sociability -0.23 · standing 0.11 · strain 0.11 · contact 150
+  everyone  n 459 · partnered 73% · mean age 50 · sociability 0.05 · standing 0.16 · strain 0.06 · contact 766

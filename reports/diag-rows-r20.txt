@@ -1,0 +1,26 @@
+monthly strain by part, couple-years sampled mid-year (median / 90th):
+  base    0.020 / 0.020
+  stress  0.000 / 0.000
+  drink   0.000 / 0.000
+  money   0.000 / 0.000
+  attach  0.000 / 0.024
+  values  0.027 / 0.038
+  ease    -0.032 / -0.011
+  net     0.020 / 0.056
+  net strain > 0.028 (equilibrium tension above the 0.35 bar): 43% of couple-years
+highest tension a couple reached in the decade: median 0.36, 90th 0.76; couples 113; rowed at all 51
+lowest liking either partner reached: median 0.39, 10th 0.05; below zero 9
+ended (13):
+  split: rows 3, max tension 0.57 · @ had stopped wanting it; started on me about it, and it was "you always" and "you never" from there (2027); gentleness: harsh in judgement
+  divorce: rows 0, max tension 0.09 · @ had stopped wanting it; they see tradition completely differently
+  split: rows 3, max tension 0.49 · @ had stopped wanting it; rolled her eyes at me and talked to me like a child about it (2029); they see freedom completely differently
+  divorce: rows 5, max tension 0.66 · @ had stopped wanting it; told people what me had told in confidence (2026); gentleness: harsh in judgement
+  split: rows 0, max tension 0.18 · @ had stopped wanting it; told everyone what I told them in confidence (2033); told people what me had told in confidence (2033)
+  split: rows 6, max tension 1.15 · @ had stopped wanting it; started on me about it, and it was "you always" and "you never" from there (2033); @'s drinking
+  split: rows 4, max tension 0.61 · @ had stopped wanting it; started on me about it, and it was "you always" and "you never" from there (2028); gentleness: harsh in judgement
+  divorce: rows 1, max tension 0.43 · @ had stopped wanting it; patience: short fuse
+  split: rows 8, max tension 1.02 · @ had stopped wanting it; let people think the best of my it was 's (2026); went silent and stayed that way, with me still talking (2031)
+  split: rows 4, max tension 1.16 · @ had stopped wanting it; went silent and stayed that way, with me still talking (2034)
+  split: rows 2, max tension 0.54 · @ had stopped wanting it; started on me about it, and it was "you always" and "you never" from there (2035); @'s drinking
+  divorce: rows 0, max tension 0.93 · @ had stopped wanting it; @'s drinking
+  split: rows 4, max tension 0.55 · @ had stopped wanting it
