@@ -250,18 +250,13 @@ for (let seed = A; seed <= B; seed++) {
     const SINCE = /\b(?:want(?:ed|s)?\b[^.;:\[\]()]*?|working toward it |meant to [^.;]*?)since (\d{4})/g;
     for (const x of p.wants) {
       const years = new Map<string, string>([[String(year(x.since)), 'the wants list']]);
-      const only = p.wants.filter(y => y.kind === x.kind).length === 1;
       for (const i of p.events) {
         const e = w.events[i];
         if (e.t < t0 && x.doneAt !== e.id) continue;
+        const label = plain(wantLabel(w, p, x));
+        if (p.wants.filter(y => plain(wantLabel(w, p, y)) === label).length > 1) continue; // two wants in the same words (made up, fell out, wanted again): the page lists both with their own years, and a reason cannot be told apart
         const cites =
-          x.doneAt === e.id ||
-          shownCauses(e).some(
-            c =>
-              c.kind === 'want' &&
-              (c.who == null || c.who === p.id) &&
-              (c.ref != null && x.cause != null ? c.ref === x.cause : only && (c.key == null || c.key === x.kind)),
-          );
+          x.doneAt === e.id || shownCauses(e).some(c => c.kind === 'want' && (c.who == null || c.who === p.id) && plain(c.label).includes(label));
         if (!cites) continue;
         for (const c of shownCauses(e)) for (const m of c.label.matchAll(SINCE)) years.set(m[1], plain(e.text));
       }

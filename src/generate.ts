@@ -43,7 +43,8 @@ function nearSurname(a: string, b: string): boolean {
   if (Math.abs(a.length - b.length) > 1) return false;
   let i = 0;
   while (i < a.length && i < b.length && a[i] === b[i]) i++;
-  return a.slice(i + (a.length >= b.length ? 1 : 0)) === b.slice(i + (b.length > a.length ? 1 : 0));
+  if (a.length === b.length) return a.slice(i + 1) === b.slice(i + 1); // one letter changed
+  return a.length > b.length ? a.slice(i + 1) === b.slice(i) : a.slice(i) === b.slice(i + 1); // one letter added or dropped
 }
 export function pickName(w: World, r: Rng, sex: 'f' | 'm', last?: string): string {
   const pool = SETTING.names[sex];
@@ -61,7 +62,8 @@ export function pickName(w: World, r: Rng, sex: 'f' | 'm', last?: string): strin
   }
   const used = new Map<string, number>();
   for (const p of living) used.set(p.first, (used.get(p.first) ?? 0) + 1);
-  return pool.slice().sort((a, b) => (used.get(a) ?? 0) - (used.get(b) ?? 0))[0];
+  const byUse = pool.slice().sort((a, b) => (used.get(a) ?? 0) - (used.get(b) ?? 0));
+  return byUse.find(n => !living.some(p => p.first === n && nearSurname(p.last, last))) ?? byUse[0];
 }
 
 export function generatePerson(w: World, opt: GenOpts): Person {
