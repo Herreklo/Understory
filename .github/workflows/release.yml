@@ -1,0 +1,50 @@
+name: release
+
+# Tags and releases are made here, because sessions working in this repo can push branches but not tags.
+# To tag a round, push a branch named release/<tag> whose tip holds:
+#   RELEASE.json   {"tag": "rH25", "sha": "<commit to tag>", "title": "...", "notes": "..."}
+#   outputs/       the round's raw outputs (out-* directories), attached to the release as one tarball
+# The job tags <sha>, creates the release with the tarball, and deletes the release branch.
+
+on:
+  push:
+    branches: ['release/**']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Tag, release and clean up
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag=$(jq -r .tag RELEASE.json)
+          sha=$(jq -r .sha RELEASE.json)
+          title=$(jq -r .title RELEASE.json)
+          jq -r .notes RELEASE.json > notes.md
+          git cat-file -e "$sha^{commit}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if ! git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then
+            git tag -a "$tag" "$sha" -m "$title"
+            git push origin "refs/tags/$tag"
+          fi
+          assets=()
+          if [ -d outputs ]; then
+            tar -czf "$tag-outputs.tgz" outputs
+            assets+=("$tag-outputs.tgz")
+          fi
+          if gh release view "$tag" >/dev/null 2>&1; then
+            [ ${#assets[@]} -eq 0 ] || gh release upload "$tag" "${assets[@]}" --clobber
+          else
+            gh release create "$tag" "${assets[@]}" --title "$title" --notes-file notes.md --verify-tag
+          fi
+          git push origin --delete "${GITHUB_REF_NAME}"
