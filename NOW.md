@@ -6,7 +6,7 @@ Who is working on what. Read it at the start of a session; update your own block
 
 ## Lab
 
-- **Doing:** round 25d testing (what-ifs running, then measures, consequence map and scoreboard); H26 and M26 built and waiting for their tests. All three pre-registrations predate this repo, as BOARD says for each.
+- **Doing:** round 25d is tested and recorded (not kept; `everyone` off by default), its PR open; H26 and M26 are tested and recorded on their branches and follow it. All three pre-registrations predate this repo, as BOARD says for each.
 - **Branch:** `round/25d`, `round/H26` (on 25d), `round/M26` (on 25d)
 - **Latest tag:** `rH25`
 - **Needs:** —

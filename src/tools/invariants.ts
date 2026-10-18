@@ -7,11 +7,12 @@
 import { buildWorld } from '../build';
 import { tick } from '../life';
 import { pickWitness } from '../witness';
-import { live, age, OFF, type World } from '../world';
+import { live, age, OFF, ON, type World } from '../world';
 import { persona, personaTick, QUIRKS } from '../persona';
 import { audit, type Found } from './audit';
 
 for (const x of (process.env.OFF ?? '').split(',').filter(Boolean)) OFF.add(x);
+for (const x of (process.env.ON ?? '').split(',').filter(Boolean)) ON.add(x);
 let bad = 0;
 const fail = (s: string) => {
   if (bad++ < 5) console.error('INVARIANT FAILED: ' + s);
