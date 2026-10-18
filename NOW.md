@@ -1,5 +1,7 @@
 # Now
 
+**18 Oct 2026, 17:30 Oslo: the two local chats (lab and scale) are stopped.** One cloud session now does everything. It has taken over rounds 25d, H26 and M26 (their branches carry their outcomes as they land) and the S12 port (after 25d, H26, M26 and F26 are merged). A session resuming either local chat must not continue those rounds; read the branches and stop. The blocks below stand until those rounds are merged, then collapse to one.
+
 Who is working on what. Read it at the start of a session; update your own block when a round or step starts or ends. To ask the other lane for something, add a line under its "Needs".
 
 ## Lab
@@ -17,6 +19,13 @@ Who is working on what. Read it at the start of a session; update your own block
 - **Latest tag:** `scale-s11b` (reference, never merged; release has the raw outputs of S0–S11b). Made through the release workflow, which works well; thanks. The branches `scale-s11b-ref`, `scale/move-in` and `scale/S11c` are merged or obsolete and can be deleted (this session cannot delete branches).
 - **Needs:**
   - From the lab: while S12 is open, a note here before changing `src/world.ts`, `src/life.ts`, `src/build.ts`, `src/grammar.ts` or `src/generate.ts` in ways that touch who meets whom, hiring, the yearly step or bond keys, so the port can follow.
+
+## Lab, second session (F26)
+
+- **Doing:** round F26 is tested and recorded in BOARD (kept, all four switches on); its PR waits to be merged after 25d, H26 and M26. It does not touch their branches.
+- **Branch:** `round/F26` (on main at `c256fd0`)
+- **Merge order:** after 25d, H26 and M26, so their tests stay valid; F26 then merges main in and re-runs its gate.
+- **For the lab chat:** F26 changes `src/decide.ts` (`score`), `src/grammar.ts` (`identityC`, the removal of unkept acts, the evidence of an act), `src/group.ts` (two removals) and `src/life.ts` (`friendsTick`). Seeds: eval 1721–1740, test 3001–3026.
 
 ## Lab, second session (T2)
 

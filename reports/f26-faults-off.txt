@@ -1,0 +1,7 @@
+F26 faults, worlds 3021–3024, 10 present years, OFF=countfair,eventfix,identfix,honestev
+  removals of unkept acts where the last entry was another event: 52 of 6471 (0.80%)
+  removals that found nothing to take (fix on): 0
+  thread events missing from their own people's lists: 207
+  unkept acts still on someone's list: 52
+  self-story readings where the old and new rules disagree: 3 of 14387 (0.02%)
+  decisions whose likeliest answer differs between the old and the new scoring rule: 0 of 0 (0.00%)
