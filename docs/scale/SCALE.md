@@ -542,3 +542,25 @@ Checked against the code and a run before anything changed.
   Ageing alone is 60% of a full life's change in choices here, in line with the review. Measured against ageing, the background keeps about **a third of the change that lived experience makes in choices**, and about 0.6 in acts. **S11b's "seven eighths" overstated it,** because it counted the ageing both tiers share, and that claim is withdrawn from the docs and the report. These are numbers from one throwaway seed. The proper test needs an ageing arm, fresh seeds and the engine's real situations, which have bonds, money and strain in them; it comes after S12 puts the branch on the current engine.
 - Also taken up: report how many founders' lives diverge between tiers (died, left), not only matched survivors.
 - **For the lab, not this track:** a battery whose answers barely move with lived experience cannot show that experience changes behaviour. The review's question, whether experiences transform behaviour in the situations where they ought to matter, is the engine's.
+
+## S12 — the scale branch carried onto main (pre-registered 18 Oct 2026; the pushed commit is the timestamp)
+
+**Change.** Every change in `branch-changes.md` is re-applied by hand to the engine on main at `rH25`, which is formatted and reorganised and has rounds 19d–H25 in it. The changes are: settings and the membership index, neighbourhoods and their workplaces, the background and its yearly pass, promotion, the wider bond keys, and the test hooks. Nothing is copied from the r19c branch by patch; each change is written against main's code, following `contract.md`.
+
+**Switch.** There is no `OFF` switch. In a town of one neighbourhood every scale path reduces to the engine's own, and a city exists only when a harness asks for one (`SCALE_FOCUS`, `SCALE_CITY`). The identity check is what proves the town is untouched.
+
+**The background's odds are refitted on the new engine** from full towns on fresh train seeds 1031–1060, held out from 1054. The odds of r19c describe a different engine.
+
+**Expected.**
+1. **The town is the town.** `src/tools/diag/ident.ts check` is identical to main's baseline: seeds 11–13, and every switch on seed 11. The scale track's whole-world check (`scale/identity2.ts`) gives the same five hashes for main and the branch on seeds 1–10. `npm test` passes.
+2. **Speed.** The branch runs a month at about 2,600 people at least 5× faster than main, timed in the same sitting, one run at a time. Main is not the engine S2 measured, so the factor is reported as found.
+3. **The city still holds** on fresh test seeds 401–410, with the refitted odds:
+   - **coarse matches full** on S3's six bars, seeds 401–405;
+   - **promoted people** on S3's ten bars, seeds 401–405;
+   - **capacity**, strict, seeds 401–405;
+   - **deaths** within 25% of the new engine's rates, seeds 401–405;
+   - **independence**: every compared background neighbourhood identical, seeds 406–408;
+   - **promotion invariance**: nothing outside texture changes, seeds 409–410.
+4. **What would change our minds:** a rule on main that cannot be made to scale without changing a town's behaviour. If one exists, it is named, left at town scale in a city, and the cost is reported.
+
+The twin test with an ageing arm and the engine's real situations is S13, not this step.
