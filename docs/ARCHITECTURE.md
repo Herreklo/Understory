@@ -25,7 +25,7 @@ A one-page map for changing the engine: what lives where, the order of a month, 
 | `regard.ts`, `witness.ts` | How one person regards another; the witness and what an observer can know |
 | `build.ts`, `app.ts` | Building a world and its thirty-year past; the lab page |
 
-**Tools (`src/tools/`)**: tests and measures. `board.ts` with `predict.ts` and `measure.ts` (the scoreboard); `story.ts`, `personas.ts`, `friends.ts`, `lovetest.ts`, `consequences.ts`, `audit.ts` (what lives are like, with and without a switch); `invariants.ts`, `replay.ts`, `twoworlds.ts`, `demography.ts`, `grouptest.ts`, `test.ts` (`npm test`); `read.ts` (five lives, printed). `src/tools/diag/` holds one-off diagnostics and the two checks for changes that should not alter behaviour: `ident.ts` and `sig.ts`.
+**Tools (`src/tools/`)**: tests and measures. `board.ts` with `predict.ts` and `measure.ts` (the scoreboard); `story.ts`, `personas.ts`, `friends.ts`, `lovetest.ts`, `consequences.ts`, `audit.ts` (what lives are like, with and without a switch); `invariants.ts`, `replay.ts`, `twoworlds.ts`, `demography.ts`, `grouptest.ts`, `test.ts` (`npm test`); `read.ts` (five lives, printed); `coherence.ts` (the twelve fault types over the record and the page, in `npm test`); `props.ts` (the invariants as properties over many seeds). `src/page.ts` holds the page's own rules, shared by the app, `read.ts` and the counter. `src/tools/diag/` holds one-off diagnostics and the two checks for changes that should not alter behaviour: `ident.ts` and `sig.ts`.
 
 **Running**: `./run.sh <script> <args>` runs any script from a pre-built bundle (about a quarter faster than `tsx`, same code). Outputs go to `reports/` and `out-*/`.
 

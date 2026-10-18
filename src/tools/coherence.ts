@@ -1,6 +1,7 @@
 // Round F27: the coherence floor. Builds fresh worlds, runs ten present years, and counts every known fault type (BOARD, round F27,
 // types 1–12) over the record and over the rendered lives, then prints a table and a machine-readable line.
-//   tsx src/tools/coherence.ts A B        (seeds A..B; OFF=floor and ON=<name> are read as the other tools read them)
+//   tsx src/tools/coherence.ts A B [--fail]   (seeds A..B; OFF=floor and ON=<name> are read as the other tools read them; with --fail the
+//   run exits 1 on any count above zero, which is how npm test keeps the floor)
 // Last line: COHERENCE {"seeds":[A,B],"counts":{"1":n,...,"12":n}}
 //
 // Where each type is counted. On the record (w.events, bonds, people): 1, 2, 3, 4, 8, 11, 12. On the page (a person's life as the
@@ -287,3 +288,7 @@ for (let n = 1; n <= 12; n++) {
   for (const x of examples[n]) console.log(`           e.g. seed ${x.seed}: ${x.text}`);
 }
 console.log(`COHERENCE ${JSON.stringify({ seeds: [A, B], counts: Object.fromEntries(Object.entries(counts).map(([k, v]) => [k, v])) })}`);
+if (process.argv.includes('--fail') && Object.values(counts).some(n => n > 0)) {
+  console.error('COHERENCE FAILED: a fault type the floor took to zero is back');
+  process.exitCode = 1;
+}
