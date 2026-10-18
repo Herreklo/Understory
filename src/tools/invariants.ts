@@ -3,14 +3,16 @@
 //  2. Marks from history fade with years even when nothing new happens, and a rule to live by leaves the self-story with its mark (round 19d).
 //  3. Rows happen only between partners, and a couple's state is kept in one place whoever raises a row (rounds 20, 20b).
 //  4. The consistency audit (round 21, src/audit.ts) finds nothing.
+//  5. Every thread event is on the own list of each person it is about, and no list holds an event twice (round F26).
 import { buildWorld } from '../build';
 import { tick } from '../life';
 import { pickWitness } from '../witness';
-import { live, age, OFF, type World } from '../world';
+import { live, age, OFF, ON, type World } from '../world';
 import { persona, personaTick, QUIRKS } from '../persona';
 import { audit, type Found } from './audit';
 
 for (const x of (process.env.OFF ?? '').split(',').filter(Boolean)) OFF.add(x);
+for (const x of (process.env.ON ?? '').split(',').filter(Boolean)) ON.add(x);
 let bad = 0;
 const fail = (s: string) => {
   if (bad++ < 5) console.error('INVARIANT FAILED: ' + s);
@@ -42,6 +44,15 @@ for (const seed of [31, 32, 33]) {
     if (!b || (a.partner !== b.id && (a as any)['cs:' + b.id] == null && (b as any)['cs:' + a.id] == null))
       fail(`world ${seed}: a row between ${a.first} and ${b?.first}, who were never a couple`);
   }
+  // Each person's own list holds every thread event about them, once (an unkept act once took the thread's event off instead; round F26).
+  if (!OFF.has('eventfix'))
+    for (const e of w.events) {
+      if (!e.type.startsWith('thread:')) continue;
+      for (const id of new Set(e.who))
+        if (!w.byId.get(id)?.events.includes(e.id))
+          fail(`world ${seed}: ${e.type} event ${e.id} is missing from ${w.byId.get(id)?.first}'s own list`);
+    }
+  for (const p of w.people) if (new Set(p.events).size !== p.events.length) fail(`world ${seed}: ${p.first}'s own list holds an event twice`);
   // A couple's state lives in one place: on the partner with the lower id, never on the other (the round 20 bug).
   for (const p of w.people)
     for (const k of Object.keys(p)) {

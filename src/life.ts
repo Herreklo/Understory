@@ -941,7 +941,8 @@ function howMet(w: World, a: Person, b: Person): Cause[] {
 // Losing touch ends a friendship, checked monthly (round 15); with the time budget off, only a falling-out does.
 const FADE = () => !OFF.has('budget');
 export function friendsTick(w: World) {
-  if (!FADE()) return;
+  // Without the budget the dead and departed still leave one's friends; only losing touch is skipped (round F26).
+  const fade = FADE();
   for (const p of live(w))
     for (const id of [...p.friends]) {
       const q = w.byId.get(id);
@@ -950,7 +951,7 @@ export function friendsTick(w: World) {
         if (q) q.friends.delete(p.id);
         continue;
       } // a friendship ends for both
-      if (q.id > p.id) checkBond(w, p, q);
+      if (fade && q.id > p.id) checkBond(w, p, q);
     }
 }
 // A person's five most familiar people outside the family, refreshed each month (round 19b).

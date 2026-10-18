@@ -1,29 +1,23 @@
 # Working in The Lab
 
-Every chat that works here reads this first. It says who owns what, how a round runs in git, and the rules no change may break.
+Every session that works here reads this first. It says how a round runs in git, and the rules no change may break.
 
 ## Start of every session
 
     git fetch origin && git switch main && git pull --ff-only
     npm install && npm test
 
-Then read `NOW.md`. If another chat is doing what you were about to do, stop and say so.
+Then read `NOW.md`. If a round is open on another branch and touches the files you were about to change, finish or merge it first.
 
-## Lanes
+Read `WHY.md` before pre-registering a round. It says why the lab exists and names the ways a project like this goes wrong; the round's pre-registration says which of its warnings the round risks.
 
-Two chats work here. Neither edits the other's files.
+## One session at a time
 
-| Lane | Owns | Branches | Numbering |
-| --- | --- | --- | --- |
-| **Lab** | `src/`, `src/tools/`, `scripts/`, `docs/STATUS.md`, `docs/BOARD.md`, `docs/ARCHITECTURE.md`, `docs/method/`, `reports/` | `round/<id>` | rounds: `25d`, `H26`, `M26` |
-| **Scale** | `scale/`, `docs/scale/` | `scale/<step>` | steps: `S12`, `S13` |
+One session changes the engine. Others may read, measure and review, but not edit `src/`, `scale/` or the docs while a round is open. The city-scale work is ordinary rounds on `main` (`scale/<step>`, numbered `S12`, `S13`), each behind a switch and each passing the identity check, so the scale code never falls behind the engine again.
 
-Shared, each chat touching only its own part:
-- `NOW.md`: one block per lane;
-- `docs/seeds.md`: append rows, never edit someone else's;
-- `CLAUDE.md`, `README.md`, `.github/`: change only when both lanes would agree, and say so in `NOW.md`.
+Shared files, edited by the open round only: `NOW.md` (one block: what is open, on which branch, what it waits for), `docs/seeds.md` (append rows, never edit earlier ones), `CLAUDE.md`, `README.md`, `.github/`.
 
-The scale lane changes engine code only through a `scale/<step>` PR that passes the identity check (below). It follows `docs/scale/contract.md`, and so does all new engine code from the lab.
+All new engine code follows `docs/scale/contract.md`.
 
 ## How a round runs
 

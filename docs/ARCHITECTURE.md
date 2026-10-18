@@ -59,11 +59,11 @@ A world is built by `buildWorld` (founders, families, jobs at year zero) and the
 
 ## Switches
 
-`OFF.has(name)` switches a mechanism off for an ablation. Every new mechanism gets one, named in STATUS.md. When a round settles a fix or a rewording, the old path is removed: the tag of each round keeps the old behaviour reproducible.
+`OFF.has(name)` switches a mechanism off for an ablation; `ON.has(name)` is the reverse, for a mechanism from a round that did not meet its expectations: it stays in the code, off by default, and `ON=<name>` turns it on for a test. Every new mechanism gets one, named in STATUS.md. When a round settles a fix or a rewording, the old path is removed: the tag of each round keeps the old behaviour reproducible.
 
 ## Checks
 
-- `npm test`: types, the page bundle, determinism, two worlds at once, groups, invariants (with the consistency audit), demography, a short batch.
+- `npm test`: types, the page bundle, determinism, two worlds at once, groups, invariants (with the consistency audit), demography, a short batch. The invariants include that every thread event stays on its people's own lists: an act that is not kept comes off them through `unlist` in `grammar.ts`, never by taking the last entry.
 - `src/tools/whatif.ts`: what one choice changes in the chooser's life three years on. It copies the world at the start of the decision's month (`src/tools/clone.ts`; `check` proves a copy runs exactly as the original) and runs it with the likeliest other answer and with the same answer, both after the same smallest nudge to chance. The model reads none of it (`globalThis.WHATIF`, in `choose`).
 - `src/tools/diag/ident.ts`: for a change that should not alter behaviour. It hashes every event with its words and reasons, every person, bond, memory and belief, every group and every random stream, on seeds 11–13 and every switch on seed 11, against a saved baseline (`reports/ident-baseline.json`). `save` writes a baseline; `check` compares.
 - `src/tools/diag/sig.ts`: for a change to words only. It hashes behaviour without text, for comparing two trees.

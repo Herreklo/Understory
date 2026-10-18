@@ -4,7 +4,7 @@
 import { buildWorld } from '../build';
 import { tick } from '../life';
 import { pickWitness } from '../witness';
-import { OFF, age, type World, type Person } from '../world';
+import { OFF, ON, age, type World, type Person } from '../world';
 import { rivalries } from '../drama';
 import { projects } from '../projects';
 
@@ -112,6 +112,7 @@ if (process.argv[1]?.endsWith('audit.ts')) {
     B = +process.argv[3],
     Y = +(process.argv[4] ?? 10);
   for (const x of (process.env.OFF ?? '').split(',').filter(Boolean)) OFF.add(x);
+  for (const x of (process.env.ON ?? '').split(',').filter(Boolean)) ON.add(x);
   const past: Found = new Map(),
     present: Found = new Map();
   let months = 0;

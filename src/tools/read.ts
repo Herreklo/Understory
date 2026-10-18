@@ -1,7 +1,9 @@
 import { buildWorld, runYears } from '../build';
 import { pickWitness, scoreAll, hunches, hindsight } from '../witness';
-import { age, fullName, year, type World, type Person, nameOf } from '../world';
+import { age, fullName, year, type World, type Person, nameOf, OFF, ON } from '../world';
 import { FACET_BY_ID, VALUES } from '../core';
+for (const x of (process.env.OFF ?? '').split(',').filter(Boolean)) OFF.add(x); // an arm without a mechanism: OFF=threads
+for (const x of (process.env.ON ?? '').split(',').filter(Boolean)) ON.add(x);
 const seed = +(process.argv[2] ?? 2);
 const w = buildWorld(seed, 1);
 const wit = pickWitness(w);

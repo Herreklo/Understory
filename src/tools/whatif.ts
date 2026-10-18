@@ -11,7 +11,7 @@ import { createHash } from 'crypto';
 import { buildWorld, runYears } from '../build';
 import { tick } from '../life';
 import { pickWitness } from '../witness';
-import { age, OFF, P, type Person, type World } from '../world';
+import { age, OFF, ON, P, type Person, type World } from '../world';
 import { Rng } from '../rng';
 import { cloneWorld } from './clone';
 
@@ -78,6 +78,7 @@ export function kindOf(raw: string): string {
 function fresh(seed: number) {
   OFF.clear();
   for (const x of (process.env.OFF ?? '').split(',').filter(Boolean)) OFF.add(x);
+  for (const x of (process.env.ON ?? '').split(',').filter(Boolean)) ON.add(x);
   G.WHATIF = undefined;
   const w = buildWorld(seed, 1);
   pickWitness(w);
