@@ -1122,21 +1122,27 @@ function checkBond(w: World, a: Person, b: Person) {
     } else if (hates && r.like > -0.1) x.emotions = x.emotions.filter(e => e.k !== key);
   }
 }
+const voiced = (text: string, holder: Person, other: Person) =>
+  /\b(me|my|I)\b/.test(text) ? `@${other.id} ${text.replace(/\bmy\b/g, `@${holder.id}'s`).replace(/\b(me|I)\b/g, `@${holder.id}`)}` : text;
 function memWhy(w: World, x: Person, y: Person, sign: number): Cause[] {
   const r = peekBond(w, x.id, y.id);
   if (!r) return [];
   const seen = new Set<string>();
-  return r.mem
-    .map(m => ({ m, v: (m.like + m.trust) * memWeight(x, m, w.t, y.id) }))
-    .filter(o => sign * o.v > 0.08)
-    .sort((p, q) => sign * (q.v - p.v))
-    .map(o => ({ kind: 'event', label: `${o.m.text} (${year(o.m.t)})`, weight: 0.5, ref: o.m.ev }) as Cause)
-    .filter(c => {
-      if (seen.has(c.label)) return false;
-      seen.add(c.label);
-      return true;
-    })
-    .slice(0, 2);
+  return (
+    r.mem
+      .map(m => ({ m, v: (m.like + m.trust) * memWeight(x, m, w.t, y.id) }))
+      .filter(o => sign * o.v > 0.08)
+      .sort((p, q) => sign * (q.v - p.v))
+      // A memory is kept in the holder's words ("went to me and apologised"); as a reason it is said from outside, once per event.
+      .map(o => ({ kind: 'event', label: `${voiced(o.m.text, x, y)} (${year(o.m.t)})`, weight: 0.5, ref: o.m.ev }) as Cause)
+      .filter(c => {
+        const k = c.ref != null && c.ref >= 0 ? 'e' + c.ref : c.label;
+        if (seen.has(k)) return false;
+        seen.add(k);
+        return true;
+      })
+      .slice(0, 2)
+  );
 }
 function contexts(w: World, a: Person, b: Person): Cause[] {
   const out: Cause[] = [];

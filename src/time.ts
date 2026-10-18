@@ -103,10 +103,15 @@ export function resolveWants(w: World, p: Person, kind: string, target: string, 
       x.doneAt = ref;
       const yrs = Math.max(1, Math.round((w.t - x.since) / 12));
       const pu = x.pursuit;
+      const tried = Math.max(1, Math.round((w.t - (pu?.since ?? x.since)) / 12)); // trying is counted from the pursuit, wanting from the want
       const text =
         how === 'achieved'
           ? pu && !pu.owner
-            ? `@${p.id} got there: ${wantLabel(w, p, x)}, ${w.t - x.since < 12 ? 'within the year' : `after ${yrs} year${yrs > 1 ? 's' : ''} of trying`}.`
+            ? `@${p.id} got there: ${
+                x.kind === 'prove' && w.events[ref]?.type === 'gotgood'
+                  ? `people have started to talk about ${her(p)} ${x.target === 'vocals' ? 'singing' : x.target}`
+                  : wantLabel(w, p, x)
+              }, ${w.t - pu.since < 12 ? 'within the year' : `after ${tried} year${tried > 1 ? 's' : ''} of trying`}.`
             : `@${p.id} got what ${she(p)} had wanted for ${yrs > 1 ? yrs + ' years' : 'a year'}: ${wantLabel(w, p, x).replace(/^to /, '')}.`
           : `What @${p.id} had wanted for ${yrs} year${yrs > 1 ? 's' : ''} was gone.`;
       const causes: Cause[] = [eventCause(w, ref, 1)];
