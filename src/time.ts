@@ -112,14 +112,14 @@ export function resolveWants(w: World, p: Person, kind: string, target: string, 
                 x.kind === 'prove' && w.events[ref]?.type === 'gotgood'
                   ? `people have started to talk about ${her(p)} ${x.target === 'vocals' ? 'singing' : x.target}`
                   : wantLabel(w, p, x)
-              }, ${w.t - pu.since < 12 ? 'within the year' : `after ${tried} year${tried > 1 ? 's' : ''} of trying`}.`
+              }, ${w.t - x.since < 12 ? 'within the year' : `after ${yrs} year${yrs > 1 ? 's' : ''} of wanting it`}.`
             : `@${p.id} got what ${she(p)} had wanted for ${yrs > 1 ? yrs + ' years' : 'a year'}: ${wantLabel(w, p, x).replace(/^to /, '')}.`
           : `What @${p.id} had wanted for ${yrs} year${yrs > 1 ? 's' : ''} was gone.`;
       const causes: Cause[] = [eventCause(w, ref, 1)];
       if (pu && !pu.owner && how === 'achieved')
         causes.push(traitCause(p, 'diligence', 0.4, 1), {
           kind: 'want',
-          label: `had been working toward it since ${year(pu.since)}`,
+          label: `had wanted it since ${year(x.since)}`,
           weight: 0.5,
           key: x.kind,
           who: p.id,

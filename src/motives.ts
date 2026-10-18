@@ -22,7 +22,7 @@ const M: Record<string, Entry> = {
     hi: ['would not take what was not {hers}', 'though {she} has never taken what was not {hers}'],
     lo: ['thought rules are for people who get caught', 'though {she} has never been fussy about rules'],
     hiBy: {
-      honesty: ['would not take what was not {hers}', 'though it was not like {obj} to cheat'],
+      honesty: ['would rather be straight about it', 'though it was not like {obj} to be anything but straight'],
       generosity: ['thought it only fair', 'though {she} likes things to be fair'],
       duty: ['had given {her} word', 'though {she} keeps {her} word'],
       dishonesty: ['thought it was owed', 'though it was not like {obj} to cheat'],
@@ -83,7 +83,7 @@ const M: Record<string, Entry> = {
     lo: ['did not think much of {self}', 'though {she} seldom thinks much of {self}'],
   },
   socialBoldness: {
-    hi: ['has never minded being looked at', 'though {she} has never minded an audience'],
+    hi: ['is not one to hang back', 'though {she} is not one to hang back'],
     lo: ['dreads being looked at', 'though {she} dreads being looked at'],
     hiBy: {
       generosity: ['did not mind everyone seeing', 'though {she} did not mind everyone seeing'],

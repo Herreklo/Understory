@@ -6,6 +6,7 @@
 // Where each type is counted. On the record (w.events, bonds, people): 1, 2, 3, 4, 8, 11, 12. On the page (a person's life as the
 // app renders it: every event on their own list, with its first three reasons, the hindsight of their two biggest surprises, and
 // their wants with their dates): 5, 6, 7, 9, 10. What is approximate is said at each type below.
+import { againNote, pageLines, shownCauses } from '../page';
 import { buildWorld } from '../build';
 import { tick } from '../life';
 import { pickWitness, hindsight } from '../witness';
@@ -178,13 +179,19 @@ for (let seed = A; seed <= B; seed++) {
   // ----- The page: each person's life as the app renders it. -----
   for (const p of w.people) {
     if (p.id === wit.id) continue;
-    const mine = new Set(p.events);
+    const mine = new Set(p.events); // grows with the events the page shows under a reason (src/page.ts)
     const lines: string[] = [];
-    const shownCauses = (e: Event): Cause[] => e.causes.filter(c => !c.key?.startsWith('against:')).slice(0, 3);
-    for (const i of p.events) {
-      const e = w.events[i];
+    const page = pageLines(
+      w,
+      p.events.map(i => w.events[i]),
+      mine,
+    );
+    for (const { e, cited, again } of page) {
       const why = shownCauses(e);
-      lines.push(`${year(e.t)}: ${plain(e.text)}${why.length ? ' [' + why.map(c => plain(c.label)).join('; ') + ']' : ''}`);
+      lines.push(
+        `${year(e.t)}: ${plain(e.text)}${why.length ? ' [' + why.map(c => plain(c.label)).join('; ') + ']' : ''}${again ? ` (${againNote(again)})` : ''}`,
+      );
+      for (const x of cited) lines.push(`${year(x.t)}: ${plain(x.text)}`);
       // ----- 6. A reason citing an event that is not on this page (not on the person's own list: unlisted, or someone else's) and that
       // the witness did not see. Present years only. -----
       for (const c of why)
@@ -265,8 +272,7 @@ for (let seed = A; seed <= B; seed++) {
     // ----- 10. Repeats a writer would cut: the same type, the same people and the same words (years aside) more than twice on one page;
     // the third and later are counted, when they fall in the present years. -----
     const same = new Map<string, number>();
-    for (const i of p.events) {
-      const e = w.events[i];
+    for (const { e } of page) {
       const k = `${e.type}|${[...new Set(e.who)].sort((a, b) => a - b).join(',')}|${stripYears(e.text)}`;
       const n = (same.get(k) ?? 0) + 1;
       same.set(k, n);

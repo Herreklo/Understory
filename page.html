@@ -99,6 +99,9 @@ h4 .v { font-family: var(--mono); font-weight: 400; color: var(--ink2); }
 .lnk { background: none; border: 0; padding: 0; font: inherit; color: var(--acc, #1a4fb3); text-decoration: underline; cursor: pointer; }
 .src summary { cursor: pointer; }
 .src span a { margin-right: 10px; }
+/* Round F27: a folded repeat and a cited event shown under a line (src/page.ts) read quieter than the line itself. */
+.story li.again, .story li.cited { opacity: .72; font-size: 12.5px; }
+.story li.cited .w::before { content: "↳ "; }
 </style>
 
 <div class="app">
