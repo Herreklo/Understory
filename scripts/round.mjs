@@ -96,7 +96,10 @@ for (const [arm, off] of SKIP.has('board') ? [] : ARMS) {
   for (const [a, b] of chunks(EVAL))
     job(`eval ${arm} ${a}`, T, run('src/tools/board.ts', 'eval', a, b, YEARS), {
       env: { OFF: off.join(','), BOARD_OUT: dir },
-      outputs: [join(dir, `eval-${a}-${b}.json`)],
+      // One file for the chunk, or one per world (board.ts on round 25d and after writes world by world).
+      outputs: [
+        { any: [join(dir, `eval-${a}-${b}.json`), ...Array.from({ length: b - a + 1 }, (_, i) => join(dir, `eval-${a + i}-${a + i}.json`))] },
+      ],
       after: trains,
     });
 }
@@ -161,7 +164,8 @@ await new Promise(done => {
         running--;
         j.log = Buffer.concat(out).toString();
         writeFileSync(logOf(j), j.log);
-        const missing = j.outputs.filter(f => !existsSync(f));
+        const present = f => (typeof f === 'string' ? existsSync(f) : f.any.every(x => existsSync(x)) || existsSync(f.any[0]));
+        const missing = j.outputs.filter(f => !present(f));
         j.code = code;
         j.state = (code === 0 || (j.result && code === 1)) && !missing.length ? 'done' : 'failed';
         if (missing.length) j.missing = missing;
