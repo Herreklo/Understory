@@ -9,7 +9,7 @@
     "batch": "tsx src/tools/test.ts 40 10",
     "board": "./board.sh",
     "ablate": "tsx src/tools/ablate.ts 8 10",
-    "build": "esbuild src/app.ts --bundle --format=iife --target=es2020 --minify --outfile=/tmp/lab-bundle.js && node -e \"const fs=require('fs');const b=fs.readFileSync('/tmp/lab-bundle.js','utf8');if(b.includes('</script')||/\\\\bprocess\\\\./.test(b))throw new Error('bundle not browser-safe');fs.mkdirSync('dist',{recursive:true});fs.writeFileSync('dist/index.html',fs.readFileSync('page.html','utf8').replace('__BUNDLE__',()=>b))\"",
+    "build": "esbuild src/app.ts --bundle --format=iife --target=es2020 --minify --outfile=/tmp/lab-bundle.js && node -e \"const fs=require('fs');const b=fs.readFileSync('/tmp/lab-bundle.js','utf8');if(b.includes('</script')||/\\\\bprocess\\\\./.test(b))throw new Error('bundle not browser-safe');fs.mkdirSync('dist',{recursive:true});fs.writeFileSync('dist/index.html',fs.readFileSync('page.html','utf8').replace('__BUNDLE__',()=>b))\" && node study/build.mjs",
     "props": "tsx src/tools/props.ts 50 3 9201"
   },
   "keywords": [],
