@@ -36,21 +36,19 @@ The people decide like people and can be read, but their lives are thin and repe
 
 This is the one priority list. Only Øystein changes its order, and a chat starts an experiment only from the top of it or when he names one.
 
-1. Housekeeping: settled switches removed, the two giant files split, the town's content moved out of the engine. Each step proven to change nothing.
+1. Housekeeping: settled switches removed (done, H30), the experiments that were not kept removed, the two giant files split, the town's content moved out of the engine. Each step proven to change nothing.
 2. Proposed: the accounts arc (#20). People remember their version of what happened, pass it on, and learn from it.
 3. For the game (Overstory): the front door's part two (#22), reads of what the player could know, player commands and versions; and the start year from the setting pack (#23), so a world can begin in another era.
 4. The city's background: partnering and children fixed, so it stops ageing.
 5. Later: a human test built on stories rather than predictions (exit point 5).
 
-In progress, not yet placed in this order: H29 (CI spends fewer minutes) and round 28 (the engine's own arithmetic, portability rule 3), opened by another chat.
-
 ## Waiting for you
 
-- Place round 28 (the engine's own arithmetic) in the order, or pause it: before the accounts arc, after it, or later.
 - Decide on the repo structure for add-ons.
 
 ## Latest merges
 
+- **H30 (19 Oct):** fourteen switches that only existed to measure fixes already kept are gone, with the old code behind them. Nothing the engine does changed.
 - **H29 (19 Oct):** CI no longer runs for changes to text files alone, which were about a fifth of its minutes.
 - **Round 28 (19 Oct):** the engine does its own maths, so a seed makes the same world on any computer or in a port. No event changed in forty test worlds.
 - **The goal written down (19 Oct):** where we are going, one priority list that only Øystein orders, and an exit criterion that measures whether the world is alive (events that travel, lives that change people, readers who want more), not only whether it is readable.
