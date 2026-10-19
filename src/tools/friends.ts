@@ -3,7 +3,7 @@
 import { mkdirSync, readFileSync, writeFileSync, readdirSync } from 'fs';
 import { buildWorld, runYears } from '../build';
 import { pickWitness } from '../witness';
-import { OFF, live, age, type World } from '../world';
+import { OFF, live, age, bkA, bkB, type World } from '../world';
 const OUT = process.env.FRIENDS_OUT ?? 'out-friends';
 mkdirSync(OUT, { recursive: true });
 type R = {
@@ -106,8 +106,8 @@ if (process.argv[2] === 'run') {
             d = 0;
           for (const [k, b] of w.bonds) {
             if (b.fam <= 0.3) continue;
-            const a1 = w.byId.get(Math.floor(k / 100000)),
-              b1 = w.byId.get(k % 100000);
+            const a1 = w.byId.get(bkA(w, k)),
+              b1 = w.byId.get(bkB(w, k));
             if (!a1 || !b1 || a1.status !== 'in' || b1.status !== 'in' || age(w, a1) < 18 || age(w, b1) < 18) continue;
             n++;
             if (b.like < -0.2) d++;

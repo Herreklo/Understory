@@ -6,6 +6,8 @@ import { SETTING } from './setting';
 import { VALUES, FACET_BY_ID } from './core';
 import type { Cause, Person, World, Want } from './world';
 import {
+  bkA,
+  bkB,
   OFF,
   recentEvents,
   setObsEvent,
@@ -961,8 +963,8 @@ function refreshClosest(w: World) {
   if (OFF.has('relbar')) return;
   const by = new Map<number, [number, number][]>();
   for (const [k, r] of w.bonds) {
-    const a = Math.floor(k / 100000),
-      b = k % 100000;
+    const a = bkA(w, k),
+      b = bkB(w, k);
     if (r.fam < 0.1) continue;
     (by.get(a) ?? by.set(a, []).get(a)!).push([b, r.fam]);
   }

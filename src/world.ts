@@ -5,8 +5,9 @@ import type { Dim } from './core';
 import type { Feature } from './features';
 import { FACET_BY_ID } from './core';
 import { motive, voiceOf } from './motives';
+import { hoods, idx, residentsNear, staffOf, town } from './scale';
 
-export type Status = 'in' | 'away' | 'dead';
+export type Status = 'in' | 'away' | 'dead' | 'bg' | 'gone'; // bg: lives in the city, simulated by the coarse yearly pass; gone: left the city
 
 export interface Cause {
   kind: 'event' | 'trait' | 'value' | 'state' | 'belief' | 'bond' | 'want';
@@ -349,7 +350,7 @@ export const use = (w: World, sys: string) => {
 export const YEAR0 = 1996; // simulated past starts here; the present begins 30 years later
 export const year = (t: number) => YEAR0 + Math.floor(t / 12);
 export const age = (w: World, p: Person) => ((p.status === 'dead' ? p.diedAt! : w.t) - p.born) / 12;
-export const live = (w: World) => w.people.filter(p => p.status === 'in');
+export const live = (w: World) => (hoods(w) === 1 ? town(w) : idx(w).live.slice()); // the people in town; in a city, from the membership index, so the background is never scanned
 export const P = (w: World, id: number) => w.byId.get(id)!;
 export const fullName = (p: Person) => `${p.first} ${p.last}`;
 export const logistic = (z: number, k = 1.2) => 1 / (1 + Math.exp(-k * z));
@@ -380,16 +381,22 @@ export function facet(p: Person, key: string, toward?: number, feats?: Set<Featu
 }
 
 // ----- bonds -----
-const BK = (a: number, b: number) => a * 100000 + b;
+// Bond keys: a × base + b. A town keeps base 100,000. A city, which can hold more people than that, uses 2^26, which stays an exact
+// integer up to 67 million people (scale contract, rule 8). The base is fixed when the world is made, before any bond exists.
+const keyBase = (w: World): number => ((w as any).wideKeys ? 67108864 : 100000);
+const BK = (w: World, a: number, b: number) => a * keyBase(w) + b;
+export const bkA = (w: World, k: number) => Math.floor(k / keyBase(w));
+export const bkB = (w: World, k: number) => k % keyBase(w);
 export function bond(w: World, a: number, b: number): Bond {
-  let r = w.bonds.get(BK(a, b));
+  let r = w.bonds.get(BK(w, a, b));
   if (!r) {
     r = { fam: 0, like: 0, respect: 0, trust: 0.15, mem: [], touched: -1 };
-    w.bonds.set(BK(a, b), r);
+    w.bonds.set(BK(w, a, b), r);
+    (w as any)._onNewBond?.(a, b, r); // set only while a promotion catches up
   }
   return r;
 }
-export const peekBond = (w: World, a: number, b: number) => w.bonds.get(BK(a, b));
+export const peekBond = (w: World, a: number, b: number) => w.bonds.get(BK(w, a, b));
 export const likeOf = (w: World, a: number, b: number) => peekBond(w, a, b)?.like ?? 0;
 
 // Negativity bias: bad memories land harder than good ones.
@@ -559,7 +566,7 @@ export function witnessesOf(w: World, e: Event): number[] {
       const p = w.byId.get(id);
       if (!p || p.status !== 'in') continue;
       if (p.partner != null) out.add(p.partner);
-      if (p.job) for (const q of live(w)) if (q.job === p.job) out.add(q.id);
+      if (p.job) for (const q of staffOf(w, p.job)) out.add(q.id);
     }
   }
   return [...out];
@@ -622,13 +629,13 @@ function broadcastInner(w: World, e: Event) {
   }
   if (w.quiet) return;
   if (e.vis === 'public') {
-    for (const q of live(w)) {
+    for (const q of residentsNear(w, e.who)) {
       if (e.knownBy.has(q.id) || w.t - q.born < 14 * 12) continue;
       e.knownBy.set(q.id, 'heard');
       for (const ev of e.evidence) observeAs(w, q.id, { ...ev, reliability: ev.reliability * 0.8 }, 'heard');
     }
   } else if (e.vis === 'local') {
-    for (const q of live(w)) {
+    for (const q of residentsNear(w, e.who)) {
       if (e.knownBy.has(q.id) || !q.job) continue;
       const pl = w.placeById.get(q.job)!;
       if ((pl.people >= 0.8 && w.rng.chance(pl.people * 0.45)) || (q.id === w.witness && w.rng.chance(0.5))) {
