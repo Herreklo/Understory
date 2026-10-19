@@ -12,7 +12,7 @@ import { criticised } from './criticised';
 import { danger } from './danger';
 import { deadline } from './deadline';
 import { discovery } from './discovery';
-import { harbourday, harbourDay } from './harbourday';
+import { yearly, yearlyDay } from './yearly';
 import { hometruth } from './hometruth';
 import { newcomer } from './newcomer';
 import { obligation } from './obligation';
@@ -46,7 +46,7 @@ const TYPES: SituationType[] = [
   criticised,
   collection,
   oldwound,
-  harbourday,
+  yearly,
 ];
 
 // Spotlight: doing the job with everyone watching. Not a choice, a test of nerve, so the if-then for being watched gets its day.
@@ -96,7 +96,7 @@ export function situationsTick(w: World) {
     const o = run(w, inst);
     if (o) afterRun(w, inst, o);
   }
-  harbourDay(w);
+  yearlyDay(w);
   const found: Instance[] = [];
   for (const ty of TYPES) found.push(...ty.match(w));
   // One situation per actor per tick, the most consequential first.

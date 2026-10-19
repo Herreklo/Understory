@@ -6,7 +6,7 @@ import { closeC, bondC, learned } from '../considerations';
 import { type Instance, favour, family, reciprocity } from '../grammar';
 import type { SituationType } from './index';
 
-// The collection: the hat goes round at the Anchor for someone hit by illness or loss. Money and need, in the open.
+// The collection: the hat goes round at the venue for someone hit by illness or loss. Money and need, in the open.
 export const collection: SituationType = {
   id: 'collection',
   match(w) {

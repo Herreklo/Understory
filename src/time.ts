@@ -4,7 +4,7 @@
 import { around, hoodOf, hoods, near, placeOf, staffOf } from './scale';
 import { quirkLine } from './persona';
 import { clamp } from './rng';
-import { SETTING } from './setting';
+import { SETTING, venueName } from './setting';
 import { VALUES, FACETS, FACET_BY_ID } from './core';
 import {
   titleAt,
@@ -165,7 +165,7 @@ function newWants(w: World, p: Person) {
         z01(p.values[g.value]) *
         (p.coreValues.includes(g.value) ? 1.6 : 0.5) *
         (g.id === 'house' && p.partner != null ? 1.5 : 1) *
-        (g.id === 'boat' && (p.job === 'harbour' || (w.placeById.get(p.job ?? '') as any)?.type === 'harbour') ? 1.5 : 1);
+        (g.trade && (p.job === g.trade || (w.placeById.get(p.job ?? '') as any)?.type === g.trade) ? 1.5 : 1);
       if (w.rng.chance(pull * 0.12)) {
         addWant(w, p, 'acquire', g.id, g.value, 0.3 + 0.4 * z01(p.values[g.value]));
         break;
@@ -479,9 +479,7 @@ function pursuitTick(w: World, p: Person) {
               text: `@${p.id} has found ${her(p)} people: ${mates
                 .slice(0, 2)
                 .map(q => '@' + q.id)
-                .join(
-                  ' and ',
-                )}, ${/at the Anchor|with the choir/.test(tpl.label) ? 'from ' + tpl.label.replace(/^.*?(the Anchor|the choir).*$/, '$1') : 'from ' + tpl.label.replace(/^is /, '')}.`,
+                .join(' and ')}, ${tpl.circle ? 'from ' + tpl.circle : 'from ' + tpl.label.replace(/^is /, '')}.`,
               causes: [
                 { kind: 'want', label: `had been lonely, and went looking (since ${year(pu.since)})`, weight: 0.6, key: 'belong', who: p.id },
                 traitCause(p, 'sociability', 0.4, 1),
@@ -654,7 +652,7 @@ function tell(w: World, p: Person, x: Want) {
       `@${p.id} asked @bar about the open night.`,
       `@${p.id} has been playing to anyone who will listen.`,
     ],
-    belong: [`@${p.id} has started turning up to things.`, `@${p.id} has been at the Anchor more than usual.`, `@${p.id} asked to be dealt in.`],
+    belong: [`@${p.id} has started turning up to things.`, `@${p.id} has been at ${venueName()} more than usual.`, `@${p.id} asked to be dealt in.`],
     win: [
       `@${p.id} has been talking about @${x.target} as if it were settled.`,
       `@${p.id} has been looking at rings.`,
@@ -670,7 +668,7 @@ function tell(w: World, p: Person, x: Want) {
   const barLead = (hoods(w) === 1 ? w.placeById.get('bar') : (placeOf(w, 'bar', hoodOf(w, p)) ?? w.placeById.get('bar')))?.lead; // in a city, their own neighbourhood's bar
   let text = texts[x.kind][Math.min(pu.told - 1, 2)]
     .replace('@lead', lead != null && lead !== p.id ? `@${lead}` : 'around')
-    .replace('@bar', barLead != null ? `@${barLead}` : 'at the Anchor');
+    .replace('@bar', barLead != null ? `@${barLead}` : 'at ' + venueName());
   const e = addEvent(w, {
     type: 'tell',
     who: [p.id],
@@ -793,14 +791,16 @@ export function practise(p: Person, sk: string, amount: number) {
 export const pursuing = (p: Person, kind: string) => p.wants.find(x => !x.done && x.kind === kind && x.pursuit && !x.pursuit.owner);
 
 // ---------- habits ----------
+const hasMother = (w: World, p: Person) => p.parents.some(k => P(w, k).status === 'in' && P(w, k).sex === 'f');
+const needsOf = (id: string) => SETTING.habits.find(t => t.id === id)?.needs;
 function available(w: World, p: Person, h: (typeof SETTING.habits)[number]): boolean {
   if (p.habits.some(x => x.id === h.id)) return false;
   if (h.kind === 'work' && !p.job) return false;
-  if (h.id === 'call' && !p.parents.some(k => P(w, k).status === 'in' && P(w, k).sex === 'f')) return false;
-  if (h.id === 'sunday' && !(p.partner != null || p.parents.some(k => P(w, k).status === 'in') || p.kids.some(k => P(w, k).status === 'in')))
+  if (h.needs === 'mother' && !hasMother(w, p)) return false;
+  if (h.needs === 'family' && !(p.partner != null || p.parents.some(k => P(w, k).status === 'in') || p.kids.some(k => P(w, k).status === 'in')))
     return false;
-  if (h.id === 'choir' && p.aptitudes.ear < -0.3) return false;
-  if ((h.id === 'anchor' || h.id === 'cards' || h.id === 'drink') && age(w, p) < 18) return false;
+  if (h.minAptitude && Object.entries(h.minAptitude).some(([k, v]) => p.aptitudes[k] < v)) return false;
+  if (h.adult && age(w, p) < 18) return false;
   return true;
 }
 export function formHabits(w: World, p: Person, n: number, from: string, r = w.rng) {
@@ -900,7 +900,7 @@ function habitTick(w: World, p: Person) {
       if (
         !available(w, p, { ...h, id: h.id } as any) &&
         p.habits.some(x => x === h) &&
-        (h.kind === 'work' ? !p.job : h.id === 'call' ? !p.parents.some(k => P(w, k).status === 'in' && P(w, k).sex === 'f') : false)
+        (h.kind === 'work' ? !p.job : needsOf(h.id) === 'mother' ? !hasMother(w, p) : false)
       )
         continue; // what broke it is still gone
       if (w.t - h.broken > 8 && p.stress < 0.4 && !grief && w.rng.chance((0.03 / breaks) * (h.kind === 'body' ? 0.3 : 1)))
@@ -915,7 +915,7 @@ function habitTick(w: World, p: Person) {
     if (newBaby && (h.kind === 'solo' || h.kind === 'social')) hz *= 3;
     if (newPursuit && h.kind !== 'practice') hz *= 1.6;
     if (h.kind === 'work' && !p.job) hz = 1;
-    if (h.id === 'call' && !p.parents.some(k => P(w, k).status === 'in' && P(w, k).sex === 'f')) hz = 1;
+    if (needsOf(h.id) === 'mother' && !hasMother(w, p)) hz = 1;
     if (!w.rng.chance(hz)) continue;
     const why =
       hz >= 1
@@ -1016,7 +1016,7 @@ export function attachTells(w: World, p: Person) {
       learned(w, p, 'tell:home', true);
       const ROOTED = [
         `@${p.id} says ${she(p)} could never live anywhere else.`,
-        `@${p.id} knows every boat in the harbour by name.`,
+        `@${p.id} ${SETTING.knowsHome}.`,
         `@${p.id} still lives in the house ${she(p)} grew up in, and means to die there.`,
         `Ask @${p.id} about the town and you get an hour.`,
         `@${p.id} has never once talked about leaving.`,

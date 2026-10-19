@@ -139,12 +139,27 @@ export const SETTING = {
   } as Record<string, string>,
   // Things people save for. cost in savings units; value = the drive they serve; label with @ for the owner.
   goods: [
-    { id: 'boat', label: 'a boat of their own', cost: 28, value: 'freedom', habit: 'boat' },
+    { id: 'boat', label: 'a boat of their own', cost: 28, value: 'freedom', habit: 'boat', trade: 'harbour' },
     { id: 'house', label: 'a house of their own', cost: 45, value: 'security' },
     { id: 'car', label: 'a decent car', cost: 14, value: 'status' },
     { id: 'trip', label: 'the big trip abroad', cost: 10, value: 'thrill' },
-  ] as { id: string; label: string; cost: number; value: string; habit?: string }[],
+  ] as { id: string; label: string; cost: number; value: string; habit?: string; trade?: string }[], // trade: its workers want it more
   moveCost: 8, // what it takes to leave
+  // The place people go out to: its open night, its regulars, the hat that goes round.
+  venue: 'bar',
+  // The day the town puts on once a year and someone has to organise. `month` is when it is asked for; `key` names its events,
+  // stress and feelings.
+  yearly: { id: 'harbourday', name: 'the harbour day', month: 4, key: 'harbour' },
+  // Work that can hurt, in the order an accident is looked for, and what happened.
+  accidents: [
+    { place: 'mill', text: 'got caught in the saw' },
+    { place: 'garage', text: 'was pinned under a car' },
+    { place: 'harbour', text: 'went over the side' },
+  ],
+  // Risk for gain: the trade that goes out in bad weather for the money.
+  risk: { place: 'harbour', thing: 'out into the storm', cause: 'a storm came in' },
+  // A line that says someone belongs here.
+  knowsHome: 'knows every boat in the harbour by name',
   // Groups: people making something together. The core knows only the shape; each kind is content.
   // binding: 'voluntary' (you stay because you want to; leaving costs friendships) or 'contractual' (pay, and a lead can remove you).
   // measure: how the world counts the group's work, in the setting's words.
@@ -502,6 +517,8 @@ export const SETTING = {
       label: 'is at the Anchor every Friday without fail',
       kind: 'social',
       place: 'bar',
+      circle: 'the Anchor',
+      adult: true,
       fit: (p: any) => 0.6 * p.facets.sociability + 0.3 * p.facets.liveliness - 0.2 * p.facets.prudence,
     },
     {
@@ -509,6 +526,7 @@ export const SETTING = {
       shows: { sentimentality: 1, 'value:tradition': 1 },
       label: 'has Sunday dinner with the family every week',
       kind: 'family',
+      needs: 'family',
       fit: (p: any) => 0.5 * p.values.tradition + 0.4 * p.facets.sentimentality + 0.3 * p.values.lovedOnes,
     },
     {
@@ -539,6 +557,8 @@ export const SETTING = {
       label: 'plays cards at the Anchor on Tuesdays',
       kind: 'social',
       place: 'bar',
+      circle: 'the Anchor',
+      adult: true,
       fit: (p: any) => 0.4 * p.facets.sociability + 0.3 * p.values.pleasure - 0.3 * p.facets.diligence + 0.2 * p.facets.liveliness,
     },
     {
@@ -553,6 +573,7 @@ export const SETTING = {
       shows: { dependence: 1, sentimentality: 1 },
       label: 'rings their mother every Sunday evening',
       kind: 'family',
+      needs: 'mother',
       fit: (p: any) => 0.5 * p.facets.dependence + 0.4 * p.facets.sentimentality + 0.2 * p.values.lovedOnes,
     },
     {
@@ -561,6 +582,8 @@ export const SETTING = {
       shows: { sociability: 0.5, 'value:fittingIn': 1 },
       label: 'sings with the choir every Thursday',
       kind: 'social',
+      circle: 'the choir',
+      minAptitude: { ear: -0.3 },
       fit: (p: any) => 0.5 * p.aptitudes.ear + 0.3 * p.facets.sociability + 0.3 * p.values.fittingIn,
     },
     {
@@ -569,6 +592,8 @@ export const SETTING = {
       label: 'has two pints at the Anchor most evenings',
       kind: 'body',
       place: 'bar',
+      circle: 'the Anchor',
+      adult: true,
       fit: (p: any) => 0.4 * p.facets.sociability - 0.4 * p.facets.prudence + 0.3 * p.values.pleasure,
     },
     { id: 'boat', shows: { 'value:freedom': 1 }, label: 'is out on the boat every weekend', kind: 'solo', fit: () => -9 },
@@ -585,6 +610,10 @@ export const SETTING = {
     label: string;
     kind: 'solo' | 'social' | 'family' | 'practice' | 'work' | 'body';
     place?: string;
+    circle?: string; // the people someone finds through it
+    adult?: boolean; // only from eighteen
+    needs?: 'mother' | 'family'; // a mother in town; a partner, parent or child in town
+    minAptitude?: Record<string, number>; // not for anyone below these
     fit: (p: any) => number;
   }[],
   // What there is to be tempted by, per place
@@ -728,3 +757,6 @@ export const SETTING = {
     ],
   },
 };
+
+// The name of the setting's venue.
+export const venueName = () => SETTING.places.find(p => p.id === SETTING.venue)!.name;

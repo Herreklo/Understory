@@ -89,6 +89,16 @@ Every experiment's mechanism sits behind a switch, so its effect can be measured
 - **External reviews** are read and checked against the code, never acted on reactively.
 - **Randomness** comes from `w.rng` inside a system's turn, or `chanceOf(w, p)` for a choice, never from a stream kept across months.
 
+## Models
+
+Øystein switches the chat's model by the kind of work; the work's quality decides, never the cost.
+
+- **Fable 5.1** for the decisions that shape the engine: designing a mechanism, writing a pre-registration, reading a round's results, checking an external review against the code, structure and contract calls.
+- **Opus 5.5** for building: implementing a designed round, debugging, analysis, docs, ordinary work with Øystein.
+- **Sonnet 5.5** for mechanical work with a safety net: neutral changes CI proves identical, release zips and notes, status questions, small fixes.
+
+When the next step calls for another model, say so in one line ("Switch to Fable 5.1 now: next is …"). He switches in the same chat and says so; the work carries on from the conversation and the repo. Helper agents get the model their job needs: Sonnet for watching CI and running tests, Opus or Fable for cold readers and anything that judges.
+
 ## Docs
 
 - `SUMMARY.md` is for the owner: one page, plain words, what changed, what was learned, what is next. Every experiment updates it, and so does any change the owner should know about.

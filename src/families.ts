@@ -2,6 +2,7 @@
 // A family is chosen by the decision engine; the expression within it by personality and context.
 
 import type { Feature } from './features';
+import { SETTING } from './setting';
 import type { Person } from './world';
 
 export type Family =
@@ -760,7 +761,7 @@ export const EXPRESSIONS: Expression[] = [
     respect: -0.05,
     stressRelief: 0.15,
   }),
-  // ---------- the harbour day: who steps up to organise it ----------
+  // ---------- the setting's yearly day: who steps up to organise it ----------
   E({
     solo: true,
     id: 'stepup',
@@ -768,7 +769,7 @@ export const EXPRESSIONS: Expression[] = [
     family: 'duty',
     intensity: 0.5,
     prefers: { altruism: 0.6, socialBoldness: 0.6, organisation: 0.4 },
-    text: a => `${a} took on organising the harbour day when nobody else would`,
+    text: a => `${a} took on organising ${SETTING.yearly.name} when nobody else would`,
     evidence: { altruism: 0.6, socialBoldness: 0.5, organisation: 0.3 },
     like: 0.1,
     trust: 0.05,
@@ -782,7 +783,7 @@ export const EXPRESSIONS: Expression[] = [
     family: 'lapse',
     intensity: 0.25,
     prefers: { sociability: -0.4, altruism: -0.4, socialBoldness: -0.5 },
-    text: (a, t, th, s) => `${a} studied ${s === 'herself' ? 'her' : 'his'} shoes when they asked who would organise the harbour day`,
+    text: (a, t, th, s) => `${a} studied ${s === 'herself' ? 'her' : 'his'} shoes when they asked who would organise ${SETTING.yearly.name}`,
     evidence: { altruism: -0.4, socialBoldness: -0.4 },
     like: 0,
     trust: 0,

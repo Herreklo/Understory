@@ -1,5 +1,6 @@
 import { clamp } from '../rng';
 import type { Feature } from '../features';
+import { SETTING } from '../setting';
 import { addEvent, broadcast, addEmotion } from '../world';
 import { hoods, staffOf, typeOf } from '../scale';
 import { stateCause, bondC } from '../considerations';
@@ -11,15 +12,15 @@ export const danger: SituationType = {
   id: 'danger',
   match(w) {
     const out: Instance[] = [];
-    const kinds = ['mill', 'garage', 'harbour'];
-    // a town has one of each; a city, every sawmill, garage and fleet in the monthly world
+    const kinds = SETTING.accidents.map(a => a.place);
+    // a town has one of each; a city, every one of them in the monthly world
     for (const pl of hoods(w) === 1 ? kinds : w.places.filter(x => kinds.includes(typeOf(x))).map(x => x.id)) {
       if (!w.rng.chance(0.0045)) continue;
       const staff = staffOf(w, pl).filter(p => p.job === pl);
       if (staff.length < 2) continue;
       const v = w.rng.pick(staff);
       const kind = typeOf(w.placeById.get(pl) ?? { id: pl });
-      const what = kind === 'mill' ? 'got caught in the saw' : kind === 'garage' ? 'was pinned under a car' : 'went over the side';
+      const what = SETTING.accidents.find(a => a.place === kind)!.text;
       v.ill = 2 + w.rng.int(0, 4);
       v.health = clamp(v.health - 0.2, 0.05, 1);
       const e = addEvent(w, {
