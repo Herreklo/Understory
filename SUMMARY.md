@@ -12,6 +12,7 @@ The people decide like people and can be read, but their lives are thin and repe
 - **People can be known.** Watching someone helps you guess what they will do, a little, and the help comes from knowing that person, not from the situation.
 - **Pages tell the truth.** Twelve kinds of false or broken lines are at zero and stay guarded by the tests.
 - **The city runs on today's engine.** A month at about 2,600 people runs 8.6 times faster than the town's way of running, and a town on its own is exactly as before.
+- **The engine has a front door.** A game creates, advances and reads a world through one module (`src/boundary.ts`), in plain data, under written rules for staying portable to another language or game engine.
 
 ## What doesn't work yet
 
@@ -25,17 +26,19 @@ The people decide like people and can be read, but their lives are thin and repe
 ## Next, in order
 
 1. Housekeeping: settled switches removed, the two giant files split, the town's content moved out of the engine. Each step proven to change nothing.
-2. Proposed: the repo's structure for add-ons (an engine with one front door, settings as packs, measurement apart, records per experiment).
-3. Proposed: the accounts arc. People remember their version of what happened, pass it on, and learn from it.
+2. Proposed: the accounts arc (#20). People remember their version of what happened, pass it on, and learn from it.
+3. For the game (Overstory): the front door's part two (#22), reads of what the player could know, player commands and versions; and the start year from the setting pack (#23), so a world can begin in another era.
 4. The city's background: partnering and children fixed, so it stops ageing.
-5. Later: a human test built on stories rather than predictions, and the paper design of the first playable slice ("the first gig").
+5. Later: a human test built on stories rather than predictions.
 
 ## Waiting for you
 
-- Decide on the repo structure (item 2).
+- Decide on the repo structure for add-ons.
+- Overstory's answers to the five questions sent today.
 
 ## Latest merges
 
+- **H28 (19 Oct):** the portability rules and the engine's front door. Nothing the engine does changed.
 - **The workflow (19 Oct):** two kinds of change (changes that alter nothing merge the day CI proves it; experiments keep the full protocol), CI that checks every pull request against main, this page, and the name Understory.
 - **S12 (19 Oct):** the city machinery moved onto today's engine. The town is untouched; the background needs its children fixed.
 - **Round 27 (19 Oct):** month-to-month moods for every person. Not kept: it didn't make people read as more human.

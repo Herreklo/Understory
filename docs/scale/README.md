@@ -28,7 +28,7 @@ The engine on `main` runs a city. A town of one neighbourhood is identical to th
 
 ## The code
 
-The scale code is part of the engine (`src/scale.ts`, `src/coarse.ts`, `src/coarse-odds.ts`, and city paths in the engine's files). `code.md` says what lives where. `contract.md` holds the rules new engine code follows so it scales.
+The scale code is part of the engine (`src/scale.ts`, `src/coarse.ts`, `src/coarse-odds.ts`, and city paths in the engine's files). `code.md` says what lives where. `contract.md` holds the rules new engine code follows so it scales, and `portability.md` the rules it follows so it can move to another language or sit under any game engine.
 
 - `scale/`: the harness. Each script is run from the repo root and imports the engine from `src/`.
 - `scale/bench/`: the odds fit (`fit.py`), the pre-registered checks (`report7.py`), the profile reader (`hot.py`), and the City Scale report generator (`report.py`).

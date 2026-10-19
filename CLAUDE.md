@@ -20,7 +20,7 @@ An open pull request is a claim on the files it touches. Before changing `src/` 
 - CI warns on a PR when another open PR touches the engine too.
 - `docs/seeds.md` is shared: append rows, never edit earlier ones.
 
-All new engine code follows `docs/scale/contract.md`, so the city never falls behind the engine.
+All new engine code follows `docs/scale/contract.md` and `docs/scale/portability.md`, so the city never falls behind the engine and the engine stays free to move.
 
 ## Two kinds of change
 
