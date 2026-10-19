@@ -7,6 +7,15 @@ name: identity
 on:
   pull_request:
     types: [opened, synchronize, reopened, labeled, unlabeled, edited, ready_for_review]
+    # Only a change to the engine, its build or this check can change a world; anything else is not worth a runner's minutes.
+    paths:
+      - 'src/**'
+      - 'scale/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'tsconfig.json'
+      - 'scripts/identity-ci.sh'
+      - '.github/workflows/identity.yml'
 
 concurrency:
   group: identity-${{ github.ref }}
