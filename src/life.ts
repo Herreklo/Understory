@@ -8,6 +8,7 @@ import type { Cause, Person, World, Want } from './world';
 import {
   bkA,
   bkB,
+  titleAt,
   OFF,
   recentEvents,
   setObsEvent,
@@ -380,7 +381,7 @@ function promote(w: World, pl: any, staff: Person[]) {
   const e = addEvent(w, {
     type: 'promoted',
     who: [win.id],
-    text: `@${win.id} became ${pl.title} at ${pl.name}.`,
+    text: `@${win.id} became ${titleAt(pl)}.`,
     causes: [
       ...why,
       stateCause(pool.length > 1 ? `the strongest record of ${pool.length}` : 'the only one in the running', 0.6),
@@ -943,7 +944,8 @@ function howMet(w: World, a: Person, b: Person): Cause[] {
 // Losing touch ends a friendship, checked monthly (round 15); with the time budget off, only a falling-out does.
 const FADE = () => !OFF.has('budget');
 export function friendsTick(w: World) {
-  if (!FADE()) return;
+  // Without the budget the dead and departed still leave one's friends; only losing touch is skipped (round F26).
+  const fade = FADE();
   for (const p of live(w))
     for (const id of [...p.friends]) {
       const q = w.byId.get(id);
@@ -952,7 +954,7 @@ export function friendsTick(w: World) {
         if (q) q.friends.delete(p.id);
         continue;
       } // a friendship ends for both
-      if (q.id > p.id) checkBond(w, p, q);
+      if (fade && q.id > p.id) checkBond(w, p, q);
     }
 }
 // A person's five most familiar people outside the family, refreshed each month (round 19b).
@@ -1123,21 +1125,27 @@ function checkBond(w: World, a: Person, b: Person) {
     } else if (hates && r.like > -0.1) x.emotions = x.emotions.filter(e => e.k !== key);
   }
 }
+const voiced = (text: string, holder: Person, other: Person) =>
+  /\b(me|my|I)\b/.test(text) ? `@${other.id} ${text.replace(/\bmy\b/g, `@${holder.id}'s`).replace(/\b(me|I)\b/g, `@${holder.id}`)}` : text;
 function memWhy(w: World, x: Person, y: Person, sign: number): Cause[] {
   const r = peekBond(w, x.id, y.id);
   if (!r) return [];
   const seen = new Set<string>();
-  return r.mem
-    .map(m => ({ m, v: (m.like + m.trust) * memWeight(x, m, w.t, y.id) }))
-    .filter(o => sign * o.v > 0.08)
-    .sort((p, q) => sign * (q.v - p.v))
-    .map(o => ({ kind: 'event', label: `${o.m.text} (${year(o.m.t)})`, weight: 0.5, ref: o.m.ev }) as Cause)
-    .filter(c => {
-      if (seen.has(c.label)) return false;
-      seen.add(c.label);
-      return true;
-    })
-    .slice(0, 2);
+  return (
+    r.mem
+      .map(m => ({ m, v: (m.like + m.trust) * memWeight(x, m, w.t, y.id) }))
+      .filter(o => sign * o.v > 0.08)
+      .sort((p, q) => sign * (q.v - p.v))
+      // A memory is kept in the holder's words ("went to me and apologised"); as a reason it is said from outside, once per event.
+      .map(o => ({ kind: 'event', label: `${voiced(o.m.text, x, y)} (${year(o.m.t)})`, weight: 0.5, ref: o.m.ev }) as Cause)
+      .filter(c => {
+        const k = c.ref != null && c.ref >= 0 ? 'e' + c.ref : c.label;
+        if (seen.has(k)) return false;
+        seen.add(k);
+        return true;
+      })
+      .slice(0, 2)
+  );
 }
 function contexts(w: World, a: Person, b: Person): Cause[] {
   const out: Cause[] = [];
@@ -1299,6 +1307,29 @@ function gossip(w: World) {
 }
 
 // ---------- romance and family ----------
+// Two who are seeing each other marry. `why` replaces the usual reasons (round 25d: one of them asked).
+export function marry(w: World, p: Person, q: Person, why?: Cause[]) {
+  const dur = w.t - p.psince;
+  p.pstat = q.pstat = 'married';
+  p.psince = q.psince = w.t;
+  const e = addEvent(w, {
+    type: 'married',
+    who: [p.id, q.id],
+    text: `@${p.id} and @${q.id} got married.`,
+    causes: why ?? [stateCause(`together since ${year(p.psince - dur)}`, 0.5), { kind: 'bond', label: 'they had grown close', weight: 0.5 }],
+    vis: 'public',
+    evidence: [ev(p.id, 'bond:' + q.id, 1, 1, 0.8), ev(q.id, 'bond:' + p.id, 1, 1, 0.8)],
+    w: 2,
+  });
+  broadcast(w, e);
+  addEmotion(w, p, 'wed', 'newly married', 0.2, 18, e.id);
+  addEmotion(w, q, 'wed', 'newly married', 0.2, 18, e.id);
+  remember(w, p, q, e.id, 0.15, 0.1, 0.2, 'married');
+  remember(w, q, p, e.id, 0.15, 0.1, 0.2, 'married');
+  resolveWants(w, p, 'win', String(q.id), 'achieved', e.id);
+  resolveWants(w, q, 'win', String(p.id), 'achieved', e.id);
+  return e;
+}
 function romanceTick(w: World) {
   const L = live(w);
   for (const p of L) {
@@ -1315,26 +1346,8 @@ function romanceTick(w: World) {
       if (p.stress > 0.75) remember(w, q, p, -1, -0.015, 0, 0, 'always on edge');
       if (q.stress > 0.75) remember(w, p, q, -1, -0.015, 0, 0, 'always on edge');
       if (p.pstat === 'dating') {
-        if (dur >= 10 && o1 > 0.5 && o2 > 0.5 && w.rng.chance(0.03 * (z01(p.values.lovedOnes) + z01(q.values.lovedOnes)))) {
-          p.pstat = q.pstat = 'married';
-          p.psince = q.psince = w.t;
-          const e = addEvent(w, {
-            type: 'married',
-            who: [p.id, q.id],
-            text: `@${p.id} and @${q.id} got married.`,
-            causes: [stateCause(`together since ${year(p.psince - dur)}`, 0.5), { kind: 'bond', label: 'they had grown close', weight: 0.5 }],
-            vis: 'public',
-            evidence: [ev(p.id, 'bond:' + q.id, 1, 1, 0.8), ev(q.id, 'bond:' + p.id, 1, 1, 0.8)],
-            w: 2,
-          });
-          broadcast(w, e);
-          addEmotion(w, p, 'wed', 'newly married', 0.2, 18, e.id);
-          addEmotion(w, q, 'wed', 'newly married', 0.2, 18, e.id);
-          remember(w, p, q, e.id, 0.15, 0.1, 0.2, 'married');
-          remember(w, q, p, e.id, 0.15, 0.1, 0.2, 'married');
-          resolveWants(w, p, 'win', String(q.id), 'achieved', e.id);
-          resolveWants(w, q, 'win', String(p.id), 'achieved', e.id);
-        } else if (Math.min(o1, o2) < 0.15 && w.rng.chance(0.08)) split(w, p, q, false);
+        if (dur >= 10 && o1 > 0.5 && o2 > 0.5 && w.rng.chance(0.03 * (z01(p.values.lovedOnes) + z01(q.values.lovedOnes)))) marry(w, p, q);
+        else if (Math.min(o1, o2) < 0.15 && w.rng.chance(0.08)) split(w, p, q, false);
       } else if ((OFF.has('love') || OFF.has('leaving')) && Math.min(o1, o2) < 0 && w.rng.chance(0.025)) split(w, p, q, true); // with love.ts, ending a marriage is a decision (round 20b)
       continue;
     }

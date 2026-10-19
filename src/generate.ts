@@ -8,7 +8,7 @@ import { IFTHEN_TEMPLATES } from './features';
 import type { Dim } from './core';
 import { SETTING } from './setting';
 import { inclination } from './inclination';
-import { OFF, type Person, type World } from './world';
+import { floorOn, OFF, type Person, type World } from './world';
 
 const DIM_IDS: Dim[] = ['H', 'E', 'X', 'A', 'C', 'O'];
 
@@ -37,13 +37,33 @@ export interface GenOpts {
   founder: boolean;
 }
 
-export function pickName(w: World, r: Rng, sex: 'f' | 'm'): string {
+// Two surnames a reader could mix up: the same, or one letter apart (Vale and Hale, Howell and Howells).
+function nearSurname(a: string, b: string): boolean {
+  if (a === b) return true;
+  if (Math.abs(a.length - b.length) > 1) return false;
+  let i = 0;
+  while (i < a.length && i < b.length && a[i] === b[i]) i++;
+  if (a.length === b.length) return a.slice(i + 1) === b.slice(i + 1); // one letter changed
+  return a.length > b.length ? a.slice(i + 1) === b.slice(i) : a.slice(i) === b.slice(i + 1); // one letter added or dropped
+}
+export function pickName(w: World, r: Rng, sex: 'f' | 'm', last?: string): string {
   const pool = SETTING.names[sex];
+  const living = w.people.filter(p => p.status !== 'dead');
   for (let i = 0; i < 40; i++) {
     const n = r.pick(pool);
-    if (!w.people.some(p => p.first === n && p.status !== 'dead')) return n;
+    if (!living.some(p => p.first === n)) return n;
   }
-  return r.pick(pool);
+  if (!floorOn() || !last) return r.pick(pool);
+  // Round F27: when every first name is in use, a namesake is allowed only if the surnames cannot be mixed up; failing that, the
+  // first name least used among the living.
+  for (let i = 0; i < 40; i++) {
+    const n = r.pick(pool);
+    if (!living.some(p => p.first === n && nearSurname(p.last, last))) return n;
+  }
+  const used = new Map<string, number>();
+  for (const p of living) used.set(p.first, (used.get(p.first) ?? 0) + 1);
+  const byUse = pool.slice().sort((a, b) => (used.get(a) ?? 0) - (used.get(b) ?? 0));
+  return byUse.find(n => !living.some(p => p.first === n && nearSurname(p.last, last))) ?? byUse[0];
 }
 
 export function generatePerson(w: World, opt: GenOpts): Person {
@@ -185,7 +205,7 @@ export function generatePerson(w: World, opt: GenOpts): Person {
     0.5 * facets.diligence + 0.3 * facets.socialSelfEsteem - 0.3 * facets.anxiety + (0.3 * (values.success + values.freedom)) / 2 + r.normal() * 0.7;
   const p: Person = {
     id,
-    first: pickName(w, r, sex),
+    first: pickName(w, r, sex, last),
     last,
     sex,
     born: w.t - Math.round(opt.age * 12) - r.int(0, 11),

@@ -16,6 +16,7 @@ It is interpretable and internally tested. It is not validated against real peop
 
 | File | What it holds |
 | --- | --- |
+| `WHY.md` | Why the lab exists and what it might become. Intent, not rules |
 | `NOW.md` | Who is working on what, right now |
 | `CLAUDE.md` | How work is done here: lanes, the round protocol, the gate, the standing rules |
 | `docs/STATUS.md` | The current design, its numbers, its weaknesses and the exit criterion |

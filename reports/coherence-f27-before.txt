@@ -1,0 +1,29 @@
+Coherence faults · seeds 2877–2880 · ten present years · 60s
+no. count  fault
+1   781    a remembered event held twice in one bond
+           e.g. seed 2877: bond holds "Tara told Toby it was nothing." 2 times
+           e.g. seed 2877: bond holds "Tara told Toby it was nothing. It had happened before, in 2012." 2 times
+2   0      "nothing had changed since" earlier than "together since"
+3   13     a group's event holds the group's live member list
+           e.g. seed 2877: group:formed: "Owen, Ian Eden and Freya Holmes started a band: Red Sky." is on 3 of 4 own lists
+           e.g. seed 2877: group:hole: "Without Mark Sutton, something had gone out of the Lanterns that nobody could name." is on 3 of 4 own lists
+4   0      a dead person in a later event
+5   70     a stock reason that does not fit the act
+           e.g. seed 2877: Jonah Sutton: "Jonah Sutton told Colin exactly what was wrong with the plan to put on a play for the whole town." [would not take what was not his] (honesty)
+           e.g. seed 2877: Jonah Sutton: "Jonah Sutton told Colin exactly what was wrong with the plan to merge the two youngest classes. It had happened before, in 2030." [would not take
+6   1446   a reason citing an event that is not on the page
+           e.g. seed 2877: Ben Tanner: "Ben Tanner has not missed a night when Red Sky played since." cites "Red Sky played the Anchor and the room went quiet."
+           e.g. seed 2877: Ben Tanner: "Ben Tanner gave Sally the money without being asked twice. It had happened before, in 2021." cites "Sally asked Ben Tanner straight out for money."
+7   94     one want dated two ways
+           e.g. seed 2877: Ruth Tanner: to become foreman at the sawmill: 2012 (the wants list) / 2013 (Ruth Tanner was passed over for foreman; Alex Dale got the job.)
+           e.g. seed 2877: Toby Sutton: to make things right with Ralph: 2034 (the wants list) / 2035 (Toby got there: to make things right with Ralph, within the year.)
+8   0      an act at a workplace the person has left
+9   0      a broken phrase
+10  594    a repeat a writer would cut
+           e.g. seed 2877: Andy Tanner: ×3 "Andy has not been back in years; a card at Christmas and nothing more."
+           e.g. seed 2877: Andy Tanner: ×3 "Andy sounded like a stranger on the phone, people say."
+11  3      near-identical names among the living
+           e.g. seed 2878: Hal Lee and Hal Lee
+           e.g. seed 2879: Sally Dale and Sally Vale
+12  0      a friendship that ends and restarts with nothing between
+COHERENCE {"seeds":[2877,2880],"counts":{"1":781,"2":0,"3":13,"4":0,"5":70,"6":1446,"7":94,"8":0,"9":0,"10":594,"11":3,"12":0}}

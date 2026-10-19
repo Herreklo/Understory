@@ -11,6 +11,7 @@
 import { clamp } from './rng';
 import { SETTING } from './setting';
 import {
+  floorOn,
   OFF,
   type World,
   type Person,
@@ -507,7 +508,10 @@ function night(w: World, pr: Project, p: Person) {
   const k = kindOf(pr);
   let lapses = 0;
   const lapsed: Person[] = [];
-  for (const h of pr.helpers.map(id => P(w, id)).filter(q => q.status === 'in')) {
+  // Round F27: the helpers list is only ever added to, so a helper who has died or left stays on it; the night names and counts
+  // only those still here.
+  const helpers = floorOn() ? pr.helpers.filter(id => P(w, id).status === 'in') : pr.helpers;
+  for (const h of helpers.map(id => P(w, id)).filter(q => q.status === 'in')) {
     const o = run(w, {
       type: 'pitch',
       actor: h,
@@ -531,11 +535,11 @@ function night(w: World, pr: Project, p: Person) {
       } else remember(w, p, h, o.event.id, 0.15, 0.2, 0.2, `came through for ${k.short}`);
     }
   }
-  const quality = 0.4 * facet(p, 'organisation') + (0.25 * pr.helpers.length) / Math.max(1, k.helpers) - 0.5 * lapses + w.rng.normal() * 0.4;
+  const quality = 0.4 * facet(p, 'organisation') + (0.25 * helpers.length) / Math.max(1, k.helpers) - 0.5 * lapses + w.rng.normal() * 0.4;
   const good = quality > 0;
   const e = addEvent(w, {
     type: good ? 'night:good' : 'night:bad',
-    who: [p.id, ...pr.helpers.slice(0, 3)],
+    who: [p.id, ...helpers.slice(0, 3)],
     text: good
       ? `${k.short.charAt(0).toUpperCase() + k.short.slice(1)} that @${p.id} put on was the best night ${SETTING.name} had had in years.`
       : `${k.short.charAt(0).toUpperCase() + k.short.slice(1)} that @${p.id} put on was a washout${
@@ -551,7 +555,7 @@ function night(w: World, pr: Project, p: Person) {
       traitCause(p, 'organisation', 0.4, good ? 1 : -1),
       ...(lapsed.length
         ? [stateCause(`${lapsed.length} of the helpers let it down`, 0.5)]
-        : [stateCause(`${pr.helpers.length} people pitched in`, 0.4)]),
+        : [stateCause(`${helpers.length} people pitched in`, 0.4)]),
     ],
     vis: 'public',
     evidence: [ev(p.id, 'organisation', good ? 1 : -1, 0.6, 0.6)],

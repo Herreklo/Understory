@@ -1,0 +1,15 @@
+Coherence faults · seeds 2921–2924 · ten present years · 64s
+no. count  fault
+1   0      a remembered event held twice in one bond
+2   0      "nothing had changed since" earlier than "together since"
+3   0      a group's event holds the group's live member list
+4   0      a dead person in a later event
+5   0      a stock reason that does not fit the act
+6   0      a reason citing an event that is not on the page
+7   0      one want dated two ways
+8   0      an act at a workplace the person has left
+9   0      a broken phrase
+10  0      a repeat a writer would cut
+11  0      near-identical names among the living
+12  0      a friendship that ends and restarts with nothing between
+COHERENCE {"seeds":[2921,2924],"counts":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0}}

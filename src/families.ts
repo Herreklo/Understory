@@ -3,6 +3,7 @@
 
 import type { Feature } from './features';
 import type { Person } from './world';
+import { ON } from './world';
 
 export type Family =
   | 'anger'
@@ -169,6 +170,7 @@ export const EXPRESSIONS: Expression[] = [
   E({
     solo: true,
     id: 'work',
+    onlyIf: p => p.job != null || !ON.has('jobact'), // round H26: there is no work to bury yourself in without a job; off by default, the check in npm test failed with it on
     family: 'withdrawal',
     intensity: 0.4,
     prefers: { diligence: 1, dependence: -0.5 },
@@ -205,7 +207,7 @@ export const EXPRESSIONS: Expression[] = [
         v,
         `${a} told ${t} how bad things had got`,
         `${a} told ${t} everything, the parts nobody else knew`,
-        `${a} finally said it out loud, to ${t}`,
+        `${a} finally told ${t} what had been kept back`,
       ),
     evidence: { dependence: 1 },
     like: 0.15,

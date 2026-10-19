@@ -6,6 +6,7 @@ import { clamp } from './rng';
 import { SETTING } from './setting';
 import { VALUES, FACETS, FACET_BY_ID } from './core';
 import {
+  titleAt,
   OFF,
   type World,
   type Person,
@@ -47,7 +48,7 @@ import {
   learned,
 } from './grammar';
 import type { Feature } from './features';
-import { hasWays, chooseWay, setOut, wayTick, obstacle, markGivenUp, mayComeBack, steering } from './steer';
+import { hasWays, chooseWay, setOut, wayTick, obstacle, markGivenUp, mayComeBack, steering, everyone, wantFromValues } from './steer';
 
 const VN = Object.fromEntries(VALUES.map(v => [v.id, v.name]));
 const NONE = new Set<Feature>();
@@ -60,7 +61,7 @@ export function wantLabel(w: World, p: Person, x: Want): string {
     case 'attain': {
       if (x.target === 'work') return 'to find work';
       const pl = w.placeById.get(x.target);
-      return pl ? `to become ${pl.title} at ${pl.name}` : 'to get on';
+      return pl ? `to become ${titleAt(pl)}` : 'to get on';
     }
     case 'create':
       return 'a child';
@@ -103,17 +104,22 @@ export function resolveWants(w: World, p: Person, kind: string, target: string, 
       x.doneAt = ref;
       const yrs = Math.max(1, Math.round((w.t - x.since) / 12));
       const pu = x.pursuit;
+      const tried = Math.max(1, Math.round((w.t - (pu?.since ?? x.since)) / 12)); // trying is counted from the pursuit, wanting from the want
       const text =
         how === 'achieved'
           ? pu && !pu.owner
-            ? `@${p.id} got there: ${wantLabel(w, p, x)}, ${w.t - x.since < 12 ? 'within the year' : `after ${yrs} year${yrs > 1 ? 's' : ''} of trying`}.`
+            ? `@${p.id} got there: ${
+                x.kind === 'prove' && w.events[ref]?.type === 'gotgood'
+                  ? `people have started to talk about ${her(p)} ${x.target === 'vocals' ? 'singing' : x.target}`
+                  : wantLabel(w, p, x)
+              }, ${w.t - x.since < 12 ? 'within the year' : `after ${yrs} year${yrs > 1 ? 's' : ''} of wanting it`}.`
             : `@${p.id} got what ${she(p)} had wanted for ${yrs > 1 ? yrs + ' years' : 'a year'}: ${wantLabel(w, p, x).replace(/^to /, '')}.`
           : `What @${p.id} had wanted for ${yrs} year${yrs > 1 ? 's' : ''} was gone.`;
       const causes: Cause[] = [eventCause(w, ref, 1)];
       if (pu && !pu.owner && how === 'achieved')
         causes.push(traitCause(p, 'diligence', 0.4, 1), {
           kind: 'want',
-          label: `had been working toward it since ${year(pu.since)}`,
+          label: `had wanted it since ${year(x.since)}`,
           weight: 0.5,
           key: x.kind,
           who: p.id,
@@ -163,6 +169,7 @@ const PLAN: Record<string, string> = {
 const active = (p: Person) => p.wants.filter(x => !x.done && x.pursuit && !x.pursuit.owner);
 
 function newWants(w: World, p: Person) {
+  wantFromValues(w, p, (kind, target, value, urgency) => addWant(w, p, kind, target, value, urgency)); // round 25d
   const a = age(w, p);
   if (a < 15 || !w.rng.chance(0.06)) return;
   // Something to own.
@@ -415,7 +422,9 @@ function pursuitTick(w: World, p: Person) {
     }
   // Starting: a want becomes a pursuit, or stays a wish.
   if (a >= 15 && !active(p).length && w.rng.chance(0.1)) {
-    const open = p.wants.filter(x => !x.done && !x.pursuit && PLAN[x.kind] && !(x.kind === 'attain' && !p.job && x.target !== 'work'));
+    const open = p.wants.filter(
+      x => !x.done && !x.pursuit && (PLAN[x.kind] || (x.kind === 'win' && everyone())) && !(x.kind === 'attain' && !p.job && x.target !== 'work'),
+    );
     if (open.length) startPursuit(w, p, w.rng.pick(open));
   }
   for (const x of active(p)) {
@@ -664,6 +673,11 @@ function tell(w: World, p: Person, x: Want) {
       `@${p.id} has been playing to anyone who will listen.`,
     ],
     belong: [`@${p.id} has started turning up to things.`, `@${p.id} has been at the Anchor more than usual.`, `@${p.id} asked to be dealt in.`],
+    win: [
+      `@${p.id} has been talking about @${x.target} as if it were settled.`,
+      `@${p.id} has been looking at rings.`,
+      `@${p.id} asked @${x.target}'s family round for Sunday lunch.`,
+    ],
     restore: [
       `@${p.id} has been asking after @${x.target}.`,
       `@${p.id} went quiet when @${x.target}'s name came up.`,

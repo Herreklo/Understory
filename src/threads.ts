@@ -69,7 +69,7 @@ export function threadStep(w: World, p: Person, fam: Family, expr: Expression, t
         who: [p.id],
         text,
         causes: [
-          stateCause(`years of ${source}`, 0.6),
+          stateCause(`years of ${source.replace(/^in /, '')}`, 0.6),
           traitCause(p, fam === 'withdrawal' ? 'sociability' : fam === 'anger' ? 'patience' : 'dependence', 0.4, fam === 'seeking' ? 1 : -1),
         ],
         vis: 'local',
@@ -251,7 +251,7 @@ function end(w: World, p: Person, th: Thread, how: string, ref: number) {
     const e = addEvent(w, {
       type: 'thread:through',
       who: [p.id],
-      text: `@${p.id} came through it, after ${months >= 18 ? Math.round(months / 12) + ' years' : months + ' months'} of ${th.source === 'ill' ? 'illness' : th.source}.`,
+      text: `@${p.id} came through it, after ${months >= 18 ? Math.round(months / 12) + ' years' : months + ' months'} of ${th.source === 'ill' ? 'illness' : th.source.replace(/^in /, '')}.`,
       causes: [eventCause(w, th.events[0], 0.4), stateCause(p.stress < 0.25 ? 'the pressure had eased' : 'learned to carry it', 0.6)],
       vis: 'local',
       evidence: [ev(p.id, 'state:low', -1, 1, 0.7)],

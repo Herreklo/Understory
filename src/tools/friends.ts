@@ -1,6 +1,6 @@
 // Friends: close friendship kept up, or lost. Same seeds under each rule (on; nobudget = OFF=budget; or any switches joined by '+'); adults at the end of ten present years.
 //   tsx src/tools/friends.ts run A B <on|off> → out-friends/<rule>-A-B.json ;  tsx src/tools/friends.ts report
-import { mkdirSync, readFileSync, writeFileSync, readdirSync } from 'fs';
+import { mkdirSync, readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
 import { buildWorld, runYears } from '../build';
 import { pickWitness } from '../witness';
 import { OFF, live, age, bkA, bkB, type World } from '../world';
@@ -35,6 +35,7 @@ if (process.argv[2] === 'run') {
     rule = process.argv[5] ?? 'on';
   const out: { seed: number; r: R }[] = [];
   for (let seed = A; seed <= B; seed++) {
+    if (existsSync(`${OUT}/${rule}-${seed}-${seed}.json`)) continue; // done before: a stopped run resumes where it was
     OFF.clear();
     if (rule === 'nobudget') OFF.add('budget');
     else if (rule !== 'on') for (const x of rule.split('+')) OFF.add(x);
@@ -128,9 +129,10 @@ if (process.argv[2] === 'run') {
         pop: live(w).length,
       },
     });
+    writeFileSync(`${OUT}/${rule}-${seed}-${seed}.json`, JSON.stringify([out[out.length - 1]]));
     console.error(`friends ${rule}: world ${seed}`);
   }
-  writeFileSync(`${OUT}/${rule}-${A}-${B}.json`, JSON.stringify(out));
+  // Each world was written when it was done.
 } else {
   const load = (rule: string) => {
     const m = new Map<number, R>();

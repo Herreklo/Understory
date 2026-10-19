@@ -11,8 +11,9 @@ import { fullName, year } from '../world';
 const OUT = process.env.BOARD_OUT ?? 'out';
 mkdirSync(OUT, { recursive: true });
 const [mode, a0, b0, y0] = process.argv.slice(2);
-import { OFF, observe } from '../world';
+import { OFF, ON, observe } from '../world';
 for (const s of (process.env.OFF ?? '').split(',').filter(Boolean)) OFF.add(s); // ablation: OFF=manner ./board.sh
+for (const s of (process.env.ON ?? '').split(',').filter(Boolean)) ON.add(s);
 const A = +(a0 ?? 1),
   B = +(b0 ?? A),
   YEARS = +(y0 ?? 10);
@@ -40,6 +41,7 @@ if (mode === 'train') {
   }
   const worlds: { seed: number; g: (Guesses & { ex?: string })[] }[] = [];
   for (let seed = A; seed <= B; seed++) {
+    if (existsSync(`${OUT}/eval-${seed}-${seed}.json`)) continue; // done before: a stopped run resumes where it was
     const w = buildWorld(seed, 1);
     pickWitness(w);
     const g: (Guesses & { ex?: string })[] = [];
@@ -81,8 +83,8 @@ if (mode === 'train') {
       delete x.rec;
     }
     worlds.push({ seed, g });
+    writeFileSync(`${OUT}/eval-${seed}-${seed}.json`, JSON.stringify([worlds[worlds.length - 1]]));
   }
-  writeFileSync(`${OUT}/eval-${A}-${B}.json`, JSON.stringify(worlds));
   console.log(`evaluated ${A}-${B}: ${worlds.reduce((s, x) => s + x.g.length, 0)} decisions`);
 } else if (mode === 'report') {
   const worlds: { seed: number; g: (Guesses & { ex?: string })[] }[] = [];
@@ -97,6 +99,7 @@ if (mode === 'train') {
     ['noteOrBase', 'Notebook'],
     ['wit', 'Witness'],
     ['cal', 'Calibrated'],
+    ['donor', 'Donor (null)'],
     ['text', 'Page-annotation'],
     ['comb', 'Combined'],
     ['swap', 'Swapped'],
@@ -155,6 +158,7 @@ if (mode === 'train') {
   console.log('\nPaired differences per world (points), mean ± 95% interval. * = interval excludes zero.');
   const PAIRS: [string, string, string][] = [
     ['cal', 'noteOrBase', 'calibrated − notebook'],
+    ['donor', 'noteOrBase', 'donor − notebook'],
     ['text', 'noteOrBase', 'page-annot − notebook'],
     ['cal', 'text', 'calibrated − page-anid'],
     ['comb', 'cal', 'combined − calibrated'],

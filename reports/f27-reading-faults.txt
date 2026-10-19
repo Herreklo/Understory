@@ -1,0 +1,441 @@
+== on
+L01 novelist       reason        Maisie told Eddie what Eddie wanted to hear. [... felt it was owed]
+L01 novelist       contradiction Nothing had changed since 2013: Maisie had stopped bringing things up with John Kemp.
+L01 novelist       contradiction wants to become headteacher at the school (since 2031)
+L01 novelist       reason        Ralph and Maisie are both after the headteacher's job, and it shows. (cited in 2030-2032, 
+L01 novelist       repeat        What Maisie had wanted for 24 years was gone. / Maisie was passed over for headteacher
+L01 novelist       broken        despite: 1 years in
+L01 novelist       contradiction Maisie and Leo picked up where they had left off. [does not like to judge] vs though she i
+L01 novelist       uncited       Maisie came round to see Alan every week. It was the third time, after 2025 and 2032.
+L01 novelist       names         Hal Reed / Harry Reed
+L01 player.jsonl   contradiction Ralph and Maisie are both after the headteacher's job, and it shows.
+L01 player.jsonl   broken        despite: 1 years in
+L01 player.jsonl   repeat        Nothing had changed since 2013: Maisie had stopped bringing things up with John Kemp.
+L01 player.jsonl   contradiction though she is quick to judge
+L01 player.jsonl   names         Maisie and Harry Reed became friends
+L01 social worker  broken        despite: 1 years in
+L01 social worker  repeat        Nothing had changed since 2013: Maisie had stopped bringing things up with John Kemp.
+L01 social worker  contradiction 2032: Maisie dragged up what Ralph did last year ... [Ralph was civil to Maisie for weeks,
+L01 social worker  names         Hal Reed / Harry Reed
+L03 novelist       broken        [years of Grace Hughes died; ...]
+L03 novelist       reason        Mary asked Victor straight out for money. [badly in debt; puts other people first; despera
+L03 novelist       reason        Mary went to pieces during the open day at the harbour fleet. [...; steadiest when all eye
+L03 novelist       reason        Mary went out into the storm. [a storm came in; though money has never meant much to her]
+L03 novelist       repeat        Mary kept the catch straight, though nobody would have known. (2022, 2027, same words)
+L03 novelist       repeat        went in after Mary without a second's thought (five times in one year)
+L03 novelist       reason        Mary wasn't there for Thea when it mattered. [...; has held on tight to the people left si
+L03 player.jsonl   broken        years of Grace Hughes died
+L03 player.jsonl   reason        Mary went to pieces during the open day at the harbour fleet.
+L03 player.jsonl   repeat        Mary kept the catch straight, though nobody would have known.
+L03 player.jsonl   reason        Mary went out into the storm.
+L03 player.jsonl   reason        badly in debt; puts other people first; desperate
+L03 social worker  broken        years of Grace Hughes died
+L03 social worker  reason        Mary went to pieces during the open day at the harbour fleet. [...steadiest when all eyes 
+L03 social worker  uncited       Tom has taken to figures; Mary got him into it. [Mary lives for it]
+L03 social worker  reason        Mary wasn't there for Thea when it mattered. [...has held on tight to the people left sinc
+L03 social worker  contradiction 2023: Molly Scott dragged up what Mary did last year ... ↳ 2021
+L05 novelist       reason        Eric Lee told Steve what Steve wanted to hear. [...; felt it was owed]
+L05 novelist       repeat        Eric Lee quietly started practising guitar in earnest. (2027 and again 2030, after he had 
+L05 novelist       contradiction after 6 years of wanting it ... had wanted it since 2030
+L05 novelist       reason        Eric Lee has started looking for work somewhere else. [wants to become skipper at the harb
+L05 novelist       uncited       Once again, Eric Lee sings with the choir every Thursday.
+L05 novelist       contradiction Sarah Lyons and Eric Lee started seeing each other. (still with Karen Eden; no break shown
+L05 novelist       uncited       It had happened before, in 2028. (Steve dragged up)
+L05 novelist       names         Sarah Lane / Sarah Lyons
+L05 player.jsonl   repeat        Eric Lee quietly started practising guitar in earnest.
+L05 player.jsonl   reason        Eric Lee has started looking for work somewhere else.
+L05 player.jsonl   uncited       Once again, Eric Lee sings with the choir every Thursday.
+L05 player.jsonl   contradiction Sarah Lyons and Eric Lee started seeing each other.
+L05 player.jsonl   reason        Eric Lee told Steve what Steve wanted to hear.
+L05 social worker  contradiction Eric Lee says there's nothing for him here. (same year as 'got there: to find his people')
+L05 social worker  repeat        Eric Lee quietly started practising guitar in earnest. [wants to be heard playing guitar (
+L05 social worker  contradiction hard work more than gift ... a real gift
+L05 social worker  reason        Eric Lee has started looking for work somewhere else. [wants to become skipper at the harb
+L05 social worker  uncited       Once again, Eric Lee sings with the choir every Thursday.
+L05 social worker  contradiction Sarah Lyons and Eric Lee started seeing each other. (still with Karen Eden, no split shown
+L05 social worker  names         Sarah Lane / Sarah Lyons
+L06 novelist       contradiction Ivy had left the wallet at home when the hat went round for Sean Scott. [looks after her o
+L06 novelist       uncited       Ivy has started playing with Tess. [...; would follow Tess anywhere; ...]
+L06 novelist       uncited       Ivy took it badly, and let everyone see it. [wanted to put things right with Sean Scott ..
+L06 novelist       repeat        Sean Scott had a second heart attack. (2025 and again 2026)
+L06 novelist       contradiction Ivy had a go at John about never going anywhere vs self: rooted in the town, through and t
+L06 novelist       reason        Eric would not budge an inch for Ivy. [...; goes quiet around the boss]
+L06 novelist       uncited       Ivy got what she had wanted for 4 years: make things right with Tilly. (want never shown)
+L06 player.jsonl   contradiction Ivy had left the wallet at home when the hat went round for Sean Scott.
+L06 player.jsonl   repeat        Ivy started trying to put things right with Tilly, and tells everyone.
+L06 player.jsonl   uncited       Ivy got what she had wanted for 4 years: make things right with Tilly.
+L06 social worker  contradiction ↳ 2025: Sean Scott had a second heart attack. ... ↳ 2026: Sean Scott had a second heart at
+L06 social worker  reason        Eric would not budge an inch for Ivy. [...goes quiet around the boss]
+L06 social worker  reason        Ivy shied away from a spot at the Anchor's open night. [...rooted in the town, through and
+L06 social worker  uncited       Ivy and Lily stopped seeing each other, and that was that. (Lily never shown before)
+L07 novelist       broken        [5 times in 1 years: carrying something nobody knew]
+L07 novelist       broken        Instead, Sean took on extra work to pay for a boat of his own.
+L07 novelist       reason        Sean told people what Tilly had told Sean in confidence. [...; said what would work]
+L07 novelist       reason        Sean shied away from a spot at the Anchor's open night. [...; that is who Sean is: rooted 
+L07 novelist       contradiction Nothing had changed since 2001: Sean and Tilly could have a row and be laughing about it b
+L07 novelist       repeat        Typical: Sean rarely looks back. / People have noticed: Sean rarely looks back.
+L07 novelist       names         Beth Waller / Beth Hale
+L07 player.jsonl   contradiction Nothing had changed since 2001: Sean and Tilly could have a row and be laughing about it b
+L07 player.jsonl   uncited       Instead, Sean took on extra work to pay for a boat of his own.
+L07 player.jsonl   broken        5 times in 1 years: carrying something nobody knew
+L07 player.jsonl   reason        Sean told people what Tilly had told Sean in confidence.
+L07 player.jsonl   repeat        Sean rarely looks back.
+L07 player.jsonl   other         Vera Newman has taken to guitar, like her father, Sean.
+L07 social worker  broken        Sean stopped trying to reach Beth Waller. [5 times in 1 years
+L07 social worker  uncited       Sean stopped trying to reach Beth Waller. (no attempt shown)
+L07 social worker  reason        Sean shied away from a spot at the Anchor's open night. [...rooted in the town, through an
+L07 social worker  contradiction Nothing had changed since 2001: Sean and Tilly could have a row and be laughing about it b
+L07 social worker  contradiction 2016: Sean dragged up what Hilda Vaughan did last year ... ↳ 2014
+L08 novelist       contradiction Tara hung back when the others went out into the storm. / Tara went out into the storm. (b
+L08 novelist       broken        whatever the royal family is on the agenda
+L08 novelist       broken        Tara and Ben buried the hatchet, 1 year after the skipper's job. (same year)
+L08 novelist       reason        Tara went to Kate Ash and apologised. [It came out that Kate Ash had been running Tara dow
+L08 novelist       impossible    Tara picked holes in Kate Ash's work in front of everyone. (2034, two years after Tara ret
+L08 novelist       reason        Tara kept it to herself. [...; that is who Tara is: someone who says it straight]
+L08 novelist       uncited       Hannah Hale has taken to running a room, like her mother, Tara. [grew up with Tara at it]
+L08 novelist       contradiction Tara will step down ... next year. / Tara retired after 27 years (same year)
+L08 player.jsonl   broken        whatever the royal family is on the agenda
+L08 player.jsonl   reason        that is who Tara is: someone who says it straight
+L08 player.jsonl   contradiction Tara hung back when the others went out into the storm.
+L08 player.jsonl   contradiction Tara and Ben buried the hatchet, 1 year after the skipper's job.
+L08 player.jsonl   reason        Tara went to Kate Ash and apologised.
+L08 player.jsonl   contradiction Tara and Kate Ash are close again, after everything.
+L08 player.jsonl   impossible    Tara picked holes in Kate Ash's work in front of everyone.
+L08 player.jsonl   uncited       Hannah Hale has taken to running a room, like her mother, Tara.
+L08 player.jsonl   repeat        Tara turned down a job in the city.
+L08 player.jsonl   contradiction Nothing had changed since 2020: Owen had stopped bringing things up with Tara.
+L08 social worker  broken        whatever the royal family is on the agenda
+L08 social worker  reason        Tara turned down a job in the city. [had wanted out since 2007
+L08 social worker  contradiction Tara hung back when the others went out into the storm. ... Tara went out into the storm. 
+L08 social worker  reason        Tara went to Kate Ash and apologised. [It came out that Kate Ash had been running Tara dow
+L08 social worker  impossible    2034: Tara picked holes in Kate Ash's work in front of everyone. (retired 2032)
+L08 social worker  contradiction Kate Ash would not hear it from Tara ... Tara and Kate Ash are close again, after everythi
+L09 novelist       repeat        Molly Scott and Neil Sayer drifted apart. / Molly Scott and Neil Sayer split up. (both 201
+L09 novelist       uncited       What Neil Sayer had wanted for 2 years was gone.
+L09 novelist       reason        Neil Sayer let Mona Brook take the blame ... [...; though he thinks highly of Oscar Brook]
+L09 novelist       reason        Neil Sayer owned up to a mistake at work. [money is fine; though he felt it was owed]
+L09 novelist       reason        Neil Sayer made an excuse to Tom. [...; thought rules are for people who get caught]
+L09 novelist       uncited       Neil Sayer stopped drinking. [for Hannah ...] (no drinking shown before)
+L09 novelist       uncited       It was the third time, after 2026 and 2029. (dragged up what Hannah did)
+L09 novelist       names         Neil Waller / Neil Sayer; Oscar Lane / Oscar Brook
+L09 player.jsonl   reason        Neil Sayer came through it, after 12 months of the break-up.
+L09 player.jsonl   reason        though he thinks highly of Oscar Brook
+L09 player.jsonl   contradiction Neil Sayer and Hannah drifted apart.
+L09 player.jsonl   names         Agnes Waller moved to the town for a job at the school, with Neil Waller.
+L09 player.jsonl   repeat        it had been building between them (the children); it mattered too much to let go; it had b
+L09 player.jsonl   contradiction Neil Sayer and Tom drifted out of each other's lives.
+L09 social worker  reason        Neil Sayer let Mona Brook take the blame ... [...though he thinks highly of Oscar Brook]
+L09 social worker  repeat        The harbour day was chaos: nobody knew where the tables were, and Neil Sayer was nowhere t
+L09 social worker  contradiction 2033: Neil Sayer and Tom drifted out of each other's lives. (same year Tom looked in on hi
+L09 social worker  names         Oscar Brook / Oscar Lane
+L09 social worker  broken        it had been building between them (the children); it mattered too much to let go; it had b
+L14 novelist       contradiction Larry got there: to be heard playing guitar, after 19 years of wanting it. (he played the 
+L14 novelist       contradiction Larry has started telling people he means to open a café in the old bank. (cited for years
+L14 novelist       impossible    Thea picked holes in Larry's work in front of everyone. (2024, 2029, 2033, after Larry ret
+L14 novelist       broken        [5 times in 1 years: carrying something nobody knew]
+L14 novelist       reason        Larry made an excuse to Audrey. [...; thought rules are for people who get caught]
+L14 novelist       contradiction Larry took it badly, and let everyone see it. / Larry sulked about it for months. vs oddly
+L14 novelist       repeat        Larry and John lost touch. [they stopped seeing each other; John can tell when someone is 
+L14 novelist       uncited       It was the third time, after 2017 and 2018. (Toby first to say)
+L14 player.jsonl   contradiction Larry took it badly, and let everyone see it.
+L14 player.jsonl   contradiction Larry got there: to be heard playing guitar, after 19 years of wanting it.
+L14 player.jsonl   contradiction Larry has started telling people he means to open a café in the old bank.
+L14 player.jsonl   broken        5 times in 1 years: carrying something nobody knew
+L14 player.jsonl   contradiction 5 times in 1 years: in debt
+L14 player.jsonl   impossible    Thea picked holes in Larry's work in front of everyone. Nobody was surprised any more: it 
+L14 player.jsonl   repeat        Toby was the first to say Larry's song was the best thing they had.
+L14 player.jsonl   repeat        Larry started trying to put things right with John, and tells everyone.
+L14 social worker  contradiction oddly calm when their work is questioned ... Larry took it badly, and let everyone see it.
+L14 social worker  contradiction Larry has started telling people he means to open a café in the old bank. (he owns, then r
+L14 social worker  contradiction Larry got there: to be heard playing guitar, after 19 years of wanting it. (played the ope
+L14 social worker  broken        5 times in 1 years
+L14 social worker  repeat        Larry started trying to put things right with John, and tells everyone. (2031 and again 20
+L15 novelist       broken        Ben has the biggest the garden fence on the street
+L15 novelist       contradiction Ben went cold on Kate Ash ... / Ben sulked about it for months. [Kate Ash picked holes in 
+L15 novelist       contradiction had wanted it since 2032 (Ben got there) vs wants to be skipper since 2027
+L15 novelist       broken        Tara and Ben buried the hatchet, 1 year after the skipper's job. (same year)
+L15 novelist       contradiction Ben raised never going anywhere with Molly vs still lives in the house he grew up in, and 
+L15 novelist       uncited       Ben took it badly, and let everyone see it. [wanted to put things right with Trevor ...]
+L15 novelist       repeat        What Ben had wanted for 1 year was gone. / Ben was passed over for skipper
+L15 player.jsonl   contradiction Ben sulked about it for months.
+L15 player.jsonl   broken        the biggest the garden fence
+L15 player.jsonl   contradiction Ben still lives in the house he grew up in, and means to die there.
+L15 player.jsonl   contradiction Tara and Ben buried the hatchet, 1 year after the skipper's job.
+L15 player.jsonl   uncited       Larry was passed over for skipper; Ben got the job.
+L15 social worker  broken        the biggest the garden fence
+L15 social worker  contradiction Larry was passed over for skipper; Ben got the job. ... the strongest record of 2 (Kate As
+L17 novelist       contradiction Ralph arrives with a list. / first in and last out / Ralph had worked for it vs Diligence-
+L17 novelist       reason        Ralph and Maisie are both after the headteacher's job, and it shows. (cited 2030-2031 afte
+L17 novelist       repeat        [Harry Reed's work had been poor for months; can't stand Harry Reed; Harry Reed's work has
+L17 novelist       contradiction Ralph took it, and kept his head down. [...; thinks highly of Maisie] / Ralph was civil to
+L17 novelist       repeat        Noticed: Ralph says the awkward thing plainly. (2026, 2029) / Noticed: Ralph rarely looks 
+L17 player.jsonl   contradiction Ralph has been first in and last out, to show who should be headteacher.
+L17 player.jsonl   contradiction can't stand Maisie
+L17 player.jsonl   repeat        Harry Reed's work had been poor for months; can't stand Harry Reed; Harry Reed's work has 
+L17 player.jsonl   contradiction Ralph and Maisie are both after the headteacher's job, and it shows.
+L17 social worker  contradiction Ralph took it, and kept his head down. [...thinks highly of Maisie] ... Ralph was civil to
+L17 social worker  repeat        Harry Reed's work had been poor for months; can't stand Harry Reed; Harry Reed's work has 
+L19 novelist       repeat        told Alice to count her in for the summer festival (dozens of times, nothing new)
+L19 novelist       contradiction Alice rolled her eyes at Stuart and talked to Stuart like a child vs endlessly patient wit
+L19 novelist       contradiction says things to your face, after what was said behind her back in 2014 / ... in 2027
+L19 novelist       uncited       [Stuart and Alice split up.] (2028, cited but no split shown between 2026 and 2031)
+L19 novelist       reason        Hilda confronted Alice about it in front of everyone ... [...; shrinks in front of a crowd
+L19 novelist       names         Alice / Alex
+L19 player.jsonl   contradiction says things to your face, after what was said behind her back in 2027
+L19 player.jsonl   contradiction Alice rolled her eyes at Stuart and talked to Stuart like a child
+L19 player.jsonl   repeat        told Alice to count her in for the summer festival.
+L19 player.jsonl   repeat        Oliver made a joke at Alice's expense, and nobody laughed.
+L19 player.jsonl   reason        Alice put in the smallest coin she could find when the hat went round for Tilly.
+L19 player.jsonl   names         Alice finally told Alex what had been kept back.
+L19 social worker  contradiction says things to your face, after what was said behind her back in 2014 ... (2027)
+L19 social worker  uncited       [Stuart and Alice split up.] (2028, never shown as an event)
+L19 social worker  repeat        told Alice to count her in for the summer festival (some two dozen times)
+L19 social worker  reason        Hilda confronted Alice about it in front of everyone ... [...shrinks in front of a crowd]
+L19 social worker  repeat        Sylvia has a joke about Alice that will not die.
+L19 social worker  names         Alice / Alex
+L23 novelist       reason        Libby told Edward no. [...; generous with money, if nothing else]
+L23 novelist       reason        Libby left Driftwood, quietly: there was a baby at home. [...; each brings something the o
+L23 novelist       reason        Peter let Libby take the blame for a mistake at work. [...; though he respects Steve]
+L23 novelist       uncited       Libby has no time for Steve any more. [thought it needed saying; had run out of patience]
+L23 novelist       broken        Leo Waller let her family go again at the co-op, with people listening.
+L23 novelist       reason        Libby found reasons to be busy while Sally was going through it. [...; has held on tight t
+L23 novelist       uncited       Libby decided to stay with Leo Waller and give it another go. It had happened before, in 2
+L23 novelist       names         Lisa Lee / Libby Lee
+L23 player.jsonl   contradiction Libby joined the Lanterns, a better player than the one who left.
+L23 player.jsonl   reason        in debt; needed someone to talk to; puts other people first
+L23 player.jsonl   reason        Libby told Edward no.
+L23 player.jsonl   reason        though he respects Steve
+L23 player.jsonl   uncited       Libby has no time for Steve any more.
+L23 player.jsonl   broken        Leo Waller let her family go again at the co-op, with people listening.
+L23 social worker  reason        Libby told Edward no. [...generous with money, if nothing else]
+L23 social worker  contradiction 2025: Lynn joined Driftwood, a better player than the one who left (the band started that 
+L23 social worker  contradiction Libby left Driftwood, quietly: there was a baby at home. ... Libby joined the Lanterns (sa
+L23 social worker  reason        Peter let Libby take the blame ... [...though he respects Steve]
+L23 social worker  uncited       Libby has no time for Steve any more.
+L23 social worker  broken        Leo Waller let her family go again at the co-op, with people listening.
+L23 social worker  reason        Libby found reasons to be busy while Sally was going through it. [...has held on tight to 
+== off
+L02 novelist       repeat        Molly quietly started practising vocals in earnest. (2016, 2019, 2027, each after she had 
+L02 novelist       contradiction after 7 years of wanting it ... had wanted it since 2019 (she got there in 2019)
+L02 novelist       reason        Molly shied away from a spot at the Anchor's open night. [... it mattered too much to let 
+L02 novelist       reason        Molly knows every boat in the harbour by name. [rooted here; it mattered too much to let g
+L02 novelist       reason        Molly left the Sawmill Boys, quietly: there was a baby at home. [...; they genuinely like 
+L02 novelist       reason        Molly turned down a job in the city. [no work here; ...]
+L02 novelist       uncited       It was the third time, after 2022 and 2024 (Molly gave Colin Vaughan the money)
+L02 novelist       uncited       Eve has taken to figures, like her mother, Molly. [grew up with Molly at it]
+L02 novelist       contradiction Molly is first to call it a day. [though she works hard] vs will not leave a job half done
+L02 novelist       names         Neil Sayer / Neil Scott
+L02 player.jsonl   repeat        Molly quietly started practising vocals in earnest.
+L02 player.jsonl   reason        Molly knows every boat in the harbour by name.
+L02 player.jsonl   reason        would not take what was not hers
+L02 player.jsonl   uncited       Neil Sayer told Molly no.
+L02 player.jsonl   uncited       Eve has taken to figures, like her mother, Molly.
+L02 player.jsonl   names         Neil Scott was born to Molly and Tom.
+L02 social worker  contradiction exceptions: never forgave Victor ... Molly let Victor put it right (2013)
+L02 social worker  repeat        Molly quietly started practising vocals in earnest. (2016, 2019, 2027, each after 'got the
+L02 social worker  contradiction hard work more than gift ... a real gift
+L02 social worker  reason        Mary Hughes wasn't there for Molly when it mattered. [...has held on tight to the people l
+L02 social worker  reason        Molly turned down a job in the city. [no work here
+L02 social worker  uncited       Eve has taken to figures, like her mother, Molly.
+L04 novelist       reason        Andy left the Sawmill Boys, quietly: there was a baby at home. [...; they genuinely like e
+L04 novelist       contradiction Andy knows every boat in the harbour by name. [rooted here ...] vs self: not made for one 
+L04 novelist       repeat        Andy played the Anchor's open night and did well. (2022, 2023, 2026, 2030, all citing the 
+L04 novelist       reason        Andy put in the smallest coin he could find ... [...; would not pretend]
+L04 novelist       contradiction Andy buried himself in work. [Andy was hospitalised with pneumonia.]
+L04 novelist       reason        Andy kept it to himself. [...; that is who Andy is: someone who says it straight]
+L04 novelist       uncited       Tom played Andy's song as if it were his own (2023)
+L04 novelist       uncited       shone when it counted (2028)
+L04 novelist       broken        the fish cakes is terrible
+L04 novelist       reason        Andy gave Ruth help without being asked twice. [...; danger has never stopped him; ...]
+L04 novelist       names         Eddie (son) / Eddie Reed
+L04 player.jsonl   contradiction not made for one place
+L04 player.jsonl   repeat        Andy played the Anchor's open night and did well.
+L04 player.jsonl   reason        Andy put in the smallest coin he could find when the hat went round for Beth.
+L04 player.jsonl   reason        that is who Andy is: someone who says it straight
+L04 player.jsonl   broken        the fish cakes is terrible
+L04 player.jsonl   reason        Andy gave Ruth help without being asked twice.
+L04 player.jsonl   uncited       Tom played Andy's song as if it were his own (2023)
+L04 player.jsonl   contradiction Andy goes out of his way to avoid Lily. Nobody was surprised any more: it had been happeni
+L04 social worker  contradiction 2026: Andy asked Hal about the open night. [wants to be heard singing (since 2014)] (he ha
+L04 social worker  broken        the fish cakes is terrible
+L04 social worker  reason        Andy kept it to himself. [...that is who Andy is: someone who says it straight]
+L04 social worker  reason        Andy put in the smallest coin he could find ... [...would not pretend]
+L04 social worker  reason        Andy buried himself in work. [Andy was hospitalised with pneumonia.
+L04 social worker  uncited       Andy and Tom became friends. [Tom played Andy's song as if it were his own (2023)
+L10 novelist       reason        Lynn turned down a job in the city. [no work here; ...]
+L10 novelist       reason        Lynn made sure Stuart heard about every one of Karen's mistakes. [Karen and Lynn are both 
+L10 novelist       impossible    Lynn picked holes in Sam's work in front of everyone. It had happened before, in 2026. (20
+L10 novelist       uncited       Susie has taken to engines, like her mother, Lynn. [grew up with Lynn at it]
+L10 novelist       contradiction Lynn became headteacher [the strongest record of 2] / Owen Eden had been doing the better 
+L10 novelist       repeat        [Gary Vale's work had been poor for months; felt slighted; Gary Vale's work has been poor 
+L10 novelist       contradiction Lynn started drinking more than was good for her. (2032) vs has taken no chances with her 
+L10 novelist       broken        [years of ill; though she likes company]
+L10 novelist       contradiction no progress for 1.6 years ... had been at it since 2032 (in 2036)
+L10 novelist       repeat        What Lynn had wanted for 1 year was gone. / Lynn was passed over for editor
+L10 player.jsonl   contradiction Lynn started drinking more than was good for her.
+L10 player.jsonl   reason        Lynn turned down a job in the city.
+L10 player.jsonl   contradiction Lynn was civil to Karen for weeks, and nothing more.
+L10 player.jsonl   uncited       Susie has taken to engines, like her mother, Lynn.
+L10 player.jsonl   contradiction Owen Eden had been doing the better work
+L10 player.jsonl   repeat        Gary Vale's work had been poor for months; felt slighted; Gary Vale's work has been poor f
+L10 player.jsonl   broken        years of ill
+L10 player.jsonl   broken        Edward Lee (b. 1974)'s work
+L10 player.jsonl   contradiction Lynn looked in on Sam most days.
+L10 social worker  contradiction has taken no chances with her health since 2032 ... drinking since 2032
+L10 social worker  reason        Lynn turned down a job in the city. [no work here
+L10 social worker  contradiction the strongest record of 2 ... Owen Eden had been doing the better work
+L10 social worker  impossible    2035: Lynn picked holes in Sam's work in front of everyone. (left the clinic in 2027)
+L10 social worker  uncited       Susie has taken to engines, like her mother, Lynn.
+L10 social worker  repeat        Gary Vale's work had been poor for months; felt slighted; Gary Vale's work has been poor f
+L10 social worker  broken        years of ill
+L10 social worker  contradiction no progress for 1.6 years; ... had been at it since 2032 (said in 2036)
+L11 novelist       contradiction Matt buried himself in work. [badly in debt ...] (he has no work: wants to find work since
+L11 novelist       reason        Matt has been first in and last out for months. [wants to find work (since 2028) ...]
+L11 novelist       repeat        Matt now practises every night ... / Matt quietly started practising vocals in earnest. / 
+L11 novelist       reason        Matt shied away from a spot at the Anchor's open night. [...; it mattered too much to let 
+L11 novelist       contradiction Matt gave Neil Sayer the money without being asked twice. [...; money has never meant much
+L11 player.jsonl   repeat        Matt quietly started practising vocals in earnest.
+L11 player.jsonl   contradiction Matt buried himself in work.
+L11 player.jsonl   contradiction Matt has been first in and last out for months.
+L11 player.jsonl   contradiction Matt gave Neil Sayer the money without being asked twice.
+L11 player.jsonl   repeat        the Lanterns played the Anchor; Karen froze and the rest fell apart around her.
+L11 social worker  repeat        Matt now practises every night after the house has gone quiet. ... Matt quietly started pr
+L11 social worker  contradiction Matt buried himself in work. ... Matt let slip he would want it, if it ever came up: to fi
+L11 social worker  contradiction Matt gave Neil Sayer the money without being asked twice. [...money has never meant much t
+L12 novelist       repeat        Libby Lee let slip she would want it, if it ever came up: to find work. (2019, 2021, 2024,
+L12 novelist       contradiction Libby Lee turned down a job in the city. [no work here ...] vs wants to find work (since 2
+L12 novelist       broken        starting with what Libby Lee needed at the Anchor, with people listening
+L12 novelist       reason        Libby Lee left North of Here, quietly: there was a baby at home. [...; they genuinely like
+L12 novelist       broken        Una Howell (b. 1947)'s door
+L12 novelist       contradiction Nothing had changed since 2016: Libby Lee had stopped bringing things up with Oliver. (whi
+L12 novelist       names         Ivy Lane / Molly Lane / Sarah Lane
+L12 player.jsonl   reason        badly in debt; puts other people first; desperate
+L12 player.jsonl   broken        starting with what Libby Lee needed at the Anchor, with people listening
+L12 player.jsonl   repeat        Libby Lee let slip she would want it, if it ever came up: to find work.
+L12 player.jsonl   contradiction Libby Lee turned down a job in the city.
+L12 player.jsonl   repeat        Instead, Libby Lee started practising vocals in earnest.
+L12 player.jsonl   contradiction Maisie and Libby Lee could not be in the same room; 24 years in
+L12 player.jsonl   contradiction Libby Lee and Una Howell (b. 1947) lost touch.
+L12 player.jsonl   broken        Una Howell (b. 1947)'s door
+L12 social worker  broken        starting with what Libby Lee needed at the Anchor, with people listening
+L12 social worker  uncited       [Libby Lee shied away from a spot at the Anchor's open night. (never shown as an event)
+L12 social worker  repeat        Libby Lee let slip she would want it, if it ever came up: to find work. (five times)
+L12 social worker  reason        Libby Lee turned down a job in the city. [no work here
+L12 social worker  contradiction 2032: Libby Lee and Una Howell (b. 1947) lost touch. (same year Una looked in on her most 
+L13 novelist       uncited       Lisa Baker took it badly, and let everyone see it. [wanted to put things right with Ben ..
+L13 novelist       contradiction Lisa Baker became foreman [the strongest record of 3] / Greta Sands had been doing the bet
+L13 novelist       impossible    Lisa Baker picked holes in Greta Sands's work in front of everyone. (2032, nine years afte
+L13 novelist       reason        Greta Sands and Lisa Baker are both after the foreman's job, and it shows. (cited through 
+L13 novelist       uncited       [ill; Lisa Baker started drinking more than was good for her.] (drinking never shown as an
+L13 novelist       uncited       Alex Waller (b. 1949) wasn't there for Lisa Baker when it mattered.
+L13 novelist       repeat        [Lisa Baker's work had been poor for months; felt slighted; Lisa Baker's work has been poo
+L13 novelist       broken        waited for a quiet evening to tell Ian ... at the Anchor, with people listening
+L13 novelist       contradiction Lisa Baker rolled her eyes at Ian and talked to Ian like a child vs endlessly patient with
+L13 novelist       contradiction Nothing had changed since 1997: Lisa Baker had stopped bringing things up with Ian. (while
+L13 novelist       repeat        What Lisa Baker had wanted for 1 year was gone. / Lisa Baker was passed over for skipper
+L13 player.jsonl   contradiction Lisa Baker made an excuse to Larry.
+L13 player.jsonl   contradiction Lisa Baker rolled her eyes at Ian and talked to Ian like a child
+L13 player.jsonl   contradiction Greta Sands had been doing the better work
+L13 player.jsonl   impossible    Lisa Baker picked holes in Greta Sands's work in front of everyone.
+L13 player.jsonl   repeat        Lisa Baker's work had been poor for months; felt slighted; Lisa Baker's work has been poor
+L13 player.jsonl   uncited       Alex Waller (b. 1949) wasn't there for Lisa Baker when it mattered.
+L13 player.jsonl   uncited       Lisa Baker started drinking more than was good for her.
+L13 player.jsonl   broken        had been getting to her at the Anchor, with people listening
+L13 social worker  contradiction the strongest record of 3 ... Greta Sands had been doing the better work
+L13 social worker  impossible    2032: Lisa Baker picked holes in Greta Sands's work in front of everyone. (left the sawmil
+L13 social worker  repeat        Lisa Baker's work had been poor for months; felt slighted; Lisa Baker's work has been poor
+L13 social worker  uncited       [ill; Lisa Baker started drinking more than was good for her.] (never shown as an event)
+L13 social worker  broken        waited for a quiet evening to tell Ian ... at the Anchor, with people listening
+L13 social worker  uncited       Lisa Baker sulked about it for months. [Alex Waller (b. 1949) wasn't there for Lisa Baker 
+L16 novelist       contradiction Lisa Lee took a little from the timber account. (2020, 2035) vs cheated out of something t
+L16 novelist       uncited       has not forgiven herself for freezing at the sawmill (never shown; she went in after Ian w
+L16 novelist       uncited       [Eddie was found out: the cover-up came out.]
+L16 novelist       reason        Lisa Lee and Mark never once looked at each other. [bad blood between Lisa Lee and Lynn; .
+L16 novelist       broken        At the sawmill, Lisa Lee has a reason ready for every Monday at the sawmill.
+L16 novelist       repeat        What Lisa Lee had wanted for 1 year was gone. / Lisa Lee was passed over for foreman
+L16 player.jsonl   uncited       has not forgiven herself for freezing at the sawmill
+L16 player.jsonl   contradiction Lisa Lee took a little from the timber account.
+L16 player.jsonl   contradiction Lisa Lee got there: people have started to talk about her singing, after 19 years of wanti
+L16 player.jsonl   broken        At the sawmill, Lisa Lee has a reason ready for every Monday at the sawmill.
+L16 player.jsonl   uncited       Eddie was found out: the cover-up came out.
+L16 player.jsonl   reason        bad blood between Lisa Lee and Lynn
+L16 social worker  contradiction cheated out of something that mattered, and never did it to anyone ... Lisa Lee took a lit
+L16 social worker  uncited       has not forgiven herself for freezing at the sawmill
+L16 social worker  contradiction 2017: Lisa Lee asked Audrey about the open night. (played it and did well in 2016)
+L16 social worker  uncited       Lisa Lee was back to normal with Eddie, as if what Eddie did last year were forgotten. (Ed
+L16 social worker  reason        Lisa Lee and Mark never once looked at each other. [bad blood between Lisa Lee and Lynn
+L18 novelist       uncited       Agnes went to Alan Tanner and offered to put the old business behind them. (cited, never s
+L18 novelist       contradiction Agnes and Bert could have a row and be laughing about it by dinner. (2026, same year Bert 
+L18 novelist       broken        Ivy had promised Agnes it, and did it (2029)
+L18 novelist       uncited       Agnes came round to see Alan Tanner every week. It had happened before, in 2027.
+L18 novelist       names         Susie Moore / Susie Waller / Susie Berry
+L18 player.jsonl   contradiction Alan Tanner had been doing the better work
+L18 player.jsonl   contradiction Agnes has been making jokes about the council since the week it happened.
+L18 player.jsonl   contradiction Agnes and Bert could have a row and be laughing about it by dinner.
+L18 player.jsonl   reason        Agnes came round to see Susie Moore every week.
+L18 player.jsonl   contradiction Steve Vale and Susie Waller could not be in the same room; 20 years in
+L18 player.jsonl   names         Susie Berry put in more than anyone when the hat went round for Agnes.
+L18 social worker  contradiction the strongest record of 3 ... Alan Tanner had been doing the better work
+L18 social worker  contradiction 2032: Steve Vale joined Low Tide ... Steve Vale swallowed it and stayed in Low Tide, for t
+L18 social worker  uncited       Agnes and Alan Tanner buried the hatchet, 3 years after the chief officer's job. [Agnes we
+L20 novelist       repeat        Edward Eden went out into the storm. (twice in 2028, identical)
+L20 novelist       repeat        [Lisa Baker's work had been poor for months; felt slighted; Lisa Baker's work has been poo
+L20 novelist       other         Audrey Baker left the town for the city. Edward Eden and the children went too. (Audrey ne
+L20 novelist       contradiction Edward Eden and Mary buried the hatchet, 3 years after the skipper's job. (2030, job in 20
+L20 player.jsonl   contradiction Edward Eden took a little from the catch.
+L20 player.jsonl   repeat        Edward Eden went out into the storm.
+L20 player.jsonl   contradiction Edward Eden picked holes in Mary's work in front of everyone.
+L20 player.jsonl   repeat        Lisa Baker's work had been poor for months; felt slighted; Lisa Baker's work has been poor
+L20 social worker  repeat        2028: Edward Eden went out into the storm. (twice, word for word)
+L20 social worker  contradiction Edward Eden and Mary buried the hatchet, 3 years after the skipper's job. (2028 to 2030)
+L21 novelist       broken        waited for a quiet evening to tell Matt ... at the end of the breakwater, with people list
+L21 novelist       broken        [every spare hour goes on to make things right with Eddie]
+L21 novelist       other         Matt went straight to Ryan with what Matt had heard. [Ryan finally told Matt what had been
+L21 novelist       repeat        What Matt had wanted for 1 year was gone. / Matt was passed over for foreman
+L21 novelist       names         Kate Howell / Lily Howell / Oscar Howell / Arthur Howell
+L21 player.jsonl   contradiction never turns anyone away, because someone once did not turn him away (2012)
+L21 player.jsonl   broken        had been getting to her at the end of the breakwater, with people listening
+L21 player.jsonl   uncited       Matt was passed over for foreman; Maisie got the job.
+L21 social worker  contradiction never turns anyone away, because someone once did not turn him away (2012) ... (2028)
+L21 social worker  broken        every spare hour goes on to make things right with Eddie
+L22 novelist       contradiction Larry Kemp took a little from the till. (he owns the café)
+L22 novelist       contradiction Larry Kemp has started telling people he means to open a café in the old bank. (cited for 
+L22 novelist       impossible    Thea picked holes in Larry Kemp's work in front of everyone. Nobody was surprised any more
+L22 novelist       contradiction Larry Kemp got there: to be heard playing guitar, after 27 years of wanting it. (he played
+L22 novelist       broken        [5 times in 1 years: in debt]
+L22 novelist       broken        whatever birds of the north coast is on the agenda
+L22 novelist       reason        Larry Kemp gave Sylvia Lyons help without being asked twice. [...; danger has never stoppe
+L22 novelist       reason        Larry Kemp had left the wallet at home ... [...; though he is not one to hang back; said w
+L22 novelist       contradiction Larry Kemp took it badly, and let everyone see it. / sulked about it for months vs oddly c
+L22 novelist       uncited       Larry Kemp put in more than anyone when the hat went round for Alice Myers (2032)
+L22 player.jsonl   contradiction Larry Kemp took it badly, and let everyone see it.
+L22 player.jsonl   contradiction Larry Kemp has started telling people he means to open a café in the old bank.
+L22 player.jsonl   other         Larry Kemp took a little from the till.
+L22 player.jsonl   impossible    Larry Kemp picked holes in Thea's work in front of everyone.
+L22 player.jsonl   contradiction Larry Kemp got there: to be heard playing guitar, after 27 years of wanting it.
+L22 player.jsonl   broken        whatever birds of the north coast is on the agenda
+L22 player.jsonl   reason        Larry Kemp gave Sylvia Lyons help without being asked twice.
+L22 player.jsonl   broken        5 times in 1 years: in debt
+L22 social worker  contradiction Larry Kemp has started telling people he means to open a café in the old bank. (he owns an
+L22 social worker  contradiction Larry Kemp got there: to be heard playing guitar, after 27 years of wanting it. (played th
+L22 social worker  broken        whatever birds of the north coast is on the agenda
+L22 social worker  broken        5 times in 1 years
+L22 social worker  uncited       Larry Kemp stopped trying to reach John Reed. (no attempt shown)
+L22 social worker  reason        Larry Kemp had left the wallet at home ... [...though he is not one to hang back; said wha
+L24 novelist       contradiction self: rooted in the town, through and through; not made for one place
+L24 novelist       broken        the big trip abroad instead of get out of the town
+L24 novelist       contradiction had been saving since 2006 / had wanted it since 2017
+L24 novelist       repeat        Instead, Arthur Howell started practising vocals in earnest. (2019 and again 2028, after h
+L24 novelist       contradiction Arthur Howell can't stand Lily Howell. / let it pass without a word [thinks highly of Lily
+L24 novelist       uncited       Arthur Howell came round to see Sophie every week (2034)
+L24 novelist       names         Lily Howell / Kate Howell / Oscar Howell
+L24 player.jsonl   contradiction rooted in the town, through and through; not made for one place
+L24 player.jsonl   broken        the big trip abroad instead of get out of the town
+L24 player.jsonl   contradiction had wanted it since 2017
+L24 player.jsonl   repeat        Instead, Arthur Howell started practising vocals in earnest.
+L24 player.jsonl   contradiction Arthur Howell can't stand Lily Howell.
+L24 social worker  broken        instead of get out of the town
+L24 social worker  reason        Arthur Howell shied away from a spot ... [...rooted in the town, through and through
+L24 social worker  repeat        Instead, Arthur Howell started practising vocals in earnest. [Arthur Howell shied away (20
+L24 social worker  contradiction Arthur Howell can't stand Lily Howell. ... Arthur Howell let it pass without a word. [...t
+L24 social worker  repeat        The council said yes to ... summer festival (eight times)

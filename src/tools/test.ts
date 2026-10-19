@@ -2,7 +2,7 @@
 
 import { buildWorld, runYears } from '../build';
 import { pickWitness, scoreAll, hunches, knows } from '../witness';
-import { live, age, fullName, year, P, type World, nameOf } from '../world';
+import { live, age, fullName, year, P, OFF, ON, type World, nameOf } from '../world';
 import { FACET_BY_ID } from '../core';
 
 const N = +(process.argv[2] ?? 40);
@@ -121,7 +121,10 @@ const r2 = {
   threadCost: 0,
   threadThrough: 0,
 };
-for (let seed = 1; seed <= N; seed++) {
+const FROM = +(process.env.SEED_FROM ?? 1); // SEED_FROM=2921 runs seeds 2921 … 2921+N−1 (round 27: fresh test worlds)
+for (const x of (process.env.OFF ?? '').split(',').filter(Boolean)) OFF.add(x);
+for (const x of (process.env.ON ?? '').split(',').filter(Boolean)) ON.add(x);
+for (let seed = FROM; seed < FROM + N; seed++) {
   const w = buildWorld(seed, 1);
   pickWitness(w);
   runYears(w, YEARS);

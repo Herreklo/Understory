@@ -6,6 +6,7 @@ import { clamp } from './rng';
 import { SETTING } from './setting';
 import {
   OFF,
+  ON,
   type World,
   type Person,
   type Want,
@@ -22,10 +23,11 @@ import {
   addStress,
   year,
 } from './world';
-import type { Option, Consideration } from './decide';
+import { z01, type Option, type Consideration } from './decide';
 import { decide, family, friendsOf, stateCause, eventCause, ev, facetC, privC, pubC, closeC, bondC } from './grammar';
 import { regard } from './regard';
 import type { Feature } from './features';
+import { marry } from './life';
 
 export const steering = () => !OFF.has('steer');
 const NONE = new Set<Feature>();
@@ -61,6 +63,22 @@ function companion(w: World, p: Person) {
 }
 
 const WAYS: Record<string, Way[]> = {
+  win: [
+    {
+      id: 'wait',
+      label: 'wait for it to happen',
+      ok: () => true,
+      cs: (w, p) => [facetC(p, 'patience', NONE, 1, 3), facetC(p, 'socialBoldness', NONE, -1, 3)],
+      start: (w, p, x) => `@${p.id} has started hoping @${x.target} will ask.`,
+    },
+    {
+      id: 'propose',
+      label: 'ask',
+      ok: (w, p, x) => p.partner === +x.target && p.pstat === 'dating',
+      cs: (w, p, x) => [facetC(p, 'socialBoldness', NONE, 1, 4), facetC(p, 'love:anxiety', NONE, -1, 3), bondC(w, p, P(w, +x.target), 'trust', 1)],
+      start: (w, p, x) => `@${p.id} has decided to ask @${x.target} to marry ${p.sex === 'f' ? 'her' : 'him'}.`,
+    },
+  ],
   post: [
     {
       id: 'work',
@@ -177,15 +195,19 @@ function stateC0(id: string, label: string, x: number, dir: 1 | -1) {
   return closeC(id, label, x, dir, 0.25);
 }
 export const waysFor = (w: World, x: Want): Way[] =>
-  x.kind === 'attain'
-    ? x.target === 'work'
-      ? WAYS.work
-      : placeOf(w, x)
-        ? WAYS.post
-        : []
-    : x.kind === 'acquire' || x.kind === 'escape'
-      ? WAYS.money
-      : (WAYS[x.kind] ?? []);
+  x.kind === 'win'
+    ? everyone()
+      ? WAYS.win
+      : []
+    : x.kind === 'attain'
+      ? x.target === 'work'
+        ? WAYS.work
+        : placeOf(w, x)
+          ? WAYS.post
+          : []
+      : x.kind === 'acquire' || x.kind === 'escape'
+        ? WAYS.money
+        : (WAYS[x.kind] ?? []);
 export const hasWays = (w: World, x: Want) => steering() && waysFor(w, x).length > 1;
 
 // The person chooses how. `not` are ways already tried; `why` is what sent them looking for another.
@@ -243,6 +265,7 @@ function begin(w: World, p: Person, x: Want, way: Way, ref: number) {
   if (way.id === 'ask' && x.kind === 'attain') u.asked = w.t + 1; // the answer comes next month
   if (way.id === 'family') u.asked = w.t + 1;
   if (way.id === 'ask' && x.kind === 'belong') u.asked = w.t + 1;
+  if (way.id === 'propose') u.asked = w.t + 2;
 }
 
 // Each month, for a pursuit with a way: answers, and what the way adds. Returns an obstacle, if one came up.
@@ -255,6 +278,7 @@ export function wayTick(w: World, p: Person, x: Want): { what: string; ref: numb
   if (u.way === 'ask' && x.kind === 'attain') return askForPost(w, p, x);
   if (u.way === 'family') return askFamily(w, p, x);
   if (u.way === 'ask' && x.kind === 'belong') return askAlong(w, p, x);
+  if (u.way === 'propose') return propose(w, p, x);
   return null;
 }
 // Extra money a month from extra work.
@@ -559,3 +583,117 @@ export function mayComeBack(w: World, p: Person, kind: string, target: string): 
 // The pursuit of someone who has put their name down for the open night.
 export const onStage = (p: Person): Want | undefined =>
   steering() ? p.wants.find(x => !x.done && x.kind === 'prove' && x.pursuit && !x.pursuit.owner && (x.pursuit as Pu).way === 'stage') : undefined;
+
+// ---------- everyone wants something (round 25d) ----------
+export const everyone = () => steering() && ON.has('everyone'); // round 25d did not meet its expectations: on only when asked for
+function propose(w: World, p: Person, x: Want) {
+  const q = P(w, +x.target);
+  if (p.partner !== q.id || p.pstat !== 'dating' || q.status !== 'in') return null;
+  const d = decide(w, q, `whether to marry @${p.id}`, [
+    {
+      id: 'yes',
+      label: 'say yes',
+      considerations: [
+        bondC(w, q, p, 'like', 1),
+        bondC(w, q, p, 'trust', 1),
+        closeC('time', w.t - q.psince > 24 ? 'they have been together a while' : 'it is early days', clamp((w.t - q.psince) / 48, 0, 1)),
+      ],
+    },
+    {
+      id: 'no',
+      label: 'say not yet',
+      considerations: [
+        facetC(q, 'love:avoidance', NONE, 1, 4),
+        privC(
+          'free',
+          'not ready to settle',
+          clamp(0.5 + 0.5 * (q.values.freedom ?? 0) - 0.3 * (q.values.lovedOnes ?? 0), 0, 1),
+          1,
+          0.2,
+          undefined,
+          0.4,
+        ),
+      ],
+    },
+  ]);
+  if (d.chosen === 'yes') {
+    const e0 = addEvent(w, {
+      type: 'proposed',
+      who: [p.id, q.id],
+      text: `@${p.id} asked @${q.id} to marry ${p.sex === 'f' ? 'her' : 'him'}, and @${q.id} said yes.`,
+      causes: d.why.slice(0, 2),
+      vis: 'local',
+      decision: d.rec,
+      evidence: [ev(p.id, 'socialBoldness', 1, 0.5, 0.5)],
+      w: 1.4,
+    });
+    broadcast(w, e0);
+    marry(w, p, q, [eventCause(w, e0.id, 0.8)]);
+    return null;
+  }
+  const e = addEvent(w, {
+    type: 'notready',
+    who: [q.id, p.id],
+    text: `@${p.id} asked @${q.id} to marry ${p.sex === 'f' ? 'her' : 'him'}, and @${q.id} said not yet.`,
+    causes: d.why.slice(0, 2),
+    vis: 'local',
+    decision: d.rec,
+    evidence: [ev(q.id, 'love:avoidance', 1, 0.6, 0.6)],
+    w: 1.4,
+  });
+  broadcast(w, e);
+  remember(w, p, q, e.id, -0.05, 0, -0.05, 'said not yet');
+  return { what: `@${q.id} said not yet`, ref: e.id };
+}
+// The door each core value opens, if the town has it open to this person: the want it gives (kind, target), or nothing.
+type Door = (w: World, p: Person) => [string, string] | null;
+const own = (p: Person, g: string) => p.attachments.some(a => a.key === g);
+const affordable = (p: Person, g: string) => {
+  const c = SETTING.goods.find(x => x.id === g)?.cost ?? 20;
+  return !own(p, g) && p.savings <= c * 0.5 && p.savings >= -6;
+};
+const post: Door = (w, p) => (p.job && !p.lead && w.t - p.jobSince > 12 ? ['attain', p.job] : null);
+const work: Door = (w, p) => (!p.job && !p.retired && !p.student ? ['attain', 'work'] : null);
+const goods =
+  (g: string): Door =>
+  (w, p) =>
+    affordable(p, g) ? ['acquire', g] : null;
+const DOORS: Record<string, Door[]> = {
+  success: [post, work],
+  status: [goods('car'), post],
+  security: [(w, p) => (age(w, p) >= 22 ? goods('house')(w, p) : null), work],
+  freedom: [goods('boat'), goods('trip')],
+  thrill: [goods('trip')],
+  pleasure: [
+    (w, p) => {
+      const h = SETTING.hobbies.find(h => (p.skills[h]?.interest ?? 0) >= 1 && (p.skills[h]?.r ?? 0) > 1000);
+      return h && age(w, p) < 60 ? ['prove', h] : null;
+    },
+  ],
+  fittingIn: [(w, p) => (p.friends.size < 2 ? ['belong', 'people'] : null)],
+  lovedOnes: [
+    (w, p) => (p.pstat === 'dating' && p.partner != null ? ['win', String(p.partner)] : null),
+    (w, p) => (p.partner != null ? goods('house')(w, p) : null),
+  ],
+  tradition: [
+    (w, p) => (p.pstat === 'dating' && p.partner != null ? ['win', String(p.partner)] : null),
+    (w, p) => (age(w, p) >= 22 ? goods('house')(w, p) : null),
+  ],
+  fairness: [],
+};
+// Once a year, an adult with no want of their own takes one from what they value most, through the first door open to them.
+export function wantFromValues(w: World, p: Person, add: (kind: string, target: string, value: string, urgency: number) => void) {
+  if (!everyone() || (w.t + p.id) % 12 !== 0) return;
+  const a = age(w, p);
+  if (a < 18 || a >= 65 || p.retired) return;
+  if (p.wants.some(x => !x.done && !x.pursuit?.owner)) return;
+  for (const v of p.coreValues) {
+    for (const door of DOORS[v] ?? []) {
+      const d = door(w, p);
+      if (!d) continue;
+      const before = p.wants.length;
+      add(d[0], d[1], v, clamp(0.3 + 0.4 * z01(p.values[v] ?? 0), 0.2, 0.9));
+      if (p.wants.length > before) return;
+    }
+  }
+}

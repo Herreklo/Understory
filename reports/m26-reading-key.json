@@ -1,0 +1,98 @@
+{
+ "P01": {
+  "seed": 2873,
+  "person": 20,
+  "name": "Oliver Sands",
+  "trueIs": "A"
+ },
+ "P02": {
+  "seed": 2873,
+  "person": 41,
+  "name": "Steve Brook",
+  "trueIs": "A"
+ },
+ "P03": {
+  "seed": 2873,
+  "person": 108,
+  "name": "Arthur Rudd",
+  "trueIs": "A"
+ },
+ "P04": {
+  "seed": 2873,
+  "person": 51,
+  "name": "Libby",
+  "trueIs": "A"
+ },
+ "P05": {
+  "seed": 2874,
+  "person": 44,
+  "name": "Mona Fielding",
+  "trueIs": "B"
+ },
+ "P06": {
+  "seed": 2874,
+  "person": 16,
+  "name": "Sean",
+  "trueIs": "B"
+ },
+ "P07": {
+  "seed": 2874,
+  "person": 73,
+  "name": "Gary Dale (b. 1997)",
+  "trueIs": "B"
+ },
+ "P08": {
+  "seed": 2874,
+  "person": 5,
+  "name": "Trevor",
+  "trueIs": "B"
+ },
+ "P09": {
+  "seed": 2875,
+  "person": 6,
+  "name": "Ryan",
+  "trueIs": "B"
+ },
+ "P10": {
+  "seed": 2875,
+  "person": 100,
+  "name": "Lisa",
+  "trueIs": "B"
+ },
+ "P11": {
+  "seed": 2875,
+  "person": 98,
+  "name": "Olive Fielding",
+  "trueIs": "B"
+ },
+ "P12": {
+  "seed": 2875,
+  "person": 25,
+  "name": "Agnes",
+  "trueIs": "B"
+ },
+ "P13": {
+  "seed": 2876,
+  "person": 46,
+  "name": "Mark",
+  "trueIs": "A"
+ },
+ "P14": {
+  "seed": 2876,
+  "person": 62,
+  "name": "Amelia",
+  "trueIs": "B"
+ },
+ "P15": {
+  "seed": 2876,
+  "person": 66,
+  "name": "Maisie",
+  "trueIs": "B"
+ },
+ "P16": {
+  "seed": 2876,
+  "person": 31,
+  "name": "Lisa",
+  "trueIs": "B"
+ }
+}

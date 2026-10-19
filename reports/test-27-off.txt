@@ -1,0 +1,23 @@
+
+=== 20 worlds × 10 years (per decade per world) ===
+pop 79 · adults 65 · stressed 3%
+births 6.2 · deaths 7.8 · marriages 4.2 · splits 4.8
+hires 12.3 · fires 0.7 · quits 1.3 · left 7.5 · home 5.3
+breaking points 7.4 (outbursts 1.3, drink 3.7)
+1 distinct: signatures shown 62% · if-thens shown 28% (people with at least one shown 51%) · event kinds per world 166 · worst same-type share of a life 61% (noticed) · max same act to same people 14 · dominant type 7%
+3 predictable (all decisions): witness right 59% (33657) · for people they know 60% (27652) · hunches right 73% (52.4 per world)
+4 twists: twists 21.4 · reveals 3.1 · lottery 17.0 · routine 235.5 · noise 171.2 · among people the witness knows: twists 20.9 · reveals 3.1 · lottery 15.7
+5 honest whys (all decisions): 75% of 33712 · wants resolved 61% of 60.8 per world
+6 CHARACTER LIFT (the premise: knowing the person beats knowing the situation)
+all decisions                  n 32135 · baseline 57% · witness 59% · lift   3 · ceiling 78% (traits only 74%, circumstances only 54%) · Brier base 0.306 witness 0.298 · expression: base 50% witness 87% (30569)
+contested (best option < 90%)  n 18590 · baseline 45% · witness 48% · lift   3 · ceiling 64% (traits only 58%, circumstances only 45%) · Brier base 0.370 witness 0.369 · expression: base 53% witness 88% (17762)
+contested, people known well   n 17694 · baseline 45% · witness 48% · lift   3 · ceiling 63% (traits only 58%, circumstances only 45%) · Brier base 0.371 witness 0.370 · expression: base 53% witness 88% (16913)
+contested, strangers           n   896 · baseline 45% · witness 47% · lift   2 · ceiling 67% (traits only 61%, circumstances only 48%) · Brier base 0.359 witness 0.354 · expression: base 44% witness 78% (849)
+R2 pursuits: started 35.3 · followed 0.9 · got there 26.6 (bought 3.3, got good 1.3, mended 11.3) · gave up 5.5 · pushed on 3.1 · adults pursuing now 25% · never pursued anything 27%
+R2 habits: per adult 2.8 · broke 32.7 · back 29.4 · new 5.0 · kinds per life 23.6
+R2 features: deadlines 18.4 · newcomers met 8.8 · asked 17.3 · danger 14.3 · criticised 19.0 · spotlight 17.9 · same-sex couples per world 1.4
+R3 groups: formed 0.7 · alive at end 3.1 · works 18.3 · shows 8.3 · left 3.4 · joined 4.5 · holes 0.1 · credit rows 8.4 · split 0.2
+R3 threads: patterns 9.9 · costs 1.4 · came through 4.4
+R2 homecomings: 5.3 per decade · twists 10 · lottery 13 (all worlds)
+lottery by type: resentsong 29, deliver 20, council:no 18, redo 17, claimsong 17, pursuit 15, go 14, home 13, seize 13, shyaway 13
+same act to same people ≥5: group:work 14, plan 7, want:achieved 6, council:yes 6, pursuit 5, group:show 5, glow 5, contempt 5, pushon 5, soften 5

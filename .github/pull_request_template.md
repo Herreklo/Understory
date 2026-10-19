@@ -18,5 +18,6 @@
 - [ ] Outcome recorded, whatever it was; nothing tuned after a result
 - [ ] `docs/STATUS.md` / `docs/ARCHITECTURE.md` (or `docs/scale/`) describe the design as it now is
 - [ ] Moves exit-criterion point:
+- [ ] The warning in `WHY.md` this round risks, and what shows it did not:
 
 Merge with a merge commit. Then tag (`r26` / `s12`), attach raw outputs to the release, and update `NOW.md`.
