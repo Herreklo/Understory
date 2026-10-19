@@ -1,10 +1,10 @@
-# Person Model Lab: status (round F26, 18 Oct 2026)
+# Understory: status (round F26, 18 Oct 2026)
 
-## What the lab is
+## What Understory is
 
 A small town, called simply 'the town' (about 80 people), simulated for thirty years before a witness arrives and ten after. Nothing is scripted. Every person is read from two sides: FELT, what one witness in town could know, and TRUTH, everything. A reader of the page only ever gets the felt side. The town is a placeholder setting that will not outlive the model: places, trades, kinds of plan, quirk material and small loves are setting content; the engine is general.
 
-The lab answers two questions:
+Understory answers two questions:
 1. **Can people be read?** Knowing someone's character, learned only from what a witness could see, should predict their choices better than readers who know nothing about character. The scoreboard (`npm run board`, BOARD.md) answers it on held-out worlds with intervals. This is internal readability: it shows the people are coherent and learnable inside their world, not that they are psychologically realistic. Realism rests on two other things only: constants and effect sizes taken from research, and humans reading.
 2. **Are they worth reading?** Lives should have arcs, rivals, plans, loves and fights, a way of being and a shape left by what happened to them; everyone should be a little different and resemble others. `src/story.ts`, `src/personas.ts`, `src/friends.ts` and `src/lovetest.ts` measure it.
 

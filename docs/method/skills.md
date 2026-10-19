@@ -43,8 +43,8 @@ Every change to the model passes through all seven skills, in order. A change th
 - Guards against: a rich inner life nobody can perceive.
 
 ## 7. Steward
-- Keep `NOW.md` and the docs current. Docs describe the current design only.
+- Keep `SUMMARY.md` and the docs current. Docs describe the current design only.
 - Track decisions, outline before big deliverables, push back plainly.
 - Do not optimise for the highest character-lift score; people must stay able to surprise for understandable reasons.
 - Keep the exit criterion explicit and check it every session.
-- Guards against: the lab becoming the project.
+- Guards against: the testing becoming the project.
