@@ -1518,3 +1518,9 @@ Process, not model; no exit-criterion point, like T1. GitHub stopped starting jo
 Nothing in `src/`, `scale/` or the tests changes, so `ident.ts` is identical by construction (checked anyway).
 Expected, measured on the first runs once Actions start again: a push that changes only NOW.md starts no CI run; a pull request run with a warm cache takes at least one minute less than the median of today's pull request runs (about 6.5 minutes); `npm test` passes in CI as before.
 What would change our minds: a CI run that fails where main passed, or that skips when code changed, means the filter or the cache is wrong; it is fixed before anything else merges.
+
+Outcome of round H29 (19 Oct 2026, 20:40 Oslo). The pre-registration's time (20:15) was written ahead of the clock; the pushed commit is 20:08. Two CI runs on this branch, once Actions started again (`ci` run 39300211067, attempts 3 and 4):
+1. **Markdown-only changes start no run**: kept. The filter is in `ci.yml` for pushes to main and for pull requests; Markdown changes other than `docs/seeds.md` no longer cost a run. Of the last forty runs, seven (a fifth of their minutes) would not have started. It covers `ci.yml` only: the `identity` workflow added by PR #19 runs on every pull request event, Markdown or not, and is left as it is (another change's file).
+2. **Keeping the browser between runs** ✗, and taken out. The cold run installed Chromium with its system libraries in 18 s; the warm run took 60 s to install the system libraries alone, from the cache. The whole job took 6.1 minutes both times, of which `npm test` is 5.3: there was never a minute to save outside the tests. npm's own download cache stays (`setup-node` `cache: npm`; the install took 3 s in both runs).
+What it says: CI minutes are the test suite's minutes. The way to spend fewer is to run CI less often (the filter), not to install faster.
+**Kept in part.**
