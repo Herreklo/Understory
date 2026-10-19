@@ -1,4 +1,4 @@
-// The lab page must run in a browser: build a town, show people, no page errors. Node-only references (process.env) have broken it before.
+// The Understory page must run in a browser: build a town, show people, no page errors. Node-only references (process.env) have broken it before.
 import { chromium } from 'playwright';
 import { readdirSync, existsSync } from 'fs';
 const roots = ['/opt/pw-browsers'];

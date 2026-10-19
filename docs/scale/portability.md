@@ -15,7 +15,7 @@ No query writes anything into the world.
 
 The caller holds a world as a handle that the type checker keeps opaque. Everything the boundary gives back is plain data (numbers, strings, booleans, arrays and records), copied, so nothing the caller does to it can change the world. A Map becomes its entries and a Set its members, in the engine's own order; a negative zero is given as zero, since JSON cannot carry its sign. World state holds no NaN or infinity, which JSON cannot carry either.
 
-The lab page and the tools in `src/tools/` read the engine directly: they are the lab's instruments, not games.
+The Understory page and the tools in `src/tools/` read the engine directly: they are the project's instruments, not games.
 
 **Why:** with one boundary, a game and the engine can each change language, or be replaced, without the other noticing. A game built on the engine's internals is welded to them.
 
