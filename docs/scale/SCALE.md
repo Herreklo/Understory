@@ -564,3 +564,9 @@ Checked against the code and a run before anything changed.
 4. **What would change our minds:** a rule on main that cannot be made to scale without changing a town's behaviour. If one exists, it is named, left at town scale in a city, and the cost is reported.
 
 The twin test with an ageing arm and the engine's real situations is S13, not this step.
+
+**Amendment (19 Oct 2026, before any further port code).** The base is main at `r27`, not `rH25`; main was merged into `scale/S12` at r27. Everything above now refers to r27:
+- **The identity check is against r27.** Main's stored `reports/ident-baseline.json` did not match main itself on 18 Oct, so a fresh baseline is saved from main at r27 and compared. Main's own reproduction of it is checked first.
+- **The background's odds are refitted on r27** (train seeds 1031–1060, held out from 1054). The fit takes in what r27's full towns do, couples and pursuits included. Its person-years come from towns with love (couples' tension, rows, care, doubts and leaving) and with pursuits (`steer.ts`) running as they run on main. Any outcome those systems change, such as splitting up, leaving, a child or losing work, is fitted from them, not from r19c.
+- **The switch.** Under the current CLAUDE.md, scale work is behind a switch. S12's city exists only when a harness asks for one (`SCALE_FOCUS`, `SCALE_CITY`); with neither set, every scale path is the engine's own, and that is the switch the identity check tests.
+- **Ownership.** This chat owns S12. The lab lane is paused while S12 is open. Each part is reviewed independently by another chat as it lands on the branch.
