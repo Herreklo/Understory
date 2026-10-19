@@ -285,7 +285,6 @@ export function learned(w: World, p: Person, key: string, ok: boolean) {
 // A choice's chance is the chooser's own (round 25b): its draw comes from a stream keyed by the run, the month, the person and how many
 // choices they have made this month, so one person's choices never shift the draws of anyone else's.
 export function chanceOf(w: World, p: Person): () => number {
-  if (OFF.has('ownchance')) return () => w.rng.next();
   const c: Map<number, { t: number; n: number }> = ((w as any).choiceN ??= new Map());
   const k = c.get(p.id);
   const n = k && k.t === w.t ? k.n + 1 : 0;
@@ -296,7 +295,6 @@ export function chanceOf(w: World, p: Person): () => number {
 export function decide(w: World, p: Person, trigger: string, options: Option[]) {
   for (const o of options) for (const c of o.considerations) if (!c.who) c.who = p;
   const scored = score(options, truthView(w), p.variability);
-  countCheck(options, scored, w, p);
   const chosen = choose(scored, chanceOf(w, p), { t: w.t, who: p.id, kind: trigger, nudge: () => w.rng.next() });
   const why = reasons(chosen, scored, truthView(w));
   noteState(w, p, why);
@@ -382,28 +380,23 @@ const FAMILY_IDENTITY: Partial<Record<Family, { yes?: string[]; no?: string[] }>
 export function identityC(p: Person, fam: Family): Consideration | null {
   const m = FAMILY_IDENTITY[fam];
   if (!m || !p.selfStory.length || OFF.has('selfstory')) return null;
-  // The strongest entry speaks, whichever way it points (round F26; OFF=identfix compares a 'no' with a best that can be negative,
-  // so a weaker 'yes' listed later overrode it). IDENTITY counts the readings where the two rules disagree.
-  const pick = (fix: boolean) => {
+  // The strongest entry speaks, whichever way it points.
+  const pick = () => {
     let best = 0,
       text = '';
     for (const s of p.selfStory) {
-      if (m.yes?.includes(s.key) && s.weight > (fix ? Math.abs(best) : best)) {
+      if (m.yes?.includes(s.key) && s.weight > Math.abs(best)) {
         best = s.weight;
         text = s.text;
       }
-      if (m.no?.includes(s.key) && s.weight > (fix ? Math.abs(best) : best)) {
+      if (m.no?.includes(s.key) && s.weight > Math.abs(best)) {
         best = -s.weight;
         text = s.text;
       }
     }
     return { best, text };
   };
-  const now = pick(!OFF.has('identfix')),
-    other = pick(OFF.has('identfix'));
-  const { best, text } = now;
-  IDENTITY.n++;
-  if (other.best !== best) IDENTITY.differ++;
+  const { best, text } = pick();
   if (!best) return null;
   const x = best > 0 ? 0.5 + best * 0.5 : 0.5 - Math.abs(best) * 0.45;
   return {
@@ -527,17 +520,17 @@ export function run(w: World, inst: Instance): Outcome | null {
   const options: Option[] = inst.families.map(fam => {
     const shared = (inst.extra ?? []).map(c => {
       if (!c.who) c.who = p; // the input reads the person through the original, so it is set there, before any reading the other way
-      return !c.favours || OFF.has('pushes') || c.favours.includes(fam) ? c : { ...c, curve: (x: number) => c.curve(1 - x) };
+      return !c.favours || c.favours.includes(fam) ? c : { ...c, curve: (x: number) => c.curve(1 - x) };
     });
     const own = [...(inst.familyExtra?.[fam] ?? []), ...shared];
     const cs: Consideration[] = inst.ownFirst
       ? [...own, ...wiringC(p, fam, feats, t?.id)]
       : [...wiringC(p, fam, feats, t?.id), ...shared, ...(inst.familyExtra?.[fam] ?? [])];
-    const idc = ids.get(fam) ?? (idRef && !OFF.has('selfkept') ? { ...idRef, curve: (x: number) => idRef.curve(1 - x) } : null);
+    const idc = ids.get(fam) ?? (idRef ? { ...idRef, curve: (x: number) => idRef.curve(1 - x) } : null);
     for (const c of cs) if (!c.who) c.who = p;
     if (idc && !idc.who) idc.who = p;
     // Who they take themselves to be is weighed every time, beside the five strongest considerations, never cut for want of room.
-    const kept = idc && !OFF.has('selfkept') ? [...cs.slice(0, 5), idc] : [...cs, ...(idc ? [idc] : [])].slice(0, 5);
+    const kept = idc ? [...cs.slice(0, 5), idc] : cs.slice(0, 5);
     if ((globalThis as any).WEIGH)
       WEIGH_LOG.push({
         type: inst.type,
@@ -550,7 +543,6 @@ export function run(w: World, inst: Instance): Outcome | null {
     return { id: fam, label: fam, considerations: kept };
   });
   const scored = score(options, truthView(w), p.variability);
-  countCheck(options, scored, w, p);
   const chosen = choose(scored, chanceOf(w, p), { t: w.t, who: p.id, kind: inst.type, nudge: () => w.rng.next() });
   if ((globalThis as any).WEIGH) {
     const tv = truthView(w);
@@ -659,16 +651,8 @@ export function run(w: World, inst: Instance): Outcome | null {
   // Circumstance discounts character: the more the visible situation explains the act, the less it says about the person.
   // An observer sees the act, not the person's true trait size, how far circumstance truly drove it, or an if-then at work (round F26):
   // the weight and the discount are the averages over a town (round H25's worlds, 9001–9020), and an if-then's evidence takes the act's
-  // own direction. OFF=honestev reads the truth, as before.
-  const honest = !OFF.has('honestev');
-  const forWhy = why.filter(c => !c.key?.startsWith('against:'));
-  const circ = honest
-    ? EV_CIRC
-    : clamp(
-        forWhy.filter(c => c.kind === 'state' || c.kind === 'event' || c.kind === 'want' || c.kind === 'bond').reduce((s, c) => s + c.weight, 0),
-        0,
-        1,
-      );
+  // own direction.
+  const circ = EV_CIRC;
   // How strongly the act was done says something about how strong the trait is: a very impatient person's snap is a bigger snap.
   // Diagnosticity: an act most people make in this kind of situation says little about the person. Everyone in a town knows that
   // people cheer a good song, so the weight of the evidence scales with how uncommon the chosen answer is here (an answer nine in ten
@@ -679,18 +663,10 @@ export function run(w: World, inst: Instance): Outcome | null {
   if (nm) for (const v of nm.values()) seenN += v;
   const common = nm && seenN >= 10 ? (nm.get(fam) ?? 0) / seenN : 0.5;
   const diagnostic = clamp(2 * (1 - common), 0.15, 1);
-  // When an if-then on this facet was at work, the act says less about the general trait: that part of the evidence goes to the if-then below.
   const evidence: Evidence[] = Object.entries(expr.evidence).map(([k, v]) => {
-    const z = honest ? EV_Z : Math.abs(facet(p, k, t?.id, feats));
-    const situational = !honest && ifthen && ifthen.facet === k ? 0.5 : 1;
+    const z = EV_Z;
     return {
-      ...ev(
-        p.id,
-        k,
-        Math.sign(v!),
-        Math.abs(v!) * (0.7 + 0.3 * Math.min(2, z)) * (1 - 0.6 * circ) * situational * diagnostic,
-        vis === 'private' ? 0.9 : 0.8,
-      ),
+      ...ev(p.id, k, Math.sign(v!), Math.abs(v!) * (0.7 + 0.3 * Math.min(2, z)) * (1 - 0.6 * circ) * diagnostic, vis === 'private' ? 0.9 : 0.8),
       circ,
     };
   });
@@ -700,7 +676,7 @@ export function run(w: World, inst: Instance): Outcome | null {
   // Strain shows: anyone who saw the act can tell the person is under it.
   if (inst.type === 'strain') evidence.push(ev(p.id, 'state:low', 1, 0.6, 0.6));
   // An if-then that showed is learnable: "snaps the moment their work is questioned" is a thing people can know about you.
-  const ifDir = !ifthen ? 0 : honest ? Math.sign(expr.evidence[ifthen.facet as keyof typeof expr.evidence] ?? 0) : Math.sign(ifthen.shift);
+  const ifDir = !ifthen ? 0 : Math.sign(expr.evidence[ifthen.facet as keyof typeof expr.evidence] ?? 0);
   if (ifthen && ifDir !== 0)
     evidence.push(ev(p.id, `ifthen:${ifthen.feature}:${ifthen.facet}`, ifDir, Math.min(1.5, Math.abs(ifthen.shift) * 0.6), 0.7));
   const minor = expr.intensity < 0.45 && !['request-answer', 'discovery', 'standup', 'contest', 'judgement'].includes(inst.type);
@@ -813,39 +789,16 @@ export function leaveJob(w: World, p: Person, e: Event) {
 
 // ---------- queued situations (one event causing another) ----------
 // Diagnostics only (set globalThis.WEIGH): what each option kept. Never read by the model.
-// An act that is not kept comes off each person's own list, and nothing else does (round F26; OFF=eventfix takes the last entry, as before,
-// which is the thread's own event when the thread step has just added one). UNLISTED counts removals and the ones that took another event.
-export const UNLISTED = { n: 0, other: 0 };
 // The average evidence weight from trait size (min(2, |z|)) and the average circumstance discount, over round H25's worlds (round F26).
 const EV_Z = 0.933,
   EV_CIRC = 0.1875;
-export const IDENTITY = { n: 0, differ: 0 };
+// An act that is not kept comes off each person's own list, wherever it is in the list, and nothing else does.
 export function unlist(w: World, e: Event) {
-  for (const id of OFF.has('eventfix') ? e.who : new Set(e.who)) {
+  for (const id of new Set(e.who)) {
     const l = P(w, id).events;
-    UNLISTED.n++;
-    if (l[l.length - 1] !== e.id) UNLISTED.other++;
-    if (OFF.has('eventfix')) l.pop();
-    else {
-      const i = l.lastIndexOf(e.id);
-      if (i >= 0) l.splice(i, 1);
-      else if (F26()) F26().missing++;
-    }
+    const i = l.lastIndexOf(e.id);
+    if (i >= 0) l.splice(i, 1);
   }
-  F26()?.unkept.add(e.id);
-}
-// Round F26's diagnostic (src/tools/diag/f26.ts), never read by the model: how often the old scoring rule would have chosen another
-// likeliest answer. It scores the decision again under the old rule, which draws nothing.
-const F26 = () => (globalThis as any).F26;
-function countCheck(options: Option[], scored: Scored[], w: World, p: Person) {
-  const G = F26();
-  if (!G || OFF.has('countfair')) return;
-  OFF.add('countfair');
-  const old = score(options, truthView(w), p.variability);
-  OFF.delete('countfair');
-  const top = (xs: Scored[]) => xs.reduce((b, o) => (o.p > b.p ? o : b)).id;
-  G.decisions++;
-  if (top(old) !== top(scored)) G.differ++;
 }
 export const WEIGH_LOG: any[] = [];
 export const WEIGH_DEC: any[] = [];
@@ -928,7 +881,7 @@ const TYPES: SituationType[] = [
           familyExtra: lead ? { dishonesty: [bondC(w, p, lead, 'respect', -1)] } : undefined,
           maxIntensity: money ? 0.6 : 1,
           // Round H25: without money in it, taking a little is not one of the answers (skimming is the one act at 0.6).
-          minIntensity: money ? 0.5 : OFF.has('skimfix') ? 0.6 : 0.65,
+          minIntensity: money ? 0.5 : 0.65,
         });
       }
       return out;

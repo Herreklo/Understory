@@ -108,8 +108,6 @@ A world is built by `buildWorld` (founders, families, jobs at year zero) and the
 | `exposure` | Familiarity making people easier to like |
 | `relbar` | The friendship bar relative to one's own world |
 
-**Fixes that were kept.** Turning one off brings back a known fault. Each is removed, with its old path, in the next neutral change: `countfair`, `eventfix`, `identfix`, `honestev`, `refade`, `skimfix`, `floor`, `seenonly`, `monthly`, `ownchance`, `selfkept`, `pushes`, `despite`, `mathx`.
-
 **Mechanisms that were not kept,** off by default: `everyone` (a yearly want from one's values, round 25d), `jobact` (no burying oneself in work without work, round H26), `states` (a month-to-month state on every facet, round 27). Each is removed in the next neutral change unless `SUMMARY.md` names a coming round that reuses it.
 
 ## Checks
