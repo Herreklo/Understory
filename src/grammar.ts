@@ -23,6 +23,7 @@ import {
   live,
   P,
   facet,
+  stateOf,
   bond,
   peekBond,
   likeOf,
@@ -100,6 +101,24 @@ export const traitCause = (p: Person, key: string, w = 1, dir?: 1 | -1): Cause =
     ...(f && !pole ? { mid: true } : {}),
   };
 };
+// Round 27: when this month's state on the facet of a decision's top reason was far from the person's level (more than 0.8 of a standard
+// deviation), the reason says so, in the direction it went, so a reader who later learns the person can see why the act did not fit them.
+// A trait near the middle that went far that month is a reason after all, and is written down.
+export function noteState(w: World, p: Person, why: Cause[]) {
+  const top = why.find(c => c.key && !c.key.startsWith('against:'));
+  if (!top || top.kind !== 'trait' || !top.key) return;
+  const s = stateOf(w, p, top.key);
+  if (Math.abs(s) <= 0.8) return;
+  const f = FACET_BY_ID[top.key] ?? PSEUDO[top.key];
+  if (!f) return;
+  const z = p.facets[top.key] ?? 0;
+  const pole = z > 0.5 ? 1 : z < -0.5 ? -1 : 0;
+  if (pole) top.label = `${top.label}, ${Math.sign(s) === pole ? 'more' : 'less'} so than usual that month`;
+  else {
+    top.label = `${f.name.toLowerCase()}: ${s > 0 ? f.high : f.low} that month, more than usual`;
+    delete top.mid;
+  }
+}
 export const stateCause = (label: string, w = 1, ref?: number): Cause => ({ kind: 'state', label, weight: w, ref });
 export const eventCause = (w: World, ref: number, weight = 1): Cause => ({ kind: 'event', label: w.events[ref].text, weight, ref });
 export const ev = (subject: number, key: string, dir: number, strength = 1, reliability = 0.8): Evidence => ({
@@ -279,6 +298,7 @@ export function decide(w: World, p: Person, trigger: string, options: Option[]) 
   countCheck(options, scored, w, p);
   const chosen = choose(scored, chanceOf(w, p), { t: w.t, who: p.id, kind: trigger, nudge: () => w.rng.next() });
   const why = reasons(chosen, scored, truthView(w));
+  noteState(w, p, why);
   const rec: any = { trigger, person: p.id, options: scored.map(o => ({ id: o.id, label: o.label, p: o.p, score: o.score })), chosen: chosen.id };
   const top = why.find(c => c.key && !c.key.startsWith('against:'))?.key;
   rec.honest = honestWhy(truthView(w), options, p.variability, chosen.id, top);
@@ -547,6 +567,7 @@ export function run(w: World, inst: Instance): Outcome | null {
     WEIGH_DEC.push({ type: inst.type, families: inst.families, idFams, circ, chosen: chosen.id });
   }
   const why = reasons(chosen, scored, truthView(w));
+  noteState(w, p, why);
   const fam = chosen.id as Family;
   const expr = pickExpression(w, p, fam, inst);
   const rec: any = {

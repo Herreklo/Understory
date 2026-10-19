@@ -6,10 +6,13 @@
 //   tsx src/tools/patterns.ts A B [present years]
 import { buildWorld, runYears } from '../build';
 import { pickWitness, knows } from '../witness';
-import { age, belief, facet, live, peekBond, type World } from '../world';
+import { age, belief, facet, live, peekBond, OFF, ON, type World } from '../world';
 import { FAMILY_FACETS } from '../grammar';
 import { FACETS } from '../core';
 
+// Arms, as in board.ts: OFF=<switches> turns kept mechanisms off, ON=<switches> turns unkept ones on.
+for (const x of (process.env.OFF ?? '').split(',').filter(Boolean)) OFF.add(x);
+for (const x of (process.env.ON ?? '').split(',').filter(Boolean)) ON.add(x);
 const [a0, b0, y0] = process.argv.slice(2);
 const A = +(a0 ?? 3101),
   B = +(b0 ?? A),
