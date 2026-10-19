@@ -26,6 +26,7 @@ import { SETTING } from './setting';
 import { OFF, type World, type Person, type Event, age, year, live, likeOf, remember, addEvent, broadcast, bond } from './world';
 import { ev, traitCause, stateCause, eventCause, queueProvocation } from './grammar';
 import type { Feature } from './features';
+import * as MX from './mathx';
 
 export interface Persona {
   humour: { warm: number; coping: number; cutting: number; selfMocking: number; wit: number };
@@ -451,7 +452,7 @@ function depthOf(w: World, p: Person) {
     const yrs = (w.t - e.t) / 12;
     const z =
       0.7 * f(p, 'anxiety') - 0.4 * f(p, 'forgiveness') + 0.6 * (e.w - 1.2) + (((e as any).seen ?? e.vis) === 'public' ? 0.4 : 0) - 0.06 * yrs - 0.6;
-    return new Rng(hash(w.seed, p.id, key, e.id)).next() < 1 / (1 + Math.exp(-2 * z));
+    return new Rng(hash(w.seed, p.id, key, e.id)).next() < 1 / (1 + MX.exp(-2 * z));
   };
   const add = <T extends { key: string; from: number }>(arr: T[], x: T) => {
     if (done.has(x.key) || !marked(w.events[x.from], x.key)) return;

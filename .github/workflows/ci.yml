@@ -1,9 +1,12 @@
 name: ci
 
+# A change to Markdown alone (NOW.md, BOARD, the docs) starts no run, except docs/seeds.md, which the seed check reads.
 on:
   push:
     branches: [main]
+    paths: ['**', '!**.md', 'docs/seeds.md']
   pull_request:
+    paths: ['**', '!**.md', 'docs/seeds.md']
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -19,6 +22,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
       - name: Seeds are never reused
         run: node scripts/check-seeds.mjs

@@ -33,6 +33,10 @@ Engine code does not call `Math.exp`, `Math.log`, `Math.pow`, `Math.tanh`, the t
 
 **Why:** those five operations are exactly rounded in every language that follows IEEE 754, so they give the same bits everywhere. The others are approximations whose last digits differ between JavaScript engines, compilers and machines, and a decision that turns on a last digit makes two engines part ways.
 
+`src/mathx.ts` holds them: `exp`, `log`, `pow` (positive base), `tanh` and `cos`, each within 4×10⁻¹⁶ of JavaScript's over the ranges the engine uses (`src/tools/mathtest.ts`, in `npm test`).
+
+A port keeps two things these rely on: no multiply-add is fused (C and C++ compilers may contract `a*b + c` into one instruction unless told not to), and `Math.round` rounds a half up, toward +∞ (C's `round` and Rust's `f64::round` round it away from zero, so a port writes `floor(x + 0.5)`).
+
 **How:** integers that decide something (ids, keys, counts) stay exact. Division meant to be whole says so, with `Math.floor` or `Math.trunc`.
 
 ## 4. Order is the engine's own

@@ -45,6 +45,7 @@ const topSourcesLabel = (p: Person) =>
     .map(s => s.label)
     .join(', ') || 'strain';
 import type { Feature } from './features';
+import * as MX from './mathx';
 
 type Kind = (typeof SETTING.groupKinds)[number];
 const kindOf = (g: Group): Kind => SETTING.groupKinds.find(k => k.id === g.kind)!;
@@ -237,7 +238,7 @@ function moment(w: World, g: Group, k: Kind, e: { id: number; t: number }, ms: P
         a = age(w, x),
         im = imp(a);
       (x as any).sawGreat = [...((x as any).sawGreat ?? []), { t: w.t, sk, z, a }];
-      if (s.interest < 2 && !x.tried['spark:' + sk] && w.rng.chance((im * 0.25) / (1 + Math.exp(-2.5 * (z - 0.6))))) {
+      if (s.interest < 2 && !x.tried['spark:' + sk] && w.rng.chance((im * 0.25) / (1 + MX.exp(-2.5 * (z - 0.6))))) {
         x.tried['spark:' + sk] = { t: w.t, ok: true, n: s.interest };
         s.interest = 2;
         ((x as any).interestFrom ??= {})[sk] = 'moment';
@@ -261,7 +262,7 @@ function moment(w: World, g: Group, k: Kind, e: { id: number; t: number }, ms: P
           w: 1.3,
         });
         broadcast(w, ev2);
-      } else if (w.rng.chance((0.05 + 0.3 / (1 + Math.exp(-1.5 * z))) * (0.5 + 0.5 * im))) {
+      } else if (w.rng.chance((0.05 + 0.3 / (1 + MX.exp(-1.5 * z))) * (0.5 + 0.5 * im))) {
         rec.glows.push(x.id);
         addEmotion(w, x, 'glow', `still full of the night ${g.name} played`, 0.08, 2, e.id);
         const moved = z + im + w.rng.normal() * 0.3;
@@ -352,7 +353,7 @@ export function develop(w: World) {
         }
         if (s.interest === 2) continue;
         const z = inclination(p, sk);
-        const pull = (devRate() * (home ? 1.5 : near ? 0.6 : atWork ? 0.6 : 0.5) * devImp(a)) / (1 + Math.exp(-2.5 * (z - 0.6)));
+        const pull = (devRate() * (home ? 1.5 : near ? 0.6 : atWork ? 0.6 : 0.5) * devImp(a)) / (1 + MX.exp(-2.5 * (z - 0.6)));
         if (s.interest === 0) {
           if (w.rng.chance(pull * 4)) {
             s.interest = 1;

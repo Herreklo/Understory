@@ -8,6 +8,7 @@ import { generatePerson, attracted } from './generate';
 import { tick } from './life';
 import { populateBackground } from './coarse';
 import { formHabits } from './time';
+import * as MX from './mathx';
 const family = (a: Person, b: Person) =>
   a.parents.includes(b.id) || b.parents.includes(a.id) || (a.parents.length > 0 && a.parents.some(x => b.parents.includes(x)));
 
@@ -53,7 +54,7 @@ export function buildWorld(seed: number, runSeed: number, pastYears = 30, adults
   while (countAdults() < adults) {
     const r = g.next();
     if (r < 0.3) {
-      generatePerson(w, { age: 20 + Math.floor(Math.pow(g.next(), 1.4) * 55), founder: true });
+      generatePerson(w, { age: 20 + Math.floor(MX.pow(g.next(), 1.4) * 55), founder: true });
     } else {
       const withKids = r >= 0.55;
       const a = withKids ? 26 + g.int(0, 20) : 24 + g.int(0, 50);
