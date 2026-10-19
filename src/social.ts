@@ -512,7 +512,15 @@ export function memWhy(w: World, x: Person, y: Person, sign: number): Cause[] {
       .filter(o => sign * o.v > 0.08)
       .sort((p, q) => sign * (q.v - p.v))
       // A memory is kept in the holder's words ("went to me and apologised"); as a reason it is said from outside, once per event.
-      .map(o => ({ kind: 'event', label: `${voiced(o.m.text, x, y)} (${year(o.m.t)})`, weight: 0.5, ref: o.m.ev }) as Cause)
+      .map(
+        o =>
+          ({
+            kind: 'event',
+            label: o.m.source === 'saw' ? `@${x.id} ${o.m.text} (${year(o.m.t)})` : `${voiced(o.m.text, x, y)} (${year(o.m.t)})`,
+            weight: 0.5,
+            ref: o.m.ev,
+          }) as Cause,
+      )
       .filter(c => {
         const k = c.ref != null && c.ref >= 0 ? 'e' + c.ref : c.label;
         if (seen.has(k)) return false;

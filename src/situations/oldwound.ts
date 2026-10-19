@@ -20,7 +20,7 @@ export const oldwound: SituationType = {
         const r = peekBond(w, p.id, q.id);
         if (!r) continue;
         const m = r.mem
-          .filter(m => m.like + m.trust < -0.15 && w.t - m.t >= 3 && w.t - m.t <= 24 && m.ev >= 0)
+          .filter(m => m.like + m.trust < -0.15 && w.t - m.t >= 3 && w.t - m.t <= 24 && m.ev >= 0 && m.source !== 'saw') // only an act done to oneself
           .sort((a, b) => a.like + a.trust - (b.like + b.trust))[0];
         if (m) cands.push([q, m]);
       }
