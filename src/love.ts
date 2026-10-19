@@ -21,7 +21,8 @@
 // like a trait and it can be learned from what they do. A style used deepens a little, like any trait that chooses an act.
 import { Rng, hash, clamp } from './rng';
 import { OFF, type World, type Person, age, live, P, likeOf, remember, addEvent, broadcast, bond, year, addStress, plasticity } from './world';
-import { run, privC, pubC, closeC, valueC, bondC, stateCause, eventCause, ev, PSEUDO } from './grammar';
+import { run } from './grammar';
+import { privC, pubC, closeC, valueC, bondC, stateCause, eventCause, ev, PSEUDO } from './considerations';
 import { curves, z01, type Consideration } from './decide';
 import { SETTING } from './setting';
 import type { Feature } from './features';

@@ -24,7 +24,8 @@ import {
   year,
 } from './world';
 import { type Option, type Consideration } from './decide';
-import { decide, family, friendsOf, stateCause, eventCause, ev, facetC, privC, pubC, closeC, bondC } from './grammar';
+import { decide, family, friendsOf } from './grammar';
+import { stateCause, eventCause, ev, facetC, privC, pubC, closeC, bondC } from './considerations';
 import { regard } from './regard';
 import type { Feature } from './features';
 

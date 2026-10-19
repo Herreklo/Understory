@@ -28,7 +28,8 @@ import {
   year,
   bond,
 } from './world';
-import { run, traitCause, stateCause, eventCause, ev, facetC, bondC, pubC, privC, family, favour } from './grammar';
+import { run, family, favour } from './grammar';
+import { traitCause, stateCause, eventCause, ev, facetC, bondC, pubC, privC } from './considerations';
 import { z01 } from './decide';
 import { decide } from './grammar';
 import { regard } from './regard';

@@ -27,7 +27,8 @@ import {
   logistic,
 } from './world';
 import { z01 } from './decide';
-import { run, decide, friendsOf, family, traitCause, stateCause, eventCause, ev, facetC, bondC, pubC, privC, learned, unlist } from './grammar';
+import { run, decide, friendsOf, family, unlist } from './grammar';
+import { traitCause, stateCause, eventCause, ev, facetC, bondC, pubC, privC, learned } from './considerations';
 import { pursuing, practise, resolveWants, formHabit } from './time';
 import { regard } from './regard';
 

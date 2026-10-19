@@ -24,7 +24,8 @@ import { around } from './scale';
 import { Rng, hash, clamp } from './rng';
 import { SETTING } from './setting';
 import { OFF, type World, type Person, type Event, age, year, live, likeOf, remember, addEvent, broadcast, bond } from './world';
-import { ev, traitCause, stateCause, eventCause, queueProvocation } from './grammar';
+import { ev, traitCause, stateCause, eventCause } from './considerations';
+import { queueProvocation } from './grammar';
 import type { Feature } from './features';
 import * as MX from './mathx';
 
