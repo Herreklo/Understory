@@ -19,7 +19,7 @@ const M: Record<string, Entry> = {
     loBy: { dishonesty: ['said what would work', 'though a smooth word usually comes easily to {obj}'] },
   },
   fairness: {
-    hi: ['would not take what was not {hers}', 'though {she} has never taken what was not {hers}'],
+    hi: ['wanted it to be fair', 'though {she} likes things to be fair'],
     lo: ['thought rules are for people who get caught', 'though {she} has never been fussy about rules'],
     hiBy: {
       honesty: ['would rather be straight about it', 'though it was not like {obj} to be anything but straight'],
