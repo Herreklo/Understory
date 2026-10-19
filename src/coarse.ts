@@ -10,7 +10,8 @@ import { addEvent as addEv, addStress, age, type World, type Person, type Event 
 import { generatePerson, attracted } from './generate';
 import { hoods, idx, moved, hoodOf, background, toBackground, fromBackground, makeInstances, typeOf } from './scale';
 import { formHabits } from './time';
-import { catchUp, mature } from './life';
+import { catchUp } from './social';
+import { mature } from './yearly';
 import { plasticity } from './world';
 import { family } from './grammar';
 import { ODDS } from './coarse-odds';
