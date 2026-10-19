@@ -16,6 +16,7 @@ Read `WHY.md` before planning an experiment, and before answering a question abo
 
 An open pull request is a claim on the files it touches. Before changing `src/` or `scale/`, look at the open PRs. If one touches the same files, don't start: wait for it, or agree with its owner who goes first. Claim your work by opening a draft PR as soon as you have a branch, with its first commit pushed.
 
+- **What comes next is Øystein's call.** `SUMMARY.md` ("Next, in order") is the one priority list, and only he changes its order. A chat starts an experiment only if it is the top item there or he named it; neutral changes, reviews and fixes need no slot.
 - **One experiment at a time** changes how people behave. Neutral changes (below) may run beside it if they touch other files.
 - CI warns on a PR when another open PR touches the engine too.
 - `docs/seeds.md` is shared: append rows, never edit earlier ones.
@@ -77,7 +78,7 @@ Every experiment's mechanism sits behind a switch, so its effect can be measured
 ## Standing rules
 
 - **Consequence rule.** Every mechanism changes what happens to people, or how they are read. One that does neither is connected or cut.
-- **Exit criterion.** Seven points in `docs/STATUS.md` say when the model is good enough to build on. Every experiment moves one of them, or it does not run.
+- **Exit criterion.** Eight points in `docs/STATUS.md` say when the model is good enough to build on. Every experiment moves one of them, or it does not run.
 - **Seven skills.** Every experiment passes the personality scientist, measurement auditor, character reader, simulation engineer, emergence designer, revelation designer and steward (`docs/method/skills.md`).
 - **The simulation decides.** A language model may only write the words for a decision the engine has made. It never changes world state.
 - **No realism claims.** The scoreboard shows internal readability, never realism.

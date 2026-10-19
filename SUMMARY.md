@@ -2,6 +2,15 @@
 
 *Updated 19 October 2026. One page, plain words, rewritten at every merge to main.*
 
+## Where we are going
+
+A world of people you come to understand from incomplete evidence, who surprise you for reasons you recognise afterwards, whose lives are changed by what happens to them, and whose actions reach other people. A player should feel three things again and again:
+- **Discovery:** "I think I understand this person."
+- **Agency:** "My decision changed what happened."
+- **Recognition:** "I remember when that started."
+
+Success sounds like "I knew that guitarist was trouble" or "I shouldn't have made that promise". Every plan is checked against this, and the exit criterion (`docs/STATUS.md`) measures how close the engine is.
+
 ## In one sentence
 
 The people decide like people and can be read, but their lives are thin and repetitive; the city now runs on the same engine as the town.
@@ -25,20 +34,25 @@ The people decide like people and can be read, but their lives are thin and repe
 
 ## Next, in order
 
+This is the one priority list. Only Øystein changes its order, and a chat starts an experiment only from the top of it or when he names one.
+
 1. Housekeeping: settled switches removed, the two giant files split, the town's content moved out of the engine. Each step proven to change nothing.
 2. Proposed: the accounts arc (#20). People remember their version of what happened, pass it on, and learn from it.
 3. For the game (Overstory): the front door's part two (#22), reads of what the player could know, player commands and versions; and the start year from the setting pack (#23), so a world can begin in another era.
 4. The city's background: partnering and children fixed, so it stops ageing.
-5. Later: a human test built on stories rather than predictions.
+5. Later: a human test built on stories rather than predictions (exit point 5).
+
+In progress, not yet placed in this order: H29 (CI spends fewer minutes) and round 28 (the engine's own arithmetic, portability rule 3), opened by another chat.
 
 ## Waiting for you
 
+- Place round 28 (the engine's own arithmetic) in the order, or pause it: before the accounts arc, after it, or later.
 - Decide on the repo structure for add-ons.
-- Overstory's answers to the five questions sent today.
 
 ## Latest merges
 
 - **Round 28 (19 Oct):** the engine does its own maths, so a seed makes the same world on any computer or in a port. No event changed in forty test worlds.
+- **The goal written down (19 Oct):** where we are going, one priority list that only Øystein orders, and an exit criterion that measures whether the world is alive (events that travel, lives that change people, readers who want more), not only whether it is readable.
 - **H28 (19 Oct):** the portability rules and the engine's front door. Nothing the engine does changed.
 - **The workflow (19 Oct):** two kinds of change (changes that alter nothing merge the day CI proves it; experiments keep the full protocol), CI that checks every pull request against main, this page, and the name Understory.
 - **S12 (19 Oct):** the city machinery moved onto today's engine. The town is untouched; the background needs its children fixed.
