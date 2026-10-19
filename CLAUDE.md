@@ -49,7 +49,7 @@ One experiment, one branch, one PR, one tag.
 2. **Pre-register before any code.** Write the change, its switch, what is expected and what would change our minds in `docs/BOARD.md` (city: `docs/scale/SCALE.md`), say which warning in `WHY.md` it risks, and claim fresh seeds in `docs/seeds.md`. Commit as `28: pre-register` and push at once. The pushed commit is the timestamp; code committed before it means the round was not pre-registered, and BOARD says so.
 3. **Build behind the switch.** CI checks on every push that with the switch off, the world is identical to `main`. Smoke runs on throwaway seeds (9001+) check only that it works.
 4. **Test on fresh worlds, with and without** (`scripts/round.mjs`). Cold reads go to readers not told which arm a life comes from, before any metric is read. A separate agent re-derives the headline numbers from the raw files.
-5. **Record the outcome, whatever it is.** Write it in BOARD (or SCALE.md); update `docs/STATUS.md`, `docs/ARCHITECTURE.md` and `SUMMARY.md` to describe the project as it now is. Never tune after a result.
+5. **Record the outcome, whatever it is.** Write it in BOARD (or SCALE.md); update `docs/STATUS.md`, `docs/ARCHITECTURE.md` and `SUMMARY.md` to describe the project as it now is. Never tune after a result. A kept change to how people behave is followed by refitting the city background's odds (`docs/scale/README.md`), so the city never runs an older model than the town.
 6. **Mark the PR ready.** The template is the checklist. CI must pass.
 7. **Merge with a merge commit,** never squash or rebase: the pre-registration commit and its time must survive. The merge message is BOARD's one-line outcome.
 8. **Tag and release.** Push a branch `release/r28` holding `RELEASE.json` and the raw outputs (`.github/workflows/release.yml` says how); the workflow tags the merge and attaches the outputs. City tags are `s12`.
@@ -61,7 +61,8 @@ An experiment that fails is still merged: its pre-registration, its code behind 
 A change merges only if:
 - `npm test` passes (CI runs it, with typecheck, formatting and the seed check);
 - CI's identity check against `main` passes: a `refactor` is identical, a `words` change is identical in behaviour, an experiment is identical with its switch off;
-- an experiment's scoreboard, paired with and without the change, stays within ±2, judged on decisions that are not a couple's, with the overall number beside it.
+- an experiment's scoreboard, paired with and without the change, stays within ±2, judged on decisions that are not a couple's, with the overall number beside it;
+- a change to the city code (`src/scale.ts`, `src/coarse.ts`, `scale/`) also leaves the scale track's whole-world check identical to main's (`scale/identity2.ts`).
 
 ## Switches
 
