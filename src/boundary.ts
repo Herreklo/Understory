@@ -1,7 +1,7 @@
 // The boundary: how a game, or any front end outside this repo, talks to a world (docs/scale/portability.md, rule 1).
 // A world is created and advanced by commands, and read through events and queries. Everything given back is plain data: numbers,
 // strings, booleans, arrays and records, never a Map, a Set or a function, and never a reference into the world, so a caller cannot
-// change a world by holding on to what it was given. The lab page and the tools read the engine directly; they are instruments.
+// change a world by holding on to what it was given. The Understory page and the tools read the engine directly; they are instruments.
 import { buildWorld } from './build';
 import { tick } from './life';
 import { pickWitness } from './witness';

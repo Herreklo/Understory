@@ -1,53 +1,84 @@
-# Working in The Lab
+# Working in Understory
 
-Every session that works here reads this first. It says how a round runs in git, and the rules no change may break.
+Every session that works here reads this first. It says how changes reach `main`, and the rules no change may break.
 
 ## Start of every session
 
     git fetch origin && git switch main && git pull --ff-only
     npm install && npm test
+    gh pr list
 
-Then read `NOW.md`. If a round is open on another branch and touches the files you were about to change, finish or merge it first.
+Read `SUMMARY.md`: where the project stands, in one page. The open pull requests say who is working on what.
 
-Read `WHY.md` before pre-registering a round, and before answering a question about where the lab stands or what to do next. It says why the lab exists and names the ways a project like this goes wrong; the round's pre-registration says which of its warnings the round risks.
+Read `WHY.md` before planning an experiment, and before answering a question about where the project stands or what to do next. It says why the project exists and names the ways a project like this goes wrong.
 
-## One session at a time
+## Who is working on what
 
-One session changes the engine. Others may read, measure and review, but not edit `src/`, `scale/` or the docs while a round is open. The city-scale work is ordinary rounds on `main` (`scale/<step>`, numbered `S12`, `S13`), each behind a switch and each passing the identity check, so the scale code never falls behind the engine again.
+An open pull request is a claim on the files it touches. Before changing `src/` or `scale/`, look at the open PRs. If one touches the same files, don't start: wait for it, or agree with its owner who goes first. Claim your work by opening a draft PR as soon as you have a branch, with its first commit pushed.
 
-Shared files, edited by the open round only: `NOW.md` (one block: what is open, on which branch, what it waits for), `docs/seeds.md` (append rows, never edit earlier ones), `CLAUDE.md`, `README.md`, `.github/`.
+- **One experiment at a time** changes how people behave. Neutral changes (below) may run beside it if they touch other files.
+- CI warns on a PR when another open PR touches the engine too.
+- `docs/seeds.md` is shared: append rows, never edit earlier ones.
 
-All new engine code follows `docs/scale/contract.md` and `docs/scale/portability.md`.
+All new engine code follows `docs/scale/contract.md` and `docs/scale/portability.md`, so the city never falls behind the engine and the engine stays free to move.
 
-## How a round runs
+## Two kinds of change
 
-One round, one branch, one PR, one tag.
+| | Neutral change | Experiment |
+| --- | --- | --- |
+| What it is | Changes nothing about what people do: a refactor, a wording fix, city plumbing, a rename, housekeeping | Changes what people do, and claims an effect |
+| Proof | CI shows it identical to `main` | The full protocol below |
+| Speed | Merge the day CI is green | As long as the protocol takes |
 
-1. **Branch from current main.** `git switch -c round/26` (or `scale/S12`).
-2. **Pre-register before any code.** Write the change, its switch (`OFF=<name>`), what is expected, and what would change our minds, in `docs/BOARD.md` (scale: `docs/scale/SCALE.md`). Claim fresh seeds in `docs/seeds.md`. Commit as `26: pre-register` and push at once. The pushed commit is the timestamp; code committed before it means the round was not pre-registered, and BOARD says so.
-3. **Build behind the switch.** Smoke runs on throwaway seeds (9001+) check only that it works.
-4. **Test on fresh worlds, with and without.** Cold reads go to readers not told which arm a life comes from, before any metric is read. A separate agent re-derives the headline numbers from the raw files.
-5. **Record the outcome, whatever it is.** Write it in BOARD (or SCALE.md), update `docs/STATUS.md` and `docs/ARCHITECTURE.md` to describe the design as it now is. Never tune after a result.
-6. **Open a PR to main.** The template is the checklist. CI must pass.
+Which one is it? If the change claims any effect on people, lives or how a page reads, it is an experiment. Otherwise it must prove it changes nothing.
+
+### A neutral change
+
+1. Branch from `main` and open a draft PR.
+2. Label it `refactor` (nothing may change, every event, bond and belief identical) or `words` (only text may change; behaviour identical).
+3. CI checks it against `main` on every push. Merge when it is green.
+4. If it changes something the owner should know, add a line to `SUMMARY.md`.
+
+A city step that leaves a town untouched is a `refactor` for the town. What it claims about the city (speed, the background matching the town) is pre-registered in `docs/scale/SCALE.md` and tested as an experiment is.
+
+### An experiment
+
+One experiment, one branch, one PR, one tag.
+
+1. **Branch from current `main`** (`round/28`) and open a draft PR. Its description says `Switch: OFF=<name>` on a line of its own.
+2. **Pre-register before any code.** Write the change, its switch, what is expected and what would change our minds in `docs/BOARD.md` (city: `docs/scale/SCALE.md`), say which warning in `WHY.md` it risks, and claim fresh seeds in `docs/seeds.md`. Commit as `28: pre-register` and push at once. The pushed commit is the timestamp; code committed before it means the round was not pre-registered, and BOARD says so.
+3. **Build behind the switch.** CI checks on every push that with the switch off, the world is identical to `main`. Smoke runs on throwaway seeds (9001+) check only that it works.
+4. **Test on fresh worlds, with and without** (`scripts/round.mjs`). Cold reads go to readers not told which arm a life comes from, before any metric is read. A separate agent re-derives the headline numbers from the raw files.
+5. **Record the outcome, whatever it is.** Write it in BOARD (or SCALE.md); update `docs/STATUS.md`, `docs/ARCHITECTURE.md` and `SUMMARY.md` to describe the project as it now is. Never tune after a result. A kept change to how people behave is followed by refitting the city background's odds (`docs/scale/README.md`), so the city never runs an older model than the town.
+6. **Mark the PR ready.** The template is the checklist. CI must pass.
 7. **Merge with a merge commit,** never squash or rebase: the pre-registration commit and its time must survive. The merge message is BOARD's one-line outcome.
-8. **Tag and release.** `git tag r26 && git push origin r26`. Attach the raw outputs (`out-*`) as a tarball to the GitHub release for that tag. Scale tags are `s12`.
-9. **Update your block in `NOW.md`** on main.
+8. **Tag and release.** Push a branch `release/r28` holding `RELEASE.json` and the raw outputs (`.github/workflows/release.yml` says how); the workflow tags the merge and attaches the outputs. City tags are `s12`.
 
-A round that fails is still merged: its pre-registration, code behind a switch that stays off, and outcome. A switch for a round that has settled is retired in a later housekeeping round.
+An experiment that fails is still merged: its pre-registration, its code behind a switch that stays off, and its outcome.
 
 ## The gate
 
 A change merges only if:
 - `npm test` passes (CI runs it, with typecheck, formatting and the seed check);
-- the scoreboard, paired with and without the change, stays within ±2, judged on decisions that are not a couple's, with the overall number beside it;
-- a change meant not to alter behaviour hashes identical with `src/tools/diag/ident.ts`; one that only touches words, with `src/tools/diag/sig.ts`;
-- a scale change leaves a town-sized world identical to main's (`ident.ts` and the scale track's whole-world check).
+- CI's identity check against `main` passes: a `refactor` is identical, a `words` change is identical in behaviour, an experiment is identical with its switch off;
+- an experiment's scoreboard, paired with and without the change, stays within ±2, judged on decisions that are not a couple's, with the overall number beside it;
+- a change to the city code (`src/scale.ts`, `src/coarse.ts`, `scale/`) also leaves the scale track's whole-world check identical to main's (`scale/identity2.ts`).
+
+## Switches
+
+Every experiment's mechanism sits behind a switch, so its effect can be measured by turning it off (`OFF=<name>`), or turned on for a test when it stays off by default (`ON=<name>`).
+
+- **System switches** turn off a whole system (couples, drama, plans). They stay: they are how a system's contribution is measured.
+- **A fix that is kept** loses its switch and its old path in the next neutral change. The round's tag keeps the old behaviour reproducible.
+- **A mechanism that is not kept** is removed in the next neutral change, unless `SUMMARY.md` names a coming round that reuses it.
+
+`docs/ARCHITECTURE.md` lists every switch and its kind.
 
 ## Standing rules
 
 - **Consequence rule.** Every mechanism changes what happens to people, or how they are read. One that does neither is connected or cut.
-- **Exit criterion.** Seven points in `docs/STATUS.md` say when the model is good enough to build on. Every round moves one of them, or it does not run.
-- **Seven skills.** Every change passes the personality scientist, measurement auditor, character reader, simulation engineer, emergence designer, revelation designer and steward (`docs/method/skills.md`).
+- **Exit criterion.** Seven points in `docs/STATUS.md` say when the model is good enough to build on. Every experiment moves one of them, or it does not run.
+- **Seven skills.** Every experiment passes the personality scientist, measurement auditor, character reader, simulation engineer, emergence designer, revelation designer and steward (`docs/method/skills.md`).
 - **The simulation decides.** A language model may only write the words for a decision the engine has made. It never changes world state.
 - **No realism claims.** The scoreboard shows internal readability, never realism.
 - **The town is a placeholder.** It is "the town", with English names. No target or benchmark comes from it or from any one country.
@@ -59,7 +90,8 @@ A change merges only if:
 
 ## Docs
 
-`docs/` describes the current design only: how it works and why. History lives in BOARD, SCALE.md and git, not in the design docs. No rejected alternatives, no "instead of".
+- `SUMMARY.md` is for the owner: one page, plain words, what changed, what was learned, what is next. Every experiment updates it, and so does any change the owner should know about.
+- `docs/` describes the current design only: how it works and why. History lives in BOARD, SCALE.md and git, not in the design docs. No rejected alternatives, no "instead of".
 
 ## Practical
 
@@ -67,5 +99,4 @@ A change merges only if:
 - Don't edit `src/` while a queue of runs is going: each queued run bundles the source when it starts. Use a worktree (`git worktree add ../lab-run main`) to run from a frozen tree while you keep working.
 - To stop a scoreboard: `kill $(pgrep -f "lab-run/src_tools_board")`. Never `pkill -f board.sh`.
 - Raw outputs go in `out-*/`, which git ignores.
-- CI does not start for a change to Markdown alone (NOW.md, BOARD, the docs), except `docs/seeds.md`; Actions minutes are limited.
-- Commit messages: `<round>: <what changed>`, e.g. `26: closest person decides whether to be there`.
+- Commit messages: `<round>: <what changed>`, e.g. `28: closest person decides whether to be there`; a neutral change uses a short name, e.g. `split: life.ts by system`.

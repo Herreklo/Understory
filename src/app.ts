@@ -1,4 +1,4 @@
-// The lab page: build a world, run it, read lives from both sides of the wall.
+// The Understory page: build a world, run it, read lives from both sides of the wall.
 import { buildWorld, runYears } from './build';
 import { againNote, pageLines } from './page';
 import { pickWitness, scoreAll, hunches, hindsight } from './witness';
@@ -131,7 +131,7 @@ function eventLine(e: Event, showWhy: boolean, p?: Person) {
 function renderFelt(p: Person) {
   const wit = W.byId.get(W.witness!)!;
   if (p.id === wit.id)
-    return `<p class="note">This is the witness. You can't be a mystery to yourself, or at least the lab doesn't model that yet.</p>`;
+    return `<p class="note">This is the witness. You can't be a mystery to yourself, or at least Understory doesn't model that yet.</p>`;
   const known = p.events.map(i => W.events[i]).filter(e => e.t >= W.startPresent - 120 && knownBy(e));
   const hs = hunches(W, p);
   const learnedIf = p.ifThens
@@ -454,7 +454,7 @@ $('ctl').addEventListener('submit', ev => {
   ev.preventDefault();
   start(Math.max(1, parseInt(($('seed') as HTMLInputElement).value, 10) || 1));
 });
-// ---------- downloads, so a life can be handed to a reviewer without the lab ----------
+// ---------- downloads, so a life can be handed to a reviewer without the page ----------
 // Inside the claude.ai viewer, files go through the downloads capability (the viewer confirms); elsewhere, a plain browser download.
 async function save(name: string, text: string, type = 'text/plain') {
   const claude = (window as any).claude;
@@ -499,7 +499,7 @@ function lifeText(p: Person) {
 function worldText() {
   const wit = W.byId.get(W.witness!)!;
   const evs = W.events.filter(e => e.t >= W.startPresent && e.w >= 1);
-  let out = `# Person Model Lab · world ${W.seed}, fate ${W.runSeed} · ${year(W.startPresent)}–${year(W.t)} · witness ${fullName(wit)}\n\n## Chronicle (major events, with their causes)\n`;
+  let out = `# Understory · world ${W.seed}, fate ${W.runSeed} · ${year(W.startPresent)}–${year(W.t)} · witness ${fullName(wit)}\n\n## Chronicle (major events, with their causes)\n`;
   for (const e of evs)
     out += `${year(e.t)} ${MON[e.t % 12]}: ${plain(e.text)}${
       e.causes.length

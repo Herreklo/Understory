@@ -10,9 +10,9 @@ Its strengths are long life continuity, inspectable causes (every decision carri
 - **External review of R19:** the simulation decides and a language model writes only the words; controlled what-ifs, changing one thing with history and luck held fixed; describe the project as interpretable and internally tested, never as realistic.
 
 ## What we don't take
-- **Neighborly's code:** Python, unmaintained, and every part is a thinner version of something the lab already has. Its traits are tag bundles, relationships drift at random, nothing observes anyone, and decisions carry no reasons.
+- **Neighborly's code:** Python, unmaintained, and every part is a thinner version of something Understory already has. Its traits are tag bundles, relationships drift at random, nothing observes anyone, and decisions carry no reasons.
 - **LLM-agent societies** (Generative Agents, Concordia, AgentSociety, Project Sid): more expressive, but runs don't repeat, every decision costs a model call, and causes are opaque. Their lesson is expression, which the words-only rule covers.
 
 ## Lessons
-- Town simulations of this kind made rich histories that few people read; Neighborly's own paper names its missing story sifting and missing evaluation metric. The lab has the evaluation. Sifting and presentation are what stand between the simulation and an experience.
-- Stanford's 1,000-person study shows what validating against real people takes. The lab's claim is narrower and testable: humans can learn these people.
+- Town simulations of this kind made rich histories that few people read; Neighborly's own paper names its missing story sifting and missing evaluation metric. Understory has the evaluation. Sifting and presentation are what stand between the simulation and an experience.
+- Stanford's 1,000-person study shows what validating against real people takes. Understory's claim is narrower and testable: humans can learn these people.
