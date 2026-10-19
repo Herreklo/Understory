@@ -1695,7 +1695,7 @@ The change, behind `OFF=accounts`:
 
 Not changed: what the person an act was done to remembers, the trait evidence a bystander learns, gossip (round 30 makes accounts travel and bend), lessons (round 31). `version` and `blame` from the issue's table are **not** added: nothing in this round reads them, and state nothing reads is cut (the consequence rule). They come with round 30, where bending blame does work.
 
-Test: fresh worlds **2963–2982** for the lives, the consequence map (`src/tools/consequences.ts`) and the what-ifs, with and without; the scoreboard paired on **1801–1820** with base rates from 1501–1520; `ident.ts` with `accounts` off against main; a blind paired reading (M26's method: three readers on another model, α) of twelve people from **2983–2986**, each shown with and without, matched by name and birth; the coherence counter on 2983–2986 in both arms; `npm run props`; `npm test` with the switch on and off.
+Test: fresh worlds **3027–3046** for the lives, the consequence map (`src/tools/consequences.ts`) and the what-ifs, with and without; the scoreboard paired on **2071–2090** with base rates from 1501–1520; `ident.ts` with `accounts` off against main; a blind paired reading (M26's method: three readers on another model, α) of twelve people from **3047–3050**, each shown with and without, matched by name and birth; the coherence counter on 3047–3050 in both arms; `npm run props`; `npm test` with the switch on and off.
 Expected:
 
 1. `accounts` off: identical to main.
