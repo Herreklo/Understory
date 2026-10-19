@@ -605,3 +605,7 @@ The twin test with an ageing arm and the engine's real situations is S13, not th
 The independent re-derivation from the raw files reproduced every number above, and found the stale death reference.
 
 **What follows.** The background's partnering and children are the next scale step's to fix, pre-registered on fresh seeds: matching by the town's own age pattern of who pairs with whom, and the death reference taken from the engine it is checked against. Nothing was tuned on seeds 401–410.
+
+**Review note (19 Oct 2026, by the reviewing chat, after the merge).** The independent review confirmed item 1: main with S12 merged is identical to main on seeds 11–13 and on all 50 switch arms the two trees share, and `npm test` passes. It read two items differently from the result above, and the record keeps both readings:
+- **Deaths 65–79.** The bar was "within 25% of the new engine's rates". Against r27's own rates the ratio is 0.74 with deaths banded by age at the start of the year, 0.77 banded by age at death; the banding that meets the bar was chosen after the result was seen. By the bar as written, this is not met.
+- **Promotion invariance.** The bar was that nothing outside texture changes; promotion changed the wants of three people. By the bar as written, this fails, in one field, for a reason that is understood. The next scale step decides, in its pre-registration, whether wants are texture or the replayed years stop creating them.

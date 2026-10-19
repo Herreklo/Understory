@@ -1,0 +1,35 @@
+name: identity
+
+# Every pull request is checked against main as it is now: the world main makes, against the world main plus the PR makes.
+# Nothing is stored, so the check cannot go stale. What must hold depends on the PR's label or its `Switch:` line
+# (scripts/identity-ci.sh says how).
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled, edited, ready_for_review]
+
+concurrency:
+  group: identity-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install
+        run: npm ci
+
+      - name: Identity against main
+        env:
+          LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
+          BODY: ${{ github.event.pull_request.body }}
+        run: SUMMARY="$GITHUB_STEP_SUMMARY" bash scripts/identity-ci.sh

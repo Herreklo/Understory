@@ -5,6 +5,7 @@
 //   tsx src/tools/diag/ident.ts record [dir]  → write the full event record of the default arm, one canonical JSON line per event, through
 //   the boundary (out-reference/<seed>.jsonl): what a port of the engine must reproduce line for line (docs/scale/portability.md).
 // Arms: the default, plus each switch in IDENT_ARMS (comma-separated; '+' joins switches into one arm). Seeds 11–13 for the default, 11 for each switch arm; eight years.
+// IDENT_SKIP_DEFAULT=1 leaves the default out, so arms can be checked in parallel processes (scripts/identity-ci.sh).
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { buildWorld, runYears } from '../../build';
 import { pickWitness } from '../../witness';
@@ -13,7 +14,7 @@ import { canon, signature } from './signature';
 import { createWorld, command, events } from '../../boundary';
 
 const SEEDS = [11, 12, 13];
-const arms = ['', ...(process.env.IDENT_ARMS ?? '').split(',').filter(Boolean)];
+const arms = [...(process.env.IDENT_SKIP_DEFAULT ? [] : ['']), ...(process.env.IDENT_ARMS ?? '').split(',').filter(Boolean)];
 const mode = process.argv[2] ?? 'check',
   file = process.argv[3] ?? 'reports/ident-baseline.json';
 if (mode === 'record') {

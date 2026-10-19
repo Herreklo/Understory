@@ -5,7 +5,7 @@ The protocol for the human quiz's third sitting (round Q3). Real side: everythin
 ## The question
 Does reading a person's page help a stranger predict what that person does next, beyond what the situation alone tells them?
 
-This is exit point 5. It is the one result the lab cannot get from its own readers.
+This is exit point 5. It is the one result the project cannot get from its own readers.
 
 ## What a tester does (about 20 minutes)
 1. **The setup.** A short introduction: a town, a witness who knows some people, and what "predict" means. No other explanation.
@@ -43,7 +43,7 @@ This is exit point 5. It is the one result the lab cannot get from its own reade
 - **The analysis script is written and committed before the first tester answers.**
 
 ## Who
-- Adults who have not seen the model, the lab or its docs.
+- Adults who have not seen the model, the project or its docs.
 - No knowledge of psychology needed.
 - Not the designer, and not anyone the designer has briefed on the model.
 
