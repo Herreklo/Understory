@@ -36,13 +36,40 @@ if has_label refactor; then
   arms=$(comm -12 <(switches "$work/main") <(switches .) | paste -sd, -)
 fi
 
+# The switch arms are split over parallel processes (the default world goes with the first).
+jobs=${IDENT_JOBS:-$(nproc 2>/dev/null || echo 2)}
+chunk=()
+if [ -n "$arms" ]; then
+  i=0
+  for a in ${arms//,/ }; do chunk[i % jobs]+="${chunk[i % jobs]:+,}$a"; i=$((i + 1)); done
+fi
+nchunks=${#chunk[@]}
+[ "$nchunks" -eq 0 ] && nchunks=1
+
+# ident <dir> <save|check> <off>: runs every chunk in parallel; saves to ident-<n>.json, or checks against ident.json
+ident() {
+  local dir=$1 mode=$2 off=$3 pids=() n status=0
+  for ((n = 0; n < nchunks; n++)); do
+    local skip=""; [ "$n" -gt 0 ] && skip=1
+    local file="$work/ident.json"; [ "$mode" = save ] && file="$work/ident-$n.json"
+    (cd "$dir" && IDENT_ARMS="${chunk[n]:-}" IDENT_SKIP_DEFAULT="$skip" IDENT_BASE_OFF="$off" npx tsx src/tools/diag/ident.ts "$mode" "$file" >"$work/$mode-$n.txt" 2>&1) &
+    pids+=($!)
+  done
+  for n in "${!pids[@]}"; do wait "${pids[n]}" || status=1; done
+  return $status
+}
+
 # main
-(cd "$work/main" && IDENT_ARMS="$arms" npx tsx src/tools/diag/ident.ts save "$work/ident.json" >/dev/null) || fail "the identity check could not run on main"
+ident "$work/main" save "" || fail "the identity check could not run on main"
+node -e 'const fs=require("fs");const out={};for(const f of process.argv.slice(2))Object.assign(out,JSON.parse(fs.readFileSync(f,"utf8")));fs.writeFileSync(process.argv[1],JSON.stringify(out))' "$work/ident.json" "$work"/ident-*.json
 (cd "$work/main" && npx tsx src/tools/diag/sig.ts >"$work/sig-main.txt") || fail "the words check could not run on main"
 
 # this PR, with its switch off when it declares one
-IDENT_ARMS="$arms" IDENT_BASE_OFF="$switch" npx tsx src/tools/diag/ident.ts check "$work/ident.json" >"$work/ident.txt"
+ident . check "$switch"
 ident_ok=$?
+grep -hE '^[^ ]+/[0-9]+: ' "$work"/check-*.txt | sort -u >"$work/ident.txt"
+grep -q 'no baseline\|DIFFERENT' "$work/ident.txt" && ident_ok=1
+[ -s "$work/ident.txt" ] || { cat "$work"/check-*.txt; fail "the identity check could not run on this PR"; }
 OFF="$switch" npx tsx src/tools/diag/sig.ts >"$work/sig-pr.txt"
 cmp -s "$work/sig-main.txt" "$work/sig-pr.txt"
 sig_ok=$?
@@ -53,7 +80,7 @@ say "Engine files changed: $(echo "$changed" | wc -l | tr -d ' ')."
 [ -n "$arms" ] && say "Switch arms checked as well: $(echo "$arms" | tr ',' '\n' | wc -l | tr -d ' ')."
 say ""
 say '```'
-cat "$work/ident.txt" | tee -a "${SUMMARY:-/dev/null}"
+tee -a "${SUMMARY:-/dev/null}" <"$work/ident.txt"
 say '```'
 say ""
 [ $ident_ok -eq 0 ] && say "- Everything identical to main." || say "- Not identical to main in full (events, people, bonds, beliefs or streams)."

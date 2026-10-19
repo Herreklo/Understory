@@ -3,6 +3,7 @@
 // group; the state of every random stream), in a canonical order so that only a real difference shows.
 //   tsx src/tools/diag/ident.ts save [file]   → write the hashes            tsx src/tools/diag/ident.ts check [file]   → compare with them
 // Arms: the default, plus each switch in IDENT_ARMS (comma-separated; '+' joins switches into one arm). Seeds 11–13 for the default, 11 for each switch arm; eight years.
+// IDENT_SKIP_DEFAULT=1 leaves the default out, so arms can be checked in parallel processes (scripts/identity-ci.sh).
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { createHash } from 'crypto';
 import { buildWorld, runYears } from '../../build';
@@ -59,7 +60,7 @@ export function signature(w: World) {
 }
 
 const SEEDS = [11, 12, 13];
-const arms = ['', ...(process.env.IDENT_ARMS ?? '').split(',').filter(Boolean)];
+const arms = [...(process.env.IDENT_SKIP_DEFAULT ? [] : ['']), ...(process.env.IDENT_ARMS ?? '').split(',').filter(Boolean)];
 const mode = process.argv[2] ?? 'check',
   file = process.argv[3] ?? 'reports/ident-baseline.json';
 const out: Record<string, any> = {};
