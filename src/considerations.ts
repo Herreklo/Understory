@@ -133,7 +133,7 @@ export function bondC(w: World, p: Person, other: Person, axis: 'like' | 'respec
       const said = say(v.bond(p, other.id, axis));
       return {
         kind: 'bond',
-        label: said ?? `${axis} toward ${o}`,
+        label: said ? (m && m.source === 'saw' && m.ev >= 0 ? `${said}, having seen it happen` : said) : `${axis} toward ${o}`,
         weight: 1,
         who: p.id,
         key: 'bond:' + other.id,

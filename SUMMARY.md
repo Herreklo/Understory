@@ -1,10 +1,11 @@
 # Understory: where we are
 
-*Updated 19 October 2026. One page, plain words, rewritten at every merge to main.*
+_Updated 20 October 2026. One page, plain words, rewritten at every merge to main._
 
 ## Where we are going
 
 A world of people you come to understand from incomplete evidence, who surprise you for reasons you recognise afterwards, whose lives are changed by what happens to them, and whose actions reach other people. A player should feel three things again and again:
+
 - **Discovery:** "I think I understand this person."
 - **Agency:** "My decision changed what happened."
 - **Recognition:** "I remember when that started."
@@ -36,18 +37,21 @@ The people decide like people and can be read, but their lives are thin and repe
 
 This is the one priority list. Only Øystein changes its order, and a chat starts an experiment only from the top of it or when he names one.
 
-1. Housekeeping: settled switches and the experiments that were not kept removed (done, H30 and H31), the two giant files split (done, H32 and H33), the town's content moved out of the engine (done, H34). Each step proven to change nothing.
-2. Proposed: the accounts arc (#20). People remember their version of what happened, pass it on, and learn from it.
-3. For the game (Overstory): the front door's part two (#22), reads of what the player could know, player commands and versions; and the start year from the setting pack (#23), so a world can begin in another era.
-4. The city's background: partnering and children fixed, so it stops ageing.
-5. Later: a human test built on stories rather than predictions (exit point 5).
+1. The accounts arc (#20). People remember their version of what happened, pass it on, and learn from it. Round 29 (bystanders keep what they saw) was not kept; the next round is redesigned first (see below).
+2. For the game (Overstory): the front door's part two (#22), reads of what the player could know, player commands and versions; and the start year from the setting pack (#23), so a world can begin in another era.
+3. The city's background: partnering and children fixed, so it stops ageing.
+4. Later: a human test built on stories rather than predictions (exit point 5).
 
 ## Waiting for you
 
 - Decide on the repo structure for add-ons.
+- The accounts arc after round 29: keep going with a redesigned round (told accounts, held by fewer people, about acts that bear on them), or put it aside for Overstory's items. A design question: Fable.
 
 ## Latest merges
 
+- **Round 29 (20 Oct), not kept:** bystanders kept a faint version of every weighty act they saw. It barely decided anything (0.29% of choices with another person), reach rose only from 5% to 7%, and blind readers preferred the lives without it in 9 of 12 pairs: the many faint memories warmed and cooled feelings across town, and pages filled with reasons nobody could follow ("took a little from the trip money, though he thinks highly of Olive"). The idea read well where it showed; it was too faint and too widespread. Also found: the paired reading leans toward the version it picks people from, to be fixed before the next reading.
+- **Words (20 Oct):** fairness says "wanted it to be fair" instead of "would not take what was not hers", which was being given for refusals.
+- **Housekeeping done (19 Oct):** settled switches and failed experiments removed, the two giant files split, the town's content moved into the setting pack (H30–H34). Nothing the engine does changed.
 - **H34 (19 Oct):** the engine no longer names any place of the town. Its venue, its yearly harbour day, the work that can hurt and the fleet that goes out in storms now come from the setting pack, so a 1989 harbour or a football town brings its own. Nothing the engine does changed, not even a word.
 - **H33 (19 Oct):** the month's 2,300-line file is now one file per system (body, work, friendship, romance, stress, money, migration, the yearly pass), with `life.ts` only the order of a month. Nothing the engine does changed.
 - **H32 (19 Oct):** the file of situations, 2,100 lines, is now one file per kind of situation plus three small ones, so a new situation, or a setting's own, is a file of its own. Nothing the engine does changed.

@@ -5,10 +5,9 @@
 import { mkdirSync, readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
 import { buildWorld, runYears } from '../build';
 import { pickWitness } from '../witness';
-import { OFF, type World, type Event } from '../world';
+import { OFF, TEXTURE, type World, type Event } from '../world';
 const OUT = process.env.CONS_OUT ?? 'out-cons';
 mkdirSync(OUT, { recursive: true });
-const TEXTURE = new Set(['everyday', 'noticed', 'table', 'habit:new', 'habit:broke', 'habit:back', 'tell', 'ill']);
 export const TURNS = new Set([
   'hired',
   'dismiss',

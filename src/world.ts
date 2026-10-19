@@ -7,6 +7,7 @@ import { FACET_BY_ID } from './core';
 import { motive, voiceOf } from './motives';
 import { hoods, idx, residentsNear, staffOf, town } from './scale';
 import * as MX from './mathx';
+import { keepAccounts } from './accounts';
 
 export type Status = 'in' | 'away' | 'dead' | 'bg' | 'gone'; // bg: lives in the city, simulated by the coarse yearly pass; gone: left the city
 
@@ -55,6 +56,8 @@ export interface DecisionRecord {
   honest?: boolean; // neutralising the top cause changes the choice
 }
 
+// Kinds of event that are the texture of a life, not news: never weighty, whatever their weight (the consequence map's line too).
+export const TEXTURE = new Set(['everyday', 'noticed', 'table', 'habit:new', 'habit:broke', 'habit:back', 'tell', 'ill']);
 export interface Memory {
   t: number;
   ev: number;
@@ -62,6 +65,7 @@ export interface Memory {
   respect: number;
   trust: number;
   text: string;
+  source?: 'saw'; // whose hold on the act this is: absent, it was done to the holder; 'saw', the holder was there (accounts.ts)
 }
 export interface Bond {
   fam: number;
@@ -204,6 +208,7 @@ export interface Person {
   selfBias: number; // how far self-image runs above (+) or below (−) the truth
   marks: Mark[];
   exceptions: Exception[];
+  saw?: { o: number; ev: number }[]; // the seen accounts this person holds, by the doer and the event (accounts.ts)
   phase?: Phase;
   // life
   job: string | null;
@@ -425,7 +430,20 @@ export function remember(w: World, holder: Person, other: Person, ev: number, li
     // its words (the situation's are the more particular) and adds nothing to the bond: the first write already did.
     const i = r.mem.findIndex(m => m.ev === ev);
     if (i >= 0) {
-      r.mem[i].text = text;
+      const m = r.mem[i];
+      if (m.source === 'saw') {
+        // The holder saw it first (accounts.ts) and it turns out to have been done to them: the act's own hit replaces the
+        // bystander's share, and the memory becomes theirs.
+        const k2 = like + trust < 0 ? 0.8 : 0.5;
+        r.like = clamp(r.like + (like - m.like) * k2, -1, 1);
+        r.respect = clamp(r.respect + (respect - m.respect) * k2, -1, 1);
+        r.trust = clamp(r.trust + (trust - m.trust) * k2, -1, 1);
+        Object.assign(m, { like, respect, trust, text, source: undefined });
+        delete m.source;
+        if (holder.saw) holder.saw = holder.saw.filter(s => !(s.o === other.id && s.ev === ev));
+        return;
+      }
+      m.text = text;
       return;
     }
   }
@@ -600,7 +618,7 @@ export function witnessesOf(w: World, e: Event): number[] {
 // the halo: someone you like gets the benefit of the doubt, someone you dislike gets none;
 // attribution: another person's failure reads as character, more than it should (own failures are never read at all).
 // Which way a trait reads as 'bad' socially: +1 when the high end is admired, -1 when the low end is, 0 when neither.
-const VALENCE: Record<string, number> = {
+export const VALENCE: Record<string, number> = {
   sincerity: 1,
   fairness: 1,
   greedAvoidance: 1,
@@ -647,10 +665,12 @@ export function broadcast(w: World, e: Event) {
   }
 }
 function broadcastInner(w: World, e: Event) {
-  for (const id of witnessesOf(w, e)) {
+  const seen = witnessesOf(w, e);
+  for (const id of seen) {
     if (!e.knownBy.has(id)) e.knownBy.set(id, 'seen');
     for (const ev of e.evidence) observeAs(w, id, ev, 'seen');
   }
+  keepAccounts(w, e, seen);
   if (w.quiet) return;
   if (e.vis === 'public') {
     for (const q of residentsNear(w, e.who)) {

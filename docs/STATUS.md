@@ -5,6 +5,7 @@
 A small town, called simply 'the town' (about 80 people), simulated for thirty years before a witness arrives and ten after. Nothing is scripted. Every person is read from two sides: FELT, what one witness in town could know, and TRUTH, everything. A reader of the page only ever gets the felt side. The town is a placeholder setting that will not outlive the model: places, trades, kinds of plan, quirk material and small loves are setting content; the engine is general.
 
 Understory answers two questions:
+
 1. **Can people be read?** Knowing someone's character, learned only from what a witness could see, should predict their choices better than readers who know nothing about character. The scoreboard (`npm run board`, BOARD.md) answers it on held-out worlds with intervals. This is internal readability: it shows the people are coherent and learnable inside their world, not that they are psychologically realistic. Realism rests on two other things only: constants and effect sizes taken from research, and humans reading.
 2. **Are they worth reading?** Lives should have arcs, rivals, plans, loves and fights, a way of being and a shape left by what happened to them; everyone should be a little different and resemble others. `src/story.ts`, `src/personas.ts`, `src/friends.ts` and `src/lovetest.ts` measure it.
 
@@ -12,10 +13,10 @@ Understory answers two questions:
 
 ### Readability (round 23b board: 10 untouched worlds × 10 years, seeds 1591–1600, mean ± 95% interval)
 
-| Slice | Share | Base rate | Notebook | Page-annotation reader | Calibrated witness | Trait oracle | Mind-reader |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| All decisions | 100% | 58.0 | 61.3 | 61.7 | 64.6 ±1.3 | 75.5 | 79.0 |
-| Novel, contested, known | 31% | 48.5 | 48.5 | 52.4 ±2.7 | **55.9 ±2.5** | 69.3 | 72.2 |
+| Slice                   | Share | Base rate | Notebook | Page-annotation reader | Calibrated witness | Trait oracle | Mind-reader |
+| ----------------------- | ----- | --------- | -------- | ---------------------- | ------------------ | ------------ | ----------- |
+| All decisions           | 100%  | 58.0      | 61.3     | 61.7                   | 64.6 ±1.3          | 75.5         | 79.0        |
+| Novel, contested, known | 31%   | 48.5      | 48.5     | 52.4 ±2.7              | **55.9 ±2.5**      | 69.3         | 72.2        |
 
 Readers: base rate (what most people do in this kind of situation, learned on twenty other worlds); notebook (what the witness last saw this person do here, else the base rate); calibrated witness (base rate shifted by how this person differs from an average one, from the witness's beliefs); page-annotation reader (the same, rebuilt only from the evidence tags on events the page shows; it does not read the sentences, so it says what the page's annotations carry, not what a human would learn); trait oracle (diagnostic: true traits); mind-reader (everything; the ceiling). Key slice: novel (never seen in this kind of situation), contested (under 65% certain from circumstance), known (three settled beliefs or closeness).
 
@@ -37,25 +38,30 @@ The calibrated witness beats the notebook by +7.4 ±1.6 on the key slice, paired
 ## How it works (current design)
 
 ### People
+
 - Facets drawn around six correlated HEXACO dimensions; two or three signature facets pushed to about 1.2–1.9 standard scores. One to three if-then signatures each (shifts 0.5–1.4; 70% sharpen or soften the trait, 30% run against it).
 - Values, aptitudes, inclinations set at birth and partly inherited with regression to the mean. Plasticity falls with age (about 1.7 at 18, 1.0 at 40, 0.3 at 65) and scales every life-driven change.
 - Every skill works the same way: an inclination from traits, interest called out by people and experience, mostly before the early twenties.
 - Mortality on a Gompertz curve fitted to a modern European life table (setting content in time); births, deaths and arrivals keep the town level. Households leave together or someone is left.
 
 ### Chance
+
 - Every system draws from its own stream, drawn afresh each month from the world (the past) or the run (the present), the month and the system; the draw that decides a choice comes from a stream of the chooser's own, keyed by the run, the month, the person and how many choices they have made that month. So a different choice changes what follows from it and nothing else: before this (round 25a), one extra draw anywhere changed a quarter of lives majorly within three years.
 
 ### Decisions
+
 - Every decision runs through one grammar (`run`): a situation, families of answer and expressions within them, each weighed from traits, if-thens, values, the self-story, bonds, circumstance and acquired sore spots and rules. Every decision is logged with its reasons, and its top reason is checked against a counterfactual (without it, the odds of the choice must halve). Each answer keeps the first five of its considerations (its traits and if-thens first, then what every answer shares, then its own circumstances); the self-story is weighed every time beside them, by every answer of the situation (the answer it speaks for as written, the others read the other way), because every consideration is a factor of at most 1 and one given only to the answer it favours would tax that answer. A circumstance a situation gives every option (in debt, stretched, short of money, needing the money, people depending on you) is weighed for the answer it favours and read the other way by the rest, so it pushes and is given as a reason, instead of only changing how decisive the choice is. How many considerations an answer carries does not decide it: every answer of a decision is scored as if it had as many as the one with most, each missing one at the answer's own geometric mean (round F26). When the self-story speaks for and against an answer, its strongest entry decides which way.
 - A reason is said as a motive, the way a person gives one: a trait sets the weight of a consideration, and the page says what it makes the person want, fear or feel, with its own wording where it meets the kind of answer it explains ("could not stand to see Grace go without", not "altruism: helps at own cost"); a bond says the feeling ("has never trusted Ben"). A reason that argued against the choice is given as one ("though she usually lets things go"), whatever kind it is; a circumstance both options share is never given as a reason; a trait near the middle is never given as a reason at all. Reasons written for events (being found out, getting somewhere) say which way the trait points. A repeat says when it happened before ("It had happened before, in 2029"), and the commonest sentences have several wordings, chosen without a random draw.
 - Hostile expressions become situations for their target, and so is being the butt of a cutting joke. Pressure answered the same way three times in six years becomes a phase, said once.
 - Each person meets at most one matched situation a month, the weightiest first; queued ones (answers, provocations) come on top.
 
 ### Pursuits (`time.ts`, `steer.ts`)
+
 - A want (something to own, a post, work, getting out, being heard, finding one's people, making things right) becomes a pursuit by a decision, and the person chooses how to go after it, from who they are and where they stand. Each way goes through a part of the town: a post is worked for, asked for (whoever decides answers from what they think of the person, and a yes counts when the post comes up) or looked for elsewhere (an opening at another place, which means starting over in its trade); work is waited for or asked around for (a friend who works where there is an opening puts in a word); money is saved, earned by extra work (more money, more strain, an evening routine dropped) or asked of family (who decide); being heard is practised for or tried at the open night (how it goes decides); one's people are found by turning up or by asking someone along (who decides, and then they meet through the other's routine).
 - When a way fails (a no, a bad night, money lost, a long stretch with nothing gained), the person decides: keep at it, try another way, aim lower (something cheaper to own; a trip away instead of leaving) or let it go. A want given up comes back only after three years and once something it depends on has changed (work, a partner, money), which is then its reason.
 
 ### Social fabric
+
 - Contact comes through channels: habits, work, home, circles, hobbies, groups, school (ages 6–18) and seeking someone out. In a shared setting of more than four, time is a budget, mostly spent on those already liked.
 - Familiarity grows with contact and fades; recent contact halves in about six months, and friends who stop meeting lose touch. A friendship that ends, ends for both.
 - Liking moves toward chemistry (values in common, the other's warmth and liveliness) scaled by familiarity, plus 0.2 × familiarity where chemistry is not clearly bad.
@@ -63,6 +69,7 @@ The calibrated witness beats the notebook by +7.4 ±1.6 on the key slice, paired
 - Regard: from the bond and beliefs about the other's admirable traits, shrunk toward neutral when evidence is thin. Every choice of a counterpart uses it.
 
 ### Couples (`src/love.ts`)
+
 - Each person's way of loving and fighting is drawn at sixteen from temperament, their own seed and their childhood, and held as pseudo-facets (`love:anxiety`, `love:avoidance`, `love:responsive`, `love:criticism`, `love:contempt`, `love:defensive`, `love:stonewall`, `love:repair`), so it is learned, believed and given as a reason like any trait. It belongs to the person, not the couple, so it can serve any close tie.
 - Attachment anxiety comes with neuroticism and a dependent nature; avoidance with low sentimentality, sociability and dependence; both share a root of general insecurity that losing a parent young or the parents parting raises. Being left raises anxiety; it settles back with years, faster in a partnership that is going well.
 - One state per couple: the tension they carry (everyday strain, drink, money, the anxious partner against the avoidant one, distance in values, bled off by responsiveness and care), how their rows have gone lately, how far they have drifted apart, and each one's doubts.
@@ -75,27 +82,32 @@ The calibrated witness beats the notebook by +7.4 ±1.6 on the key slice, paired
 - Dating couples still part when one stops liking the other.
 
 ### Drama (`src/drama.ts`)
+
 - Succession seasons with contenders, campaigns, a decider who weighs record, regard and campaign; rivalries (post, grudge, trade) with heat that rises with acts and cools monthly; found-out schemers barred from scheming for two years; peace offers.
 
 ### Plans (`src/projects.ts`)
+
 - Ventures (a café) and causes (a festival). The owner asks those they regard most; each answer is the other's decision. Whoever is threatened may fight it. The council's chief officer decides. A venture that opens is a new place with jobs; a festival is a night where each helper does their part or doesn't. When the hat goes round for someone, whether they had put in for you, or fobbed you off, weighs on what you put in, and the reason cites it.
 - A plan that fails is the owner's decision to take: hold it against whoever stood in the way (the council officer who said no, or the one they had counted on who would not help), which becomes a grudge carried by the rivalry system; mean to bring it back, which two years on they may, citing it; or let it go. Money put into a plan that fails is lost on the record and costs the owner the backers' trust.
 
 ### A way of being (`src/persona.ts`)
+
 - Surface, fixed for life: humour (warm, coping, cutting, self-mocking, wit), voice, quirks from 128 patterns (habits, dispositions and states, never a one-off past act unless the record holds it: a test in `npm test` guards it) filled from the person's own life and given out so that within a town each sentence is one person's, and two or three small loves.
 - Depth, from history: sore spots, fears, pride and rules to live by, acquired with a probability that rises with anxiety, unforgivingness and the weight and publicity of the event, and fading with years. Sore spots and fears act as acquired if-thens; rules join the self-story while their mark lasts.
 
 ### The witness and the page
+
 - Learns from acts (evidence scaled by how uncommon the answer is in town, never by what the observer could not see: the person's true trait size, how far circumstance truly drove the act, or an if-then at work; an act shown where an if-then of the person applies teaches it in the act's own direction), from manner at research accuracy, and from closeness as evidence, never truth. Strong reads become lines on the page ('Noticed: …'), wrong ones included. The page carries a ledger of every seen act.
 - Names: the first name, with the surname when someone else living has the same first name.
 
 ## Known weaknesses
+
 1. **Couples: what is left.** Doubts, once formed, rarely clear (7% a year against people's much higher rate); quiet endings are 15% of divorces; the final decision to leave is unreadable (it adds only noise once doubt has done its work); a break-up still changes almost nothing afterwards (who moves, money, children, friends taking sides); care does not answer the partner's actual need.
 2. **Consequences stop too early.** Four in five weighty events lead to nothing the record can trace. Round 23 showed where: the record now cites where wants and reasons come from, and failed plans and cutting jokes now have consequences, but the overall share barely moved. The dead ends that matter most are things a person could build on (becoming friends, pursuits, wants achieved), which needs people who steer.
 3. **The page reads as a list.** Blind readers score random lives about 3.4 out of five (3.44 against 3.11 with and without the coherence floor, round F27; about 2.5 before the rounds since 24a). Fixing the words has run its course: varied wording and dated repeats (24a) and reasons said as motives (24c) each moved it by about a third of a point (3.00 against 2.67 in 24c), and the reasons that do not fit the act did not fall. What works is chains of events with a goal and a cost; what breaks it is the events: lives made of upkeep (friendships made and lost, the hat, the festival) rather than pursuits, big events that change nothing in the person they happen to, a page that does not say what changed between a friendship and its end, wants taken up again unchanged after failing, confiding with nothing said about what, habits that lapse and come back within the year (12%), and namesakes.
 4. **Namesakes:** the name pool runs out (forty first names a sex), so a namesake is allowed where the surnames cannot be mixed up (round F27); two people can still share a surname and near first names (Hal and Harry Reed), which readers mix up.
 5. **Few people want anything.** Pursuits have ways and obstacles now (round 25c), but 62% of adults pursue nothing in ten years, and nearly half of all pursuits are making up after a falling-out. A yearly want from one's values for adults with none (round 25d, off by default) took the share pursuing to 55% and made a pursued want matter (+17 points of major change), but the lives did not read better (+0.14 of 5) and the scoreboard drifted down (−1.2).
-6. **No opinions, moral lines or reputation.** Plans and rivalries have no sides beyond interest, and what the town says about someone does not exist, let alone competing accounts of it. What is missing is a belief about a specific act, with a source and a confidence, held apart from the record, so that two people can believe different things about the same event and act on them.
+6. **No opinions, moral lines or reputation.** Plans and rivalries have no sides beyond interest, and what the town says about someone does not exist, let alone competing accounts of it. What is missing is a belief about a specific act, with a source and a confidence, held apart from the record, so that two people can believe different things about the same event and act on them. Bystanders keeping a faint version of every weighty act they saw (round 29, not kept; behind `ON=accounts`) decided almost nothing on its own (0.29% of choices with another person) and warmed and cooled feelings broadly, which showed on the page as bond reasons that argued against an act and that readers could not follow.
 7. **The friendship tail:** the most-befriended adult has 19 to 23 friends in a town of 80. Not yet diagnosed (too much contact, the bar, or no cost to keeping a tie).
 8. **Generation is per-person:** no family background, class or upbringing. Each sex has forty first names for about fifty living people, so namesakes are common; the page tells them apart, at the cost of heavy lines ('Libby Vaughan (b. 1992)').
 9. **The human test:** Quiz II's single sitting showed the page making a skilled reader worse (a vivid act read as general character). The page should show evidence, with the witness's reads as the witness's own fallible opinion.
@@ -104,10 +116,13 @@ The calibrated witness beats the notebook by +7.4 ±1.6 on the key slice, paired
 12. **People are too consistent, and not because traits are too stable.** Single acts predict the trait behind them at r ≈ .4 where people run .1 to .3 (round T2). A month-to-month state on every facet a decision reads, at the size people have (round 27, not kept; its code is at tag `r27`), moved it to .36 and the reads not at all; readers quoted the state notes as unfit reasons. What is missing is the situational part: a reason to act out of character that the situation gives and the page can show.
 13. **The key slice moves with the engine.** 'Contested' is read off the engine's own scorer (the situation reader under 65% sure), so a change to scoring changes which decisions are on the slice: round F26's fair count put 53% of decisions on it, against 32% before. A key-slice number compares like with like only within one version of the scorer.
 14. **Reading the record from the end assumes it is in time order** (`recentEvents`, world.ts). That holds in a town. In a city, catching up a neighbourhood brought into focus sets the clock back and can add events dated in the past at the end of the record (round H28's review, from reading the code; not yet confirmed by a run). The boundary reads the whole record, so it is unaffected; whether the engine's own readers miss events is a question for the scale track.
+15. **The paired reading picks its people from one arm.** `src/tools/diag/pairarm.ts` takes the most eventful adults of each world in the off arm and finds them again in the on arm, so the people read regress toward the mean in the on arm: in round 29 the on-arm versions were 15% shorter while lives across all twenty worlds were not (weighty events per life 17.1 against 16.8). A reading built this way leans toward the arm it picks from; the selection must come from both arms, or from the shared past, before the next paired reading.
 
 ## Proposed work
+
 The order is decided in `SUMMARY.md` ("Next, in order"); this section says what each piece of work is and why. Every mechanism must change what happens to people or how they are read; one that does neither is connected or cut. The simulation decides; a language model may only ever write the words. Each step must move a point of the exit criterion below.
 Done: the consistency audit (21), the consequence map (22), the consequence round (23a, 23b), housekeeping (H24: layout, act flags, retired switches, ARCHITECTURE.md), how it is told (24a: words), what a decision weighs (24b), reasons as motives (24c), the what-if measure (25a), chance that stays where it falls (25b) and people who steer (25c: ways, obstacles, wants that come back only changed) and the record telling the truth (H25). The work proposed:
+
 1. **Who wants things** (criterion 2): steering works where it happens (round 25c), but 62% of adults pursue nothing in ten years; round 25d's yearly want from values reached 55% and did not read better (not kept; its code is at tag `r25d`), so the next attempt tests the condition (anyone, not only those with no open want) and the doors, and is judged on the blind read. Wants should come to everyone from their values, stage of life and circumstances, as people carry several personal projects at once, each through the doors the town has; becoming friends and achieving something open what comes next, and a friendship that ends says what changed. Measured by what-ifs (`src/tools/whatif.ts`, with both arms taking the same nudge) as well as by the consequence map, which counts traceable links, not changed lives.
 2. **Acting out of character for a reason the page can show** (criterion 6, principle 5): round 27 ruled out the cheap explanation of T2's consistency; the next test gives a person a situational reason to act against the trait (a trusted friend's backing, a recent success, a change in money, a public setting), weighed in the decision and said as the reason, and is judged on T2's single-act r and the blind paired reading.
 3. **Round 20d:** the aftermath of a break-up (who moves, money, the children, friends taking sides), care that answers the partner's need, and doubts that clear when things get better.
@@ -116,10 +131,12 @@ Done: the consistency audit (21), the consequence map (22), the consequence roun
 6. The friendship tail (diagnosed before any cap); plans that ripple; spouses as rivals at work.
 7. Generation and background, for a city (with a larger name pool).
 8. Five people form a band for a year (an outside review's experiment C, `reports/external/`): different skills, ambitions, constraints and ties; compare starting circumstances. Does the collaboration produce distinct, understandable histories? It ties to the origin in `WHY.md` without committing to a music game, and shows what a town-wide simulation hides.
-Then courtship, and conflict styles between friends and bandmates. Later: scripted pickers choosing members for the model's own groups; an interface people can use, for the human test; a language model for the words only. City scale is ordinary rounds on `main` (`docs/scale/`).
+   Then courtship, and conflict styles between friends and bandmates. Later: scripted pickers choosing members for the model's own groups; an interface people can use, for the human test; a language model for the words only. City scale is ordinary rounds on `main` (`docs/scale/`).
 
 ## Exit criterion
+
 The person model is good enough to build on when all eight hold. Every round must move one of them, or it does not run. Where each stands:
+
 1. **Every close tie (partner, friend, family, rival, colleague or bandmate) has an inner life that shows in what people do.** Partners and rivals have one; friends, family, colleagues and bandmates mostly have only liking.
 2. **Most weighty events change something besides a feeling within three years** (where someone lives or works, money, who they see, what they want). The consequence map: 22% of weighty events have a weighty consequence, 8% lead to a turn (round 23b). What-ifs (round 25b): a flipped choice changes the chooser's life in any of these ways 14 points more often than chance, 6 points majorly; only leaving, offers, moving home, marriages and posts change most lives; with steering (round 25c), choosing how to go after a want adds 22 points of major change, but few people want anything. And events must travel: at least 15% of weighty events reach someone outside the people involved (6% today, the consequence map's reach; 0% for friendships). Far off.
 3. **Nothing on a person's page claims something that did not happen.** Quirks no longer claim incidents (round 24a; a test guards it); reasons are motives, not trait names (round 24c); repeats name the years they rest on, not taking money no longer reads as a confession, a couple's pattern dates from their present partnership, a first work for a group is not called a first ever, and a friendship that lapses and comes back says so (round H25); an act that is not kept no longer takes a thread's event off the person's own list, which lost about one phase or pattern line in a hundred (round F26; a test in `npm test` guards it). Open: some reasons of state, want and the self-story do not fit the act they explain, and a page can show a friendship and, later, its end with nothing between.
@@ -130,7 +147,9 @@ The person model is good enough to build on when all eight hold. Every round mus
 8. **Living changes people.** What thirty years of lived life change in how someone chooses, beyond growing older, is at least twice what it is today: about 3% of the distance between two people (the twin test with an ageing arm, on one throwaway seed; measured properly on fresh seeds with the engine's real situations in the scale track's next twin test).
 
 ## How work is done
+
 `CLAUDE.md` says how a change reaches main (a neutral change or an experiment), and `docs/seeds.md` holds every seed range in use; CI fails if two overlap.
 
 ## Running it
+
 See ARCHITECTURE.md for what lives where and how to add things. `npm test` (types, the page bundle, the study page, determinism, two worlds at once, groups, the boundary test, invariants with the consistency audit, demography, the property suite, the coherence counter) · `npm run batch` (the batch report) · `npm run board` or `TRAIN=… EVAL=… BOARD_OUT=… OFF=… ./board.sh` · `./run.sh <script> <args>` runs any script from a pre-built bundle, about a quarter faster than `tsx` · `npx tsx scripts/pair.ts outA outB` (paired differences; `EXCLUDE=row,row-answer` leaves kinds of decision out) · `src/tools/story.ts`, `personas.ts`, `friends.ts`, `lovetest.ts`, `consequences.ts`, `audit.ts` (lives, people, friends, couples, what follows from events, consistency; with and without via `OFF=`) · `src/tools/diag/ident.ts check` (a change that should not alter behaviour leaves every event, person, bond, belief and random stream the same) · `src/tools/diag/sig.ts` (a words-only change alters no behaviour) · `src/tools/whatif.ts check|run|report` (what one choice changes three years on; `src/tools/clone.ts` copies a world exactly) · `src/tools/diag/couples-r20.ts <seed>` (five lives and three couples, cold). Switches, each an ablation of a mechanism: `OFF=steer,love,contempt,friction,couplelearn,disengage,leaving,drama,projects,persona,townquirks,marks,groups,habits,threads,moments,pursuits,regard,regard:beliefs,plasticity,manner,mannernoise,ifthens,bias,attach,school,household,everyday,latent,exposure,budget,relbar,respond,selfstory`.
