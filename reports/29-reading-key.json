@@ -1,0 +1,74 @@
+{
+  "P01": {
+    "seed": 3047,
+    "person": 22,
+    "name": "Sid Tanner",
+    "onIs": "B"
+  },
+  "P02": {
+    "seed": 3047,
+    "person": 60,
+    "name": "Libby",
+    "onIs": "B"
+  },
+  "P03": {
+    "seed": 3047,
+    "person": 14,
+    "name": "Ryan",
+    "onIs": "B"
+  },
+  "P04": {
+    "seed": 3048,
+    "person": 63,
+    "name": "Evan",
+    "onIs": "A"
+  },
+  "P05": {
+    "seed": 3048,
+    "person": 37,
+    "name": "Susie",
+    "onIs": "A"
+  },
+  "P06": {
+    "seed": 3048,
+    "person": 22,
+    "name": "Eric",
+    "onIs": "A"
+  },
+  "P07": {
+    "seed": 3049,
+    "person": 71,
+    "name": "Toby Reed",
+    "onIs": "A"
+  },
+  "P08": {
+    "seed": 3049,
+    "person": 21,
+    "name": "Maisie Howell",
+    "onIs": "B"
+  },
+  "P09": {
+    "seed": 3049,
+    "person": 3,
+    "name": "Ivan",
+    "onIs": "B"
+  },
+  "P10": {
+    "seed": 3050,
+    "person": 67,
+    "name": "Eve",
+    "onIs": "A"
+  },
+  "P11": {
+    "seed": 3050,
+    "person": 33,
+    "name": "Jonah Holmes",
+    "onIs": "A"
+  },
+  "P12": {
+    "seed": 3050,
+    "person": 6,
+    "name": "Neil Hale",
+    "onIs": "B"
+  }
+}

@@ -1,0 +1,71 @@
+Round 29: the paired reading, accounts on against off (19 Oct 2026).
+Twelve people (the three most eventful adults of each of worlds 3047-3050 in the off arm, found again in the on arm by name and birth), each shown as the
+engine writes them with accounts on and off (ten present years, with reasons, folded as the page folds them); A/B order random per pair
+(src/tools/diag/pairarm.ts accounts 3047 3050 3, tree 0e6c6fc). Three blind readers on another model than the builder (Fable 5.1: a novelist, a social worker,
+a player of simulation games), each told only that the two are two versions of the same person's life (brief: reports/29-reading-brief.md).
+Scores 1-5 and a preference per pair, up to three faults and two good reasons quoted per version. The key was opened after all three had answered.
+
+pair  on        novelist  socialworker        player   majority-on
+P01   B           2,3,B         3,4,B         3,3,B   yes
+P02   B           3,4,B         3,4,B         3,4,B   yes
+P03   B           3,3,A         3,3,A         3,3,A   no
+P04   A           2,4,B         2,4,B         2,3,B   no
+P05   A           2,3,B         2,3,B         2,3,B   no
+P06   A           4,4,B         3,4,B         3,4,B   no
+P07   A           3,4,B         3,3,A         3,3,A   yes
+P08   B           3,4,B         4,4,A         4,3,A   no
+P09   B           2,2,A         3,3,A         2,3,B   no
+P10   A           4,4,B         4,4,B         4,4,B   no
+P11   A           4,4,A         3,4,B         3,4,B   no
+P12   B           3,2,A         3,2,A         3,2,A   no
+
+Majority preferred the on arm in 3 of 12.
+Mean paired difference, on minus off: -0.28 over 36 reader-pairs.
+  novelist       on 3.08  off 3.25  diff -0.17
+  socialworker   on 3.08  off 3.42  diff -0.33
+  player         on 2.92  off 3.25  diff -0.33
+
+ordinal  alpha 0.710  95% [0.466, 0.857]  (3 readers, 24 lives; scripts/alpha.py reports/29-reading-scores.json)
+interval alpha 0.726  95% [0.485, 0.861]
+faults on: total 105 · false line 36, unfit reason 31, repeat 19, wording 13, out of nowhere 6
+faults off: total 107 · false line 34, repeat 29, wording 20, unfit reason 13, out of nowhere 11
+
+A seen account quoted as a reason that made an act make sense: 2
+  P02 on novelist: it has got personal; though he thinks the world of Libby, having seen it happen
+  P02 on player: it has got personal; though he thinks the world of Libby, having seen it happen
+A seen account quoted as a fault: 0
+
+On the pages (all 24 versions): lines on 648, off 767; bond reasons on 48, off 50; bond reasons that argued against the act on 12, off 2.
+
+Unfit reasons quoted in the on arm (pair, reader, quote):
+  P01 novelist      2030: Hannah and Sid started seeing each other.  [does not like to judge]
+  P02 novelist      said what would work; though she would rather be on her own
+  P03 novelist      thought nobody would notice; felt it was owed; though he thinks highly of Eric
+  P05 novelist      Susie turned down a job in the city.  [no work here; had no wish to see anywhere else; people here depend on them]
+  P05 novelist      no work here; wanted the money; thought rules are for people who get caught
+  P08 novelist      Maisie carried it around for months, with a face like thunder.  [wanted to put things right with Beth; felt it was owed; that is who Maisie is: meant for more than this]
+  P09 novelist      Ivan took a little from the trip money.  [though he thinks highly of Olive]
+  P09 novelist      Ivan found reasons to be busy while Harry was going through it.  [Harry was ill; had his own life to get on with; has held on tight to the people left since Agnes died (2027)]
+  P10 novelist      Eve has started telling people she means to put on a summer festival on the quay.  [despite: not one to start things]
+  P11 novelist      Susie was ill; has never been one to look back; though he usually puts other people first
+  P01 socialworker  it had been building between them (the bills); despite: nothing much had built up
+  P01 socialworker  2030: Hannah and Sid started seeing each other.  [does not like to judge]
+  P02 socialworker  Alan Holmes told Libby how bad things had got.; said what would work; though she would rather be on her own
+  P03 socialworker  thought nobody would notice; felt it was owed; though he thinks highly of Eric
+  P04 socialworker  Olive Sands picked Evan's work apart in front of everyone; did not think it was about him; digs in hard when challenged
+  P05 socialworker  no work here; had no wish to see anywhere else; people here depend on them
+  P06 socialworker  a strong record; is not sure of Ken
+  P08 socialworker  wanted to put things right with Beth; felt it was owed; that is who Maisie is: meant for more than this
+  P09 socialworker  though he thinks highly of Olive
+  P09 socialworker  Harry was ill; had his own life to get on with; has held on tight to the people left since Agnes died (2027)
+  P10 socialworker  Mark Sutton was ill; likes things done properly and on time; could not let people down who mattered to her
+  P12 socialworker  Neil had a stroke.; despite: had the time; has held on tight to the people left since Ellie died (2023)
+  P01 player        Hannah and Sid started seeing each other.  [does not like to judge]
+  P03 player        Tom Hale let Ryan take the blame for a mistake at work.  [thought nobody would notice; felt it was owed; though he thinks highly of Eric]
+  P04 player        Evan said nothing and got on with it.  [Olive Sands picked Evan's work apart in front of everyone; did not think it was about him; digs in hard when challenged]
+  P05 player        Susie took a job in the city.  [no work here; wanted the money; thought rules are for people who get caught]
+  P08 player        Maisie carried it around for months, with a face like thunder.  [wanted to put things right with Beth; felt it was owed; that is who Maisie is: meant for more than this]
+  P09 player        Ivan took a little from the trip money.  [though he thinks highly of Olive]
+  P09 player        Harry was ill; had his own life to get on with; has held on tight to the people left since Agnes died (2027)
+  P11 player        Jonah kept away just when Susie needed people.  [Susie was ill; has never been one to look back; though he usually puts other people first]
+  P12 player        Terry Lyons kept away just when Neil needed people.  [Neil had a stroke.; despite: had the time; has held on tight to the people left since Ellie died (2023)]
