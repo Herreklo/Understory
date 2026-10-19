@@ -41,7 +41,8 @@ for (let seed = a; seed <= b; seed++) {
   for (const p of adults.slice(0, 40)) {
     for (const s of (p.saw ?? []).slice(0, 1)) {
       const m = peekBond(w, p.id, s.o)?.mem.find(m => m.ev === s.ev);
-      if (m && out.sample.length < 12) out.sample.push(`${p.first} about ${P(w, s.o).first}: ${m.text} (like ${m.like.toFixed(2)}, trust ${m.trust.toFixed(2)})`);
+      if (m && out.sample.length < 12)
+        out.sample.push(`${p.first} about ${P(w, s.o).first}: ${m.text} (like ${m.like.toFixed(2)}, trust ${m.trust.toFixed(2)})`);
     }
   }
 }
