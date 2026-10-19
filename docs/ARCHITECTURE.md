@@ -20,7 +20,9 @@ A one-page map for changing the engine: what lives where, the order of a month, 
 | `considerations.ts` | The parts a decision is made of: causes, evidence, and the considerations (`facetC`, `valueC`, `bondC`, `stateC` and the rest); each person's own chance (`chanceOf`) |
 | `effects.ts` | What an answered situation leaves behind (`afterRun`) |
 | `situations/` | One file per kind of situation, each a `match(w)`; `index.ts` lists them in matching order (`TYPES`; the order decides which situation a person meets) and runs the monthly pass; `raised.ts` holds the situations other systems raise directly (contests, judgements, losses) |
-| `life.ts` | The month (`tick`), body, work, contact and friendship, romance, family, stress, money, migration |
+| `life.ts` | The month (`tick`): every system, in order |
+| `body.ts`, `work.ts`, `social.ts` | Health, ageing and death; hiring, firing, promotion, newcomers and skills; contact, friendship, gossip and losing touch (and `catchUp`, the years of contact someone promoted from a city's background would have had) |
+| `romance.ts`, `stress.ts`, `money.ts`, `migration.ts`, `yearly.ts` | Dating, marriage, splitting up and children; stress building and easing; money and the wants it makes; leaving town and coming home; the yearly pass (maturing, aptitude ageing, credit) |
 | `time.ts`, `threads.ts` | Wants and pursuits, habits, attachment to home; the same pressure answered the same way, again and again |
 | `steer.ts` | How a pursuit is gone after (its ways, each through a part of the town), obstacles as decisions, and wants that come back only changed |
 | `motives.ts` | The words a trait reason is said in, as a motive (words only) |
