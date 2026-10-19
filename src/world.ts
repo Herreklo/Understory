@@ -411,11 +411,19 @@ export function facet(p: Person, key: string, toward?: number, feats?: Set<Featu
 
 // ----- bonds -----
 // Bond keys: a × base + b. A town keeps base 100,000. A city, which can hold more people than that, uses 2^26, which stays an exact
-// integer up to 67 million people (scale contract, rule 8). The base is fixed when the world is made, before any bond exists.
+// integer up to 67 million people (scale contract, rule 8). The base widens when a city's neighbourhoods are set, before anyone
+// beyond the founding families exists: the founders' bonds are re-keyed in their order.
 const keyBase = (w: World): number => ((w as any).wideKeys ? 67108864 : 100000);
 const BK = (w: World, a: number, b: number) => a * keyBase(w) + b;
 export const bkA = (w: World, k: number) => Math.floor(k / keyBase(w));
 export const bkB = (w: World, k: number) => k % keyBase(w);
+export function widenKeys(w: World) {
+  if ((w as any).wideKeys) return;
+  const old = [...w.bonds];
+  w.bonds.clear();
+  (w as any).wideKeys = true;
+  for (const [k, r] of old) w.bonds.set(BK(w, Math.floor(k / 100000), k % 100000), r);
+}
 export function bond(w: World, a: number, b: number): Bond {
   let r = w.bonds.get(BK(w, a, b));
   if (!r) {

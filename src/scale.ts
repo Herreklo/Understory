@@ -2,7 +2,7 @@
 // People meet through bounded settings (household, workplace, school, neighbourhood, venue) so that a month costs
 // time in proportion to the people in it. A town is split into neighbourhoods of about HOOD people; a town smaller
 // than that is a single neighbourhood, and then every rule here gives exactly what the town rules give.
-import type { World, Person } from './world';
+import { bkA, widenKeys, type World, type Person } from './world';
 
 export const HOOD = 80;
 
@@ -48,7 +48,10 @@ export function jobSet(w: World, p: Person, job: string | null) {
 // Neighbourhood count is fixed when the town is built, from its size then.
 export function setHoods(w: World, people: number) {
   const H = Math.max(1, Math.round(people / HOOD));
-  if (H > 1) (w as any).H = H;
+  if (H > 1) {
+    (w as any).H = H;
+    widenKeys(w);
+  }
 } // a town of one neighbourhood carries nothing
 export const hoods = (w: World): number => (w as any).H ?? 1;
 
@@ -222,7 +225,7 @@ export function stowBonds(w: World, ps: Person[]) {
   const S = new Set(ps.map(p => p.id));
   const B = stowed(w);
   for (const [k, b] of w.bonds)
-    if (S.has(Math.floor(k / 2 ** 26))) {
+    if (S.has(bkA(w, k))) {
       B.set(k, b);
       w.bonds.delete(k);
     }
@@ -235,7 +238,7 @@ export function fromBackground(w: World, ps: Person[]) {
   if (B?.size) {
     const ids = new Set(ps.map(p => p.id));
     for (const [k, b] of B)
-      if (ids.has(Math.floor(k / 2 ** 26))) {
+      if (ids.has(bkA(w, k))) {
         if (!w.bonds.has(k)) w.bonds.set(k, b);
         B.delete(k);
       }

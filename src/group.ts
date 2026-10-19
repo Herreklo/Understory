@@ -2,6 +2,7 @@
 // chemistry, standing, leaving, replacement, break-up); what the work is and how the world counts it comes from the setting.
 // Chemistry is a small-group thing: past six people it is cliques and pairs, so it is only computed for small groups.
 
+import { around, aroundAll, near } from './scale';
 import { clamp } from './rng';
 import { SETTING } from './setting';
 import {
@@ -120,7 +121,7 @@ export function chemistry(w: World, g: Group): { chem: number; why: Cause[] } {
 function tryForm(w: World, p: Person, k: Kind) {
   const r = bestSkill(p, k);
   if (r < 1150 || age(w, p) < 15 || age(w, p) > 50) return;
-  const pool = live(w)
+  const pool = around(w, p)
     .filter(
       q =>
         q !== p &&
@@ -207,7 +208,7 @@ function moment(w: World, g: Group, k: Kind, e: { id: number; t: number }, ms: P
       for (const c of m.kids) close.add(c);
       for (const pa of m.parents) close.add(pa);
     }
-    const audience = live(w).filter(
+    const audience = near(w, ...ms.map(m => m.id)).filter(
       x =>
         !ms.includes(x) &&
         age(w, x) >= 10 &&
@@ -622,7 +623,7 @@ function show(w: World, g: Group, k: Kind) {
   for (const p of ms)
     addEmotion(w, p, 'show', q > 0.5 ? `still buzzing from the ${k.show}` : `the ${k.show} that went wrong`, q > 0.5 ? 0.12 : -0.12, 5, e.id);
   if (q > 0.8)
-    for (const x of live(w))
+    for (const x of near(w, ...ms.map(m => m.id)))
       if (!ms.includes(x) && w.rng.chance(0.3))
         for (const p of ms) {
           const r = bond(w, x.id, p.id);
@@ -696,7 +697,7 @@ function leave(w: World, g: Group, p: Person, how: string, ref: number | undefin
 function recruit(w: World, g: Group, k: Kind) {
   const ms = g.members.map(i => P(w, i));
   const lead = P(w, g.founder).group === g.id ? P(w, g.founder) : ms[0];
-  const pool = live(w).filter(
+  const pool = aroundAll(w, ms).filter(
     q =>
       q.group == null &&
       !g.former.includes(q.id) &&

@@ -7,6 +7,7 @@
 // pick at the other's work in public, or step aside. Who gets the post weighs the record, the outgoing lead's regard and what the campaign
 // did. A loser who answers with pride or anger carries it as a grudge, in small acts, until the two make peace, one goes, or it cools.
 // Every act cites where the rivalry started, so the record tells one story rather than many unrelated ones.
+import { staffOf } from './scale';
 import { clamp } from './rng';
 import {
   titleAt,
@@ -291,7 +292,9 @@ function act(w: World, r: Rivalry, x: Person, y: Person) {
       ? ['duty', 'dishonesty', 'anger', 'humility']
       : ['duty', 'anger', 'humility']
     : ['anger', ...(burned || holder ? [] : ['dishonesty']), 'withdrawal', ...(peaceLately ? [] : ['humility'])];
-  const grudgeTarget = !post ? live(w).find(q => q !== x && q !== y && q.job != null && q.job === y.job && regard(w, q.id, y.id) > 0.1) : undefined;
+  const grudgeTarget = !post
+    ? staffOf(w, y.job).find(q => q !== x && q !== y && q.job != null && q.job === y.job && regard(w, q.id, y.id) > 0.1)
+    : undefined;
   const o = run(w, {
     type: post ? 'rivalry' : 'grudge',
     actor: x,
@@ -461,7 +464,7 @@ export function dramaTick(w: World) {
     if (!pl) continue;
     const look = w.t === w.events[s.announced].t + 1 || w.t === s.due - 4;
     if (look)
-      for (const p of live(w).filter(
+      for (const p of staffOf(w, pl.id).filter(
         q => q.job === pl.id && q.id !== s.lead && w.t - q.jobSince >= 12 && age(w, q) < 62 && !s.contenders.includes(q.id),
       ))
         consider(w, s, pl, p);

@@ -33,4 +33,13 @@ const events = h(w.events.map(e => canon(e)).join('\n'));
 const bonds = h([...w.bonds].map(([k, r]) => `${kA(k)}-${kB(k)}:${canon(r)}`).join('\n'));
 const beliefs = h([...w.beliefs].map(([k, m]) => `${k}:${canon(m)}`).join('\n'));
 const rest = h(canon({ groups: w.groups, places: w.places, stats: w.stats, t: w.t, nextId: w.nextId, queue: w.queue.length }));
-console.log(JSON.stringify({ arm: [process.env.OFF && 'OFF=' + process.env.OFF, process.env.ON && 'ON=' + process.env.ON].filter(Boolean).join(' ') || 'default', seed, years, people: w.people.length, events: w.events.length, hashes: { people, events, bonds, beliefs, rest } }));
+console.log(
+  JSON.stringify({
+    arm: [process.env.OFF && 'OFF=' + process.env.OFF, process.env.ON && 'ON=' + process.env.ON].filter(Boolean).join(' ') || 'default',
+    seed,
+    years,
+    people: w.people.length,
+    events: w.events.length,
+    hashes: { people, events, bonds, beliefs, rest },
+  }),
+);

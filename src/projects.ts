@@ -29,7 +29,7 @@ import {
   year,
   bond,
 } from './world';
-import { jobSet } from './scale';
+import { around, hoodOf, hoods, jobSet, moved, near, placeOf, staffOf } from './scale';
 import { run, decide, traitCause, stateCause, eventCause, ev, facetC, bondC, pubC, privC, family, favour } from './grammar';
 import { z01 } from './decide';
 import { regard } from './regard';
@@ -232,6 +232,10 @@ function ask(w: World, pr: Project, p: Person, q: Person) {
   }
 }
 
+// The workplace a plan threatens: that kind of place in the owner's own neighbourhood (a town has one of each).
+function threatOf(w: World, p: Person, k: { threatens?: string }): string {
+  return (placeOf(w, k.threatens!, hoodOf(w, p)) ?? w.placeById.get(k.threatens!))?.id ?? k.threatens!;
+}
 // Whoever the plan threatens decides whether to fight it: openly, by a word to the council, or not at all.
 function threatened(w: World, pr: Project, opp: Person, p: Person) {
   const k = kindOf(pr);
@@ -248,15 +252,17 @@ function threatened(w: World, pr: Project, opp: Person, p: Person) {
     families: council && council !== opp ? ['anger', 'dishonesty', 'leniency'] : ['anger', 'leniency'],
     only: { anger: ['needleplan'], dishonesty: ['whisperplan'], leniency: ['letbe'] },
     cause: pr.first,
-    causeLabel: `${k.short} would take trade from ${w.placeById.get(k.threatens!)?.name}`,
+    causeLabel: `${k.short} would take trade from ${w.placeById.get(threatOf(w, p, k))?.name}`,
     w: 1.2,
-    extra: [favour(pubC('trade', `${k.short} would take trade from ${w.placeById.get(k.threatens!)?.name}`, 0.7, 1, 0.2), 'anger', 'dishonesty')],
+    extra: [
+      favour(pubC('trade', `${k.short} would take trade from ${w.placeById.get(threatOf(w, p, k))?.name}`, 0.7, 1, 0.2), 'anger', 'dishonesty'),
+    ],
     familyExtra: { leniency: [bondC(w, opp, p, 'like', 1)], anger: [bondC(w, opp, p, 'like', -1)] },
   });
   if (!o) return;
   pr.events.push(o.event.id);
   if (o.expr.id === 'whisperplan' && council) remember(w, council, p, o.event.id, -0.05, -0.08, -0.06, `heard every reason ${k.short} would fail`);
-  if (o.family !== 'leniency' && w.placeById.get(k.threatens!)?.lead === opp.id) startRivalry(w, opp, p, 'trade', k.short, pr.first, 0.4);
+  if (o.family !== 'leniency' && w.placeById.get(threatOf(w, p, k))?.lead === opp.id) startRivalry(w, opp, p, 'trade', k.short, pr.first, 0.4);
 }
 
 function councilLead(w: World) {
@@ -463,6 +469,10 @@ function open(w: World, pr: Project, p: Person) {
   };
   w.places.push(pl);
   w.placeById.set(id, pl);
+  if (hoods(w) > 1) {
+    (pl as any).hood = hoodOf(w, p); // in a city a venture opens in its founder's neighbourhood
+    moved();
+  }
   if (p.job) {
     const old = w.placeById.get(p.job);
     if (old && old.lead === p.id) old.lead = null;
@@ -564,7 +574,7 @@ function night(w: World, pr: Project, p: Person) {
   });
   broadcast(w, e);
   pr.events.push(e.id);
-  for (const q of live(w))
+  for (const q of near(w, p.id))
     if (q !== p && age(w, q) >= 16) {
       const r = bond(w, q.id, p.id);
       r.respect = clamp(r.respect + (good ? 0.06 : -0.03), -1, 1);
@@ -626,15 +636,19 @@ export function projectsTick(w: World) {
     if (needMore)
       for (let i = 0; i < ASKS_PER_MONTH; i++)
         if (w.rng.chance(0.5)) {
-          const pool = L.filter(q => q !== p && age(w, q) >= 18 && !pr.asked.includes(q.id) && (bond(w, p.id, q.id).fam > 0.1 || family(p, q))).sort(
-            (a, b) => regard(w, p.id, b.id) - regard(w, p.id, a.id),
-          );
+          const pool = around(w, p)
+            .filter(q => q !== p && age(w, q) >= 18 && !pr.asked.includes(q.id) && (bond(w, p.id, q.id).fam > 0.1 || family(p, q)))
+            .sort((a, b) => regard(w, p.id, b.id) - regard(w, p.id, a.id));
           if (pool.length) ask(w, pr, p, pool[Math.min(pool.length - 1, w.rng.int(0, 2))]);
         }
     // Those it threatens hear of it and decide whether to fight it, once each.
     if (k.threatens && w.t - pr.since >= 2)
-      for (const opp of L.filter(
-        q => q.job === k.threatens && q !== p && !pr.opponents.includes(q.id) && (w.placeById.get(k.threatens!)!.lead === q.id || w.rng.chance(0.3)),
+      for (const opp of staffOf(w, threatOf(w, p, k)).filter(
+        q =>
+          q.job === threatOf(w, p, k) &&
+          q !== p &&
+          !pr.opponents.includes(q.id) &&
+          (w.placeById.get(threatOf(w, p, k))!.lead === q.id || w.rng.chance(0.3)),
       ))
         if (w.rng.chance(0.25)) threatened(w, pr, opp, p);
     // The council's say-so, once enough is behind it.

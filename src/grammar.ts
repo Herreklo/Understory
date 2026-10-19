@@ -39,7 +39,7 @@ import {
   peaks,
   recentEvents,
 } from './world';
-import { jobSet } from './scale';
+import { around, hoodOf, hoods, jobSet, near, placeOf, staffOf, typeOf } from './scale';
 import {
   score,
   choose,
@@ -379,7 +379,7 @@ const FAMILY_IDENTITY: Partial<Record<Family, { yes?: string[]; no?: string[] }>
   anger: { no: ['steady'] },
   severity: { no: ['kind'] },
 };
-function identityC(p: Person, fam: Family): Consideration | null {
+export function identityC(p: Person, fam: Family): Consideration | null {
   const m = FAMILY_IDENTITY[fam];
   if (!m || !p.selfStory.length || OFF.has('selfstory')) return null;
   // The strongest entry speaks, whichever way it points (round F26; OFF=identfix compares a 'no' with a best that can be negative,
@@ -446,7 +446,7 @@ export const FAMILY_FACETS: Record<Family, Partial<Record<string, number>>> = {
   severity: { gentleness: -1 },
   warmth: { gentleness: 0.6, altruism: 0.5 },
 };
-function wiringC(p: Person, fam: Family, feats: Set<Feature>, toward?: number): Consideration[] {
+export function wiringC(p: Person, fam: Family, feats: Set<Feature>, toward?: number): Consideration[] {
   const weights: Record<string, number> = {};
   for (const k in FAMILY_FACETS[fam]) weights[k] = (weights[k] ?? 0) + FAMILY_FACETS[fam][k]!;
   // Features add the facets they activate, in the direction of "acting" (positive families act; their mirrors invert).
@@ -483,7 +483,7 @@ function wiringC(p: Person, fam: Family, feats: Set<Feature>, toward?: number): 
 }
 
 // ---------- choosing an expression within a family ----------
-function pickExpression(w: World, p: Person, fam: Family, inst: Instance, view?: View): Expression {
+export function pickExpression(w: World, p: Person, fam: Family, inst: Instance, view?: View): Expression {
   const feats = inst.features;
   const cands = BY_FAMILY[fam]
     .filter(e => (inst.only?.[fam] ? inst.only[fam]!.includes(e.id) : !e.named))
@@ -910,11 +910,11 @@ const TYPES: SituationType[] = [
         if (!p.job || age(w, p) < 18 || !w.rng.chance(0.012)) continue;
         const pl = w.placeById.get(p.job)!;
         const money = w.rng.chance(0.55);
-        const thing = money ? (SETTING.resources[pl.id] ?? 'the till') : 'a mistake at work'; // a place opened in the present (a café) has a till
+        const thing = money ? (SETTING.resources[typeOf(pl)] ?? 'the till') : 'a mistake at work'; // a place opened in the present (a café) has a till
         const feats = new Set<Feature>(['private', money ? 'money' : 'standing']);
         if (!money) feats.add('challenged');
         const lead = pl.lead != null && pl.lead !== p.id ? P(w, pl.lead) : null;
-        const coworker = live(w).find(q => q.job === p.job && q !== p && q !== lead);
+        const coworker = staffOf(w, p.job).find(q => q.job === p.job && q !== p && q !== lead);
         out.push({
           type: 'temptation',
           actor: p,
@@ -978,7 +978,7 @@ const TYPES: SituationType[] = [
     match(w) {
       if (!w.rng.chance(0.03)) return [];
       return live(w)
-        .filter(p => p.job === 'harbour')
+        .filter(p => p.job != null && (p.job === 'harbour' || (w.placeById.get(p.job) as any)?.type === 'harbour')) // every fleet in the monthly world
         .map(p => ({
           type: 'risk',
           actor: p,
@@ -1095,7 +1095,7 @@ const TYPES: SituationType[] = [
         const srcs = topSources(p, 3);
         const targets: Person[] = [];
         if (p.partner != null) targets.push(P(w, p.partner));
-        if (p.job) for (const q of live(w)) if (q.job === p.job && q !== p) targets.push(q);
+        if (p.job) for (const q of staffOf(w, p.job)) if (q.job === p.job && q !== p) targets.push(q);
         for (const k of p.kids) {
           const c = P(w, k);
           if (c.status === 'in' && age(w, c) < 18) targets.push(c);
@@ -1251,7 +1251,7 @@ const TYPES: SituationType[] = [
       const out: Instance[] = [];
       for (const pl of w.places) {
         if (!w.rng.chance(0.009)) continue;
-        const staff = w.rng.shuffle(live(w).filter(p => p.job === pl.id && !p.lead)).slice(0, 3);
+        const staff = w.rng.shuffle(staffOf(w, pl.id).filter(p => p.job === pl.id && !p.lead)).slice(0, 3);
         const job = w.rng.pick(['the big order', 'the audit', 'the inspection', 'the end-of-year figures', 'the rush job']);
         for (const p of staff) {
           if ((p.tried['deadline']?.t ?? -99) > w.t - 10) continue;
@@ -1292,7 +1292,7 @@ const TYPES: SituationType[] = [
       for (const e of arrived) {
         const n = P(w, e.who[0]);
         if (n.status !== 'in') continue;
-        const pool = live(w).filter(
+        const pool = around(w, n).filter(
           q => q !== n && age(w, q) >= 16 && (q.job === n.job || (q.job && w.placeById.get(q.job)!.people >= 0.8) || n.circle.includes(q.id)),
         );
         for (const q of w.rng.shuffle(pool).slice(0, 2))
@@ -1320,7 +1320,7 @@ const TYPES: SituationType[] = [
       for (const pl of w.places) {
         if (pl.lead == null || !w.rng.chance(0.022)) continue;
         const lead = P(w, pl.lead);
-        const staff = live(w).filter(p => p.job === pl.id && p !== lead);
+        const staff = staffOf(w, pl.id).filter(p => p.job === pl.id && p !== lead);
         if (!staff.length) continue;
         const p = w.rng.pick(staff);
         if ((p.tried['asked']?.t ?? -99) > w.t - 12) continue;
@@ -1348,12 +1348,15 @@ const TYPES: SituationType[] = [
     id: 'danger',
     match(w) {
       const out: Instance[] = [];
-      for (const pl of ['mill', 'garage', 'harbour']) {
+      const kinds = ['mill', 'garage', 'harbour'];
+      // a town has one of each; a city, every sawmill, garage and fleet in the monthly world
+      for (const pl of hoods(w) === 1 ? kinds : w.places.filter(x => kinds.includes(typeOf(x))).map(x => x.id)) {
         if (!w.rng.chance(0.0045)) continue;
-        const staff = live(w).filter(p => p.job === pl);
+        const staff = staffOf(w, pl).filter(p => p.job === pl);
         if (staff.length < 2) continue;
         const v = w.rng.pick(staff);
-        const what = pl === 'mill' ? 'got caught in the saw' : pl === 'garage' ? 'was pinned under a car' : 'went over the side';
+        const kind = typeOf(w.placeById.get(pl) ?? { id: pl });
+        const what = kind === 'mill' ? 'got caught in the saw' : kind === 'garage' ? 'was pinned under a car' : 'went over the side';
         v.ill = 2 + w.rng.int(0, 4);
         v.health = clamp(v.health - 0.2, 0.05, 1);
         const e = addEvent(w, {
@@ -1428,7 +1431,7 @@ const TYPES: SituationType[] = [
       const out: Instance[] = [];
       for (const p of live(w)) {
         if (!p.job || !w.rng.chance(0.005) || (p.tried['criticised']?.t ?? -99) > w.t - 18) continue;
-        const others = live(w).filter(q => q.job === p.job && q !== p);
+        const others = staffOf(w, p.job).filter(q => q.job === p.job && q !== p);
         if (!others.length) continue;
         const q = others.sort((a, b) => facet(a, 'gentleness') - facet(b, 'gentleness'))[0];
         if (facet(q, 'gentleness') > 0.5 && !w.rng.chance(0.3)) continue;
@@ -1470,7 +1473,7 @@ const TYPES: SituationType[] = [
         const x = e0.type === 'death' ? P(w, e0.who[1]) : P(w, e0.who[0]);
         if (!x || x.status !== 'in' || (x.tried['collection']?.t ?? -99) > w.t - 24 || !w.rng.chance(0.5)) continue;
         learned(w, x, 'collection', true);
-        const pool = live(w).filter(
+        const pool = around(w, x).filter(
           q =>
             q !== x &&
             age(w, q) >= 18 &&
@@ -1491,7 +1494,7 @@ const TYPES: SituationType[] = [
             families: ['generosity', 'refusal'],
             only: { generosity: ['chipin', 'quietgive'], refusal: ['token', 'nowallet'] },
             cause: e0.id,
-            place: bar?.name,
+            place: (hoods(w) === 1 ? bar : (placeOf(w, 'bar', hoodOf(w, x)) ?? bar))?.name, // in a city, the bar of their own neighbourhood
             w: 0.9,
             extra: [
               favour(
@@ -1514,7 +1517,7 @@ const TYPES: SituationType[] = [
       for (const p of live(w)) {
         if (age(w, p) < 16 || !w.rng.chance(0.06)) continue;
         const cands: [Person, { t: number; ev: number; text: string }][] = [];
-        for (const q of live(w)) {
+        for (const q of around(w, p)) {
           if (q === p || (p.tried['oldwound:' + q.id]?.t ?? -99) > w.t - 24) continue;
           const shared = (p.job && p.job === q.job) || p.circle.includes(q.id) || (p.group != null && p.group === q.group);
           if (!shared) continue;
@@ -1579,7 +1582,7 @@ function harbourAsk(w: World, p: Person): Instance {
     families: ['duty', 'lapse'] as Family[],
     only: { duty: ['stepup'], lapse: ['leaveit'] },
     causeLabel: 'the harbour day needed someone to run it',
-    place: bar?.name,
+    place: (hoods(w) === 1 ? bar : (placeOf(w, 'bar', hoodOf(w, p)) ?? bar))?.name,
     w: 0.8,
     extra: [favour(stateC('load', p.stress > 0.5 ? 'already stretched' : 'had room for it', p.stress, -1, 0.3), 'duty')],
   };
@@ -1619,7 +1622,7 @@ function harbourDay(w: World) {
     w: 1.4,
   });
   broadcast(w, e);
-  for (const q of w.rng.shuffle(live(w).filter(q => q !== p && age(w, q) >= 16)).slice(0, 6))
+  for (const q of w.rng.shuffle(near(w, p.id).filter(q => q !== p && age(w, q) >= 16)).slice(0, 6))
     remember(w, q, p, e.id, good ? 0.08 : -0.06, good ? 0.2 : -0.2, good ? 0.05 : -0.05, good ? 'ran the harbour day' : 'the harbour day fiasco');
   if (good) addEmotion(w, p, 'harbour', 'proud of the day', 0.12, 6, e.id);
   else {
@@ -1702,7 +1705,7 @@ export function afterRun(w: World, inst: Instance, out: Outcome) {
           });
           broadcast(w, e2);
           learnOf(w, lead?.id ?? -1, e, 1);
-          for (const q of live(w))
+          for (const q of staffOf(w, p.job))
             if (q.job === p.job && q !== p)
               remember(w, q, p, e2.id, -0.25, -0.3, -0.5, `found out ${x.id === 'skim' ? 'taking from the till' : 'lying'}`);
           addStress(p, 'caught', 'being found out', 0.14, e2.id);
@@ -1781,7 +1784,7 @@ export function afterRun(w: World, inst: Instance, out: Outcome) {
           e2.id,
         );
         if (good > 0.8)
-          for (const q of live(w))
+          for (const q of around(w, p))
             if (q !== p && peekBond(w, q.id, p.id)) {
               const b = bond(w, q.id, p.id);
               b.respect = clamp(b.respect + 0.2, -1, 1);
@@ -1928,7 +1931,7 @@ export function afterRun(w: World, inst: Instance, out: Outcome) {
         p.perf -= 0.3;
         addStress(p, 'late', `missing the deadline on ${inst.thing}`, 0.08, e.id);
         if (lead) remember(w, lead, p, e.id, -0.15, -0.3, -0.2, `let us down on ${inst.thing}`);
-        for (const q of live(w))
+        for (const q of staffOf(w, p.job))
           if (q.job === p.job && q !== p && q !== lead) {
             const r = bond(w, q.id, p.id);
             r.respect = clamp(r.respect - 0.1, -1, 1);
@@ -1968,7 +1971,7 @@ export function afterRun(w: World, inst: Instance, out: Outcome) {
       const v = inst.target!;
       if (x.id === 'rescue') {
         remember(w, v, p, e.id, 0.5, 0.4, 0.5, 'came in after me');
-        for (const q of live(w))
+        for (const q of staffOf(w, p.job))
           if (q.job === p.job && q !== p) {
             const r = bond(w, q.id, p.id);
             r.respect = clamp(r.respect + 0.3, -1, 1);
@@ -2110,7 +2113,7 @@ export function judgement(w: World, lead: Person, s: Person, place: any): 'dismi
   if (!o) return null;
   if (o.expr.id === 'dressdown') {
     // Someone may stand up for them.
-    const ally = live(w)
+    const ally = staffOf(w, s.job)
       .filter(q => q.job === s.job && q !== s && q !== lead && regard(w, q.id, s.id) > -0.1)
       .sort((a, b) => regard(w, b.id, s.id) - regard(w, a.id, s.id))[0];
     if (ally) {

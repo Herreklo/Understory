@@ -1,13 +1,14 @@
 // The witness: a simulated observer who learns only what their position lets them see.
 // Surprise, explainability, hunches and hindsight all run through the witness.
 
+import { typeOf } from './scale';
 import { FACET_BY_ID } from './core';
 import { type World, type Event, type Person, P, belief, facet, year, live, age, observeAs, peekBond, tagObs } from './world';
 
 export function pickWitness(w: World): Person {
   // Someone present, adult, with a job that sees people: the bar or the clinic if possible.
   const L = live(w).filter(p => age(w, p) >= 25 && age(w, p) < 60 && p.job);
-  const pref = L.filter(p => p.job === 'bar' || p.job === 'paper' || p.job === 'clinic');
+  const pref = L.filter(p => p.job != null && ['bar', 'paper', 'clinic'].includes(typeOf(w.placeById.get(p.job) ?? { id: p.job })));
   const pool = pref.length ? pref : L;
   const p = pool.sort((a, b) => b.facets.sociability - a.facets.sociability)[0];
   w.witness = p.id;

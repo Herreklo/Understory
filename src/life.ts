@@ -4,7 +4,8 @@
 import { clamp, hash } from './rng';
 import { SETTING } from './setting';
 import { VALUES, FACET_BY_ID } from './core';
-import type { Cause, Person, World, Want } from './world';
+import type { Bond, Cause, Person, World, Want } from './world';
+import type { Rng } from './rng';
 import { around, hoodOf, hoods, idx, jobSet, jobless, moved, staffOf } from './scale';
 import {
   bkA,
@@ -73,6 +74,7 @@ import { personaTick } from './persona';
 import { loveTick, leftBy } from './love';
 import { timeTick, practise, addWant, resolveWants, wantRestore, pursuing, habitRelief, habitPairs, formHabits, homeOf, habitEvidence } from './time';
 import type { Feature } from './features';
+import { coarseYear } from './coarse';
 
 const VN = Object.fromEntries(VALUES.map(v => [v.id, v.name]));
 const NONE = new Set<Feature>();
@@ -81,7 +83,9 @@ export function tick(w: World) {
   w.t++;
   // A month's chance is its own (round 25b): every system's stream is drawn afresh each month, so whatever shifts one shifts it only
   // until the month ends.
-  if (!OFF.has('monthly')) setStreams(w, ...(w.t <= w.startPresent ? [w.seed, 'past'] : [w.seed, w.runSeed, 'run']), w.t);
+  // (a test may give the past other dice from the same founding: pastSalt, set only by scale tests)
+  const salt = (w as any).pastSalt != null ? [(w as any).pastSalt] : [];
+  if (!OFF.has('monthly')) setStreams(w, ...(w.t <= w.startPresent ? [w.seed, 'past', ...salt] : [w.seed, w.runSeed, 'run']), w.t);
   w.hooks.leaveTown = leaveTown;
   (w.hooks as any).split = split;
   use(w, 'body');
@@ -124,6 +128,7 @@ export function tick(w: World) {
   migrationTick(w);
   use(w, 'yearly');
   if (w.t % 12 === 0) yearly(w);
+  if (w.t % 12 === 0) coarseYear(w); // a city's background: one coarse step a year, on its own dice (nothing happens here in a town)
   use(w, 'misc');
   scoreRecent(w);
 }
@@ -2099,4 +2104,202 @@ export function mature(w: World, p: Person) {
     if (a < ap[1]) p.aptitudes[ap[0]] += ap[2];
     else p.aptitudes[ap[0]] -= ap[2] * 0.5;
   for (const sk in p.skills) p.skills[sk].ceil = ceilingFor(p, sk);
+}
+
+// Promotion: people coming into focus get the years of ordinary contact they would have had, so they arrive with acquaintances,
+// friends and dislikes formed by the same rule as everyone else's. Their settings (home, family, workplace, school, circle, venue,
+// neighbourhood) are run for the given months on the promotion's own dice, only for pairs that include someone promoted.
+// The months are lived on a clock set back to when they happened, so every rule that counts time (one new friend at a time,
+// memories fading, grudges cooling) sees them as months. The clock is put back afterwards, and anything written to the record in
+// those months is dated to the promotion and marked as backstory, so the record stays in time order.
+export function catchUp(w: World, ps: Person[], months: number, r: Rng) {
+  const now = w.t;
+  const prevRng = w.rng,
+    prevQuiet = w.quiet;
+  w.rng = r;
+  w.quiet = true;
+  const n0 = w.events.length;
+  const S0 = new Set(ps.map(p => p.id));
+  let S = S0;
+  const touch = (a: Person, b: Person) => S.has(a.id) || S.has(b.id);
+  const here = (p: Person) => p.born <= w.t && ((p as any).arrivedAt ?? -Infinity) <= w.t; // born, and living here, by then
+  const all = (arr: Person[]) => {
+    const o: [Person, Person][] = [];
+    for (let a = 0; a < arr.length; a++) for (let b = a + 1; b < arr.length; b++) if (touch(arr[a], arr[b])) o.push([arr[a], arr[b]]);
+    return o;
+  };
+  const budget = (pairs: [Person, Person][], c: number) => {
+    // the round-15 attention budget, as in socialTick
+    if (OFF.has('budget')) {
+      for (const [a, b] of pairs) contact(w, a, b, c);
+      return;
+    }
+    const K = 3;
+    const nb = new Map<number, Person[]>();
+    for (const [a, b] of pairs) {
+      (nb.get(a.id) ?? nb.set(a.id, []).get(a.id)!).push(b);
+      (nb.get(b.id) ?? nb.set(b.id, []).get(b.id)!).push(a);
+    }
+    const give = new Map<number, Map<number, number>>();
+    for (const [id, qs] of nb) {
+      const m = new Map<number, number>();
+      if (qs.length <= K) for (const q of qs) m.set(q.id, c);
+      else {
+        const att = qs.map(q => 0.15 + Math.max(0, likeOf(w, id, q.id)) + 0.5 * (peekBond(w, id, q.id)?.fam ?? 0));
+        const sum = att.reduce((x, y) => x + y, 0);
+        qs.forEach((q, k) => m.set(q.id, (c * K * att[k]) / sum));
+      }
+      give.set(id, m);
+    }
+    for (const [a, b] of pairs) {
+      const i = ((give.get(a.id)!.get(b.id) ?? 0) + (give.get(b.id)!.get(a.id) ?? 0)) / 2;
+      if (i >= 0.01) contact(w, a, b, i);
+    }
+  };
+  const all0 = ps;
+  // The bonds that involve someone promoted, kept as a list: one pass over the city's bonds now, then only the bonds added since.
+  // Also each person's own bonds, so who is close can be refreshed for just the people whose bonds move (refreshClosest's rule).
+  const mine: Bond[] = [];
+  const perA = new Map<number, [number, Bond][]>();
+  const ends = new Set<number>();
+  const note = (a: number, b: number, rb: Bond) => {
+    (perA.get(a) ?? perA.set(a, []).get(a)!).push([b, rb]);
+    if (S0.has(a) || S0.has(b)) {
+      mine.push(rb);
+      ends.add(a);
+      ends.add(b);
+    }
+  };
+  for (const [key, rb] of w.bonds) note(bkA(w, key), bkB(w, key), rb);
+  (w as any)._onNewBond = note;
+  const closeFor = () => {
+    if (OFF.has('relbar')) return;
+    const out = ((w as any)._closest ??= new Map()) as Map<number, Set<number>>;
+    for (const a of ends) {
+      const pa = w.byId.get(a);
+      if (!pa) continue;
+      const list = (perA.get(a) ?? []).filter(([, rb]) => rb.fam >= 0.1).map(([b, rb]) => [b, rb.fam] as [number, number]);
+      if (!list.length) {
+        out.delete(a);
+        continue;
+      }
+      out.set(
+        a,
+        new Set(
+          list
+            .filter(([b]) => {
+              const q = w.byId.get(b);
+              return !!q && q.status === 'in' && !family(pa, q) && pa.partner !== b;
+            })
+            .sort((x, y) => y[1] - x[1])
+            .slice(0, 5)
+            .map(([b]) => b),
+        ),
+      );
+    }
+  };
+  for (let m = 0; m < months; m++) {
+    w.t = now - months + m + 1;
+    ps = all0.filter(here);
+    S = new Set(ps.map(p => p.id));
+    const I0 = idx(w);
+    const I = { ...I0, byJob: new Map([...I0.byJob].map(([k, v]) => [k, v.filter(here)])), hood: I0.hood.map(h => h.filter(here)) };
+    const hs = [...new Set(ps.map(p => hoodOf(w, p)))].sort((a, b) => a - b);
+    channel = 'home';
+    for (const p of ps) {
+      if (p.partner != null) {
+        const q = P(w, p.partner);
+        if (q.status === 'in' && here(q) && (!S.has(q.id) || p.id < q.id)) contact(w, p, q, 1.5);
+      }
+      for (const k of p.kids) {
+        const c = P(w, k);
+        if (c.status === 'in' && here(c)) contact(w, p, c, age(w, c) < 20 ? 1.2 : 0.4);
+      }
+    }
+    channel = 'work';
+    for (const job of [...new Set(ps.map(p => p.job).filter(Boolean))] as string[]) budget(all(I.byJob.get(job) ?? []), 1);
+    channel = 'school';
+    if (!OFF.has('school'))
+      for (const h of hs) {
+        const kids = I.hood[h].filter(p => age(w, p) >= 6 && age(w, p) < 19 && !p.job);
+        const pairs: [Person, Person][] = [];
+        for (let i = 0; i < kids.length; i++)
+          for (let j = i + 1; j < kids.length; j++)
+            if (touch(kids[i], kids[j]) && Math.abs(age(w, kids[i]) - age(w, kids[j])) <= 2 && !family(kids[i], kids[j]))
+              pairs.push([kids[i], kids[j]]);
+        budget(pairs, 1);
+      }
+    channel = 'family';
+    for (const p of ps)
+      for (const k of p.parents) {
+        const par = w.byId.get(k);
+        if (!par) continue;
+        for (const id of par.kids) {
+          const q = w.byId.get(id)!;
+          if (q !== p && q.status === 'in' && here(q) && (!S.has(q.id) || p.id < q.id)) contact(w, p, q, age(w, p) < 20 && age(w, q) < 20 ? 1 : 0.3);
+        }
+      }
+    channel = 'circle';
+    for (const p of ps)
+      for (const id of p.circle) {
+        const q = w.byId.get(id);
+        if (q && q.status === 'in' && here(q) && (!S.has(q.id) || p.id < q.id)) contact(w, p, q, 0.5);
+      }
+    channel = 'hobby';
+    for (const hb of SETTING.hobbies)
+      for (const h of hs) {
+        let g = I.hood[h].filter(p => p.skills[hb]?.interest === 2 && age(w, p) >= 14);
+        if (g.length > 6) g = w.rng.shuffle(g).slice(0, 6);
+        budget(all(g), 0.5);
+      }
+    channel = 'public';
+    for (const h of hs) {
+      const adults = I.hood[h].filter(p => age(w, p) >= 16);
+      if (!adults.length) continue;
+      for (const pl of w.places)
+        if (pl.people >= 0.8 && I0.placeHood.get(pl.id) === h)
+          for (const st of I.byJob.get(pl.id) ?? [])
+            for (let i = 0; i < 3; i++) {
+              const q = w.rng.pick(adults);
+              if (q !== st && touch(st, q)) contact(w, st, q, 0.35);
+            }
+    }
+    channel = 'habit';
+    {
+      const by = new Map<string, Person[]>();
+      for (const h of hs)
+        for (const p of I.hood[h])
+          for (const hb of p.habits)
+            if (!hb.broken && hb.kind === 'social') (by.get(hb.id + '|' + h) ?? by.set(hb.id + '|' + h, []).get(hb.id + '|' + h)!).push(p);
+      for (const [, g] of by) budget(all(g), 0.4);
+    }
+    channel = '';
+    closeFor(); // who counts as close, as the monthly tick keeps it (only those whose bonds can have moved)
+    channel = 'sought';
+    for (const p of ps) {
+      if (age(w, p) < 16) continue;
+      const near = I.hood[hoodOf(w, p)].filter(q => q !== p && age(w, q) >= 16 && Math.abs(age(w, q) - age(w, p)) < 12);
+      if (!near.length) continue;
+      const young = age(w, p) < 40;
+      const n = Math.round(z01(facet(p, 'sociability')) * w.rng.next() * (young ? 4 : 2.5)) + (p.partner == null && young ? 1 : 0);
+      for (let i = 0; i < n; i++) contact(w, p, w.rng.weighted(near.map(q => [q, regardWeight(w, p.id, q.id, 1.5)] as [Person, number])), 0.5);
+    }
+    // Ties not kept up fade, as in the monthly tick.
+    for (const b of mine) {
+      if (b.touched !== w.t) b.fam *= 0.993;
+      if ((b as any).recent) (b as any).recent *= 0.89;
+    }
+  }
+  delete (w as any)._onNewBond;
+  w.t = now;
+  channel = '';
+  refreshClosest(w);
+  for (let i = n0; i < w.events.length; i++) {
+    (w.events[i] as any).backstory = true;
+    (w.events[i] as any).happened = w.events[i].t;
+    w.events[i].t = now;
+  }
+  w.rng = prevRng;
+  w.quiet = prevQuiet;
+  return w.events.length - n0;
 }
