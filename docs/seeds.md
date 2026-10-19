@@ -89,8 +89,10 @@ Uses: `train`, `eval` (scoreboard), `test` (fresh worlds for a round), `quiz`, `
 | 2877 | 2900 | lab | test | F27 |
 | 401 | 410 | scale | test | S12 |
 | 1031 | 1060 | scale | train | background odds fit, S12 |
+| 1781 | 1800 | lab | eval | 28 |
+| 2941 | 2962 | lab | test | 28 (2961–2962 cold reads) |
 | 9001 | 9999 | all | smoke | |
 
-Next free: eval **1781**, test **2941**. Scale: test **411**, train **1061**.
+Next free: eval **1801**, test **2963**. Scale: test **411**, train **1061**.
 
 The lab's ranges are as recorded in each round's pre-registration and outcome in `docs/BOARD.md`. Below 1501, the lab's earliest rounds used scoreboard defaults (1–20, 101–120, 201–220, 301–320) and its identity checks use seeds 11–13 by design; the lab takes no new range below 1501. The scale rows were all run on round 19c with the scale branch.

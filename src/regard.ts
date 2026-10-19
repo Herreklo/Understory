@@ -7,6 +7,7 @@
 
 import { around } from './scale';
 import { OFF, peekBond, bkey, likeOf, type World } from './world';
+import * as MX from './mathx';
 
 // Facets whose high end the town admires (+1) or whose low end it does (-1). Mirrors the observer's own valence table.
 const ADMIRED: Record<string, number> = {
@@ -63,10 +64,10 @@ export function regardRaw(w: World, who: number, ofWhom: number): number {
     const k = ADMIRED_KEYS[i];
     const b = held!.get(keys[i]);
     if (!b || b.n <= 0) continue;
-    const strength = Math.abs(Math.tanh(b.m));
+    const strength = Math.abs(MX.tanh(b.m));
     const tau = 54 + 126 * Math.max(0, Math.min(1, (strength - 0.5) / 0.4)); // ordinary impressions: a third left after five years; the strongest: after fifteen
-    const sure = Math.max(0, 1 - b.v) * Math.exp(-(w.t - b.last) / tau);
-    sum += Math.tanh(b.m) * ADMIRED[k] * sure;
+    const sure = Math.max(0, 1 - b.v) * MX.exp(-(w.t - b.last) / tau);
+    sum += MX.tanh(b.m) * ADMIRED[k] * sure;
     n += sure;
   }
   const beliefPart = sum / (n + PRIOR);
@@ -87,5 +88,5 @@ export function standing(w: World, ofWhom: number): number {
   return n ? s / n : 0;
 }
 // Weight for choosing among candidates: likes and admires strongly favoured, the disliked nearly never chosen.
-export const regardWeight = (w: World, who: number, ofWhom: number, k = 2.5) => Math.exp(k * regard(w, who, ofWhom));
+export const regardWeight = (w: World, who: number, ofWhom: number, k = 2.5) => MX.exp(k * regard(w, who, ofWhom));
 export { likeOf };

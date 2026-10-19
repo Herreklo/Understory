@@ -15,6 +15,7 @@ import { plasticity } from './world';
 import { family } from './grammar';
 import { ODDS } from './coarse-odds';
 import { z01 } from './decide';
+import * as MX from './mathx';
 
 // A background neighbourhood draws the ids of the people born or arriving in it from a range of its own, and gives them first
 // names that differ from its own residents', so nothing outside it (the town's births, other neighbourhoods) changes who they are.
@@ -100,7 +101,7 @@ function odds(kind: keyof typeof ODDS.models, z: number[]): number {
   if (m.base != null) return m.base;
   let s = m.b0;
   for (let i = 0; i < z.length; i++) s += m.w[i] * z[i];
-  return 1 / (1 + Math.exp(-s));
+  return 1 / (1 + MX.exp(-s));
 }
 const he = (p: Person) => (p.sex === 'f' ? 'she' : 'he');
 
@@ -252,7 +253,7 @@ function coarseWork(w: World, roster: Roster) {
 }
 // Someone moves to the neighbourhood for a job, by the town's rule: mostly young; a third of those 27 and over bring a family.
 function newcomer(w: World, pl: any, h: number, r: Rng, roster: Roster): Person {
-  const a = 23 + Math.floor(Math.pow(r.next(), 1.5) * 20);
+  const a = 23 + Math.floor(MX.pow(r.next(), 1.5) * 20);
   const p = bgPerson(w, h, roster, { age: a, founder: true });
   const fam = [p];
   p.skills[pl.skill].r = 1250 + r.next() * 200;
@@ -476,7 +477,7 @@ function coarseReturns(w: World) {
     m.keys.forEach((k: string, i: number) => {
       s += (m.w[i] * ((x[k] ?? 0) - m.mu[i])) / m.sd[i];
     });
-    if (dice(w, p, 'home').next() >= 1 / (1 + Math.exp(-s))) continue;
+    if (dice(w, p, 'home').next() >= 1 / (1 + MX.exp(-s))) continue;
     const back = [
       p,
       ...(p.partner != null ? [w.byId.get(p.partner)!] : []),
@@ -532,7 +533,7 @@ function coarseBody(w: World, p: Person): boolean {
     p.health += (tgt - p.health) * 0.08;
     const last = (p as any).lastIll as { t: number; kind: string } | undefined;
     if (a >= 16 && !p.ill && t - (last?.t ?? -99) >= 9) {
-      const risk = 0.0009 * Math.exp((a - 45) / 14) * (1.3 - 0.3 * p.constitution) * (p.drinks ? 1.8 : 1) * (p.stress > 0.7 ? 1.3 : 1);
+      const risk = 0.0009 * MX.exp((a - 45) / 14) * (1.3 - 0.3 * p.constitution) * (p.drinks ? 1.8 : 1) * (p.stress > 0.7 ? 1.3 : 1);
       if (r.chance(risk)) {
         const kinds: [string, number][] =
           a < 50
@@ -572,7 +573,7 @@ function coarseBody(w: World, p: Person): boolean {
         addStress(p, 'ill', 'illness', 0.15, e.id);
       }
     }
-    let h = Math.min(0.8, 0.0000025 * Math.exp(0.116 * a)) / 12;
+    let h = Math.min(0.8, 0.0000025 * MX.exp(0.116 * a)) / 12;
     if (a >= 105) h = Math.max(h, 0.6 / 12);
     const norm = 0.78 - Math.max(0, a - 45) * 0.009;
     if (p.health < norm) h *= 1 + (norm - p.health) * 4;

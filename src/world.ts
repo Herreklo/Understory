@@ -6,6 +6,7 @@ import type { Feature } from './features';
 import { FACET_BY_ID } from './core';
 import { motive, voiceOf } from './motives';
 import { hoods, idx, residentsNear, staffOf, town } from './scale';
+import * as MX from './mathx';
 
 export type Status = 'in' | 'away' | 'dead' | 'bg' | 'gone'; // bg: lives in the city, simulated by the coarse yearly pass; gone: left the city
 
@@ -356,7 +357,7 @@ export const fullName = (p: Person) => `${p.first} ${p.last}`;
 // A post at a place, for a sentence: "foreman at the sawmill", but "head of the clinic", never "head of the clinic at the clinic".
 export const titleAt = (pl: { title: string; name: string }) =>
   pl.title.includes(pl.name.replace(/^the /, '')) ? pl.title : `${pl.title} at ${pl.name}`;
-export const logistic = (z: number, k = 1.2) => 1 / (1 + Math.exp(-k * z));
+export const logistic = (z: number, k = 1.2) => 1 / (1 + MX.exp(-k * z));
 
 // Plasticity: how much life still moves a person. Heredity is set at birth and never changes; what fades with age is the environment's grip.
 // About 1.7 at 18, 1.0 at 40, 0.3 at 65. Applied to every life-driven change of a trait (chosen expressions, life marks, maturing), never to the birth draw.
@@ -481,8 +482,8 @@ export function peaks(w: World, holder: Person, other: Person, n = 2): Memory[] 
 // Memory weight now: negative memories fade with Forgiveness, positive ones with Sentimentality.
 export function memWeight(p: Person, m: Memory, t: number, toward: number): number {
   const neg = m.like + m.trust < 0;
-  const half = neg ? 18 * Math.exp(-0.7 * facet(p, 'forgiveness', toward)) : 30 * Math.exp(0.5 * facet(p, 'sentimentality'));
-  return Math.pow(0.5, (t - m.t) / Math.max(2, half));
+  const half = neg ? 18 * MX.exp(-0.7 * facet(p, 'forgiveness', toward)) : 30 * MX.exp(0.5 * facet(p, 'sentimentality'));
+  return MX.pow(0.5, (t - m.t) / Math.max(2, half));
 }
 
 // ----- beliefs -----

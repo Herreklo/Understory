@@ -51,6 +51,8 @@ In progress, not yet placed in this order: H29 (CI spends fewer minutes) and rou
 
 ## Latest merges
 
+- **H29 (19 Oct):** CI no longer runs for changes to text files alone, which were about a fifth of its minutes.
+- **Round 28 (19 Oct):** the engine does its own maths, so a seed makes the same world on any computer or in a port. No event changed in forty test worlds.
 - **The goal written down (19 Oct):** where we are going, one priority list that only Øystein orders, and an exit criterion that measures whether the world is alive (events that travel, lives that change people, readers who want more), not only whether it is readable.
 - **H28 (19 Oct):** the portability rules and the engine's front door. Nothing the engine does changed.
 - **The workflow (19 Oct):** two kinds of change (changes that alter nothing merge the day CI proves it; experiments keep the full protocol), CI that checks every pull request against main, this page, and the name Understory.

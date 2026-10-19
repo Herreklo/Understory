@@ -10,6 +10,7 @@ A one-page map for changing the engine: what lives where, the order of a month, 
 | --- | --- |
 | `world.ts` | World and person state, bonds, beliefs, the event log, observation, `OFF` switches, random streams per system |
 | `rng.ts` | Seeded randomness |
+| `mathx.ts` | The engine's own `exp`, `log`, `pow`, `tanh` and `cos`, built from operations every language rounds the same way (`docs/scale/portability.md`, rule 3) |
 | `core.ts`, `features.ts` | Facets, values, dimensions; situation features and which facets they wake |
 | `setting.ts` | The setting pack: places, names, trades, quirk material. Content only, no rules |
 | `generate.ts`, `inclination.ts` | Making people; how strongly someone is drawn to a skill |
@@ -107,7 +108,7 @@ A world is built by `buildWorld` (founders, families, jobs at year zero) and the
 | `exposure` | Familiarity making people easier to like |
 | `relbar` | The friendship bar relative to one's own world |
 
-**Fixes that were kept.** Turning one off brings back a known fault. Each is removed, with its old path, in the next neutral change: `countfair`, `eventfix`, `identfix`, `honestev`, `refade`, `skimfix`, `floor`, `seenonly`, `monthly`, `ownchance`, `selfkept`, `pushes`, `despite`.
+**Fixes that were kept.** Turning one off brings back a known fault. Each is removed, with its old path, in the next neutral change: `countfair`, `eventfix`, `identfix`, `honestev`, `refade`, `skimfix`, `floor`, `seenonly`, `monthly`, `ownchance`, `selfkept`, `pushes`, `despite`, `mathx`.
 
 **Mechanisms that were not kept,** off by default: `everyone` (a yearly want from one's values, round 25d), `jobact` (no burying oneself in work without work, round H26), `states` (a month-to-month state on every facet, round 27). Each is removed in the next neutral change unless `SUMMARY.md` names a coming round that reuses it.
 
@@ -119,10 +120,12 @@ A world is built by `buildWorld` (founders, families, jobs at year zero) and the
 - `src/tools/diag/sig.ts`: for a change to words only. It hashes behaviour without text, for comparing two trees.
 - `src/tools/diag/ident.ts record`: the full event record of the identity seeds, one canonical JSON line per event, read through the boundary (`out-reference/`). It is what a port of the engine must reproduce line for line; any tag reproduces its own records exactly.
 - `src/tools/boundarytest.ts` (in `npm test`): a world run through the boundary is identical to one run directly, and everything it gives back is plain data.
+- `src/tools/mathtest.ts` (in `npm test`): the engine's own maths functions against JavaScript's, within 4×10⁻¹⁶ over the ranges the engine uses.
+- `src/tools/diag/samerecord.ts`: whether two arms tell the same story, event by event (type, month, who, decision, words), and the largest gap in an option's probability.
 
 ## Known debt
 
 - **The `tried` store** carries flags and state under text keys, and about 230 places reach past the types (`as any`) for fields the person type does not declare (`lastIll`, `interestFrom`, couple state). A typo fails silently. It moves to named, typed fields when a round touches it.
 - **Circumstances in `extra`**: some situations give every option the same circumstance (short of money, already stretched), so it cannot push one way. Whether that changes behaviour is a question for a round, not a cleanup.
-- **Portability** (`docs/scale/portability.md`): 33 calls to `Math.exp`, `log`, `pow`, `tanh`, `cos` and the like (rule 3; replacing them changes the last digits of numbers, so it is a round of its own); the `tried` store and the `as any` above (rule 5); the setting pack and the words of acts live in code (`setting.ts`, `families.ts`, `motives.ts`), not in data (rule 7).
+- **Portability** (`docs/scale/portability.md`): the `tried` store and the `as any` above (rule 5); the setting pack and the words of acts live in code (`setting.ts`, `families.ts`, `motives.ts`), not in data (rule 7).
 - **The Understory page** lists source files by path; the published page needs its files republished when the layout changes.
