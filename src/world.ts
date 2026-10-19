@@ -370,27 +370,6 @@ export const OFF = new Set<string>();
 // Mechanisms that are off unless asked for: a round that did not meet its expectations keeps its code behind one of these, so the
 // default model is the one before it. Turned on for a test with ON=<name>, as OFF=<name> turns a kept one off.
 export const ON = new Set<string>();
-// Round 27, states (behind ON=states): a person varies within themselves from month to month (Fleeson 2001). The spread is the person's own, set from
-// their variability (drawn at generation, wider for the anxious): about 0.6 of a facet's standard deviation, 0.3 to 1.0. A state is this
-// month's deviation on one facet, drawn from a stream of the person's own (the world seed in the past, the run seed in the present, the
-// person, the month, the facet), so it moves nobody else's dice and the default (states off) is identical to the engine before them. Only
-// a decision reads it (truthView in decide.ts); evidence, manner, persona and beliefs read the level. Off unless ON=states: the round did
-// not meet its expectations (single-act r moved .39 → .36, not into the band; blind readers preferred the on arm in 4 of 12; births fell).
-export const statesOn = () => ON.has('states');
-export const spreadOf = (p: Person) => clamp(0.6 + 0.7 * (p.variability - 0.7), 0.3, 1.0);
-const states = new WeakMap<World, Map<string, { t: number; v: number }>>();
-export function stateOf(w: World, p: Person, key: string): number {
-  if (!statesOn()) return 0;
-  let c = states.get(w);
-  if (!c) states.set(w, (c = new Map()));
-  const k = `${p.id}|${key}`;
-  const hit = c.get(k);
-  if (hit && hit.t === w.t) return hit.v;
-  const s = w.t <= w.startPresent ? stream(w.seed, 'past', 'state', p.id, w.t, key) : stream(w.seed, w.runSeed, 'run', 'state', p.id, w.t, key);
-  const v = spreadOf(p) * s.normal();
-  c.set(k, { t: w.t, v });
-  return v;
-}
 // A name a reader can follow: the first name, with the surname when someone else in town (or away) has the same first name, and the
 // year of birth when they share both. Rendering only.
 export function nameOf(w: World, id: number): string {
