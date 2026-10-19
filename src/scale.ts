@@ -10,7 +10,6 @@ export const HOOD = 80;
 // kept beside the world, not in it, so it is never hashed, copied or saved with the world.
 let POPVER = 0;
 const INDEX = new WeakMap<World, Index & { _jobless?: Person[] }>();
-export const rebuilds = new WeakMap<World, number>();
 export function moved() {
   POPVER++;
 }
@@ -118,7 +117,6 @@ export function idx(w: World): Index {
     cur.len = w.people.length;
     return cur;
   }
-  rebuilds.set(w, (rebuilds.get(w) ?? 0) + 1);
   const H = hoods(w);
   const live: Person[] = [];
   const byJob = new Map<string, Person[]>();
@@ -193,12 +191,6 @@ export function aroundAll(w: World, ps: Person[]): Person[] {
   const set = new Set<Person>();
   for (const p of ps) for (const q of around(w, p)) set.add(q);
   return [...set].sort((a, b) => a.id - b.id);
-}
-// The record of the last few months, read from the end (the record is in time order).
-export function recent(w: World, months: number): World['events'] {
-  const out: World['events'] = [];
-  for (let i = w.events.length - 1; i >= 0 && w.events[i].t >= w.t - months; i--) out.push(w.events[i]);
-  return out.reverse();
 }
 
 // Everyone in town without a job, in the engine's order: the people a vacancy can be filled from.

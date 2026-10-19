@@ -570,3 +570,38 @@ The twin test with an ageing arm and the engine's real situations is S13, not th
 - **The background's odds are refitted on r27** (train seeds 1031–1060, held out from 1054). The fit takes in what r27's full towns do, couples and pursuits included. Its person-years come from towns with love (couples' tension, rows, care, doubts and leaving) and with pursuits (`steer.ts`) running as they run on main. Any outcome those systems change, such as splitting up, leaving, a child or losing work, is fitted from them, not from r19c.
 - **The switch.** Under the current CLAUDE.md, scale work is behind a switch. S12's city exists only when a harness asks for one (`SCALE_FOCUS`, `SCALE_CITY`); with neither set, every scale path is the engine's own, and that is the switch the identity check tests.
 - **Ownership.** This chat owns S12. The lab lane is paused while S12 is open. Each part is reviewed independently by another chat as it lands on the branch.
+
+### S12 result (frozen tree `fca5295`; seeds 401–410; the odds refitted on train seeds 1031–1060)
+
+**Outcome: the port holds the town exactly, and the city still works, but on r27 the background no longer matches the monthly world: it has about a quarter too few children, so it ages.**
+
+1. **The town is the town: pass.**
+   - `ident.ts check` against the r27 baseline: identical on seeds 11–13, and identical on all 52 signatures with every one of the 49 switches on seed 11 (main's baseline saved from main at r27 in the same sitting).
+   - The whole-world check (`scale/identity2.ts`): main and the branch give the same five hashes on all 63 runs, seeds 1–10 and every `OFF` and `ON` arm on seed 11. The two output files are byte-identical.
+   - `npm test`: SPEED_AND_TEST
+2. **Speed:** SPEED_RESULT
+3. **The city on the refitted odds.**
+   - **Capacity, strict: pass.** No workplace over capacity, no staffed background workplace without a leader, no background worker living outside their workplace's neighbourhood, in all ten checks. Five monthly workplaces were between leaders at the end of the present (reported, as in S7).
+   - **Coarse matches full: 3 of 6 fail.** Monthly half against background half, mean over seeds 401–405:
+
+     | Measure | Monthly half | Background half | Gap | Bar |
+     |---|---|---|---|---|
+     | Under-20 share | 21.0% | 15.3% | −5.8 pt | **fail** |
+     | Over-65 share | 27.2% | 30.1% | +3.0 pt | pass |
+     | Partnered | 64.1% | 61.9% | −2.1 pt | pass |
+     | Working | 82.4% | 88.9% | +6.5 pt | **fail** |
+     | Drinkers | 4.5% | 5.5% | +0.9 pt | pass |
+     | Kids of 40–54-year-olds | 1.41 | 0.99 | ratio 0.70 | **fail** |
+
+     Births are 7.8 per thousand in the background against 10.6 in the monthly half.
+   - **Why, as far as the raw files show.** The odds are not wrong where they are used: the background's partnered women have the children the fitted odds predict (pooled, 344 against 344 at 25–34, 183 against 178 at 16–24, 188 against 182 at 35–49). Two things shrink and change who is at risk. First, young people pair up less often than in r27's full towns (16–24: 7.8% a year against 9.4%; 25–34: 6.8% against 9.7%), and those over 50 more often (4.1% against 3.0%). The background's matching takes the nearest single in age, and the odds of looking for a partner are halved because each couple makes two of the town's partnerings; which of these skews the ages is not yet measured. Second, the background's partnered women have fewer children than the town's at the same age (25–34: 11.5% a year against 13.8%), so the other things the odds read about them (years together, children already, work, money) differ from the town's. Fewer young couples and fewer children per couple make fewer under-20s, and a working-age population with fewer children and young people in it works more. S7–S10 passed these bars on r19c. The likely difference is r27's couples (love, leaving), which change who pairs up and when in the town, while the background's matching rule stayed as it was; that is a hypothesis, not a measurement.
+   - **Deaths: 80+ passes; 65–79 is at the bar.** Pooled background deaths per person-year: 65–79 1.59%, 80+ 9.70%, under 65 0.09%. The report's reference rates (1.86% and 9.03%) are r19c's, stored in `report7.py`; against them the ratios are 0.85 and 1.07. Against r27's own full towns (the training towns, 1031–1060), 65–79 is 2.16% when deaths are banded by age at the start of the year, and about 2.06% when banded by age at death, as the background's tally bands them. The ratio is 0.74–0.77, so the 25% bar is met only under the tally's banding. 80+: 8.97–9.23%, ratio 1.05–1.08, pass.
+   - **Promoted people: all ten pass** (friends per adult 4.60 against 5.26 after catch-up, 4.60 against 5.38 two years later; friendless 14.4% against 14.4%, then 13.5% against 11.3%; known well, routines and partnered all within their bars; the tightest is partnered two years later, +6.6 points against a bar of 7). Marks per over-40: 0.45 against 0.81 after catch-up, 0.58 against 0.82 two years later.
+   - **Independence: pass.** Seeds 406–408: every compared background neighbourhood identical (2 of 2 on each seed), with the focus different.
+   - **Promotion invariance: pass on everything a person is, with one exception named.** Seeds 409–410, 413 people in six neighbourhoods. Health, illness, strain and savings move by exactly 0. Besides the texture fields (status, routines, circle, friends, events, `promotedAt`, and the feelings, tries and last routine that come with them), promotion changed the wants of 3 people. The one examined (seed 409) gained a want to make things right with someone, from a falling-out in the replayed years: texture in kind, but `wants` is not on the list of fields promotion may change.
+   - Promotion takes 3.8–5.1 s per neighbourhood; a city of 1,300 builds in 149–183 s.
+4. **No rule on main had to stay at town scale.** Every whole-town scan in r27's new code (love, steering, threads, pursuits) has a city path; kin are found through parents, a companion among the people around someone.
+
+The independent re-derivation from the raw files reproduced every number above, and found the stale death reference.
+
+**What follows.** The background's partnering and children are the next scale step's to fix, pre-registered on fresh seeds: matching by the town's own age pattern of who pairs with whom, and the death reference taken from the engine it is checked against. Nothing was tuned on seeds 401–410.
