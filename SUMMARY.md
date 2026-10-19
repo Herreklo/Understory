@@ -38,6 +38,7 @@ The people decide like people and can be read, but their lives are thin and repe
 
 ## Latest merges
 
+- **Round 28 (19 Oct):** the engine does its own maths, so a seed makes the same world on any computer or in a port. No event changed in forty test worlds.
 - **H28 (19 Oct):** the portability rules and the engine's front door. Nothing the engine does changed.
 - **The workflow (19 Oct):** two kinds of change (changes that alter nothing merge the day CI proves it; experiments keep the full protocol), CI that checks every pull request against main, this page, and the name Understory.
 - **S12 (19 Oct):** the city machinery moved onto today's engine. The town is untouched; the background needs its children fixed.

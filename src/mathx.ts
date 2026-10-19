@@ -108,7 +108,9 @@ function twoProd(a: number, b: number): [number, number] {
   return [p, ah * bh - p + ah * bl + al * bh + al * bl];
 }
 
-/** x^y for x > 0, as 2^(y·log2 x): the exponent's whole part is carried exactly, so pow(0.5, y) is as exact as 2^−y. */
+/** x^y for x > 0 and finite y, as 2^(y·log2 x): the exponent's whole part is carried exactly, so pow(0.5, y) is as exact as 2^−y.
+ * The rest of y·log2 x is not, so accuracy falls off as |y·log x| grows (about 10^−14 relative at y = 200); the engine's exponents
+ * are 1.4, 1.5 and halvings. A negative base, an infinite y or a NaN base give NaN. */
 function ownPow(x: number, y: number): number {
   if (x !== x || y !== y) return NaN;
   if (y === 0 || x === 1) return 1;
