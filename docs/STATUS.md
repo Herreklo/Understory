@@ -115,7 +115,7 @@ Done: the consistency audit (21), the consequence map (22), the consequence roun
 6. The friendship tail (diagnosed before any cap); plans that ripple; spouses as rivals at work.
 7. Generation and background, for a city (with a larger name pool).
 8. Five people form a band for a year (an outside review's experiment C, `reports/external/`): different skills, ambitions, constraints and ties; compare starting circumstances. Does the collaboration produce distinct, understandable histories? It ties to the origin in `WHY.md` without committing to a music game, and shows what a town-wide simulation hides.
-Then courtship, and conflict styles between friends and bandmates. Later: scripted pickers choosing members for the model's own groups; an interface people can use, for the human test; a language model for the words only. Separate track: city scale (`docs/scale/`).
+Then courtship, and conflict styles between friends and bandmates. Later: scripted pickers choosing members for the model's own groups; an interface people can use, for the human test; a language model for the words only. City scale is ordinary rounds on `main` (`docs/scale/`).
 
 ## Exit criterion (agreed 17 Oct 2026)
 The person model is good enough to build on when all seven hold. Every round must move one of them, or it does not run. Where each stands:
@@ -125,7 +125,7 @@ The person model is good enough to build on when all seven hold. Every round mus
 4. **At most 10% dead lives, and a cold reader can say who four of five random people are in one sentence.** Dead lives 2%. Blind readers can say who 9 or 10 of 12 random people are in one sentence (rounds 24a–24c; 4 of 5 needed): at the line. Whether the life is worth reading is a different matter: they score 2.4–3.0 out of five.
 5. **A blind outside reading where the page helps a reader rather than misleads,** once there is an interface people can use. Waits for that interface.
 6. **Readability holds:** the calibrated witness beats the notebook on the key slice on a fresh range. Holds (+5.5 ±1.2 on twenty fresh worlds, round F26; +4.1 ±1.7 in round H25).
-7. **The city track meets its budget with the same people model.** Not met: the scale branch (on the round 19c engine, not yet merged) corrected its month-cost check in its step S8, and the background adds about 25% to a month against the same town alone (`docs/scale/`).
+7. **The city track meets its budget with the same people model.** Not met. The city runs on the engine on `main`, and a town is identical with it (S12): a month at about 2,600 people runs 8.6× faster. On this engine the background has about a quarter too few children, so it ages and works more than the monthly world, and the month cost of a city of 100,000 has not been timed on it (`docs/scale/`).
 
 ## How a round runs
 1. Write down what it changes, behind a switch, and what would change our minds.

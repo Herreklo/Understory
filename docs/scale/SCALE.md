@@ -578,8 +578,8 @@ The twin test with an ageing arm and the engine's real situations is S13, not th
 1. **The town is the town: pass.**
    - `ident.ts check` against the r27 baseline: identical on seeds 11–13, and identical on all 52 signatures with every one of the 49 switches on seed 11 (main's baseline saved from main at r27 in the same sitting).
    - The whole-world check (`scale/identity2.ts`): main and the branch give the same five hashes on all 63 runs, seeds 1–10 and every `OFF` and `ON` arm on seed 11. The two output files are byte-identical.
-   - `npm test`: SPEED_AND_TEST
-2. **Speed:** SPEED_RESULT
+   - `npm test` passes on the branch, run alone (its page check timed out once while the machine was running four jobs).
+2. **Speed: pass.** A month at about 2,600 people (`scale/bench.ts 1840 1 5 12`), main and the branch run alternately, one at a time, in one sitting: main 18.9 s and 18.3 s a month (2,711 people), the branch 2.20 s and 2.13 s (2,601 people). That is 8.6× faster, 8.2× per person, against a bar of 5×. Building the town and its five-year past takes 693–698 s on main and 84–87 s on the branch; memory 1.3–1.7 GB against 0.35–0.6 GB. The bench's time by system no longer works on r27, which draws its random streams afresh each month, so only whole months are timed.
 3. **The city on the refitted odds.**
    - **Capacity, strict: pass.** No workplace over capacity, no staffed background workplace without a leader, no background worker living outside their workplace's neighbourhood, in all ten checks. Five monthly workplaces were between leaders at the end of the present (reported, as in S7).
    - **Coarse matches full: 3 of 6 fail.** Monthly half against background half, mean over seeds 401–405:

@@ -6,7 +6,7 @@ The scale track takes the person model from a town of 75 to a city of 100,000+. 
 
 The engine on `main` runs a city. A town of one neighbourhood is identical to the engine without it: every person, event, bond, belief and random stream, with every switch.
 
-**The monthly world.** People meet through settings (household, work, school, neighbourhood, venue), not the whole town. SPEED_README
+**The monthly world.** People meet through settings (household, work, school, neighbourhood, venue), not the whole town. At about 2,600 people a month runs about 8.5× faster than it would through whole-town scans.
 
 **Institutions.** Every neighbourhood of about 80 people has its own workplaces, each with its capacity, staff and leader. Work is bounded by the jobs there are. People arrive for jobs nobody local can take.
 
