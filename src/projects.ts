@@ -29,6 +29,7 @@ import {
   year,
   bond,
 } from './world';
+import { jobSet } from './scale';
 import { run, decide, traitCause, stateCause, eventCause, ev, facetC, bondC, pubC, privC, family, favour } from './grammar';
 import { z01 } from './decide';
 import { regard } from './regard';
@@ -466,7 +467,7 @@ function open(w: World, pr: Project, p: Person) {
     const old = w.placeById.get(p.job);
     if (old && old.lead === p.id) old.lead = null;
   }
-  p.job = id;
+  jobSet(w, p, id);
   p.lead = true;
   p.jobSince = w.t;
   if (!p.skills[tpl.skill]) p.skills[tpl.skill] = { r: 1100, ceil: 1500, interest: 1 } as any;

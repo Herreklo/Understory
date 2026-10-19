@@ -3,6 +3,7 @@
 import { stream } from './rng';
 import { SETTING } from './setting';
 import { makeWorld, age, live, P, bond, remember, OFF, setStreams, type World, type Person } from './world';
+import { jobSet } from './scale';
 import { generatePerson, attracted } from './generate';
 import { tick } from './life';
 import { formHabits } from './time';
@@ -84,7 +85,7 @@ export function buildWorld(seed: number, runSeed: number, pastYears = 30, adults
     if (!open.length) break;
     const pl = open.map(x => [x, p.skills[x.skill].ceil + g.normal() * 80] as const).sort((a, b) => b[1] - a[1])[0][0];
     const ten = g.int(6, Math.min(300, (age(w, p) - 19) * 12));
-    p.job = pl.id;
+    jobSet(w, p, pl.id);
     p.jobSince = -ten;
     p.skills[pl.skill].r = Math.min(p.skills[pl.skill].ceil, 1000 + ten * 1.6);
     p.savings = (age(w, p) - 18) * g.next() * 1.5 + g.normal() * 6;

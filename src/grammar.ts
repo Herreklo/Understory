@@ -39,6 +39,7 @@ import {
   peaks,
   recentEvents,
 } from './world';
+import { jobSet } from './scale';
 import {
   score,
   choose,
@@ -806,7 +807,7 @@ export function leaveJob(w: World, p: Person, e: Event) {
   if (!pl) return;
   if (pl.lead === p.id) pl.lead = null;
   p.quitFrom = pl.id;
-  p.job = null;
+  jobSet(w, p, null);
   p.lead = false;
 }
 

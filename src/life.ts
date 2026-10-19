@@ -5,6 +5,7 @@ import { clamp, hash } from './rng';
 import { SETTING } from './setting';
 import { VALUES, FACET_BY_ID } from './core';
 import type { Cause, Person, World, Want } from './world';
+import { around, hoodOf, hoods, idx, jobSet, jobless, moved, staffOf } from './scale';
 import {
   bkA,
   bkB,
@@ -219,10 +220,11 @@ function mortality(w: World, p: Person): boolean {
 function die(w: World, p: Person, cause: string, causes: Cause[]) {
   const a = Math.floor(age(w, p));
   p.status = 'dead';
+  moved();
   p.diedAt = w.t;
   const pl = p.job ? w.placeById.get(p.job)! : null;
   if (pl && pl.lead === p.id) pl.lead = null;
-  p.job = null;
+  jobSet(w, p, null);
   p.lead = false;
   const close: number[] = [];
   if (p.partner != null) close.push(p.partner);
@@ -310,7 +312,7 @@ function workTick(w: World) {
   const L = live(w);
   for (const pl of w.places) {
     if (pl.lead != null && (P(w, pl.lead).job !== pl.id || P(w, pl.lead).status !== 'in')) pl.lead = null;
-    const staff = L.filter(p => p.job === pl.id);
+    const staff = hoods(w) === 1 ? L.filter(p => p.job === pl.id) : staffOf(w, pl.id).slice(); // a city reads the staff list
     for (const s of staff) {
       practise(s, pl.skill, 1.0);
       s.perf = s.perf * 0.8 + perfRaw(w, s, pl.skill) * 0.2;
@@ -324,7 +326,7 @@ function workTick(w: World) {
       }
     if (lead && dueToStepDown(w, pl)) {
       retire(w, lead);
-      const left = L.filter(p => p.job === pl.id);
+      const left = hoods(w) === 1 ? L.filter(p => p.job === pl.id) : staffOf(w, pl.id).slice();
       if (left.length) promote(w, pl, left);
     } else if (pl.lead == null && staff.length) promote(w, pl, staff);
     hire(w, pl);
@@ -334,7 +336,7 @@ function workTick(w: World) {
 }
 function fire(w: World, s: Person, pl: any) {
   const ref = w.events.length - 1;
-  s.job = null;
+  jobSet(w, s, null);
   s.quitFrom = pl.id;
   addEmotion(w, s, 'fired', 'humiliated', -0.2 - 0.05 * -facet(s, 'modesty'), 10, ref);
   addStress(s, 'fired', `losing the job at ${pl.name}`, 0.18, ref);
@@ -447,8 +449,9 @@ function wordFor(w: World, c: Person, pl: any): Person | undefined {
 }
 function hire(w: World, pl: any) {
   const word = (c: Person) => wordFor(w, c, pl);
-  const L = live(w);
-  if (L.filter(p => p.job === pl.id).length >= pl.cap) {
+  const city = hoods(w) > 1;
+  const L = city ? null : live(w);
+  if ((L ? L.filter(p => p.job === pl.id) : staffOf(w, pl.id)).length >= pl.cap) {
     pl.vac = 0;
     return;
   }
@@ -462,16 +465,36 @@ function hire(w: World, pl: any) {
     p.job !== pl.id &&
     !p.lead &&
     p.wants.some(x => !x.done && x.kind === 'attain' && (x.pursuit as any)?.way === 'elsewhere');
-  const cands = L.filter(
-    p => (!p.job || looking(p)) && !p.retired && !p.student && !p.givenUp && age(w, p) >= 18 && age(w, p) < 63 && p.quitFrom !== pl.id,
-  ).filter(p => {
-    if (!lead || pl.vac > 12) return true;
-    const b = w.beliefs.get(lead.id)?.get(`${p.id}|diligence`);
-    return !(b && b.n >= 2 && b.m < -0.4);
-  });
+  // A city's job seekers are its jobless and those after a post elsewhere, from lists kept for the month, not a walk past everyone.
+  let cands = (L ?? cityLookers(w, looking))
+    .filter(p => (!p.job || looking(p)) && !p.retired && !p.student && !p.givenUp && age(w, p) >= 18 && age(w, p) < 63 && p.quitFrom !== pl.id)
+    .filter(p => {
+      if (!lead || pl.vac > 12) return true;
+      const b = w.beliefs.get(lead.id)?.get(`${p.id}|diligence`);
+      return !(b && b.n >= 2 && b.m < -0.4);
+    });
   if (!cands.length) {
     if (pl.vac > 6 && w.rng.chance(0.3)) newcomer(w, pl);
     return;
+  }
+  if (city) {
+    // a city's workplace takes on people from its own neighbourhood first, as a background one does
+    const h = idx(w).placeHood.get(pl.id);
+    const local = cands.filter(c => hoodOf(w, c) === h);
+    if (local.length) cands = local;
+    // and a vacancy hears from some of its job seekers, not all
+    if (cands.length > 24) {
+      const pick: Person[] = [];
+      const seen = new Set<number>();
+      while (pick.length < 24) {
+        const i = w.rng.int(0, cands.length - 1);
+        if (!seen.has(i)) {
+          seen.add(i);
+          pick.push(cands[i]);
+        }
+      }
+      cands = pick.sort((a, b) => a.id - b.id);
+    }
   }
   const view = lead ? witnessView(w, lead.id) : truthView(w);
   const sc = cands
@@ -522,7 +545,7 @@ function hire(w: World, pl: any) {
   }
   if (s < -0.3) causes.push(stateCause('nobody better had applied for months', 0.4));
   c.joblessMonths = 0;
-  c.job = pl.id;
+  jobSet(w, c, pl.id);
   c.jobSince = w.t;
   c.skills[pl.skill].r = Math.max(c.skills[pl.skill].r, 1060);
   c.perf = Math.max(-0.3, perfRaw(w, c, pl.skill));
@@ -540,8 +563,15 @@ function hire(w: World, pl: any) {
   addEmotion(w, c, 'hired', 'glad of the work', 0.08, 5, e.id);
   resolveWants(w, c, 'attain', 'work', 'achieved', e.id);
 }
+// Everyone in town who is jobless or after a post elsewhere, in a city: one walk a month, then kept current by the job lists.
+const LOOKERS = new WeakMap<World, { t: number; list: Person[] }>();
+function cityLookers(w: World, looking: (p: Person) => boolean): Person[] {
+  let c = LOOKERS.get(w);
+  if (!c || c.t !== w.t) LOOKERS.set(w, (c = { t: w.t, list: idx(w).live.filter(p => p.job != null && looking(p)) }));
+  return [...jobless(w), ...c.list];
+}
 export function assignCircle(w: World, p: Person) {
-  const others = live(w).filter(q => q !== p && !family(p, q) && Math.abs(age(w, q) - age(w, p)) < 15);
+  const others = (hoods(w) === 1 ? live(w) : idx(w).hood[hoodOf(w, p)]).filter(q => q !== p && !family(p, q) && Math.abs(age(w, q) - age(w, p)) < 15);
   p.circle = w.rng
     .shuffle(others)
     .slice(0, 3 + w.rng.int(0, 2))
@@ -554,7 +584,7 @@ function newcomer(w: World, pl: any) {
   settleIn(w, p);
   p.skills[pl.skill].r = 1250 + w.rng.next() * 200;
   p.savings = 5 + w.rng.next() * 10;
-  p.job = pl.id;
+  jobSet(w, p, pl.id);
   p.jobSince = w.t;
   p.perf = perfRaw(w, p, pl.skill);
   const fam: Person[] = [];
@@ -627,7 +657,7 @@ function retire(w: World, p: Person) {
   const pl = w.placeById.get(p.job!)!;
   const yrs = Math.round((w.t - p.jobSince) / 12);
   if (pl.lead === p.id) pl.lead = null;
-  p.job = null;
+  jobSet(w, p, null);
   p.lead = false;
   p.retired = true;
   for (const x of p.wants)
@@ -1156,6 +1186,10 @@ function contexts(w: World, a: Person, b: Person): Cause[] {
 }
 function socialTick(w: World) {
   const L = live(w);
+  // A city meets by settings: work by staff lists, school, hobbies, routines and the company sought within a neighbourhood. A town
+  // of one neighbourhood (H = 1) runs the engine's own scans, exactly as before.
+  const H = hoods(w),
+    I = H === 1 ? null : idx(w);
   const pairs = (arr: Person[], i: number) => {
     for (let a = 0; a < arr.length; a++) for (let b = a + 1; b < arr.length; b++) contact(w, arr[a], arr[b], i);
   };
@@ -1193,7 +1227,7 @@ function socialTick(w: World) {
     }
   };
   channel = 'work';
-  for (const pl of w.places) budget(all(L.filter(p => p.job === pl.id)), 1);
+  for (const pl of w.places) budget(all(I ? (I.byJob.get(pl.id) ?? []) : L.filter(p => p.job === pl.id)), 1);
   channel = 'home';
   for (const p of L) {
     if (p.partner != null && p.id < p.partner && P(w, p.partner).status === 'in') contact(w, p, P(w, p.partner), 1.5);
@@ -1204,26 +1238,41 @@ function socialTick(w: World) {
   }
   // School: those from six to eighteen who are not working spend each school day with others within two years of their age.
   channel = 'school';
-  if (!OFF.has('school')) {
-    const kids = L.filter(p => age(w, p) >= 6 && age(w, p) < 19 && !p.job);
-    const ps: [Person, Person][] = [];
-    for (let i = 0; i < kids.length; i++)
-      for (let j = i + 1; j < kids.length; j++)
-        if (Math.abs(age(w, kids[i]) - age(w, kids[j])) <= 2 && !family(kids[i], kids[j])) ps.push([kids[i], kids[j]]);
-    budget(ps, 1);
-  }
+  if (!OFF.has('school'))
+    for (const among of I ? I.hood : [L]) {
+      const kids = among.filter(p => age(w, p) >= 6 && age(w, p) < 19 && !p.job);
+      const ps: [Person, Person][] = [];
+      for (let i = 0; i < kids.length; i++)
+        for (let j = i + 1; j < kids.length; j++)
+          if (Math.abs(age(w, kids[i]) - age(w, kids[j])) <= 2 && !family(kids[i], kids[j])) ps.push([kids[i], kids[j]]);
+      budget(ps, 1);
+    }
   channel = 'family';
-  for (const p of L)
-    if (p.parents.length)
-      for (const q of L)
-        if (q.id > p.id && family(p, q) && !p.parents.includes(q.id) && !q.parents.includes(p.id))
-          contact(w, p, q, age(w, p) < 20 && age(w, q) < 20 ? 1 : 0.3);
-  channel = 'hobby';
-  for (const h of SETTING.hobbies) {
-    let hs = L.filter(p => p.skills[h]?.interest === 2 && age(w, p) >= 14);
-    if (hs.length > 6) hs = w.rng.shuffle(hs).slice(0, 6);
-    budget(all(hs), 0.5);
+  if (!I) {
+    for (const p of L)
+      if (p.parents.length)
+        for (const q of L)
+          if (q.id > p.id && family(p, q) && !p.parents.includes(q.id) && !q.parents.includes(p.id))
+            contact(w, p, q, age(w, p) < 20 && age(w, q) < 20 ? 1 : 0.3);
+  } else {
+    // in a city, brothers and sisters are found through their parents, not by checking every pair (same pairs, same order)
+    const kidsOf = new Map<number, Person[]>();
+    for (const p of L) for (const k of p.parents) (kidsOf.get(k) ?? kidsOf.set(k, []).get(k)!).push(p);
+    for (const p of L)
+      if (p.parents.length) {
+        const sib = new Set<Person>();
+        for (const k of p.parents) for (const q of kidsOf.get(k) ?? []) if (q.id > p.id) sib.add(q);
+        for (const q of [...sib].sort((a, b) => a.id - b.id))
+          if (family(p, q) && !p.parents.includes(q.id) && !q.parents.includes(p.id)) contact(w, p, q, age(w, p) < 20 && age(w, q) < 20 ? 1 : 0.3);
+      }
   }
+  channel = 'hobby';
+  for (const h of SETTING.hobbies)
+    for (const among of I ? I.hood : [L]) {
+      let hs = among.filter(p => p.skills[h]?.interest === 2 && age(w, p) >= 14);
+      if (hs.length > 6) hs = w.rng.shuffle(hs).slice(0, 6);
+      budget(all(hs), 0.5);
+    }
   channel = 'circle';
   for (const p of L)
     for (const id of p.circle) {
@@ -1234,14 +1283,21 @@ function socialTick(w: World) {
   if (OFF.has('budget')) for (const [a, b] of habitPairs(w)) contact(w, a, b, 0.4);
   else {
     const by = new Map<string, Person[]>();
-    for (const p of L) for (const h of p.habits) if (!h.broken && h.kind === 'social') (by.get(h.id) ?? by.set(h.id, []).get(h.id)!).push(p);
+    for (const p of L)
+      for (const h of p.habits)
+        if (!h.broken && h.kind === 'social') {
+          const v = I ? h.id + '|' + hoodOf(w, p) : h.id; // in a city a routine is shared with the neighbourhood
+          (by.get(v) ?? by.set(v, []).get(v)!).push(p);
+        }
     for (const [, ps] of by) budget(all(ps), 0.4);
   }
   channel = 'group';
   budget(groupPairs(w), 0.8);
   channel = 'sought';
   const adults = L.filter(p => age(w, p) >= 16);
+  const hoodAdults = I ? I.hood.map(r => r.filter(p => age(w, p) >= 16)) : [adults];
   for (const p of adults) {
+    const near = I ? hoodAdults[hoodOf(w, p)] : adults; // company is sought in one's own neighbourhood
     const young = age(w, p) < 40;
     const n =
       Math.round(z01(facet(p, 'sociability')) * w.rng.next() * (young ? 4 : 2.5)) +
@@ -1249,9 +1305,9 @@ function socialTick(w: World) {
       (pursuing(p, 'belong') ? 2 : 0);
     // Access: one pool for everyone, the adults near enough in age to spend time with (the same window the age check uses, so no draw is wasted).
     // How often a person seeks company (initiative) and whom they pick from the pool (preference, by regard) are decided separately.
-    const pool = adults.filter(q => q !== p && Math.abs(age(w, q) - age(w, p)) < 12);
+    const pool = near.filter(q => q !== p && Math.abs(age(w, q) - age(w, p)) < 12);
     // People seek out those they like and keep away from those they can't stand; the disliked are left more alone.
-    const src = pool.length ? pool : adults;
+    const src = pool.length ? pool : near;
     let kept = 0;
     // The weights are worked out once per person and kept up as they go: a contact changes only how p regards the one just met.
     let weights: [Person, number][] | null = null;
@@ -1270,12 +1326,16 @@ function socialTick(w: World) {
   }
   channel = 'public';
   for (const pl of w.places)
-    if (pl.people >= 0.8)
-      for (const st of L.filter(p => p.job === pl.id))
+    if (pl.people >= 0.8) {
+      // those who serve the public meet the adults of their workplace's neighbourhood
+      const h = I?.placeHood.get(pl.id);
+      const served = I && h != null && hoodAdults[h]?.length ? hoodAdults[h] : adults;
+      for (const st of I ? (I.byJob.get(pl.id) ?? []) : L.filter(p => p.job === pl.id))
         for (let i = 0; i < 3; i++) {
-          const q = w.rng.pick(adults);
+          const q = w.rng.pick(served);
           if (q !== st) contact(w, st, q, 0.35);
         }
+    }
   for (const r of w.bonds.values()) {
     if (r.touched !== w.t) r.fam *= 0.993;
     if ((r as any).recent) (r as any).recent *= 0.89;
@@ -1353,7 +1413,8 @@ function romanceTick(w: World) {
     }
     if (a < 18 || a > 70 || !w.rng.chance(0.1)) continue;
     const cands: [Person, number][] = [];
-    for (const q of L) {
+    for (const q of hoods(w) === 1 ? L : around(w, p)) {
+      // in a city, someone to fall for is someone you know
       if (q === p || q.partner != null || age(w, q) < 18 || family(p, q) || !attracted(p, q) || !attracted(q, p)) continue;
       const ag = Math.abs(age(w, q) - a);
       if (ag > 7 + Math.min(a, age(w, q)) / 7) continue;
@@ -1702,7 +1763,7 @@ function wantTick(w: World, p: Person) {
 export function leaveTown(w: World, p: Person, kind: string, text: string, why: Cause[], rec?: any) {
   const pl = p.job ? w.placeById.get(p.job)! : null;
   if (pl && pl.lead === p.id) pl.lead = null;
-  p.job = null;
+  jobSet(w, p, null);
   p.lead = false;
   // A partner and children are not left behind in silence. Either the household goes (the more they like each other and the less the
   // partner is rooted here, the likelier), or the one who stays is left, and knows it.
@@ -1721,6 +1782,7 @@ export function leaveTown(w: World, p: Person, kind: string, text: string, why: 
     if (together) {
       for (const k of minors) {
         k.status = 'away';
+        moved();
         k.awayKind = 'family';
         k.awaySince = w.t;
       }
@@ -1747,12 +1809,14 @@ export function leaveTown(w: World, p: Person, kind: string, text: string, why: 
   ) {
     for (const k of minors) {
       k.status = 'away';
+      moved();
       k.awayKind = 'family';
       k.awaySince = w.t;
     }
     tail = ' The children went too.';
   }
   p.status = 'away';
+  moved();
   p.awayKind = kind;
   p.awaySince = w.t;
   p.student = kind === 'study';
@@ -1786,7 +1850,7 @@ export function leaveTown(w: World, p: Person, kind: string, text: string, why: 
   resolveWants(w, p, 'escape', 'elsewhere', 'achieved', e.id);
   // Whoever said they'd go too has to decide now.
   if (kind !== 'study')
-    for (const q of live(w)) {
+    for (const q of hoods(w) === 1 ? live(w) : around(w, p)) {
       const y = q.wants.find(x => !x.done && x.kind === 'escape' && x.pursuit?.owner === p.id);
       if (!y) continue;
       const tied = q.partner != null || q.kids.some(k => P(w, k).status === 'in' && age(w, P(w, k)) < 18);
@@ -1844,6 +1908,7 @@ function comeHome(w: World, p: Person, text: string, why: Cause[], rec?: any) {
   for (const sk of ['writing', 'bookkeeping', 'care', 'teaching'])
     if (p.skills[sk]) p.skills[sk].r = Math.max(p.skills[sk].r, Math.min(p.skills[sk].ceil, 1100 + yrs * 40 * (p.awayKind === 'study' ? 1.5 : 1)));
   p.status = 'in';
+  moved();
   p.student = false;
   p.stress = clamp(p.stress - 0.1, 0, 1);
   p.emotions = p.emotions.filter(e => e.k !== 'homesick');
@@ -1853,6 +1918,7 @@ function comeHome(w: World, p: Person, text: string, why: Cause[], rec?: any) {
     const q = P(w, id);
     if (q.status === 'away' && q.awayKind === 'family') {
       q.status = 'in';
+      moved();
       q.student = false;
     }
   }
@@ -1946,10 +2012,18 @@ function migrationTick(w: World) {
     else learned(w, p, 'stayaway', true);
   }
   const adults = live(w).filter(p => age(w, p) >= 18).length;
-  if (adults < 42 && w.rng.chance(0.04)) {
-    const open = w.places.filter(pl => live(w).filter(q => q.job === pl.id).length < pl.cap);
-    if (open.length) newcomer(w, w.rng.pick(open));
-  }
+  const sc = (w as any).townScale > 1.5 ? (w as any).townScale : 1; // a city draws newcomers as so many towns would
+  if (sc === 1) {
+    if (adults < 42 && w.rng.chance(0.04)) {
+      const open = w.places.filter(pl => live(w).filter(q => q.job === pl.id).length < pl.cap);
+      if (open.length) newcomer(w, w.rng.pick(open));
+    }
+  } else
+    for (let i = 0; i < Math.round(sc); i++)
+      if (adults < 42 * sc && w.rng.chance(0.04)) {
+        const open = w.places.filter(pl => staffOf(w, pl.id).length < pl.cap);
+        if (open.length) newcomer(w, w.rng.pick(open));
+      }
 }
 
 // ---------- yearly: maturing, aptitude ageing, credit ----------
@@ -1957,7 +2031,7 @@ function yearly(w: World) {
   for (const pl of w.places) {
     const lead = pl.lead != null ? P(w, pl.lead) : null;
     if (!lead) continue;
-    const staff = live(w).filter(q => q.job === pl.id && q !== lead);
+    const staff = (hoods(w) === 1 ? live(w) : staffOf(w, pl.id)).filter(q => q.job === pl.id && q !== lead);
     if (staff.length < 2) continue;
     const best = staff.slice().sort((a, b) => b.perf - a.perf)[0];
     if (best.perf > 0.6 && w.rng.chance(0.35) && w.t - (best.tried['praised']?.t ?? -99) > 36 && w.t - (lead.tried['credited']?.t ?? -99) > 24) {
@@ -1994,30 +2068,35 @@ function yearly(w: World) {
   }
   for (const p of w.people) {
     if (p.status === 'dead') continue;
-    const a = age(w, p);
-    // Maturing: the direction the research finds, scaled by how much life still moves this person.
-    if (a >= 20 && a <= 60) {
-      const k = plasticity(w, p);
-      p.facets.organisation += 0.015 * k;
-      p.facets.patience += 0.012 * k;
-      p.facets.forgiveness += 0.01 * k;
-      p.facets.anxiety -= 0.01 * k;
-    }
-    for (const ap of [
-      ['physique', 26, 0.045],
-      ['reasoning', 22, 0.03],
-      ['memory', 30, 0.025],
-      ['dexterity', 27, 0.03],
-      ['ear', 25, 0.02],
-    ] as const)
-      if (a > ap[1]) p.aptitudes[ap[0]] -= ap[2];
-    for (const ap of [
-      ['language', 55, 0.02],
-      ['socialInsight', 48, 0.02],
-      ['presence', 45, 0.01],
-    ] as const)
-      if (a < ap[1]) p.aptitudes[ap[0]] += ap[2];
-      else p.aptitudes[ap[0]] -= ap[2] * 0.5;
-    for (const sk in p.skills) p.skills[sk].ceil = ceilingFor(p, sk);
+    mature(w, p);
   }
+}
+// A year of growing older: maturing (the direction the research finds, scaled by how much life still moves this person), aptitudes
+// rising and falling with age, and skill ceilings following them. Everyone alive gets it once a year, in focus or in the background.
+export function mature(w: World, p: Person) {
+  const a = age(w, p);
+  // Maturing: the direction the research finds, scaled by how much life still moves this person.
+  if (a >= 20 && a <= 60) {
+    const k = plasticity(w, p);
+    p.facets.organisation += 0.015 * k;
+    p.facets.patience += 0.012 * k;
+    p.facets.forgiveness += 0.01 * k;
+    p.facets.anxiety -= 0.01 * k;
+  }
+  for (const ap of [
+    ['physique', 26, 0.045],
+    ['reasoning', 22, 0.03],
+    ['memory', 30, 0.025],
+    ['dexterity', 27, 0.03],
+    ['ear', 25, 0.02],
+  ] as const)
+    if (a > ap[1]) p.aptitudes[ap[0]] -= ap[2];
+  for (const ap of [
+    ['language', 55, 0.02],
+    ['socialInsight', 48, 0.02],
+    ['presence', 45, 0.01],
+  ] as const)
+    if (a < ap[1]) p.aptitudes[ap[0]] += ap[2];
+    else p.aptitudes[ap[0]] -= ap[2] * 0.5;
+  for (const sk in p.skills) p.skills[sk].ceil = ceilingFor(p, sk);
 }
