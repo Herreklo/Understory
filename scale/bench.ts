@@ -4,6 +4,7 @@
 // then times each system of the monthly tick during the present. A system's time is measured from the moment
 // tick() switches to its random stream (use(w, sys)) to the next switch, so nothing in the engine is touched.
 import { performance } from 'perf_hooks';
+import { existsSync } from 'fs';
 import { SETTING } from '../src/setting';
 import { buildWorld, runYears } from '../src/build';
 import { pickWitness } from '../src/witness';
@@ -15,7 +16,9 @@ const PAST = +(process.argv[4] ?? 30),
   MONTHS = +(process.argv[5] ?? 12);
 const k = Math.max(1, Math.round(ADULTS / 46));
 const base = SETTING.places.slice();
-for (let i = 2; i <= k; i++) for (const pl of base) SETTING.places.push({ ...pl, id: `${pl.id}-${i}`, name: `${pl.name} ${i}` });
+// An engine with neighbourhoods (src/scale.ts) gives each its own workplaces; one without gets k copies of each, for the same room.
+const HOODED = existsSync('src/scale.ts');
+if (!HOODED) for (let i = 2; i <= k; i++) for (const pl of base) SETTING.places.push({ ...pl, id: `${pl.id}-${i}`, name: `${pl.name} ${i}` });
 
 const NESTED = new Set(['moments']); // read inside another system without switching to it
 function timeSystems(w: World) {
@@ -67,6 +70,7 @@ for (const m of w.beliefs.values()) beliefs += (m as any).size ?? 0;
 const out = {
   adults: ADULTS,
   k,
+  hooded: HOODED,
   seed: SEED,
   past: PAST,
   months: MONTHS,

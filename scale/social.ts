@@ -29,7 +29,7 @@ const A = L.filter(p => age(w, p) >= 18);
 const young = A.filter(p => age(w, p) < 30);
 const bondsOf = new Map<number, number>();
 for (const [key, r] of w.bonds) {
-  const a = bkA(key);
+  const a = bkA(w, key);
   if (r.fam >= 0.1) bondsOf.set(a, (bondsOf.get(a) ?? 0) + 1);
 }
 const mean = (xs: number[]) => xs.reduce((s, x) => s + x, 0) / Math.max(1, xs.length);

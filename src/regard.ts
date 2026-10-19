@@ -5,6 +5,7 @@
 // shrinks toward neutral even when nothing new is learned (the belief part is divided by its evidence plus a prior, and the strongest
 // impressions fade slowest), and a bond with someone no longer seen counts less as familiarity fades.
 
+import { around } from './scale';
 import { OFF, peekBond, bkey, likeOf, type World } from './world';
 
 // Facets whose high end the town admires (+1) or whose low end it does (-1). Mirrors the observer's own valence table.
@@ -75,7 +76,8 @@ export function regardRaw(w: World, who: number, ofWhom: number): number {
 export function standing(w: World, ofWhom: number): number {
   let s = 0,
     n = 0;
-  for (const p of w.people) {
+  const o = w.byId.get(ofWhom);
+  for (const p of o ? around(w, o) : w.people) {
     if (p.id === ofWhom || p.status !== 'in') continue;
     const r = peekBond(w, p.id, ofWhom);
     if (!r || r.fam < 0.1) continue;

@@ -2,7 +2,7 @@
 //   tsx src/tools/respond.ts [worlds] [years]
 import { buildWorld, runYears } from '../build';
 import { pickWitness, scoreAll } from '../witness';
-import { OFF, live, age, likeOf, type World } from '../world';
+import { OFF, live, age, likeOf, peekBond, type World } from '../world';
 import { blindReading } from './measure';
 import { FACETS } from '../core';
 const N = +(process.argv[2] ?? 10),
@@ -56,7 +56,7 @@ function runSet(off: string[]) {
               const l = likeOf(w, a.id, b.id);
               if (
                 Math.abs(l - like0) < 0.1 &&
-                (w.bonds.get(a.id * 100000 + b.id)?.fam ?? 0) > 0.3 &&
+                (peekBond(w, a.id, b.id)?.fam ?? 0) > 0.3 &&
                 !w.events.some(z => z.type === 'misread' && z.who.includes(a.id) && z.who.includes(b.id))
               ) {
                 ctrl = { a: a.id, b: b.id, like0: l };
@@ -127,7 +127,7 @@ function runSet(off: string[]) {
     for (const p of live(w)) {
       if (age(w, p) < 18) continue;
       const dislikers = live(w).filter(q => q !== p && likeOf(w, q.id, p.id) < -0.3).length;
-      const partners = live(w).filter(q => q !== p && (w.bonds.get(q.id * 100000 + p.id)?.touched ?? -99) >= w.t - 1).length;
+      const partners = live(w).filter(q => q !== p && (peekBond(w, q.id, p.id)?.touched ?? -99) >= w.t - 1).length;
       if (dislikers >= 3) {
         lonelyDisliked += partners;
         dislikedN++;

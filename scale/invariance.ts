@@ -63,8 +63,8 @@ function prints(runSeed: number, promote: boolean, salt?: number) {
     const evs = w.events.filter(e => e.who.some(i => ids.has(i))).map(e => keyOf(e.id));
     const places = ((w as any).bgPlaces as any[]).filter(pl => pl.hood === h);
     const bonds = [...w.bonds, ...(((w as any).bgBonds as Map<number, any> | undefined) ?? [])]
-      .filter(([k]) => ids.has(bkA(k)))
-      .map(([k, b]) => `${bkA(k)}-${bkB(k)}:${canon(b)}`)
+      .filter(([k]) => ids.has(bkA(w, k)))
+      .map(([k, b]) => `${bkA(w, k)}-${bkB(w, k)}:${canon(b)}`)
       .sort();
     const beliefs = ps.map(p => `${p.id}:${canon(w.beliefs.get(p.id) ?? null)}`);
     out.set(

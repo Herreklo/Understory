@@ -1,6 +1,7 @@
 // Time: what people work toward (pursuits), what they do every day (habits), and what holds them (attachments).
 // Pursuits make people agents instead of reactors. Habits make ordinary days legible. Attachments make leaving cost something.
 
+import { around, hoodOf, hoods, near, placeOf, staffOf } from './scale';
 import { quirkLine } from './persona';
 import { clamp } from './rng';
 import { SETTING } from './setting';
@@ -142,7 +143,7 @@ export function resolveWants(w: World, p: Person, kind: string, target: string, 
         learned(w, p, 'achieved', true);
       }
       // Followers lose their borrowed want when the owner's ends.
-      for (const q of live(w))
+      for (const q of around(w, p))
         for (const y of q.wants)
           if (!y.done && y.pursuit?.owner === p.id && y.kind === kind)
             endFollow(
@@ -181,7 +182,7 @@ function newWants(w: World, p: Person) {
         z01(p.values[g.value]) *
         (p.coreValues.includes(g.value) ? 1.6 : 0.5) *
         (g.id === 'house' && p.partner != null ? 1.5 : 1) *
-        (g.id === 'boat' && p.job === 'harbour' ? 1.5 : 1);
+        (g.id === 'boat' && (p.job === 'harbour' || (w.placeById.get(p.job ?? '') as any)?.type === 'harbour') ? 1.5 : 1);
       if (w.rng.chance(pull * 0.12)) {
         addWant(w, p, 'acquire', g.id, g.value, 0.3 + 0.4 * z01(p.values[g.value]));
         break;
@@ -486,7 +487,7 @@ function pursuitTick(w: World, p: Person) {
         const via = (pu as any).via;
         const h = via && p.habits.find(h => h.id === via && !h.broken);
         if (h && w.t - pu.since >= 10) {
-          const mates = live(w).filter(
+          const mates = near(w, p.id).filter(
             q => q !== p && q.habits.some(g => g.id === via && !g.broken) && likeOf(w, p.id, q.id) > 0.25 && likeOf(w, q.id, p.id) > 0.2,
           );
           if (mates.length) {
@@ -645,7 +646,7 @@ export function giveUp(w: World, p: Person, x: Want, d: any) {
   if (s) s.weight = Math.max(0.1, s.weight - 0.2);
   const h = p.habits.find(h => h.id === 'practise' && !h.broken);
   if (h && x.kind === 'prove') breakHabit(w, p, h, 'gave it up', e.id);
-  for (const q of live(w))
+  for (const q of around(w, p))
     for (const y of q.wants) if (!y.done && y.pursuit?.owner === p.id && y.kind === x.kind) endFollow(w, q, y, `@${p.id} gave up`, e.id);
 }
 function tell(w: World, p: Person, x: Want) {
@@ -685,7 +686,7 @@ function tell(w: World, p: Person, x: Want) {
     ],
   };
   const lead = p.job ? w.placeById.get(p.job)!.lead : null;
-  const barLead = w.placeById.get('bar')?.lead;
+  const barLead = (hoods(w) === 1 ? w.placeById.get('bar') : (placeOf(w, 'bar', hoodOf(w, p)) ?? w.placeById.get('bar')))?.lead; // in a city, their own neighbourhood's bar
   let text = texts[x.kind][Math.min(pu.told - 1, 2)]
     .replace('@lead', lead != null && lead !== p.id ? `@${lead}` : 'around')
     .replace('@bar', barLead != null ? `@${barLead}` : 'at the Anchor');
@@ -962,7 +963,12 @@ export const habitRelief = (p: Person) => 0.003 * p.habits.filter(h => !h.broken
 export function habitPairs(w: World): [Person, Person][] {
   const out: [Person, Person][] = [];
   const by = new Map<string, Person[]>();
-  for (const p of live(w)) for (const h of p.habits) if (!h.broken && h.kind === 'social') (by.get(h.id) ?? by.set(h.id, []).get(h.id)!).push(p);
+  for (const p of live(w))
+    for (const h of p.habits)
+      if (!h.broken && h.kind === 'social') {
+        const v = hoods(w) === 1 ? h.id : h.id + '|' + hoodOf(w, p); // in a city a routine is shared with the neighbourhood
+        (by.get(v) ?? by.set(v, []).get(v)!).push(p);
+      }
   for (const [, ps] of by) for (let i = 0; i < ps.length; i++) for (let j = i + 1; j < ps.length; j++) out.push([ps[i], ps[j]]);
   return out;
 }
@@ -1201,7 +1207,7 @@ function everydayTick(w: World, p: Person) {
     w: 0.4,
   });
   seenByClose(w, p, e);
-  if (p.job) for (const q of live(w)) if (q.job === p.job && q !== p) e.knownBy.set(q.id, 'seen');
+  if (p.job) for (const q of staffOf(w, p.job)) if (q.job === p.job && q !== p) e.knownBy.set(q.id, 'seen');
   broadcast(w, e);
 }
 

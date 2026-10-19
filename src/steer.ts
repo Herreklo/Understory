@@ -2,6 +2,7 @@
 // (a job, money, who they see). When a way fails, that is a decision: keep at it, try another way, aim lower, or let it go. People pursue
 // goals by choosing means and switching when one is blocked (Kruglanski and others 2002), and adjust a goal that cannot be had (Wrosch
 // and others 2003). A want given up comes back only changed. Switch: OFF=steer.
+import { around, hoods } from './scale';
 import { clamp } from './rng';
 import { SETTING } from './setting';
 import {
@@ -46,7 +47,18 @@ type Way = {
 };
 const placeOf = (w: World, x: Want) => (x.kind === 'attain' && x.target !== 'work' ? w.placeById.get(x.target) : undefined);
 const kin = (w: World, p: Person) =>
-  live(w).filter(q => q !== p && age(w, q) >= 18 && (p.parents.includes(q.id) || q.parents.some(k => p.parents.includes(k))));
+  (hoods(w) === 1 ? live(w) : kinOf(w, p)).filter(
+    q => q !== p && age(w, q) >= 18 && (p.parents.includes(q.id) || q.parents.some(k => p.parents.includes(k))),
+  );
+// In a city: parents and brothers and sisters found through the parents, in id order, wherever they live.
+function kinOf(w: World, p: Person): Person[] {
+  const ids = new Set<number>(p.parents);
+  for (const k of p.parents) for (const c of w.byId.get(k)?.kids ?? []) ids.add(c);
+  return [...ids]
+    .map(id => w.byId.get(id))
+    .filter((q): q is Person => !!q && q.status === 'in')
+    .sort((a, b) => a.id - b.id);
+}
 const kinWhoCould = (w: World, p: Person, x: Want) =>
   kin(w, p)
     .filter(q => q.savings > Math.max(8, 0.6 * costOf(x)))
@@ -55,7 +67,7 @@ export const costOf = (x: Want) => (x.kind === 'escape' ? SETTING.moveCost : (SE
 const workingFriend = (w: World, p: Person) => friendsOf(w, p).filter(q => q.job != null);
 // Someone they would like to know better, with a social routine they do not share.
 function companion(w: World, p: Person) {
-  return live(w)
+  return around(w, p)
     .filter(q => q !== p && !p.friends.has(q.id) && !family(p, q) && age(w, q) >= 16 && Math.abs(age(w, q) - age(w, p)) < 20)
     .map(q => ({ q, h: q.habits.find(h => !h.broken && h.kind === 'social' && !p.habits.some(g => g.id === h.id && !g.broken)) }))
     .filter(c => c.h && likeOf(w, p.id, c.q.id) > 0.05)

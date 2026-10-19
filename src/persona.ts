@@ -20,6 +20,7 @@
 //  - quirks: oddities built from their strongest traits, filled in from their own life (their trade's things, their people, their
 //    years), so a quirk means something and is theirs alone
 //  - small loves: two or three things they light up about
+import { around } from './scale';
 import { Rng, hash, clamp } from './rng';
 import { SETTING } from './setting';
 import { OFF, type World, type Person, type Event, age, year, live, likeOf, remember, addEvent, broadcast, bond } from './world';
@@ -448,7 +449,8 @@ function depthOf(w: World, p: Person) {
   // Being marked: likelier for the anxious and the unforgiving, and for a weighty or public blow; an old mark fades unless something renews it.
   const marked = (e: Event, key: string) => {
     const yrs = (w.t - e.t) / 12;
-    const z = 0.7 * f(p, 'anxiety') - 0.4 * f(p, 'forgiveness') + 0.6 * (e.w - 1.2) + (e.vis === 'public' ? 0.4 : 0) - 0.06 * yrs - 0.6;
+    const z =
+      0.7 * f(p, 'anxiety') - 0.4 * f(p, 'forgiveness') + 0.6 * (e.w - 1.2) + (((e as any).seen ?? e.vis) === 'public' ? 0.4 : 0) - 0.06 * yrs - 0.6;
     return new Rng(hash(w.seed, p.id, key, e.id)).next() < 1 / (1 + Math.exp(-2 * z));
   };
   const add = <T extends { key: string; from: number }>(arr: T[], x: T) => {
@@ -734,7 +736,7 @@ function joke(w: World, p: Person, ps: Persona) {
     causes = [eventCause(w, m.e.id, 0.5)];
     evidence = [ev(p.id, 'anxiety', -1, 0.5, 0.5)];
   } else if (style === 'cutting') {
-    const t = live(w)
+    const t = around(w, p)
       .filter(q => q !== p && age(w, q) >= 16 && likeOf(w, p.id, q.id) < -0.1 && bond(w, p.id, q.id).fam > 0.2)
       .sort((a, b) => likeOf(w, p.id, a.id) - likeOf(w, p.id, b.id))[0];
     if (!t) return;
@@ -784,7 +786,7 @@ function joke(w: World, p: Person, ps: Persona) {
     if (!OFF.has('jokeback')) queueProvocation(w, t, p, e, true);
   }
   if (style === 'warm')
-    for (const q of live(w).filter(q => q !== p && e.knownBy.get(q.id) === 'seen')) {
+    for (const q of around(w, p).filter(q => q !== p && e.knownBy.get(q.id) === 'seen')) {
       const b = bond(w, q.id, p.id);
       b.like = Math.min(1, b.like + 0.03);
     }

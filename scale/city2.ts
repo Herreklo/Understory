@@ -57,7 +57,7 @@ function social(w: World, ps: Group) {
     O40 = ps.filter(p => age(w, p) >= 40);
   const bondsOf = new Map<number, number>();
   for (const [key, r] of w.bonds) {
-    const a = bkA(key);
+    const a = bkA(w, key);
     if (r.fam >= 0.1) bondsOf.set(a, (bondsOf.get(a) ?? 0) + 1);
   }
   const marks = (p: Person) => {

@@ -35,6 +35,8 @@ export interface GenOpts {
   parents?: number[];
   last?: string;
   founder: boolean;
+  id?: number; // an id from a range of its own (a background neighbourhood's)
+  among?: Person[]; // the people a first name should differ from (default: the town)
 }
 
 // Two surnames a reader could mix up: the same, or one letter apart (Vale and Hale, Howell and Howells).
@@ -46,9 +48,9 @@ function nearSurname(a: string, b: string): boolean {
   if (a.length === b.length) return a.slice(i + 1) === b.slice(i + 1); // one letter changed
   return a.length > b.length ? a.slice(i + 1) === b.slice(i) : a.slice(i) === b.slice(i + 1); // one letter added or dropped
 }
-export function pickName(w: World, r: Rng, sex: 'f' | 'm', last?: string): string {
+export function pickName(w: World, r: Rng, sex: 'f' | 'm', last?: string, among: Person[] = w.people): string {
   const pool = SETTING.names[sex];
-  const living = w.people.filter(p => p.status !== 'dead');
+  const living = among.filter(p => p.status !== 'dead');
   for (let i = 0; i < 40; i++) {
     const n = r.pick(pool);
     if (!living.some(p => p.first === n)) return n;
@@ -67,7 +69,7 @@ export function pickName(w: World, r: Rng, sex: 'f' | 'm', last?: string): strin
 }
 
 export function generatePerson(w: World, opt: GenOpts): Person {
-  const id = w.nextId++;
+  const id = opt.id ?? w.nextId++;
   const r = stream(w.seed, 'person', id);
   const sex = opt.sex ?? (r.chance(0.5) ? 'f' : 'm');
   const parents = (opt.parents ?? []).map(i => w.byId.get(i)!).filter(Boolean);
@@ -205,7 +207,7 @@ export function generatePerson(w: World, opt: GenOpts): Person {
     0.5 * facets.diligence + 0.3 * facets.socialSelfEsteem - 0.3 * facets.anxiety + (0.3 * (values.success + values.freedom)) / 2 + r.normal() * 0.7;
   const p: Person = {
     id,
-    first: pickName(w, r, sex, last),
+    first: pickName(w, r, sex, last, opt.among),
     last,
     sex,
     born: w.t - Math.round(opt.age * 12) - r.int(0, 11),
