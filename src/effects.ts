@@ -4,7 +4,7 @@ import { clamp } from './rng';
 import { onStage, obstacle } from './steer';
 import { resolveWants, wantLabel, giveUp as giveUpWant } from './time';
 import type { Feature } from './features';
-import { SETTING } from './setting';
+import { SETTING, venueName } from './setting';
 import {
   plasticity,
   type World,
@@ -26,7 +26,7 @@ import { traitCause, stateCause, eventCause, ev, privC, closeC, bondC, learned }
 import { self, type Instance, type Outcome, run, friendsOf, queueProvocation, family } from './grammar';
 import { asked } from './situations/asked';
 import { deadline } from './situations/deadline';
-import { harbourAsk } from './situations/harbourday';
+import { yearlyAsk } from './situations/yearly';
 
 // Hooks for world effects after specific expressions in specific types.
 export function afterRun(w: World, inst: Instance, out: Outcome) {
@@ -34,14 +34,14 @@ export function afterRun(w: World, inst: Instance, out: Outcome) {
     e = out.event,
     x = out.expr;
   switch (inst.type) {
-    case 'harbourday': {
+    case SETTING.yearly.id: {
       if (x.id === 'stepup') {
-        if (!(w as any).harbourOrganiser) (w as any).harbourOrganiser = { id: p.id, t: w.t, ev: e.id };
+        if (!(w as any).yearlyOrganiser) (w as any).yearlyOrganiser = { id: p.id, t: w.t, ev: e.id };
         break;
       }
-      const pool = ((w as any).harbourPool ?? []) as Person[];
+      const pool = ((w as any).yearlyPool ?? []) as Person[];
       const next = pool.shift();
-      if (next && next.status === 'in') w.queue.push(harbourAsk(w, next));
+      if (next && next.status === 'in') w.queue.push(yearlyAsk(w, next));
       break;
     }
     case 'temptation':
@@ -116,10 +116,10 @@ export function afterRun(w: World, inst: Instance, out: Outcome) {
           who: [p.id],
           text:
             good > 0.8
-              ? `@${p.id} played the Anchor's open night and the room went quiet.`
+              ? `@${p.id} played ${venueName()}'s open night and the room went quiet.`
               : good > 0.1
-                ? `@${p.id} played the Anchor's open night and did well.`
-                : `@${p.id} played the Anchor's open night and fell apart.`,
+                ? `@${p.id} played ${venueName()}'s open night and did well.`
+                : `@${p.id} played ${venueName()}'s open night and fell apart.`,
           causes: [
             eventCause(w, e.id, 0.3),
             stateCause(`${sk} ${r > 1400 ? 'far better than anyone knew' : 'good, not great'}`, 0.5),

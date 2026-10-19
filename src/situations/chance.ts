@@ -1,13 +1,13 @@
 import { clamp } from '../rng';
 import { onStage } from '../steer';
 import type { Feature } from '../features';
-import { SETTING } from '../setting';
+import { SETTING, venueName } from '../setting';
 import { age, live } from '../world';
 import { facetC, stateC, learned } from '../considerations';
 import { type Instance, favour } from '../grammar';
 import type { SituationType } from './index';
 
-// A chance for a talent: the open night at the Anchor.
+// A chance for a talent: the venue's open night.
 export const chance: SituationType = {
   id: 'chance',
   match(w) {
@@ -30,12 +30,12 @@ export const chance: SituationType = {
         type: 'chance',
         actor: p,
         others: [],
-        thing: `a spot at the Anchor's open night`,
+        thing: `a spot at ${venueName()}'s open night`,
         features: new Set<Feature>(['public', 'watched', 'standing']),
         families: ['openness', 'reluctance'],
         only: { openness: ['seize'], reluctance: ['shyaway'] },
         causeLabel: `has been ${sk === 'vocals' ? 'singing' : `playing ${sk}`} for years`,
-        place: 'the Anchor',
+        place: venueName(),
         w: 1.5,
         familyExtra: {
           openness: [

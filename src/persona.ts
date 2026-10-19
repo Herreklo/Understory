@@ -22,7 +22,7 @@
 //  - small loves: two or three things they light up about
 import { around } from './scale';
 import { Rng, hash, clamp } from './rng';
-import { SETTING } from './setting';
+import { SETTING, venueName } from './setting';
 import { OFF, type World, type Person, type Event, age, year, live, likeOf, remember, addEvent, broadcast, bond } from './world';
 import { ev, traitCause, stateCause, eventCause } from './considerations';
 import { queueProvocation } from './grammar';
@@ -744,7 +744,7 @@ function joke(w: World, p: Person, ps: Persona) {
     if (!t) return;
     text = r.pick([
       `@${p.id} has a name for @${t.id} that has caught on, and @${t.id} knows it.`,
-      `@${p.id} does an impression of @${t.id} that the whole of ${r.pick((M.places ?? ['the Anchor']) as string[])} asks for.`,
+      `@${p.id} does an impression of @${t.id} that the whole of ${r.pick((M.places ?? [venueName()]) as string[])} asks for.`,
       `@${p.id} has a joke about @${t.id} that will not die.`,
     ]);
     who = [p.id, t.id];
@@ -758,7 +758,7 @@ function joke(w: World, p: Person, ps: Persona) {
     if (f0) causes = [eventCause(w, f0.id, 0.4)];
     evidence = [ev(p.id, 'socialSelfEsteem', -1, 0.4, 0.5)];
   } else {
-    const place = r.pick(M.places ?? ['the Anchor']);
+    const place = r.pick(M.places ?? [venueName()]);
     const mine = material(w, p, new Rng(hash(w.seed, p.id, 'joke', w.t)));
     const story = r.pick([
       `the time ${mine.thing} went over the side`,

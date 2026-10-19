@@ -4,7 +4,7 @@
 
 import { around, aroundAll, near } from './scale';
 import { clamp } from './rng';
-import { SETTING } from './setting';
+import { SETTING, venueName } from './setting';
 import {
   OFF,
   type World,
@@ -217,7 +217,7 @@ function moment(w: World, g: Group, k: Kind, e: { id: number; t: number }, ms: P
           clamp(
             0.08 +
               (close.has(x.id) ? 0.35 : 0) +
-              (x.habits.some(h => !h.broken && /Anchor/.test(h.label)) ? 0.25 : 0) +
+              (x.habits.some(h => !h.broken && h.place === SETTING.venue) ? 0.25 : 0) +
               (age(w, x) >= 15 && age(w, x) <= 30 ? 0.08 : 0) +
               0.06 * Math.max(0, ...k.skills.map(s => x.skills[s]?.interest ?? 0)),
             0,
@@ -247,7 +247,7 @@ function moment(w: World, g: Group, k: Kind, e: { id: number; t: number }, ms: P
         const ev2 = addEvent(w, {
           type: 'spark',
           who: [x.id],
-          text: `Since the night ${g.name} played the Anchor, @${x.id} has been teaching ${x.sex === 'f' ? 'herself' : 'himself'} ${sk === 'vocals' ? 'to sing' : sk}.`,
+          text: `Since the night ${g.name} played ${venueName()}, @${x.id} has been teaching ${x.sex === 'f' ? 'herself' : 'himself'} ${sk === 'vocals' ? 'to sing' : sk}.`,
           causes: [
             eventCause(w, e.id, 0.6),
             stateCause(

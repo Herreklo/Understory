@@ -12,7 +12,7 @@ A one-page map for changing the engine: what lives where, the order of a month, 
 | `rng.ts` | Seeded randomness |
 | `mathx.ts` | The engine's own `exp`, `log`, `pow`, `tanh` and `cos`, built from operations every language rounds the same way (`docs/scale/portability.md`, rule 3) |
 | `core.ts`, `features.ts` | Facets, values, dimensions; situation features and which facets they wake |
-| `setting.ts` | The setting pack: places, names, trades, quirk material. Content only, no rules |
+| `setting.ts` | The setting pack: places, names, trades, quirk material, its venue, the day it puts on once a year, the work that can hurt and the trade that goes out in bad weather, what each habit needs. Content only, no rules: the engine names no place of the town, it asks the setting |
 | `generate.ts`, `inclination.ts` | Making people; how strongly someone is drawn to a skill |
 | `decide.ts` | Considerations, response curves, scoring and choosing, reasons |
 | `families.ts` | Every act (expression) a person can do, grouped in families, with its own flags |

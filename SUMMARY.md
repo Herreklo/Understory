@@ -36,7 +36,7 @@ The people decide like people and can be read, but their lives are thin and repe
 
 This is the one priority list. Only Øystein changes its order, and a chat starts an experiment only from the top of it or when he names one.
 
-1. Housekeeping: settled switches and the experiments that were not kept removed (done, H30 and H31), the two giant files split (done, H32 and H33), the town's content moved out of the engine. Each step proven to change nothing.
+1. Housekeeping: settled switches and the experiments that were not kept removed (done, H30 and H31), the two giant files split (done, H32 and H33), the town's content moved out of the engine (done, H34). Each step proven to change nothing.
 2. Proposed: the accounts arc (#20). People remember their version of what happened, pass it on, and learn from it.
 3. For the game (Overstory): the front door's part two (#22), reads of what the player could know, player commands and versions; and the start year from the setting pack (#23), so a world can begin in another era.
 4. The city's background: partnering and children fixed, so it stops ageing.
@@ -48,6 +48,7 @@ This is the one priority list. Only Øystein changes its order, and a chat start
 
 ## Latest merges
 
+- **H34 (19 Oct):** the engine no longer names any place of the town. Its venue, its yearly harbour day, the work that can hurt and the fleet that goes out in storms now come from the setting pack, so a 1989 harbour or a football town brings its own. Nothing the engine does changed, not even a word.
 - **H33 (19 Oct):** the month's 2,300-line file is now one file per system (body, work, friendship, romance, stress, money, migration, the yearly pass), with `life.ts` only the order of a month. Nothing the engine does changed.
 - **H32 (19 Oct):** the file of situations, 2,100 lines, is now one file per kind of situation plus three small ones, so a new situation, or a setting's own, is a file of its own. Nothing the engine does changed.
 - **H31 (19 Oct):** the code of three experiments that were not kept is gone (a want from one's values, 25d; the work check, H26; monthly moods, 27). Each is kept at its tag. Nothing the engine does changed.
