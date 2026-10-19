@@ -30,6 +30,7 @@ switch=$(printf '%s\n' "${BODY:-}" | sed -nE 's/^Switch:[[:space:]]*OFF=([A-Za-z
 default_off=$(printf '%s\n' "${BODY:-}" | grep -cE '^Switch:[[:space:]]*ON=' || true)
 
 work=$(mktemp -d)
+trap 'git worktree remove --force "$work/main" >/dev/null 2>&1; rm -rf "$work"' EXIT
 git worktree add -q "$work/main" "$base" || fail "could not check out main at $base"
 (cd "$work/main" && npm ci --silent >/dev/null 2>&1) || fail "npm ci failed on main"
 
