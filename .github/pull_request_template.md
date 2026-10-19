@@ -1,23 +1,34 @@
-## Round
+<!-- Keep the section that applies and delete the other. -->
 
-<!-- e.g. 26 — the closest person decides whether to be there. Scale: S12 — … -->
+## Neutral change
+
+<!-- Label the PR `refactor` (nothing may change) or `words` (only text may change). -->
+
+**What it does (one line):**
+
+- [ ] Labelled `refactor` or `words`
+- [ ] CI's identity check against `main` is green
+- [ ] `SUMMARY.md` has a line if the owner should know
+
+## Experiment
+
+<!-- e.g. 28 — the closest person decides whether to be there. City: S13 — … -->
+
+Switch: OFF=
 
 **Outcome (one line, as in BOARD / SCALE.md):**
 
-## Checklist
-
-- [ ] Pre-registration was committed and pushed before any code (commit: )
+- [ ] Pre-registration committed and pushed before any code (commit: )
 - [ ] Seeds claimed in `docs/seeds.md`, all fresh
-- [ ] The change sits behind a switch (`OFF=`)
+- [ ] The change sits behind the switch above, and CI shows the world identical to `main` with it off
 - [ ] Smoke run on throwaway seeds only
-- [ ] Tested on fresh worlds, with and without
+- [ ] Tested on fresh worlds, with and without (`scripts/round.mjs`)
 - [ ] Cold reads done blind, before any metric was read
 - [ ] Headline numbers re-derived by a separate agent from the raw files
-- [ ] Gate: scoreboard paired within ±2 (non-couple decisions; overall beside it), or `ident.ts` / `sig.ts` identical where nothing should change
-- [ ] Scale only: a town-sized world is identical to main's
+- [ ] Gate: scoreboard paired within ±2 (decisions that are not a couple's; overall beside it)
 - [ ] Outcome recorded, whatever it was; nothing tuned after a result
-- [ ] `docs/STATUS.md` / `docs/ARCHITECTURE.md` (or `docs/scale/`) describe the design as it now is
+- [ ] `docs/STATUS.md`, `docs/ARCHITECTURE.md` (or `docs/scale/`) and `SUMMARY.md` describe the project as it now is
 - [ ] Moves exit-criterion point:
-- [ ] The warning in `WHY.md` this round risks, and what shows it did not:
+- [ ] The warning in `WHY.md` it risks, and what shows it did not:
 
-Merge with a merge commit. Then tag (`r26` / `s12`), attach raw outputs to the release, and update `NOW.md`.
+Merge with a merge commit. Then push `release/<tag>` to tag it and attach the raw outputs.
