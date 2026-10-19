@@ -1523,3 +1523,9 @@ Expected:
 5. Cold reads: a blind reader given lives from both arms prefers neither (within 4–8 of 12 either way).
 6. Cost: a world (seed 9101, thirty years of past and ten of present) at most 10% slower than with `OFF=mathx`.
 What would change our minds: a systematic shift in any measure means the model is sensitive to last digits in a way that matters, and it is examined before anything is kept; a function outside the accuracy bound is fixed before any run.
+
+Amendment to round 28 (19 Oct 2026, 20:25 Oslo, before any test or eval world has run). The pre-registration assumed that changing the last digits of every exponential would make worlds part ways within months, so that the round would be judged as a change to behaviour. The smoke runs say otherwise. On seeds 11–13 and 9101, thirty years of past and eight of present, the two arms have the same events, in the same order, with the same people, decisions and words; only stored numbers differ, by at most 2.5×10⁻¹⁵ in an option's probability and 7×10⁻¹⁶ in a bond. No decision sat close enough to a draw for the last digit to tip it. So the round is first judged as near-identical:
+- a new check compares the full event record of the two arms (type, month, who, decision chosen, text) on all forty fresh worlds, the eval range 1781–1800 and the test range 2941–2960, with the same years as the battery would use;
+- if every world's record is the same in both arms, the scoreboard, the lives and the cold reads cannot differ beyond the fifteenth digit, so they are not run, and the outcome says so;
+- if any world's record differs, the full battery runs as first pre-registered, on the same seeds.
+The accuracy check (expectation 1) measures cos by absolute error, since cos crosses zero, where a relative error means nothing; the others by relative error, as written.
