@@ -1,11 +1,12 @@
 // Round 29's own count: seen accounts held, how they were formed, and how often one decides. For smoke runs and the battery.
-//   tsx src/tools/diag/accounts.ts A B [years]   (seeds A..B; OFF=accounts is read as the other tools read it)
+//   ON=accounts tsx src/tools/diag/accounts.ts A B [years]   (seeds A..B; ON= and OFF= are read as the other tools read them)
 // Last line: ACCOUNTS {...}
 import { buildWorld, runYears } from '../../build';
 import { pickWitness } from '../../witness';
-import { OFF, P, peekBond, type World } from '../../world';
+import { OFF, ON, P, peekBond, type World } from '../../world';
 
 for (const x of (process.env.OFF ?? '').split(',').filter(Boolean)) OFF.add(x);
+for (const x of (process.env.ON ?? '').split(',').filter(Boolean)) ON.add(x);
 const [a, b, yrs] = [+(process.argv[2] ?? 9001), +(process.argv[3] ?? process.argv[2] ?? 9001), +(process.argv[4] ?? 10)];
 
 // A decision's top reason is its first keyed reason that is not an 'against' (as `decide` and `run` pick it); it passed the

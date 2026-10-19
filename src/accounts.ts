@@ -4,15 +4,19 @@
 // the doer. Everything that reads memories reads accounts: liking (contact), the bond reasons a decision gives, a friendship's or a
 // dislike's reasons. Only an act done to oneself can come back as an old wound.
 //
-// Seen accounts form from weighty acts (an event someone chose, on the consequence map's own line of weight) that others could see, for the people `broadcast` reached
-// as having seen it, so they follow settings and never a walk over the town. They fade as memories do; past a bound of live ones a
-// person drops the most faded first, so a crowded month loses what was half-forgotten and never what mattered.
+// Seen accounts form from weighty acts (an event someone chose, on the consequence map's own line of weight) that others could see,
+// for the people `broadcast` reached as having seen it, so they follow settings and never a walk over the town. They fade as memories
+// do; past a bound of live ones a person drops the most faded first, so a crowded month loses what was half-forgotten and never what
+// mattered.
+//
+// Off unless ON=accounts: round 29 did not meet its expectations (a seen account decided 0.29% of choices with another person, reach
+// 7% against 5%, and blind readers preferred the lives without it in 9 of 12 pairs, quoting bond reasons that argued against an act).
 
 import { EXPR } from './families';
 import { clamp } from './rng';
-import { OFF, bond, remember, memWeight, TEXTURE, VALENCE, type World, type Event, type Person, type Memory } from './world';
+import { ON, bond, remember, memWeight, TEXTURE, VALENCE, type World, type Event, type Person, type Memory } from './world';
 
-export const accountsOn = () => !OFF.has('accounts');
+export const accountsOn = () => ON.has('accounts');
 const SHARE = 0.3; // a seen act moves the bystander's feeling about the doer this much of what it does to the one it was done to
 const BOUND = 32; // live seen accounts a person holds before the most faded go
 const TYPICAL: [number, number, number] = [0.2, 0.3, 0.2]; // like, respect, trust: the hit of an act with no target of its own
