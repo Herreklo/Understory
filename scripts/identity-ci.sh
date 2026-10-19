@@ -11,7 +11,10 @@
 # Env: LABELS (comma-separated), BODY (the PR description), SUMMARY (a file the report is appended to; optional).
 set -uo pipefail
 
-say() { echo "$*"; [ -n "${SUMMARY:-}" ] && echo "$*" >>"$SUMMARY"; }
+say() {
+  echo "$*"
+  if [ -n "${SUMMARY:-}" ]; then echo "$*" >>"$SUMMARY"; fi
+}
 fail() { say ""; say "**✗ $***"; exit 1; }
 
 base=$(git rev-parse HEAD^1)
@@ -76,15 +79,16 @@ sig_ok=$?
 
 say ""
 say "Engine files changed: $(echo "$changed" | wc -l | tr -d ' ')."
-[ -n "$switch" ] && say "Checked with \`OFF=$switch\`, the switch this PR declares."
-[ -n "$arms" ] && say "Switch arms checked as well: $(echo "$arms" | tr ',' '\n' | wc -l | tr -d ' ')."
+if [ -n "$switch" ]; then say "Checked with \`OFF=$switch\`, the switch this PR declares."; fi
+if [ -n "$arms" ]; then say "Switch arms checked as well: $(echo "$arms" | tr ',' '\n' | wc -l | tr -d ' ')."; fi
 say ""
 say '```'
-tee -a "${SUMMARY:-/dev/null}" <"$work/ident.txt"
+cat "$work/ident.txt"
+if [ -n "${SUMMARY:-}" ]; then cat "$work/ident.txt" >>"$SUMMARY"; fi
 say '```'
 say ""
-[ $ident_ok -eq 0 ] && say "- Everything identical to main." || say "- Not identical to main in full (events, people, bonds, beliefs or streams)."
-[ $sig_ok -eq 0 ] && say "- Behaviour identical to main (words check)." || say "- Behaviour differs from main (words check)."
+if [ $ident_ok -eq 0 ]; then say "- Everything identical to main."; else say "- Not identical to main in full (events, people, bonds, beliefs or streams)."; fi
+if [ $sig_ok -eq 0 ]; then say "- Behaviour identical to main (words check)."; else say "- Behaviour differs from main (words check)."; fi
 
 if has_label refactor; then
   [ $ident_ok -eq 0 ] || fail "Labelled refactor, but the world is not identical to main."
@@ -99,3 +103,4 @@ else
 fi
 say ""
 say "**✓ Identity holds for what this PR says it is.**"
+exit 0
