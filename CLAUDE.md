@@ -67,4 +67,5 @@ A change merges only if:
 - Don't edit `src/` while a queue of runs is going: each queued run bundles the source when it starts. Use a worktree (`git worktree add ../lab-run main`) to run from a frozen tree while you keep working.
 - To stop a scoreboard: `kill $(pgrep -f "lab-run/src_tools_board")`. Never `pkill -f board.sh`.
 - Raw outputs go in `out-*/`, which git ignores.
+- CI does not start for a change to Markdown alone (NOW.md, BOARD, the docs), except `docs/seeds.md`; Actions minutes are limited.
 - Commit messages: `<round>: <what changed>`, e.g. `26: closest person decides whether to be there`.

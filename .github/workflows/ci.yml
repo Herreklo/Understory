@@ -1,9 +1,12 @@
 name: ci
 
+# A change to Markdown alone (NOW.md, BOARD, the docs) starts no run, except docs/seeds.md, which the seed check reads.
 on:
   push:
     branches: [main]
+    paths: ['**', '!**.md', 'docs/seeds.md']
   pull_request:
+    paths: ['**', '!**.md', 'docs/seeds.md']
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -19,6 +22,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
       - name: Seeds are never reused
         run: node scripts/check-seeds.mjs
@@ -35,9 +39,21 @@ jobs:
         if: hashFiles('.prettierrc.json') != ''
         run: npx prettier --check --no-error-on-unmatched-pattern "src/**/*.ts" "scale/**/*.ts"
 
-      - name: Browser for the page check
+      - name: Keep the page check's browser between runs
+        id: browser
         if: hashFiles('package.json') != ''
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Browser for the page check
+        if: hashFiles('package.json') != '' && steps.browser.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps chromium
+
+      - name: Browser's system libraries (browser from the cache)
+        if: hashFiles('package.json') != '' && steps.browser.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium
 
       - name: Tests
         if: hashFiles('package.json') != ''
