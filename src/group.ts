@@ -6,7 +6,6 @@ import { around, aroundAll, near } from './scale';
 import { clamp } from './rng';
 import { SETTING } from './setting';
 import {
-  floorOn,
   OFF,
   type World,
   type Person,
@@ -165,7 +164,7 @@ function tryForm(w: World, p: Person, k: Kind) {
   g.chemWhy = c.why;
   const e = addEvent(w, {
     type: 'group:formed',
-    who: floorOn() ? [...g.members] : g.members, // round F27: the event keeps who was there, not the live list
+    who: [...g.members], // the event keeps who was there, not the live list
     text: `${names(g.members)} started a ${k.noun}: ${g.name}.`,
     causes: [{ kind: 'want', label: `@${p.id} had been wanting to be heard`, weight: 0.5, key: k.wantKind, who: p.id }, ...c.why.slice(0, 2)],
     vis: 'public',
@@ -684,7 +683,7 @@ function leave(w: World, g: Group, p: Person, how: string, ref: number | undefin
         : { kind: 'state', label: `@${p.id} brought something the others could not`, weight: 0.7, who: p.id };
     const e2 = addEvent(w, {
       type: 'group:hole',
-      who: floorOn() ? [...g.members] : g.members, // round F27: the event keeps who was there, not the live list
+      who: [...g.members], // the event keeps who was there, not the live list
       text,
       causes: [cause],
       vis: 'local',
@@ -747,7 +746,7 @@ function endGroup(w: World, g: Group, k: Kind, how: string, ref?: number) {
         : '';
   const e = addEvent(w, {
     type: 'group:split',
-    who: floorOn() ? [...g.members] : g.members, // round F27: the event keeps who was there, not the live list
+    who: [...g.members], // the event keeps who was there, not the live list
     text: `${g.name} split up after ${yrs} year${yrs > 1 ? 's' : ''}: ${how}.${legacy}`,
     causes: [...(ref != null ? [eventCause(w, ref, 0.5)] : []), ...g.chemWhy.slice(0, 2)],
     vis: 'public',

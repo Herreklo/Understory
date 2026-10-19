@@ -4,7 +4,7 @@
 
 import type { Person, World, Cause } from './world';
 import type { Feature } from './features';
-import { facet, logistic, belief, peekBond, stateOf, OFF } from './world';
+import { facet, logistic, belief, peekBond, stateOf } from './world';
 import { FACETS, FACET_BY_ID } from './core';
 import * as MX from './mathx';
 
@@ -162,7 +162,6 @@ export interface Scored {
 export function score(options: Option[], view: View, variability: number, neutralise?: string): Scored[] {
   // How many considerations an answer carries must not decide it (round F26): every answer is scored as if it had as many as the one
   // with most, each missing one at the answer's own geometric mean, and the compensation is applied once, for that number.
-  const fair = !OFF.has('countfair');
   const nAll = Math.max(1, ...options.map(o => o.considerations.length));
   const out: Scored[] = options.map(o => {
     let s = o.base ?? 1;
@@ -174,10 +173,9 @@ export function score(options: Option[], view: View, variability: number, neutra
       logSum += MX.log(y);
       return { c, x, y };
     });
-    if (fair && parts.length) s = (o.base ?? 1) * MX.exp((logSum / parts.length) * nAll);
+    if (parts.length) s = (o.base ?? 1) * MX.exp((logSum / parts.length) * nAll);
     // Compensation, so options with more considerations aren't unfairly lowered.
-    const n = fair ? nAll : Math.max(1, o.considerations.length);
-    const mod = 1 - 1 / n;
+    const mod = 1 - 1 / nAll;
     s = s + (1 - s) * mod * s;
     return { id: o.id, label: o.label, score: s, p: 0, parts };
   });
@@ -194,9 +192,9 @@ export function score(options: Option[], view: View, variability: number, neutra
 }
 
 // What an observer can know is there: a decision as a witness sees it, without the considerations whose very presence depends on what it
-// cannot know (the self-story). Round M26; OFF=seenonly gives observers the true structure again.
+// cannot know (the self-story).
 export const seenBy = (options: Option[]): Option[] =>
-  OFF.has('seenonly') ? options : options.map(o => ({ ...o, considerations: o.considerations.filter(c => c.id !== 'identity') }));
+  options.map(o => ({ ...o, considerations: o.considerations.filter(c => c.id !== 'identity') }));
 export type ChoiceCtx = { t: number; who: number; kind: string; nudge: () => void };
 export function choose(scored: Scored[], r: () => number, ctx?: ChoiceCtx): Scored {
   let x = r();
@@ -239,13 +237,7 @@ export function reasons(chosen: Scored, scored: Scored[], view: View): Cause[] {
   // this one less). Printed as a reason it reads as nonsense ("gave generously: looks after themselves"); it is a 'despite'.
   // A circumstance, a bond or a value that argued against the act is marked the same way ('despite: it was put gently').
   const despite = (c: Cause): Cause =>
-    c.label.startsWith('despite')
-      ? c
-      : c.kind === 'trait'
-        ? { ...c, label: 'despite ' + c.label }
-        : OFF.has('despite')
-          ? c
-          : { ...c, label: 'despite: ' + c.label };
+    c.label.startsWith('despite') ? c : c.kind === 'trait' ? { ...c, label: 'despite ' + c.label } : { ...c, label: 'despite: ' + c.label };
   // A trait near the middle cannot be a 'despite'; if it argued against the act it is simply not a reason.
   const sayable = (c: Cause, y: number) => y >= 0.45 || c.kind !== 'trait' || c.label.includes(':');
   const out: Cause[] = forParts
@@ -254,9 +246,7 @@ export function reasons(chosen: Scored, scored: Scored[], view: View): Cause[] {
     .filter(x => sayable(x.c, x.y))
     .map(x => (x.y < 0.45 ? despite(x.c) : x.c));
   // The strongest consideration against: one that favoured the rival. A circumstance both options share argued against neither.
-  const against = (
-    OFF.has('despite') ? chosen.parts.slice() : chosen.parts.filter(p => MX.log(p.y) - MX.log(rivalY.get(p.c.id) ?? 0.5) < -0.05)
-  ).sort((a, b) => a.y - b.y)[0];
+  const against = chosen.parts.filter(p => MX.log(p.y) - MX.log(rivalY.get(p.c.id) ?? 0.5) < -0.05).sort((a, b) => a.y - b.y)[0];
   if (against && against.y < 0.45 && !out.some(c => c.key === against.c.id)) {
     const c = against.c.cause(view);
     if (sayable(c, against.y)) out.push({ ...despite(c), weight: 0, key: 'against:' + against.c.id });

@@ -1,8 +1,8 @@
 // The page's own rules, shared by everything that renders a life (the app, the cold-read pack, the coherence counter), so that what a
-// reader is given is one thing. Round F27: a reason that cites an event the page would not otherwise show gets that event shown under
+// reader is given is one thing. A reason that cites an event the page would not otherwise show gets that event shown under
 // it, and an act repeated word for word is shown the first and the last time, with the times between said once. Rendering only; the
-// record is untouched. With the floor off (OFF=floor) the lines come back as they were, so a reading can compare the two.
-import { floorOn, type Event, type World } from './world';
+// record is untouched.
+import { type Event, type World } from './world';
 
 export interface PageLine {
   e: Event;
@@ -19,7 +19,6 @@ export const shownCauses = (e: Event) => e.causes.filter(c => !c.key?.startsWith
 // The lines of a life, in the order given. `shown` is the set of event ids the page shows (the person's own list); it grows with the
 // cited events, so a later line does not cite the same event twice.
 export function pageLines(w: World, events: Event[], shown: Set<number>): PageLine[] {
-  if (!floorOn()) return events.map(e => ({ e, cited: [], again: 0 }));
   // Fold repeats: for each key, the first and the last occurrence stay.
   const last = new Map<string, number>();
   events.forEach((e, i) => last.set(sameAs(e), i));

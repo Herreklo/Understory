@@ -1,6 +1,6 @@
 // Round F27: the coherence floor. Builds fresh worlds, runs ten present years, and counts every known fault type (BOARD, round F27,
 // types 1–12) over the record and over the rendered lives, then prints a table and a machine-readable line.
-//   tsx src/tools/coherence.ts A B [--fail]   (seeds A..B; OFF=floor and ON=<name> are read as the other tools read them; with --fail the
+//   tsx src/tools/coherence.ts A B [--fail]   (seeds A..B; OFF=<name> and ON=<name> are read as the other tools read them; with --fail the
 //   run exits 1 on any count above zero, which is how npm test keeps the floor)
 // Last line: COHERENCE {"seeds":[A,B],"counts":{"1":n,...,"12":n}}
 //

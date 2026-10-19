@@ -44,14 +44,12 @@ for (const seed of [31, 32, 33]) {
     if (!b || (a.partner !== b.id && (a as any)['cs:' + b.id] == null && (b as any)['cs:' + a.id] == null))
       fail(`world ${seed}: a row between ${a.first} and ${b?.first}, who were never a couple`);
   }
-  // Each person's own list holds every thread event about them, once (an unkept act once took the thread's event off instead; round F26).
-  if (!OFF.has('eventfix'))
-    for (const e of w.events) {
-      if (!e.type.startsWith('thread:')) continue;
-      for (const id of new Set(e.who))
-        if (!w.byId.get(id)?.events.includes(e.id))
-          fail(`world ${seed}: ${e.type} event ${e.id} is missing from ${w.byId.get(id)?.first}'s own list`);
-    }
+  // Each person's own list holds every thread event about them, once.
+  for (const e of w.events) {
+    if (!e.type.startsWith('thread:')) continue;
+    for (const id of new Set(e.who))
+      if (!w.byId.get(id)?.events.includes(e.id)) fail(`world ${seed}: ${e.type} event ${e.id} is missing from ${w.byId.get(id)?.first}'s own list`);
+  }
   for (const p of w.people) if (new Set(p.events).size !== p.events.length) fail(`world ${seed}: ${p.first}'s own list holds an event twice`);
   // A couple's state lives in one place: on the partner with the lower id, never on the other (the round 20 bug).
   for (const p of w.people)

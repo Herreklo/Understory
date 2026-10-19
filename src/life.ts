@@ -86,7 +86,7 @@ export function tick(w: World) {
   // until the month ends.
   // (a test may give the past other dice from the same founding: pastSalt, set only by scale tests)
   const salt = (w as any).pastSalt != null ? [(w as any).pastSalt] : [];
-  if (!OFF.has('monthly')) setStreams(w, ...(w.t <= w.startPresent ? [w.seed, 'past', ...salt] : [w.seed, w.runSeed, 'run']), w.t);
+  setStreams(w, ...(w.t <= w.startPresent ? [w.seed, 'past', ...salt] : [w.seed, w.runSeed, 'run']), w.t);
   w.hooks.leaveTown = leaveTown;
   (w.hooks as any).split = split;
   use(w, 'body');
@@ -1049,7 +1049,7 @@ function checkBond(w: World, a: Person, b: Person) {
     (ra.fam > 0.5 || near) &&
     a.partner !== b.id &&
     w.t - cooledAt > 36 &&
-    (OFF.has('refade') || w.t - fadedAt > 36) && // round H25: a friendship that lapsed does not quietly come back within three years
+    w.t - fadedAt > 36 && // a friendship that lapsed does not quietly come back within three years
     w.t - (a.tried['friends']?.t ?? -99) > 4 &&
     w.t - (b.tried['friends']?.t ?? -99) > 4
   ) {
@@ -1062,8 +1062,8 @@ function checkBond(w: World, a: Person, b: Person) {
       learned(w, a, 'madeup', true);
       learned(w, b, 'madeup', true);
     }
-    // A friendship that lapsed and comes back: quiet within five years, unless lapses are held off (round H25), when the page says so.
-    const renewed = !again && !OFF.has('refade') && w.t - fadedAt < 600;
+    // A friendship that lapsed and comes back within fifty years: the page says so.
+    const renewed = !again && w.t - fadedAt < 600;
     const quiet = !again && !renewed && w.t - fadedAt < 60;
     if (nAgain < 2 && !quiet) {
       const e = addEvent(w, {

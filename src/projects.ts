@@ -11,7 +11,6 @@
 import { clamp } from './rng';
 import { SETTING } from './setting';
 import {
-  floorOn,
   OFF,
   type World,
   type Person,
@@ -521,7 +520,7 @@ function night(w: World, pr: Project, p: Person) {
   const lapsed: Person[] = [];
   // Round F27: the helpers list is only ever added to, so a helper who has died or left stays on it; the night names and counts
   // only those still here.
-  const helpers = floorOn() ? pr.helpers.filter(id => P(w, id).status === 'in') : pr.helpers;
+  const helpers = pr.helpers.filter(id => P(w, id).status === 'in');
   for (const h of helpers.map(id => P(w, id)).filter(q => q.status === 'in')) {
     const o = run(w, {
       type: 'pitch',

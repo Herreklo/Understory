@@ -3,7 +3,7 @@
 // on and off, the identity check with the switches off against the base branch, the round's own fault tool, `npm test`, and a blind
 // cold-read pack written before anything else; then it writes one summary. Jobs run in parallel; any job that fails, or leaves an
 // expected output missing, is named and makes the command exit nonzero. A separate agent still re-derives the headline numbers.
-//   node scripts/round.mjs --id F26 --switches countfair,eventfix --train 1501-1520 --eval 1721-1740 --test 3001-3020
+//   node scripts/round.mjs --id F26 --switches name1,name2 --train 1501-1520 --eval 1721-1740 --test 3001-3020
 //        [--faults src/tools/diag/f26.ts --faults-range 3021-3024] [--cold 3025-3026] [--commit HEAD] [--base origin/main]
 //        [--out out-round-F26] [--jobs 4] [--years 10] [--chunk 5] [--skip ident,npmtest,lives,loo,cold,board]
 import { execFileSync, spawn } from 'node:child_process';

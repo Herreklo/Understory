@@ -8,7 +8,7 @@ import { IFTHEN_TEMPLATES } from './features';
 import type { Dim } from './core';
 import { SETTING } from './setting';
 import { inclination } from './inclination';
-import { floorOn, OFF, type Person, type World } from './world';
+import { OFF, type Person, type World } from './world';
 
 const DIM_IDS: Dim[] = ['H', 'E', 'X', 'A', 'C', 'O'];
 
@@ -55,7 +55,7 @@ export function pickName(w: World, r: Rng, sex: 'f' | 'm', last?: string, among:
     const n = r.pick(pool);
     if (!living.some(p => p.first === n)) return n;
   }
-  if (!floorOn() || !last) return r.pick(pool);
+  if (!last) return r.pick(pool);
   // Round F27: when every first name is in use, a namesake is allowed only if the surnames cannot be mixed up; failing that, the
   // first name least used among the living.
   for (let i = 0; i < 40; i++) {

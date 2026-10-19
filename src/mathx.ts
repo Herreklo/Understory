@@ -2,8 +2,6 @@
 // cos to the engine that runs it; these are built only from addition, subtraction, multiplication, division and Math.sqrt, which
 // IEEE 754 rounds exactly everywhere, so the same seed gives the same world in any browser, any Node, or a port to another language.
 // Each is within a few parts in 10^16 of the true value over the ranges the engine uses (checked in npm test by mathtest.ts).
-// OFF=mathx gives the Math functions back.
-import { OFF } from './world';
 
 // ln 2 and π/2 in two parts: the first has trailing zero bits, so k times it is exact for the k the engine meets (fdlibm's split).
 const LN2_HI = 6.9314718036912381649e-1,
@@ -160,11 +158,11 @@ function ownCos(x: number): number {
   return q === 1 ? -s : s;
 }
 
-export const exp = (x: number) => (OFF.has('mathx') ? Math.exp(x) : ownExp(x));
-export const log = (x: number) => (OFF.has('mathx') ? Math.log(x) : ownLog(x));
-export const pow = (x: number, y: number) => (OFF.has('mathx') ? Math.pow(x, y) : ownPow(x, y));
-export const tanh = (x: number) => (OFF.has('mathx') ? Math.tanh(x) : ownTanh(x));
-export const cos = (x: number) => (OFF.has('mathx') ? Math.cos(x) : ownCos(x));
+export const exp = (x: number) => ownExp(x);
+export const log = (x: number) => ownLog(x);
+export const pow = (x: number, y: number) => ownPow(x, y);
+export const tanh = (x: number) => ownTanh(x);
+export const cos = (x: number) => ownCos(x);
 
-/** The engine's own functions, whatever the switch says (for the accuracy check). */
+/** The engine's own functions, by name (for the accuracy check). */
 export const own = { exp: ownExp, log: ownLog, pow: ownPow, tanh: ownTanh, cos: ownCos };

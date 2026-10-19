@@ -370,8 +370,6 @@ export const OFF = new Set<string>();
 // Mechanisms that are off unless asked for: a round that did not meet its expectations keeps its code behind one of these, so the
 // default model is the one before it. Turned on for a test with ON=<name>, as OFF=<name> turns a kept one off.
 export const ON = new Set<string>();
-// Round F27, the coherence floor: the engine-side fixes sit behind one switch, so the round can be measured with and without them.
-export const floorOn = () => !OFF.has('floor');
 // Round 27, states (behind ON=states): a person varies within themselves from month to month (Fleeson 2001). The spread is the person's own, set from
 // their variability (drawn at generation, wider for the anxious): about 0.6 of a facet's standard deviation, 0.3 to 1.0. A state is this
 // month's deviation on one facet, drawn from a stream of the person's own (the world seed in the past, the run seed in the present, the
@@ -443,7 +441,7 @@ export function remember(w: World, holder: Person, other: Person, ev: number, li
   const r = bond(w, holder.id, other.id);
   const neg = like + trust < 0;
   const k = neg ? 0.8 : 0.5;
-  if (floorOn() && ev >= 0) {
+  if (ev >= 0) {
     // Round F27: an act's generic effect and the situation's own effect could both remember one event. The second write keeps
     // its words (the situation's are the more particular) and adds nothing to the bond: the first write already did.
     const i = r.mem.findIndex(m => m.ev === ev);
