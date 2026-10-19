@@ -29,7 +29,8 @@ import {
   bond,
 } from './world';
 import { around, hoodOf, hoods, jobSet, moved, near, placeOf, staffOf } from './scale';
-import { run, decide, traitCause, stateCause, eventCause, ev, facetC, bondC, pubC, privC, family, favour } from './grammar';
+import { run, decide, family, favour } from './grammar';
+import { traitCause, stateCause, eventCause, ev, facetC, bondC, pubC, privC } from './considerations';
 import { z01 } from './decide';
 import { regard } from './regard';
 import { startRivalry } from './drama';

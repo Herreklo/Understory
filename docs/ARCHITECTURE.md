@@ -16,7 +16,10 @@ A one-page map for changing the engine: what lives where, the order of a month, 
 | `generate.ts`, `inclination.ts` | Making people; how strongly someone is drawn to a skill |
 | `decide.ts` | Considerations, response curves, scoring and choosing, reasons |
 | `families.ts` | Every act (expression) a person can do, grouped in families, with its own flags |
-| `grammar.ts` | Situations (`TYPES`), `run` (one decision from situation to event and effects), the monthly situation pass |
+| `grammar.ts` | `decide` and `run` (one decision from situation to event), how a family is wired to facets and self-stories, picking an act within a family, the queue of situations one event causes |
+| `considerations.ts` | The parts a decision is made of: causes, evidence, and the considerations (`facetC`, `valueC`, `bondC`, `stateC` and the rest); each person's own chance (`chanceOf`) |
+| `effects.ts` | What an answered situation leaves behind (`afterRun`) |
+| `situations/` | One file per kind of situation, each a `match(w)`; `index.ts` lists them in matching order (`TYPES`; the order decides which situation a person meets) and runs the monthly pass; `raised.ts` holds the situations other systems raise directly (contests, judgements, losses) |
 | `life.ts` | The month (`tick`), body, work, contact and friendship, romance, family, stress, money, migration |
 | `time.ts`, `threads.ts` | Wants and pursuits, habits, attachment to home; the same pressure answered the same way, again and again |
 | `steer.ts` | How a pursuit is gone after (its ways, each through a part of the town), obstacles as decisions, and wants that come back only changed |
@@ -36,7 +39,7 @@ A one-page map for changing the engine: what lives where, the order of a month, 
 
 ## A month
 
-`tick` in `life.ts` runs the systems in this order. Each one draws from its own random stream (`use(w, system)`), so switching one off reshuffles no other system's dice. Every stream is drawn afresh at the start of each month (from the world or run seed, the month and the system), and the draw that decides a choice comes from the chooser's own stream (`chanceOf` in `grammar.ts`), so whatever shifts a stream shifts it only until the month ends, and one person's choices never move another's. The order matters: a system sees what earlier systems did this month.
+`tick` in `life.ts` runs the systems in this order. Each one draws from its own random stream (`use(w, system)`), so switching one off reshuffles no other system's dice. Every stream is drawn afresh at the start of each month (from the world or run seed, the month and the system), and the draw that decides a choice comes from the chooser's own stream (`chanceOf` in `considerations.ts`), so whatever shifts a stream shifts it only until the month ends, and one person's choices never move another's. The order matters: a system sees what earlier systems did this month.
 
 1. **body**: health, illness; then deaths.
 2. **work**: hiring, dismissal, promotion, retirement.
@@ -58,7 +61,7 @@ A world is built by `buildWorld` (founders, families, jobs at year zero) and the
 
 **An act**: one `E({...})` in `families.ts`: its family, intensity, the facets that favour it, its words, what it reveals (evidence) and what it does to the bond. Its flags say where it can appear: `named` (only where a situation lists it in `only`), `needsTarget` (needs someone to be done to), `solo`, `quiet`, `secret`, `onlyIf` (only for some people). If it has effects beyond the bond, they go in `run`'s effects in `grammar.ts`. Give it a label in `tools/consequences.ts` (`system`) so the consequence map files it.
 
-**A situation**: an entry in `TYPES` in `grammar.ts` with `match(w)` returning instances: who acts, toward whom, the features, the families and acts allowed, the reason it arose (`cause`, an event, wherever there is one), and its own considerations (`familyExtra` per family). A circumstance that should push one way belongs in the family it pushes toward. A situation that rests on recent history reads it with `recentEvents(w, since)`, never by filtering the whole record. It picks the people who could take part from their settings (`around`, `staffOf`, `near`), never by scanning the whole town (`docs/scale/contract.md`).
+**A situation**: a file in `src/situations/`, listed in `TYPES` in `situations/index.ts`, with `match(w)` returning instances: who acts, toward whom, the features, the families and acts allowed, the reason it arose (`cause`, an event, wherever there is one), and its own considerations (`familyExtra` per family). A circumstance that should push one way belongs in the family it pushes toward. A situation that rests on recent history reads it with `recentEvents(w, since)`, never by filtering the whole record. It picks the people who could take part from their settings (`around`, `staffOf`, `near`), never by scanning the whole town (`docs/scale/contract.md`).
 
 **A system**: a tick function called from `tick` at the right point, a name in `SYSTEMS` (its own random stream), an `OFF` switch so its contribution can be measured by switching it off, and a measure in `src/tools/`.
 

@@ -43,27 +43,10 @@ import { generatePerson, healthTarget, ceilingFor, attracted } from './generate'
 import { regard, regardWeight } from './regard';
 // How well ordinary contact reads a facet, by HEXACO dimension: the correlation of an other-rating with the truth after ordinary acquaintance.
 const MANNER_ACCURACY: Record<string, number> = { X: 0.45, C: 0.35, O: 0.3, A: 0.25, E: 0.22, H: 0.18, I: 0.28 };
-import {
-  situationsTick,
-  spotlightTick,
-  contestLost,
-  judgement,
-  loss,
-  friendsOf,
-  family,
-  traitCause,
-  stateCause,
-  eventCause,
-  ev,
-  facetC,
-  valueC,
-  stateC,
-  pubC,
-  privC,
-  learned,
-  decide,
-  attachC,
-} from './grammar';
+import { situationsTick, spotlightTick } from './situations';
+import { contestLost, judgement, loss } from './situations/raised';
+import { friendsOf, family, decide } from './grammar';
+import { traitCause, stateCause, eventCause, ev, facetC, valueC, stateC, pubC, privC, learned, attachC } from './considerations';
 import * as MX from './mathx';
 import { scoreRecent } from './witness';
 import { steering, extraPay, backing } from './steer';

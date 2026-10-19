@@ -21,7 +21,8 @@ import {
 } from './world';
 import type { Feature } from './features';
 import type { Family, Expression } from './families';
-import { run, friendsOf, family, eventCause, stateCause, traitCause, bondC, pubC, ev } from './grammar';
+import { run, friendsOf, family } from './grammar';
+import { eventCause, stateCause, traitCause, bondC, pubC, ev } from './considerations';
 
 const she = (p: Person) => (p.sex === 'f' ? 'she' : 'he');
 const PATTERN: Record<string, (p: Person, th: Thread) => string> = {

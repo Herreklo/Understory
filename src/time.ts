@@ -30,24 +30,8 @@ import {
   year,
 } from './world';
 import { z01, curves, type Option, type Consideration } from './decide';
-import {
-  decide,
-  run,
-  friendsOf,
-  family,
-  traitCause,
-  stateCause,
-  eventCause,
-  ev,
-  facetC,
-  valueC,
-  stateC,
-  privC,
-  pubC,
-  closeC,
-  bondC,
-  learned,
-} from './grammar';
+import { decide, run, friendsOf, family } from './grammar';
+import { traitCause, stateCause, eventCause, ev, facetC, valueC, stateC, privC, pubC, closeC, bondC, learned } from './considerations';
 import type { Feature } from './features';
 import { hasWays, chooseWay, setOut, wayTick, obstacle, markGivenUp, mayComeBack, steering } from './steer';
 
