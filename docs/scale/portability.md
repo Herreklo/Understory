@@ -9,15 +9,17 @@ Rules for engine code, so the engine can move to another language, and sit under
 A game, or any front end outside this repo, talks to a world through `src/boundary.ts`, and only through it:
 - **commands in:** `createWorld` (seed, run seed, past years, founding adults, whether to place the witness) and `command` (advance a number of months);
 - **events out:** `events(h, since)`, the record from a month on, each event with its reasons, evidence, decision and who knows it;
-- **queries:** `now`, `townIds`, `person`, `bondOf` (never creates a bond), `beliefsHeld`.
+- **queries:** `now`, `townIds` (in a city, everyone simulated month by month), `person`, `bondOf` (never creates a bond), `beliefsHeld`.
 
-The caller holds a world as an opaque handle. Everything the boundary gives back is plain data (numbers, strings, booleans, arrays and records), copied, so nothing the caller does to it can change the world. A Map becomes its entries and a Set its members, in the engine's own order; a negative zero is given as zero, since JSON cannot carry its sign.
+No query writes anything into the world.
+
+The caller holds a world as a handle that the type checker keeps opaque. Everything the boundary gives back is plain data (numbers, strings, booleans, arrays and records), copied, so nothing the caller does to it can change the world. A Map becomes its entries and a Set its members, in the engine's own order; a negative zero is given as zero, since JSON cannot carry its sign. World state holds no NaN or infinity, which JSON cannot carry either.
 
 The lab page and the tools in `src/tools/` read the engine directly: they are the lab's instruments, not games.
 
 **Why:** with one boundary, a game and the engine can each change language, or be replaced, without the other noticing. A game built on the engine's internals is welded to them.
 
-**Checked by** `src/tools/boundarytest.ts` (in `npm test`): a world run through the boundary hashes identical to one run directly, every answer survives a JSON round trip unchanged, changing an answer leaves the world unchanged, and reading the world through a handle does not type-check.
+**Checked by** `src/tools/boundarytest.ts` (in `npm test`): a world run through the boundary hashes identical to one run directly, every answer survives a JSON round trip unchanged, reading the world and changing an answer leave it identical to a world nobody read, and reading the world through a handle does not type-check.
 
 ## 2. The record is the reference
 
@@ -37,7 +39,7 @@ Engine code does not call `Math.exp`, `Math.log`, `Math.pow`, `Math.tanh`, the t
 
 No outcome depends on an order the language happens to give. The orders the engine relies on are these, and a port keeps them:
 - a `Map` or a `Set` is read in insertion order (in a port: an insertion-ordered map, never a hash map read in hash order);
-- an object's keys are read in JavaScript's order: keys that look like whole numbers first, ascending, then the rest in insertion order;
+- an object's keys are read in JavaScript's order: keys that are whole numbers from 0 (array indices) first, ascending, then the rest in insertion order;
 - every sort is stable, so ties keep the order they came in (in a port: a stable sort), and every comparator is a pure numeric difference, never NaN;
 - strings that decide anything are compared by code point, never with `localeCompare`.
 
@@ -51,7 +53,7 @@ Every field a world, person, bond, couple or group carries is declared in its ty
 
 ## 6. State is data
 
-Person, bond, belief, event, group and place state holds numbers, strings, booleans, arrays, records, Maps and Sets of them: no functions, no class instances with behaviour. A random stream is its state, a number. The world's `hooks` are wiring set when a world is built; they are rebuilt, never stored.
+Person, bond, belief, event, group and place state holds numbers, strings, booleans, arrays, records, Maps and Sets of them: no functions, no class instances with behaviour. A random stream (`Rng`) is an object around its state, a number, and a port keeps the number. The world's `hooks` are wiring, set when a world is built and its witness placed; they are rebuilt, never stored.
 
 **Why:** data maps directly onto structs in any language, and it is what a saved game is. `src/tools/clone.ts` copies a world, and `whatif.ts check` proves the copy runs exactly as the original.
 

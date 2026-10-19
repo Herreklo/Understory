@@ -5,7 +5,7 @@
 import { buildWorld } from './build';
 import { tick } from './life';
 import { pickWitness } from './witness';
-import { live, peekBond, year, type Belief, type Bond, type Event, type Person, type World } from './world';
+import { peekBond, year, type Belief, type Bond, type Event, type Person, type World } from './world';
 
 declare const opaque: unique symbol;
 /** A world, held by the caller and read only through this file. */
@@ -68,12 +68,12 @@ export function command(h: WorldHandle, c: Command): void {
 
 // ── Events ──
 
-/** Every event from month `since` on, oldest first, each with its reasons, its evidence and who knows it. */
+/** Every event from month `since` on, in the order the record holds them, each with its reasons, its evidence and who knows it.
+ * The whole record is read: in a city, a neighbourhood brought into focus adds events dated in its replayed past at the end. */
 export function events(h: WorldHandle, since = 0): Plain<Event>[] {
-  const evs = W(h).events;
-  let i = evs.length;
-  while (i > 0 && evs[i - 1].t >= since) i--; // the record is in time order: read it from the end
-  return evs.slice(i).map(e => plain(e));
+  return W(h)
+    .events.filter(e => e.t >= since)
+    .map(e => plain(e));
 }
 
 // ── Queries ──
@@ -90,9 +90,12 @@ export function now(h: WorldHandle): Now {
   return { t: w.t, year: year(w.t), startPresent: w.startPresent, witness: w.witness };
 }
 
-/** The people living in town now, by id, in the engine's order. */
+/** The people in town now (in a city: everyone simulated month by month), by id, in the engine's order. Read straight from the
+ * people, never through the city's index, which places people in neighbourhoods as it is built. */
 export function townIds(h: WorldHandle): number[] {
-  return live(W(h)).map(p => p.id);
+  return W(h)
+    .people.filter(p => p.status === 'in')
+    .map(p => p.id);
 }
 
 export function person(h: WorldHandle, id: number): Plain<Person> | null {

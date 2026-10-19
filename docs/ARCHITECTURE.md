@@ -78,7 +78,7 @@ States (round 27, `ON=states`, off by default): with it on, every facet a decisi
 
 ## Known debt
 
-- **The `tried` store** carries flags and state under text keys, and about 140 places reach past the types (`as any`) for fields the person type does not declare (`lastIll`, `interestFrom`, couple state). A typo fails silently. It moves to named, typed fields when a round touches it.
+- **The `tried` store** carries flags and state under text keys, and about 230 places reach past the types (`as any`) for fields the person type does not declare (`lastIll`, `interestFrom`, couple state). A typo fails silently. It moves to named, typed fields when a round touches it.
 - **Circumstances in `extra`**: some situations give every option the same circumstance (short of money, already stretched), so it cannot push one way. Whether that changes behaviour is a question for a round, not a cleanup.
 - **Portability** (`docs/scale/portability.md`): 33 calls to `Math.exp`, `log`, `pow`, `tanh`, `cos` and the like (rule 3; replacing them changes the last digits of numbers, so it is a round of its own); the `tried` store and the `as any` above (rule 5); the setting pack and the words of acts live in code (`setting.ts`, `families.ts`, `motives.ts`), not in data (rule 7).
 - **The lab page** lists source files by path; the published page needs its files republished when the layout changes.

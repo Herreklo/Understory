@@ -29,18 +29,23 @@ const recent = events(h, t.t - 6);
 strictEqual(recent.length, direct.events.filter(e => e.t >= t.t - 6).length, 'events(since) misses or adds events');
 const ids = townIds(h);
 roundTrip('townIds', ids);
+strictEqual(ids.length, direct.people.filter(q => q.status === 'in').length, 'townIds() is not the town');
 for (const id of ids.slice(0, 10)) {
   roundTrip(`person ${id}`, person(h, id));
   roundTrip(`beliefs of ${id}`, beliefsHeld(h, id));
   for (const other of ids.slice(0, 10)) roundTrip(`bond ${id}→${other}`, bondOf(h, id, other));
 }
 
-// Reading through the boundary changes nothing, and what it gave back is a copy: changing it leaves the world as it was.
-const before = signature(h as unknown as World);
+// Reading through the boundary changed nothing (no bond made, no state written), and what it gave back is a copy: changing it
+// leaves the world as it was. Compared with the world run directly, which nothing has read.
 const p = person(h, ids[0])!;
 (p as any).first = 'Changed';
 evs[0].text = 'changed';
-deepStrictEqual(signature(h as unknown as World), before, 'reading through the boundary, or changing what it gave back, changed the world');
+deepStrictEqual(
+  signature(h as unknown as World),
+  signature(direct),
+  'reading through the boundary, or changing what it gave back, changed the world',
+);
 
 // The handle is opaque to callers: reading the world through it must not type-check (checked by tsc in npm test, never run).
 export function opaque(x: WorldHandle) {
