@@ -49,7 +49,7 @@ import {
   learned,
 } from './grammar';
 import type { Feature } from './features';
-import { hasWays, chooseWay, setOut, wayTick, obstacle, markGivenUp, mayComeBack, steering, everyone, wantFromValues } from './steer';
+import { hasWays, chooseWay, setOut, wayTick, obstacle, markGivenUp, mayComeBack, steering } from './steer';
 
 const VN = Object.fromEntries(VALUES.map(v => [v.id, v.name]));
 const NONE = new Set<Feature>();
@@ -170,7 +170,6 @@ const PLAN: Record<string, string> = {
 const active = (p: Person) => p.wants.filter(x => !x.done && x.pursuit && !x.pursuit.owner);
 
 function newWants(w: World, p: Person) {
-  wantFromValues(w, p, (kind, target, value, urgency) => addWant(w, p, kind, target, value, urgency)); // round 25d
   const a = age(w, p);
   if (a < 15 || !w.rng.chance(0.06)) return;
   // Something to own.
@@ -423,9 +422,7 @@ function pursuitTick(w: World, p: Person) {
     }
   // Starting: a want becomes a pursuit, or stays a wish.
   if (a >= 15 && !active(p).length && w.rng.chance(0.1)) {
-    const open = p.wants.filter(
-      x => !x.done && !x.pursuit && (PLAN[x.kind] || (x.kind === 'win' && everyone())) && !(x.kind === 'attain' && !p.job && x.target !== 'work'),
-    );
+    const open = p.wants.filter(x => !x.done && !x.pursuit && PLAN[x.kind] && !(x.kind === 'attain' && !p.job && x.target !== 'work'));
     if (open.length) startPursuit(w, p, w.rng.pick(open));
   }
   for (const x of active(p)) {

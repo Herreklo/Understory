@@ -4,7 +4,7 @@
 
 import type { Person, World, Cause } from './world';
 import type { Feature } from './features';
-import { facet, logistic, belief, peekBond, stateOf } from './world';
+import { facet, logistic, belief, peekBond } from './world';
 import { FACETS, FACET_BY_ID } from './core';
 import * as MX from './mathx';
 
@@ -24,7 +24,7 @@ export function truthView(w: World): View {
   let v = truths.get(w);
   if (!v) {
     v = {
-      facet: (p, k, t, f) => facet(p, k, t, f) + stateOf(w, p, k), // the level, plus this month's state (round 27)
+      facet: (p, k, t, f) => facet(p, k, t, f),
       value: (p, k) => p.values[k] ?? 0,
       bond: (a, b, axis) => peekBond(w, a.id, b)?.[axis] ?? 0,
       state: (_p, _k, x) => x,

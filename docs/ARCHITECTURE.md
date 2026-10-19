@@ -108,7 +108,7 @@ A world is built by `buildWorld` (founders, families, jobs at year zero) and the
 | `exposure` | Familiarity making people easier to like |
 | `relbar` | The friendship bar relative to one's own world |
 
-**Mechanisms that were not kept,** off by default: `everyone` (a yearly want from one's values, round 25d), `jobact` (no burying oneself in work without work, round H26), `states` (a month-to-month state on every facet, round 27). Each is removed in the next neutral change unless `SUMMARY.md` names a coming round that reuses it.
+**Mechanisms that were not kept** leave the engine in the next neutral change; their code stays at the round's tag, for a later round that wants it back.
 
 ## Checks
 
