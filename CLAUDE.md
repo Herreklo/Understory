@@ -17,7 +17,7 @@ One session changes the engine. Others may read, measure and review, but not edi
 
 Shared files, edited by the open round only: `NOW.md` (one block: what is open, on which branch, what it waits for), `docs/seeds.md` (append rows, never edit earlier ones), `CLAUDE.md`, `README.md`, `.github/`.
 
-All new engine code follows `docs/scale/contract.md`.
+All new engine code follows `docs/scale/contract.md` and `docs/scale/portability.md`.
 
 ## How a round runs
 
