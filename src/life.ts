@@ -64,6 +64,7 @@ import {
   decide,
   attachC,
 } from './grammar';
+import * as MX from './mathx';
 import { scoreRecent } from './witness';
 import { steering, extraPay, backing } from './steer';
 import { threadsTick } from './threads';
@@ -144,7 +145,7 @@ function bodyTick(w: World, p: Person) {
   p.health += (tgt - p.health) * 0.08;
   if (a < 16 || p.ill) return;
   if (w.t - (((p as any).lastIll as { t: number } | undefined)?.t ?? -99) < 9) return; // a body needs time between illnesses
-  const risk = 0.0009 * Math.exp((a - 45) / 14) * (1.3 - 0.3 * p.constitution) * (p.drinks ? 1.8 : 1) * (p.stress > 0.7 ? 1.3 : 1);
+  const risk = 0.0009 * MX.exp((a - 45) / 14) * (1.3 - 0.3 * p.constitution) * (p.drinks ? 1.8 : 1) * (p.stress > 0.7 ? 1.3 : 1);
   if (w.rng.chance(risk)) {
     const kinds: [string, number][] =
       a < 50
@@ -205,7 +206,7 @@ function bodyTick(w: World, p: Person) {
 function mortality(w: World, p: Person): boolean {
   const a = age(w, p);
   // Gompertz, fitted to Norwegian rates (about 0.5% a year at 60, 1.6% at 70, 5% at 80, 16% at 90, half at 100); illness and poor health multiply it.
-  let h = Math.min(0.8, 0.0000025 * Math.exp(0.116 * a)) / 12;
+  let h = Math.min(0.8, 0.0000025 * MX.exp(0.116 * a)) / 12;
   if (a >= 105) h = Math.max(h, 0.6 / 12); // nobody outlives the record
   const norm = 0.78 - Math.max(0, a - 45) * 0.009; // health that is normal for this age
   if (p.health < norm) h *= 1 + (norm - p.health) * 4; // only health worse than that adds risk: drink, strain, a weak constitution
@@ -584,7 +585,7 @@ export function assignCircle(w: World, p: Person) {
 }
 // Someone moves to town for a job. About a third of those in their late twenties and thirties bring a family: small towns live on that.
 function newcomer(w: World, pl: any) {
-  const a = 23 + Math.floor(Math.pow(w.rng.next(), 1.5) * 20); // mostly young: the jobs that go begging in a small town draw people starting out
+  const a = 23 + Math.floor(MX.pow(w.rng.next(), 1.5) * 20); // mostly young: the jobs that go begging in a small town draw people starting out
   const p = generatePerson(w, { age: a, founder: true });
   settleIn(w, p);
   p.skills[pl.skill].r = 1250 + w.rng.next() * 200;

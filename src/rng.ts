@@ -1,5 +1,6 @@
 // Seeded randomness. Every draw comes from a stream derived from the world seed plus
 // the entity and purpose it serves, so adding a person never changes anyone else's fate.
+import * as MX from './mathx';
 
 export function hash(...parts: (string | number)[]): number {
   let h = 2166136261 >>> 0;
@@ -33,7 +34,7 @@ export class Rng {
       v = 0;
     while (!u) u = this.next();
     while (!v) v = this.next();
-    return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+    return Math.sqrt(-2 * MX.log(u)) * MX.cos(2 * Math.PI * v);
   }
   range(a: number, b: number): number {
     return a + (b - a) * this.next();
@@ -75,7 +76,7 @@ export const clamp = (x: number, lo: number, hi: number) => Math.max(lo, Math.mi
 // Standard normal cumulative distribution (Abramowitz–Stegun approximation).
 export function normCdf(z: number): number {
   const t = 1 / (1 + 0.2316419 * Math.abs(z));
-  const d = 0.3989423 * Math.exp((-z * z) / 2);
+  const d = 0.3989423 * MX.exp((-z * z) / 2);
   const p = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274))));
   return z > 0 ? 1 - p : p;
 }

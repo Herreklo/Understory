@@ -6,6 +6,7 @@ import type { Person, World, Cause } from './world';
 import type { Feature } from './features';
 import { facet, logistic, belief, peekBond, stateOf, OFF } from './world';
 import { FACETS, FACET_BY_ID } from './core';
+import * as MX from './mathx';
 
 // A View is how the decider's inner life is read. 'truth' reads the person as they are;
 // a witness view reads them through someone else's beliefs (for prediction and surprise).
@@ -117,11 +118,11 @@ export const curves = {
   sCurve:
     (k = 8, mid = 0.5, lo = 0.05): Curve =>
     x =>
-      lo + (1 - lo) / (1 + Math.exp(-k * (x - mid))),
+      lo + (1 - lo) / (1 + MX.exp(-k * (x - mid))),
   sFalling:
     (k = 8, mid = 0.5, lo = 0.05): Curve =>
     x =>
-      lo + (1 - lo) / (1 + Math.exp(k * (x - mid))),
+      lo + (1 - lo) / (1 + MX.exp(k * (x - mid))),
   flat:
     (v = 1): Curve =>
     () =>
@@ -170,10 +171,10 @@ export function score(options: Option[], view: View, variability: number, neutra
       const x = c.id === neutralise ? (c.neutral ?? 0.5) : Math.max(0, Math.min(1, c.input(view)));
       const y = Math.max(0.01, Math.min(1, c.curve(x)));
       s *= y;
-      logSum += Math.log(y);
+      logSum += MX.log(y);
       return { c, x, y };
     });
-    if (fair && parts.length) s = (o.base ?? 1) * Math.exp((logSum / parts.length) * nAll);
+    if (fair && parts.length) s = (o.base ?? 1) * MX.exp((logSum / parts.length) * nAll);
     // Compensation, so options with more considerations aren't unfairly lowered.
     const n = fair ? nAll : Math.max(1, o.considerations.length);
     const mod = 1 - 1 / n;
@@ -185,7 +186,7 @@ export function score(options: Option[], view: View, variability: number, neutra
   const mx = Math.max(...out.map(o => o.score));
   let sum = 0;
   for (const o of out) {
-    o.p = Math.exp((o.score - mx) / tau);
+    o.p = MX.exp((o.score - mx) / tau);
     sum += o.p;
   }
   for (const o of out) o.p /= sum;
@@ -230,7 +231,7 @@ export function reasons(chosen: Scored, scored: Scored[], view: View): Cause[] {
   const rival = scored.filter(o => o.id !== chosen.id).sort((a, b) => b.score - a.score)[0];
   const rivalY = new Map(rival ? rival.parts.map(p => [p.c.id, p.y]) : []);
   const forParts = chosen.parts
-    .map(p => ({ p, gain: Math.log(p.y) - Math.log(rivalY.get(p.c.id) ?? 0.5) }))
+    .map(p => ({ p, gain: MX.log(p.y) - MX.log(rivalY.get(p.c.id) ?? 0.5) }))
     .filter(x => x.gain > 0.05)
     .sort((a, b) => b.gain - a.gain);
   const total = forParts.reduce((s, x) => s + x.gain, 0) || 1;
@@ -254,7 +255,7 @@ export function reasons(chosen: Scored, scored: Scored[], view: View): Cause[] {
     .map(x => (x.y < 0.45 ? despite(x.c) : x.c));
   // The strongest consideration against: one that favoured the rival. A circumstance both options share argued against neither.
   const against = (
-    OFF.has('despite') ? chosen.parts.slice() : chosen.parts.filter(p => Math.log(p.y) - Math.log(rivalY.get(p.c.id) ?? 0.5) < -0.05)
+    OFF.has('despite') ? chosen.parts.slice() : chosen.parts.filter(p => MX.log(p.y) - MX.log(rivalY.get(p.c.id) ?? 0.5) < -0.05)
   ).sort((a, b) => a.y - b.y)[0];
   if (against && against.y < 0.45 && !out.some(c => c.key === against.c.id)) {
     const c = against.c.cause(view);
