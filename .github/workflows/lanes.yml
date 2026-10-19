@@ -1,0 +1,44 @@
+name: lanes
+
+# An open pull request is a claim on the files it touches. This warns, without failing, when another open PR changes the engine too,
+# and names the files both change.
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  lanes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Other open PRs on the engine
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          engine() { gh api "repos/$REPO/pulls/$1/files" --paginate --jq '.[].filename' | grep -E '^(src|scale)/' | sort -u || true; }
+          mine=$(engine "$PR")
+          if [ -z "$mine" ]; then echo "This PR touches no engine files."; exit 0; fi
+          clash=0
+          for n in $(gh api "repos/$REPO/pulls?state=open&per_page=100" --jq ".[] | select(.number != $PR) | .number"); do
+            theirs=$(engine "$n")
+            [ -z "$theirs" ] && continue
+            title=$(gh api "repos/$REPO/pulls/$n" --jq .title)
+            both=$(comm -12 <(echo "$mine") <(echo "$theirs") | paste -sd' ' -)
+            if [ -n "$both" ]; then
+              echo "::warning::PR #$n ($title) also changes: $both"
+              echo "- ⚠ PR #$n ($title) also changes: $both" >>"$GITHUB_STEP_SUMMARY"
+              clash=1
+            else
+              echo "::notice::PR #$n ($title) is also open on the engine, in other files."
+              echo "- PR #$n ($title) is also open on the engine, in other files." >>"$GITHUB_STEP_SUMMARY"
+            fi
+          done
+          [ $clash -eq 0 ] && echo "No other open PR changes the same engine files." >>"$GITHUB_STEP_SUMMARY"
+          exit 0

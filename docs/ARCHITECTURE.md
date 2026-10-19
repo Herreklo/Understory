@@ -62,15 +62,59 @@ A world is built by `buildWorld` (founders, families, jobs at year zero) and the
 
 ## Switches
 
-`OFF.has(name)` switches a mechanism off for an ablation; `ON.has(name)` is the reverse, for a mechanism from a round that did not meet its expectations: it stays in the code, off by default, and `ON=<name>` turns it on for a test. Every new mechanism gets one, named in STATUS.md. When a round settles a fix or a rewording, the old path is removed: the tag of each round keeps the old behaviour reproducible.
+`OFF.has(name)` turns a mechanism off, so its contribution can be measured (`OFF=<name>`). `ON.has(name)` is the reverse, for a mechanism that stays in the code off by default (`ON=<name>` turns it on for a test). Every experiment's mechanism gets one. `CLAUDE.md` says when each kind is removed; the tag of the round that settled it keeps the old behaviour reproducible.
 
-States (round 27, `ON=states`, off by default): with it on, every facet a decision reads through `truthView` is the person's level plus a deviation for the month, `spreadOf(p)` (0.3 to 1.0, set from their variability) times a draw from a stream keyed by the seed, the person, the month and the facet (`stateOf`, world.ts), and the top reason of a decision says "more/less so than usual that month" when the state passed 0.8 of a standard deviation (`noteState`, grammar.ts). Nothing else reads it.
+**System and mechanism switches.** They stay: turning one off shows what that part of the model contributes.
+
+| Switch | Turns off |
+| --- | --- |
+| `love` | Ways of loving and fighting (`love.ts`); couples fall back to the simple rule for rows and splits |
+| `contempt` | Contempt in a couple's rows |
+| `friction` | Rows from everyday tension; only a tense couple rows |
+| `couplelearn` | Couples learning from how their rows usually go |
+| `disengage` | Couples drifting apart, and back |
+| `leaving` | Leaving a marriage as doubt and then a decision |
+| `drama` | Ambition, succession and rivalry |
+| `projects` | Plans that need other people |
+| `turneddown` | An owner's answer to a plan that is turned down or fails |
+| `reciprocity` | What you gave coming back when the hat goes round |
+| `jokeback` | A cutting joke answered by its target |
+| `persona` | A way of being: humour, voice, quirks, small loves |
+| `townquirks` | Quirk sentences given out once per town |
+| `marks` | Marks left by what happened to a person |
+| `groups` | Groups and their shows |
+| `moments` | Moments in a group that shape its members |
+| `threads` | The same answer to pressure becoming one thread |
+| `pursuits` | Wants pursued |
+| `steer` | Choosing how to go after a want, and what to do at an obstacle |
+| `habits` | Routines |
+| `everyday` | Everyday life |
+| `regard` | How one person regards another, in every choice of counterpart |
+| `regard:beliefs` | The beliefs part of regard; only the bond is left |
+| `respond` | The world answering how people are seen: regard in whom one spends time with, and beliefs about the other's feelings in warming to them |
+| `selfstory` | The self-story as a consideration |
+| `ifthens` | If-then signatures |
+| `attach` | Attachment to home |
+| `plasticity` | Change slowing with age; life moves everyone equally |
+| `latent` | Interest apart from inclination; interest comes with it |
+| `manner` | What an observer reads from manner |
+| `mannernoise` | Manner's limited accuracy; manner reads true |
+| `bias` | Liking colouring what an observer believes about someone |
+| `school` | School as a place where children meet |
+| `household` | A household leaving together |
+| `budget` | Social time as a budget, and losing touch |
+| `exposure` | Familiarity making people easier to like |
+| `relbar` | The friendship bar relative to one's own world |
+
+**Fixes that were kept.** Turning one off brings back a known fault. Each is removed, with its old path, in the next neutral change: `countfair`, `eventfix`, `identfix`, `honestev`, `refade`, `skimfix`, `floor`, `seenonly`, `monthly`, `ownchance`, `selfkept`, `pushes`, `despite`.
+
+**Mechanisms that were not kept,** off by default: `everyone` (a yearly want from one's values, round 25d), `jobact` (no burying oneself in work without work, round H26), `states` (a month-to-month state on every facet, round 27). Each is removed in the next neutral change unless `SUMMARY.md` names a coming round that reuses it.
 
 ## Checks
 
-- `npm test`: types, the page bundle, determinism, two worlds at once, groups, invariants (with the consistency audit), demography, a short batch. The invariants include that every thread event stays on its people's own lists: an act that is not kept comes off them through `unlist` in `grammar.ts`, never by taking the last entry.
+- `npm test`: types, the page bundle, the study page, determinism, two worlds at once, groups, invariants (with the consistency audit), demography, the property suite on five seeds, and the coherence counter. The batch report (`npm run batch`) is a report, not a test, and runs separately. The invariants include that every thread event stays on its people's own lists: an act that is not kept comes off them through `unlist` in `grammar.ts`, never by taking the last entry.
 - `src/tools/whatif.ts`: what one choice changes in the chooser's life three years on. It copies the world at the start of the decision's month (`src/tools/clone.ts`; `check` proves a copy runs exactly as the original) and runs it with the likeliest other answer and with the same answer, both after the same smallest nudge to chance. The model reads none of it (`globalThis.WHATIF`, in `choose`).
-- `src/tools/diag/ident.ts`: for a change that should not alter behaviour. It hashes every event with its words and reasons, every person, bond, memory and belief, every group and every random stream, on seeds 11–13 and every switch on seed 11, against a saved baseline (`reports/ident-baseline.json`). `save` writes a baseline; `check` compares.
+- `src/tools/diag/ident.ts`: for a change that should not alter behaviour. It hashes every event with its words and reasons, every person, bond, memory and belief, every group and every random stream, on seeds 11–13 and each switch in `IDENT_ARMS` on seed 11. `save` writes the hashes; `check` compares. CI runs it on every pull request against `main` as it is (`scripts/identity-ci.sh`), so no stored baseline can go stale.
 - `src/tools/diag/sig.ts`: for a change to words only. It hashes behaviour without text, for comparing two trees.
 
 ## Known debt
