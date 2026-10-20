@@ -4,6 +4,7 @@
 // so the share of blows followed by a change is measured alike with the aftermath on and off. A life changed when, three years after
 // the month of the blow, any of these differs from just after it: their job, their partner, the routines they keep, the music they
 // live for, their group, or their being in town. Blows in the last three years of the window are not followed.
+// Round 37: also the aftermath lines on someone's page, and how many of them give a trait or the self-story as a reason.
 // Last line: AFTERMATH {...}
 import '../env';
 import { buildWorld } from '../../build';
@@ -38,6 +39,8 @@ const out: any = {
   perWorld: [],
   decided: 0,
   byKind: {},
+  lines: 0, // aftermath acts listed on someone's page (start again, take up, keep away), present years
+  traitLines: 0, // ... of them giving a trait or the self-story as a reason (round 37)
   sample: [],
 };
 for (let seed = a; seed <= b; seed++) {
@@ -83,6 +86,13 @@ for (let seed = a; seed <= b; seed++) {
   const st = aftermathStats(w);
   out.decided += st.decided;
   for (const [k, v] of Object.entries(st.byKind)) out.byKind[k] = (out.byKind[k] ?? 0) + (v as number);
+  const listed = new Set<number>();
+  for (const p of w.people) for (const i of p.events) listed.add(i);
+  for (const e of w.events)
+    if (e.t >= w.startPresent && ['startover', 'takeup', 'keepaway'].includes(e.type) && listed.has(e.id)) {
+      out.lines++;
+      if (e.causes.some(c => c.kind === 'trait' || c.key === 'identity')) out.traitLines++;
+    }
   for (const e of w.events)
     if (e.t > t0 && ['startover', 'takeup', 'keepaway'].includes(e.type) && out.sample.length < 12)
       out.sample.push(`${e.type}: ${e.text} [${(e.causes ?? []).map((c: any) => c.label).join('; ')}]`);

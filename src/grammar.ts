@@ -67,6 +67,9 @@ export interface Instance {
   only?: Partial<Record<Family, string[]>>; // restrict a family to these expressions
   ownFirst?: boolean; // the situation's own considerations come before the trait wiring, so none of them is cut at five
   where?: string; // where it happened, said at the § in the act's words or at the end of the sentence
+  // The reasons the act gives after its cause, in place of the decision's own (round 37: a change after a blow gives what a reader
+  // accepts for it). The decision record keeps every consideration either way.
+  reasonsFor?: (fam: Family) => Cause[];
 }
 
 export function decide(w: World, p: Person, trigger: string, options: Option[]) {
@@ -367,9 +370,13 @@ export function run(w: World, inst: Instance): Outcome | null {
   const seenC = new Set<string>();
   const causes: Cause[] = [
     ...(inst.cause != null ? [eventCause(w, inst.cause, 0.5)] : inst.causeLabel ? [stateCause(inst.causeLabel, 0.5)] : []),
-    ...why.slice(0, 3),
-    ...exprWhy,
-    ...(ifthen ? [{ kind: 'trait', label: ifthen.words, weight: 0.4, key: ifthen.facet, who: p.id } as Cause] : []),
+    ...(inst.reasonsFor
+      ? inst.reasonsFor(fam)
+      : [
+          ...why.slice(0, 3),
+          ...exprWhy,
+          ...(ifthen ? [{ kind: 'trait', label: ifthen.words, weight: 0.4, key: ifthen.facet, who: p.id } as Cause] : []),
+        ]),
   ]
     .filter(c => {
       const k = c.label + '|' + (c.who ?? '');

@@ -3,22 +3,23 @@
 // failing), the next month they face it once: start again at work, take up a new routine, keep away from one, or carry on. The act
 // is its own event with the blow as its reason, and the change stays until life changes it again.
 //
-// Off unless ON=aftermath: round 34 did not meet its expectations. Blows changed lives (67% against 50% within three years, in every
-// world) without moving the scoreboard, but blind readers could not say the lives read better (−0.12 ±0.41 over 24 pairs), and quoted
-// the trait given as the reason for a change as not fitting it.
+// Round 34 did not meet its expectations: blows changed lives (67% against 50% within three years, in every world) without moving the
+// scoreboard, but blind readers could not say the lives read better (−0.12 ±0.41 over 24 pairs), and quoted the trait given as the
+// reason for a change as not fitting it. Round 37 tests it again with the reasons a reader accepts for a change: the blow, how hard it
+// hit, and what ties the change to the blow (it happened at work; the person it came from is there too). On unless OFF=aftermath.
 //
 // Blows are read from the month's events at its end (`aftermathTick`, after every system), so no system that makes a blow needs to
 // know about it; the decision is a queued situation, run with next month's situations.
 
 import { SETTING } from './setting';
 import { clamp } from './rng';
-import { ON, P, age, likeOf, type World, type Person, type Event, type Habit } from './world';
-import { stateC, bondC } from './considerations';
+import { OFF, P, age, likeOf, type World, type Person, type Event, type Habit, type Cause } from './world';
+import { stateC, bondC, stateCause } from './considerations';
 import { type Instance, favour, leaveJob } from './grammar';
 import type { Feature } from './features';
 import { formHabit } from './time';
 
-export const aftermathOn = () => ON.has('aftermath');
+export const aftermathOn = () => !OFF.has('aftermath');
 
 // Starting again at work answers a blow that came through work: passed over, found out, a shaming at their own workplace, or a want
 // that failed (the amendment to round 34: walking out of a job over a friendship's end does not fit the blow).
@@ -143,6 +144,15 @@ function instance(w: World, p: Person, e: Event, other?: Person): Instance | nul
   // The words for each answer, in one filler: the expression for each family takes its own part (see families.ts, round 34).
   const thing = [job?.name ?? '', take ? her(now(take.label)) : '', drop ? her(noLonger(drop.label)) : ''].join('|');
   const short = SHORT[e.type](w, e, p);
+  // The reasons each change gives after the blow itself (round 37): how hard it hit, then what ties the change to it.
+  const hit = stateCause(e.w >= 2 ? 'it hit hard' : `it had shaken ${p.sex === 'f' ? 'her' : 'him'}`, 0.5);
+  const shared = drop && other && other.status === 'in' && other.habits.some(h => !h.broken && h.id === drop.id);
+  const reasonsFor = (fam: string): Cause[] =>
+    fam === 'courage' && atWork
+      ? [hit, stateCause('it happened at work', 0.4)]
+      : fam === 'withdrawal' && shared
+        ? [hit, stateCause(`@${other!.id} is there too`, 0.4)]
+        : [hit];
   return {
     type: 'aftermath',
     actor: p,
@@ -155,11 +165,17 @@ function instance(w: World, p: Person, e: Event, other?: Person): Instance | nul
     cause: e.id,
     causeLabel: `after ${short}`,
     extra: [
-      favour(stateC('blow', e.w >= 2 ? `it hit hard` : 'it had shaken them', clamp(e.w / 2.5, 0, 1), 1, 0.2), 'courage', 'openness', 'withdrawal'),
+      favour(
+        stateC('blow', e.w >= 2 ? `it hit hard` : `it had shaken ${p.sex === 'f' ? 'her' : 'him'}`, clamp(e.w / 2.5, 0, 1), 1, 0.2),
+        'courage',
+        'openness',
+        'withdrawal',
+      ),
       ...(atWork && job ? [favour(stateC('work', 'it happened at work', 0.85, 1, 0.2), 'courage')] : []),
     ],
     familyExtra: other && other.status === 'in' ? { withdrawal: [bondC(w, p, other, 'like', -1)] } : {},
     w: 1.1,
+    reasonsFor,
     aftermath: { blow: e.type, take: take?.id, drop: drop?.id },
   } as Instance & { aftermath: { blow: string; take?: string; drop?: string } };
 }
