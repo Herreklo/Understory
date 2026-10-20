@@ -4,6 +4,7 @@ import { live, P } from '../world';
 import { bondC } from '../considerations';
 import { type Instance, friendsOf, family } from '../grammar';
 import type { SituationType } from './index';
+import { counterpart } from '../telling';
 
 // Discovery: someone holding a secret decides what to do with it; someone's secret may get out.
 export const discovery: SituationType = {
@@ -16,7 +17,13 @@ export const discovery: SituationType = {
       const se = w.events[sid];
       const pool = [...friendsOf(w, p), ...(p.partner != null ? [P(w, p.partner)] : [])].filter(q => !se.knownBy.has(q.id));
       if (!pool.length) continue;
-      const q = pool.sort((a, b) => regard(w, p.id, b.id) - regard(w, p.id, a.id))[0];
+      const q = counterpart(
+        w,
+        p.id,
+        pool.length,
+        () => pool.sort((a, b) => regard(w, p.id, b.id) - regard(w, p.id, a.id))[0],
+        x => [x.id],
+      );
       out.push({
         type: 'confide',
         actor: p,
