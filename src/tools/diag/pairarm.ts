@@ -56,8 +56,10 @@ function world(seed: number, on: boolean): World {
   return w;
 }
 
-const pairs: string[] = [];
-const key: Record<string, { seed: number; person: number; name: string; onIs: 'A' | 'B' }> = {};
+// Each pair is kept as both pages until every pair is chosen; then which arm comes first is dealt out half and half (an odd pair
+// out goes by the hash), shuffled by a hash of the switch, so readers who lean toward the version they read second lean equally
+// toward both arms.
+const made: { id: string; head: string; on: string[]; off: string[]; seed: number; person: number; name: string }[] = [];
 let n = 0;
 for (let seed = A; seed <= B; seed++) {
   const off = world(seed, false);
@@ -72,16 +74,26 @@ for (let seed = A; seed <= B; seed++) {
     const q = same(p)!;
     const head = `${nameOf(off, p.id)}, ${Math.floor(age(off, p))} in ${year(off.t)}`;
     if (nameOf(on, q.id) !== nameOf(off, p.id)) console.error(`pairarm: ${nameOf(off, p.id)} is ${nameOf(on, q.id)} in the on arm`);
-    const [pOff, pOn] = [page(off, p), page(on, q)];
     n++;
-    const id = `P${String(n).padStart(2, '0')}`;
-    const onFirst = hash('pairarm', sw, seed, p.id) % 2 === 0;
-    const [first, second] = onFirst ? [pOn, pOff] : [pOff, pOn];
-    key[id] = { seed, person: p.id, name: nameOf(off, p.id), onIs: onFirst ? 'A' : 'B' };
-    pairs.push(`##### ${id}, version A — ${head}\n${first.join('\n')}\n\n##### ${id}, version B — ${head}\n${second.join('\n')}\n`);
+    made.push({ id: `P${String(n).padStart(2, '0')}`, head, on: page(on, q), off: page(off, p), seed, person: p.id, name: nameOf(off, p.id) });
   }
   console.error(`pairarm: world ${seed}`);
 }
+const order = made.map((_, i) =>
+  i < Math.floor(made.length / 2) ? true : i < 2 * Math.floor(made.length / 2) ? false : hash('pairarm', sw, i) % 2 === 0,
+);
+for (let i = order.length - 1; i > 0; i--) {
+  const j = hash('pairarm', sw, A, B, i) % (i + 1);
+  [order[i], order[j]] = [order[j], order[i]];
+}
+const pairs: string[] = [];
+const key: Record<string, { seed: number; person: number; name: string; onIs: 'A' | 'B' }> = {};
+made.forEach((m, i) => {
+  const onFirst = order[i];
+  const [first, second] = onFirst ? [m.on, m.off] : [m.off, m.on];
+  key[m.id] = { seed: m.seed, person: m.person, name: m.name, onIs: onFirst ? 'A' : 'B' };
+  pairs.push(`##### ${m.id}, version A — ${m.head}\n${first.join('\n')}\n\n##### ${m.id}, version B — ${m.head}\n${second.join('\n')}\n`);
+});
 writeFileSync(`${OUT}/pairs.txt`, pairs.join('\n'));
 writeFileSync(`${OUT}/key.json`, JSON.stringify(key, null, 1));
 let commit = '';
