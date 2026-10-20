@@ -1,6 +1,7 @@
 // The Situation Grammar: types matched against the world, answered through behaviour families.
 // Every instance becomes an event with causes and evidence. Nothing here is a scene.
 
+import { withAccounts } from './telling';
 import { clamp, hash } from './rng';
 import { FACET_BY_ID, VALUES } from './core';
 import { ACTIVATION, type Feature } from './features';
@@ -69,6 +70,7 @@ export interface Instance {
 
 export function decide(w: World, p: Person, trigger: string, options: Option[]) {
   for (const o of options) for (const c of o.considerations) if (!c.who) c.who = p;
+  withAccounts(w, p, options);
   const scored = score(options, truthView(w), p.variability);
   const chosen = choose(scored, chanceOf(w, p), { t: w.t, who: p.id, kind: trigger, nudge: () => w.rng.next() });
   const why = reasons(chosen, scored, truthView(w));
@@ -316,6 +318,7 @@ export function run(w: World, inst: Instance): Outcome | null {
       });
     return { id: fam, label: fam, considerations: kept };
   });
+  withAccounts(w, p, options);
   const scored = score(options, truthView(w), p.variability);
   const chosen = choose(scored, chanceOf(w, p), { t: w.t, who: p.id, kind: inst.type, nudge: () => w.rng.next() });
   if ((globalThis as any).WEIGH) {

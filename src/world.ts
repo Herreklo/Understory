@@ -8,6 +8,7 @@ import { motive, voiceOf } from './motives';
 import { hoods, idx, residentsNear, staffOf, town } from './scale';
 import * as MX from './mathx';
 import { keepAccounts } from './accounts';
+import { citeMoved } from './telling';
 
 export type Status = 'in' | 'away' | 'dead' | 'bg' | 'gone'; // bg: lives in the city, simulated by the coarse yearly pass; gone: left the city
 
@@ -67,6 +68,18 @@ export interface Memory {
   text: string;
   source?: 'saw'; // whose hold on the act this is: absent, it was done to the holder; 'saw', the holder was there (accounts.ts)
 }
+// A told account (telling.ts): what a person heard about another, from whom, how sure, and how far the teller laid it on them.
+export interface Heard {
+  ev: number; // the act in the record
+  about: number; // whom the hearer believes did it (the record may say otherwise)
+  from: number; // who told it
+  t: number;
+  conf: number; // how sure: 0.7 first hand, less at second
+  blame: number; // -1..1: the act's worth as told, bent by the teller
+  base: number; // the act's worth in the town's eyes, before the teller bent it
+  hand: 1 | 2;
+  text: string; // the act as told
+}
 export interface Bond {
   fam: number;
   like: number;
@@ -74,6 +87,7 @@ export interface Bond {
   trust: number;
   mem: Memory[];
   touched: number;
+  heard?: Heard[]; // what the holder has been told about the other (telling.ts)
 }
 
 export interface Belief {
@@ -209,6 +223,7 @@ export interface Person {
   marks: Mark[];
   exceptions: Exception[];
   saw?: { o: number; ev: number }[]; // the seen accounts this person holds, by the doer and the event (accounts.ts)
+  heardOf?: { o: number; ev: number }[]; // the told accounts this person holds, by whom they are about and the event (telling.ts)
   phase?: Phase;
   // life
   job: string | null;
@@ -586,6 +601,9 @@ export function addEvent(w: World, ev: Omit<Event, 'id' | 't' | 'knownBy'> & { k
     }
   // A trait near the middle is not a reason anyone would give (a bare 'patience' says nothing about the person).
   if (ev.causes.some(c => c.mid)) ev = { ...ev, causes: ev.causes.filter(c => !c.mid) };
+  // A counterpart chosen this month moved by what the chooser had been told: the account is one of the event's reasons (telling.ts).
+  const cited = citeMoved(w, ev.who, ev.causes);
+  if (cited !== ev.causes) ev = { ...ev, causes: cited };
   ev = { ...ev, causes: ev.causes.map(c => saidAsMotive(w, ev, c)) };
   const e: Event = { ...ev, id: w.events.length, t: w.t, knownBy: ev.knownBy ?? new Map() };
   w.events.push(e);
