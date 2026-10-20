@@ -1958,3 +1958,38 @@ Outcome (the same evening, before any new reading):
 | 33 the reckoning | 12, 6           | 3           | −0.08 ±0.64                   | −0.48           | +0.14          | .612      |
 
 **Kept.** What it says: only round 30 read better by a margin the reading can stand behind; it failed its own rule on how often accounts decided and on reach, and on α, which is no longer a gate. Its verdict stands (nothing is re-judged after the fact), but telling is the one mechanism of the last five rounds that readers preferred, and the first to bring back. Round 31's 7 of 12 was the order: with it taken out the effect is −0.13. From the next round on, readings use 24 pairs and this scorer.
+
+## Round 34 — aftermath: a blow changes something that lasts (pre-registered 20 Oct 2026, 19:20 Oslo, before its code)
+
+Exit point 2 (most weighty events change something besides a feeling within three years) and STATUS weakness 3 ("big events that change nothing in the person they happen to"). Seven rounds in a row (25d, 27, 29–33) added a state that surfaces as reasons; none was kept, and readers' complaint about today's lives is that they reset: a death, a sacking, a friendship's end are recorded, mourned for a month, and then the person goes on exactly as before. This round changes what happens after a blow, not what is said about it. Øystein agreed the direction on 20 Oct.
+
+Hypothesis: when a blow lands, the person decides once whether anything changes, and some do change course (work, a routine, the people they see); lives in which blows leave a lasting mark read better.
+
+The change, behind `OFF=aftermath`:
+
+1. **Blows.** An event is a blow to someone when it is, for them: the death of their partner, a child or parent of sixteen or over, or one of the two friends they liked most (`death`); their marriage or partnership ending when they were the one who still cared more (`divorce`, `split`); a friendship ending likewise (`cooled`); being let go from work (`dismiss`), passed over for a post (`passed`), found out (`caught`), dressed down or having the past dragged up in front of everyone (`dressdown`, `rake`); a want they pursued failing (`want:failed`).
+2. **The aftermath.** The month after a blow, the person (sixteen or over, in town, no aftermath in the past year; the heaviest blow of the month if several) faces one decision with up to four answers, chosen as every decision is chosen, from their traits, the blow and the situation:
+   - **start again at work** (courage): if they have a job and are under 62, they walk out of it to start again somewhere else ("Hal walked out of the boatyard to start again somewhere else"), and look for work as anyone without a job does;
+   - **take something up** (openness): a new routine, the best fit they do not have ("Ruth now swims in the harbour every morning, whatever the weather"), which brings its own company;
+   - **keep away** (withdrawal): if they have a social routine, they drop it, the one they shared with the person the blow came from if there is one ("Hal is no longer at the Anchor every Friday");
+   - **carry on** (reluctance): nothing changes, and nothing is written.
+     The act is written as its own event, with the blow as its reason, and the change it makes stays until life changes it again.
+3. **What weighs:** the blow's weight favours a change; a blow at work favours starting again; disliking the person the blow came from favours keeping away; the family's own traits do the rest (boldness and fearlessness, inquisitiveness, low sociability, sentimentality).
+4. **Nothing else changes.** Mourning, support and the coping situation that follow a death or a sacking are as they are.
+
+Test: fresh worlds **3253–3272** for the lives, the consequence map, the friends tool and the round's own count (`src/tools/diag/aftermath.ts`: blows and their aftermath, and for every blow in both arms, whether the person's life changed within three years: their job, their partner, their routines, the music they live for, their group, or their being in town); the scoreboard paired on **3233–3252** with base rates from 1501–1520; `ident.ts` with `aftermath` off against main; the blind paired reading of round M34 (`docs/method/reading.md`: 24 pairs from **3273–3280**, order dealt half and half, three readers on another model, scored with `scripts/pairscore.py`); the coherence counter on 3273–3276 in both arms; `npm run props`; `npm test` on and off.
+Expected:
+
+1. `aftermath` off: identical to main.
+2. **It happens, and not for everything:** between **20 and 150** aftermath decisions a world-decade; between **20% and 70%** of them change something (not carry on).
+3. **Blows change lives:** of blows, the share after which the person's life changed within three years is at least **10 points** higher with the aftermath than without, paired by world, with its 95% interval above 0.
+4. **Nothing dissolves:** births ÷ deaths within ±0.15 in `test.ts`; adults without work (not retired, not students) not up by more than 3 points; population within ±5%.
+5. **The gate:** the scoreboard paired, on minus off, within ±2 on decisions that are not a couple's; calibrated minus notebook on the key slice above 0.
+6. **Paired reading, "reads better":** the effect with the order as a term, one-sided 90% lower bound above **0**; the aftermath's own acts quoted as a reason that made an act make sense at least as often as as an unfit one.
+7. Reported: the consequence map (weighty descendants, turns, reach) in both arms; α and the majority.
+8. Lives: dead lives within ±2; twists not down by more than a tenth; the coherence counter at zero in both arms; `props` holds.
+   Keep rule: kept if 1, 3, 5 and 6 hold, with 2, 4, 7 and 8 as checks. What would change our minds: if 3 holds and 6 fails, lives that change after a blow do not read better, and what readers want from a life is not what the exit criterion asks (a question for the criterion, not another mechanism); if 2 holds and 3 fails, people choose a change that does not last, and the doors (work, routines) are the problem; if 4 fails, starting again at work empties workplaces faster than the town fills them, and that door is closed to all but work blows.
+
+The warnings in `WHY.md` this round risks: forced drama (a carry-on answer that writes nothing, and a ceiling on how often); complexity mistaken for progress (one decision on blows the engine already has, through doors it already has; 6 decides); consequences that occur without becoming visible (the act is its own line, with the blow as its reason).
+
+The game lens: "After Tom died, Ruth started swimming in the harbour every morning, and that is where she met the people she spends her days with now." A player sees a blow, sees what it did to someone, and can follow where it led.
