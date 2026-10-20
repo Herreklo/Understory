@@ -1,0 +1,8 @@
+adults 550, never pursued 241 (44%)
+  age 18-39: 56 (23%)
+  age 40-64: 82 (34%)
+  age 65+: 103 (43%)
+  had a want in the window, never started: 65 (27%)
+  had an occasion want: 139 (58%)
+  held by a pursuit from before: 54 (22%)
+  no want in the window: 176 (73%)
