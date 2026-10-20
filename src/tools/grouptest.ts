@@ -1,5 +1,6 @@
 // Deterministic test of group escalation: in one group, the second row in three years earns a word, the third an asking-to-leave.
 // Finds a world where one member rows repeatedly and checks the order of events for that member.
+import './env'; // OFF= and ON= from the environment, before anything runs
 import { buildWorld, runYears } from '../build';
 import { pickWitness } from '../witness';
 import { escalation } from '../group';

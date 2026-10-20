@@ -2,6 +2,7 @@
 // each function in src/mathx.ts is within 4×10⁻¹⁶ of the Math function, relative to the value, or absolute where the value is
 // smaller than 1 in size (cos crosses zero, where a relative error means nothing). Math's own functions are only near-exact, so this
 // checks that the engine's are as good, not which is closer to the truth.
+import './env'; // OFF= and ON= from the environment, before anything runs
 import { own } from '../mathx';
 import { Rng } from '../rng';
 

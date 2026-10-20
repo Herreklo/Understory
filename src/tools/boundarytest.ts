@@ -1,5 +1,6 @@
 // The boundary test (in npm test): a world run through src/boundary.ts is the same world as one run directly, and everything the
 // boundary gives back is plain data that survives a JSON round trip unchanged.
+import './env'; // OFF= and ON= from the environment, before anything runs
 import { deepStrictEqual, strictEqual } from 'assert';
 import { buildWorld, runYears } from '../build';
 import { pickWitness } from '../witness';
