@@ -64,3 +64,4 @@ Order. The random A/B draw put the on arm second in 9 of 12 pairs, and the reade
 single choices). On second, the on arm won 7 of 9; on first, 0 of 3. The 7 of 12 cannot be told apart from a preference for whichever
 version is read second. The paired score difference is small (+0.14) and one reader's is zero. The order draw should be balanced (six and
 six) in the next reading, a measurement fix that comes before it.
+(Round 30's draw was six and six, and its readers chose version B in 10 of 36: no lean to the second version there.)

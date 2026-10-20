@@ -10,12 +10,16 @@
 // Where an account is read (round 31): only beside a bond it bears on (the axis its act moved: liking, respect or trust), and in the
 // choice of a counterpart only when the choice, made again on the same draw without accounts, would have gone to someone else; then the
 // event that follows says so.
+//
+// Off unless ON=telling: rounds 30 and 31 did not meet their expectations. Read where it bears, an account was never quoted as an unfit
+// reason and changed whom someone turned to in 5% of choices, but it was the top reason of 0.22% of decisions with another person, and
+// blind readers could not agree that the lives with it were better (7 of 12 pairs, alpha .60, with the order of the versions as likely a cause).
 
 import { clamp } from './rng';
 import { EXPR } from './families';
 import { curves, z01, type Consideration, type Option } from './decide';
 import {
-  OFF,
+  ON,
   P,
   bond,
   peekBond,
@@ -32,7 +36,7 @@ import {
   type Heard,
 } from './world';
 
-export const tellingOn = () => !OFF.has('telling');
+export const tellingOn = () => ON.has('telling');
 const FAM = 0.2; // how well a hearer must know the one it is about, short of sharing a workplace, group or circle with them
 const BOUND = 32; // live told accounts a person holds before the most faded go
 const SECOND = 0.6; // how much surer the first hearer is than the second
