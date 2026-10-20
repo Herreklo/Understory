@@ -45,8 +45,11 @@ This is the one priority list. Only Øystein changes its order, and a chat start
 ## Waiting for you
 
 - Decide on the repo structure for add-ons.
+- Two changes to the order of "Next", which only you make. Recommended: "who wants things" (proposed work 1) at third place, after the front door and before the city's background, because consequences that stop early hold back more of the game ideas than anything else and wants are their main lever; and the band for a year (proposed work 8) as the first round after it, because it tests close ties, living changing people and a group's character in one setting.
 
 ## Latest merges
+
+- **The exit criterion, two changes (20 Oct):** a ninth point, that a group outlives its members: a band or a workplace has a character its members act on and can name, carried in their beliefs and never in a mind of its own, which survives the departure of every founder. The band and the workplace need this or the origin game cannot be built, and without a point no round could touch it. And point 5 is judged on random lives, with lives chosen by story sifting read beside them and both reported, so thin lives can be told from a page that shows their thin parts. Nothing the engine does changed. The thinking is in the project's notes (`organisations-concept`, `game-demand-map`).
 
 - **Switches for every check (20 Oct):** `ON=telling npm test` now turns a mechanism on in every check the suite runs (six of them had ignored it), and the blind reading tool can compare mechanisms that are off by default and records the commit it was made from. Found by the outside review of `e22c94a`. Nothing the engine does changed.
 - **Round 30 (20 Oct), not kept, but the first step that reads well:** people now tell what they saw or what was done to them, once, to the friend who knows the person, and that friend may pass it on; tellers bend it, and now and then name the wrong person. Blind readers preferred the town with it in 9 of 12 pairs, all three of them, a first for this arc. It fails its own test: an account rarely decided anything (0.41% of choices), reach rose only from 5% to 7%, and accounts were given as reasons in decisions they had nothing to do with. Round 31 fixes where accounts are read.
