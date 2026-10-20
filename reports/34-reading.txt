@@ -1,0 +1,68 @@
+Round 34: the paired reading, aftermath on against off (20 Oct 2026). The first reading by round M34's method (docs/method/reading.md).
+Twenty-four people (the three adults of each of worlds 3273-3280 most eventful over both arms together, src/tools/diag/pairarm.ts at
+a6e9afd), each shown as the engine writes them with the aftermath on and off (ten present years, with reasons, folded as the page folds
+them). The order was dealt twelve and twelve. Three blind readers on Fable 5.1 (a novelist, a social worker, a player of simulation
+games), each reading the pack in two sittings of twelve pairs, told only that the two are two versions of the same person's life
+(briefs: reports/34-reading-brief-1.md and -2.md). The pack and key were committed (ed04f69) before the reading, and the reading was
+scored, with scripts/pairscore.py, before any battery number was opened. Answers: reports/34-reading-answers.json (each sitting by
+reader and part). Cells: score A, score B, preferred.
+
+pair  on         novelist          player    socialworker   majority-on
+P01   A            2,3,B           2,3,B           2,3,B   no
+P02   A            2,3,B           3,4,B           3,4,B   no
+P03   A            3,4,B           3,4,B           3,4,B   no
+P04   A            2,3,B           2,3,B           3,2,A   no
+P05   A            3,3,B           3,3,A           3,3,B   no
+P06   B            4,2,A           3,2,A           3,2,A   no
+P07   B            4,3,A           3,2,A           4,3,A   no
+P08   A            4,3,A           4,3,A           4,3,A   yes
+P09   B            2,4,B           2,4,B           3,4,B   yes
+P10   B            3,4,B           3,3,B           3,3,B   yes
+P11   A            2,3,B           3,3,B           3,4,B   no
+P12   B            3,4,B           3,4,B           3,3,B   yes
+P13   B            3,4,B           3,4,B           3,4,B   yes
+P14   A            3,3,A           3,3,B           3,3,A   yes
+P15   B            3,2,A           4,2,A           4,2,A   no
+P16   A            3,3,A           4,3,A           4,3,A   yes
+P17   A            3,4,B           3,4,B           3,4,B   no
+P18   B            3,3,B           4,3,A           4,3,A   no
+P19   A            3,3,A           4,3,A           3,3,B   yes
+P20   B            2,3,B           2,4,B           3,3,B   yes
+P21   B            3,2,A           3,3,A           4,3,A   no
+P22   A            3,3,B           3,3,A           4,3,A   yes
+P23   B            4,3,A           4,3,A           4,3,A   no
+P24   B            2,4,B           3,4,B           3,4,B   yes
+
+The on arm was version B in 12 of 24 pairs; readers chose B in 41 of 72 single choices.
+Majority preferred the on arm in 11 of 24.
+Paired score difference, on minus off: -0.12 ±0.40 (95%, 24 pairs, mean over 3 readers)
+  novelist       -0.12
+  player         -0.04
+  socialworker   -0.21
+With the order as a term: effect -0.12 ±0.41 (95%); one-sided 90% lower bound -0.38; lean toward the second version +0.10
+ordinal  alpha 0.626  95% [0.460, 0.751]  (3 readers, 48 lives)
+interval alpha 0.626  95% [0.467, 0.752]  (3 readers, 48 lives)
+  novelist     mean 3.02
+  player       mean 3.15
+  socialworker mean 3.23
+faults on: total 215 · false line 69, unfit reason 61, repeat 39, out of nowhere 27, wording 19
+faults off: total 216 · false line 61, repeat 49, unfit reason 47, wording 30, out of nowhere 29
+
+The aftermath on the page. 36 aftermath acts appear in the on arm of the pack (walked out to start again 3; a routine taken up or
+dropped, with the blow as the first reason, the rest). Quoted by readers, matched against those acts exactly:
+  as a reason that made an act make sense: 0
+  as an unfit reason: 5, all by the social worker, four of them a routine taken up with a trait reason that does not explain it:
+    P02: Alex Vale now has two pints at the Anchor most evenings. [What Alex Vale had wanted for 3 years was gone.; wanted to know; it
+      had shaken them]
+    P07: Hilda walked out of the Courier to start again somewhere else. [Rose dragged up what Hilda did last year in front of everyone
+      at the Courier.; it happened at work; danger has never stopped her]
+    P11: Tilly is now at the Anchor every Friday without fail. [Colin dragged up what Tilly did last year.; though content with what
+      she knows]
+    P14: Eddie Reed now plays cards at the Anchor on Tuesdays. [Eddie Reed and Stella lost touch.; that is who Eddie Reed is: not made
+      for one place; wanted to know]
+    P18: Freya Hughes now reads late into every night. [Freya Hughes was found out: taking from the parts bill.; that is who Freya
+      Hughes is: not made for one place; wanted to know]
+
+Against the pre-registration ("reads better"): the effect with the order as a term -0.12 ±0.41, one-sided 90% lower bound -0.38 (bar
+above 0) ✗; the aftermath quoted as good 0 times and as unfit 5 (bar good at least as often as unfit) ✗. Expectation 6 fails. Reported:
+majority 11 of 24; α ordinal .626 [.460, .751]; readers chose B in 41 of 72 (lean +0.10).

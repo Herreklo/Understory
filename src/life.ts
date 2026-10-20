@@ -21,6 +21,7 @@ import { socialTick } from './social';
 import { stressTick } from './stress';
 import { workTick, skillTick } from './work';
 import { yearly } from './yearly';
+import { aftermathTick } from './aftermath';
 
 export function tick(w: World) {
   w.t++;
@@ -74,4 +75,5 @@ export function tick(w: World) {
   if (w.t % 12 === 0) coarseYear(w); // a city's background: one coarse step a year, on its own dice (nothing happens here in a town)
   use(w, 'misc');
   scoreRecent(w);
+  aftermathTick(w); // what this month's blows will change (round 34): queued for next month's situations; no dice
 }

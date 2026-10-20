@@ -27,6 +27,7 @@ import { self, type Instance, type Outcome, run, friendsOf, queueProvocation, fa
 import { asked } from './situations/asked';
 import { deadline } from './situations/deadline';
 import { yearlyAsk } from './situations/yearly';
+import { applyAftermath } from './aftermath';
 import { reckoned, answered, reckonCites, carryReset } from './carry';
 
 // Hooks for world effects after specific expressions in specific types.
@@ -222,6 +223,9 @@ export function afterRun(w: World, inst: Instance, out: Outcome) {
       }
       break;
     }
+    case 'aftermath':
+      applyAftermath(w, inst, x.id, e.id);
+      break;
     case 'request':
       if (x.family === 'seeking' && inst.target && ['ask', 'hint', 'confide'].includes(x.id)) {
         const q = inst.target;
