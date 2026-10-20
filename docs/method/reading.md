@@ -18,6 +18,7 @@ The pack, the brief and the key are committed before the reading, and the readin
 - **The majority** in each pair, for a plain count.
 - **Agreement among the readers** (Krippendorff's alpha, `scripts/alpha.py`). It describes the panel, not the change: readers can agree a life got better while disagreeing on the scale. It is reported, not used to keep or drop a change.
 - **Faults by kind** in each arm, and every quote matching the round's own wording, good or faulted.
+- **How much happened.** Readers choose the version where more happens: over rounds 29–34, when the two versions were five or more lines apart, the longer was chosen 70% of the time, and each ten lines more in the on version moved the difference by about +0.16. The two arms of an engine change are different worlds, so the same person's two pages differ by 16–28 lines (sd) in every round. The scorer reads the pack and reports the lines in each arm, how often the longer version was chosen, and the effect with the difference in lines as a third term. The round is judged on the effect with the order as a term: a change that makes more happen is meant to read better for it. The third term says how much of the effect is that, and how much is the same amount of life reading better.
 
 ## How a round uses it
 

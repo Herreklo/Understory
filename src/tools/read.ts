@@ -1,5 +1,5 @@
 import { buildWorld, runYears } from '../build';
-import { againNote, pageLines } from '../page';
+import { againNote, pageLines, shownCauses } from '../page';
 import { pickWitness, scoreAll, hunches, hindsight } from '../witness';
 import { age, fullName, year, type World, type Person, nameOf, OFF, ON } from '../world';
 import { FACET_BY_ID, VALUES } from '../core';
@@ -26,10 +26,9 @@ for (const p of w.people
     const past = e.t < w.startPresent ? '  ' : '  ';
     console.log(
       `${past}${year(e.t)}: ${plain(e.text)}${
-        e.causes.length
+        shownCauses(e).length
           ? '  [' +
-            e.causes
-              .slice(0, 3)
+            shownCauses(e)
               .map(c => plain(c.label))
               .join('; ') +
             ']'
