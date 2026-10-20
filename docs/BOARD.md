@@ -2169,3 +2169,31 @@ Outcome of round 37 (21 Oct 2026, 00:05 Oslo). Battery by `scripts/round.mjs` on
 
 Read by the rules set beforehand: the reasons work, and the lives do not read better. The pre-registered "what would change our minds" fires as written: the round's lines are no longer quoted as unfit, and 5 fails, so the kinds of change it adds (a routine taken up or dropped, a job left after a shaming) are texture, not turns, and wants with stakes come before any more consequences of this sort. Two notes for that: in the 17 pairs whose on version shows an aftermath line the mean difference is +0.26, in the other 7 −0.48 (divergence, not the change, on a reading this size); and all three readers said, unprompted, that the strongest lives were those with a rivalry or betrayal that cost something.
 **Not kept.** The code stays behind `ON=aftermath` with round 37's reasons, and the hook that lets a situation give an act's reasons (`Instance.reasonsFor`) stays in `grammar.ts` for the rounds that use it.
+
+## Round 38 — wants that collide (pre-registered 21 Oct 2026, 00:04 Oslo, before its code)
+
+The plan's next step (SUMMARY, Next 1; exit points 1, 2 and 5), as Øystein chose it on 20 Oct ("stakes first"). Readers score a life by how many kinds of thing happen in it (round 36), and all three readers of round 37 said, unprompted, that the strongest lives were those with a rivalry or a betrayal that cost something: a headteacher's post schemed for, a feud with the foreman, a café sabotaged by a husband. The engine makes such a contest only in a succession season (a lead announces they will step down; staff go for it; two who are close in record and age become rivals): about two a world-decade, over posts only. Meanwhile people want posts and want to be heard all the time, and say so, without anyone else wanting the same thing in the open.
+
+Hypothesis: when two people who want the same scarce thing learn it of each other, the contest that follows (who works, who runs the other down, who gives way, who wins, what the loser does) gives lives the turns with stakes that readers praise, and they read better.
+
+The change, behind `OFF=collide` (`drama.ts`, `group.ts`, the reasons a contest act gives):
+
+1. **A post, out of season.** Each month a person who wants a post where they work (an open want for it, pursued or not) looks at last month's events they know of: a line by a colleague that gives away the same want (letting it slip, going after it, asking the lead, putting themselves forward). The two may become rivals as they do in a season (more likely the closer their record and age, or with a contest between them before), with that line as the rivalry's first reason. The rivalry is lived as a season's is (working to be seen, running the other down to the lead, picking at the other's work in public, giving way). What they win counts when the post next falls vacant, as a season's campaign does; a season, when it comes, starts from it.
+2. **A place in a band.** When a band takes someone in, those around it who want to be heard on the band's instrument and are in no band are in the running. If two or more were, the one not taken is told so ("X was not picked for Red Sky; Y got the place"), with why (the better player, the one the band knew), and answers it as someone passed over for a post does (taking it well, letting it pass, sulking, confronting the one picked), and pride or anger turns it into a grudge.
+3. **Reasons said as the situation.** A contest act gives the rivalry's first line, the rival's latest move and who is ahead as its reasons; no trait and no self-story (round 37's hook). The decision record keeps every consideration.
+
+Unchanged: the season, its contest and its decider, the grudge and its acts, peace, and everything a loser does after.
+
+Test (scripts/round.mjs): the scoreboard paired on fresh worlds **3385–3404**; lives, the round's own count (`src/tools/diag/collide.ts`: contests started by kind and source, acts, outcomes, losers' answers, kinds a life; both arms), the consequence map and demography on **3405–3424**; `npm test`, the coherence counter, props. The blind paired reading (`docs/method/reading.md`, scored by `scripts/pairscore.py` with lines and kinds reported) on **3425–3432**: 24 pairs, the three most eventful adults of each world, three readers on another model, read before any other number of the round.
+Expected:
+
+1. `collide` off: identical to main (`ident.ts`).
+2. **It makes contests:** rivalries over a post or a band place at least **double** the off arm's (about 2 a world-decade), and at least half a band-place contest a world-decade.
+3. Reported, not in the keep rule: kinds of line a life, the reading's people, on minus off (expected +1 to +3); contest lines that give a trait or the self-story as a reason (expected none).
+4. Gates: the scoreboard within ±2 (decisions that are not a couple's, overall beside it); the coherence counter at zero; demography and `npm test`.
+5. **Reads better:** the effect with the order as a term, one-sided 90% lower bound above **0**; contest lines quoted as a good reason at least twice as often as an unfit one.
+   Keep rule: kept if 1, 2, 4 and 5 hold. What would change our minds: if contests double and are quoted as good reasons but the lives do not read better, a contest is worth no more than the kinds it adds, and the reading of 24 pairs cannot see a change of a few kinds (+0.1 to +0.2 predicted): the next step is the instrument (more pairs, or a reading that scores each life against its own kinds), not another mechanism; if they read better, contests over other scarce things (a house, a partner, the yearly day) come next; if contests stay under double, people do not learn each other's wants, and telling (round 30) comes first.
+
+The warnings in `WHY.md` this round risks: too much forced drama (a rivalry needs two who want the same thing, know it of each other and are close enough to feel it); events plentiful without changing anything important (a contest ends in a winner and a loser, and the post or the place changes hands).
+
+The game lens: a player hears two people want the same thing before either moves, watches who works and who whispers, and sees what the one who lost did about it.
