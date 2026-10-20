@@ -78,7 +78,7 @@ Every experiment's mechanism sits behind a switch, so its effect can be measured
 ## Standing rules
 
 - **Consequence rule.** Every mechanism changes what happens to people, or how they are read. One that does neither is connected or cut.
-- **Exit criterion.** Eight points in `docs/STATUS.md` say when the model is good enough to build on. Every experiment moves one of them, or it does not run.
+- **Exit criterion.** Nine points in `docs/STATUS.md` say when the model is good enough to build on. Every experiment moves one of them, or it does not run.
 - **Seven skills.** Every experiment passes the personality scientist, measurement auditor, character reader, simulation engineer, emergence designer, revelation designer and steward (`docs/method/skills.md`).
 - **The simulation decides.** A language model may only write the words for a decision the engine has made. It never changes world state.
 - **No realism claims.** The scoreboard shows internal readability, never realism.
