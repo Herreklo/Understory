@@ -60,3 +60,5 @@ Notes, not disagreements
   The key and the A/B texts were taken as given; the assignment was not regenerated.
 - Claim 8: the bar "births / deaths within +-0.15" compares on with off: on - off is about -0.01 by the printed values (range -0.04 to +0.02), well inside; either arm alone is 1.16-1.17, not 1.0.
   Population 84 vs 86, marriages 5.2 vs 4.8, hires 15.1 vs 14.1, left 8.8 vs 7.0 differ; these are single runs of 20 worlds each with no interval printed.
+
+Note added 20 Oct 2026, after the round: this rerun was made before the switch was set off by default. With the merged code, `carryOn()` is `ON.has('carry')`, and the rerun's command needs `ON=carry` in the environment to reproduce `carry-on.txt`.
