@@ -1,0 +1,13 @@
+  takeup: @30 now reads late into every night. [@30 was found out: taking from the trip money.; it hit hard]
+  keepaway: @101 is no longer at the Anchor every Friday without fail. [@26 and @101 divorced.; it hit hard]
+  takeup: @58 is now out in the garden every morning from spring to autumn. [@17 died in her sleep, aged 90.; it hit hard]
+  takeup: @5 now spends every spare hour fixing something in the shed. [@61 died in her sleep, aged 82.; it hit hard]
+  takeup: @46 is now at the Anchor every Friday without fail. [@61 died in her sleep, aged 82.; it hit hard]
+  startover: @30 walked out of the school to start again somewhere else. [@30 was found out: @53 had been blamed for @30's mistake.; it hit hard; it happened at work]
+  takeup: @24 now reads late into every night. [@5 and @24 lost touch.; it had shaken her]
+  takeup: @20 now reads late into every night. [@18 died of a sudden heart attack, aged 77.; it hit hard]
+  takeup: @56 now walks the shore every evening. [What @56 had wanted for 1 year was gone.; it had shaken him]
+  takeup: @26 is now at the Anchor every Friday without fail. [@101 dragged up what @26 did last year in front of everyone at the harbour fleet.; it had shaken her]
+  keepaway: @40 no longer plays cards at the Anchor on Tuesdays. [@41 died of a sudden heart attack, aged 76.; it hit hard]
+  takeup: @44 now reads late into every night. [@41 died of a sudden heart attack, aged 76.; it hit hard]
+AFTERMATH {"seeds":[3377,3384],"worlds":8,"blows":484,"followed":0,"changed":299,"byWhat":{"job":104,"partner":38,"habits":237,"status":15,"music":5,"group":19},"byBlow":{"cooled":[192,94],"caught":[29,28],"divorce":[7,4],"death":[88,59],"rake":[127,80],"want:failed":[16,11],"dismiss":[9,9],"dressdown":[4,4],"split":[9,7],"passed":[3,3]},"perWorld":[0.6,0.5692,0.6393,0.6316,0.5636,0.5789,0.6901,0.6744],"decided":529,"byKind":{"carryon":262,"takeup":157,"keepaway":61,"startover":49},"lines":247,"traitLines":0,"changedShare":0.6178,"decidedPerWorldDecade":66.1,"changeShare":0.5047}

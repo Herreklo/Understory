@@ -3,23 +3,24 @@
 // failing), the next month they face it once: start again at work, take up a new routine, keep away from one, or carry on. The act
 // is its own event with the blow as its reason, and the change stays until life changes it again.
 //
-// Round 34 did not meet its expectations: blows changed lives (67% against 50% within three years, in every world) without moving the
-// scoreboard, but blind readers could not say the lives read better (−0.12 ±0.41 over 24 pairs), and quoted the trait given as the
-// reason for a change as not fitting it. Round 37 tests it again with the reasons a reader accepts for a change: the blow, how hard it
-// hit, and what ties the change to the blow (it happened at work; the person it came from is there too). On unless OFF=aftermath.
+// Off unless ON=aftermath. Round 34 did not meet its expectations: blows changed lives (67% against 50% within three years, in every
+// world) without moving the scoreboard, but blind readers could not say the lives read better (−0.12 ±0.41 over 24 pairs), and quoted
+// the trait given as the reason for a change as not fitting it. Round 37 gave the reasons a reader accepts for a change (the blow, how
+// hard it hit, what ties the change to it): readers quoted them as fitting 17 times and as unfit once, blows changed lives 71% against
+// 52%, and the lives still read no better (+0.04 ±0.49). A routine taken up or dropped is texture, not a turn.
 //
 // Blows are read from the month's events at its end (`aftermathTick`, after every system), so no system that makes a blow needs to
 // know about it; the decision is a queued situation, run with next month's situations.
 
 import { SETTING } from './setting';
 import { clamp } from './rng';
-import { OFF, P, age, likeOf, type World, type Person, type Event, type Habit, type Cause } from './world';
+import { ON, P, age, likeOf, type World, type Person, type Event, type Habit, type Cause } from './world';
 import { stateC, bondC, stateCause } from './considerations';
 import { type Instance, favour, leaveJob } from './grammar';
 import type { Feature } from './features';
 import { formHabit } from './time';
 
-export const aftermathOn = () => !OFF.has('aftermath');
+export const aftermathOn = () => ON.has('aftermath');
 
 // Starting again at work answers a blow that came through work: passed over, found out, a shaming at their own workplace, or a want
 // that failed (the amendment to round 34: walking out of a job over a friendship's end does not fit the blow).
