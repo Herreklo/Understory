@@ -1,0 +1,6 @@
+base      73.9 per life  (0% fewer)
+pre       72.3 per life  (2% fewer)
+type3     67.0 per life  (9% fewer)
+typeDec   64.1 per life  (13% fewer)
+textDec   68.9 per life  (7% fewer)
+type5     65.6 per life  (11% fewer)
