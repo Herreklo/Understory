@@ -101,3 +101,11 @@ The aim is to keep building, learning, experimenting, questioning, and finding i
 When the time feels right, the focus can sharpen. It might become a music-management game, an entirely different game, a useful creative or UX tool, a simulation to explore for its own sake, or something unexpected.
 
 **The Lab does not need to know what it will become before it is allowed to become interesting.**
+
+### Added 20 October 2026: three layers, and groups
+
+*Added in a session, after an outside reading of the notebook of game ideas was checked against the engine.*
+
+Every game idea draws on three layers of the same world: what really happens (people who develop, build ties, make things, form groups and live with consequences), what anyone believes about it (the witness, accounts that travel), and what the player can do in it (the front door). The knowledge layer is the engine's most widely shared mechanism and the one that already works. The substance layer is where it is weakest, and that is where most of the game ideas wait.
+
+A group that outlives its members is not a game-layer luxury. The band, the workplace and the club need a character of their own, carried in what their members believe and act on, or the origin game cannot be built. It is now the ninth point of the exit criterion.
