@@ -1,0 +1,59 @@
+Round 33: the paired reading, reckon on against off (20 Oct 2026).
+Twelve people (the three adults of each of worlds 3229-3232 most eventful over both arms together, src/tools/diag/pairarm.ts at b10439e),
+each shown as the engine writes them with the reckoning on and off (ten present years, with reasons, folded as the page folds them).
+The order was dealt six and six. Three blind readers on Fable 5.1 (a novelist, a social worker, a player of simulation games), each
+told only that the two are two versions of the same person's life (brief: reports/33-reading-brief.md). The pack and key were
+committed (d9b9cf4) before the reading, and the reading was scored before any battery number was opened. Answers:
+reports/33-reading-answers.json. Cells: score A, score B, preferred.
+
+pair  on            novelist  socialworker        player   majority-on
+P01   A          3,4,B         3,4,B         3,4,B   no
+P02   A          3,4,B         3,4,B         3,4,B   no
+P03   B          3,4,B         3,4,B         3,4,B   yes
+P04   B          3,3,A         3,3,A         4,3,A   no
+P05   B          3,3,A         4,3,A         3,3,A   no
+P06   B          2,3,B         2,4,B         3,4,B   yes
+P07   A          3,4,B         4,4,B         3,4,B   no
+P08   B          3,3,A         3,3,A         3,3,A   no
+P09   A          3,3,B         3,3,B         3,4,B   no
+P10   A          4,3,A         3,4,B         4,4,B   no
+P11   B          3,2,A         4,2,A         3,2,A   no
+P12   A          4,2,A         3,2,A         4,2,A   yes
+
+Majority preferred the on arm in 3 of 12. Mean paired difference, on minus off: -0.08 over 36 reader-pairs.
+  novelist       diff +0.08
+  socialworker   diff -0.17
+  player         diff -0.17
+ordinal  alpha 0.612  95% [0.291, 0.811]  (3 readers, 24 lives)
+interval alpha 0.660  95% [0.358, 0.823]  (3 readers, 24 lives)
+  novelist     mean 3.12
+  socialworker mean 3.25
+  player       mean 3.33
+
+faults on: total 106 · unfit reason 37, false line 24, repeat 22, wording 15, out of nowhere 8
+faults off: total 108 · repeat 37, wording 21, unfit reason 20, false line 15, out of nowhere 15
+
+
+(scripts/alpha.py reports/33-reading-scores.json; units 2i-1 and 2i are pair i's A and B.)
+
+The reckoning on the page. In the on arm: 6 times "told ... straight that ... was always the one who", 10 times "asked ... for
+something back, for once", no one stopped going round; 2 answers "took it to heart"; 21 lines of round 32's record ("was always
+the one who"). In 4 of the 16 reckonings the page adds "Nobody was surprised any more: it had been happening since ...": the same
+reckoning, three years apart, for a friendship it changed nothing in.
+
+Quoted by readers: 8 times in all (bar at least 3) ✓.
+  As a reason that made an act make sense: 2 (bar at least 2) ✓
+    P06 socialworker: Matt asked Lily for something back, for once.; could not stand to see Matt go without; ...
+    P07 player: Tilly Sands told Audrey no. [...] [Audrey asked Tilly Sands for something back, for once. Nobody was surprised any
+      more: it had been happening since 2015.; looks after her own first; ...]
+  As an unfit reason: 3 (bar at most 2) ✗
+    P05 player: Jonah Baker had promised Karen to put in a word for them, and did it. [Karen had always been the one who came
+      round (since 2031); ...]   (round 32's pull of owing, not the reckoning)
+    P06 novelist and player: Lily gave Matt a day of help with the garden, and made sure Matt knew the cost. [Matt asked Lily for
+      something back, for once.; could not stand to see Matt go without; ...]
+  As another fault: 3 (a false line, two wording), all on round 32's town line.
+
+Unfit reasons in all: 37 in the on arm against 20 in the off arm.
+
+Against the pre-registration: on arm preferred in 3 of 12 (bar 7) ✗; mean paired difference -0.08; α ordinal .612 [.291, .811]
+(bar .667) ✗; quoted at least 3 times ✓, as good at least twice ✓, as unfit at most twice ✗. Expectation 6 fails.
