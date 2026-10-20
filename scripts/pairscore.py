@@ -2,12 +2,14 @@
 """Scores a blind paired reading (src/tools/diag/pairarm.ts) against its key.
 
 Usage:
-  python3 scripts/pairscore.py KEY ANSWERS... [--quote REGEX] [--json OUT]
+  python3 scripts/pairscore.py KEY ANSWERS... [--pack PACK...] [--quote REGEX] [--json OUT]
 
 KEY      key.json from pairarm.ts: {"P01": {"onIs": "A" | "B", ...}, ...}
 ANSWERS  one or more reader files in the brief's shape, {"reader": name, "pairs": {"P01": {"A": {...}, "B": {...}, "prefer": "A"}}},
          or one combined file {name: {...reader file...}}. A reader's parts (pairs-1.txt, pairs-2.txt read at different sittings) are
          separate files with the same "reader": their pairs are joined.
+--pack   the pages the readers read (pairs.txt, or its parts), for how much happened in each version. Without it, pairs.txt beside
+         the key is used when it is there.
 --quote  a regular expression for the round's own wording: its quotes in faults and good reasons are listed, by arm.
 
 What it reports, and why:
@@ -20,6 +22,11 @@ What it reports, and why:
 - Krippendorff's alpha (scripts/alpha.py): how far the readers agree on the scores. It describes the panel, not the effect: a
   change can read better to every reader while they disagree on the scale. Reported, not a gate.
 - Faults by kind in each arm, and the quotes matching --quote.
+- How much happened: the lines of each version (not counting the cited events shown under a line). Readers choose the version where
+  more happens (70% of their choices over rounds 29-34, +0.16 a pair for every ten lines more; round 35), and the two arms of an engine
+  change are different worlds, so the people read differ by 16-28 lines (sd) between arms. Reported: the lines in each arm, how often
+  the longer version was chosen, and the effect with the difference in lines as a third term. A round is judged on the effect with the
+  order as a term, since a change that makes more happen is meant to read better for it; the third term says how much of it is that.
 """
 import argparse, json, math, re, statistics as st, subprocess, sys, os
 from collections import Counter
@@ -43,6 +50,48 @@ def t(table, df):
     return 1.960 if table is T975 else 1.282
 
 
+def pack_lines(paths):
+    """Lines of each version in the pack: {(pair, 'A'|'B'): n}, not counting the cited events shown under a line."""
+    n, cur = {}, None
+    for p in paths:
+        for line in open(p, encoding='utf8'):
+            m = re.match(r'##### (P\d+), version ([AB])', line)
+            if m:
+                cur = (m[1], m[2])
+                n[cur] = 0
+            elif cur and line.strip() and not line.startswith('    ↳'):
+                n[cur] += 1
+    return n
+
+
+def ols(X, y):
+    """Least squares with its standard errors, by the normal equations (no libraries): returns (b, se, residual sd)."""
+    k = len(X[0])
+    A = [[sum(r[i] * r[j] for r in X) for j in range(k)] for i in range(k)]
+    inv = [[float(i == j) for j in range(k)] for i in range(k)]
+    for c in range(k):
+        piv = max(range(c, k), key=lambda r: abs(A[r][c]))
+        A[c], A[piv], inv[c], inv[piv] = A[piv], A[c], inv[piv], inv[c]
+        d = A[c][c]
+        if abs(d) < 1e-12:
+            return None
+        A[c] = [v / d for v in A[c]]
+        inv[c] = [v / d for v in inv[c]]
+        for r in range(k):
+            if r != c and A[r][c]:
+                f = A[r][c]
+                A[r] = [a - f * b for a, b in zip(A[r], A[c])]
+                inv[r] = [a - f * b for a, b in zip(inv[r], inv[c])]
+    xty = [sum(r[i] * v for r, v in zip(X, y)) for i in range(k)]
+    b = [sum(inv[i][j] * xty[j] for j in range(k)) for i in range(k)]
+    res = [v - sum(bi * xi for bi, xi in zip(b, r)) for r, v in zip(X, y)]
+    dof = len(y) - k
+    if dof <= 0:
+        return None
+    s = math.sqrt(sum(e * e for e in res) / dof)
+    return b, [s * math.sqrt(inv[i][i]) for i in range(k)], s
+
+
 def load(paths):
     readers = {}
     for p in paths:
@@ -58,6 +107,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('key')
     ap.add_argument('answers', nargs='+')
+    ap.add_argument('--pack', nargs='+')
     ap.add_argument('--quote')
     ap.add_argument('--json')
     a = ap.parse_args()
@@ -75,12 +125,15 @@ def main():
     faults = {'on': Counter(), 'off': Counter()}
     quotes = {'good': [], 'fault': [], 'good_off': [], 'fault_off': []}
     rq = re.compile(a.quote) if a.quote else None
+    arms, prefs = [], []
     for i, p in enumerate(pairs):
         on = key[p]['onIs']
         off = 'B' if on == 'A' else 'A'
+        arms.append((p, on, off))
         cells, votes, ds = [], 0, []
         for r in names:
             x = readers[r][p]
+            prefs.append((p, x.get('prefer')))
             cells.append(f"{x['A']['score']},{x['B']['score']},{x.get('prefer', '-')}")
             votes += x.get('prefer') == on
             bchoice += x.get('prefer') == 'B'
@@ -133,6 +186,43 @@ def main():
     json.dump({'readers': scores}, open(tmp, 'w'))
     alpha = subprocess.run([sys.executable, sp, tmp], capture_output=True, text=True).stdout.strip()
     print(alpha)
+    # How much happened in each version, and how much of the effect it carries.
+    packs = a.pack
+    if not packs:
+        beside = os.path.join(os.path.dirname(os.path.abspath(a.key)), 'pairs.txt')
+        packs = [beside] if os.path.exists(beside) else []
+    lines = None
+    if packs:
+        nl = pack_lines(packs)
+        if all((p, v) in nl for p in pairs for v in 'AB'):
+            dl = [nl[(p, on)] - nl[(p, off)] for p, on, off in arms]
+            near = longer = shorter = 0
+            for p, pref in prefs:
+                if pref not in ('A', 'B'):
+                    continue
+                d_ab = nl[(p, 'A')] - nl[(p, 'B')]
+                if abs(d_ab) < 5:
+                    near += 1
+                elif (d_ab > 0) == (pref == 'A'):
+                    longer += 1
+                else:
+                    shorter += 1
+            on_mean = st.mean(nl[(p, on)] for p, on, _ in arms)
+            off_mean = st.mean(nl[(p, off)] for p, _, off in arms)
+            fit = ols([[1.0, s, x] for s, x in zip(side, dl)], d_pair) if n > 3 else None
+            lines = {'on': on_mean, 'off': off_mean, 'diff': st.mean(dl), 'diffSd': st.stdev(dl) if n > 1 else 0,
+                     'longerChosen': longer, 'shorterChosen': shorter, 'near': near}
+            print(f'\nHow much happened: {on_mean:.1f} lines a page on, {off_mean:.1f} off; on minus off {st.mean(dl):+.1f} a pair'
+                  f" (sd {lines['diffSd']:.1f}). Where the versions are five or more lines apart, the longer was chosen {longer} times and"
+                  f' the shorter {shorter} ({near} choices nearer).')
+            if fit:
+                b, se, _ = fit
+                tt = t(T975, n - 3)
+                lines.update({'effect': b[0], 'hw95': tt * se[0], 'perTen': 10 * b[2], 'perTenHw95': tt * 10 * se[2]})
+                print(f'With the order and the difference in lines as terms: effect {b[0]:+.2f} ±{tt * se[0]:.2f} (95%); ten lines more'
+                      f' {10 * b[2]:+.2f} ±{tt * 10 * se[2]:.2f}. Reported beside the effect above, which the round is judged on.')
+        else:
+            print('\nHow much happened: the pack does not match the key; not reported.')
     for lab in ('on', 'off'):
         print(f'faults {lab}: total {sum(faults[lab].values())} · ' + ', '.join(f'{k} {v}' for k, v in faults[lab].most_common()))
     if rq:
@@ -145,7 +235,7 @@ def main():
     if a.json:
         json.dump({'pairs': n, 'readers': names, 'majorityOn': maj, 'diff': mean, 'hw95': hw, 'adjusted': adj, 'onB': on_b, 'chooseB': bchoice,
                    'perReader': {r: st.mean(v) for r, v in per_reader.items()}, 'faults': {k: dict(v) for k, v in faults.items()},
-                   'quotes': quotes, 'scores': scores}, open(a.json, 'w'), indent=1)
+                   'quotes': quotes, 'scores': scores, 'lines': lines}, open(a.json, 'w'), indent=1)
 
 
 if __name__ == '__main__':
