@@ -8,7 +8,7 @@ import { motive, voiceOf } from './motives';
 import { hoods, idx, residentsNear, staffOf, town } from './scale';
 import * as MX from './mathx';
 import { keepAccounts } from './accounts';
-import { citeMoved } from './telling';
+import { citeFlip } from './telling';
 
 export type Status = 'in' | 'away' | 'dead' | 'bg' | 'gone'; // bg: lives in the city, simulated by the coarse yearly pass; gone: left the city
 
@@ -601,8 +601,9 @@ export function addEvent(w: World, ev: Omit<Event, 'id' | 't' | 'knownBy'> & { k
     }
   // A trait near the middle is not a reason anyone would give (a bare 'patience' says nothing about the person).
   if (ev.causes.some(c => c.mid)) ev = { ...ev, causes: ev.causes.filter(c => !c.mid) };
-  // A counterpart chosen this month moved by what the chooser had been told: the account is one of the event's reasons (telling.ts).
-  const cited = citeMoved(w, ev.who, ev.causes);
+  // A counterpart chosen this month who would not have been chosen without what the chooser had been told: the account is one of the
+  // event's reasons (telling.ts).
+  const cited = citeFlip(w, ev.who, ev.causes);
   if (cited !== ev.causes) ev = { ...ev, causes: cited };
   ev = { ...ev, causes: ev.causes.map(c => saidAsMotive(w, ev, c)) };
   const e: Event = { ...ev, id: w.events.length, t: w.t, knownBy: ev.knownBy ?? new Map() };

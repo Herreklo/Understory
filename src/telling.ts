@@ -7,14 +7,15 @@
 // An account shifts no bond. It is read: as its own consideration in any decision that weighs its subject (said as the act, with its
 // source), and as a part of regard when a counterpart is chosen, where the event that follows cites it.
 //
-// Off unless ON=telling: round 30 did not meet its expectations (an account was a decision's top reason in 0.41% of choices with another
-// person, reach rose from 5% to 7%); blind readers preferred the lives with it in 9 of 12 pairs, and quoted accounts weighed in decisions
-// they do not bear on as unfit reasons.
+// Where an account is read (round 31): only beside a bond it bears on (the axis its act moved: liking, respect or trust), and in the
+// choice of a counterpart only when the choice, made again on the same draw without accounts, would have gone to someone else; then the
+// event that follows says so.
 
 import { clamp } from './rng';
+import { EXPR } from './families';
 import { curves, z01, type Consideration, type Option } from './decide';
 import {
-  ON,
+  OFF,
   P,
   bond,
   peekBond,
@@ -31,7 +32,7 @@ import {
   type Heard,
 } from './world';
 
-export const tellingOn = () => ON.has('telling');
+export const tellingOn = () => !OFF.has('telling');
 const FAM = 0.2; // how well a hearer must know the one it is about, short of sharing a workplace, group or circle with them
 const BOUND = 32; // live told accounts a person holds before the most faded go
 const SECOND = 0.6; // how much surer the first hearer is than the second
@@ -105,11 +106,14 @@ interface Pending {
   ev: number;
 }
 const stats = (w: World) =>
-  ((w as any).tellStats ??= { told: 0, second: 0, wrong: 0, bent: 0, hearers: {} as Record<number, number> }) as {
+  ((w as any).tellStats ??= { told: 0, second: 0, wrong: 0, bent: 0, choices: 0, flips: 0, cited: 0, hearers: {} as Record<number, number> }) as {
     told: number;
     second: number;
     wrong: number;
     bent: number;
+    choices: number;
+    flips: number;
+    cited: number;
     hearers: Record<number, number>;
   };
 
@@ -213,25 +217,68 @@ function dropFaded(w: World, h: Person) {
   list.splice(worst, 1);
 }
 
-// The strongest account a person holds about another: told to them, or done to them. Its signed strength is blame × confidence × how
-// much is left; an act done to oneself is held for sure, with its blame read from what it did to the bond.
+// What an act bears on: the bond axes it moved, each as a share of the largest (axes moved less than 0.3 as much count for nothing).
+// An act of the grammar carries its own effects on liking, respect and trust; an event without one bears on the axis its evidence
+// points at.
+type Axis = 'like' | 'respect' | 'trust';
+type Bearing = Record<Axis, number>;
+const EVIDENCE_AXIS: Record<string, Axis> = {
+  sincerity: 'trust',
+  fairness: 'trust',
+  greedAvoidance: 'trust',
+  diligence: 'respect',
+  organisation: 'respect',
+  prudence: 'respect',
+  modesty: 'respect',
+  fearfulness: 'respect',
+  anxiety: 'respect',
+  altruism: 'like',
+  gentleness: 'like',
+  patience: 'like',
+  forgiveness: 'like',
+};
+function share(b: Bearing): Bearing {
+  const top = Math.max(b.like, b.respect, b.trust);
+  if (top <= 0) return { like: 0, respect: 0, trust: 0 };
+  const f = (x: number) => (x >= 0.3 * top ? x / top : 0);
+  return { like: f(b.like), respect: f(b.respect), trust: f(b.trust) };
+}
+function bearingOf(w: World, ev: number): Bearing {
+  const e = w.events[ev];
+  const x = EXPR[e.type];
+  if (x && Math.abs(x.like) + Math.abs(x.respect) + Math.abs(x.trust) > 0)
+    return share({ like: Math.abs(x.like), respect: Math.abs(x.respect), trust: Math.abs(x.trust) });
+  const b: Bearing = { like: 0, respect: 0, trust: 0 };
+  for (const v of e.evidence) {
+    const a = EVIDENCE_AXIS[v.key];
+    if (a) b[a] += Math.abs(v.strength);
+  }
+  return share(b);
+}
+const memBearing = (m: { like: number; respect: number; trust: number }) =>
+  share({ like: Math.abs(m.like), respect: Math.abs(m.respect), trust: Math.abs(m.trust) });
+
+// The strongest account a person holds about another on one axis: told to them, or done to them. Its signed strength is blame ×
+// confidence × how much is left × how much the act bears on that axis; an act done to oneself is held for sure, read from what it did
+// to that axis of the bond.
 interface Held {
   s: number;
   ev: number;
   label: string;
 }
-export function strongest(w: World, p: Person, o: number): Held | undefined {
+export function strongest(w: World, p: Person, o: number, axis: Axis): Held | undefined {
   const r = peekBond(w, p.id, o);
   if (!r) return undefined;
   let best: Held | undefined;
   for (const a of r.heard ?? []) {
-    const s = live(p, a, w.t);
+    const k = bearingOf(w, a.ev)[axis];
+    if (!k) continue;
+    const s = live(p, a, w.t) * k;
     if (!best || Math.abs(s) > Math.abs(best.s)) best = { s, ev: a.ev, label: toldAs(w, a) };
   }
   for (const m of r.mem) {
-    if (m.ev < 0 || m.source === 'saw') continue;
-    const hit = m.like + m.trust;
-    const s = clamp(hit, -1, 1) * memWeight(p, m, w.t, o);
+    if (m.ev < 0 || m.source === 'saw' || !memBearing(m)[axis]) continue;
+    const s = clamp(2 * m[axis], -1, 1) * memWeight(p, m, w.t, o);
     if (!best || Math.abs(s) > Math.abs(best.s)) best = { s, ev: m.ev, label: doneAs(m.text, p.id, o, m.t) };
   }
   return best && Math.abs(best.s) >= 0.05 ? best : undefined;
@@ -249,9 +296,9 @@ const doneAs = (text: string, holder: number, o: number, t: number) => {
   return `${said} (${year(t)})`;
 };
 
-// The account as a consideration about `o`, in the same direction as the bond consideration it stands beside.
-export function accountC(w: World, p: Person, o: number, dir: 1 | -1): Consideration | undefined {
-  const a = strongest(w, p, o);
+// The account as a consideration about `o`, on the axis of the bond consideration it stands beside and in its direction.
+export function accountC(w: World, p: Person, o: number, dir: 1 | -1, axis: Axis): Consideration | undefined {
+  const a = strongest(w, p, o, axis);
   if (!a) return undefined;
   return {
     id: `account:${o}`,
@@ -264,8 +311,8 @@ export function accountC(w: World, p: Person, o: number, dir: 1 | -1): Considera
 // Which way a bond consideration pulls: toward the answer when the bond is warm (a rising curve), away when it is cold.
 const aboutDir = (c: Consideration): 1 | -1 => (c.curve(0.9) > c.curve(0.1) ? 1 : -1);
 
-// Every decision that weighs a person by a bond (a consideration `bond:<axis>:<id>`) also weighs what the chooser holds about them,
-// beside it.
+// Every decision that weighs a person by a bond (a consideration `bond:<axis>:<id>`) also weighs what the chooser holds about them that
+// bears on that axis, beside it.
 export function withAccounts(w: World, p: Person, options: Option[]) {
   if (!tellingOn()) return;
   for (const o of options) {
@@ -273,49 +320,94 @@ export function withAccounts(w: World, p: Person, options: Option[]) {
     const done = new Set<number>();
     for (const c of o.considerations) {
       out.push(c);
-      const m = /^bond:[a-z]+:(\d+)$/.exec(c.id);
-      if (!m || done.has(+m[1])) continue;
-      done.add(+m[1]);
-      const a = accountC(w, p, +m[1], aboutDir(c));
+      const m = /^bond:(like|respect|trust):(\d+)$/.exec(c.id);
+      if (!m || done.has(+m[2])) continue;
+      const a = accountC(w, p, +m[2], aboutDir(c), m[1] as Axis);
+      if (a) done.add(+m[2]);
       if (a) out.push(a);
     }
     o.considerations = out;
   }
 }
 
-// The part of regard that is what the chooser has been told: bounded, and remembered for the month, so the event that follows the
-// choice can cite the account that moved it.
-export function regardPart(w: World, who: number, ofWhom: number): number {
-  if (!tellingOn()) return 0;
+// The part of regard that is what the chooser has been told: bounded. While a choice is made again without accounts it is nothing.
+let blind = false;
+function partOf(w: World, who: number, ofWhom: number): { part: number; top?: Heard } {
   const r = peekBond(w, who, ofWhom);
-  if (!r?.heard?.length) return 0;
+  if (!r?.heard?.length) return { part: 0 };
   const p = P(w, who);
   let sum = 0,
-    top: Heard | undefined;
+    top: Heard | undefined,
+    topS = 0;
   for (const a of r.heard) {
     const s = live(p, a, w.t);
     sum += s;
-    if (!top || Math.abs(s) > Math.abs(live(p, top, w.t))) top = a;
-  }
-  const part = 0.25 * clamp(sum, -1, 1);
-  if (Math.abs(part) >= 0.05 && top) ((w as any).regardMoved ??= new Map()).set(`${who}|${ofWhom}`, { t: w.t, a: top });
-  return part;
-}
-
-// An event between two people this month, one of whom chose the other moved by an account: the account is one of its reasons.
-export function citeMoved(w: World, who: number[], causes: Cause[]): Cause[] {
-  const moved = (w as any).regardMoved as Map<string, { t: number; a: Heard }> | undefined;
-  if (!tellingOn() || !moved || who.length < 2) return causes;
-  const a0 = who[0];
-  for (const b of who.slice(1)) {
-    for (const [x, y] of [
-      [a0, b],
-      [b, a0],
-    ]) {
-      const m = moved.get(`${x}|${y}`);
-      if (!m || m.t !== w.t || causes.some(c => c.key === `account:${y}`)) continue;
-      causes = [...causes, { kind: 'belief', label: `@${x} ${toldAs(w, m.a)}`, weight: 0.3, who: x, ref: m.a.ev, key: `account:${y}` }];
+    if (!top || Math.abs(s) > Math.abs(topS)) {
+      top = a;
+      topS = s;
     }
   }
+  return { part: 0.25 * clamp(sum, -1, 1), top };
+}
+export function regardPart(w: World, who: number, ofWhom: number): number {
+  if (!tellingOn() || blind) return 0;
+  return partOf(w, who, ofWhom).part;
+}
+
+interface Flip {
+  t: number;
+  label: string;
+  ev: number;
+}
+// A choice of counterpart by regard, made twice on the same draw: once without accounts, then as it is. When the two differ, the
+// account that made the difference is kept for the event that follows, which cites it once, and the flip is counted. `ids` gives the
+// people a result names, in order; `n` is how many there were to choose from.
+export function counterpart<T>(w: World, who: number, n: number, pick: () => T, ids: (x: T) => number[]): T {
+  if (!tellingOn() || n < 2) return pick();
+  const state = w.rng.save();
+  blind = true;
+  let alt: T;
+  try {
+    alt = pick();
+  } finally {
+    blind = false;
+  }
+  w.rng.restore(state);
+  const got = pick();
+  const g = ids(got),
+    a = ids(alt);
+  const s = w.t >= w.startPresent ? stats(w) : undefined;
+  if (s) s.choices++;
+  const chosen = g.find(x => !a.includes(x)),
+    passed = a.find(x => !g.includes(x));
+  if (chosen == null && passed == null) return got;
+  if (s) s.flips++;
+  // The account that made the difference: the one that raised the chosen, or the one that sank the one passed over, whichever moved more.
+  const up = chosen != null ? partOf(w, who, chosen) : { part: 0 },
+    down = passed != null ? partOf(w, who, passed) : { part: 0 };
+  const byChosen = up.part >= -down.part;
+  const top = byChosen ? up.top : down.top;
+  if (top && chosen != null) {
+    const label = byChosen ? `@${who} turned to @${chosen}: ${toldAs(w, top)}` : `@${who} passed over @${passed}: ${toldAs(w, top)}`;
+    ((w as any).flips ??= new Map()).set(`${who}|${chosen}`, { t: w.t, label, ev: top.ev } as Flip);
+  }
+  return got;
+}
+
+// The event that follows a flipped choice, between the chooser and the one chosen, this month: the account is one of its reasons, once.
+export function citeFlip(w: World, who: number[], causes: Cause[]): Cause[] {
+  const flips = (w as any).flips as Map<string, Flip> | undefined;
+  if (!tellingOn() || !flips?.size || who.length < 2) return causes;
+  for (const x of who)
+    for (const y of who) {
+      if (x === y) continue;
+      const f = flips.get(`${x}|${y}`);
+      if (!f) continue;
+      flips.delete(`${x}|${y}`);
+      if (f.t !== w.t || causes.some(c => c.key === `account:${y}`)) continue;
+      causes = [...causes, { kind: 'belief', label: f.label, weight: 0.3, who: x, ref: f.ev, key: `account:${y}` }];
+      const s = w.t >= w.startPresent ? stats(w) : undefined;
+      if (s) s.cited++;
+    }
   return causes;
 }

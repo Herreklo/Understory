@@ -26,6 +26,9 @@ const out: any = {
   accountTop: 0,
   toldTop: 0,
   citedByChoice: 0,
+  choices: 0,
+  flips: 0,
+  flipsCited: 0,
   sample: [] as string[],
 };
 for (let seed = a; seed <= b; seed++) {
@@ -39,10 +42,17 @@ for (let seed = a; seed <= b; seed++) {
   out.perAdult.push(+(s.told / Math.max(1, adults.length)).toFixed(2));
   out.wrongShare.push(+(s.wrong / Math.max(1, s.told)).toFixed(4));
   out.bentShare.push(+(s.bent / Math.max(1, s.told)).toFixed(4));
+  out.choices += s.choices ?? 0;
+  out.flips += s.flips ?? 0;
+  out.flipsCited += s.cited ?? 0;
   out.secondShare.push(+(s.second / Math.max(1, s.told)).toFixed(4));
   for (const e of w.events) {
     if (e.t <= t0) continue;
-    if ((e.causes ?? []).some((c: any) => String(c.key ?? '').startsWith('account:') && c.weight === 0.3)) out.citedByChoice++;
+    const flip = (e.causes ?? []).find((c: any) => String(c.key ?? '').startsWith('account:') && c.weight === 0.3);
+    if (flip) {
+      out.citedByChoice++;
+      if (out.sample.length < 14) out.sample.push(`flip ${e.type}: ${e.text} — [${flip.label}]`);
+    }
     if (!e.decision) continue;
     out.decisions++;
     const rec: any = e.decision;
@@ -60,6 +70,7 @@ for (let seed = a; seed <= b; seed++) {
 }
 const med = (xs: number[]) => xs.slice().sort((p, q) => p - q)[Math.floor(xs.length / 2)];
 out.perAdultMedian = med(out.perAdult);
+out.flipShare = +(out.flips / Math.max(1, out.choices)).toFixed(4);
 out.accountTopShare = +(out.accountTop / Math.max(1, out.withOther)).toFixed(4);
 out.toldTopShare = +(out.toldTop / Math.max(1, out.withOther)).toFixed(4);
 out.accountAnyShare = +(out.accountAny / Math.max(1, out.withOther)).toFixed(4);
