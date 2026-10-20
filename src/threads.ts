@@ -2,6 +2,7 @@
 // Stage 1: it starts (the first act is logged). Stage 2: it becomes a pattern; someone close notices and asks, or looks away.
 // Stage 3: it costs something: a bond pays for it. It ends when the person comes through it, opens up, or breaks.
 
+import { carryReset } from './carry';
 import { clamp } from './rng';
 import {
   type World,
@@ -228,6 +229,7 @@ function cost(w: World, p: Person, th: Thread) {
   th.events.push(e.id);
   remember(w, q, p, e.id, -0.3, -0.15, -0.2, COST[th.family]);
   if (p.friends.has(q.id) && facet(q, 'forgiveness', p.id) < 0.5) {
+    carryReset(w, p.id, q.id);
     p.friends.delete(q.id);
     q.friends.delete(p.id);
   }

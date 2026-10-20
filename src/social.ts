@@ -327,6 +327,7 @@ export function friendsTick(w: World) {
     for (const id of [...p.friends]) {
       const q = w.byId.get(id);
       if (!q || q.status !== 'in') {
+        carryReset(w, p.id, id);
         p.friends.delete(id);
         if (q) q.friends.delete(p.id);
         continue;
