@@ -1930,3 +1930,31 @@ Outcome of round 33 (20 Oct 2026, 18:25 Oslo; code tree `d91d51f` with main's `6
 8. Lives: dead lives 0.04 against 0.05 ✓; twists **18.9 against 21.6** a world-decade (−12.5%; bar not down by more than a tenth) ✗; the coherence counter at zero in both arms ✓; `props` holds on 50 worlds ✓; births ÷ deaths in `test.ts` 1.08 against 1.19 (−0.11, inside ±0.15) ✓. Marriages 4.3 against 5.3 a world-decade (−19%).
    **Not kept,** by the pre-registration's own rule: 3 and 6 fail. The code stays behind `ON=reckon` (with round 32's record behind `ON=carry`), off by default; the default is identical to main. Re-derivation (`reports/rederive-33.md`, a separate agent on Sonnet 5.5, its own code from the raw files): every number agrees; the round's own count reran exactly, world by world, in both arms. Its notes, carried here: only 4 of the 12 on-arm lives in the reading contain a reckoning line, so most of the reading's difference comes from the rest of the change (round 32's record and its reasons, now on); all 11 score ties went to the off arm; dead lives fell (0.038 against 0.052, the one story measure clear of zero); the friends median of 4 against 3 sits on a knife edge (means 4.45 against 4.12); the key slice's −1.2 is not driven by the reckoning's own decisions (−1.3 without them).
    What it says: the reckoning was seen, the first act between friends in this arc that readers noticed, and it did not make lives better; it made them worse where it repeated and where the record's pull to give or withhold was read as a reason that does not fit. By the pre-registration ("6 holds on being quoted and fails on preference"), the next close-ties round would ask why: the answer changes too little (a friendship reckoned with goes on as before and is reckoned with again), and the claim behind it is the record's, an accumulation of small contacts that readers never see as acts. The arc's two rounds (32, 33) and the accounts arc's three (29–31) share one lesson: a state built from many small things, however it is said, adds reasons faster than it adds story. Close ties pause here. The next work is the reading itself (24 pairs, judged on the effect with the order taken out; the next entry), and then consequences that last (exit point 2), a change to what happens rather than to what is said.
+
+## Round M34 — a reading that can tell (pre-registered 20 Oct 2026, 18:40 Oslo, **after** its code, which only reads answers already given)
+
+Seven rounds that aimed at lives (25d, 27, 29–33) were not kept, and the blind paired reading decided or co-decided every one. Two things were wrong with it as an instrument. It was small: twelve pairs, so a real effect of +0.4 on five showed above zero about three times in four. And it was judged on the wrong things: a majority of pairs, which the order of the two versions moves (readers score the version they read second about half a point higher), and the readers' agreement (α), which describes the panel, not the change.
+
+The change (tools and the method only; nothing the engine does changes):
+
+1. **A committed scorer,** `scripts/pairscore.py`, in place of the scoring each round wrote for itself: the majority, the paired score difference with its interval, the effect with the order as a second term (difference = effect + lean × (+1 if the on arm was B, −1 if A)) with its 95% interval and one-sided 90% lower bound, α (reported, not a gate), faults by kind in each arm, and the quotes matching the round's own wording.
+2. **Twenty-four pairs** (eight fresh worlds, three people each), written in two parts of twelve so a reader reads twelve at a sitting (`pairarm.ts`); three readers each read both parts.
+3. **How a round uses it** (`docs/method/reading.md`): a pre-registration claims either "reads better" (the effect's 90% lower bound above 0) or "reads no worse" (above −0.3), and names its bars for its own wording quoted as good and as unfit.
+
+Expected: (1) the scorer reproduces every published reading number of rounds 29–33 (majority, mean difference, each reader's difference, α); (2) with the order as a term the per-pair standard deviation falls from about 0.85 to about 0.7; (3) `npm test` passes and nothing the engine does changes (label `refactor`).
+
+Outcome (the same evening, before any new reading):
+
+1. Reproduced ✓: rounds 29 (3 of 12, −0.28, α .710), 30 (9, +0.64, .567), 31 (7, +0.14, .604), 32 (8, +0.14, .656) and 33 (3, −0.08, .612), every reader's difference included.
+2. The order as a term ✓: per-pair standard deviation 0.85 raw, 0.73 with the order taken out (0.64, 0.62, 0.70, 0.69, 0.99 by round).
+3. Rounds 29–33 scored this way:
+
+| Round            | Pairs, on arm B | Majority on | Effect, order as a term (95%) | 90% lower bound | Lean to second | α ordinal |
+| ---------------- | --------------- | ----------- | ----------------------------- | --------------- | -------------- | --------- |
+| 29 seen accounts | 12, 6           | 3           | −0.28 ±0.41                   | −0.53           | +0.44          | .710      |
+| 30 telling       | 12, 6           | 9           | **+0.64 ±0.40**               | **+0.39**       | −0.58          | .567      |
+| 31 accounts bear | 12, 9           | 7           | −0.13 ±0.52                   | −0.45           | +0.54          | .604      |
+| 32 who carries   | 12, 6           | 8           | +0.14 ±0.44                   | −0.13           | +0.53          | .656      |
+| 33 the reckoning | 12, 6           | 3           | −0.08 ±0.64                   | −0.48           | +0.14          | .612      |
+
+**Kept.** What it says: only round 30 read better by a margin the reading can stand behind; it failed its own rule on how often accounts decided and on reach, and on α, which is no longer a gate. Its verdict stands (nothing is re-judged after the fact), but telling is the one mechanism of the last five rounds that readers preferred, and the first to bring back. Round 31's 7 of 12 was the order: with it taken out the effect is −0.13. From the next round on, readings use 24 pairs and this scorer.
