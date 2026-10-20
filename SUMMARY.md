@@ -37,18 +37,20 @@ The people decide like people and can be read, but their lives are thin and repe
 
 This is the one priority list. Only Øystein changes its order, and a chat starts an experiment only from the top of it or when he names one.
 
-1. The accounts arc (#20). People remember their version of what happened, pass it on, and learn from it. Rounds 29, 30 and 31 were not kept. By round 31's own rule the arc stops here to be rethought before another round (see Waiting for you).
-2. For the game (Overstory): the front door's part two (#22), reads of what the player could know, player commands and versions; and the start year from the setting pack (#23), so a world can begin in another era.
-3. The city's background: partnering and children fixed, so it stops ageing.
-4. Later: a human test built on stories rather than predictions (exit point 5).
+1. Close ties (exit point 1): friends, family and colleagues with more than liking. Round 32 (who carries a friendship) was not kept; the next design is what a friend who minds carrying a friendship does, once, that a reader cannot miss.
+2. The accounts arc (#20), paused after rounds 29 to 31 to be rethought from what a player could notice. Its code is kept behind switches, ready for when ties give it something to bear on.
+3. For the game (Overstory): the front door's part two (#22), reads of what the player could know, player commands and versions; and the start year from the setting pack (#23), so a world can begin in another era.
+4. The city's background: partnering and children fixed, so it stops ageing.
+5. Later: a human test built on stories rather than predictions (exit point 5).
 
 ## Waiting for you
 
 - Decide on the repo structure for add-ons.
-- The accounts arc after round 31: rethink it, starting from the moment a player could notice someone acting on what they were told, or move to Overstory's items (2) while it waits. A design question: Fable.
+- After round 32: a second close-ties round (what a friend who minds does about it), or a scale round, or Overstory's items. A design question: Fable.
 
 ## Latest merges
 
+- **Round 32 (20 Oct), not kept:** each friendship now keeps who has been putting in lately: who comes round, who listens, who turns up. One lasting friendship in seven turns out one-sided, and the town knows it ("Hal was always the one who went round to Ruth's"). Where it bears, it reads as a fitting reason: a friend who owes keeps the promise, a friend who has always carried it finds reasons to be busy. But it changed little (it was the deciding reason in under 1% of the decisions it bears on, and few friendships ended over it), and blind readers did not notice it at all. Measured with the order of the two versions balanced for the first time.
 - **Round 31 (20 Oct), not kept:** accounts are now read only where the act bears (a stolen song counts when deciding whether to trust someone, not whether to stay with them), and cited only when they change whom someone turns to. Readers stopped objecting to them (no account quoted as a reason that does not fit, seven quoted as reasons that made sense), and they changed whom someone asked or hired in one choice in twenty. But an account was the top reason of only 0.22% of decisions, and blind readers could not agree the lives with it were better (7 of 12, with the order of the two versions a likely cause). By its own rule, the arc stops to be rethought.
 - **Switches for every check (20 Oct):** `ON=telling npm test` now turns a mechanism on in every check the suite runs (six of them had ignored it), and the blind reading tool can compare mechanisms that are off by default and records the commit it was made from. Found by the outside review of `e22c94a`. Nothing the engine does changed.
 - **Round 30 (20 Oct), not kept, but the first step that reads well:** people now tell what they saw or what was done to them, once, to the friend who knows the person, and that friend may pass it on; tellers bend it, and now and then name the wrong person. Blind readers preferred the town with it in 9 of 12 pairs, all three of them, a first for this arc. It fails its own test: an account rarely decided anything (0.41% of choices), reach rose only from 5% to 7%, and accounts were given as reasons in decisions they had nothing to do with. Round 31 fixes where accounts are read.

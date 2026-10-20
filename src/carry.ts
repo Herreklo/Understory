@@ -8,13 +8,17 @@
 // others: when a friend is asked for something or has promised it (the one who owes finds it harder to refuse, a carrier who minds is
 // readier to say no), when a friend is in trouble (the same), in whom a carrier who minds seeks out (less of the friend they carry), and
 // at the end of a friendship that faded that way, which says so, with the year it began.
+//
+// Off unless ON=carry: round 32 did not meet its expectations. One lasting friendship in seven was one-sided and the record read as a
+// fitting reason where it bears, but it was the top reason in 0.89% of those decisions, ended few friendships (4.4% said why), and
+// blind readers never quoted it.
 
 import { clamp } from './rng';
 import { pow } from './mathx';
 import { curves, type Consideration, type Option } from './decide';
-import { OFF, P, facet, year, addEvent, broadcast, type World, type Person, type Cause } from './world';
+import { ON, P, facet, year, addEvent, broadcast, type World, type Person, type Cause } from './world';
 
-export const carryOn = () => !OFF.has('carry');
+export const carryOn = () => ON.has('carry');
 
 type Kind = 'seek' | 'hear' | 'help';
 interface Side {
