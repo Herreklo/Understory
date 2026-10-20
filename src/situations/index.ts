@@ -18,6 +18,7 @@ import { newcomer } from './newcomer';
 import { obligation } from './obligation';
 import { offer } from './offer';
 import { oldwound } from './oldwound';
+import { reckon } from './reckon';
 import { request } from './request';
 import { risk } from './risk';
 import { strain } from './strain';
@@ -46,6 +47,7 @@ const TYPES: SituationType[] = [
   criticised,
   collection,
   oldwound,
+  reckon,
   yearly,
 ];
 

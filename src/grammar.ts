@@ -529,7 +529,7 @@ export function run(w: World, inst: Instance): Outcome | null {
     if (Math.abs(v) >= 0.8 && Math.sign(p.facets[k]) === Math.sign(v)) p.facets[k] += Math.sign(v) * 0.01 * plasticity(w, p);
   }
   learned(w, p, 'fam:' + fam, expr.like >= 0 || !t);
-  carryAct(w, p, expr.solo ? undefined : t, expr.id);
+  carryAct(w, p, expr.solo ? undefined : t, expr.id, e.id);
   return { family: fam, expr, event: e };
 }
 // What the target remembers of an act, in their own words ('told people what I had told her in confidence').

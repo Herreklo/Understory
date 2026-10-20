@@ -2,6 +2,7 @@
 
 import { clamp } from './rng';
 import { type Cause, type Person, type World, age, P, facet, addEvent, broadcast, addStress, topSources, addEmotion, year } from './world';
+import { carryReset } from './carry';
 import { jobSet, moved } from './scale';
 import { healthTarget } from './generate';
 import { loss } from './situations/raised';
@@ -142,7 +143,10 @@ function die(w: World, p: Person, cause: string, causes: Cause[]) {
   for (const f of friendsOf(w, p)) grief(w, f, p, e.id, 0.1, 0.08, 8);
   const heirs = p.kids.map(k => P(w, k)).filter(k => k.status !== 'dead');
   if (heirs.length && p.savings > 0) for (const k of heirs) k.savings += p.savings / heirs.length;
-  for (const id of p.friends) P(w, id).friends.delete(p.id);
+  for (const id of p.friends) {
+    carryReset(w, p.id, id);
+    P(w, id).friends.delete(p.id);
+  }
   // Wanting to make things right with someone, or to win them, ends when they die. Making things right becomes a regret on the record.
   for (const q of w.people)
     if (q.status !== 'dead' && q !== p)

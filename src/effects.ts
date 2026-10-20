@@ -27,6 +27,7 @@ import { self, type Instance, type Outcome, run, friendsOf, queueProvocation, fa
 import { asked } from './situations/asked';
 import { deadline } from './situations/deadline';
 import { yearlyAsk } from './situations/yearly';
+import { reckoned, answered, reckonCites, carryReset } from './carry';
 
 // Hooks for world effects after specific expressions in specific types.
 export function afterRun(w: World, inst: Instance, out: Outcome) {
@@ -181,6 +182,46 @@ export function afterRun(w: World, inst: Instance, out: Outcome) {
           giveUpWant(w, p, staged, (staged as any).obstacleRec);
       }
       break;
+    case 'reckon': {
+      // The carrier faced it. The event cites the acts it rests on; the other answers.
+      const q = inst.target!;
+      const kind = x.id as 'sayit' | 'askback' | 'stopgoing';
+      e.causes = [...e.causes, ...reckonCites(w, p, q)];
+      reckoned(w, p, q, kind, e.id);
+      if (kind === 'sayit') {
+        const o2 = run(w, {
+          type: 'reckon-answer',
+          actor: q,
+          target: p,
+          others: [],
+          thing: 'it',
+          features: new Set<Feature>(['private', 'friend']),
+          families: ['warmth', 'withdrawal'],
+          only: { warmth: ['heed'], withdrawal: ['brushoff'] },
+          cause: e.id,
+          familyExtra: { warmth: [bondC(w, q, p, 'like', 1), bondC(w, q, p, 'respect', 1)] },
+          w: 1.1,
+        });
+        if (o2) answered(w, p, q, o2.expr.id, o2.event.id);
+      } else if (kind === 'askback') {
+        const back = (inst as Instance & { back?: string }).back ?? 'a hand';
+        const o2 = run(w, {
+          type: 'request-answer',
+          actor: q,
+          target: p,
+          others: [],
+          thing: back,
+          features: new Set<Feature>(['private', 'need', 'safety', 'friend']),
+          families: ['generosity', 'refusal'],
+          only: { generosity: ['give', 'grudging'], refusal: ['refuse', 'excuse'] },
+          cause: e.id,
+          familyExtra: { generosity: [bondC(w, q, p, 'like', 1)], refusal: [] },
+          w: 1.2,
+        });
+        if (o2) answered(w, p, q, o2.expr.id, o2.event.id);
+      }
+      break;
+    }
     case 'request':
       if (x.family === 'seeking' && inst.target && ['ask', 'hint', 'confide'].includes(x.id)) {
         const q = inst.target;
@@ -269,6 +310,7 @@ export function afterRun(w: World, inst: Instance, out: Outcome) {
             });
             broadcast(w, e3);
             remember(w, p, q, e3.id, -0.5, -0.3, -0.7, 'told everyone what I told them in confidence');
+            carryReset(w, p.id, q.id);
             p.friends.delete(q.id);
             q.friends.delete(p.id);
             if (facet(p, 'forgiveness') < -0.8) addException(p, q, 'forgiveness', e3.id, `never forgave @${q.id} for talking`);
