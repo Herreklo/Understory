@@ -1,0 +1,66 @@
+Round 31: the paired reading, telling on against off (20 Oct 2026).
+Twelve people (the three adults of each of worlds 3141-3144 most eventful over both arms together, src/tools/diag/pairarm.ts, tree c821edd),
+each shown as the engine writes them with telling on and off (ten present years, with reasons, folded as the page folds them); A/B order
+random per pair. Three blind readers on Fable 5.1 (a novelist, a social worker, a player of simulation games), each told only that the two
+are two versions of the same person's life (brief: reports/31-reading-brief.md). The key (reports/31-reading-key.json) was committed before
+the reading and opened after all three answered; no battery number was read before this was scored. Answers: reports/31-reading-answers.json.
+Cells: score A, score B, preferred.
+
+pair  on            novelist  socialworker        player   majority-on
+P01   B          2,3,B         3,4,B         3,4,B   yes
+P02   A          2,3,B         2,4,B         2,3,B   no
+P03   A          3,3,B         3,4,B         3,4,B   no
+P04   B          3,3,B         3,3,B         3,3,A   yes
+P05   A          3,3,B         3,3,B         3,3,B   no
+P06   B          2,3,B         3,4,B         2,4,B   yes
+P07   B          4,3,A         4,3,A         4,3,A   no
+P08   B          3,3,A         3,4,B         3,3,B   yes
+P09   B          3,2,A         2,3,B         2,3,B   yes
+P10   B          3,3,A         3,3,A         3,3,A   no
+P11   B          2,3,B         2,3,B         2,3,B   yes
+P12   B          3,3,B         3,4,B         3,4,B   yes
+
+Majority preferred the on arm in 7 of 12. Mean paired difference, on minus off: +0.14 over 36 reader-pairs.
+  novelist       diff +0.00
+  socialworker   diff +0.17
+  player         diff +0.25
+ordinal  alpha 0.604  95% [0.346, 0.773]  (3 readers, 24 lives)
+interval alpha 0.605  95% [0.369, 0.783]  (3 readers, 24 lives)
+  novelist     mean 2.83
+  socialworker mean 3.17
+  player       mean 3.04
+
+faults on: total 108 · false line 35, unfit reason 27, wording 17, repeat 17, out of nowhere 12
+faults off: total 108 · false line 32, repeat 30, unfit reason 29, out of nowhere 11, wording 6
+
+
+(scripts/alpha.py reports/31-reading-scores.json; units 2i-1 and 2i are pair i's A and B.)
+
+Accounts on the page. An account is a reason in a decision's brackets that names an act with its year, in the on arm only, given by
+accountC (a told account reads "had heard from ..."; an act done to the holder reads "<doer> <act> (<year>)"). Friendship and dislike
+reasons ("Harry and Sally have become friends. [...]", "lost touch", "has no time for") read the same memories in both arms and are not
+counted; nor are a trait's origin ("that is who Andy is: ... (2021)") or a loss ("since Mark died (2015)").
+
+An account quoted as a reason that made an act make sense: 7, in four pairs, by all three readers
+  P01 on novelist, player: Harry let people think the best of Sally's song was Harry's. [...; worth claiming; Sally told people what Harry had told her in confidence (2035)]
+  P03 on novelist: Harry was civil to Molly Lane for weeks, and nothing more. [...; Molly Lane wasn't there for Harry when it mattered (2028)]
+  P04 on novelist: Molly dragged up what Victor Eden did last year in front of everyone at the sawmill. [...; Victor Eden let Molly take the blame for it (2027)]
+  P05 on novelist, socialworker, player: Steve went cold on Oliver Sayer and stayed that way for weeks. [...; Oliver Sayer dragged up the old business (2028); had not forgiven it]
+An account quoted as an unfit reason: 0 (seven in round 30).
+An account quoted as another fault: 1 quote, by two readers
+  P07 on novelist, player (false line): 2030: Tess let Arthur go from the clinic. [Arthur's work had been poor for months; thought Arthur had it coming; Arthur found out taking from the till (2027)]
+  The act it cites is not on the page, and in 2029 Tess told Arthur the job was his to win on "a fair record": the account surfaces an act
+  three years old that the life never showed, a year after the page said his record was fair. The social worker quoted the same line as good.
+No told account ("had heard from") and no flip ("turned to", "passed over") appears in any quote, fault or good.
+
+Also seen: "Sally was the first to say Harry's it was the best thing they had (2034)", quoted as wording by all three. It is a friendship
+reason, not an account, from the 'first to say' act's memory text (families.ts), which turns "my" into "Harry's" before "it". A latent
+wording fault of main's, for a words change.
+
+Against the pre-registration: on arm preferred in 7 of 12 (bar 7) ✓; α ordinal .604 [.346, .773] (bar .667) ✗. Expectation 6 fails on α.
+Accounts as unfit reasons 0 (bar at most 2) and as good reasons 7 (bar at least 2): expectation 2 holds.
+
+Order. The random A/B draw put the on arm second in 9 of 12 pairs, and the readers preferred version B in 10 of 12 by majority (27 of 36
+single choices). On second, the on arm won 7 of 9; on first, 0 of 3. The 7 of 12 cannot be told apart from a preference for whichever
+version is read second. The paired score difference is small (+0.14) and one reader's is zero. The order draw should be balanced (six and
+six) in the next reading, a measurement fix that comes before it.
