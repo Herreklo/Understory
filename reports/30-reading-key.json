@@ -1,0 +1,74 @@
+{
+  "P01": {
+    "seed": 3071,
+    "person": 34,
+    "name": "Grace",
+    "onIs": "B"
+  },
+  "P02": {
+    "seed": 3071,
+    "person": 33,
+    "name": "Matt",
+    "onIs": "A"
+  },
+  "P03": {
+    "seed": 3071,
+    "person": 24,
+    "name": "Alice Moore",
+    "onIs": "B"
+  },
+  "P04": {
+    "seed": 3072,
+    "person": 20,
+    "name": "Maisie",
+    "onIs": "A"
+  },
+  "P05": {
+    "seed": 3072,
+    "person": 7,
+    "name": "Ken Rudd",
+    "onIs": "B"
+  },
+  "P06": {
+    "seed": 3072,
+    "person": 60,
+    "name": "Tess",
+    "onIs": "A"
+  },
+  "P07": {
+    "seed": 3073,
+    "person": 29,
+    "name": "Eddie Newman",
+    "onIs": "B"
+  },
+  "P08": {
+    "seed": 3073,
+    "person": 38,
+    "name": "Libby Berry",
+    "onIs": "B"
+  },
+  "P09": {
+    "seed": 3073,
+    "person": 37,
+    "name": "Karen",
+    "onIs": "A"
+  },
+  "P10": {
+    "seed": 3074,
+    "person": 20,
+    "name": "Susie Ash",
+    "onIs": "B"
+  },
+  "P11": {
+    "seed": 3074,
+    "person": 12,
+    "name": "Karen Waller",
+    "onIs": "A"
+  },
+  "P12": {
+    "seed": 3074,
+    "person": 5,
+    "name": "Olive",
+    "onIs": "A"
+  }
+}

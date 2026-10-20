@@ -1,5 +1,6 @@
 // Contact and friendship: who spends time with whom, what each comes to think of the other, gossip, and losing touch.
 
+import { tellingTick } from './telling';
 import { clamp, hash, type Rng } from './rng';
 import { SETTING } from './setting';
 import { VALUES, FACET_BY_ID } from './core';
@@ -697,6 +698,7 @@ export function socialTick(w: World) {
   refreshClosest(w);
   friendsTick(w);
   gossip(w);
+  tellingTick(w);
 }
 function gossip(w: World) {
   const recent = recentEvents(w, w.t - 2).filter(e => e.vis !== 'private' && e.evidence.length);

@@ -8,6 +8,7 @@
 import { around } from './scale';
 import { OFF, peekBond, bkey, likeOf, type World } from './world';
 import * as MX from './mathx';
+import { regardPart } from './telling';
 
 // Facets whose high end the town admires (+1) or whose low end it does (-1). Mirrors the observer's own valence table.
 const ADMIRED: Record<string, number> = {
@@ -30,7 +31,7 @@ const PRIOR = 0.5; // pseudo-evidence toward neutral: a lone fresh belief counts
 export function regard(w: World, who: number, ofWhom: number): number {
   if (OFF.has('regard')) return 0;
   if (OFF.has('regard:beliefs')) return clamp1(0.65 * bondPart(w, who, ofWhom));
-  return regardRaw(w, who, ofWhom);
+  return clamp1(regardRaw(w, who, ofWhom) + regardPart(w, who, ofWhom));
 }
 const clamp1 = (x: number) => Math.max(-1, Math.min(1, x));
 
