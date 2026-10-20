@@ -14,7 +14,7 @@ import { execSync } from 'child_process';
 import { buildWorld, runYears } from '../../build';
 import { pickWitness } from '../../witness';
 import { age, nameOf, year, OFF, ON, type Person, type World } from '../../world';
-import { againNote, pageLines } from '../../page';
+import { againNote, pageLines, shownCauses } from '../../page';
 import { hash } from '../../rng';
 
 const [sw, a0, b0, n0] = process.argv.slice(2);
@@ -32,14 +32,8 @@ function page(w: World, p: Person): string[] {
   const events = p.events.map(i => w.events[i]).filter(e => e.t >= w.startPresent);
   const out: string[] = [];
   for (const { e, cited, again } of pageLines(w, events, new Set(p.events))) {
-    const why = e.causes.length
-      ? '  [' +
-        e.causes
-          .slice(0, 3)
-          .map(c => plain(c.label))
-          .join('; ') +
-        ']'
-      : '';
+    const shown = shownCauses(e);
+    const why = shown.length ? '  [' + shown.map(c => plain(c.label)).join('; ') + ']' : '';
     out.push(`${year(e.t)}: ${plain(e.text)}${why}${again ? `  (${againNote(again)})` : ''}`);
     for (const x of cited) out.push(`    ↳ ${year(x.t)}: ${plain(x.text)}`);
   }
