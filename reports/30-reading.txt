@@ -1,0 +1,45 @@
+Round 30: the paired reading, telling on against off (20 Oct 2026).
+Twelve people (the three adults of each of worlds 3071-3074 most eventful over both arms together, src/tools/diag/pairarm.ts after #35),
+each shown as the engine writes them with telling on and off (ten present years, with reasons, folded as the page folds them); A/B order
+random per pair (tree 8a851bc). Three blind readers on Fable 5.1 (a novelist, a social worker, a player of simulation games), each told only
+that the two are two versions of the same person's life (brief: reports/30-reading-brief.md). The key was opened after all three answered.
+
+pair  on        novelist  socialworker        player   majority-on
+P01   B           3,3,A         3,3,A         3,2,A   no
+P02   A           3,2,A         4,2,A         3,3,A   yes
+P03   B           3,4,B         3,4,B         3,4,B   yes
+P04   A           3,2,A         3,2,A         3,2,A   yes
+P05   B           3,2,A         3,3,B         2,3,B   yes
+P06   A           3,2,A         4,3,A         3,3,A   yes
+P07   B           4,2,A         3,2,A         3,4,B   no
+P08   B           3,3,B         4,3,A         4,3,A   no
+P09   A           3,2,A         4,2,A         3,2,A   yes
+P10   B           2,3,B         2,3,B         2,3,B   yes
+P11   A           4,2,A         4,2,A         4,3,A   yes
+P12   A           4,3,A         4,2,A         4,2,A   yes
+
+Majority preferred the on arm in 9 of 12. Mean paired difference, on minus off: +0.64 over 36 reader-pairs.
+  novelist       diff +0.50
+  socialworker   diff +0.83
+  player         diff +0.58
+
+ordinal  alpha 0.567  95% [0.283, 0.764]  (3 readers, 24 lives; scripts/alpha.py reports/30-reading-scores.json)
+interval alpha 0.570  95% [0.259, 0.764]
+faults on: total 108 · false line 34, unfit reason 30, wording 15, repeat 15, out of nowhere 14
+faults off: total 108 · repeat 35, unfit reason 26, false line 19, out of nowhere 18, wording 10
+
+A told account quoted as a reason that made an act make sense: 4
+  P03 on novelist: Owen was passed over for headteacher; Alice Moore got the job.; had heard from Hal Sayer that Alice Moore took on organising the harbour day when nobody else would (2028); did not think it was about him
+  P03 on socialworker: had heard from Hal Sayer that Alice Moore took on organising the harbour day when nobody else would (2028); did not think it was about him
+  P07 on socialworker: did not think it was about her; Ruth had heard from Stuart that Eddie went out into the storm (2026)
+  P11 on socialworker: can afford it; thinks the world of Tilly Waller; Karen Waller had heard from Ellie Dale that Tilly Waller put in more than anyone when the hat went round for Larry (2027)
+A told account quoted as a fault: 7
+  P01 on socialworker (unfit reason): Harry had heard from Mark Fielding that Grace was back to normal with Tom Reed, as if what Tom Reed did last year were forgotten, though Mark Fielding made light of it (2030)
+  P11 on socialworker (unfit reason): Karen Waller had heard from Larry that Eddie Myers let people think the best of Olive's song was Eddie Myers's (2029)
+  P01 on player (unfit reason): Harry had heard from Mark Fielding that Grace was back to normal with Tom Reed, as if what Tom Reed did last year were forgotten, though Mark Fielding made light of it (2030)
+  P03 on player (unfit reason): they kept running into each other; Alice Moore had heard from Ryan Baker that Toby played Ryan Baker's song as if it were Toby's own (2020)
+  P07 on player (unfit reason): Eddie had heard from Amelia Brook that Stuart was civil to Amelia Brook for weeks, and nothing more (2030)
+  P11 on player (unfit reason): together since 2022; they had grown close; Karen Waller had heard from Larry that Eddie Myers let people think the best of Olive's song was Eddie Myers's (2029)
+  P11 on player (unfit reason): though he sticks to what works; they genuinely like each other; Karen Waller had heard from Libby that Ian played Bert's song as if it were Ian's own, and Libby made the most of it (2027)
+
+No false line quoted in the on arm involves an account (they are the engine's own: 'buried the hatchet, 1 year after the chief officer's job', 'has taken to the sea').
