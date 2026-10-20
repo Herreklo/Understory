@@ -1,6 +1,7 @@
 // Contact and friendship: who spends time with whom, what each comes to think of the other, gossip, and losing touch.
 
 import { tellingTick } from './telling';
+import { carrySought, carrySeekFactor, carryReset, carryEnd } from './carry';
 import { clamp, hash, type Rng } from './rng';
 import { SETTING } from './setting';
 import { VALUES, FACET_BY_ID } from './core';
@@ -395,6 +396,7 @@ function checkBond(w: World, a: Person, b: Person) {
   ) {
     a.friends.add(b.id);
     b.friends.add(a.id);
+    carryReset(w, a.id, b.id);
     learned(w, a, 'friends', true);
     learned(w, b, 'friends', true);
     const nAgain = again ? Math.max(a.tried['madeup']?.n ?? 0, b.tried['madeup']?.n ?? 0) : 0;
@@ -447,6 +449,8 @@ function checkBond(w: World, a: Person, b: Person) {
   ) {
     const fellOut = !FADE() || ra.like < 0.02 || rb.like < 0.02;
     const mark = fellOut ? 'cooled:' : 'faded:';
+    const carried = fellOut ? undefined : carryEnd(w, a, b); // a friendship one friend had carried, and minded carrying, says so
+    carryReset(w, a.id, b.id);
     a.friends.delete(b.id);
     b.friends.delete(a.id);
     learned(w, a, mark + b.id, true);
@@ -456,14 +460,17 @@ function checkBond(w: World, a: Person, b: Person) {
     const e = addEvent(w, {
       type: 'cooled',
       who: [a.id, b.id],
-      text: lost
-        ? [
-            `@${a.id} and @${b.id} lost touch.`,
-            `@${a.id} and @${b.id} stopped seeing each other, and that was that.`,
-            `@${a.id} and @${b.id} drifted out of each other's lives.`,
-          ][hash(w.seed, a.id, b.id, w.t) % 3]
-        : `@${a.id} and @${b.id} drifted apart.`,
+      text: carried
+        ? carried.text
+        : lost
+          ? [
+              `@${a.id} and @${b.id} lost touch.`,
+              `@${a.id} and @${b.id} stopped seeing each other, and that was that.`,
+              `@${a.id} and @${b.id} drifted out of each other's lives.`,
+            ][hash(w.seed, a.id, b.id, w.t) % 3]
+          : `@${a.id} and @${b.id} drifted apart.`,
       causes: [
+        ...(carried ? [carried.cause] : []),
         ...memWhy(w, x, y, -1),
         ...(contexts(w, a, b).length ? [] : [stateCause('they stopped seeing each other', 0.3)]),
         ...chemWhy(w, x, y, -1).slice(0, 1),
@@ -666,12 +673,14 @@ export function socialTick(w: World) {
     // The weights are worked out once per person and kept up as they go: a contact changes only how p regards the one just met.
     let weights: [Person, number][] | null = null;
     for (let i = 0; i < n; i++) {
-      if (!OFF.has('respond') && !weights) weights = src.map(q => [q, regardWeight(w, p.id, q.id, 1.5)] as [Person, number]);
+      if (!OFF.has('respond') && !weights)
+        weights = src.map(q => [q, regardWeight(w, p.id, q.id, 1.5) * carrySeekFactor(w, p, q)] as [Person, number]);
       const q = OFF.has('respond') ? w.rng.pick(src) : w.rng.weighted(weights!);
       if (q !== p && Math.abs(age(w, q) - age(w, p)) < 12) {
         kept++;
         contact(w, p, q, 0.5);
-        if (weights) for (const x of weights) if (x[0] === q) x[1] = regardWeight(w, p.id, q.id, 1.5);
+        carrySought(w, p, q);
+        if (weights) for (const x of weights) if (x[0] === q) x[1] = regardWeight(w, p.id, q.id, 1.5) * carrySeekFactor(w, p, q);
         const sought = ((w.stats as any).sought ??= new Map<number, number>()) as Map<number, number>;
         sought.set(q.id, (sought.get(q.id) ?? 0) + 1);
       }
