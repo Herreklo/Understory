@@ -14,16 +14,17 @@
 // reason it gives points at one of them. On the record itself, the round repairs two things: the record is cleared wherever a
 // friendship ends, and when the other friend becomes the carrier the town's line is written again for them.
 //
-// Round 32 (the record alone, ON=carry) did not meet its expectations: one lasting friendship in seven was one-sided and the record
-// read as a fitting reason where it bears, but it was the top reason in 0.89% of those decisions, ended few friendships (4.4% said
-// why), and blind readers never quoted it. The record is on when the reckoning is (OFF=reckon turns both off).
+// Off unless ON=carry (the record) or ON=reckon (the record and the reckoning). Round 32 (the record alone) did not meet its
+// expectations: one lasting friendship in seven was one-sided and the record read as a fitting reason where it bears, but it was the
+// top reason in 0.89% of those decisions and blind readers never quoted it. Round 33 (the reckoning) did not either: readers noticed
+// it and preferred the lives without it in 9 of 12 pairs; it recurred where nothing changed, and its reasons were read as not fitting.
 
 import { clamp } from './rng';
 import { pow } from './mathx';
 import { curves, type Consideration, type Option } from './decide';
-import { OFF, ON, P, facet, year, addEvent, broadcast, remember, type World, type Person, type Cause } from './world';
+import { ON, P, facet, year, addEvent, broadcast, remember, type World, type Person, type Cause } from './world';
 
-export const reckonOn = () => !OFF.has('reckon');
+export const reckonOn = () => ON.has('reckon');
 export const carryOn = () => ON.has('carry') || reckonOn();
 
 type Kind = 'seek' | 'hear' | 'help';
