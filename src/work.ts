@@ -31,6 +31,7 @@ import { dueToStepDown, contest, settle, grudge } from './drama';
 import { practise, resolveWants, pursuing, formHabits } from './time';
 import type { Feature } from './features';
 import * as MX from './mathx';
+import { counterpart } from './telling';
 
 function perfRaw(w: World, p: Person, sk: string): number {
   const r = p.skills[sk]?.r ?? 1000;
@@ -229,31 +230,33 @@ function hire(w: World, pl: any) {
     }
   }
   const view = lead ? witnessView(w, lead.id) : truthView(w);
-  const sc = cands
-    .map(c => {
-      const skill = ((c.skills[pl.skill]?.r ?? 1000) - 1300) / 200;
-      const seen = lead ? (w.beliefs.get(lead.id)?.get(`${c.id}|skill:${pl.skill}`)?.m ?? 0) : skill;
-      const liking = lead ? likeOf(w, lead.id, c.id) : 0;
-      const keen =
-        (pursuing(c, 'attain') ? 0.35 : 0) +
-        (word(c) ? 0.5 : 0) +
-        (OFF.has('latent')
-          ? 0
-          : [0, 0.15, 0.4][c.skills[pl.skill]?.interest ?? 0] +
-            (c.parents.some(id => P(w, id).status === 'in' && P(w, id).job === pl.id) ? 0.35 : 0));
-      /* people look for work in what they love, and a parent who works there puts in a word */ return [
-        c,
-        0.6 * seen +
-          0.3 * view.facet(c, 'diligence') +
-          0.8 * (lead ? regard(w, lead.id, c.id) : 0) +
-          0.15 * c.aptitudes.presence +
-          0.1 * facet(c, 'socialBoldness') +
-          keen +
-          w.rng.normal() * 0.3,
-        liking,
-      ] as const;
-    })
-    .sort((a, b) => b[1] - a[1]);
+  const score = () =>
+    cands
+      .map(c => {
+        const skill = ((c.skills[pl.skill]?.r ?? 1000) - 1300) / 200;
+        const seen = lead ? (w.beliefs.get(lead.id)?.get(`${c.id}|skill:${pl.skill}`)?.m ?? 0) : skill;
+        const liking = lead ? likeOf(w, lead.id, c.id) : 0;
+        const keen =
+          (pursuing(c, 'attain') ? 0.35 : 0) +
+          (word(c) ? 0.5 : 0) +
+          (OFF.has('latent')
+            ? 0
+            : [0, 0.15, 0.4][c.skills[pl.skill]?.interest ?? 0] +
+              (c.parents.some(id => P(w, id).status === 'in' && P(w, id).job === pl.id) ? 0.35 : 0));
+        /* people look for work in what they love, and a parent who works there puts in a word */ return [
+          c,
+          0.6 * seen +
+            0.3 * view.facet(c, 'diligence') +
+            0.8 * (lead ? regard(w, lead.id, c.id) : 0) +
+            0.15 * c.aptitudes.presence +
+            0.1 * facet(c, 'socialBoldness') +
+            keen +
+            w.rng.normal() * 0.3,
+          liking,
+        ] as const;
+      })
+      .sort((a, b) => b[1] - a[1]);
+  const sc = lead ? counterpart(w, lead.id, cands.length, score, x => [x[0][0].id]) : score();
   const [c, s, liking] = sc[0];
   if (s < -0.3 && pl.vac < 8) return;
   const friend = word(c);

@@ -35,6 +35,7 @@ import { z01 } from './decide';
 import { regard } from './regard';
 import { startRivalry } from './drama';
 import type { Feature } from './features';
+import { counterpart } from './telling';
 
 export interface ProjectKind {
   id: string;
@@ -413,7 +414,13 @@ function turnedDown(w: World, pr: Project, p: Person, failed: Event) {
   let t: Person | undefined = no ? P(w, no.who[1]) : undefined;
   if (!no) {
     const refused = evs.filter(e => (e.type === 'notthemoney' || e.type === 'notthetime') && e.who[1] === p.id).map(e => P(w, e.who[0]));
-    t = refused.sort((a, b) => regard(w, p.id, b.id) - regard(w, p.id, a.id))[0];
+    t = counterpart(
+      w,
+      p.id,
+      refused.length,
+      () => refused.sort((a, b) => regard(w, p.id, b.id) - regard(w, p.id, a.id))[0],
+      x => (x ? [x.id] : []),
+    );
   }
   if (t && (t.status !== 'in' || t === p)) t = undefined;
   const yrs = (w.t - pr.since) / 12;
@@ -637,10 +644,25 @@ export function projectsTick(w: World) {
     if (needMore)
       for (let i = 0; i < ASKS_PER_MONTH; i++)
         if (w.rng.chance(0.5)) {
-          const pool = around(w, p)
-            .filter(q => q !== p && age(w, q) >= 18 && !pr.asked.includes(q.id) && (bond(w, p.id, q.id).fam > 0.1 || family(p, q)))
-            .sort((a, b) => regard(w, p.id, b.id) - regard(w, p.id, a.id));
-          if (pool.length) ask(w, pr, p, pool[Math.min(pool.length - 1, w.rng.int(0, 2))]);
+          const pool = around(w, p).filter(
+            q => q !== p && age(w, q) >= 18 && !pr.asked.includes(q.id) && (bond(w, p.id, q.id).fam > 0.1 || family(p, q)),
+          );
+          if (pool.length)
+            ask(
+              w,
+              pr,
+              p,
+              counterpart(
+                w,
+                p.id,
+                pool.length,
+                () => {
+                  pool.sort((a, b) => regard(w, p.id, b.id) - regard(w, p.id, a.id));
+                  return pool[Math.min(pool.length - 1, w.rng.int(0, 2))];
+                },
+                x => [x.id],
+              ),
+            );
         }
     // Those it threatens hear of it and decide whether to fight it, once each.
     if (k.threatens && w.t - pr.since >= 2)

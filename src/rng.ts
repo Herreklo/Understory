@@ -23,6 +23,13 @@ export class Rng {
   constructor(seed: number) {
     this.a = seed >>> 0 || 1;
   }
+  // The stream's position, to make a choice again on the same draw (telling.ts).
+  save(): number {
+    return this.a;
+  }
+  restore(a: number) {
+    this.a = a;
+  }
   next(): number {
     let t = (this.a = (this.a + 0x6d2b79f5) >>> 0);
     t = Math.imul(t ^ (t >>> 15), t | 1);

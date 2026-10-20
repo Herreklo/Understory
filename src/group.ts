@@ -197,6 +197,7 @@ export function newTitle(w: World): string {
 // who plays; otherwise it was a phase. Uses its own random stream, so with the mechanism off the world is exactly as it was.
 const imp = (a: number) => (a < 10 ? 0 : a < 12 ? 0.5 : a <= 25 ? 1 : a <= 35 ? 1 - 0.07 * (a - 25) : a <= 45 ? 0.3 - 0.02 * (a - 35) : 0.05); // the impressionable years
 import { inclination } from './inclination';
+import { counterpart } from './telling';
 export { inclination };
 function moment(w: World, g: Group, k: Kind, e: { id: number; t: number }, ms: Person[]) {
   const prev = w.rng;
@@ -708,9 +709,16 @@ function recruit(w: World, g: Group, k: Kind) {
       ms.every(m => regard(w, m.id, q.id) > -0.1),
   );
   if (!pool.length) return;
-  const q = pool
-    .map(x => [x, 0.5 * z01((bestSkill(x, k) - 1200) / 150) + 0.5 * regard(w, lead.id, x.id) + w.rng.normal() * 0.2] as const)
-    .sort((a, b) => b[1] - a[1])[0][0];
+  const q = counterpart(
+    w,
+    lead.id,
+    pool.length,
+    () =>
+      pool
+        .map(x => [x, 0.5 * z01((bestSkill(x, k) - 1200) / 150) + 0.5 * regard(w, lead.id, x.id) + w.rng.normal() * 0.2] as const)
+        .sort((a, b) => b[1] - a[1])[0][0],
+    x => [x.id],
+  );
   const better = bestSkill(q, k) > Math.max(...g.former.slice(-1).map(i => bestSkill(P(w, i), k)), 0);
   g.members.push(q.id);
   q.group = g.id;

@@ -1,0 +1,74 @@
+{
+ "P01": {
+  "seed": 3141,
+  "person": 71,
+  "name": "Sally Lee",
+  "onIs": "B"
+ },
+ "P02": {
+  "seed": 3141,
+  "person": 55,
+  "name": "Arthur",
+  "onIs": "A"
+ },
+ "P03": {
+  "seed": 3141,
+  "person": 24,
+  "name": "Molly Lane",
+  "onIs": "A"
+ },
+ "P04": {
+  "seed": 3142,
+  "person": 29,
+  "name": "Victor Eden",
+  "onIs": "B"
+ },
+ "P05": {
+  "seed": 3142,
+  "person": 37,
+  "name": "Steve Ash",
+  "onIs": "A"
+ },
+ "P06": {
+  "seed": 3142,
+  "person": 54,
+  "name": "Edward Fielding",
+  "onIs": "B"
+ },
+ "P07": {
+  "seed": 3143,
+  "person": 52,
+  "name": "Arthur",
+  "onIs": "B"
+ },
+ "P08": {
+  "seed": 3143,
+  "person": 22,
+  "name": "Hal Fielding",
+  "onIs": "B"
+ },
+ "P09": {
+  "seed": 3143,
+  "person": 38,
+  "name": "Thea",
+  "onIs": "B"
+ },
+ "P10": {
+  "seed": 3144,
+  "person": 36,
+  "name": "Agnes",
+  "onIs": "B"
+ },
+ "P11": {
+  "seed": 3144,
+  "person": 67,
+  "name": "Andy",
+  "onIs": "B"
+ },
+ "P12": {
+  "seed": 3144,
+  "person": 52,
+  "name": "Tilly",
+  "onIs": "B"
+ }
+}

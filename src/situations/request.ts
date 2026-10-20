@@ -4,6 +4,7 @@ import { age, live, P } from '../world';
 import { stateC, lastTime } from '../considerations';
 import { type Instance, friendsOf, family } from '../grammar';
 import type { SituationType } from './index';
+import { counterpart } from '../telling';
 
 // Request: someone in need asks someone who can help.
 export const request: SituationType = {
@@ -20,7 +21,13 @@ export const request: SituationType = {
         ...(p.partner != null ? [P(w, p.partner)] : []),
       ].filter(q => q !== p && !(p.tried['ask:' + q.id] && (!p.tried['ask:' + q.id].ok || w.t - p.tried['ask:' + q.id].t < 24)));
       if (!pool.length) continue;
-      const q = pool.sort((a, b) => regard(w, p.id, b.id) - regard(w, p.id, a.id))[0];
+      const q = counterpart(
+        w,
+        p.id,
+        pool.length,
+        () => pool.sort((a, b) => regard(w, p.id, b.id) - regard(w, p.id, a.id))[0],
+        x => [x.id],
+      );
       const feats = new Set<Feature>(['private', 'need', need === 'money' ? 'money' : 'safety', family(p, q) ? 'family' : 'friend']);
       out.push({
         type: 'request',
