@@ -1993,3 +1993,9 @@ Expected:
 The warnings in `WHY.md` this round risks: forced drama (a carry-on answer that writes nothing, and a ceiling on how often); complexity mistaken for progress (one decision on blows the engine already has, through doors it already has; 6 decides); consequences that occur without becoming visible (the act is its own line, with the blow as its reason).
 
 The game lens: "After Tom died, Ruth started swimming in the harbour every morning, and that is where she met the people she spends her days with now." A player sees a blow, sees what it did to someone, and can follow where it led.
+
+Amendment to round 34, decided while building, before any test run (20 Oct 2026, 19:50 Oslo; smoke worlds 9001–9002 only):
+
+1. **Starting again at work answers a blow that came through work.** As registered, it was open to anyone with a job after any blow, and the smoke run showed people walking out of the council office because a friendship had drifted: the door did not fit the blow. It is now open after being passed over, being found out, a shaming at their own workplace, or a want they pursued failing. Taking something up and keeping away stay open after any blow.
+2. **A blow is followed for each person once a month** (the heaviest), as registered; the round's count follows every such blow in both arms, including those that come within a year of an aftermath and so bring none.
+3. **What weighs**, as built: the blow's weight (its event weight over 2.5, favouring the three changes), a blow at their own work (favouring starting again), and disliking the person the blow came from (for keeping away). The routine taken up is the best-fitting one they do not keep (a social one first if it fits nearly as well); the routine dropped is a social one, the one they share with the person the blow came from if there is one, else their most recent.
