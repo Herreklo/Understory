@@ -1,4 +1,5 @@
 // Determinism: the same world seed and run seed must give the same history, event for event.
+import './env'; // OFF= and ON= from the environment, before anything runs
 import { buildWorld, runYears } from '../build';
 import { pickWitness } from '../witness';
 function hist(seed: number, run: number) {

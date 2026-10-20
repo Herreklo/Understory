@@ -5,20 +5,25 @@
 // id). Ranking by one arm alone would lean the reading toward that arm: a person picked for an eventful life in one arm regresses
 // toward the mean in the other (round 29, STATUS weakness 15). The page is what the app shows:
 // the present years' lines with their reasons, folded as src/page.ts folds them, in both arms alike.
-//   ./run.sh src/tools/diag/pairarm.ts <switch> A B [per world] → out-pair-<switch>/pairs.txt (for readers) and key.json
+//   ./run.sh src/tools/diag/pairarm.ts <switch> A B [per world] → out-pair-<name>/pairs.txt (for readers), key.json and meta.json
+// <switch> is a mechanism that is on unless OFF=<name> (a round under test), or +<name> for one that is off unless ON=<name> (a round not
+// kept, read again). meta.json records the switch, its kind, the worlds and the commit, so a pack can be made again from the same tree.
 import { mkdirSync, writeFileSync } from 'fs';
+import { execSync } from 'child_process';
 import { buildWorld, runYears } from '../../build';
 import { pickWitness } from '../../witness';
-import { age, nameOf, year, OFF, type Person, type World } from '../../world';
+import { age, nameOf, year, OFF, ON, type Person, type World } from '../../world';
 import { againNote, pageLines } from '../../page';
 import { hash } from '../../rng';
 
 const [sw, a0, b0, n0] = process.argv.slice(2);
-if (!sw) throw new Error('usage: pairarm.ts <switch> A B [per world]');
+if (!sw) throw new Error('usage: pairarm.ts <switch>|+<switch> A B [per world]');
+const onKind = sw.startsWith('+'),
+  name = sw.replace(/^\+/, '');
 const A = +(a0 ?? 2921),
   B = +(b0 ?? A + 3),
   PER = +(n0 ?? 3);
-const OUT = `out-pair-${sw}`;
+const OUT = `out-pair-${name}`;
 mkdirSync(OUT, { recursive: true });
 
 function page(w: World, p: Person): string[] {
@@ -40,8 +45,11 @@ function page(w: World, p: Person): string[] {
   return out;
 }
 function world(seed: number, on: boolean): World {
-  if (on) OFF.delete(sw);
-  else OFF.add(sw);
+  if (onKind) {
+    if (on) ON.add(name);
+    else ON.delete(name);
+  } else if (on) OFF.delete(name);
+  else OFF.add(name);
   const w = buildWorld(seed, 1);
   pickWitness(w);
   runYears(w, 10);
@@ -76,4 +84,11 @@ for (let seed = A; seed <= B; seed++) {
 }
 writeFileSync(`${OUT}/pairs.txt`, pairs.join('\n'));
 writeFileSync(`${OUT}/key.json`, JSON.stringify(key, null, 1));
+let commit = '';
+try {
+  commit = execSync('git rev-parse HEAD', { encoding: 'utf8' }).trim();
+} catch {
+  commit = 'unknown';
+}
+writeFileSync(`${OUT}/meta.json`, JSON.stringify({ switch: name, kind: onKind ? 'ON' : 'OFF', worlds: [A, B], perWorld: PER, commit }, null, 1));
 console.log(`${n} pairs in ${OUT}/pairs.txt; key in ${OUT}/key.json`);

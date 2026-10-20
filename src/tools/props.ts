@@ -2,6 +2,7 @@
 // "for every seed in a throwaway range, after the past and after every present month, this holds". A failure names the seed and
 // the first few breaks. Seeds 9201 and up are throwaway (never a test range).
 //   tsx src/tools/props.ts [seeds] [present years] [first seed]     npm test runs 5 seeds × 2 years; npm run props 50 × 3.
+import './env'; // OFF= and ON= from the environment, before anything runs
 import fc from 'fast-check';
 import { buildWorld } from '../build';
 import { tick } from '../life';
