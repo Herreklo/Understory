@@ -9,7 +9,7 @@ ANSWERS  one or more reader files in the brief's shape, {"reader": name, "pairs"
          or one combined file {name: {...reader file...}}. A reader's parts (pairs-1.txt, pairs-2.txt read at different sittings) are
          separate files with the same "reader": their pairs are joined.
 --pack   the pages the readers read (pairs.txt, or its parts), for how much happened in each version. Without it, pairs.txt beside
-         the key is used when it is there.
+         the key is used when it is there. A key from pairarm.ts after round M36 carries each version's lines and kinds of line itself.
 --quote  a regular expression for the round's own wording: its quotes in faults and good reasons are listed, by arm.
 
 What it reports, and why:
@@ -27,6 +27,9 @@ What it reports, and why:
   change are different worlds, so the people read differ by 16-28 lines (sd) between arms. Reported: the lines in each arm, how often
   the longer version was chosen, and the effect with the difference in lines as a third term. A round is judged on the effect with the
   order as a term, since a change that makes more happen is meant to read better for it; the third term says how much of it is that.
+- Kinds of line (the event types on a page), when the key carries them: readers score how many kinds of thing happen in a life, not
+  its length (+0.05 a kind across lives and within pairs over rounds 29-34; round 36). Reported: kinds in each arm, and the effect with
+  the order and the difference in kinds as terms.
 """
 import argparse, json, math, re, statistics as st, subprocess, sys, os
 from collections import Counter
@@ -223,6 +226,20 @@ def main():
                       f' {10 * b[2]:+.2f} ±{tt * 10 * se[2]:.2f}. Reported beside the effect above, which the round is judged on.')
         else:
             print('\nHow much happened: the pack does not match the key; not reported.')
+    if all('kinds' in key[p].get('on', {}) for p in pairs):
+        dk = [key[p]['on']['kinds'] - key[p]['off']['kinds'] for p in pairs]
+        kon = st.mean(key[p]['on']['kinds'] for p in pairs)
+        koff = st.mean(key[p]['off']['kinds'] for p in pairs)
+        lines = lines or {}
+        lines.update({'kindsOn': kon, 'kindsOff': koff, 'kindsDiff': st.mean(dk), 'kindsDiffSd': st.stdev(dk) if n > 1 else 0})
+        print(f"Kinds of line: {kon:.1f} a page on, {koff:.1f} off; on minus off {st.mean(dk):+.1f} a pair (sd {lines['kindsDiffSd']:.1f}).")
+        fitk = ols([[1.0, s_, x] for s_, x in zip(side, dk)], d_pair) if n > 3 else None
+        if fitk:
+            b, se, _ = fitk
+            tt = t(T975, n - 3)
+            lines.update({'effectKinds': b[0], 'hw95Kinds': tt * se[0], 'perKind': b[2], 'perKindHw95': tt * se[2]})
+            print(f'With the order and the difference in kinds as terms: effect {b[0]:+.2f} ±{tt * se[0]:.2f} (95%); a kind more'
+                  f' {b[2]:+.3f} ±{tt * se[2]:.3f}.')
     for lab in ('on', 'off'):
         print(f'faults {lab}: total {sum(faults[lab].values())} · ' + ', '.join(f'{k} {v}' for k, v in faults[lab].most_common()))
     if rq:
