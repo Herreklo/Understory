@@ -5,7 +5,8 @@
 // id). Ranking by one arm alone would lean the reading toward that arm: a person picked for an eventful life in one arm regresses
 // toward the mean in the other (round 29, STATUS weakness 15). The page is what the app shows:
 // the present years' lines with their reasons, folded as src/page.ts folds them, in both arms alike.
-//   ./run.sh src/tools/diag/pairarm.ts <switch> A B [per world] → out-pair-<name>/pairs.txt (for readers), key.json and meta.json
+//   ./run.sh src/tools/diag/pairarm.ts <switch> A B [per world] → out-pair-<name>/pairs.txt (for readers; in parts of twelve pairs as
+//   pairs-1.txt, pairs-2.txt... when larger), key.json and meta.json. Scored by scripts/pairscore.py.
 // <switch> is a mechanism that is on unless OFF=<name> (a round under test), or +<name> for one that is off unless ON=<name> (a round not
 // kept, read again). meta.json records the switch, its kind, the worlds and the commit, so a pack can be made again from the same tree.
 import { mkdirSync, writeFileSync } from 'fs';
@@ -95,6 +96,11 @@ made.forEach((m, i) => {
   pairs.push(`##### ${m.id}, version A — ${m.head}\n${first.join('\n')}\n\n##### ${m.id}, version B — ${m.head}\n${second.join('\n')}\n`);
 });
 writeFileSync(`${OUT}/pairs.txt`, pairs.join('\n'));
+// A reader reads at most twelve pairs at a sitting: a larger pack is also written in parts (pairs-1.txt, pairs-2.txt, ...), twelve
+// pairs each, in order, for one reader each; the key covers them all.
+const PART = 12;
+if (pairs.length > PART)
+  for (let i = 0; i * PART < pairs.length; i++) writeFileSync(`${OUT}/pairs-${i + 1}.txt`, pairs.slice(i * PART, (i + 1) * PART).join('\n'));
 writeFileSync(`${OUT}/key.json`, JSON.stringify(key, null, 1));
 let commit = '';
 try {
