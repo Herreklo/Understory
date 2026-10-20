@@ -1,7 +1,9 @@
 // A paired reading across one switch (M26's method, made general): the same people shown as the engine writes them with the switch on
 // and with it off, each pair as A and B in a random order; the key says which is which and goes to nobody who reads. The people are the
-// most eventful adults of each world in the off arm (main's engine), found again in the on arm by name and birth (the past differs
-// between arms, so a person born or arrived during it may exist in one arm only, or carry another's id). The page is what the app shows:
+// adults of each world most eventful over both arms together (the sum of their present-years weight in each), matched across arms by
+// name and birth (the past differs between arms, so a person born or arrived during it may exist in one arm only, or carry another's
+// id). Ranking by one arm alone would lean the reading toward that arm: a person picked for an eventful life in one arm regresses
+// toward the mean in the other (round 29, STATUS weakness 15). The page is what the app shows:
 // the present years' lines with their reasons, folded as src/page.ts folds them, in both arms alike.
 //   ./run.sh src/tools/diag/pairarm.ts <switch> A B [per world] → out-pair-<switch>/pairs.txt (for readers) and key.json
 import { mkdirSync, writeFileSync } from 'fs';
@@ -56,7 +58,7 @@ for (let seed = A; seed <= B; seed++) {
   const same = (p: Person) => on.people.find(q => q.first === p.first && q.last === p.last && q.born === p.born && q.sex === p.sex);
   const people = off.people
     .filter(p => p.status !== 'dead' && age(off, p) >= 18 && same(p)?.status === 'in')
-    .sort((x, y) => score(off, y) - score(off, x))
+    .sort((x, y) => score(off, y) + score(on, same(y)!) - score(off, x) - score(on, same(x)!))
     .slice(0, PER);
   for (const p of people) {
     const q = same(p)!;

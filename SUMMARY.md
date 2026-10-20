@@ -49,6 +49,7 @@ This is the one priority list. Only Øystein changes its order, and a chat start
 
 ## Latest merges
 
+- **Reading tool fixed (20 Oct):** the blind paired reading now picks its people fairly from both versions. Earlier readings leaned toward the version without the change, by an amount we don't know.
 - **Round 29 (20 Oct), not kept:** bystanders kept a faint version of every weighty act they saw. It barely decided anything (0.29% of choices with another person), reach rose only from 5% to 7%, and blind readers preferred the lives without it in 9 of 12 pairs: the many faint memories warmed and cooled feelings across town, and pages filled with reasons nobody could follow ("took a little from the trip money, though he thinks highly of Olive"). The idea read well where it showed; it was too faint and too widespread. Also found: the paired reading leans toward the version it picks people from, to be fixed before the next reading.
 - **Words (20 Oct):** fairness says "wanted it to be fair" instead of "would not take what was not hers", which was being given for refusals.
 - **Housekeeping done (19 Oct):** settled switches and failed experiments removed, the two giant files split, the town's content moved into the setting pack (H30–H34). Nothing the engine does changed.
