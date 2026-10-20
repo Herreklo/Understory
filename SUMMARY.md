@@ -37,7 +37,7 @@ The people decide like people and can be read, but their lives are thin and repe
 
 This is the one priority list. Only Øystein changes its order, and a chat starts an experiment only from the top of it or when he names one.
 
-1. The accounts arc (#20). People remember their version of what happened, pass it on, and learn from it. Round 29 (bystanders keep what they saw) was not kept; the next round is redesigned first (see below).
+1. The accounts arc (#20). People remember their version of what happened, pass it on, and learn from it. Rounds 29 and 30 were not kept; round 31 keeps telling as round 30 built it and changes where an account is read: only in decisions it bears on, and as the reason when it changes whom someone picks.
 2. For the game (Overstory): the front door's part two (#22), reads of what the player could know, player commands and versions; and the start year from the setting pack (#23), so a world can begin in another era.
 3. The city's background: partnering and children fixed, so it stops ageing.
 4. Later: a human test built on stories rather than predictions (exit point 5).
@@ -45,10 +45,10 @@ This is the one priority list. Only Øystein changes its order, and a chat start
 ## Waiting for you
 
 - Decide on the repo structure for add-ons.
-- The accounts arc after round 29: keep going with a redesigned round (told accounts, held by fewer people, about acts that bear on them), or put it aside for Overstory's items. A design question: Fable.
 
 ## Latest merges
 
+- **Round 30 (20 Oct), not kept, but the first step that reads well:** people now tell what they saw or what was done to them, once, to the friend who knows the person, and that friend may pass it on; tellers bend it, and now and then name the wrong person. Blind readers preferred the town with it in 9 of 12 pairs, all three of them, a first for this arc. It fails its own test: an account rarely decided anything (0.41% of choices), reach rose only from 5% to 7%, and accounts were given as reasons in decisions they had nothing to do with. Round 31 fixes where accounts are read.
 - **Reading tool fixed (20 Oct):** the blind paired reading now picks its people fairly from both versions. Earlier readings leaned toward the version without the change, by an amount we don't know.
 - **Round 29 (20 Oct), not kept:** bystanders kept a faint version of every weighty act they saw. It barely decided anything (0.29% of choices with another person), reach rose only from 5% to 7%, and blind readers preferred the lives without it in 9 of 12 pairs: the many faint memories warmed and cooled feelings across town, and pages filled with reasons nobody could follow ("took a little from the trip money, though he thinks highly of Olive"). The idea read well where it showed; it was too faint and too widespread. Also found: the paired reading leans toward the version it picks people from, to be fixed before the next reading.
 - **Words (20 Oct):** fairness says "wanted it to be fair" instead of "would not take what was not hers", which was being given for refusals.

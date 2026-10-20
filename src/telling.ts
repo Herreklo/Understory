@@ -6,11 +6,15 @@
 //
 // An account shifts no bond. It is read: as its own consideration in any decision that weighs its subject (said as the act, with its
 // source), and as a part of regard when a counterpart is chosen, where the event that follows cites it.
+//
+// Off unless ON=telling: round 30 did not meet its expectations (an account was a decision's top reason in 0.41% of choices with another
+// person, reach rose from 5% to 7%); blind readers preferred the lives with it in 9 of 12 pairs, and quoted accounts weighed in decisions
+// they do not bear on as unfit reasons.
 
 import { clamp } from './rng';
 import { curves, z01, type Consideration, type Option } from './decide';
 import {
-  OFF,
+  ON,
   P,
   bond,
   peekBond,
@@ -27,7 +31,7 @@ import {
   type Heard,
 } from './world';
 
-export const tellingOn = () => !OFF.has('telling');
+export const tellingOn = () => ON.has('telling');
 const FAM = 0.2; // how well a hearer must know the one it is about, short of sharing a workplace, group or circle with them
 const BOUND = 32; // live told accounts a person holds before the most faded go
 const SECOND = 0.6; // how much surer the first hearer is than the second
