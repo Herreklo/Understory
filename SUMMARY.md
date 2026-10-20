@@ -35,15 +35,18 @@ The people decide like people and can be read, but their lives are thin and repe
 
 ## Next, in order
 
-This is the one priority list. Only Øystein changes its order, and a chat starts an experiment only from the top of it or when he names one. Øystein asked on 20 Oct for a plan to be made and followed; this is it, revised the same evening when round 35 was withdrawn before its test.
+This is the one priority list. Only Øystein changes its order, and a chat starts an experiment only from the top of it or when he names one. Øystein asked on 20 Oct for a plan to be made and followed; this is it, revised twice the same evening as rounds 35 and 36 were withdrawn before their tests.
 
-1. **Who wants things** (exit points 2 and 5; proposed work 1). Readers choose the life where more happens (70% of their choices over rounds 29–34, +0.16 a pair for every ten lines more), and 62% of adults pursue nothing in ten years. Wants are the main lever for consequences and for arcs a reader can follow: a want from what the person values, their stage of life and their circumstances, open to anyone, pursued through the doors the town has. Round 25d's version read better to all four of its readers at a size its twelve-pair reading could not confirm; this one is judged "reads better" on 24 pairs, with the difference in lines reported beside it.
-2. **Reasons a reader can follow** (exit point 3): the situation, the person's state and the bond first, a trait only where it decided, at most two. Unfit reasons are a quarter of what readers fault. Page only, so the two arms are the same world and the reading is at its most exact.
-3. **Bring back what changed lives** on top: round 30's telling (the one change that read better, +0.55 with the difference in lines as a term) and round 34's aftermath (blows change lives, +17 points), one at a time, judged "reads better".
-4. **People outside the project** (exit point 5): the human test, random and sifted lives side by side.
-5. Close ties (exit point 1) and the accounts arc (#20), both paused: rounds 29–33 built states from many small things that added reasons faster than story. Their code is kept behind switches (`ON=accounts`, `ON=telling`, `ON=carry`, `ON=reckon`).
-6. For the game (Overstory): the front door's part two (#22), reads of what the player could know, player commands and versions; and the start year from the setting pack (#23).
-7. The city's background: partnering and children fixed, so it stops ageing.
+What readers score, found on the readings already on file (round 36): **how many different kinds of thing happen in a life**, not how long its page is or how often it repeats. A kind more goes with about +0.05 on the score, across lives and within the same person; length adds nothing once kinds are counted. So the plan aims at lives with more kinds of happening, each with a reason a reader accepts.
+
+1. **Aftermath, with reasons that fit** (exit points 2 and 5). Round 34's change (a blow changes something that lasts) added three kinds of happening a life to the busiest lives and read no better, and readers faulted its reasons: a trait cue for a change ("wanted to know"). It comes back giving the reasons readers accept for a change in someone's life (the blow, how hard it hit, the bond) and no trait cue, judged "reads better" on 24 pairs.
+2. **Who wants things, again** (exit points 2 and 5): round 36's occasions (behind `ON=occasions`) with more than one pursuit at a time and doors for later life, designed for the kinds of happening it adds, and read on random adults beside the busiest.
+3. **Telling** (round 30's version, the one change that read better), brought back the same way.
+4. **Reasons a reader can follow** (exit point 3), on the page.
+5. **People outside the project** (exit point 5): the human test, random and sifted lives side by side.
+6. Close ties (exit point 1) and the accounts arc (#20), both paused. Their code is kept behind switches (`ON=accounts`, `ON=telling`, `ON=carry`, `ON=reckon`).
+7. For the game (Overstory): the front door's part two (#22), reads of what the player could know, player commands and versions; and the start year from the setting pack (#23).
+8. The city's background: partnering and children fixed, so it stops ageing.
 
 ## Waiting for you
 
@@ -52,6 +55,7 @@ This is the one priority list. Only Øystein changes its order, and a chat start
 
 ## Latest merges
 
+- **Round 36 (20 Oct), withdrawn before its test:** wants that answer what happens (someone close buys something, a colleague gets the job, a round birthday, a wedding, a blow). On trial worlds it worked but fell short: ten more adults in a hundred went after something (56% against 46%), people bought things four times as often, but it barely touched the busiest lives the blind reading reads. It is kept behind a switch (`ON=occasions`). Checking why, the readings already on file showed what readers actually score: how many different kinds of thing happen in a life, not how long it is. The next round brings back round 34's aftermath, which adds kinds of happening, with reasons readers accept.
 - **The reading reports how much happened (M35, 20 Oct):** the blind reading's scorer now counts the lines of each version and reports how much of a round's effect is simply that more happened in one arm, beside the effect a round is judged on. And readers now see the reasons a player sees: the reading's pages had shown a "despite" note the app leaves out on about one line in eleven. Nothing the engine does changed.
 - **Round 35 (20 Oct), withdrawn before its test:** it would have folded the town's routine on a person's page (the festival, "count me in", a band's songs). Before any test, two things showed it could not work: on trial worlds the fold took off only 2–13% of a page, and over the last six readings, readers chose the version where more happens 70% of the time. Repeats are what readers name when asked for faults, but what they choose is a life with more in it. The plan now starts with who wants things. Nothing the engine does changed.
 - **Round 34 (20 Oct), not kept:** when a blow lands (a death close to someone, a marriage or friendship ending, being passed over, found out or shamed, a want that failed), the person decides once whether anything changes: start again at work, take up a routine, keep away from one, or carry on. It works as meant: blows now change lives in 67% of cases against 50%, in all twenty test worlds, and the scoreboard holds. But the first 24-pair blind reading could not say the lives read better (−0.12 ±0.41), and readers flagged the traits given as reasons for the changes ("wanted to know").

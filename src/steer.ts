@@ -28,6 +28,7 @@ import { decide, family, friendsOf } from './grammar';
 import { stateCause, eventCause, ev, facetC, privC, pubC, closeC, bondC } from './considerations';
 import { regard } from './regard';
 import type { Feature } from './features';
+import { occasionsOn, originCause } from './occasions';
 
 export const steering = () => !OFF.has('steer');
 const NONE = new Set<Feature>();
@@ -64,6 +65,8 @@ const kinWhoCould = (w: World, p: Person, x: Want) =>
     .sort((a, b) => likeOf(w, p.id, b.id) - likeOf(w, p.id, a.id))[0];
 export const costOf = (x: Want) => (x.kind === 'escape' ? SETTING.moveCost : (SETTING.goods.find(g => g.id === x.target)?.cost ?? 20));
 const workingFriend = (w: World, p: Person) => friendsOf(w, p).filter(q => q.job != null);
+// Round 36: a thing (not leaving) whose cost they have put by.
+const affordable = (p: Person, x: Want) => occasionsOn() && x.kind === 'acquire' && p.savings >= costOf(x);
 // Someone they would like to know better, with a social routine they do not share.
 function companion(w: World, p: Person) {
   return around(w, p)
@@ -129,16 +132,24 @@ const WAYS: Record<string, Way[]> = {
   ],
   money: [
     {
+      // Round 36: a thing they can afford is bought outright (time.ts startPursuit), and is the only way then.
+      id: 'buy',
+      label: 'buy it',
+      ok: (w, p, x) => affordable(p, x),
+      cs: () => [],
+      start: (w, p, x, lbl) => `@${p.id} bought ${lbl}.`,
+    },
+    {
       id: 'save',
       label: 'save',
-      ok: () => true,
+      ok: (w, p, x) => !affordable(p, x),
       cs: (w, p) => [facetC(p, 'prudence', NONE, 1, 4), facetC(p, 'patience', NONE, 1, 3)],
       start: (w, p, x, lbl) => `@${p.id} quietly started saving ${x.kind === 'escape' ? 'to leave' : 'for ' + lbl}.`,
     },
     {
       id: 'extra',
       label: 'take on extra work',
-      ok: (w, p) => p.job != null && !p.retired,
+      ok: (w, p, x) => p.job != null && !p.retired && !affordable(p, x),
       cs: (w, p) => [
         facetC(p, 'diligence', NONE, 1, 4),
         stateC0('worn', p.stress > 0.5 ? 'already worn down' : 'has the energy for it', p.stress, -1),
@@ -148,7 +159,7 @@ const WAYS: Record<string, Way[]> = {
     {
       id: 'family',
       label: 'ask family to help',
-      ok: (w, p, x) => !!kinWhoCould(w, p, x),
+      ok: (w, p, x) => !!kinWhoCould(w, p, x) && !affordable(p, x),
       cs: (w, p, x) => [facetC(p, 'dependence', NONE, 1, 4), facetC(p, 'modesty', NONE, 1, 2), bondC(w, p, kinWhoCould(w, p, x)!, 'like', 1)],
       start: (w, p, x, lbl) => `@${p.id} asked @${kinWhoCould(w, p, x)!.id} for help with ${x.kind === 'escape' ? 'the cost of leaving' : lbl}.`,
     },
@@ -230,10 +241,17 @@ export function setOut(w: World, p: Person, x: Want, way: Way, lbl: string, why:
           .replace(/ quietly /, ' ')
           .replace(/^@(\d+) /, `Instead, @$1 `)
       : way.start(w, p, x, lbl),
-    causes: [
-      ...(again ? [again] : [{ kind: 'want', label: `wants ${lbl} (since ${year(x.since)})`, weight: 0.5, key: x.kind, who: p.id } as Cause]),
-      ...why.filter(c => !again || c.label !== again.label).slice(0, 2),
-    ],
+    causes:
+      occasionsOn() && x.origin && !again
+        ? [
+            originCause(w, x.origin),
+            { kind: 'want', label: `wants ${lbl} (since ${year(x.since)})`, weight: 0.5, key: x.kind, who: p.id } as Cause,
+            ...why.filter(c => c.key !== 'occasion').slice(0, 1),
+          ]
+        : [
+            ...(again ? [again] : [{ kind: 'want', label: `wants ${lbl} (since ${year(x.since)})`, weight: 0.5, key: x.kind, who: p.id } as Cause]),
+            ...why.filter(c => !again || c.label !== again.label).slice(0, 2),
+          ],
     vis: way.id === 'save' || way.id === 'practise' || way.id === 'work' || way.id === 'wait' || way.id === 'show' ? 'private' : 'local',
     ...(rec ? { decision: rec } : {}),
     evidence: [ev(p.id, 'want:' + x.kind, 1, 1, 0.75)],
@@ -558,6 +576,13 @@ export function markGivenUp(w: World, p: Person, x: Want) {
 }
 // A want given up comes back only after three years, and only once something it depends on has changed; the change is its reason.
 export function mayComeBack(w: World, p: Person, kind: string, target: string): { ok: boolean; why?: string } {
+  // Round 36: a want met does not come back for five years (making up with someone aside: a new falling-out is a new want).
+  if (
+    occasionsOn() &&
+    kind !== 'restore' &&
+    p.wants.some(y => y.kind === kind && y.target === target && y.done === 'achieved' && w.t - (w.events[y.doneAt ?? -1]?.t ?? -999) < 60)
+  )
+    return { ok: false };
   if (!steering()) return { ok: true };
   const old = p.wants
     .filter(y => y.kind === kind && y.target === target && y.done === 'abandoned' && (y as any).at)

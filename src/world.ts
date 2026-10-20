@@ -116,6 +116,7 @@ export interface Want {
   doneAt?: number;
   cause?: number;
   pursuit?: Pursuit;
+  origin?: { kind: string; label: string; ref?: number }; // the occasion it answers (round 36, occasions.ts)
 }
 
 // A pursuit is a want with a plan: progress, effort, setbacks, and the option of giving up.

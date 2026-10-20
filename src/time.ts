@@ -34,6 +34,7 @@ import { decide, run, friendsOf, family } from './grammar';
 import { traitCause, stateCause, eventCause, ev, facetC, valueC, stateC, privC, pubC, closeC, bondC, learned } from './considerations';
 import type { Feature } from './features';
 import { hasWays, chooseWay, setOut, wayTick, obstacle, markGivenUp, mayComeBack, steering } from './steer';
+import { occasionsOn, occasionsTick, roomFor, originCause, type Origin } from './occasions';
 
 const VN = Object.fromEntries(VALUES.map(v => [v.id, v.name]));
 const NONE = new Set<Feature>();
@@ -68,10 +69,13 @@ export function wantLabel(w: World, p: Person, x: Want): string {
   return x.kind;
 }
 // A want remembers the event it came from, when it came from one (round 23a); wants from character alone have none.
-export function addWant(w: World, p: Person, kind: string, target: string, value: string, urgency: number, cause?: number) {
-  if (p.wants.some(x => x.kind === kind && x.target === target && !x.done)) return;
+// Round 36 (occasions): a want may carry the occasion it answers; an occasion opens one only while the person has fewer than three open
+// wants of their own and none of that kind.
+export function addWant(w: World, p: Person, kind: string, target: string, value: string, urgency: number, cause?: number, origin?: Origin): boolean {
+  if (p.wants.some(x => x.kind === kind && x.target === target && !x.done)) return false;
+  if (origin && !roomFor(p, kind)) return false;
   const back = mayComeBack(w, p, kind, target); // round 25c: a want given up comes back only changed
-  if (!back.ok) return;
+  if (!back.ok) return false;
   p.wants.push({
     kind,
     target,
@@ -80,9 +84,12 @@ export function addWant(w: World, p: Person, kind: string, target: string, value
     urgency,
     ...(cause != null && cause >= 0 ? { cause } : {}),
     ...(back.why ? { back: back.why } : {}),
+    ...(origin ? { origin } : {}),
   } as Want);
+  return true;
 }
-export function resolveWants(w: World, p: Person, kind: string, target: string, how: Want['done'], ref: number) {
+// `silent`: the act that met it is the whole of the record (round 36: a thing bought outright); no "got there" line.
+export function resolveWants(w: World, p: Person, kind: string, target: string, how: Want['done'], ref: number, silent = false) {
   for (const x of p.wants)
     if (x.kind === kind && x.target === target && !x.done) {
       x.done = how;
@@ -109,16 +116,18 @@ export function resolveWants(w: World, p: Person, kind: string, target: string, 
           key: x.kind,
           who: p.id,
         });
-      const e = addEvent(w, {
-        type: 'want:' + how,
-        who: [p.id],
-        text,
-        causes,
-        vis: pu && pu.visible && !pu.owner ? 'local' : 'private',
-        evidence: pu && how === 'achieved' ? [ev(p.id, 'diligence', 1, 0.6, 0.6)] : [],
-        w: pu && !pu.owner ? 2 : 1.5,
-      });
-      broadcast(w, e);
+      const e = silent
+        ? w.events[ref]
+        : addEvent(w, {
+            type: 'want:' + how,
+            who: [p.id],
+            text,
+            causes,
+            vis: pu && pu.visible && !pu.owner ? 'local' : 'private',
+            evidence: pu && how === 'achieved' ? [ev(p.id, 'diligence', 1, 0.6, 0.6)] : [],
+            w: pu && !pu.owner ? 2 : 1.5,
+          });
+      if (!silent) broadcast(w, e);
       addEmotion(w, p, 'want' + x.kind, how === 'achieved' ? 'a long want fulfilled' : 'a long want lost', how === 'achieved' ? 0.2 : -0.2, 12, e.id);
       if (pu && !pu.owner && how === 'achieved') {
         // Achieving something you worked for rewrites the story a little.
@@ -191,6 +200,16 @@ export function wantRestore(w: World, p: Person, q: Person, cause?: number) {
   addWant(w, p, 'restore', String(q.id), 'lovedOnes', 0.5, cause);
 }
 
+// Round 36: the occasion a want answers weighs on whether to go after it, for anyone to see; read the other way by waiting.
+const occasionC = (x: Want, dir: 1 | -1): Consideration[] =>
+  occasionsOn() && x.origin ? [pubC('occasion', x.origin.label, 0.8, dir, 0.3, x.origin.ref)] : [];
+export const notOccasion = (c: Cause) => c.key !== 'occasion';
+// Round 36: the open want offered first is the most pressing one not put off in the last year (else the most pressing).
+const mostPressing = (w: World, open: Want[]) => {
+  const by = (xs: Want[]) => xs.slice().sort((x, y) => y.urgency - x.urgency || x.since - y.since)[0];
+  return by(open.filter(x => w.t - ((x as any).waited ?? -99) >= 12)) ?? by(open);
+};
+
 function startPursuit(w: World, p: Person, x: Want) {
   const lbl = wantLabel(w, p, x);
   const opts: Option[] = [
@@ -202,12 +221,14 @@ function startPursuit(w: World, p: Person, x: Want) {
         privC('drive', p.drive > 0.3 ? 'the kind who goes after things' : 'not one to chase things', z01(p.drive * 1.2), 1, 0.2, undefined, 0.3),
         facetC(p, 'diligence', NONE, 1, 4),
         stateC('worn', p.stress > 0.5 ? 'worn down' : 'not worn down', p.stress, -1, 0.25),
+        ...occasionC(x, 1),
       ],
     },
     {
       id: 'wait',
       label: 'keep wishing',
       considerations: [
+        ...occasionC(x, -1),
         facetC(p, 'anxiety', NONE, 1, 4),
         facetC(p, 'prudence', NONE, 1, 3, 0.6),
         privC(
@@ -223,7 +244,10 @@ function startPursuit(w: World, p: Person, x: Want) {
     },
   ];
   const d = decide(w, p, 'a want: ' + lbl, opts);
-  if (d.chosen !== 'start') return;
+  if (d.chosen !== 'start') {
+    if (occasionsOn()) (x as any).waited = w.t; // not offered first again for a year (round 36)
+    return;
+  }
   const visible = w.rng.next() < 0.35 + 0.4 * z01(facet(p, 'sociability')) + 0.2 * z01(facet(p, 'socialBoldness'));
   x.pursuit = {
     plan: PLAN[x.kind] ?? 'try',
@@ -259,6 +283,17 @@ function startPursuit(w: World, p: Person, x: Want) {
     belong: 'started turning up to things',
     restore: `started trying to put things right with @${x.target}`,
   };
+  if (steer && steer.way.id === 'buy') {
+    // Round 36: a thing they can afford is bought, one line, with the occasion, the money and the decision as its reasons.
+    buy(
+      w,
+      p,
+      x,
+      [...(x.origin ? [originCause(w, x.origin)] : []), stateCause('had the money put by', 0.4), ...d.why.filter(notOccasion)].slice(0, 3),
+      d.rec,
+    );
+    return;
+  }
   if (steer) {
     // Round 25c: the way they chose is what the record says, with the decision to go after it and, if it is a want come back, what changed.
     const back = (x as any).back as string | undefined;
@@ -271,10 +306,17 @@ function startPursuit(w: World, p: Person, x: Want) {
     type: 'pursuit',
     who: [p.id],
     text: visible ? `@${p.id} ${verb[x.kind]}, and tells everyone.` : `@${p.id} quietly ${verb[x.kind]}.`,
-    causes: [
-      { kind: 'want', label: `wants ${lbl.replace(/^to /, 'to ')} (since ${year(x.since)})`, weight: 0.5, key: x.kind, who: p.id },
-      ...d.why.slice(0, 2),
-    ],
+    causes:
+      occasionsOn() && x.origin
+        ? [
+            originCause(w, x.origin),
+            { kind: 'want', label: `wants ${lbl} (since ${year(x.since)})`, weight: 0.5, key: x.kind, who: p.id },
+            ...d.why.filter(notOccasion).slice(0, 1),
+          ]
+        : [
+            { kind: 'want', label: `wants ${lbl.replace(/^to /, 'to ')} (since ${year(x.since)})`, weight: 0.5, key: x.kind, who: p.id },
+            ...d.why.slice(0, 2),
+          ],
     vis: visible ? 'local' : 'private',
     decision: d.rec,
     evidence: [ev(p.id, 'want:' + x.kind, 1, 1, 0.75), ev(p.id, 'diligence', 1, 0.4, 0.5)],
@@ -368,9 +410,35 @@ const WISH: Record<string, (w: World, p: Person, x: Want) => string> = {
 function pursuitTick(w: World, p: Person) {
   const a = age(w, p);
   newWants(w, p);
-  // Wishes leak: people say what they want long before they do anything about it.
+  // Round 36: last month's occasions may open a want; wants long unpursued lapse.
+  occasionsTick(
+    w,
+    p,
+    (kind, target, value, urgency, origin) => addWant(w, p, kind, target, value, urgency, origin.ref, origin),
+    x => wantLabel(w, p, x),
+  );
+  // Wishes leak: people say what they want long before they do anything about it. A want from an occasion is let slip once, soon,
+  // with the occasion as its reason (round 36).
   for (const x of p.wants)
-    if (
+    if (occasionsOn() && x.origin) {
+      if (!x.done && !x.pursuit && !(x as any).said && WISH[x.kind] && w.t - x.since >= 1 && w.t - x.since <= 6 && w.rng.chance(0.15)) {
+        (x as any).said = true;
+        const e = addEvent(w, {
+          type: 'tell',
+          who: [p.id],
+          text: WISH[x.kind](w, p, x),
+          causes: [
+            originCause(w, x.origin, 0.6),
+            { kind: 'want', label: `wants ${wantLabel(w, p, x)} (since ${year(x.since)})`, weight: 0.4, key: x.kind, who: p.id },
+          ],
+          vis: 'local',
+          evidence: [ev(p.id, 'want:' + x.kind, 1, 0.8, 0.6)],
+          w: 0.5,
+        });
+        seenByClose(w, p, e);
+        broadcast(w, e);
+      }
+    } else if (
       !x.done &&
       !x.pursuit &&
       WISH[x.kind] &&
@@ -379,6 +447,7 @@ function pursuitTick(w: World, p: Person) {
       (p.tried['wish:' + x.kind]?.t ?? -99) < w.t - 30
     ) {
       learned(w, p, 'wish:' + x.kind, true);
+      if (occasionsOn()) (x as any).said = true;
       const e = addEvent(w, {
         type: 'tell',
         who: [p.id],
@@ -407,7 +476,7 @@ function pursuitTick(w: World, p: Person) {
   // Starting: a want becomes a pursuit, or stays a wish.
   if (a >= 15 && !active(p).length && w.rng.chance(0.1)) {
     const open = p.wants.filter(x => !x.done && !x.pursuit && PLAN[x.kind] && !(x.kind === 'attain' && !p.job && x.target !== 'work'));
-    if (open.length) startPursuit(w, p, w.rng.pick(open));
+    if (open.length) startPursuit(w, p, occasionsOn() ? mostPressing(w, open) : w.rng.pick(open));
   }
   for (const x of active(p)) {
     const pu = x.pursuit!;
@@ -526,7 +595,14 @@ function pursuitTick(w: World, p: Person) {
       continue;
     }
     // Tells: effort shows, if it is allowed to.
-    if (pu.visible && pu.told < 3 && w.t - pu.since > 3 && w.rng.chance(0.07)) tell(w, p, x);
+    if (
+      pu.visible &&
+      pu.told < (occasionsOn() ? 2 : 3) &&
+      w.t - pu.since > 3 &&
+      (!occasionsOn() || w.t - ((pu as any).toldAt ?? -99) >= 10) &&
+      w.rng.chance(0.07)
+    )
+      tell(w, p, x);
     // Giving up: stalled, or knocked back.
     const stalled = w.t - pu.lastGain > 14;
     if ((stalled || pu.setbacks > 0) && w.rng.chance(0.05) && w.t - ((pu as any).lastCheck ?? -99) > 8) {
@@ -631,6 +707,7 @@ export function giveUp(w: World, p: Person, x: Want, d: any) {
 function tell(w: World, p: Person, x: Want) {
   const pu = x.pursuit!;
   pu.told++;
+  if (occasionsOn()) (pu as any).toldAt = w.t;
   const texts: Record<string, string[]> = {
     attain: [
       `@${p.id} has been first in and last out for months.`,
@@ -687,17 +764,19 @@ function tell(w: World, p: Person, x: Want) {
   });
   broadcast(w, e);
 }
-function buy(w: World, p: Person, x: Want) {
+// `why` and `rec` are given when it is bought outright (round 36's way 'buy'): one line, and the want is met without a second.
+function buy(w: World, p: Person, x: Want, why?: Cause[], rec?: any) {
   const g = SETTING.goods.find(g => g.id === x.target)!;
   p.savings -= g.cost;
   const e = addEvent(w, {
     type: 'bought',
     who: [p.id],
     text: `@${p.id} bought ${g.label.replace('their', her(p))}.`,
-    causes: [
+    causes: why ?? [
       { kind: 'want', label: `had been saving since ${year(x.pursuit!.since)}`, weight: 0.6, key: 'acquire', who: p.id },
       traitCause(p, 'diligence', 0.4, 1),
     ],
+    ...(rec ? { decision: rec } : {}),
     vis: 'public',
     evidence: [ev(p.id, 'diligence', 1, 0.5, 0.6), ev(p.id, 'value:' + g.value, 1, 0.7, 0.6)],
     w: 1.8,
@@ -705,7 +784,7 @@ function buy(w: World, p: Person, x: Want) {
   broadcast(w, e);
   p.attachments.push({ key: g.id, label: g.label.replace('their', her(p)), like: 0.5, since: w.t, cause: e.id });
   if (g.habit) formHabit(w, p, g.habit, `since buying the ${g.id}`, 0.6);
-  resolveWants(w, p, 'acquire', g.id, 'achieved', e.id);
+  resolveWants(w, p, 'acquire', g.id, 'achieved', e.id, !!why);
 }
 function achieveProve(w: World, p: Person, x: Want) {
   const s = p.skills[x.target];
@@ -1022,10 +1101,12 @@ export function attachTells(w: World, p: Person) {
         `@${p.id} has never once talked about leaving.`,
         `@${p.id} walks the same shore path every evening, and has for years.`,
       ];
+      // Round 36: someone who bought a house of their own no longer lives in the one they grew up in.
+      const said = occasionsOn() && p.attachments.some(a => a.key === 'house') ? ROOTED.filter(t => !t.includes('grew up in')) : ROOTED;
       const e = addEvent(w, {
         type: 'tell',
         who: [p.id],
-        text: ROOTED[(p.id * 7 + p.tried['tell:home'].n * 3) % ROOTED.length],
+        text: said[(p.id * 7 + p.tried['tell:home'].n * 3) % said.length],
         causes: [{ kind: 'bond', label: 'rooted here', weight: 0.7, key: 'attach:home', who: p.id }, traitCause(p, 'sentimentality', 0.3, 1)],
         vis: 'local',
         evidence: [ev(p.id, 'attach:home', 1, 1, 0.75), ev(p.id, 'sentimentality', 1, 0.5, 0.5), ev(p.id, 'value:lovedOnes', 1, 0.5, 0.5)],
