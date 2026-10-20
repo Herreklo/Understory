@@ -1,0 +1,49 @@
+Round 32: the paired reading, carry on against off (20 Oct 2026).
+Twelve people (the three adults of each of worlds 3185-3188 most eventful over both arms together, src/tools/diag/pairarm.ts at d4579be),
+each shown as the engine writes them with carry on and off (ten present years, with reasons, folded as the page folds them). The order
+was dealt six and six (#40): the on arm is version A in six pairs and B in six. Three blind readers on Fable 5.1 (a novelist, a social
+worker, a player of simulation games), each told only that the two are two versions of the same person's life (brief:
+reports/32-reading-brief.md). The pack and key were committed (7478c46) before the reading, and the reading was scored before any
+battery number was opened. Answers: reports/32-reading-answers.json. Cells: score A, score B, preferred.
+
+pair  on            novelist  socialworker        player   majority-on
+P01   A          3,4,B         3,4,B         3,4,B   no
+P02   B          3,4,B         3,3,B         3,3,B   yes
+P03   B          3,3,A         4,3,A         3,3,A   no
+P04   A          3,4,B         3,3,A         3,3,A   yes
+P05   A          2,4,B         3,3,B         3,4,B   no
+P06   A          2,3,B         2,3,B         2,3,B   no
+P07   B          2,4,B         2,3,B         3,3,B   yes
+P08   B          3,4,B         3,4,B         3,4,B   yes
+P09   B          2,3,B         2,3,B         2,3,B   yes
+P10   B          3,4,B         3,4,B         3,4,B   yes
+P11   A          3,3,A         4,3,A         4,2,A   yes
+P12   A          3,3,A         3,3,A         3,3,A   yes
+
+Majority preferred the on arm in 8 of 12. Mean paired difference, on minus off: +0.14 over 36 reader-pairs.
+  novelist       diff +0.08
+  socialworker   diff +0.17
+  player         diff +0.17
+ordinal  alpha 0.656  95% [0.351, 0.838]  (3 readers, 24 lives)
+interval alpha 0.663  95% [0.357, 0.832]  (3 readers, 24 lives)
+  novelist     mean 3.12
+  socialworker mean 3.08
+  player       mean 3.08
+
+faults on: total 107 · false line 39, unfit reason 36, repeat 19, wording 7, out of nowhere 6
+faults off: total 107 · false line 29, repeat 28, unfit reason 26, out of nowhere 16, wording 8
+
+
+(scripts/alpha.py reports/32-reading-scores.json; units 2i-1 and 2i are pair i's A and B.)
+
+The record on the page. In the on arm it shows 17 times as a line the town knows ("Ryan Fielding was always the one who went round to
+Tom Moore's. [since 2033]") and once as a decision's reason ("Eric kept turning up at Freya Newman's door with something or other.
+[...; Freya Newman had always been the one who came round (since 2016)]"); no friendship in the pack ends with it.
+Quoted as a reason that made an act make sense: 0 (bar at least 2).
+Quoted as an unfit reason: 0 (bar at most 2). Quoted as any fault: 0.
+The readers passed over it entirely: the lines are seen and neither praised nor faulted, and the one reason it gives is not quoted.
+
+Order. Readers chose version B in 25 of 36 single choices. On second, the on arm won 5 of 6 pairs by majority; on first, 3 of 6.
+
+Against the pre-registration: on arm preferred in 8 of 12 (bar 7) ✓; α ordinal .656 [.351, .838] (bar .667) ✗; the record quoted as a
+good reason 0 times (bar 2) ✗, as an unfit reason 0 times (bar at most 2) ✓. Expectation 6 fails.

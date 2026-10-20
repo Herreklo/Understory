@@ -2,6 +2,7 @@
 // Every instance becomes an event with causes and evidence. Nothing here is a scene.
 
 import { withAccounts } from './telling';
+import { withCarry, carryAct } from './carry';
 import { clamp, hash } from './rng';
 import { FACET_BY_ID, VALUES } from './core';
 import { ACTIVATION, type Feature } from './features';
@@ -319,6 +320,7 @@ export function run(w: World, inst: Instance): Outcome | null {
     return { id: fam, label: fam, considerations: kept };
   });
   withAccounts(w, p, options);
+  withCarry(w, inst.type, p, t, options);
   const scored = score(options, truthView(w), p.variability);
   const chosen = choose(scored, chanceOf(w, p), { t: w.t, who: p.id, kind: inst.type, nudge: () => w.rng.next() });
   if ((globalThis as any).WEIGH) {
@@ -527,6 +529,7 @@ export function run(w: World, inst: Instance): Outcome | null {
     if (Math.abs(v) >= 0.8 && Math.sign(p.facets[k]) === Math.sign(v)) p.facets[k] += Math.sign(v) * 0.01 * plasticity(w, p);
   }
   learned(w, p, 'fam:' + fam, expr.like >= 0 || !t);
+  carryAct(w, p, expr.solo ? undefined : t, expr.id);
   return { family: fam, expr, event: e };
 }
 // What the target remembers of an act, in their own words ('told people what I had told her in confidence').
