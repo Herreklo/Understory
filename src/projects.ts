@@ -492,7 +492,8 @@ function open(w: World, pr: Project, p: Person) {
   const backers = ((pr as any).backers ?? []) as number[];
   const e = addEvent(w, {
     type: 'opened',
-    who: [p.id, ...backers.slice(0, 2)],
+    // Those who put money in were part of it; a backer who has died since is not at the opening (the money stays in the reasons).
+    who: [p.id, ...backers.filter(id => P(w, id).status !== 'dead').slice(0, 2)],
     text: `@${p.id} opened ${name}${k.label.includes('old bank') ? ' in the old bank' : ''}.`,
     causes: [
       eventCause(w, pr.first, 0.4),

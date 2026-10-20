@@ -1,4 +1,5 @@
 // Two worlds alive at once must not read each other's bonds (each person knows their own world).
+import './env'; // OFF= and ON= from the environment, before anything runs
 import { buildWorld, runYears } from '../build';
 import { pickWitness } from '../witness';
 function hist(w: ReturnType<typeof buildWorld>) {
