@@ -2123,6 +2123,17 @@ It also found, on the readings already on file, what readers score (`reports/36-
 
 What changes: the plan. The next round brings back round 34's aftermath, giving the reasons readers accept for a change in someone's life (the blow, how hard it hit, the bond) and no trait cue. Who wants things comes back after it, designed for the kinds of happening it adds to a life, with more than one pursuit at a time and doors for later life, and read on random adults beside the busiest.
 
+## Round M36 — the reading reports kinds of thing (pre-registered 20 Oct 2026, 22:35 Oslo, **after** its code, which changes what the reading reports, not what it shows)
+
+Round 36 found that readers score how many kinds of thing happen in a life (+0.045 ±0.013 a kind of line across 84 lives, +0.05 ±0.02 within 46 pairs), not its length. The reading reports lines (M35); it now reports kinds too. The change (tools and the method only; nothing the engine does, and nothing a reader is shown, changes):
+
+1. `pairarm.ts` writes each version's lines and kinds of line (the event types on its page) into the key, which goes to nobody who reads.
+2. `scripts/pairscore.py` reports, when the key carries them, the kinds in each arm, on minus off with its spread, and the effect with the order and the difference in kinds as terms, beside the effect the round is judged on (`docs/method/reading.md`).
+
+Expected: (1) the scorer's figures for every past reading are unchanged (their keys carry no kinds); (2) on a key carrying them, the kinds term is reported; (3) `npm test` passes and nothing the engine does changes (label `refactor`).
+
+Outcome (the same evening, before any new reading): (1) ✓ rounds 29–34 score as before; (2) ✓ on round 34's key with the kinds of round 36's rebuild added, kinds 41.0 a page on, 39.2 off, and the effect with the kinds as a term −0.26 ±0.35, a kind more +0.074 ±0.049: aftermath added kinds and read worse than its kinds would predict; (3) see the pull request's checks. **Kept.**
+
 ## Round 37 — aftermath, with reasons that fit (pre-registered 20 Oct 2026, 22:22 Oslo, before its code)
 
 The plan's first step (SUMMARY, Next 1; exit points 2 and 5). Readers score a life by how many kinds of thing happen in it (round 36: +0.05 a kind, across lives and within pairs). Round 34's aftermath (a blow changes something that lasts: start again at work, take up a routine, keep away from one) added three kinds a life to the busiest lives and raised the share of blows that change a life within three years from 50% to 67%, in every world; it read no better (−0.12 ±0.41; −0.07 on the pairs that can be rebuilt, where its kinds alone would predict about +0.15). What readers faulted were its reasons: on throwaway worlds 9001–9003 with `ON=aftermath`, of the reasons its 230 decisions gave after the blow itself, 150 are trait cues ("wanted to know" for taking up cards after a loss, "would rather deal with it alone") and 86 the self-story ("that is who Arthur is: rooted in the town, through and through"), the two kinds readers quoted as not fitting a change in someone's life. What they accepted: the blow, how hard it hit, the bond ("had not forgiven it").

@@ -54,7 +54,25 @@ function world(seed: number, on: boolean): World {
 // Each pair is kept as both pages until every pair is chosen; then which arm comes first is dealt out half and half (an odd pair
 // out goes by the hash), shuffled by a hash of the switch, so readers who lean toward the version they read second lean equally
 // toward both arms.
-const made: { id: string; head: string; on: string[]; off: string[]; seed: number; person: number; name: string }[] = [];
+// How much happens in a page: its lines, and its kinds of line (the event types on it), which readers score (round 36).
+function measure(w: World, p: Person) {
+  const lines = pageLines(
+    w,
+    p.events.map(i => w.events[i]).filter(e => e.t >= w.startPresent),
+    new Set(p.events),
+  );
+  return { lines: lines.length, kinds: new Set(lines.map(l => l.e.type)).size };
+}
+const made: {
+  id: string;
+  head: string;
+  on: string[];
+  off: string[];
+  seed: number;
+  person: number;
+  name: string;
+  m: { on: { lines: number; kinds: number }; off: { lines: number; kinds: number } };
+}[] = [];
 let n = 0;
 for (let seed = A; seed <= B; seed++) {
   const off = world(seed, false);
@@ -70,7 +88,16 @@ for (let seed = A; seed <= B; seed++) {
     const head = `${nameOf(off, p.id)}, ${Math.floor(age(off, p))} in ${year(off.t)}`;
     if (nameOf(on, q.id) !== nameOf(off, p.id)) console.error(`pairarm: ${nameOf(off, p.id)} is ${nameOf(on, q.id)} in the on arm`);
     n++;
-    made.push({ id: `P${String(n).padStart(2, '0')}`, head, on: page(on, q), off: page(off, p), seed, person: p.id, name: nameOf(off, p.id) });
+    made.push({
+      id: `P${String(n).padStart(2, '0')}`,
+      head,
+      on: page(on, q),
+      off: page(off, p),
+      seed,
+      person: p.id,
+      name: nameOf(off, p.id),
+      m: { on: measure(on, q), off: measure(off, p) },
+    });
   }
   console.error(`pairarm: world ${seed}`);
 }
@@ -82,11 +109,14 @@ for (let i = order.length - 1; i > 0; i--) {
   [order[i], order[j]] = [order[j], order[i]];
 }
 const pairs: string[] = [];
-const key: Record<string, { seed: number; person: number; name: string; onIs: 'A' | 'B' }> = {};
+const key: Record<
+  string,
+  { seed: number; person: number; name: string; onIs: 'A' | 'B'; on: { lines: number; kinds: number }; off: { lines: number; kinds: number } }
+> = {};
 made.forEach((m, i) => {
   const onFirst = order[i];
   const [first, second] = onFirst ? [m.on, m.off] : [m.off, m.on];
-  key[m.id] = { seed: m.seed, person: m.person, name: m.name, onIs: onFirst ? 'A' : 'B' };
+  key[m.id] = { seed: m.seed, person: m.person, name: m.name, onIs: onFirst ? 'A' : 'B', on: m.m.on, off: m.m.off };
   pairs.push(`##### ${m.id}, version A — ${m.head}\n${first.join('\n')}\n\n##### ${m.id}, version B — ${m.head}\n${second.join('\n')}\n`);
 });
 writeFileSync(`${OUT}/pairs.txt`, pairs.join('\n'));
