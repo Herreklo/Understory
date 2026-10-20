@@ -1,0 +1,18 @@
+Variety, not length: reader scores against what a page contains, rounds 29-34 (reports/36-variety.ts rebuilds the lives; reports/36-variety.py). Run 20 Oct 2026 on round 36's branch (main at eccfff5 with round 36, off by default).
+The on arm of round 30 (its code changed in round 31) and three lives of round 32 could not be rebuilt exactly and are left out of the within-pair part.
+
+Across lives: 84 lives of the off arm rebuilt, every page the one the readers read.
+  lines +0.014 ±0.008   (R² 0.28, with the round)
+  distinctTypes +0.045 ±0.013   (R² 0.47, with the round)
+  lines -0.011 ±0.011 + distinctTypes +0.063 ±0.022   (R² 0.49, with the round)
+  a life has 69 lines and 38 kinds of line on average
+
+Within pairs: 46 pairs whose on arm was rebuilt exactly.
+  lines +0.016 ±0.010   (with the order; effect at no difference -0.06)
+  kinds +0.052 ±0.018   (with the order; effect at no difference -0.03)
+  lines -0.015 ±0.015 + kinds +0.079 ±0.032   (with the order; effect at no difference -0.02)
+  round 29: 7 pairs, on minus off: lines -12.6, kinds -5.9, score -0.24
+  round 31: 8 pairs, on minus off: lines +0.6, kinds -1.5, score -0.13
+  round 32: 9 pairs, on minus off: lines -2.1, kinds +1.0, score +0.44
+  round 33: 8 pairs, on minus off: lines +0.1, kinds -2.8, score -0.17
+  round 34: 14 pairs, on minus off: lines +6.1, kinds +3.1, score -0.07

@@ -2094,3 +2094,31 @@ Expected:
 The warnings in `WHY.md` this round risks: too much forced drama (a want on every birthday: the chance, the value and the open door gate it, and a want shows only when it is let slip or acted on); complexity mistaken for progress (one table over doors that exist; the reading decides); events that change nothing (a thing bought is kept and used; the what-ifs count it).
 
 The game lens: a player sees why someone started wanting something (the day their friend got the job, the night they turned forty and watched the band), what they did about it, and how it came out; and can see it coming, because people let slip what they want before they act.
+
+Round 36 withdrawn before its test (20 Oct 2026, 22:10 Oslo). Its code was built and run on throwaway worlds only; no test world was run, and 3289–3336 stay unused. The code is kept behind a switch that is off (`ON=occasions`).
+
+Built as registered, with four repairs found on the smoke worlds and made before anything else was run: the cap on open wants had been applied to every way a want comes, which cut the ones the engine already gives (making up after a falling-out fell by a fifth), so it now applies to the wants occasions open; the most pressing want was offered again every time it was put off, so no other want ever came up, and now a want put off is not offered first for a year; couples bought two houses (both had the wedding and the baby as occasions), so a house is a couple's and its door is shut while the partner has one or wants one, and someone who has bought a house is no longer said to live in the one they grew up in; and the row for being let go is not built, because being let go already gives everyone a want for work (`work.ts`).
+
+On throwaway worlds 9001–9008, with the switch on and off (`src/tools/diag/occasions.ts`, `reports/36-smoke-on.txt`, `-off.txt`):
+
+|                                                          | on          | off         | registered     |
+| -------------------------------------------------------- | ----------- | ----------- | -------------- |
+| adults who went after something in ten years             | 56%         | 46%         | 62–72%         |
+| pursuits started a world-decade (not counting making up) | 60.5 (39.9) | 51.9 (28.5) | 85–100 (60–75) |
+| new wants with an occasion                               | 27%         | —           | at least 60%   |
+| things bought a world-decade                             | 15.6        | 4.0         | 10–18          |
+| adults owning a house                                    | 27%         | 8%          |                |
+| page lines, the three most eventful adults of a world    | 74.6        | 73.6        | +4 to +9       |
+| page lines, every adult                                  | 37.7        | 35.9        |                |
+
+`npm test` passed with it on (demography: births 8.1, deaths 10.3 a world-decade, population 77 → 78), and the coherence counter stayed at zero.
+
+Why it was withdrawn: three of its expectations, one of them in the keep rule (2), fall well short on eight worlds, so the test could not keep it whatever the reading said; and the reading could hardly see it, because it reads the three most eventful adults of each world, whose pages grew by one line. What it showed:
+
+1. **It reaches people, but not enough of them.** Ten more adults in a hundred went after something; things bought four times as often, houses three times. What holds it back, among the 44% who still went after nothing (`reports/36-never.ts`, `36-never.txt`): 43% are over 65, and the doors the table opens (a post, being heard, a house) are mostly shut to them; 22% were busy with a pursuit started before the ten years, since a person goes after one thing at a time; and 27% had a want they never started.
+2. **Occasions are a minority of wants.** Occasions opened 24 wants a world-decade; the engine's own routes (making up, a post, work) still give 64.
+3. **A change that reaches the many is invisible to a reading of the busiest.** The paired reading reads the three most eventful adults of each world, who already have pursuits. A round meant to reach the quiet majority has to be read on random adults (exit point 5 asks for random lives too).
+
+It also found, on the readings already on file, what readers score (`reports/36-variety.ts` rebuilds the lives each reading showed, every page line for line the one read; `36-variety.py`, `36-variety.txt`): **how many different kinds of thing happen in a life, not how long its page is.** Over the 84 lives of today's engine in the six readings of rounds 29–34, each kind of line more goes with +0.045 (±0.013) on the score, and once kinds are counted, length adds nothing (−0.011 ±0.011 a line; the round and kinds explain 47% of the spread in scores, the round and length 28%). Within the 46 pairs whose two versions could be rebuilt exactly, the version with a kind more reads +0.05 (±0.02) better. Occasions add 0.9 kinds a life to every adult and none to the three busiest of a world (42.0 against 42.2; `reports/36-kinds.ts`, `36-kinds.txt`). Round 34's aftermath added three kinds a life to the busiest and read no better on those pairs (−0.07), where the kinds alone would predict about +0.15: its reasons were what readers faulted ("wanted to know" for taking up a routine after a loss).
+
+What changes: the plan. The next round brings back round 34's aftermath, giving the reasons readers accept for a change in someone's life (the blow, how hard it hit, the bond) and no trait cue. Who wants things comes back after it, designed for the kinds of happening it adds to a life, with more than one pursuit at a time and doors for later life, and read on random adults beside the busiest.

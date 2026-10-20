@@ -1,0 +1,4 @@
+ON=occasions:
+kinds a life: every adult 23.73; three busiest 41.96 (lines 74.6)
+off:
+kinds a life: every adult 22.79; three busiest 42.21 (lines 73.6)
