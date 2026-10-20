@@ -198,6 +198,8 @@ export function newTitle(w: World): string {
 const imp = (a: number) => (a < 10 ? 0 : a < 12 ? 0.5 : a <= 25 ? 1 : a <= 35 ? 1 - 0.07 * (a - 25) : a <= 45 ? 0.3 - 0.02 * (a - 35) : 0.05); // the impressionable years
 import { inclination } from './inclination';
 import { counterpart } from './telling';
+import { collideOn, rivalries, rivalOf } from './drama';
+import { contestLost } from './situations/raised';
 export { inclination };
 function moment(w: World, g: Group, k: Kind, e: { id: number; t: number }, ms: Person[]) {
   const prev = w.rng;
@@ -709,6 +711,10 @@ function recruit(w: World, g: Group, k: Kind) {
       ms.every(m => regard(w, m.id, q.id) > -0.1),
   );
   if (!pool.length) return;
+  // Round 38: those around it who want to be heard on its instrument are in the running for the place.
+  const running = collideOn()
+    ? pool.filter(c => c.wants.some(x => x.kind === 'prove' && !x.done && !x.pursuit?.owner && k.skills.includes(x.target)))
+    : [];
   const q = counterpart(
     w,
     lead.id,
@@ -742,6 +748,51 @@ function recruit(w: World, g: Group, k: Kind) {
   });
   broadcast(w, e);
   g.events.push(e.id);
+  if (running.length >= 2) notPicked(w, g, k, q, running, e.id);
+}
+// Round 38: when two or more wanted the place, those not taken are told so, and answer it as someone passed over for a post does;
+// pride or anger turns it into a grudge.
+function notPicked(w: World, g: Group, k: Kind, q: Person, running: Person[], joined: number) {
+  for (const c of running) {
+    if (c === q || c.status !== 'in') continue;
+    const want = c.wants.find(x => x.kind === 'prove' && !x.done && k.skills.includes(x.target))!;
+    const better = bestSkill(q, k) >= bestSkill(c, k);
+    const e = addEvent(w, {
+      type: 'notpicked',
+      who: [c.id, q.id],
+      text: `@${c.id} was not picked for ${g.name}; @${q.id} got the place.`,
+      causes: [
+        stateCause(better ? `@${q.id} was the better player` : `${g.name} knew @${q.id}`, 0.5),
+        { kind: 'want', label: `had wanted to be heard since ${year(want.since)}`, weight: 0.5, key: 'prove', who: c.id } as Cause,
+        eventCause(w, joined, 0.3),
+      ],
+      vis: 'local',
+      evidence: [],
+      w: 1.4,
+    });
+    broadcast(w, e);
+    addStress(c, 'notpicked', `not picked for ${g.name}`, 0.08, e.id);
+    addEmotion(w, c, 'notpicked', 'passed over', -0.1, 6, e.id);
+    const answer = contestLost(w, c, q, { id: '', name: venueName(), title: `the place in ${g.name}` }, e.id, !better, true, {
+      since: want.since,
+      pride: ['confront', 'sulk'],
+    });
+    if (answer && ['pride', 'anger'].includes(answer.family) && !rivalOf(w, c, q))
+      rivalries(w).push({
+        id: rivalries(w).length,
+        a: c.id,
+        b: q.id,
+        stake: 'grudge',
+        place: '',
+        title: `the place in ${g.name}`,
+        about: `the place in ${g.name}`,
+        since: w.t,
+        first: e.id,
+        heat: 0.5,
+        events: [e.id, answer.event.id],
+        src: 'band',
+      });
+  }
 }
 function endGroup(w: World, g: Group, k: Kind, how: string, ref?: number) {
   g.ended = w.t;

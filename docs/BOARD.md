@@ -2197,3 +2197,23 @@ Expected:
 The warnings in `WHY.md` this round risks: too much forced drama (a rivalry needs two who want the same thing, know it of each other and are close enough to feel it); events plentiful without changing anything important (a contest ends in a winner and a loser, and the post or the place changes hands).
 
 The game lens: a player hears two people want the same thing before either moves, watches who works and who whispers, and sees what the one who lost did about it.
+
+Round 38 withdrawn before its test (21 Oct 2026, 00:15 Oslo). Its code was built and run on throwaway worlds only; 3385–3432 stay unused. The code is kept behind a switch that is off (`ON=collide`).
+
+Built as registered, with two changes made on the smoke worlds before anything else was run: noticing alone made two contests in four worlds, because two colleagues seldom want the same post at once, so one who learns a colleague wants it now decides, as in a season, whether to go for it too (with "@X is after it" weighing for going); and an out-of-season rivalry, which had been lived at a season's pace with nothing about to be decided, ran hot for years (picking at the other's work in public 87 times in four worlds against 8 off), so it is lived at a grudge's pace.
+
+On throwaway worlds 9001–9008, on and off (`src/tools/diag/collide.ts`; `reports/38-smoke-on.txt`, `-off.txt`):
+
+|                                                                                                  | on               | off         |
+| ------------------------------------------------------------------------------------------------ | ---------------- | ----------- |
+| contests a world-decade (rivalries over a post, and band places with two or more in the running) | 5.0              | 4.5         |
+| of which out of season / in a season / a band place                                              | 2.6 / 2.1 / 0.25 | — / 4.5 / — |
+| rivalry and grudge acts on someone's page                                                        | 165              | 143         |
+| of them giving a trait or the self-story as a reason                                             | 0                | 136         |
+| kinds of line a life: the three busiest of a world / every adult                                 | 41.3 / 23.9      | 42.2 / 22.8 |
+
+Why it was withdrawn: expectation 2, in the keep rule, asks for contests at least double the off arm's, and named that as about two a world-decade. The off arm has 4.5 (season rivalries alone, swinging from 2.8 to 6.3 between sets of worlds), and the round moves contests out of season more than it adds to them: rivals out of season are already in the running when a season comes, so fewer new rivalries form in it. Contests rise by about a tenth, not double, so the test could not keep it. Nor could the reading see much: the busiest lives carry no more kinds of line (41.3 against 42.2) and about a seventh more contest lines.
+
+What it showed: contests out of season are possible and read with fitting reasons (none of 165 contest acts gives a trait); a band place is contested about once in four world-decades, because two who want to be heard seldom stand around the same band at once; and the engine's contests are fewer than its wants because a post is scarce in time, not only in number: two people rarely want the same post in the same years. A round that adds stakes has to add things to contest (posts that open, places in bands, a house two people want, the yearly day), not only ways to notice a contest.
+
+What changes: nothing in the plan's order until Øystein has seen this; see SUMMARY.

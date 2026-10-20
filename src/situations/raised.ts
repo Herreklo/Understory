@@ -9,7 +9,17 @@ import { traitCause, eventCause, ev, stateC, pubC, bondC, learned } from '../con
 import { type Instance, run, friendsOf, favour } from '../grammar';
 
 // Situations other systems raise directly (contests, judgements, losses).
-export function contestLost(w: World, loser: Person, winner: Person, place: any, ref: number, deserved: boolean, wanted: boolean) {
+// `opts` (round 38, a place in a band): since when they had wanted it, and the answers pride allows (no job to walk out of).
+export function contestLost(
+  w: World,
+  loser: Person,
+  winner: Person,
+  place: any,
+  ref: number,
+  deserved: boolean,
+  wanted: boolean,
+  opts?: { since?: number; pride?: string[] },
+) {
   const feats = new Set<Feature>(['public', 'standing', 'authority']);
   const inst: Instance = {
     type: 'contest',
@@ -19,7 +29,7 @@ export function contestLost(w: World, loser: Person, winner: Person, place: any,
     thing: place.title,
     features: feats,
     families: ['pride', 'humility', 'anger'],
-    only: { humility: ['congratulate', 'swallow'], pride: ['confront', 'sulk', 'quitpride'] },
+    only: { humility: ['congratulate', 'swallow'], pride: opts?.pride ?? ['confront', 'sulk', 'quitpride'] },
     cause: ref,
     place: place.name,
     w: 1.6,
@@ -30,7 +40,7 @@ export function contestLost(w: World, loser: Person, winner: Person, place: any,
           deserved
             ? `had been doing the better work`
             : wanted
-              ? `had wanted it since ${year(loser.wants.find(x => x.kind === 'attain' && x.target === place.id)?.since ?? w.t)}`
+              ? `had wanted it since ${year(opts?.since ?? loser.wants.find(x => x.kind === 'attain' && x.target === place.id)?.since ?? w.t)}`
               : 'had hoped',
           deserved ? 0.9 : wanted ? 0.7 : 0.4,
         ),

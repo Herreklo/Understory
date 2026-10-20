@@ -7,11 +7,17 @@
 // pick at the other's work in public, or step aside. Who gets the post weighs the record, the outgoing lead's regard and what the campaign
 // did. A loser who answers with pride or anger carries it as a grudge, in small acts, until the two make peace, one goes, or it cools.
 // Every act cites where the rivalry started, so the record tells one story rather than many unrelated ones.
+//
+// Wants that collide (round 38, off unless ON=collide): out of season, two who want the same post where they work and learn it of each
+// other (a line of the other's that gives the want away) may become rivals in the same way; what their rivalry wins is kept for the
+// place and counts when the post falls vacant, and a season, when one comes, starts from it. An out-of-season rivalry cools as a
+// grudge does. Its acts give the situation as their reasons: where it started, the rival's latest move, who is ahead.
 import { staffOf } from './scale';
 import { clamp } from './rng';
 import {
   titleAt,
   OFF,
+  ON,
   type World,
   type Person,
   type Event,
@@ -34,6 +40,7 @@ import { z01 } from './decide';
 import { decide } from './grammar';
 import { regard } from './regard';
 import type { Feature } from './features';
+import type { Cause } from './world';
 
 export interface Rivalry {
   id: number;
@@ -50,6 +57,7 @@ export interface Rivalry {
   over?: number;
   outcome?: 'won' | 'conceded' | 'parted' | 'peace' | 'cooled' | 'turned';
   winner?: number;
+  src?: 'open' | 'band'; // round 38: a rivalry from wants that collide (out of season) or from a place in a band; a season's has none
 }
 interface Succession {
   place: string;
@@ -62,6 +70,13 @@ interface Succession {
 export const rivalries = (w: World) => ((w as any).rivalries ??= []) as Rivalry[];
 const successions = (w: World) => ((w as any).successions ??= []) as Succession[];
 const on = () => !OFF.has('drama');
+// Off unless ON=collide: round 38 was withdrawn before its test. On throwaway worlds it moved contests out of season (2.6 a
+// world-decade) rather than adding to them (5.0 against 4.5 in all), and its contest acts gave no trait as a reason (docs/BOARD.md).
+export const collideOn = () => on() && ON.has('collide');
+// Round 38: what an out-of-season rivalry has won, kept for the place until the post is filled.
+const openCampaigns = (w: World) => ((w as any).openCampaigns ??= {}) as Record<string, Record<number, number>>;
+const campaignOf = (w: World, place: string): Record<number, number> | undefined =>
+  successions(w).find(z => z.place === place)?.campaign ?? (collideOn() ? openCampaigns(w)[place] : undefined);
 const activeR = (w: World) => rivalries(w).filter(r => r.over == null);
 const she = (p: Person) => (p.sex === 'f' ? 'she' : 'he');
 export function rivalOf(w: World, p: Person, q: Person) {
@@ -86,11 +101,12 @@ export function contest(
   const contenders = (s?.contenders ?? []).map(id => P(w, id)).filter(p => p.status === 'in' && p.job === pl.id);
   const decider = s ? w.byId.get(s.lead) : undefined;
   const pool = contenders.length ? contenders : staff;
+  const campaign = s?.campaign ?? (collideOn() ? (openCampaigns(w)[pl.id] ?? {}) : {});
   return {
     pool,
     decider: decider && decider.status === 'in' ? decider : undefined,
-    campaign: s?.campaign ?? {},
-    bonus: p => (s?.campaign[p.id] ?? 0) + (decider && decider.status === 'in' && decider !== p ? 0.8 * regard(w, decider.id, p.id) : 0),
+    campaign,
+    bonus: p => (campaign[p.id] ?? 0) + (decider && decider.status === 'in' && decider !== p ? 0.8 * regard(w, decider.id, p.id) : 0),
   };
 }
 // Called by promote once the post is filled: settle the rivalries about it. Returns the losers who were in a rivalry over it.
@@ -98,6 +114,7 @@ export function settle(w: World, pl: any, win: Person, ref: number) {
   if (!on()) return;
   const i = successions(w).findIndex(x => x.place === pl.id);
   if (i >= 0) successions(w).splice(i, 1);
+  if (collideOn()) delete openCampaigns(w)[pl.id];
   for (const r of activeR(w))
     if (r.stake === 'post' && r.place === pl.id) {
       r.over = w.t;
@@ -147,7 +164,16 @@ function announce(w: World, pl: any, lead: Person) {
     w: 1.2,
   });
   broadcast(w, e);
-  successions(w).push({ place: pl.id, lead: lead.id, due, contenders: [], campaign: {}, announced: e.id });
+  // Round 38: rivals out of season are already in the running, with what their rivalry has won.
+  const open = collideOn() ? openCampaigns(w)[pl.id] : undefined;
+  successions(w).push({
+    place: pl.id,
+    lead: lead.id,
+    due,
+    contenders: open ? Object.keys(open).map(Number) : [],
+    campaign: open ? { ...open } : {},
+    announced: e.id,
+  });
 }
 
 // Whether a member of staff goes for the post: wanting it, success and boldness against modesty, anxiety and a poor record.
@@ -279,7 +305,10 @@ export function startRivalry(w: World, a: Person, b: Person, stake: 'trade' | 'g
 // ---------- rivalry acts ----------
 function act(w: World, r: Rivalry, x: Person, y: Person) {
   const s = successions(w).find(z => z.place === r.place);
-  const decider = s ? w.byId.get(s.lead) : undefined;
+  // Out of season (round 38), the one who decides is the lead as it stands, and what is won is kept for the place.
+  const lead = !s && r.src === 'open' ? w.placeById.get(r.place)?.lead : undefined;
+  const decider = s ? w.byId.get(s.lead) : lead != null ? w.byId.get(lead) : undefined;
+  const camp = s?.campaign ?? (r.src === 'open' ? (openCampaigns(w)[r.place] ??= {}) : undefined);
   const post = r.stake === 'post';
   const feats = new Set<Feature>(['standing', post ? 'public' : 'private', 'challenged']);
   const since = year(w.events[r.first].t);
@@ -313,6 +342,7 @@ function act(w: World, r: Rivalry, x: Person, y: Person) {
     causeLabel: label,
     place: w.placeById.get(r.place)?.name,
     w: 1.1,
+    ...(collideOn() ? { reasonsFor: () => contestReasons(w, r, y, post && r.winner == null, camp, x) } : {}),
     extra: [favour(heatC, 'anger', 'dishonesty')],
     familyExtra: {
       anger: [bondC(w, x, y, 'like', -1)],
@@ -322,8 +352,8 @@ function act(w: World, r: Rivalry, x: Person, y: Person) {
           ? [
               pubC(
                 'odds',
-                (s?.campaign[x.id] ?? 0) + x.perf < (s?.campaign[y.id] ?? 0) + y.perf ? `@${y.id} is ahead` : `@${x.id} is ahead`,
-                clamp(0.5 + ((s?.campaign[y.id] ?? 0) + y.perf - (s?.campaign[x.id] ?? 0) - x.perf) / 2, 0, 1),
+                (camp?.[x.id] ?? 0) + x.perf < (camp?.[y.id] ?? 0) + y.perf ? `@${y.id} is ahead` : `@${x.id} is ahead`,
+                clamp(0.5 + ((camp?.[y.id] ?? 0) + y.perf - (camp?.[x.id] ?? 0) - x.perf) / 2, 0, 1),
                 1,
                 0.2,
               ),
@@ -339,8 +369,8 @@ function act(w: World, r: Rivalry, x: Person, y: Person) {
   if (id === 'needle') r.heat = clamp(r.heat + 0.1, 0, 1);
   else if (['cold', 'whisper', 'avoid'].includes(id)) r.heat = clamp(r.heat + 0.03, 0, 1);
   x.tried['rival:' + r.id] = { t: w.t, ok: true, n: (x.tried['rival:' + r.id]?.n ?? 0) + 1 };
-  if (id === 'outwork' && s) {
-    s.campaign[x.id] = (s.campaign[x.id] ?? 0) + 0.15;
+  if (id === 'outwork' && camp) {
+    camp[x.id] = (camp[x.id] ?? 0) + 0.15;
     x.perf += 0.1;
     if (decider && decider.status === 'in') {
       const b = bond(w, decider.id, x.id);
@@ -350,7 +380,7 @@ function act(w: World, r: Rivalry, x: Person, y: Person) {
   if (id === 'whisper') {
     // Running someone down to the one who decides: it works on the decider (or on whoever hears it, in a grudge), and it may come out.
     const hearer = post ? decider : grudgeTarget;
-    if (s && post) s.campaign[x.id] = (s.campaign[x.id] ?? 0) + 0.2;
+    if (camp && post) camp[x.id] = (camp[x.id] ?? 0) + 0.2;
     if (hearer) remember(w, hearer, y, o.event.id, -0.06, -0.08, -0.04, `heard what @${y.id} had got wrong`);
     if (w.rng.chance(0.2 + 0.2 * r.heat)) found(w, r, x, y, hearer, o.event);
   }
@@ -359,6 +389,7 @@ function act(w: World, r: Rivalry, x: Person, y: Person) {
     r.outcome = 'conceded';
     r.winner = y.id;
     if (s) s.contenders = s.contenders.filter(c => c !== x.id);
+    if (camp && !s) delete camp[x.id];
     for (const want of x.wants)
       if (want.kind === 'attain' && want.target === r.place && !want.done) {
         want.done = 'abandoned';
@@ -427,8 +458,8 @@ function found(w: World, r: Rivalry, x: Person, y: Person, hearer: Person | unde
     remember(w, hearer, x, e.id, -0.15, -0.25, -0.3, `ran @${y.id} down to me`);
     remember(w, hearer, y, e.id, 0.06, 0.08, 0.04, 'was run down to me');
   }
-  const s = successions(w).find(z => z.place === r.place);
-  if (s) s.campaign[x.id] = (s.campaign[x.id] ?? 0) - 0.5;
+  const camp = campaignOf(w, r.place);
+  if (camp && (successions(w).some(z => z.place === r.place) || r.src === 'open')) camp[x.id] = (camp[x.id] ?? 0) - 0.5;
   addStress(x, 'found', 'found out', 0.12, e.id);
   addEmotion(w, x, 'found', 'exposed', -0.15, 8, e.id);
   // The one run down answers it, as a provocation of their own.
@@ -470,6 +501,8 @@ export function dramaTick(w: World) {
       ))
         consider(w, s, pl, p);
   }
+  // Round 38: out of season, two who want the same post may learn it of each other.
+  if (collideOn()) notice(w);
   // Rivalries: each side acts every few months, more often the hotter it runs; it ends when one goes, or cools.
   for (const r of activeR(w)) {
     const a = w.byId.get(r.a)!,
@@ -480,13 +513,14 @@ export function dramaTick(w: World) {
       continue;
     }
     r.heat *= 0.97;
-    if (r.stake === 'grudge' && r.heat < 0.06 && w.t - r.since > 36) {
+    if ((r.stake === 'grudge' || r.src === 'open') && r.heat < 0.06 && w.t - r.since > 36) {
       r.over = w.t;
       r.outcome = 'cooled';
       continue;
     }
     // A rivalry over a post is lived every few months; a grudge flares now and then. Nobody acts twice within a season of their last act.
-    const post = r.stake === 'post';
+    // An out-of-season rivalry (round 38) is lived at a grudge's pace: nothing is about to be decided.
+    const post = r.stake === 'post' && r.src !== 'open';
     const rest = post ? 3 : 6;
     for (const [x, y] of [
       [a, b],
@@ -499,5 +533,136 @@ export function dramaTick(w: World) {
         w.rng.chance(post ? clamp(0.1 + 0.2 * r.heat, 0, 0.3) : clamp(0.03 + 0.1 * r.heat, 0, 0.13))
       )
         act(w, r, x, y);
+  }
+}
+
+// ---------- wants that collide (round 38) ----------
+// The reasons a contest act gives after where it started: the rival's latest move, then who is ahead (or what it is still about).
+function contestReasons(w: World, r: Rivalry, y: Person, open: boolean, camp: Record<number, number> | undefined, x: Person): Cause[] {
+  const theirs = r.events
+    .slice()
+    .reverse()
+    .find(id => id !== r.first && w.events[id]?.who[0] === y.id);
+  const ahead = (camp?.[x.id] ?? 0) + x.perf < (camp?.[y.id] ?? 0) + y.perf ? `@${y.id} is ahead` : `@${x.id} is ahead`;
+  return [
+    ...(theirs != null ? [eventCause(w, theirs, 0.4)] : []),
+    stateCause(open ? ahead : `still sore about ${r.about} (${year(w.events[r.first].t)})`, 0.4),
+  ];
+}
+// Whether someone who had not thought of the post goes for it too, on learning a colleague wants it: a season's decision, with the
+// colleague's want in place of the step-down. At most once in three years for a post.
+function vie(w: World, p: Person, q: Person, pl: any, giveaway: Event): boolean {
+  if (w.t - p.jobSince < 24 || !['success', 'status'].some(v => p.coreValues.includes(v) || (p.values[v] ?? 0) >= 0.5)) return false;
+  if (w.t - (p.tried['vie:' + pl.id]?.t ?? -99) < 36) return false;
+  const feats = new Set<Feature>(['standing', 'public']);
+  const d = decide(w, p, `whether to go for ${pl.title}`, [
+    {
+      id: 'go',
+      label: `go for ${pl.title} too`,
+      considerations: [
+        pubC('rival', `@${q.id} is after it`, 0.7, 1, 0.2, giveaway.id),
+        stateC2('success', 'wants to get on', z01(p.values.success ?? 0)),
+        facetC(p, 'socialBoldness', feats, 1, 4),
+        pubC('record', p.perf > 0.3 ? 'a strong record' : p.perf < -0.3 ? 'a poor record' : 'a fair record', clamp(0.5 + p.perf / 2, 0, 1), 1, 0.2),
+      ],
+    },
+    {
+      id: 'stay',
+      label: 'leave it to others',
+      considerations: [
+        facetC(p, 'modesty', feats, 1, 4),
+        facetC(p, 'anxiety', feats, 1, 3),
+        pubC('field', `@${q.id} already in for it`, clamp(0.35 + 0.3 * Math.max(0, q.perf - p.perf), 0, 1), 1, 0.2),
+      ],
+    },
+  ]);
+  p.tried['vie:' + pl.id] = { t: w.t, ok: d.chosen === 'go', n: (p.tried['vie:' + pl.id]?.n ?? 0) + 1 };
+  if (d.chosen !== 'go') return false;
+  p.wants.push({
+    kind: 'attain',
+    target: pl.id,
+    value: 'success',
+    since: w.t,
+    urgency: 0.6,
+    cause: giveaway.id,
+    pursuit: {
+      plan: 'work harder than anyone',
+      progress: 0.2,
+      effort: 0.6,
+      since: w.t,
+      visible: true,
+      setbacks: 0,
+      lastGain: w.t,
+      start: w.t,
+      told: 0,
+    },
+  });
+  const e = addEvent(w, {
+    type: 'goforit',
+    who: [p.id],
+    text: `@${p.id} has let it be known ${she(p)} wants to be ${pl.title} too.`,
+    causes: [eventCause(w, giveaway.id, 0.5), ...d.why.slice(0, 2)],
+    vis: 'local',
+    decision: d.rec,
+    evidence: [ev(p.id, 'value:success', 1, 0.6, 0.6), ev(p.id, 'socialBoldness', 1, 0.4, 0.5)],
+    w: 1.1,
+  });
+  broadcast(w, e);
+  return true;
+}
+// Last month's lines that give away a colleague's want for the post where they work: anyone at the same place who wants it too and
+// knows of the line may take them for a rival, as two who go for a post in a season do. Once for a pair and a post.
+function notice(w: World) {
+  const last = w.t - 1;
+  let i = w.events.length;
+  while (i > 0 && w.events[i - 1].t >= last) i--;
+  for (; i < w.events.length; i++) {
+    const e = w.events[i];
+    if (e.t !== last || !e.causes.some(c => c.kind === 'want' && c.key === 'attain')) continue;
+    const q = w.byId.get(e.who[0]);
+    if (!q || q.status !== 'in' || !q.job || q.lead) continue;
+    const pl = w.placeById.get(q.job);
+    if (!pl || successions(w).some(z => z.place === pl.id)) continue;
+    if (!q.wants.some(x => x.kind === 'attain' && x.target === pl.id && !x.done)) continue;
+    for (const p of staffOf(w, pl.id)) {
+      if (p === q || p.status !== 'in' || p.job !== pl.id || p.lead || age(w, p) >= 62 || !e.knownBy.has(p.id)) continue;
+      if (rivalOf(w, p, q) || family(p, q) || p.partner === q.id) continue;
+      // One who had not thought of it decides, as in a season, whether to go for it too (amendment, before any test run).
+      if (!p.wants.some(x => x.kind === 'attain' && x.target === pl.id && !x.done) && !vie(w, p, q, pl, e)) continue;
+      if (rivalries(w).some(r => r.place === pl.id && [r.a, r.b].includes(p.id) && [r.a, r.b].includes(q.id))) continue;
+      const similar = clamp(1 - Math.abs(p.perf - q.perf) / 1.5 - Math.abs(age(w, p) - age(w, q)) / 30, 0, 1);
+      const before =
+        p.tried['passed:' + q.id] || q.tried['passed:' + p.id] || rivalries(w).some(r => [r.a, r.b].includes(p.id) && [r.a, r.b].includes(q.id))
+          ? 0.3
+          : 0;
+      if (!w.rng.chance(clamp(0.3 + 0.5 * similar + before, 0, 0.95))) continue;
+      const e2 = addEvent(w, {
+        type: 'rivals',
+        who: [p.id, q.id],
+        text: `@${p.id} and @${q.id} are both after the ${pl.title}'s job, and it shows.`,
+        causes: [eventCause(w, e.id, 0.5), stateCause(similar > 0.6 ? 'so evenly matched' : 'neither will give way', 0.4)],
+        vis: 'local',
+        evidence: [],
+        w: 1.3,
+      });
+      broadcast(w, e2);
+      const camp = (openCampaigns(w)[pl.id] ??= {});
+      camp[p.id] ??= 0;
+      camp[q.id] ??= 0;
+      rivalries(w).push({
+        id: rivalries(w).length,
+        a: p.id,
+        b: q.id,
+        stake: 'post',
+        place: pl.id,
+        title: pl.title,
+        about: `the ${pl.title}'s job`,
+        since: w.t,
+        first: e2.id,
+        heat: 0.3 + 0.3 * similar + before,
+        events: [e2.id],
+        src: 'open',
+      });
+    }
   }
 }
