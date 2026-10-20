@@ -31,22 +31,23 @@ export const h = (x: any) =>
     .digest('hex')
     .slice(0, 12);
 
+// What is not hashed: the lookup tables built from fields that are (`byId` from `people`, `placeById` from `places`), and the hooks,
+// which are functions. Everything else a world carries is hashed, named in the interface or not, so a system that keeps its state on
+// the world (the friendship record, told accounts, plans, rivalries, the city's background) is checked without being listed here.
+const DERIVED = new Set(['byId', 'placeById', 'hooks']);
+const HEAD = new Set(['events', 'people', 'bonds', 'beliefs', 'streams']);
 export function signature(w: World) {
   const people = w.people.map(p => ({ ...p, events: undefined }));
+  const rest: Record<string, unknown> = {};
+  for (const k of Object.keys(w).sort()) if (!DERIVED.has(k) && !HEAD.has(k)) rest[k] = (w as any)[k];
   return {
     events: h(w.events.map(e => ({ ...e, explain: undefined }))),
     people: h(people),
     bonds: h(w.bonds),
     beliefs: h(w.beliefs),
     rest: h({
-      groups: w.groups,
-      places: w.places,
-      stats: w.stats,
-      queue: w.queue,
-      nextId: w.nextId,
-      witness: w.witness,
+      ...rest,
       streams: Object.fromEntries(Object.entries(w.streams).map(([k, r]) => [k, (r as any).s ?? (r as any).state ?? JSON.stringify(r)])),
-      extra: Object.fromEntries(Object.entries(w).filter(([k]) => k.startsWith('_'))),
     }),
     n: w.events.length,
   };

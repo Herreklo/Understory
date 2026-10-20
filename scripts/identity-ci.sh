@@ -33,6 +33,8 @@ work=$(mktemp -d)
 trap 'git worktree remove --force "$work/main" >/dev/null 2>&1; rm -rf "$work"' EXIT
 git worktree add -q "$work/main" "$base" || fail "could not check out main at $base"
 (cd "$work/main" && npm ci --silent >/dev/null 2>&1) || fail "npm ci failed on main"
+# Both trees are hashed with this PR's checker, so a change to what the checker covers is itself checked as identical or not.
+cp src/tools/diag/signature.ts src/tools/diag/ident.ts "$work/main/src/tools/diag/"
 
 switches() { grep -rhoE "OFF\.has\('[^']+'\)" "$1/src" | sed -E "s/OFF\.has\('([^']+)'\)/\1/" | sort -u; }
 arms=""

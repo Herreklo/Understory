@@ -19,7 +19,8 @@ const out: any = {
   lasting: 0, // friendships that lasted three years or more inside the window
   lastingOneSided: 0, // of those, one-sided for a year at some point (the line, or already so at the start)
   lines: 0,
-  endings: 0,
+  endings: 0, // friendships that cooled (the 'cooled' event: fell out or lost touch), the only ending that gives reasons
+  endingsAll: 0, // every ending: pairs who were friends in the window and are not at its end (cooled, a betrayal, a thread's cost, death, leaving)
   endingsCarry: 0,
   endingsDated: 0,
   bearing: 0, // decisions where it may bear, between friends
@@ -81,6 +82,11 @@ for (let seed = a; seed <= b; seed++) {
     }
   }
   for (const s of open.values()) spans.push({ from: s.from, to: w.t, one: s.one });
+  const ever = new Set<string>(start.keys());
+  for (const e of w.events) if (e.t > t0 && (e.type === 'friends' || e.type === 'madeup')) ever.add(key(e.who[0], e.who[1]));
+  const now = new Set<string>();
+  for (const p of w.people) for (const f of p.friends) if (p.id < f) now.add(key(p.id, f));
+  for (const k of ever) if (!now.has(k)) out.endingsAll++;
   for (const s of spans)
     if (s.to - s.from >= 36) {
       out.lasting++;
@@ -89,6 +95,7 @@ for (let seed = a; seed <= b; seed++) {
 }
 out.oneSidedShare = +(out.lastingOneSided / Math.max(1, out.lasting)).toFixed(4);
 out.endingsCarryShare = +(out.endingsCarry / Math.max(1, out.endings)).toFixed(4);
+out.endingsCarryShareAll = +(out.endingsCarry / Math.max(1, out.endingsAll)).toFixed(4);
 out.endingsDatedShare = +(out.endingsDated / Math.max(1, out.endings)).toFixed(4);
 out.endingsPerAdultYear = +(out.endings / Math.max(1, out.adultYears)).toFixed(4);
 out.citedShare = +(out.cited / Math.max(1, out.bearing)).toFixed(4);
