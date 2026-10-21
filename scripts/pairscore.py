@@ -21,7 +21,11 @@ What it reports, and why:
   what a round's keep rule should be judged on.
 - Krippendorff's alpha (scripts/alpha.py): how far the readers agree on the scores. It describes the panel, not the effect: a
   change can read better to every reader while they disagree on the scale. Reported, not a gate.
-- Faults by kind in each arm, and the quotes matching --quote.
+- Faults by kind in each arm, and the quotes matching --quote. Readers list every fault they find (M38), so faults are also reported
+  per ten lines in each arm, and paired: the on version's faults minus the off version's, with the order and the difference in lines as
+  terms (a rate on a page of two lines would swamp the pairs). Also: how many versions got exactly three faults, which is where an older
+  brief that asked for "up to three" capped the count; and, when answers carry them, each fault's severity (false or awkward) and, for
+  unfit reasons, whether the event shown under the reason supports it.
 - How much happened: the lines of each version (not counting the cited events shown under a line). Readers choose the version where
   more happens (70% of their choices over rounds 29-34, +0.16 a pair for every ten lines more; round 35), and the two arms of an engine
   change are different worlds, so the people read differ by 16-28 lines (sd) between arms. Reported: the lines in each arm, how often
@@ -126,6 +130,8 @@ def main():
     maj, d_pair, side, scores, bchoice = 0, [], [], {r: {} for r in names}, 0
     per_reader = {r: [] for r in names}
     faults = {'on': Counter(), 'off': Counter()}
+    severity = {'on': Counter(), 'off': Counter()}
+    fcount, capped, versions = {}, 0, 0
     quotes = {'good': [], 'fault': [], 'good_off': [], 'fault_off': []}
     rq = re.compile(a.quote) if a.quote else None
     arms, prefs = [], []
@@ -146,8 +152,16 @@ def main():
             scores[r][str(2 * i + 1)] = x['A']['score']
             scores[r][str(2 * i + 2)] = x['B']['score']
             for arm, lab in ((on, 'on'), (off, 'off')):
-                for f in x[arm].get('faults', []):
+                fs = x[arm].get('faults', [])
+                fcount[(p, r, lab)] = len(fs)
+                capped += len(fs) == 3
+                versions += 1
+                for f in fs:
                     faults[lab][f['kind']] += 1
+                    if 'severity' in f:
+                        severity[lab][f['severity']] += 1
+                    if f.get('source'):
+                        severity[lab]['source ' + f['source']] += 1
                     if rq and rq.search(f['quote']):
                         quotes['fault' if lab == 'on' else 'fault_off'].append(f"{p} {r} ({f['kind']}): {f['quote']}")
                 for g in x[arm].get('good', []):
@@ -242,6 +256,34 @@ def main():
                   f' {b[2]:+.3f} ±{tt * se[2]:.3f}.')
     for lab in ('on', 'off'):
         print(f'faults {lab}: total {sum(faults[lab].values())} · ' + ', '.join(f'{k} {v}' for k, v in faults[lab].most_common()))
+    # Faults (M38): readers list every fault, so a page with fewer faults can show it. Pooled per ten lines in each arm; paired, the
+    # on version's faults minus the off version's, averaged over the readers, with the order and the difference in lines as terms
+    # (a rate on a page of two lines would swamp the pairs).
+    rate = None
+    if all('lines' in key[p].get('on', {}) and 'lines' in key[p].get('off', {}) for p in pairs):
+        ln = {(p, lab): key[p][lab]['lines'] for p in pairs for lab in ('on', 'off')}
+        dc = [st.mean(fcount[(p, r, 'on')] - fcount[(p, r, 'off')] for r in names) for p in pairs]
+        dln = [ln[(p, 'on')] - ln[(p, 'off')] for p in pairs]
+        fitf = ols([[1.0, s_, x] for s_, x in zip(side, dln)], dc) if n > 3 else None
+        paired = None
+        if fitf:
+            bf, sef, _ = fitf
+            tt = t(T975, n - 3)
+            paired = {'effect': bf[0], 'hw95': tt * sef[0], 'lean': bf[1], 'perTenLines': 10 * bf[2], 'perTenLinesHw95': tt * 10 * sef[2]}
+        per = {lab: 10 * sum(faults[lab].values()) / (len(names) * sum(ln[(p, lab)] for p in pairs)) for lab in ('on', 'off')}
+        kinds = sorted(set(faults['on']) | set(faults['off']))
+        perKind = {lab: {k: 10 * faults[lab][k] / (len(names) * sum(ln[(p, lab)] for p in pairs)) for k in kinds} for lab in ('on', 'off')}
+        rate = {'on': per['on'], 'off': per['off'], 'paired': paired, 'perKind': perKind, 'capped': capped,
+                'versions': versions, 'severity': {k: dict(v) for k, v in severity.items()}}
+        print(f"Faults per ten lines: {per['on']:.2f} on, {per['off']:.2f} off. "
+              + ', '.join(f"{k} {perKind['on'][k]:.2f}/{perKind['off'][k]:.2f}" for k in kinds))
+        if rate['paired']:
+            fp = rate['paired']
+            print(f"Faults a page, on minus off, with the order and the difference in lines as terms: {fp['effect']:+.2f} ±{fp['hw95']:.2f}"
+                  f" (95%); ten lines more {fp['perTenLines']:+.2f} ±{fp['perTenLinesHw95']:.2f}.")
+        print(f'Versions given exactly three faults: {capped} of {versions}' + (' (the count may be capped)' if capped > versions / 2 else '') + '.')
+        if any(severity[lab] for lab in ('on', 'off')):
+            print('Severity, and for unfit reasons whether the event shown under them supports them: ' + '; '.join(f"{lab} " + ', '.join(f'{k} {v}' for k, v in severity[lab].most_common()) for lab in ('on', 'off')))
     if rq:
         print(f"\nQuotes matching the round's wording (on arm): good {len(quotes['good'])}, faults {len(quotes['fault'])}"
               f" (unfit reasons {sum('(unfit reason)' in q for q in quotes['fault'])}); off arm: good {len(quotes['good_off'])},"
@@ -252,7 +294,7 @@ def main():
     if a.json:
         json.dump({'pairs': n, 'readers': names, 'majorityOn': maj, 'diff': mean, 'hw95': hw, 'adjusted': adj, 'onB': on_b, 'chooseB': bchoice,
                    'perReader': {r: st.mean(v) for r, v in per_reader.items()}, 'faults': {k: dict(v) for k, v in faults.items()},
-                   'quotes': quotes, 'scores': scores, 'lines': lines}, open(a.json, 'w'), indent=1)
+                   'quotes': quotes, 'scores': scores, 'lines': lines, 'faultRate': rate}, open(a.json, 'w'), indent=1)
 
 
 if __name__ == '__main__':
