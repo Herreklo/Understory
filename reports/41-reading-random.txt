@@ -1,0 +1,57 @@
+Round 41: the paired reading of random adults, fit on against off (21 Oct 2026). 24 pairs, three adults drawn at random in each of worlds 3593-3600 (pairarm.ts PICK=random, at eba5885); the same three readers. Scored by scripts/pairscore.py before any other number of the round was read.
+The regular expression the quotes were listed by (--quote): the \w+ time since|kept (him|her)self busy|nothing brought them together any more|could be hard on people|had a short fuse|a small child at home|whoever is stuck with|retired from|buried the hatchet, [a-z]|no progress for [a-z]|(once|twice|times) in [a-z]
+
+pair  on         novelist          player    socialworker   majority-on
+P01   B            3,4,B           3,4,B           3,4,B   yes
+P02   B            1,3,B           1,3,B           1,3,B   yes
+P03   B            3,4,B           3,4,B           3,4,B   yes
+P04   B            3,4,B           4,3,A           3,4,B   yes
+P05   A            3,4,B           3,4,B           4,4,B   no
+P06   B            1,3,B           1,3,B           1,3,B   yes
+P07   B            4,3,A           4,3,A           4,3,A   no
+P08   A            3,3,B           3,4,B           3,3,B   no
+P09   A            3,3,A           3,3,A           3,3,A   yes
+P10   B            3,2,A           3,2,A           4,2,A   no
+P11   A            3,3,B           3,4,B           3,4,B   no
+P12   A            2,3,B           2,3,B           3,3,B   no
+P13   B            3,4,B           3,4,B           3,4,B   yes
+P14   A            3,3,B           3,3,B           3,3,B   no
+P15   A            3,3,B           3,4,B           3,4,B   no
+P16   A            3,4,B           3,4,B           4,4,B   no
+P17   B            4,3,A           4,3,A           4,3,A   no
+P18   A            4,3,A           4,4,B           4,4,B   no
+P19   B            4,4,B           3,4,B           3,4,B   yes
+P20   A            4,2,A           3,2,A           3,2,A   yes
+P21   A            4,3,A           5,3,A           4,2,A   yes
+P22   B            2,3,B           2,4,B           3,4,B   yes
+P23   A            4,1,A           4,1,A           4,1,A   yes
+P24   B            3,2,A           3,2,A           3,2,A   no
+
+The on arm was version B in 12 of 24 pairs; readers chose B in 46 of 72 single choices.
+Majority preferred the on arm in 12 of 24.
+Paired score difference, on minus off: +0.32 ±0.50 (95%, 24 pairs, mean over 3 readers)
+  novelist       +0.38
+  player         +0.21
+  socialworker   +0.38
+With the order as a term: effect +0.32 ±0.51 (95%); one-sided 90% lower bound -0.00; lean toward the second version +0.10
+ordinal  alpha 0.766  95% [0.612, 0.873]  (3 readers, 48 lives)
+interval alpha 0.842  95% [0.682, 0.912]  (3 readers, 48 lives)
+  novelist     mean 3.06
+  player       mean 3.15
+  socialworker mean 3.19
+
+How much happened: 49.8 lines a page on, 45.1 off; on minus off +4.8 a pair (sd 22.0). Where the versions are five or more lines apart, the longer was chosen 32 times and the shorter 16 (24 choices nearer).
+With the order and the difference in lines as terms: effect +0.15 ±0.41 (95%); ten lines more +0.35 ±0.19. Reported beside the effect above, which the round is judged on.
+Kinds of line: 29.1 a page on, 26.7 off; on minus off +2.4 a pair (sd 11.8).
+With the order and the difference in kinds as terms: effect +0.13 ±0.33 (95%); a kind more +0.079 ±0.028.
+faults on: total 214 · unfit reason 76, repeat 40, false line 38, out of nowhere 35, wording 25
+faults off: total 201 · unfit reason 55, false line 51, repeat 41, out of nowhere 30, wording 24
+
+Quotes matching the round's wording (on arm): good 2, faults 5 (unfit reasons 2); off arm: good 0, faults 4
+  good: P14 socialworker: 2027: Ivy gave up on it: to make things right with Hilda.  [no progress for a year and a half; has given up before; had been at it since 2025]
+  good: P17 player: Una and Andy drifted apart.  [dragged up the old business (2026); Una went cold on Andy and stayed that way for weeks (2026); Una could be hard on people]
+  fault: P01 player (false line): Agnes Howell and Andy Lane buried the hatchet, three years after the head of the clinic's job.
+  fault: P01 socialworker (false line): Agnes Howell and Andy Lane buried the hatchet, three years after the head of the clinic's job.
+  fault: P13 player (unfit reason): Oliver and Ken lost touch.  [Oliver no longer rings his mother every Sunday evening.; Ken could be hard on people]
+  fault: P20 socialworker (out of nowhere): 2027: Neil and Mark lost touch.  [nothing brought them together any more]
+  fault: P24 player (unfit reason): Mona and Jonah stopped seeing each other, and that was that.  [Low Tide split up after 18 years: nobody left to play with. "The Open Night" outlived them.; Jonah could be hard on people]

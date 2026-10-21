@@ -1,6 +1,6 @@
 # Understory: where we are
 
-_Updated 21 October 2026 (round 40). One page, plain words, rewritten at every merge to main._
+_Updated 21 October 2026 (round 41). One page, plain words, rewritten at every merge to main._
 
 ## Where we are going
 
@@ -14,19 +14,21 @@ Success sounds like "I knew that guitarist was trouble" or "I shouldn't have mad
 
 ## In one sentence
 
-The people decide like people and can be read, but their lives are thin and repetitive; the city now runs on the same engine as the town.
+The people decide like people and can be read, and since round 40 more different things happen in their lives (wants that answer events, contests, changes after blows, talk); what holds them back now is the reasons their decisions give, the quiet majority, and that no person outside the project has judged them yet.
 
 ## What works
 
 - **Decisions feel human.** Two human readers both rated the people's logic 4 of 5 ("logic felt like people").
 - **People can be known.** Watching someone helps you guess what they will do, a little, and the help comes from knowing that person, not from the situation.
-- **Pages tell the truth.** Twelve kinds of false or broken lines are at zero and stay guarded by the tests.
+- **Pages tell the truth.** Twelve kinds of false or broken lines are at zero and stay guarded by the tests; since round 41 spans are said in words, a friendship's end says what changed, and lines about a person are true of them when said.
+- **More happens in a life.** Wants that answer what happens, contests out of season and for band places, a blow that changes something, and telling what one saw (round 40): about two more kinds of happening a life, and the busiest lives read better in two blind readings (+0.38, +0.51).
 - **The city runs on today's engine.** A month at about 2,600 people runs 8.6 times faster than the town's way of running, and a town on its own is exactly as before.
 - **The engine has a front door.** A game creates, advances and reads a world through one module (`src/boundary.ts`), in plain data, under written rules for staying portable to another language or game engine.
 
 ## What doesn't work yet
 
-- **Lives are repetitive.** Both readers found the same few dilemmas again and again, and neither wanted a second round.
+- **Reasons that do not fit the act.** The commonest fault readers quote now is a stock trait given for an act it does not explain ("likes things done properly and on time" for rushing to a sick friend; "will not leave a job half done" for not visiting).
+- **Lives are repetitive.** The busiest less so since round 40; the festival, the hat and "count me in" still fill many pages.
 - **Events lead nowhere.** One weighty event in five leads to anything later; one in seventeen reaches anyone outside the people involved.
 - **Many people still want nothing.** Nearly half of adults pursue nothing in ten years (with the four on, 54% go after something, against 46%), mostly those past 65.
 - **Life barely changes people.** Thirty years move how someone chooses about 3% of the way toward being someone else, once growing older is set aside.
@@ -35,25 +37,31 @@ The people decide like people and can be read, but their lives are thin and repe
 
 ## Next, in order
 
-This is the one priority list. Only Øystein changes its order, and a chat starts an experiment only from the top of it or when he names one. Øystein asked on 20 Oct for a plan to be made and followed; this is it, revised as rounds 35, 36 and 38 were withdrawn before their tests, rounds 37 and 39 were read, and round 40 was kept.
+This is the one priority list. Only Øystein changes its order, and a chat starts an experiment only from the top of it or when he names one. Written on 21 Oct, after rounds 39–41, as the plan for the week of 26 Oct.
 
-What readers score, found on the readings already on file (round 36): **how many different kinds of thing happen in a life**, not how long its page is or how often it repeats. A kind more goes with about +0.05 on the score, across lives and within the same person; length adds nothing once kinds are counted. Rounds 39 and 40 showed it is a cause, not only a correlation: with four mechanisms that add kinds of happening turned on together, the busiest lives read better twice (+0.38, +0.51), most of it through the kinds added; random adults read no worse but not clearly better. The four are now on. So the plan aims at lives with more kinds of happening, each with a reason a reader accepts.
+**Where we stand.** Three things were learned this week, and they set the plan. First, blind readers reward variety: a life in which more different things happen reads better, shown as a cause on two pairs of readings (rounds 36, 39, 40). The four mechanisms that add it are on. Second, the reading instrument has limits we now know: one model in three roles, 24 pairs a pack, an effect of about ±0.4 to resolve, and a fault list capped at three a life, so fewer faults cannot show (round 41). Third, what readers fault once the words are mended is the reasons decisions give: stock traits for acts they do not explain. The random adult gains little from anything so far. And no one outside the project has read a life since the two human readers of Q3. Of the exit criterion, points 1, 2, 3 and 5 are where the work is; 6 holds; 4 is at the line; 7, 8 and 9 wait.
 
-1. **Lines and reasons a reader can trust** (exit point 3), round 41, Øystein's choice on 21 Oct: the faults every reader quotes in both arms of every reading (spans like "5.5 years" and "1 years", "(and once more between)", a friendship's end given "they stopped seeing each other" as its reason, "nothing had changed since" when something had, "buried herself in work" after retiring, "a baby at home" for a three-year-old, a broken "Freya's it", a dangling "Instead,"), fixed behind one switch and read blind.
-2. **People outside the project** (exit point 5): the human test, random and sifted lives side by side.
-3. **The quiet majority** (exit points 2 and 5): random adults gain little from the four; doors for later life and more than one pursuit at a time (round 36's open design).
-4. Close ties (exit point 1) and the accounts arc (#20), both paused. Their code is kept behind switches (`ON=accounts`, `ON=carry`, `ON=reckon`).
-5. For the game (Overstory): the front door's part two (#22), reads of what the player could know, player commands and versions; and the start year from the setting pack (#23).
-6. The city's background: partnering and children fixed, so it stops ageing.
+**The week of 26 Oct**, in order (each a round by `CLAUDE.md`, sized first by M37):
+
+1. **M38, the reading counts every fault** (method; exit point 3's instrument). The brief asks readers to list every fault, not up to three, and the scorer reports faults per 10 lines by kind. Checked on round 41's packs, already read, with one reader: does it tell the arms apart where the capped count could not? No engine change. Cheap: one or two reader sittings.
+2. **Round 42, reasons that bear on the act** (exit point 3). A trait shown as a reason only when it bears on the act chosen (the act's own preferred traits, or the strongest consideration of the family, said as that act's motive); otherwise the next consideration that does. Counted by a counter like round 41's (trait reasons whose trait the act does not draw on), read blind with M38's fault count.
+3. **The human test, part one** (exit point 5). Twenty minutes a reader, busiest and random lives side by side, on the study page that exists. Øystein recruits 10–20 people; the session prepares the pack and instructions. The first evidence from outside the project, and the check on the AI readers: do people prefer what the AI readers prefer?
+4. **Round 43, the quiet majority** (exit points 2 and 5): doors for later life (most of those who want nothing are past 65: a garden, a grandchild, a last trip, a reckoning) and more than one pursuit at a time; judged on random adults first.
+5. **The band for a year** (proposed work 8; exit points 1, 8, 9), once lives carry enough wants and contests to make a band's year worth reading.
+6. Housekeeping when a round is quiet: retire settled switches (`fit`; `together` folded into the engine), and make a round cheaper (twelve reader sittings and a re-derivation cost most of a round's credits: eight sittings may resolve as well, and is worth checking on the readings on file).
+7. Paused: close ties (`ON=carry`, `ON=reckon`), the accounts arc (`ON=accounts`, #20); the city's background ageing; for the game (Overstory) the front door's part two (#22) and the start year (#23).
+
+**Start here on Monday.** `git switch main && git pull`, then `npm install && npm test`. Read this page, `CLAUDE.md` and `WHY.md`, then the last three rounds in `docs/BOARD.md` (39, 40, 41). Open pull requests: none. The method of a round is in `docs/method/reading.md` and round 40's outcome; the scripts are `scripts/round.mjs` (the battery), `src/tools/diag/pairarm.ts` (reading packs; `PICK=random` for random adults), `scripts/pairscore.py` (scoring), and the round's own counter in `src/tools/diag/`. Readers have been Fable 5.1 in three roles (a novelist, a social worker, a player), each part at its own sitting; re-derivation a separate agent on Sonnet.
 
 ## Waiting for you
 
-- For the human test (Next 2): 10 to 20 people who would each read about twenty minutes of lives; the pack and instructions can be prepared while round 41 runs.
+- For the human test (Next 3): 10 to 20 people who would each read about twenty minutes of lives.
+- Whether to start Monday's week with M38 (recommended) or go straight to round 42.
 - Decide on the repo structure for add-ons.
-- One change to the order of "Next", which only you make: the band for a year (proposed work 8) after the quiet majority, because it tests close ties, living changing people and a group's character in one setting.
 
 ## Latest merges
 
+- **Round 41 (21 Oct), kept:** lines and reasons a reader can trust. Spans and counts in words ("no progress for two years"), a folded repeat saying which time it was, broken phrases mended, "Instead," citing what it replaces, a friendship's end saying what changed ("Tara started at the harbour fleet"), and lines true of the person when said (no "baby at home" for a three-year-old, no one burying themselves in work without a job). The faults counted fell from 140 a world to almost none; the busiest read better by a thin margin (+0.29, lower bound +0.04) and random adults no worse (+0.32, lower bound 0.00). Readers still give three faults a life whatever the page holds, so the reading cannot yet show fewer faults: the next method change.
 - **Round 40 (21 Oct), kept:** the four together again, with the faults readers had quoted in their lines fixed (a want said to have lapsed in someone who went after it, a winner "still sore" about the job she won, rivals going on after one had left, turning down the city "because" one had wanted out). The busiest lives read better (+0.51) and random adults no worse (+0.22); the extra unfit reasons of round 39 are gone (51 against 49, 67 against 66); kinds of happening a life +2.2. The four are now on: wants that answer what happens, contests out of season and for band places, a blow that changes something, and telling what one saw.
 - **Round 39 (21 Oct), not kept:** four mechanisms built since round 30 (wants that answer what happens, contests out of season and for a place in a band, a blow that changes something, telling what one saw) turned on together. Both blind readings found the lives better: the busiest +0.38 and random adults +0.33, the first round to read better on both, and most of it is the extra kinds of happening, which makes the finding that readers reward variety a cause, not a correlation. But the round's own floor asked for at least one more kind of happening for the average adult, and it added 0.99; readers also quoted more reasons that do not fit (a want said to have lapsed in someone who went after it, a winner "still sore" about the job she won). By the rule set beforehand it is not kept, and the four stay behind `ON=together`.
 - **Size first, then register (M37, 21 Oct):** a round now builds its change and runs it on throwaway worlds before it is pre-registered, so its expectations are measured, not guessed; the pre-registration still comes before any fresh test world, and the keep rule rests on the blind reading and the gates. Agreed by Øystein. Nothing the engine does changed.

@@ -395,7 +395,7 @@ export const ON = new Set<string>();
 // together unless OFF=together. With them off, each can be turned on alone with its own ON=<name>.
 export const together = () => !OFF.has('together');
 // Round 41: lines and reasons that hold up: spans said in words, a folded repeat saying which time it was, a friendship's end saying what
-// changed, lines true of the person when they are said. On unless OFF=fit (round 41's test).
+// changed, lines true of the person when they are said (round 41). On unless OFF=fit.
 export const fit = () => !OFF.has('fit');
 const SMALL = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
 // A span of months as a person would say it: "a few weeks", "five months", "a year", "a year and a half", "three years".
