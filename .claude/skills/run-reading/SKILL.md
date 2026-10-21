@@ -2,7 +2,6 @@
 name: run-reading
 description: Runs a blind paired reading of one pack - builds or takes the pack, commits it with its key and briefs, runs one blind-reader sitting per role and part, collects and checks the answers, and scores them. Use for a round's reading, a method round's re-reading, or a calibration re-read.
 argument-hint: <round> <pack name> [switch, worlds, PICK]
-disable-model-invocation: true
 ---
 
 # A blind paired reading
