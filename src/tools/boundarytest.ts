@@ -4,7 +4,7 @@ import './env'; // OFF= and ON= from the environment, before anything runs
 import { deepStrictEqual, strictEqual } from 'assert';
 import { buildWorld, runYears } from '../build';
 import { pickWitness } from '../witness';
-import { beliefsHeld, bondOf, command, createWorld, events, now, person, townIds, type WorldHandle } from '../boundary';
+import { beliefsHeld, bondOf, command, createWorld, events, groups, now, person, places, townIds, ventures, type WorldHandle } from '../boundary';
 import { signature } from './diag/signature';
 import type { World } from '../world';
 
@@ -36,6 +36,11 @@ for (const id of ids.slice(0, 10)) {
   roundTrip(`beliefs of ${id}`, beliefsHeld(h, id));
   for (const other of ids.slice(0, 10)) roundTrip(`bond ${id}→${other}`, bondOf(h, id, other));
 }
+roundTrip('places', places(h));
+strictEqual(places(h).length, direct.places.length, 'places() is not every place');
+roundTrip('groups', groups(h));
+strictEqual(groups(h).length, direct.groups.length, 'groups() is not every group');
+roundTrip('ventures', ventures(h));
 
 // Reading through the boundary changed nothing (no bond made, no state written), and what it gave back is a copy: changing it
 // leaves the world as it was. Compared with the world run directly, which nothing has read.
