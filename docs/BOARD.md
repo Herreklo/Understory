@@ -2273,7 +2273,7 @@ What the readers faulted that the four brought or made more common (nothing is c
 
 `together` is off unless asked for (`ON=together`), as for every round not kept, and identical to main with it off (`reports/39-ident.txt`); the four stay behind their own switches. What comes next is Øystein's to order (SUMMARY).
 
-## Round 40 — the four together, with the reasons readers faulted fixed (pre-registered 21 Oct 2026, 08:05 Oslo, before any test world; sized first)
+## Round 40 — the four together, with the reasons readers faulted fixed (pre-registered 21 Oct 2026, 08:02 Oslo, before any test world; sized first)
 
 Øystein's choice on 21 Oct, after round 39 ("four again, fixed"). Round 39 turned on four mechanisms together (wants that answer what happens, contests out of season and for a place in a band, a blow that changes something, telling what one saw) and both blind readings read better (the busiest +0.38 ±0.30, lower bound +0.19; random adults +0.33 ±0.49, lower bound +0.02), most of it through the kinds of happening they add; it was not kept because kinds over every adult rose +0.99 against a floor of +1.0, and readers quoted more reasons that do not fit (unfit reasons 67 against 50 and 74 against 48). The quotes named faults in the four's own lines. Counted on throwaway worlds 9001–9020 with round 39's code (`src/tools/diag/fit.ts`, a counter written for this round whose tests are its own, not the engine's; `reports/40-size-r39.txt`, `-off.txt`):
 
