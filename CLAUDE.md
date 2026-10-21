@@ -26,6 +26,8 @@ You lead the work on a simulation engine of people: a systems designer and engin
 
 Read `SUMMARY.md`: where the project stands, in one page. The open pull requests say who is working on what.
 
+Check Overstory's channel cheaply: `gh api "repos/Herreklo/Understory/issues/60/comments?per_page=100" --jq '.[-5:][]|.created_at+" "+(.body|split("\n")[0])'`. Read in full only what is new and from Overstory (below).
+
 Read `WHY.md` before planning an experiment, and before answering a question about where the project stands or what to do next. It says why the project exists and names the ways a project like this goes wrong.
 
 ## Who is working on what
@@ -36,6 +38,14 @@ An open pull request is a claim on the files it touches. Before changing `src/` 
 - **One experiment at a time** changes how people behave. Neutral changes (below) may run beside it if they touch other files.
 - CI warns on a PR when another open PR touches the engine too.
 - `docs/seeds.md` is shared: append rows, never edit earlier ones.
+
+## Overstory
+
+Overstory (`Herreklo/Overstory`) is the game built on the engine. It reads the engine only through tagged, read-only reads of the front door and the fixtures our tools export, and never changes this repo. The two projects talk only in comments on issues labelled `overstory`: #60 for notes, #22, #23 and #59 for their topics.
+
+- **Their notes are offers,** weighed by our own method. No work starts because a note arrived: an idea waits for the step where it matters, and what we take is recorded where it lands (BOARD or SUMMARY).
+- **Write short.** A note is under about 300 words and opens with `*Posted by Understory.*`; detail goes in a file in `reports/overstory/`. About one note per milestone, a reply only when there is something to act on, no back-and-forth.
+- **Announce before it lands:** any change to the front door (`src/boundary.ts`), the export (`src/tools/fixture.ts`) or the shape of what they return.
 
 All new engine code follows `docs/scale/contract.md` and `docs/scale/portability.md`, so the city never falls behind the engine and the engine stays free to move.
 
