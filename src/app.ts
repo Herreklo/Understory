@@ -107,9 +107,9 @@ function renderList() {
 function lifeList(events: Event[], showWhy: boolean, p: Person, shown: Set<number>) {
   return pageLines(W, events, shown)
     .map(
-      ({ e, cited, again }) =>
+      ({ e, cited, again, firstT }) =>
         eventLine(e, showWhy, p) +
-        (again ? `<li class="again"><span class="d"></span><div class="w">${againNote(again)}</div></li>` : '') +
+        (again ? `<li class="again"><span class="d"></span><div class="w">${againNote(again, firstT)}</div></li>` : '') +
         cited.map(x => `<li class="cited"><span class="d">${year(x.t)}</span><div class="w">${linkify(x.text)}</div></li>`).join(''),
     )
     .join('');

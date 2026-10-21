@@ -18,6 +18,8 @@ import {
   addStress,
   addEmotion,
   year,
+  fit,
+  spanWords,
 } from './world';
 import { hoodOf, hoods, idx, jobSet, jobless, moved, staffOf } from './scale';
 import { witnessView, truthView, z01 } from './decide';
@@ -390,7 +392,8 @@ export function settleIn(w: World, p: Person) {
 }
 function retire(w: World, p: Person) {
   const pl = w.placeById.get(p.job!)!;
-  const yrs = Math.round((w.t - p.jobSince) / 12);
+  const yrs = Math.round((w.t - p.jobSince) / 12),
+    months = w.t - p.jobSince;
   if (pl.lead === p.id) pl.lead = null;
   jobSet(w, p, null);
   p.lead = false;
@@ -403,7 +406,11 @@ function retire(w: World, p: Person) {
   const e = addEvent(w, {
     type: 'retired',
     who: [p.id],
-    text: `@${p.id} retired after ${yrs} years at ${pl.name}.`,
+    text: !fit()
+      ? `@${p.id} retired after ${yrs} years at ${pl.name}.`
+      : months < 12
+        ? `@${p.id} retired from ${pl.name}.`
+        : `@${p.id} retired after ${spanWords(months)} at ${pl.name}.`,
     causes: [stateCause(p.health < 0.5 ? 'poor health' : `age ${Math.floor(age(w, p))}`, 1)],
     vis: 'public',
     evidence: [],

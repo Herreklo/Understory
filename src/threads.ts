@@ -19,6 +19,9 @@ import {
   addStress,
   addEmotion,
   year,
+  fit,
+  spanWords,
+  timesWords,
 } from './world';
 import type { Feature } from './features';
 import type { Family, Expression } from './families';
@@ -218,7 +221,12 @@ function cost(w: World, p: Person, th: Thread) {
     who: [q.id, p.id],
     text,
     causes: [
-      stateCause(`${th.acts} times in ${Math.max(1, Math.round(((w.t - th.since) / 12) * 10) / 10)} years: ${th.source}`, 0.6),
+      stateCause(
+        fit()
+          ? `${timesWords(th.acts)} in ${spanWords(w.t - th.since)}: ${th.source}`
+          : `${th.acts} times in ${Math.max(1, Math.round(((w.t - th.since) / 12) * 10) / 10)} years: ${th.source}`,
+        0.6,
+      ),
       traitCause(q, 'patience', 0.4, -1),
     ],
     vis: 'local',

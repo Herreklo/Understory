@@ -34,10 +34,10 @@ function page(w: World, p: Person): string[] {
   const plain = (s: string) => s.replace(/@(\d+)/g, (_, id) => nameOf(w, +id));
   const events = p.events.map(i => w.events[i]).filter(e => e.t >= w.startPresent);
   const out: string[] = [];
-  for (const { e, cited, again } of pageLines(w, events, new Set(p.events))) {
+  for (const { e, cited, again, firstT } of pageLines(w, events, new Set(p.events))) {
     const shown = shownCauses(e);
     const why = shown.length ? '  [' + shown.map(c => plain(c.label)).join('; ') + ']' : '';
-    out.push(`${year(e.t)}: ${plain(e.text)}${why}${again ? `  (${againNote(again)})` : ''}`);
+    out.push(`${year(e.t)}: ${plain(e.text)}${why}${again ? `  (${againNote(again, firstT)})` : ''}`);
     for (const x of cited) out.push(`    ↳ ${year(x.t)}: ${plain(x.text)}`);
   }
   return out;

@@ -20,7 +20,7 @@
 // How a person fights is held as pseudo-facets (love:criticism, love:stonewall, …) in their facets, so beliefs and views work on it
 // like a trait and it can be learned from what they do. A style used deepens a little, like any trait that chooses an act.
 import { Rng, hash, clamp } from './rng';
-import { OFF, type World, type Person, age, live, P, likeOf, remember, addEvent, broadcast, bond, year, addStress, plasticity } from './world';
+import { OFF, fit, type World, type Person, age, live, P, likeOf, remember, addEvent, broadcast, bond, year, addStress, plasticity } from './world';
 import { run } from './grammar';
 import { privC, pubC, closeC, valueC, bondC, stateCause, eventCause, ev, PSEUDO } from './considerations';
 import { curves, z01, type Consideration } from './decide';
@@ -587,6 +587,8 @@ function notePattern(w: World, p: Person, q: Person, s: string, r: string, ref: 
   while (hist.length && w.t - hist[0].t > 72) hist.shift();
   const n = hist.filter(h => h.k === key).length;
   if (n < (s === 'contempt' ? 2 : 3)) return;
+  // Round 41: someone who raised something with the other within the year has not stopped bringing things up.
+  if (fit() && key === 'letslide>' && hist.some(h => h.k !== key && !h.k.startsWith('contempt') && w.t - h.t < 12)) return;
   const last = Math.max((p as any)['rowpat:' + q.id] ?? -999, (q as any)['rowpat:' + p.id] ?? -999);
   if (w.t - last < 60) return;
   const again = ((p as any)['rowsaid:' + q.id] ??= []) as string[];
@@ -594,6 +596,8 @@ function notePattern(w: World, p: Person, q: Person, s: string, r: string, ref: 
   // A pattern from an earlier partnership between the same two is not this one's (round H25, words only).
   // The same date the line's "together since" uses, so a repeat is never dated before it (round F27, words only).
   const began = Math.min((p as any).pairSince ?? p.psince ?? w.t, (q as any).pairSince ?? q.psince ?? w.t);
+  // Round 41: "nothing had changed since" only when every row since the pattern was first said went the same way.
+  const same = !fit() || hist.every(h => h.t < (firstSaid[key] ?? -Infinity) || h.k === key);
   const said = again.includes(key) && (firstSaid[key] ?? -Infinity) >= began;
   again.push(key);
   if (!said) firstSaid[key] = w.t;
@@ -605,9 +609,10 @@ function notePattern(w: World, p: Person, q: Person, s: string, r: string, ref: 
   const e = addEvent(w, {
     type: 'couple:pattern',
     who: [p.id, q.id],
-    text: said
-      ? (t => `Nothing had changed since ${year(firstSaid[key])}: ${t[0] === '@' ? t : t[0].toLowerCase() + t.slice(1)}`)(PATTERN[key](p, q))
-      : PATTERN[key](p, q),
+    text:
+      said && same
+        ? (t => `Nothing had changed since ${year(firstSaid[key])}: ${t[0] === '@' ? t : t[0].toLowerCase() + t.slice(1)}`)(PATTERN[key](p, q))
+        : PATTERN[key](p, q),
     causes: [
       eventCause(w, ref, 0.5),
       stateCause(`together since ${year(Math.min((p as any).pairSince ?? p.psince ?? w.t, (q as any).pairSince ?? q.psince ?? w.t))}`, 0.3),
@@ -631,7 +636,10 @@ const CARE: Record<Care, (a: Person, t: Person, m: Record<string, string>) => st
 function careText(w: World, a: Person, t: Person, care: Care) {
   const M = (SETTING as any).material ?? {};
   const r = new Rng(hash(w.seed, a.id, 'care', w.t));
-  const poss = a.attachments.filter(x => x.key !== 'home').map(x => x.label);
+  // Round 41: what can be fixed for someone is a thing: the boat or the car, not "a house of his own".
+  const poss = fit()
+    ? a.attachments.filter(x => x.key === 'boat' || x.key === 'car').map(x => `the ${x.key}`)
+    : a.attachments.filter(x => x.key !== 'home').map(x => x.label);
   const m = {
     possession: poss.length && r.chance(0.3) ? r.pick(poss) : r.pick((M.possessions as string[] | undefined) ?? ['the front door']),
     when: r.pick(['Sunday afternoons', 'Friday evenings', 'the first weekend of the month', 'one evening a week']),

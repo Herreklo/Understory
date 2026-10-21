@@ -1,0 +1,24 @@
+Round 41: demography with and without the fixes (src/tools/demography.ts, seeds 1-N, 20 years), and npm test with them on, before its pre-registration.
+== demo-on
+24 worlds × 20 years, per decade per world: births 6.8 · deaths 9.7 · arrivals 5.9 · population 73 → 74
+demography ok
+== demo-off
+24 worlds × 20 years, per decade per world: births 6.9 · deaths 9.3 · arrivals 5.6 · population 73 → 77
+demography ok
+== demo12-on
+12 worlds × 20 years, per decade per world: births 6.5 · deaths 10.3 · arrivals 5.1 · population 74 → 71
+demography ok
+== demo12-off
+12 worlds × 20 years, per decade per world: births 7.0 · deaths 9.4 · arrivals 5.5 · population 75 → 78
+demography ok
+== demo12-on2
+12 worlds × 20 years, per decade per world: births 7.0 · deaths 10.4 · arrivals 5.5 · population 73 → 73
+demography ok
+(demo-on, demo12-on: before the fix for 'buried in work' was made words only; demo12-on2: after)
+== npm test (on)
+> tsc --noEmit && npm run -s build && node scripts/browser-check.mjs && tsx src/tools/replay.ts && tsx src/tools/twoworlds.ts && tsx src/tools/grouptest.ts && tsx src/tools/boundarytest.ts && tsx src/tools/mathtest.ts && tsx src/tools/sigtest.ts && tsx src/tools/invariants.ts && tsx src/tools/demography.ts 6 20 && tsx src/tools/props.ts 5 2 9201 && tsx src/tools/coherence.ts 11 12 --fail
+6 worlds × 20 years, per decade per world: births 6.8 · deaths 10.4 · arrivals 5.0 · population 73 → 72
+demography ok
+npm test exit 0
+== identity, OFF=fit against main 968d2df
+all identical

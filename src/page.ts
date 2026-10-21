@@ -2,12 +2,13 @@
 // reader is given is one thing. A reason that cites an event the page would not otherwise show gets that event shown under
 // it, and an act repeated word for word is shown the first and the last time, with the times between said once. Rendering only; the
 // record is untouched.
-import { type Event, type World } from './world';
+import { type Event, type World, fit, ordinal, year } from './world';
 
 export interface PageLine {
   e: Event;
   cited: Event[]; // events a reason of this line cites that the page shows nowhere else: shown under the line
   again: number; // identical lines between this one and the previous one shown, folded into "again"
+  firstT?: number; // with a fold (round 41): when the act was first done, for "the third time since 2027"
 }
 
 // What makes two lines the same act: type, the same people, the same words apart from years.
@@ -23,15 +24,19 @@ export function pageLines(w: World, events: Event[], shown: Set<number>): PageLi
   const last = new Map<string, number>();
   events.forEach((e, i) => last.set(sameAs(e), i));
   const seen = new Map<string, number>(); // key -> how many folded since the last shown
+  const firstT = new Map<string, number>();
   const out: PageLine[] = [];
   events.forEach((e, i) => {
     const k = sameAs(e);
     const n = seen.get(k);
     if (n == null) {
       seen.set(k, 0);
+      firstT.set(k, e.t);
       out.push({ e, cited: [], again: 0 });
     } else if (last.get(k) === i) {
-      out.push({ e, cited: [], again: n });
+      // Round 41: a line that already says how often it happened needs no note; one that does not says which time it was, since when.
+      const said = fit() && /It had happened before|It was the \w+ time|Nobody was surprised any more|had been happening since/.test(e.text);
+      out.push({ e, cited: [], again: said ? 0 : n, ...(fit() && !said ? { firstT: firstT.get(k) } : {}) });
       seen.set(k, 0);
     } else seen.set(k, n + 1);
   });
@@ -46,5 +51,12 @@ export function pageLines(w: World, events: Event[], shown: Set<number>): PageLi
   return out;
 }
 
-// The "again" note for a folded repeat, in words.
-export const againNote = (n: number) => (n <= 0 ? '' : n === 1 ? 'and once more between' : `and ${n} more times between`);
+// The "again" note for a folded repeat, in words: which time this was and since when (round 41), or how many were folded between.
+export const againNote = (n: number, firstT?: number) =>
+  n <= 0
+    ? ''
+    : firstT != null
+      ? `the ${ordinal(n + 2)} time since ${year(firstT)}`
+      : n === 1
+        ? 'and once more between'
+        : `and ${n} more times between`;
