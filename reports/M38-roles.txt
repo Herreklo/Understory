@@ -1,0 +1,4 @@
+half    kinds apart  same choice  score apart
+first         0.119         0.85         0.28   (264 pair choices compared)
+second        0.130         0.92         0.24   (264 pair choices compared)
+{"first": {"kinds": 0.11886145376938702, "prefer": 0.8522727272727273, "score": 0.2803030303030303, "n": 264}, "second": {"kinds": 0.1300268690326687, "prefer": 0.9204545454545454, "score": 0.23674242424242425, "n": 264}}
