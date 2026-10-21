@@ -6,8 +6,9 @@ Exit 2 refuses it, and what is printed to stderr tells Claude why.
                      to src/ or scale/ and no git command that changes the tree. A lock whose process is gone is removed.
   guard.py key       PreToolUse: no reading key.json with Read, Grep or Glob, so a blind reader cannot open a key.
                      Scripts read keys through Bash.
-  guard.py stop      Stop: no ending a turn with commits on this branch that are not pushed. Lets go the second time,
-                     so Claude can say why it cannot push.
+  guard.py stop      Stop: no ending a turn while commits this session made (their subject is in one of its commit
+                     commands) are on no remote branch. Sessions can share a checkout, and one is not held to another's
+                     work. Lets go the second time, so Claude can say why it cannot push.
 """
 import json, os, re, subprocess, sys
 
@@ -53,6 +54,27 @@ def key(call):
                'Scripts read keys (python3, jq, scripts/pairscore.py).')
 
 
+COMMITS = re.compile(r'\bgit\s+(commit|cherry-pick|revert|am)\b')
+
+
+def own_commands(transcript):
+    """This session's shell commands that make commits, or None when its transcript cannot be read."""
+    try:
+        cmds = []
+        with open(transcript) as f:
+            for line in f:
+                if '"tool_use"' not in line or 'git' not in line:
+                    continue
+                for part in json.loads(line).get('message', {}).get('content', []):
+                    if isinstance(part, dict) and part.get('type') == 'tool_use' and part.get('name') == 'Bash':
+                        cmd = part.get('input', {}).get('command', '')
+                        if COMMITS.search(cmd):
+                            cmds.append(cmd)
+        return cmds
+    except (OSError, ValueError, AttributeError, TypeError):
+        return None
+
+
 def stop(call):
     if call.get('stop_hook_active'):
         return
@@ -60,11 +82,14 @@ def stop(call):
     branch = git('symbolic-ref', '--short', '-q', 'HEAD').stdout.strip()
     if not branch:
         return
-    up = '@{u}' if git('rev-parse', '-q', '--verify', '@{u}').returncode == 0 else 'origin/main'
-    ahead = git('rev-list', '--count', f'{up}..HEAD').stdout.strip()
-    if ahead and ahead != '0':
-        refuse(f'{ahead} commit(s) on {branch} are not pushed. Push them (git push -u origin {branch}), '
-               'so the work is on GitHub before the turn ends, or say why they must wait.')
+    # Commits on no remote branch at all, so work already on main or pushed elsewhere is not counted.
+    subjects = git('log', '--format=%s', '-n', '50', 'HEAD', '--not', '--remotes').stdout.splitlines()
+    cmds = own_commands(call.get('transcript_path', ''))
+    if cmds is not None:
+        subjects = [s for s in subjects if any(s in c for c in cmds)]
+    if subjects:
+        refuse(f'{len(subjects)} commit(s) this session made on {branch} are not on GitHub. Push them '
+               f'(git push -u origin {branch}) before the turn ends, or say why they must wait.')
 
 
 if __name__ == '__main__':

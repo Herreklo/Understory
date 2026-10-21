@@ -162,7 +162,7 @@ Blind readers are most of what the project spends. Check usage before starting a
 
 ## Claude Code here
 
-Agents in `.claude/agents/` (`blind-reader`, `reviewer`, `rederiver`), skills in `.claude/skills/` (`/pre-register`, `/run-reading`, `/record-outcome`, `/release`), hooks in `.claude/settings.json`: no edit to `src/` or `scale/` while a battery runs from this checkout, no key opened with Read, Grep or Glob, no turn ended with commits unpushed. Long batteries run on the Mac, kept awake; Claude Code on the web is for short jobs (its background commands stop within two hours).
+Agents in `.claude/agents/` (`blind-reader`, `reviewer`, `rederiver`), skills in `.claude/skills/` (`/pre-register`, `/run-reading`, `/record-outcome`, `/release`), hooks in `.claude/settings.json`: no edit to `src/` or `scale/` while a battery runs from this checkout, no key opened with Read, Grep or Glob, no turn ended with commits of its own unpushed. Long batteries run on the Mac, kept awake; Claude Code on the web is for short jobs (its background commands stop within two hours).
 
 ## Practical
 
