@@ -1,0 +1,23 @@
+Round 40, sized on throwaway worlds 9001-9020 before its pre-registration: src/tools/diag/fit.ts with the four on (the round's code), in two halves.
+fit: world 9001
+fit: world 9002
+fit: world 9003
+fit: world 9004
+fit: world 9005
+fit: world 9006
+fit: world 9007
+fit: world 9008
+fit: world 9009
+fit: world 9010
+FIT {"seeds":[9001,9010],"worlds":10,"lapses":70,"lapsesServed":0,"soreWinner":0,"concedeAhead":0,"contestActs":311,"actsApart":0,"cityDeclines":114,"cityAgainst":0,"cityNoWish":0,"kindsAll":25.524,"kindsTop":48.733,"perWorld":[{"seed":9001,"all":24.578,"top":44},{"seed":9002,"all":26.123,"top":55},{"seed":9003,"all":23.813,"top":46.667},{"seed":9004,"all":24.855,"top":45.333},{"seed":9005,"all":25.569,"top":51.667},{"seed":9006,"all":23.853,"top":44.333},{"seed":9007,"all":24.963,"top":53.333},{"seed":9008,"all":28.094,"top":57},{"seed":9009,"all":27.243,"top":41.333},{"seed":9010,"all":26.154,"top":48.667}]}
+fit: world 9011
+fit: world 9012
+fit: world 9013
+fit: world 9014
+fit: world 9015
+fit: world 9016
+fit: world 9017
+fit: world 9018
+fit: world 9019
+fit: world 9020
+FIT {"seeds":[9011,9020],"worlds":10,"lapses":77,"lapsesServed":0,"soreWinner":0,"concedeAhead":0,"contestActs":380,"actsApart":0,"cityDeclines":101,"cityAgainst":0,"cityNoWish":0,"kindsAll":25.606,"kindsTop":45.267,"perWorld":[{"seed":9011,"all":25.485,"top":45.333},{"seed":9012,"all":25.324,"top":45},{"seed":9013,"all":22.698,"top":43.667},{"seed":9014,"all":26.612,"top":48},{"seed":9015,"all":25.676,"top":38},{"seed":9016,"all":25.925,"top":42.333},{"seed":9017,"all":26.417,"top":53},{"seed":9018,"all":27.234,"top":45.667},{"seed":9019,"all":26.971,"top":41.667},{"seed":9020,"all":23.721,"top":50}]}

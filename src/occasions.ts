@@ -247,10 +247,33 @@ export function occasionsTick(w: World, p: Person, add: AddWant, label: (x: Want
   }
 }
 
-// A want not gone after in three years lapses; said only if it had been let slip.
+// What the person did since a want began that served it by another road than a pursuit: playing the open night, or being in a band (it
+// formed, they joined, brought it a song, it played), for a want to be heard; going to the person, for a want to make things right with
+// them (round 40).
+const HEARD = new Set(['performed', 'group:formed', 'group:joined', 'group:work', 'group:show']);
+function served(w: World, p: Person, x: Want): number | undefined {
+  if (x.kind !== 'prove' && x.kind !== 'restore') return undefined;
+  for (let k = p.events.length - 1; k >= 0; k--) {
+    const e = w.events[p.events[k]];
+    if (e.t < x.since) continue; // a person's list is not strictly in time order (a cited past can be added later)
+    if (x.kind === 'prove' ? HEARD.has(e.type) : e.who[0] === p.id && e.who.includes(+x.target)) return e.id;
+  }
+  const g = x.kind === 'prove' && p.group != null ? w.groups[p.group] : undefined;
+  return g && g.lastShow >= x.since ? (g.events[g.events.length - 1] ?? g.events[0]) : undefined;
+}
+
+// A want not gone after in three years lapses; said only if it had been let slip, and only if nothing the person did served it: a want
+// to be heard met by playing with a band is met, and one to make things right that the person acted on was not let go untried.
 function lapse(w: World, p: Person, label: (x: Want) => string) {
   for (const x of p.wants) {
     if (x.done || x.pursuit || !OWN_KINDS.has(x.kind) || w.t - x.since <= 36) continue;
+    const met = served(w, p, x);
+    if (met != null) {
+      x.done = x.kind === 'prove' ? 'achieved' : 'abandoned';
+      x.doneAt = met;
+      if (x.kind !== 'prove') markGivenUp(w, p, x);
+      continue;
+    }
     x.done = 'abandoned';
     markGivenUp(w, p, x);
     if (!(x as any).said) continue;

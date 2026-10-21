@@ -70,6 +70,12 @@ export interface Instance {
   // The reasons the act gives after its cause, in place of the decision's own (round 37: a change after a blow gives what a reader
   // accepts for it). The decision record keeps every consideration either way.
   reasonsFor?: (fam: Family) => Cause[];
+  // When the person chose against what the situation offered (round 40: turning down a job in the city they had wanted out for), the
+  // situation's own words go last, as what argued the other way ("though she had wanted out since 2013"), in place of first.
+  against?: (fam: Family) => string | undefined;
+  // Reasons not shown for a choice, by consideration: ones the situation's own words contradict (round 40: "had no wish to see anywhere
+  // else" beside a want to get out). The decision record keeps them.
+  hide?: (fam: Family) => string[];
 }
 
 export function decide(w: World, p: Person, trigger: string, options: Option[]) {
@@ -368,12 +374,15 @@ export function run(w: World, inst: Instance): Outcome | null {
     x => feats.has(x.feature) && (x.facet in expr.prefers || options.some(o => o.id === fam && o.considerations.some(c => c.id === x.facet))),
   );
   const seenC = new Set<string>();
+  const against = inst.against?.(fam);
+  const hidden = inst.hide?.(fam) ?? [];
+  const shown = hidden.length ? why.filter(c => !hidden.includes((c.key ?? '').replace(/^against:/, ''))) : why;
   const causes: Cause[] = [
-    ...(inst.cause != null ? [eventCause(w, inst.cause, 0.5)] : inst.causeLabel ? [stateCause(inst.causeLabel, 0.5)] : []),
+    ...(inst.cause != null ? [eventCause(w, inst.cause, 0.5)] : inst.causeLabel && !against ? [stateCause(inst.causeLabel, 0.5)] : []),
     ...(inst.reasonsFor
       ? inst.reasonsFor(fam)
       : [
-          ...why.slice(0, 3),
+          ...shown.slice(0, 3),
           ...exprWhy,
           ...(ifthen ? [{ kind: 'trait', label: ifthen.words, weight: 0.4, key: ifthen.facet, who: p.id } as Cause] : []),
         ]),
@@ -384,7 +393,8 @@ export function run(w: World, inst: Instance): Outcome | null {
       seenC.add(k);
       return true;
     })
-    .slice(0, 5);
+    .slice(0, against ? 4 : 5);
+  if (against) causes.push(stateCause(against, 0.3));
   const where =
     inst.where ??
     (feats.has('public') && inst.place && ['shout', 'sarcasm', 'dressdown', 'confront', 'walkout', 'speakup', 'rake'].includes(expr.id)

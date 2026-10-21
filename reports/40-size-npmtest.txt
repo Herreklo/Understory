@@ -1,0 +1,8 @@
+Round 40: npm test with the four on (the round's code, before its pre-registration), and the identity check with OFF=together against main 53af84f.
+3:> tsc --noEmit && npm run -s build && node scripts/browser-check.mjs && tsx src/tools/replay.ts && tsx src/tools/twoworlds.ts && tsx src/tools/grouptest.ts && tsx src/tools/boundarytest.ts && tsx src/tools/mathtest.ts && tsx src/tools/sigtest.ts && tsx src/tools/invariants.ts && tsx src/tools/demography.ts 6 20 && tsx src/tools/props.ts 5 2 9201 && tsx src/tools/coherence.ts 11 12 --fail
+27:6 worlds × 20 years, per decade per world: births 6.6 · deaths 9.6 · arrivals 4.1 · population 76 → 75
+29:demography ok
+30:props: 5 worlds (seeds 9201–9205, 2 present years), every property holds · 96s
+45:COHERENCE {"seeds":[11,12],"counts":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0}}
+npm test exit 0
+all identical

@@ -1,0 +1,103 @@
+Round 40's counter on round 39's code (tree 9cfe4e8, the four on), throwaway worlds 9001-9020, in two halves: the faults the fixes are for.
+fit: world 9001
+fit: world 9002
+fit: world 9003
+fit: world 9004
+fit: world 9005
+fit: world 9006
+fit: world 9007
+fit: world 9008
+fit: world 9009
+fit: world 9010
+  9001 decline: Libby turned down a job in the city. [had wanted out since 2017; had no wish to see anywhere else; people here depend on them; that is who Libby is: rooted in the town, through and through]
+  9001 makepeace: Lisa Sayer went to Tilly and offered to put the old business behind them. [Tilly was passed over for manager; Lisa Sayer got the job.; Tilly goes out of her way to avoid Lisa Sayer.; still sore about the manager's job (2025)]
+  9001 cold: Ivy froze Sophie Kemp out for weeks. [Sophie Kemp and Ivy are both after the headteacher's job, and it shows.; Sophie Kemp was passed over for headteacher; Ivy got the job.; still sore about the headteacher's job (2026)]
+  9001 cold: John went cold on Lynn and stayed that way for weeks. It was the third time, after 2025 and 2026. [Lynn was passed over for head mechanic; John got the job.; Lynn made sure people heard about every one of John's mistakes.; still sore about the head mechanic's job (2025)]
+  9001 avoid: Edward goes out of his way to avoid Ken. [Ken was not picked for the Night Shift; Edward got the place.; Ken made sure people heard about every one of Edward's mistakes. It had happened before, in 2026.; still sore about the place in the Night Shift (2023)]
+  9001 cold: Ivy froze Sophie Kemp out for weeks. It was not the first time. [Sophie Kemp and Ivy are both after the headteacher's job, and it shows.; Sophie Kemp was passed over for headteacher; Ivy got the job.; still sore about the headteacher's job (2026)]
+  9001 decline: Sarah turned down a job in the city. [had wanted out since 2022; money has never meant much to her; had no wish to see anywhere else; people here depend on them]
+  9001 want:lapsed: Tilly no longer talks about wanting to make things right with Alex. [had wanted it since 2025, and never went after it]
+  9001 needle: Edward picked holes in Ken's work in front of everyone. It had happened before, in 2024. [Ken was not picked for the Night Shift; Edward got the place.; Ken made sure people heard about every one of Edward's mistakes. It had happened before, in 2026.; still sore about the place in the Night Shift (2023)]
+  9001 needle: Edward picked holes in Ken's work in front of everyone. It had happened before, in 2024. [Ken was not picked for the Night Shift; Edward got the place.; Ken made sure people heard about every one of Edward's mistakes. It had happened before, in 2026.; still sore about the place in the Night Shift (2023)]
+  9001 outwork: Beth has been first in and last out, to show who should be chief officer. [Freya and Beth are both after the chief officer's job, and it shows.; Freya is ahead]
+  9001 want:lapsed: Terry no longer talks about wanting to make things right with Trevor. [had wanted it since 2026, and never went after it]
+  9001 outwork: Freya has been first in and last out, to show who should be chief officer. [Freya and Beth are both after the chief officer's job, and it shows.; Beth has been first in and last out, to show who should be chief officer.; Freya is ahead]
+  9001 decline: Sarah turned down a job in the city. [had wanted out since 2022; money has never meant much to her; had no wish to see anywhere else; people here depend on them]
+  9001 avoid: John goes out of his way to avoid Lynn. [Lynn was passed over for head mechanic; John got the job.; Lynn picked holes in John's work in front of everyone. It had happened before, in 2026.; still sore about the head mechanic's job (2025)]
+  9001 makepeace: Freya went to Eric and offered to put the old business behind them. [Eric was passed over for chief officer; Freya got the job.; still sore about the chief officer's job (2029)]
+  9001 makepeace: Freya went to Tilly and offered to put the old business behind them. [Tilly was passed over for chief officer; Freya got the job.; still sore about the chief officer's job (2029)]
+  9001 avoid: Ivy goes out of her way to avoid Sophie Kemp. [Sophie Kemp and Ivy are both after the headteacher's job, and it shows.; Sophie Kemp made sure Tilly heard about every one of Ivy's mistakes. It had happened before, in 2027.; still sore about the headteacher's job (2026)]
+  9001 want:lapsed: Tilly no longer talks about wanting to be heard playing guitar. [had wanted it since 2027, and never went after it]
+  9001 want:lapsed: Amelia no longer talks about wanting to be heard singing. [had wanted it since 2027, and never went after it]
+  9001 needle: Edward picked holes in Ken's work in front of everyone. It was the third time, after 2024 and 2028. [Ken was not picked for the Night Shift; Edward got the place.; Ken froze Edward out for weeks. It was the third time, after 2023 and 2024.; still sore about the place in the Night Shift (2023)]
+  9001 needle: Edward picked holes in Ken's work in front of everyone. It was the third time, after 2024 and 2028. [Ken was not picked for the Night Shift; Edward got the place.; Ken froze Edward out for weeks. It was the third time, after 2023 and 2024.; still sore about the place in the Night Shift (2023)]
+  9001 cold: John was civil to Lynn for weeks, and nothing more. Nobody was surprised any more: it had been happening since 2025. [Lynn was passed over for head mechanic; John got the job.; Lynn picked holes in John's work in front of everyone. It was the third time, after 2026 and 2029.; still sore about the head mechanic's job (2025)]
+  9001 cold: Ivy went cold on Sophie Kemp and stayed that way for weeks. Nobody was surprised any more: it had been happening since 2028. [Sophie Kemp and Ivy are both after the headteacher's job, and it shows.; Sophie Kemp made sure Tilly heard about every one of Ivy's mistakes. It had happened before, in 2027.; still sore about the headteacher's job (2026)]
+  9001 want:lapsed: Sylvia Myers no longer talks about wanting to be heard playing guitar. [had wanted it since 2028, and never went after it]
+  9001 cold: Ivy froze Sophie Kemp out for weeks. Nobody was surprised any more: it had been happening since 2028. [Sophie Kemp and Ivy are both after the headteacher's job, and it shows.; Sophie Kemp made sure Tilly heard about every one of Ivy's mistakes. Nobody was surprised any more: it had been happening since 2027.; still sore about the headteacher's job (2026)]
+  9001 makepeace: Sarah went to Mark and offered to put the old business behind them. [Mark was passed over for manager; Sarah got the job.; It came out that Mark had been running Sarah down.; still sore about the manager's job (2030)]
+  9001 needle: Sylvia Myers picked holes in Gary Lee's work in front of everyone. [Gary Lee was not picked for Saltwater; Sylvia Myers got the place.; Gary Lee confronted Sylvia Myers about it in front of everyone at the Anchor.; still sore about the place in Saltwater (2031)]
+  9001 needle: Sylvia Myers picked holes in Gary Lee's work in front of everyone. [Gary Lee was not picked for Saltwater; Sylvia Myers got the place.; Gary Lee confronted Sylvia Myers about it in front of everyone at the Anchor.; still sore about the place in Saltwater (2031)]
+  9001 makepeace: John went to Lynn and offered to put the old business behind them. [Lynn was passed over for head mechanic; John got the job.; Lynn picked holes in John's work in front of everyone. It was the third time, after 2026 and 2029.; still sore about the head mechanic's job (2025)]
+  9001 needle: Lynn picked holes in John's work in front of everyone. Nobody was surprised any more: it had been happening since 2026. [Lynn was passed over for head mechanic; John got the job.; John went to Lynn and offered to put the old business behind them.; still sore about the head mechanic's job (2025)]
+  9001 decline: Lisa Hughes turned down a job in the city. [no work here; had no wish to see anywhere else; money has never meant much to her; people here depend on them]
+  9001 makepeace: Karen Lyons went to Gary Lee and offered to put the old business behind them. [Gary Lee was passed over for foreman; Karen Lyons got the job.; Gary Lee goes out of his way to avoid Karen Lyons.; still sore about the foreman's job (2031)]
+  9001 cold: John was civil to Lynn for weeks, and nothing more. Nobody was surprised any more: it had been happening since 2025. [Lynn was passed over for head mechanic; John got the job.; Lynn picked holes in John's work in front of everyone. Nobody was surprised any more: it had been happening since 2026.; still sore about the head mechanic's job (2025)]
+  9001 decline: Libby turned down a job in the city. [had wanted out since 2017; had no wish to see anywhere else; people here depend on them; that is who Libby is: rooted in the town, through and through]
+  9001 needle: Lynn picked holes in John's work in front of everyone. Nobody was surprised any more: it had been happening since 2026. [Lynn was passed over for head mechanic; John got the job.; John was civil to Lynn for weeks, and nothing more. Nobody was surprised any more: it had been happening since 2025.; still sore about the head mechanic's job (2025)]
+  9001 decline: Oliver turned down a job in the city. [no work here; had no wish to see anywhere else; people here depend on them; rooted here: the sea, the people, the house; was afraid of getting hurt]
+  9001 needle: Lynn picked holes in John's work in front of everyone. Nobody was surprised any more: it had been happening since 2026. [Lynn was passed over for head mechanic; John got the job.; John was civil to Lynn for weeks, and nothing more. Nobody was surprised any more: it had been happening since 2025.; still sore about the head mechanic's job (2025)]
+  9001 decline: Eddie turned down a job in the city. [no work here; had no wish to see anywhere else; people here depend on them; rooted here: the sea, the people, the house]
+  9001 avoid: John goes out of his way to avoid Lynn. It had happened before, in 2029. [Lynn was passed over for head mechanic; John got the job.; Lynn picked holes in John's work in front of everyone. Nobody was surprised any more: it had been happening since 2026.; still sore about the head mechanic's job (2025)]
+FIT {"seeds":[9001,9010],"worlds":10,"lapses":134,"lapsesServed":47,"soreWinner":110,"concedeAhead":17,"contestActs":375,"actsApart":70,"cityDeclines":95,"cityAgainst":52,"cityNoWish":10,"kindsAll":24.942,"kindsTop":45.2,"perWorld":[{"seed":9001,"all":23.779,"top":51.667},{"seed":9002,"all":26.224,"top":49},{"seed":9003,"all":26.521,"top":49.333},{"seed":9004,"all":28,"top":47.333},{"seed":9005,"all":24.556,"top":36.333},{"seed":9006,"all":21.824,"top":45.667},{"seed":9007,"all":24.938,"top":49.667},{"seed":9008,"all":25.909,"top":42.667},{"seed":9009,"all":23.031,"top":36.667},{"seed":9010,"all":24.634,"top":43.667}]}
+fit: world 9011
+fit: world 9012
+fit: world 9013
+fit: world 9014
+fit: world 9015
+fit: world 9016
+fit: world 9017
+fit: world 9018
+fit: world 9019
+fit: world 9020
+  9011 avoid: Edward goes out of his way to avoid Leo. [Leo was passed over for skipper; Edward got the job.; Leo went to Edward and offered to put the old business behind them.; still sore about the skipper's job (2025)]
+  9011 decline: Bert Rudd turned down a job in the city. [no work here; people here depend on them; had no wish to see anywhere else; that is who Bert Rudd is: rooted in the town, through and through; it mattered too much to let go]
+  9011 want:lapsed: Sean no longer talks about wanting to make things right with Edward. [had wanted it since 2023, and never went after it]
+  9011 needle: Ruth Sayer picked holes in Ruth Berry's work in front of everyone. [Ruth Sayer and Ruth Berry are both after the head of the clinic's job, and it shows.; It came out that Ruth Berry had been running Ruth Sayer down to Gary to get the head of the clinic's job.; Ruth Berry is ahead]
+  9011 needle: Ruth Sayer picked holes in Ruth Berry's work in front of everyone. It was not the first time. [Ruth Sayer and Ruth Berry are both after the head of the clinic's job, and it shows.; It came out that Ruth Berry had been running Ruth Sayer down to Gary to get the head of the clinic's job.; Ruth Berry is ahead]
+  9011 concede: Ruth Berry told Ruth Sayer the job should go to Ruth Sayer. [Ruth Sayer and Ruth Berry are both after the head of the clinic's job, and it shows.; Ruth Sayer picked holes in Ruth Berry's work in front of everyone. It was not the first time.; Ruth Berry is ahead]
+  9011 concede: Ruth Berry told Ruth Sayer the job should go to Ruth Sayer. [Ruth Sayer and Ruth Berry are both after the head of the clinic's job, and it shows.; Ruth Sayer picked holes in Ruth Berry's work in front of everyone. It was not the first time.; Ruth Berry is ahead]
+  9011 decline: Molly turned down a job in the city. [had wanted out since 2009; had no wish to see anywhere else; people here depend on them; rooted here: the sea, the people, the house]
+  9011 decline: Molly turned down a job in the city. [had wanted out since 2009; had no wish to see anywhere else; people here depend on them; rooted here: the sea, the people, the house]
+  9011 decline: Maisie turned down a job in the city. [no work here; money has never meant much to her; people here depend on them]
+  9011 decline: Ralph turned down a job in the city. [no work here; people here depend on them; had no wish to see anywhere else; that is who Ralph is: will not leave the town again, not after the years away (back in 2029)]
+  9011 decline: Bert Rudd turned down a job in the city. [no work here; people here depend on them; had no wish to see anywhere else; that is who Bert Rudd is: rooted in the town, through and through; it mattered too much to let go]
+  9011 concede: Ruth Berry told Oliver Baker the job should go to Oliver Baker. [Oliver Baker and Ruth Berry are both after the head of the clinic's job, and it shows.; Oliver Baker has been first in and last out, to show who should be head of the clinic. Nobody was surprised any more: it had been happening since 2028.; Oliver Baker is ahead]
+  9011 decline: Maisie turned down a job in the city. [no work here; money has never meant much to her; people here depend on them]
+  9011 want:lapsed: Molly no longer talks about wanting to make things right with Karen. [had wanted it since 2031, and never went after it]
+  9011 decline: Sarah turned down a job in the city. [had wanted out since 2034; money has never meant much to her; that is who Sarah is: rooted in the town, through and through]
+  9012 decline: Maisie Newman turned down a job in the city. [no work here; had no wish to see anywhere else; people here depend on them; rooted here: the sea, the people, the house]
+  9012 outwork: Ralph has been first in and last out, to show who should be headteacher. It had happened before, in 2025. [Ivy Waller and Ralph are both after the headteacher's job, and it shows.; Ivy Waller has been first in and last out, to show who should be headteacher.; Ivy Waller is ahead]
+  9012 outwork: Ivy Waller has been first in and last out, to show who should be headteacher. It had happened before, in 2025. [Ivy Waller and Ralph are both after the headteacher's job, and it shows.; Ralph has been first in and last out, to show who should be headteacher. It had happened before, in 2025.; Ivy Waller is ahead]
+  9012 want:lapsed: Karen no longer talks about wanting to make things right with Ralph. [had wanted it since 2024, and never went after it]
+  9012 outwork: Ivy Waller has been first in and last out, to show who should be headteacher. It was the third time, after 2025 and 2026. [Ivy Waller and Ralph are both after the headteacher's job, and it shows.; Ralph has been first in and last out, to show who should be headteacher. It had happened before, in 2025.; Ivy Waller is ahead]
+  9012 outwork: Ralph has been first in and last out, to show who should be headteacher. It was the third time, after 2025 and 2026. [Ivy Waller and Ralph are both after the headteacher's job, and it shows.; Ivy Waller has been first in and last out, to show who should be headteacher. It was the third time, after 2025 and 2026.; Ivy Waller is ahead]
+  9012 makepeace: Arthur went to Ian Lee and offered to put the old business behind them. [Ian Lee was not picked for the Lanterns; Arthur got the place.; Ian Lee made a joke at Arthur's expense in front of everyone at the Anchor, and nobody laughed.; still sore about the place in the Lanterns (2027)]
+  9012 avoid: Arthur goes out of his way to avoid Ian Lee. [Ian Lee was not picked for the Lanterns; Arthur got the place.; Ian Lee made sure Stuart Baker heard about every one of Arthur's mistakes.; still sore about the place in the Lanterns (2027)]
+  9012 want:lapsed: Arthur no longer talks about wanting to be heard playing guitar. [had wanted it since 2026, and never went after it]
+  9012 makepeace: Arthur went to Ian Lee and offered to put the old business behind them. It had happened before, in 2028. [Ian Lee was not picked for the Lanterns; Arthur got the place.; Ian Lee made sure Stuart Baker heard about every one of Arthur's mistakes.; still sore about the place in the Lanterns (2027)]
+  9012 decline: Maisie Newman turned down a job in the city. [no work here; had no wish to see anywhere else; people here depend on them; rooted here: the sea, the people, the house]
+  9012 avoid: Ivy Waller goes out of her way to avoid Ruth Lyons. [Ruth Lyons was passed over for headteacher; Ivy Waller got the job.; Ruth Lyons goes out of her way to avoid Ivy Waller.; still sore about the headteacher's job (2030)]
+  9012 want:lapsed: Sophie no longer talks about wanting to be heard singing. [had wanted it since 2029, and never went after it]
+  9012 decline: Maisie Newman turned down a job in the city. [no work here; had no wish to see anywhere else; people here depend on them; rooted here: the sea, the people, the house]
+  9012 want:lapsed: Ellie no longer talks about wanting to make things right with Beth. [had wanted it since 2029, and never went after it]
+  9012 want:lapsed: Hannah no longer talks about wanting to make things right with Sarah Scott. [had wanted it since 2029, and never went after it]
+  9012 makepeace: Lily Reed went to Oliver and offered to put the old business behind them. [Oliver was passed over for skipper; Lily Reed got the job.; still sore about the skipper's job (2033)]
+  9012 decline: Greta Holmes turned down a job in the city. [no work here; had no wish to see anywhere else; people here depend on them; rooted here: the sea, the people, the house]
+  9012 want:lapsed: Ivy Waller no longer talks about wanting to make things right with Ralph Brook. [had wanted it since 2031, and never went after it]
+  9012 concede: Mary told Ruth Lyons the job should go to Ruth Lyons. [Ruth Lyons and Mary are both after the chief officer's job, and it shows.; Mary is ahead]
+  9012 makepeace: Sophie went to Oliver and offered to put the old business behind them. [Oliver and Sophie are both after the foreman's job, and it shows.; Oliver goes out of his way to avoid Sophie.; still sore about the foreman's job (2035)]
+  9013 concede: Sarah Lane told Sylvia Brook the job should go to Sylvia Brook. [Sarah Lane and Sylvia Brook are both after the foreman's job, and it shows.; Sarah Lane is ahead]
+  9013 decline: Eve Eden turned down a job in the city. [no work here; had no wish to see anywhere else; money has never meant much to her; that is who Eve Eden is: rooted in the town, through and through; it mattered too much to let go]
+  9013 decline: Vera Vaughan turned down a job in the city. [no work here; people here depend on them; had no wish to see anywhere else; that is who Vera Vaughan is: rooted in the town, through and through; it mattered too much to let go]
+FIT {"seeds":[9011,9020],"worlds":10,"lapses":98,"lapsesServed":30,"soreWinner":111,"concedeAhead":9,"contestActs":369,"actsApart":64,"cityDeclines":98,"cityAgainst":57,"cityNoWish":9,"kindsAll":25.025,"kindsTop":46.867,"perWorld":[{"seed":9011,"all":20.147,"top":39},{"seed":9012,"all":26.939,"top":52},{"seed":9013,"all":24.279,"top":45},{"seed":9014,"all":25.508,"top":46},{"seed":9015,"all":24.93,"top":46.667},{"seed":9016,"all":26.182,"top":53},{"seed":9017,"all":26.32,"top":54},{"seed":9018,"all":26.779,"top":51},{"seed":9019,"all":24.75,"top":43.333},{"seed":9020,"all":24.415,"top":38.667}]}

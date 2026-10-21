@@ -1,0 +1,62 @@
+Round 40, sized on throwaway worlds 9001-9020: src/tools/diag/fit.ts with OFF=together (main's engine).
+fit: world 9001
+fit: world 9002
+fit: world 9003
+fit: world 9004
+fit: world 9005
+fit: world 9006
+fit: world 9007
+fit: world 9008
+fit: world 9009
+fit: world 9010
+fit: world 9011
+fit: world 9012
+fit: world 9013
+fit: world 9014
+fit: world 9015
+fit: world 9016
+fit: world 9017
+fit: world 9018
+fit: world 9019
+fit: world 9020
+  9001 decline: Stella Vaughan turned down a job in the city. [no work here; people here depend on them; that is who Stella Vaughan is: rooted in the town, through and through; rooted here: the sea, the people, the house; it mattered too much to let go]
+  9001 decline: Sylvia turned down a job in the city. [had wanted out since 2010; people here depend on them; rooted here: the sea, the people, the house; that is who Sylvia is: rooted in the town, through and through; it mattered too much to let go]
+  9001 decline: Freya turned down a job in the city. [had wanted out since 2025; money has never meant much to her; had no wish to see anywhere else; people here depend on them]
+  9001 decline: Libby turned down a job in the city. [had wanted out since 2017; had no wish to see anywhere else; that is who Libby is: rooted in the town, through and through; rooted here: the sea, the people, the house]
+  9001 needle: Tilly picked holes in Sylvia's work in front of everyone. [Sylvia was passed over for chief officer; Tilly got the job.; would not be talked down to; not who Tilly thinks she is: meant for more than this; though it takes a lot to make her angry; is not one to hang back]
+  9001 needle: Tilly picked holes in Sylvia's work in front of everyone. It was not the first time. [Sylvia was passed over for chief officer; Tilly got the job.; would not be talked down to; not who Tilly thinks she is: meant for more than this; though it takes a lot to make her angry; is not one to hang back]
+  9001 decline: Libby turned down a job in the city. [had wanted out since 2017; had no wish to see anywhere else; people here depend on them; that is who Libby is: rooted in the town, through and through; it mattered too much to let go]
+  9001 decline: Harry turned down a job in the city. [no work here; people here depend on them; rooted here: the sea, the people, the house]
+  9001 decline: Sylvia turned down a job in the city. [had wanted out since 2010; people here depend on them; rooted here: the sea, the people, the house; that is who Sylvia is: rooted in the town, through and through; it mattered too much to let go]
+  9001 decline: Freya turned down a job in the city. [had wanted out since 2025; money has never meant much to her; had no wish to see anywhere else; people here depend on them]
+  9001 decline: Sophie Hughes turned down a job in the city. [had wanted out since 2028; had no wish to see anywhere else; it mattered too much to let go; rooted here: the sea, the people, the house]
+  9002 decline: Ken turned down a job in the city. [had wanted out since 2021; though he rarely looks back]
+  9002 decline: Agnes turned down a job in the city. [no work here; had no wish to see anywhere else; people here depend on them; rooted here: the sea, the people, the house; it mattered too much to let go]
+  9002 needle: Karen picked holes in Neil Lyons's work in front of everyone. [Neil Lyons was passed over for foreman; Karen got the job.; would not be talked down to; not who Karen thinks she is: meant for more than this; though it takes a lot to make her angry; slow to trust anyone at work since 2032]
+  9003 decline: Larry Holmes turned down a job in the city. [had wanted out since 2011; had no wish to see anywhere else; people here depend on them; rooted here: the sea, the people, the house]
+  9003 decline: Jonah Lane turned down a job in the city. [no work here; money has never meant much to him; people here depend on them; it mattered too much to let go]
+  9003 decline: Eric Nash turned down a job in the city. [no work here; had no wish to see anywhere else; people here depend on them; that is who Eric Nash is: rooted in the town, through and through]
+  9003 decline: Jonah Lane turned down a job in the city. [no work here; money has never meant much to him; people here depend on them; it mattered too much to let go]
+  9003 decline: Eric Nash turned down a job in the city. [no work here; had no wish to see anywhere else; people here depend on them; that is who Eric Nash is: rooted in the town, through and through]
+  9003 decline: Jonah Lane turned down a job in the city. [no work here; money has never meant much to him; people here depend on them; it mattered too much to let go]
+  9003 decline: Eve turned down a job in the city. [no work here; money has never meant much to her; had no wish to see anywhere else; people here depend on them; it mattered too much to let go]
+  9003 decline: Eve turned down a job in the city. [no work here; money has never meant much to her; had no wish to see anywhere else; people here depend on them; it mattered too much to let go]
+  9003 decline: Freya turned down a job in the city. [no work here; people here depend on them; rooted here: the sea, the people, the house]
+  9003 decline: Owen Rudd turned down a job in the city. [no work here; people here depend on them]
+  9003 decline: Nora turned down a job in the city. [no work here; people here depend on them; that is who Nora is: rooted in the town, through and through]
+  9004 decline: Ellie turned down a job in the city. [had wanted out since 2019; people here depend on them; that is who Ellie is: rooted in the town, through and through]
+  9004 needle: Peter picked holes in Eddie Berry's work in front of everyone. [Peter and Eddie Berry are both after the skipper's job, and it shows.; it has got personal; had run out of patience; had not forgiven it; thought it needed saying]
+  9004 needle: Eddie Berry picked holes in Peter's work in front of everyone. [Peter and Eddie Berry are both after the skipper's job, and it shows.; not who Eddie Berry thinks he is: says things to your face, after what was said behind his back in 2030; can't stand Peter]
+  9004 needle: Peter picked holes in Eddie Berry's work in front of everyone. It was not the first time. [Peter and Eddie Berry are both after the skipper's job, and it shows.; it has got personal; had run out of patience; had not forgiven it; thought it needed saying]
+  9004 outwork: Eddie Berry has been first in and last out, to show who should be skipper. [Peter and Eddie Berry are both after the skipper's job, and it shows.; likes things done properly and on time; despite: it has got personal]
+  9004 decline: Ellie turned down a job in the city. [had wanted out since 2019; people here depend on them; that is who Ellie is: rooted in the town, through and through]
+  9004 decline: Ellie turned down a job in the city. [had wanted out since 2019; people here depend on them; that is who Ellie is: rooted in the town, through and through]
+  9004 decline: Trevor turned down a job in the city. [no work here; had no wish to see anywhere else; people here depend on them; money has never meant much to him]
+  9005 needle: Freya picked holes in Mona's work in front of everyone. Nobody was surprised any more: it had been happening since 2013. [Mona was passed over for owner; Freya got the job.; would not be talked down to; had run out of patience; not who Freya thinks she is: meant for more than this; thought it needed saying]
+  9005 decline: Hannah turned down a job in the city. [no work here; had no wish to see anywhere else; people here depend on them; that is who Hannah is: rooted in the town, through and through; it mattered too much to let go]
+  9005 decline: Evan turned down a job in the city. [had wanted out since 2016; people here depend on them; it mattered too much to let go; rooted here: the sea, the people, the house]
+  9005 needle: Freya picked holes in Mona's work in front of everyone. Nobody was surprised any more: it had been happening since 2013. [Mona was passed over for owner; Freya got the job.; would not be talked down to; had run out of patience; not who Freya thinks she is: meant for more than this; thought it needed saying]
+  9005 decline: Hannah turned down a job in the city. [no work here; had no wish to see anywhere else; people here depend on them; that is who Hannah is: rooted in the town, through and through; it mattered too much to let go]
+  9005 needle: Freya picked holes in Mona's work in front of everyone. Nobody was surprised any more: it had been happening since 2013. [Mona was passed over for owner; Freya got the job.; would not be talked down to; had run out of patience; not who Freya thinks she is: meant for more than this; thought it needed saying]
+  9005 decline: Hannah turned down a job in the city. [no work here; had no wish to see anywhere else; people here depend on them; that is who Hannah is: rooted in the town, through and through; it mattered too much to let go]
+FIT {"seeds":[9001,9020],"worlds":20,"lapses":0,"lapsesServed":0,"soreWinner":0,"concedeAhead":0,"contestActs":541,"actsApart":68,"cityDeclines":205,"cityAgainst":118,"cityNoWish":19,"kindsAll":23.185,"kindsTop":42.05,"perWorld":[{"seed":9001,"all":24.309,"top":52},{"seed":9002,"all":23.839,"top":44},{"seed":9003,"all":20.872,"top":39.333},{"seed":9004,"all":23.943,"top":42.667},{"seed":9005,"all":23.803,"top":39},{"seed":9006,"all":20.971,"top":36.333},{"seed":9007,"all":22.329,"top":49},{"seed":9008,"all":22.857,"top":35.333},{"seed":9009,"all":23.468,"top":43},{"seed":9010,"all":24.926,"top":43.667},{"seed":9011,"all":21.387,"top":35.333},{"seed":9012,"all":24.216,"top":46},{"seed":9013,"all":23.597,"top":39.333},{"seed":9014,"all":23.841,"top":38.667},{"seed":9015,"all":24.111,"top":44.333},{"seed":9016,"all":22.101,"top":34.667},{"seed":9017,"all":23.644,"top":48.333},{"seed":9018,"all":24.571,"top":39.667},{"seed":9019,"all":23.378,"top":44},{"seed":9020,"all":21.547,"top":46.333}]}
