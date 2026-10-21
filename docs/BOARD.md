@@ -2217,3 +2217,14 @@ Why it was withdrawn: expectation 2, in the keep rule, asks for contests at leas
 What it showed: contests out of season are possible and read with fitting reasons (none of 165 contest acts gives a trait); a band place is contested about once in four world-decades, because two who want to be heard seldom stand around the same band at once; and the engine's contests are fewer than its wants because a post is scarce in time, not only in number: two people rarely want the same post in the same years. A round that adds stakes has to add things to contest (posts that open, places in bands, a house two people want, the yearly day), not only ways to notice a contest.
 
 What changes: nothing in the plan's order until Øystein has seen this; see SUMMARY.
+
+## Round M37 — size first, then register (21 Oct 2026, 00:25 Oslo; a change to how a round runs, agreed by Øystein the same night)
+
+Three of the four rounds of 20 Oct (35, 36, 38) were withdrawn before their tests because their registered numbers were guesses made before any code existed: a fold that would take 20–50% off a page took 2–13%; wants that would reach 62–72% of adults reached 56%; contests that would double on a baseline of about two a world-decade moved from 4.5 to 5.0. Each time the mechanism worked as designed and the expectation was what was wrong, and each withdrawal cost a pre-registration, a build and a night's order. What pre-registration protects is the test: fresh worlds, read blind, against a keep rule written before they are run. Sizing a change on throwaway worlds does not touch that.
+
+The change (`CLAUDE.md`, "An experiment", steps 2 and 3; the pull-request template; `docs/method/reading.md`):
+
+1. **Size first.** A round builds its change behind its switch and runs it only on throwaway seeds (9001+), with and without, to learn what it does and how much (its own count, kinds of line a life).
+2. **Then register, before any fresh world.** The pre-registration states what the change did on the throwaway worlds and what is expected on fresh ones. The keep rule rests on the blind reading and the gates, with one floor that says the mechanism works; other numbers are reported, not judged. The pushed commit is the timestamp: a fresh world run before it means the round was not pre-registered. After it, the code changes only to fix what breaks, each fix written in BOARD before the test.
+
+Nothing the engine does changes. **Kept** from round 39.

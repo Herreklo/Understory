@@ -18,7 +18,7 @@ Switch: OFF=
 
 **Outcome (one line, as in BOARD / SCALE.md):**
 
-- [ ] Pre-registration committed and pushed before any code (commit: )
+- [ ] Sized on throwaway worlds only; pre-registration committed and pushed before any fresh world was run (commit: )
 - [ ] Seeds claimed in `docs/seeds.md`, all fresh
 - [ ] The change sits behind the switch above, and CI shows the world identical to `main` with it off
 - [ ] Smoke run on throwaway seeds only

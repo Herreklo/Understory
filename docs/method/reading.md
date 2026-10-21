@@ -23,7 +23,7 @@ The pack, the brief and the key are committed before the reading, and the readin
 
 ## How a round uses it
 
-A pre-registration states one of two claims, before the code:
+A pre-registration states one of two claims, before any fresh world is run:
 
 - **Reads better:** the effect's one-sided 90% lower bound is above 0.
 - **Reads no worse** (for a change whose claim lies elsewhere, such as a fix to the record): the lower bound is above −0.3.
