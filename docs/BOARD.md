@@ -2324,7 +2324,7 @@ Reported, not judged: the faults fixed, on 3509–3528 (`fit.ts`): none on (0 of
 
 Read by the rules set beforehand: 1, 2, 3 and 4 hold. **Kept**: the four are on in the default engine; `OFF=together` turns them off together, and with them off each can be turned on alone. Round 36's finding is confirmed on a second pair of readings: the busiest lives read better again (+0.38, now +0.51), most of it through the kinds of happening added. Random adults read no worse but are not shown better (+0.33 then +0.22, lower bounds +0.02 and −0.07): the four mostly reach lives that already move, and the quiet majority is where the next gains are.
 
-## Round 41 — lines and reasons a reader can trust (pre-registered 21 Oct 2026, 10:30 Oslo, before any test world; sized first)
+## Round 41 — lines and reasons a reader can trust (pre-registered 21 Oct 2026, 10:29 Oslo, before any test world; sized first)
 
 Øystein's choice on 21 Oct ("start with 41"). In rounds 39 and 40, readers quoted 1,693 faults over four packs, in both arms alike. The commonest were the same every time, and most are not choices people make but the way the page says what happened:
 
