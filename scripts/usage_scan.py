@@ -1,8 +1,8 @@
 """Usage scan: reads this project's Claude Code transcripts and sums what each session, agent, model and kind of work used.
 
-Transcripts: ~/.claude/projects/-Users-oystein-code-Overstory/<session>.jsonl, subagents in <session>/subagents/ with a
-.meta.json each. Tokens are weighted by list price: relative weights, unverified as the plan's weights
-(docs/research/working-with-claude.md). Each request is counted once, though a message is spread over several lines
+Transcripts: ~/.claude/projects/-Users-oystein-Documents-GitHub-Understory/<session>.jsonl, subagents in <session>/subagents/ with a
+.meta.json each. Tokens are weighted by list price: relative weights,
+unverified as the plan's weights. Each request is counted once, though a message is spread over several lines
 and a copied session repeats its parent's messages; its output is the largest the lines report.
 
 Only usage fields and job metadata are read: tool inputs for tool names, file paths, script names and commit subjects,
@@ -11,18 +11,18 @@ descriptions, first prompt lines, paths and commit subjects is printed. Image pa
 no line but an assistant's (which carries no images) is held beyond HEAD bytes, the rest streams past and is searched
 only for the heads of image blocks, and a line with an image block is never parsed.
 
-  python3 tools/usage_scan.py                      totals per session and agent (the token study's view)
-  python3 tools/usage_scan.py jobs [--from 2026-10-20] [--to 2026-10-22] [--md] [--min 0.5]
+  python3 scripts/usage_scan.py                      totals per session and agent (the token study's view)
+  python3 scripts/usage_scan.py jobs [--from 2026-10-20] [--to 2026-10-22] [--md] [--min 0.5]
         one row per job (each main session and each subagent): date, model, summary, tokens, weighted cost, kind of
         work and what it produced; then the shares by kind, unit costs, and the plan readings found in the transcripts.
-        --md prints Markdown rows for docs/usage-log.md, jobs of at least --min per cent of the cost.
+        --md prints Markdown rows (a round's release notes), jobs of at least --min per cent of the cost.
 """
 import json, os, re, sys, glob, base64, struct, math, collections, subprocess, datetime
 from zoneinfo import ZoneInfo
 
-# ADAPTED for Understory: transcripts and repo from the environment
-ROOT = os.environ.get('USAGE_ROOT', '/root/.claude/projects/-home-claude')
-REPO = os.environ.get('USAGE_REPO', '/home/claude/the-lab')
+# Transcripts of this repo on the Mac and the repo itself; USAGE_ROOT and USAGE_REPO point elsewhere (a cloud session)
+REPO = os.environ.get('USAGE_REPO', os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+ROOT = os.environ.get('USAGE_ROOT', os.path.expanduser('~/.claude/projects/' + re.sub(r'[^A-Za-z0-9]', '-', REPO)))
 TZ = ZoneInfo('Europe/Oslo')
 HEAD = 1 << 16          # bytes of a line held at most; the rest of a longer line streams past
 IDLE = 20 * 60          # a gap between requests longer than this is waiting, not work
