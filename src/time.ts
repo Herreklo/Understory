@@ -28,6 +28,8 @@ import {
   addEmotion,
   topSources,
   year,
+  fit,
+  spanWords,
 } from './world';
 import { z01, curves, type Option, type Consideration } from './decide';
 import { decide, run, friendsOf, family } from './grammar';
@@ -609,7 +611,9 @@ function pursuitTick(w: World, p: Person) {
       (pu as any).lastCheck = w.t;
       if (hasWays(w, x)) {
         const what = stalled
-          ? `no progress for ${Math.round(((w.t - pu.lastGain) / 12) * 10) / 10} years`
+          ? fit()
+            ? `no progress for ${spanWords(w.t - pu.lastGain)}`
+            : `no progress for ${Math.round(((w.t - pu.lastGain) / 12) * 10) / 10} years`
           : `knocked back ${pu.setbacks} time${pu.setbacks > 1 ? 's' : ''}`;
         const ch = obstacle(w, p, x, wantLabel(w, p, x), what, undefined, (w.t - pu.since) / 12, pu.progress);
         if (ch === 'giveup') giveUp(w, p, x, (x as any).obstacleRec);
@@ -621,7 +625,11 @@ function pursuitTick(w: World, p: Person) {
           label: 'keep at it',
           considerations: [
             facetC(p, 'diligence', NONE, 1, 4),
-            pubC('invested', `${Math.max(1, Math.round((w.t - pu.since) / 12))} years in`, clamp((w.t - pu.since) / 60, 0, 1)),
+            pubC(
+              'invested',
+              fit() ? `${spanWords(w.t - pu.since)} in` : `${Math.max(1, Math.round((w.t - pu.since) / 12))} years in`,
+              clamp((w.t - pu.since) / 60, 0, 1),
+            ),
             privC('close', pu.progress > 0.6 ? 'so close' : 'a long way off', pu.progress, 1, 0.2, undefined, 0.45),
           ],
         },
@@ -632,7 +640,9 @@ function pursuitTick(w: World, p: Person) {
             privC(
               'stalled',
               stalled
-                ? `no progress for ${Math.round(((w.t - pu.lastGain) / 12) * 10) / 10} years`
+                ? fit()
+                  ? `no progress for ${spanWords(w.t - pu.lastGain)}`
+                  : `no progress for ${Math.round(((w.t - pu.lastGain) / 12) * 10) / 10} years`
                 : `knocked back ${pu.setbacks} time${pu.setbacks > 1 ? 's' : ''}`,
               stalled ? 0.8 : 0.5 + 0.15 * pu.setbacks,
               1,

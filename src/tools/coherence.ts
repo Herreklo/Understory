@@ -187,10 +187,10 @@ for (let seed = A; seed <= B; seed++) {
       p.events.map(i => w.events[i]),
       mine,
     );
-    for (const { e, cited, again } of page) {
+    for (const { e, cited, again, firstT } of page) {
       const why = shownCauses(e);
       lines.push(
-        `${year(e.t)}: ${plain(e.text)}${why.length ? ' [' + why.map(c => plain(c.label)).join('; ') + ']' : ''}${again ? ` (${againNote(again)})` : ''}`,
+        `${year(e.t)}: ${plain(e.text)}${why.length ? ' [' + why.map(c => plain(c.label)).join('; ') + ']' : ''}${again ? ` (${againNote(again, firstT)})` : ''}`,
       );
       for (const x of cited) lines.push(`${year(x.t)}: ${plain(x.text)}`);
       // ----- 6. A reason citing an event that is not on this page (not on the person's own list: unlisted, or someone else's) and that

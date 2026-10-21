@@ -1,0 +1,3170 @@
+{
+ "novelist-r1": {
+  "reader": "novelist",
+  "pairs": {
+   "P01": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "Audrey let Andy Lane take the blame for a mistake at work. Nobody was surprised any more: it had been happening since 2025."
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2031: Andy Lane put Eric Kemp off."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Andy Lane made a joke at Audrey's expense, and nobody laughed.  [Audrey let Andy Lane take the blame for a mistake at work. Nobody was surprised any more: it had been happening since 2025.; Audrey let Andy Lane take the blame for it (2035); likes having people around]"
+      }
+     ],
+     "good": [
+      "Ivan and Andy Lane drifted out of each other's lives.  [let the summer festival down (2028); they stopped seeing each other]",
+      "Andy Lane dragged up what Audrey did a few months back in front of everyone at the garage.  [Audrey let Andy Lane take the blame for a mistake at work. It had happened before, in 2025.; Audrey let Andy Lane take the blame for it (2030); had not forgotten]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Andy Lane got there: to become head of the clinic, after 12 years of wanting it.  [Andy Lane became head of the clinic.; will not leave a job half done; had wanted it since 2021]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Rose was found out: taking from the medicine cupboard.  [Rose took a little from the medicine cupboard.; had let it slide, as she does]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Andy Lane let Molly Ash go from the clinic.  [Molly Ash's work had been poor for months; would say it in front of anyone; Molly Ash's work has been poor for months]"
+      }
+     ],
+     "good": [
+      "Andy Lane froze at the first staff meeting.  [could not stop thinking about what might go wrong; though he is not one to hang back]",
+      "Andy Lane picked holes in Agnes Howell's work in front of everyone.  [Agnes Howell and Andy Lane are both after the head of the clinic's job, and it shows.; It came out that Agnes Howell had been running Andy Lane down to Rose.; Agnes Howell is still sore about the head of the clinic's job (2031)]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P02": {
+    "A": {
+     "score": 1,
+     "faults": [
+      {
+       "kind": "wording",
+       "quote": "Hal has not been back in years; a card at Christmas and nothing more.  [nothing much holding them here]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Hal sounded like a stranger on the phone, people say.  [nothing much holding them here]"
+      }
+     ],
+     "good": []
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "wording",
+       "quote": "Hal bought it the day they saw it.  [did not stop to think]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Hal has been talking about the new car for weeks.  [wanted the money]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Hal would not hear it from Eve; not after the head mechanic's job.  [Eve went to Hal and offered to put the old business behind them. It was the third time, after 2019 and 2029.; does not forget; Hal and Eve are both after the head mechanic's job, and it shows.]"
+      }
+     ],
+     "good": [
+      "Hal had left the wallet at home when the hat went round for Alice Fielding.  [Alice Fielding had a heart attack.; did not want to part with it; looks after his own first]",
+      "Hal skipped the drink afterwards, again.  [badly in debt; looks after his own first; would rather deal with it alone]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P03": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Ivy lied to cover a mistake at work.  [Edward Kemp took the credit for Ivy's work (2022)]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Noticed: Ivy rarely asks questions.  [though curious about everything]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Ivy can't stand Maisie.  [Maisie let Ivy take the blame for it (2034); Maisie let Ivy take the blame for it (2034); had run out of patience]"
+      }
+     ],
+     "good": [
+      "Stuart Fielding froze while the others went in for Ivy.  [Ivy went over the side at the harbour fleet.; bold about everything except physical danger]",
+      "Ivy told Edward Kemp exactly what was wrong with the plan to fish further out this winter.  [Edward Kemp asked what she really thought of the plan to fish further out this winter; would rather be straight about it; Edward Kemp came in after Ivy (2026)]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "At the council office, Ivy Nash would not go out on the water when the wind was up.  [was afraid of getting hurt]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Ivy Nash was passed over for headteacher; Thea Hughes got the job.  [Thea Hughes had the stronger record; had wanted it since 2032]"
+      },
+      {
+       "kind": "wording",
+       "quote": "Ivy Nash let slip she would want it, if it ever came up: to find work.  [wants to find work (since 2029)]"
+      }
+     ],
+     "good": [
+      "Ivy Nash resigned on the spot.  [Ivy Nash was passed over for skipper; Stella got the job.; would say it to anyone; had wanted it since 2025]",
+      "Terry Lane found reasons to be busy while Ivy Nash was going through it.  [Lisa Rudd let Ivy Nash go from the council office.; had his own life to get on with]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P04": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Jonah Vale went at Karen about it, and it got personal fast.  [Karen waited for a quiet evening to tell Jonah Vale that the children had been getting to her.]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Jonah Vale took a little from the trip money.  [thought nobody would notice; wanted the money; said what would work]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Jonah Vale and Hilda became friends.  [cards on Tuesdays at the Anchor brought them together]"
+      }
+     ],
+     "good": [
+      "Jonah Vale had begun to wonder whether to stay with Karen.  [the way Karen had come to talk to him]",
+      "Jonah Vale made a joke at Sean Vale's expense in front of everyone at the school, and nobody laughed.  [Jonah Vale was passed over for headteacher; Sean Vale got the job.; had wanted it since 2028; likes having people around]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Colin and Jonah Vale stopped seeing each other, and that was that.  [Colin is no longer first in at work every morning.]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Jonah Vale buried himself in work.  [in debt; would rather deal with it alone; generous with money, if nothing else]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Matt and Jonah Vale stopped seeing each other, and that was that.  [Jonah Vale is now out on the boat every weekend.; Matt can tell when someone is performing]"
+      }
+     ],
+     "good": [
+      "Jonah Vale put in the smallest coin he could find when the hat went round for Ellen.  [Ellen got caught in the saw at the sawmill.; did not want to part with it; short of money]",
+      "Jonah Vale sat Karen down and asked what was going on.  [Karen has not been herself for months; she keeps to herself and people have started to notice.; thinks the world of Karen; has a soft spot for anyone in trouble]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P05": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Sam Baker went in after Ellen without a second's thought.  [Ellen got caught in the saw at the sawmill.; shrinks in front of a crowd]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Ellen told Ben Brook the foreman's job would be his to win when it came up.  [a strong record; is not sure of Ben Brook]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Ellen got there: to make things right with Victor Lyons, after 3 years of wanting it.  [Ellen and Victor Lyons are on speaking terms again.; had wanted it since 2023]"
+      }
+     ],
+     "good": [
+      "Ivan confronted Ellen about it in front of everyone at the sawmill.  [Ivan was passed over for foreman; Ellen got the job.; that is who Ivan is: meant for more than this; felt it was owed]",
+      "Victor Lyons and Ellen are close again, after everything.  [Ellen came in after Victor Lyons (2034); does not like to judge]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Ellen congratulated Arthur Lee and meant it.  [It came out that Arthur Lee had been running Ellen down to Mark.; wanted to keep the peace; does not like to judge]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Peter has taken to teaching, like his mother, Ellen.  [grew up with Ellen at it; could wait it out]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Ellen cannot be in a room with Terry Brook for long.  [thought it needed saying; had run out of patience]"
+      }
+     ],
+     "good": [
+      "Arthur Lee resigned on the spot.  [Arthur Lee was passed over for skipper; Ellen got the job.; did not stop to think; stands up to the boss]",
+      "Karen kept quiet.  [Ellen tore into Terry Brook in front of everyone at the harbour fleet.; dreads being looked at; thinks highly of Ellen]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P06": {
+    "A": {
+     "score": 1,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "Molly has not been back in years; a card at Christmas and nothing more.  [nothing much holding them here; has never been one to look back]"
+      },
+      {
+       "kind": "wording",
+       "quote": "Molly sounded like a stranger on the phone, people say.  [nothing much holding them here; has never been one to look back]"
+      }
+     ],
+     "good": []
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "wording",
+       "quote": "Ivy told Molly exactly what was wrong with the plan.  [Molly asked what she really thought of the plan; respects Molly; is not one to hang back]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Molly listened to the end, and admitted Jonah Brook was right about some of it.  [Jonah Brook had a go at Molly about who did what in the house, and it was not about who did what in the house for long.; was not going to dwell on it; did not think it was about her]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Typical: Molly does not keep photographs, not even of Neil.  [has never been one to look back]"
+      }
+     ],
+     "good": [
+      "Molly bought a boat of her own.  [Molly retired after 14 years at the Old Bank Café.; had the money put by; not worn down]",
+      "The harbour day ran like clockwork; Molly had a list for everything.  [Molly took on organising the harbour day when nobody else would.; likes things done properly and on time; will not leave a job half done]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P07": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "Tom brought a song to the Night Shift, \"Saturday at the Garage\", and it did not come to much.  [though he sticks to what works; they genuinely like each other]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Maisie Nash and Larry Fielding drifted out of each other's lives.  [they stopped seeing each other; thought it needed saying]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Larry Fielding and Hannah buried the hatchet, 1 year after the manager's job."
+      }
+     ],
+     "good": [
+      "Larry Fielding told Freya no.  [Freya asked Larry Fielding straight out for money.; looks after his own first; helps with anything but money]",
+      "Hannah walked out in front of everyone at the Anchor.  [Hannah was passed over for manager; Larry Fielding got the job.; did not stop to think; cannot bear being shown up in front of people, not since 2024]"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "Larry Fielding was civil to Ralph Holmes for weeks, and nothing more. Nobody was surprised any more: it had been happening since 2016."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Larry Fielding went at Hilda Dale about money and getting on, and it got personal fast.  [it had been building between them (money and getting on); had not forgiven it; thought it needed saying]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Vera was found out: the cover-up came out.  [Vera lied to cover a mistake at work.; though she likes things in order]"
+      }
+     ],
+     "good": [
+      "Larry Fielding is no longer at the Anchor every Friday without fail.  [Beth dragged up what Larry Fielding did last year in front of everyone at the sawmill. It had happened before, in 2024.; it had shaken him; Beth is there too]",
+      "Larry Fielding tells the story of the day he froze better than anyone, and always against himself.  [Larry Fielding froze while the others went in for Eddie. It had happened before, in 2024.; that sense of humour]"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P08": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "Alice let Ian go from the Anchor.  [Ian's work had been poor for months; Ian's work has been poor for months; Ian let Alice take the blame for it (2025)]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Alice gave Colin Lee money toward getting out.  [can afford it; is fond of Colin Lee]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Alice tells the story of the missed deadline better than anyone, and always against herself.  [Alice missed the deadline on the end-of-year figures and the whole place paid for it.; that sense of humour]"
+      }
+     ],
+     "good": [
+      "John Myers told Alice exactly what was wrong with the plan to put on music every Friday.  [Alice asked what he really thought of the plan to put on music every Friday; Alice was there when it mattered (2028); thinks highly of Alice]",
+      "Ellie told Alice what Alice wanted to hear.  [Alice asked what she really thought of the plan to put on music every Friday; felt it was owed; turns into a flatterer around anyone with power]"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "out of nowhere",
+       "quote": "Alice Lyons told people what Sid Sayer had told Alice Lyons in confidence.  [Sid Sayer told Alice Lyons how bad things had got.]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Alice Lyons took a little from the expenses.  [thought nobody would notice]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Hannah dragged up what Alice Lyons did a few months back in front of everyone at the Courier.  [Alice Lyons was found out: taking from the expenses.; felt slighted; Alice Lyons found out taking from the till (2035)]"
+      }
+     ],
+     "good": [
+      "Alice Lyons told Sid Sayer exactly what was wrong with the plan to go online and stop the Saturday print. It had happened before, in 2028.  [Sid Sayer asked what she really thought of the plan to go online and stop the Saturday print; had nothing to prove; despite: Sid Sayer took the credit for Alice Lyons's work (2031)]",
+      "Gary Eden pulled the face that always ended these; Alice Lyons was in no mood for it.  [Alice Lyons raised money and getting on with Gary Eden carefully, starting with what Alice Lyons needed.; was not going to dwell on it; it was put gently]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P09": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "Lynn brought a song to the Night Shift, \"After March\", and it did not come to much.  [though she sticks to what works; they genuinely like each other]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Eric Holmes got there: to be heard playing guitar, after 22 years of wanting it.  [Eric Holmes played the Anchor's open night and did well.; will not leave a job half done; had wanted it since 2014]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Eric Holmes seized a spot at the Anchor's open night.  [has been playing guitar for years; wanted to know; is not one to hang back]"
+      }
+     ],
+     "good": [
+      "Eric Holmes met every word of it with a reason it was not his fault.  [Ruth Tanner had a go at Eric Holmes about never going anywhere, and it was not about never going anywhere for long.; not who Eric Holmes thinks he is: the calm one]",
+      "Eric Holmes gave Sarah the money, and made sure Sarah knew the cost.  [Sarah asked Eric Holmes straight out for money.; could not stand to see Sarah go without; can spare it]"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Eric Holmes no longer talks about wanting to become head of the clinic.  [had wanted it since 2027, and never went after it]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Nothing had changed since 2000: Ruth Tanner had stopped bringing things up with Eric Holmes.  [Ruth Tanner let his hours at the clinic go again.; together since 1998]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Eric Holmes took a little from the medicine cupboard.  [thought nobody would notice]"
+      }
+     ],
+     "good": [
+      "Lily made a joke at Eric Holmes's expense in front of everyone at the clinic, and nobody laughed.  [strain had been building: loneliness, no one close, years without a step up; had run out of patience; likes having people around]",
+      "Eric Holmes now plays cards at the Anchor on Tuesdays.  [What Eric Holmes had wanted for 2 years was gone.; it had shaken him]"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P10": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Andy found reasons to be busy while Karen was going through it.  [Karen was hospitalised with pneumonia.; has never been one to look back; the first to help when someone is really in trouble]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Andy went at Molly about it, and it got personal fast.  [Molly talked to Andy about the bills, gently, as something Molly needed rather than something Andy had done.]"
+      },
+      {
+       "kind": "wording",
+       "quote": "Andy and Ellie Newman (b. 1950) have become friends.  [cards on Tuesdays at the Anchor brought them together; does not like to judge; has energy for everything]"
+      }
+     ],
+     "good": [
+      "Andy could see something was wrong with Molly, and said nothing.  [Molly has not been herself for months; she keeps to herself and people have started to notice.; has never been one to look back; dreads being looked at]",
+      "Andy went to pieces during the visit from head office at the school.  [dreads being looked at]"
+     ]
+    },
+    "B": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Molly brought up how little time he gave the family with Andy, and within a minute it was about everything Andy had ever done.  [it had been building between them (how little time he gave the family); it mattered too much to let go; endlessly patient with family]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Molly brought Andy something back from the next town over, for no reason.  [notices what Andy needs; together since 1991]"
+      }
+     ],
+     "good": [
+      "Andy had left the wallet at home when the hat went round for Alice Baker.  [Alice Baker had a stroke.; did not want to be seen; said what would work]"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P11": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Alan has started telling people he means to put on a summer festival on the quay.  [is not one to hang back; not one to start things]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "The summer festival that Alan put on was the best night the town had had in years.  [Alan has started telling people he means to put on a summer festival on the quay.; likes things done properly and on time; 2 of the helpers let it down]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Tess told Alan everything, the parts nobody else knew.  [carrying something nobody knew; needed someone to talk to; trusts Alan]"
+      }
+     ],
+     "good": [
+      "Alan was back to normal with Tess, as if what Tess did a few months back were forgotten.  [Tess took the credit for a year that Alan had carried.; does not like to judge; had heard from Maisie that Tess took on organising the harbour day when nobody else would (2028)]",
+      "Alan has started playing with Colin.  [Colin put his name down for the open night.; would follow Colin anywhere; needed someone to lean on]"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Alan turned down a job in the city.  [money has never meant much to him; people here depend on them; that is who Alan is: will not leave the town again, not after the years away (back in 2033)]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Alan shied away from a spot at the Anchor's open night.  [has been singing for years; vocals getting good; that is who Alan is: rooted in the town, through and through]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Sophie Hughes and Alan buried the hatchet, 1 year after the place in the Late Ferry."
+      }
+     ],
+     "good": [
+      "Alan came back to the town after 4 years away.  [rooted here: the sea, the people, the house; values loved ones]",
+      "Sophie Hughes left North of Here, quietly: there was a baby at home.  [Ruth was born to Alan and Sophie Hughes.; they genuinely like each other]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P12": {
+    "A": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "out of nowhere",
+       "quote": "Molly and Matt Sayer are both after the foreman's job, and it shows.  [Sam will step down as foreman at the sawmill next year.; neither will give way]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Sam and Matt Sayer lost touch.  [Sam is no longer first in at work every morning.]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Tara Moore went cold on Matt Sayer and stayed that way for weeks.  [Matt Sayer told Tara Moore exactly what was wrong with the plan to open on Sundays.; Matt Sayer came through on the rush job (2024); would rather be on her own]"
+      }
+     ],
+     "good": [
+      "Matt Sayer took a little from the till.  [wanted the money; in debt]"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Matt Sayer kept it to himself.  [Nora Holmes finally told Matt Sayer what had been kept back.; had given his word; that is who Matt Sayer is: someone who says it straight]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Matt Sayer cannot be in a room with Eric Lee for long.  [they see freedom completely differently]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Matt Sayer skipped the drink afterwards, again.  [Ryan Sayer died of a sudden heart attack, aged 78.; would rather wait it out than fight; wanted to be left alone]"
+      }
+     ],
+     "good": [
+      "Tara and Matt Sayer split up.  [Matt Sayer had stopped wanting it; Tara rolled her eyes at Matt Sayer and talked to Matt Sayer like a child about it (2035)]",
+      "Greta went to Matt Sayer and apologised.  [wanted to put things right with Matt Sayer; thinks the world of Matt Sayer; Matt Sayer came round to see Greta every week (2030)]"
+     ]
+    },
+    "prefer": "B"
+   }
+  }
+ },
+ "novelist-r2": {
+  "reader": "novelist",
+  "pairs": {
+   "P13": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "Nothing had changed since 2022: Ken had stopped bringing things up with Ivy."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "thought it needed saying"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "not one to chase things"
+      }
+     ],
+     "good": [
+      "carrying something nobody knew; Ken buried himself in work.",
+      "would rather deal with it alone; wanted to be left alone"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "wording",
+       "quote": "every spare hour goes on to make things right with Oliver"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Oliver no longer rings his mother every Sunday evening."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Alex dropped everything for Ken.  [Ken was ill; likes things done properly and on time]"
+      }
+     ],
+     "good": [
+      "thought Ken had it coming; had not forgotten",
+      "Ken dropped hints to Ben Lyons without ever quite asking.; danger has never stopped him; could not stand to see Ken go without"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P14": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "Ivy speaks first in a room."
+      },
+      {
+       "kind": "repeat",
+       "quote": "Ivy told Bert to count her in for the summer festival. Nobody was surprised any more: it had been happening since 2003."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Edward Rudd no longer rings his mother every Sunday evening."
+      }
+     ],
+     "good": [
+      "Greta died in her sleep, aged 93.; it hit hard",
+      "it was put gently; wanted to keep the peace"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "Nothing had changed since 2022: Ken had stopped bringing things up with Ivy."
+      },
+      {
+       "kind": "wording",
+       "quote": "(the third time since 2030)"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Ivy emptied her wallet into the hat for Lynn."
+      }
+     ],
+     "good": [
+      "Evan died in his sleep, aged 83.; it hit hard",
+      "carrying something nobody knew; trusts Ivy"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P15": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "Beth told Bert to count her in for the summer festival. Nobody was surprised any more: it had been happening since 2003."
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Andy went to Beth and apologised."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Beth dropped everything for Toby Sands.  [Toby Sands was ill; likes things done properly and on time]"
+      }
+     ],
+     "good": [
+      "did not think it was about her; thinks highly of Sean Sayer",
+      "it mattered too much to let go; everything Beth said sounded like an attack by now"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "the only one in the running"
+      },
+      {
+       "kind": "wording",
+       "quote": "Beth Sands talked to Owen about the drinking, gently, as something Beth Sands needed rather than something Owen had done at the shore road, with people listening."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "wants to become owner at the Old Bank Café (since 2021)"
+      }
+     ],
+     "good": [
+      "Susie told Beth Sands what was wrong with Beth Sands's plan, in that tone (2034); shone when it counted (2034); they kept seeking each other out",
+      "Beth Sands backed Sam Berry for the job (2034)"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P16": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Hannah Hale took a little from the timber account.  [said what would work; Ian took the credit for Hannah Hale's work (2027)]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Hannah Hale got what she had wanted for a year: marry Arthur Moore."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Edward Ash and Hannah Hale drifted out of each other's lives.  [Edward Ash started work at the clinic.]"
+      }
+     ],
+     "good": [
+      "does not think she is better than anyone; that is who Hannah Hale is: the one people come to",
+      "Arthur Moore was diagnosed with cancer.; needed someone to talk to"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "wording",
+       "quote": "attachment avoidance: keeps people at a distance, even this one"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Hannah had left the wallet at home when the hat went round for Lisa.  [Lisa had a heart attack.; did not want to be seen; said what would work]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Hannah and Oscar Tanner stopped seeing each other, and that was that.  [they stopped seeing each other]"
+      }
+     ],
+     "good": [
+      "Hannah had a heart attack.; needed someone to talk to; it mattered too much to let go",
+      "Audrey Moore died of a sudden heart attack, aged 69.; it hit hard"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P17": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "came through on the end-of-year figures (2023)"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Andy slips away early.  [would rather be on his own]"
+      },
+      {
+       "kind": "wording",
+       "quote": "(the third time since 2029)"
+      }
+     ],
+     "good": [
+      "strain had been building: dealing with people all day at the Old Bank Café, the weight of being owner, illness; had not forgiven it; Lily Shaw told people what Andy had told her in confidence (2026)",
+      "Andy and Hannah divorced.; it hit hard"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Andy took a little from the till.  [said what would work]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Andy turned every point back on Ellen."
+      },
+      {
+       "kind": "wording",
+       "quote": "Ellen raised whether he still cared with Andy carefully, starting with what Ellen needed at the shore road, with people listening."
+      }
+     ],
+     "good": [
+      "Andy was found out: taking from the till.; it hit hard; it happened at work",
+      "Andy kept away just when Una needed people.; Andy wasn't there for Una when it mattered (2026)"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P18": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "wording",
+       "quote": "Arthur Moore took Rose along: plays cards at the Anchor on Tuesdays."
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Audrey Moore went to Arthur Moore and apologised."
+      },
+      {
+       "kind": "false line",
+       "quote": "Arthur Moore put in the smallest coin he could find when the hat went round for Sean Reed."
+      }
+     ],
+     "good": [
+      "wanted to keep the peace; respects Lily Shaw",
+      "age 66; drinking since 2026"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Typical: Arthur is always the last into the sawmill and the first out."
+      },
+      {
+       "kind": "false line",
+       "quote": "Arthur is back to normal the next day.  [lets things go]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "puts other people first"
+      }
+     ],
+     "good": [
+      "that is who Arthur is: never turns anyone away, because someone once did not turn him away (2029)",
+      "Ryan found reasons to be busy while Arthur was going through it.; would not be talked down to; Ryan wasn't there for Arthur when it mattered (2027)"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P19": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "Sarah tells the story of the day she froze better than anyone, and always against herself."
+      },
+      {
+       "kind": "false line",
+       "quote": "came through on the rush job (2031)"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "At the Anchor, Sarah was the first to say how things ought to be done.  [does what people do]"
+      }
+     ],
+     "good": [
+      "would not be talked down to; would rather be on her own",
+      "Grace Lane died of a sudden heart attack, aged 76."
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "wording",
+       "quote": "At the sawmill, Sarah has the the gutters on a rota pinned to the noticeboard in the hall, and Lynn is on it."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Nora no longer reads late into every night."
+      },
+      {
+       "kind": "repeat",
+       "quote": "Sarah tells the story of the day she froze better than anyone, and always against herself."
+      }
+     ],
+     "good": [
+      "whether to stay with Lynn; 31 years together; that is who Sarah is: the one who holds things together",
+      "Mona retired after nine years at the sawmill.; two people who both need to be the one who matters"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P20": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Mark is no longer at the Anchor every Friday without fail.  [Ivy Sayer died of a sudden heart attack, aged 60.]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Mark and Alice stopped seeing each other, and that was that.  [Mark no longer spends every spare hour fixing something in the shed.]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Mark has started telling people he means to open a café in the old bank."
+      }
+     ],
+     "good": [
+      "Mark took the credit for a year that Alan Newman had carried.; would say it in front of anyone; Mark took the credit for Alan Newman's work (2034)",
+      "Ivy Sayer died of a sudden heart attack, aged 60.; had the money put by; not worn down"
+     ]
+    },
+    "B": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "wording",
+       "quote": "Mark Baker went to pieces during the day the council came round at the sawmill."
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Mark Baker let how little time they had together go again."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Mark Baker and Ryan stopped seeing each other, and that was that.  [they stopped seeing each other]"
+      }
+     ],
+     "good": [
+      "did not want to be seen; helps with anything but money"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P21": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Tom had been doing the better work; had wanted it since 2035"
+      },
+      {
+       "kind": "wording",
+       "quote": "At the harbour fleet, Greta changed their plans for everyone else again."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Greta went out into the storm.  [a storm came in]"
+      }
+     ],
+     "good": [
+      "would not give ground; despite: had heard from Ben that Greta put in more than anyone when the hat went round for John (2031)",
+      "the harbour day needed someone to run it; never thinks it is about her; could not stop thinking about what might go wrong"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Greta kept away just when Hannah needed people.  [Hannah was signed off with a bad back.; will not leave a job half done]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Greta can tell when someone is performing"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Tom and Greta picked up where they had left off."
+      }
+     ],
+     "good": [
+      "Toby let slip he would want it, if it ever came up: to become foreman at the sawmill.; a strong record; Toby is after it",
+      "could not stand to see Hannah go without; that is who Greta is: the one people come to"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P22": {
+    "A": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "Mary started on Trevor about never going anywhere, and it was \"you always\" and \"you never\" from there."
+      },
+      {
+       "kind": "repeat",
+       "quote": "Trevor had an answer for everything, and none of it was \"you're right\"."
+      },
+      {
+       "kind": "false line",
+       "quote": "Saltwater played the Anchor, and \"No Rain Tonight\" got them called back twice."
+      }
+     ],
+     "good": [
+      "badly in debt; looks after her own first; would rather deal with it alone",
+      "Stella Tanner asked Mary straight out for money.; looks after her own first; did not want to part with it"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Mary got there: a house of her own, after 3 years of wanting it."
+      },
+      {
+       "kind": "false line",
+       "quote": "Mary and Kate Baker became friends."
+      },
+      {
+       "kind": "wording",
+       "quote": "Mary found out taking from the till (2031)"
+      }
+     ],
+     "good": [
+      "Mary let Neil Berry take the blame for a mistake at work.; Mary let Neil Berry take the blame for it (2026); is not fond of Mary",
+      "knows how to take the heat out of a row; did not think it was about him"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P23": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "strain had been building: dealing with people all day at the Anchor, bad terms with Beth, no one close"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Victor and Ben Baker picked up where they had left off."
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Alan went to Victor and apologised."
+      }
+     ],
+     "good": [
+      "wanted the money; Agnes Waller let Victor take the blame for it (2034)",
+      "Freya dragged up what Victor did last year.; it had shaken him"
+     ]
+    },
+    "B": {
+     "score": 1,
+     "faults": [],
+     "good": [
+      "homesick; though he rarely looks back"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P24": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "that is who Mona is: not made for one place"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Mona and Eddie Lee have become friends."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "will not leave a job half done"
+      }
+     ],
+     "good": [
+      "Colin Holmes died of a sudden heart attack, aged 78.; it hit hard",
+      "money ran short; had been saving since 2029"
+     ]
+    },
+    "B": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Lily Holmes has taken to teaching, like her mother, Mona."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Mona is now out in the garden every morning from spring to autumn.  [Mary and Mona lost touch.; it had shaken her]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Mona keeps old things, mentions old friends."
+      }
+     ],
+     "good": [
+      "Hannah was not picked for Red Sky; Mona got the place.; likes Mona; shrinks in front of a crowd",
+      "could not stand to see Agnes Waller go without; doubts Agnes Waller can pull it off"
+     ]
+    },
+    "prefer": "A"
+   }
+  }
+ },
+ "socialworker-r1": {
+  "reader": "socialworker",
+  "pairs": {
+   "P01": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Mary told Andy Lane she had no time for the summer festival. It had happened before, in 2028."
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2031: Andy Lane put Eric Kemp off."
+      },
+      {
+       "kind": "repeat",
+       "quote": "Lisa told Andy Lane to count her in for the summer festival. It was the third time, after 2028 and 2032."
+      }
+     ],
+     "good": [
+      "Audrey let Andy Lane take the blame for it (2030); had not forgotten",
+      "could not stand to see Audrey go without; money has never meant much to him"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Agnes Howell and Andy Lane buried the hatchet, three years after the head of the clinic's job."
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2033: Sally was found out: taking from the medicine cupboard."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Sid made sure everyone knew Andy Lane had carried the clinic that year.  [Andy Lane's work had been strong all year; does not like to judge]"
+      }
+     ],
+     "good": [
+      "could not stop thinking about what might go wrong; though he is not one to hang back",
+      "Molly Ash's work had been poor for months; would say it in front of anyone"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P02": {
+    "A": {
+     "score": 1,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "Hal sounded like a stranger on the phone, people say.  [nothing much holding them here]"
+      }
+     ],
+     "good": []
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "out of nowhere",
+       "quote": "2028: Hal bought it the day they saw it.  [did not stop to think]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Ken Fielding told Hal no.  [Hal dropped hints to Ken Fielding without ever quite asking.; thought rules are for people who get caught; did not want to part with it]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Hal would not hear it from Eve; not after the head mechanic's job."
+      }
+     ],
+     "good": [
+      "years of badly in debt; though he would rather manage alone",
+      "Oscar has a name for Hal that has caught on, and Hal knows it.; had run out of patience; had not forgiven it"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P03": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Ivy lied to cover a mistake at work.  [Edward Kemp took the credit for Ivy's work (2022)]"
+      },
+      {
+       "kind": "false line",
+       "quote": "2034: Noticed: Ivy rarely asks questions.  [though curious about everything]"
+      },
+      {
+       "kind": "wording",
+       "quote": "Ivy can't stand Maisie.  [Maisie let Ivy take the blame for it (2034); Maisie let Ivy take the blame for it (2034); had run out of patience]"
+      }
+     ],
+     "good": [
+      "Stuart Fielding let Ivy take the blame for it (2026); would say it in front of anyone",
+      "Ivy kept away just when Molly needed people.; had run out of patience; Ivy wasn't there for Molly when it mattered (2030)"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "At the council office, Ivy Nash would not go out on the water when the wind was up."
+      },
+      {
+       "kind": "wording",
+       "quote": "By now Ivy Nash was someone who kept to herself; nobody remarked on it any more.  [years of lost the job at the council office]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2030: Ivy Nash stopped drinking.  [for Evan Brook; though her life is usually a muddle]"
+      }
+     ],
+     "good": [
+      "Ivy Nash was passed over for skipper; Stella got the job.; would say it to anyone; had wanted it since 2025",
+      "Lisa Rudd let Ivy Nash go from the council office.; it had shaken her"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P04": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Jonah Vale slipped a folded note into the hat for Eve when nobody was looking.  [Steve Kemp died of a sudden heart attack, aged 72.; money is fine; looks after his own first]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "2034: Jonah Vale and Grace have become friends.  [cards on Tuesdays at the Anchor brought them together; they want the same things from life]"
+      },
+      {
+       "kind": "wording",
+       "quote": "had heard from Tilly that Tom Fielding took Tilly aside afterwards and said exactly what Tom Fielding thought (2031)"
+      }
+     ],
+     "good": [
+      "the way Karen had come to talk to him",
+      "What Jonah Vale had wanted for 1 year was gone.; it hit hard"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Colin and Jonah Vale stopped seeing each other, and that was that.  [Colin is no longer first in at work every morning.]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Jonah Vale buried himself in work.  [in debt; would rather deal with it alone; generous with money, if nothing else]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Jonah Vale got there: a boat of his own, within the year.  [Jonah Vale bought a boat of his own.; had wanted it since 2026]"
+      }
+     ],
+     "good": [
+      "in debt; wanted the money; asking for help worked last time",
+      "Karen has not been herself for months; she keeps to herself and people have started to notice.; thinks the world of Karen; has a soft spot for anyone in trouble"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P05": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Sam Baker went in after Ellen without a second's thought.  [Ellen got caught in the saw at the sawmill.; shrinks in front of a crowd]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Ellen told Ben Brook the foreman's job would be his to win when it came up.  [a strong record; is not sure of Ben Brook]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Ellen got there: to make things right with Victor Lyons, after 3 years of wanting it."
+      }
+     ],
+     "good": [
+      "Ivan was passed over for foreman; Ellen got the job.; that is who Ivan is: meant for more than this; felt it was owed",
+      "Ellen came in after Victor Lyons (2034); does not like to judge"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Peter has taken to teaching, like his mother, Ellen.  [grew up with Ellen at it; could wait it out]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Ellen congratulated Arthur Lee and meant it.  [It came out that Arthur Lee had been running Ellen down to Mark.; wanted to keep the peace; does not like to judge]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2026: Ellen cannot be in a room with Terry Brook for long.  [thought it needed saying; had run out of patience]"
+      }
+     ],
+     "good": [
+      "contempt: looks down on the people closest",
+      "Terry Brook's work had been poor for months; would say it in front of anyone; can't stand Terry Brook"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P06": {
+    "A": {
+     "score": 1,
+     "faults": [
+      {
+       "kind": "wording",
+       "quote": "2032: Molly missed another family do."
+      },
+      {
+       "kind": "repeat",
+       "quote": "[nothing much holding them here; has never been one to look back]"
+      }
+     ],
+     "good": []
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "out of nowhere",
+       "quote": "2028: Ben Brook died of a sudden heart attack, aged 47.  [age 47; health had worn down]"
+      },
+      {
+       "kind": "wording",
+       "quote": "Ivy told Molly exactly what was wrong with the plan.  [Molly asked what she really thought of the plan; respects Molly; is not one to hang back]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Typical: Molly does not keep photographs, not even of Neil."
+      }
+     ],
+     "good": [
+      "the harbour day needed someone to run it; does not panic; had room for it",
+      "Molly retired after 14 years at the Old Bank Café.; had the money put by; not worn down"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P07": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "Tom brought a song to the Night Shift, \"Holding On (the Sawmill)\", and it did not come to much."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Maisie Nash and Larry Fielding drifted out of each other's lives.  [they stopped seeing each other; thought it needed saying]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Larry Fielding and Hannah buried the hatchet, 1 year after the manager's job."
+      }
+     ],
+     "good": [
+      "Freya believed Larry Fielding disliked her (wrongly)",
+      "looks after his own first; helps with anything but money"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "2026: Larry Fielding let Matt Myers go from the sawmill."
+      },
+      {
+       "kind": "repeat",
+       "quote": "Larry Fielding would not hear it from Ralph Holmes; not after the foreman's job."
+      },
+      {
+       "kind": "false line",
+       "quote": "Larry Fielding started on Hilda Dale about her hours at the council office, and it was \"you always\" and \"you never\" from there."
+      }
+     ],
+     "good": [
+      "it had shaken him; Beth is there too",
+      "Larry Fielding picked Tilly Shaw's work apart in front of everyone; would not be talked down to; the criticism was unfair"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P08": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "wording",
+       "quote": "[Ian's work had been poor for months; Ian's work has been poor for months; Ian let Alice take the blame for it (2025)]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Alice gave Colin Lee money toward getting out.  [can afford it; is fond of Colin Lee]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2026: Hannah was found out: taking from the till."
+      }
+     ],
+     "good": [
+      "John Myers has not been himself for months; he keeps to himself and people have started to notice.; wanted to be there for John Myers; that is who Alice is: the one people come to",
+      "would rather deal with it alone"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "out of nowhere",
+       "quote": "2035: Alice Lyons took a little from the expenses.  [thought nobody would notice]"
+      },
+      {
+       "kind": "wording",
+       "quote": "felt slighted; Alice Lyons found out taking from the till (2035)"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Alice Lyons told people what Sid Sayer had told Alice Lyons in confidence.  [Sid Sayer told Alice Lyons how bad things had got.]"
+      }
+     ],
+     "good": [
+      "the rush job landed on the Courier; had room for it; it had to be right",
+      "Oliver Lyons died in his sleep, aged 80.; wanted to be there for Agnes Scott; that is who Alice Lyons is: the one people come to"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P09": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Eric Holmes got there: to be heard playing guitar, after 22 years of wanting it."
+      },
+      {
+       "kind": "repeat",
+       "quote": "Lynn brought a song to the Night Shift, \"After March\", and it did not come to much."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Eric Holmes seized a spot at the Anchor's open night.  [has been playing guitar for years; wanted to know; is not one to hang back]"
+      }
+     ],
+     "good": [
+      "not who Eric Holmes thinks he is: the calm one",
+      "Ellen Sayer picked Eric Holmes's work apart in front of everyone; would say it to anyone; is easy in his own skin"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "2030: Eric Holmes no longer talks about wanting to become head of the clinic.  [had wanted it since 2027, and never went after it]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2032: Eric Holmes has let it be known he wants to be head of the clinic too.  [Lily has been first in and last out for months.; a strong record; wants to get on]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2034: Eric Holmes took a little from the medicine cupboard.  [thought nobody would notice]"
+      }
+     ],
+     "good": [
+      "Leo Tanner died of a sudden heart attack, aged 69.; needed someone to talk to",
+      "Evan Hughes played the Anchor's open night and fell apart.; wants to be heard playing guitar (since 2030)"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P10": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Andy found reasons to be busy while Karen was going through it.  [Karen was hospitalised with pneumonia.; has never been one to look back; the first to help when someone is really in trouble]"
+      },
+      {
+       "kind": "wording",
+       "quote": "Andy and Ellie Newman (b. 1950) have become friends."
+      },
+      {
+       "kind": "repeat",
+       "quote": "Trevor Moore confronted Andy about it in front of everyone at the school. It was the third time, after 2025 and 2029."
+      }
+     ],
+     "good": [
+      "Andy had a heart attack.; disappears when someone really needs them",
+      "Sid Vale kept away just when Andy needed people.; dreads being looked at"
+     ]
+    },
+    "B": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "Molly brought Andy something back from the next town over, for no reason.  [notices what Andy needs; together since 1991]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Molly brought up how little time he gave the family with Andy, and within a minute it was about everything Andy had ever done."
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2033: Molly was hospitalised with pneumonia.  [age 64]"
+      }
+     ],
+     "good": [
+      "Evan Brook was back in hospital.; thinks the world of Evan Brook; the first to help when someone is really in trouble"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P11": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Alan has started telling people he means to put on a summer festival on the quay.  [is not one to hang back; not one to start things]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "The summer festival that Alan put on was the best night the town had had in years.  [Alan has started telling people he means to put on a summer festival on the quay.; likes things done properly and on time; 2 of the helpers let it down]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Sam told Alan to count him in for the summer festival. Nobody was surprised any more: it had been happening since 2020."
+      }
+     ],
+     "good": [
+      "everything Maisie said sounded like an attack by now",
+      "Kate missed the deadline on her part of the summer festival and the whole place paid for it.; does not like to judge; thinks the world of Kate"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Alan turned down a job in the city.  [money has never meant much to him; people here depend on them; that is who Alan is: will not leave the town again, not after the years away (back in 2033)]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Sophie Hughes and Alan buried the hatchet, 1 year after the place in the Late Ferry."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Alan shied away from a spot at the Anchor's open night.  [has been singing for years; vocals getting good; that is who Alan is: rooted in the town, through and through]"
+      }
+     ],
+     "good": [
+      "Ruth was born to Alan and Sophie Hughes.; they genuinely like each other",
+      "rooted here: the sea, the people, the house; values loved ones"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P12": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Molly and Matt Sayer are both after the foreman's job, and it shows.  [Sam will step down as foreman at the sawmill next year.; neither will give way]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Sam and Matt Sayer lost touch.  [Sam is no longer first in at work every morning.]"
+      },
+      {
+       "kind": "wording",
+       "quote": "Matt Sayer got what he had wanted for 3 years: make things right with Sam."
+      }
+     ],
+     "good": [
+      "wanted the money; in debt",
+      "had wanted it since 2031, and never went after it"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Matt Sayer kept it to himself.  [Nora Holmes finally told Matt Sayer what had been kept back.; had given his word; that is who Matt Sayer is: someone who says it straight]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2034: Matt Sayer cannot be in a room with Eric Lee for long.  [they see freedom completely differently]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "that is who Matt Sayer is: the one people come to"
+      }
+     ],
+     "good": [
+      "Ryan Sayer died of a sudden heart attack, aged 78.; would rather wait it out than fight; wanted to be left alone",
+      "Matt Sayer had stopped wanting it"
+     ]
+    },
+    "prefer": "B"
+   }
+  }
+ },
+ "socialworker-r2": {
+  "reader": "socialworker",
+  "pairs": {
+   "P13": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "2027: Ken started trying to put things right with Oliver, and tells everyone.  [wants to make things right with Oliver (since 2024); not worn down; not one to chase things]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "2034: Ken and Sean Hughes stopped seeing each other, and that was that.  [they stopped seeing each other; thought it needed saying]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "2035: Nothing had changed since 2022: Ken had stopped bringing things up with Ivy.  [Ken let money and getting on go again.; together since 2018]"
+      }
+     ],
+     "good": [
+      "2027: Ivy sat Ken down and asked what was going on.  [Ken has not been himself for months; he keeps to himself and people have started to notice.; wanted to be there for Ken; not who Ivy thinks she is: the one who holds things together]",
+      "2027: Ken told Ivy it was nothing.  [Ivy sat Ken down and asked what was going on.; would rather deal with it alone; wanted to be left alone]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "2027: Ken started trying to put things right with Oliver, and tells everyone.  [wants to make things right with Oliver (since 2026); not worn down; not one to chase things]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "2035: Ben Lyons gave Ken help, and made sure Ken knew the cost.  [Ken dropped hints to Ben Lyons without ever quite asking.; danger has never stopped him; could not stand to see Ken go without]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "2027: Ken no longer has Sunday dinner with the family every week.  [every spare hour goes on to make things right with Oliver]"
+      }
+     ],
+     "good": [
+      "2027: Eddie dragged up what Ken did last year.  [Ken kept away just when Eddie needed people.; thought Ken had it coming; had not forgotten]",
+      "2035: Eddie could see something was wrong with Ken, and said nothing.  [Ken has not been himself for months; he keeps to himself and people have started to notice.; had let it slide, as he does]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P14": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "2034: Ivy told Bert to count her in for the summer festival. Nobody was surprised any more: it had been happening since 2003.  [Bert has started telling people he means to put on a summer festival on the quay.; could not stand to see Bert go without; believes Bert can do it]"
+      },
+      {
+       "kind": "false line",
+       "quote": "2030: Ivy kept it to herself.  [Steve told Ivy how bad things had got.; that is who Ivy is: the one who holds things together; thinks the world of Steve]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "2034: Ivy and Edward Rudd stopped seeing each other, and that was that.  [Edward Rudd became owner at the Old Bank Café.]"
+      }
+     ],
+     "good": [
+      "2032: Ivy no longer sings with the choir every Thursday.  [Greta died in her sleep, aged 93.; it hit hard]",
+      "2027: Ivy gave up on it: to make things right with Hilda.  [no progress for a year and a half; has given up before; had been at it since 2025]"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "2028: Ivy had promised Evan to put in a word for them, and did it.  [likes things done properly and on time; that is who Ivy is: the one who holds things together]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "2035: Nothing had changed since 2022: Ken had stopped bringing things up with Ivy.  [Ken let money and getting on go again.; together since 2018]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "2034: Una finally told Ivy what had been kept back.  [carrying something nobody knew; trusts Ivy; Ivy had promised Una it, and did it (2024)]"
+      }
+     ],
+     "good": [
+      "2035: Ivy no longer plays cards at the Anchor on Tuesdays.  [Evan died in his sleep, aged 83.; it hit hard]",
+      "2033: Ivy now plays cards at the Anchor on Tuesdays.  [Nora Howell died in her sleep, aged 81.; it hit hard]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P15": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "2034: Sean Sayer told Beth exactly what was wrong with the plan to go online and stop the Saturday print. It had happened before, in 2031.  [Beth asked what he really thought of the plan to go online and stop the Saturday print; could not bring himself to lie; would rather be straight about it]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2031: Andy went to Beth and apologised.  [wanted to put things right with Beth; wanted to keep the peace; thinks the world of Beth]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "2034: Beth told Bert to count her in for the summer festival. Nobody was surprised any more: it had been happening since 2003.  [Bert has started telling people he means to put on a summer festival on the quay.; believes Bert can do it; thinks the world of Bert]"
+      }
+     ],
+     "good": [
+      "2031: Beth took it, and kept her head down.  [Sean Sayer told Beth exactly what was wrong with the plan to go online and stop the Saturday print.; did not think it was about her; thinks highly of Sean Sayer]",
+      "2032: Oliver started on Beth about it, and it was \"you always\" and \"you never\" from there.  [Beth talked to Oliver about the children, gently, as something Beth needed rather than something Oliver had done.; it mattered too much to let go; everything Beth said sounded like an attack by now]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "2034: Beth Sands became head of the clinic.  [the only one in the running; likes things done properly and on time]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "2034: Beth Sands told Sam Berry the head of the clinic's job would be his to win when it came up.  [is not sure of Sam Berry; a fair record]"
+      },
+      {
+       "kind": "wording",
+       "quote": "2034: Beth Sands talked to Owen about the drinking, gently, as something Beth Sands needed rather than something Owen had done at the shore road, with people listening.  [it had been building between them (the drinking); keeps it to the matter in hand; was not going to dwell on it]"
+      }
+     ],
+     "good": [
+      "2035: Owen had a stroke.  [age 64; drinking since 2033]",
+      "2034: Owen turned every point back on Beth Sands.  [Beth Sands talked to Owen about the drinking, gently, as something Beth Sands needed rather than something Owen had done at the shore road, with people listening.; hears every complaint as an attack; defensiveness: hears every complaint as an attack]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P16": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "2029: Hannah Hale took a little from the timber account.  [said what would work; Ian took the credit for Hannah Hale's work (2027)]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "2028: Edward Ash and Hannah Hale drifted out of each other's lives.  [Edward Ash started work at the clinic.]"
+      },
+      {
+       "kind": "wording",
+       "quote": "2033: Hannah Hale had a go at Arthur Moore about it, and it was not about that for long.  [Arthur Moore started on Hannah Hale about how little time she gave the family, and it was \"you always\" and \"you never\" from there.; it mattered too much to let go; it came at them as an attack]"
+      }
+     ],
+     "good": [
+      "2026: Ruth kept away just when Hannah Hale needed people. It had happened before, in 2022.  [Hannah Hale was ill; had let it slide, as she does; has never been one to look back]",
+      "2032: Arthur Moore finally told Hannah Hale what had been kept back.  [Arthur Moore was diagnosed with cancer.; needed someone to talk to]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "2033: Andy told Hannah it was over.  [whether to stay with Hannah; they had grown apart; had been thinking of leaving for 2 years]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "2032: Hannah had left the wallet at home when the hat went round for Lisa.  [Lisa had a heart attack.; did not want to be seen; said what would work]"
+      },
+      {
+       "kind": "wording",
+       "quote": "2033: Andy and Hannah divorced.  [Andy told Hannah it was over.; Hannah started on Andy about it, and it was \"you always\" and \"you never\" from there (2033); attachment avoidance: keeps people at a distance, even this one]"
+      }
+     ],
+     "good": [
+      "2027: Hannah no longer sings with the choir every Thursday.  [Audrey Moore died of a sudden heart attack, aged 69.; it hit hard]",
+      "2026: Hannah said nothing and got on with it.  [Ruth found reasons to be busy while Hannah was going through it.; did not think it was about her; respects Ruth]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P17": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "2033: Andy told Hannah it was over.  [whether to stay with Hannah; they had grown apart; had been thinking of leaving for 2 years]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "2035: Andy tells the story of the day he froze better than anyone, and always against himself.  [Andy froze at the first staff meeting.; genuinely quick]  (the third time since 2029)"
+      },
+      {
+       "kind": "wording",
+       "quote": "2033: Andy and Hannah divorced.  [Andy told Hannah it was over.; Hannah started on Andy about it, and it was \"you always\" and \"you never\" from there (2033); attachment avoidance: keeps people at a distance, even this one]"
+      }
+     ],
+     "good": [
+      "2029: Andy was civil to Lily Shaw for weeks, and nothing more.  [strain had been building: dealing with people all day at the Old Bank Café, the weight of being owner, illness; had not forgiven it; Lily Shaw told people what Andy had told her in confidence (2026)]",
+      "2033: Andy now reads late into every night.  [Andy and Hannah divorced.; it hit hard]"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "2030: Andy took a little from the till.  [said what would work]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2027: Andy and Ellen got married.  [together since 2026; they had grown close]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "2035: Andy and Ellen had stopped talking about anything that mattered; they were polite with each other, and that was all.  [together since 2026]"
+      }
+     ],
+     "good": [
+      "2030: Andy walked out of the Old Bank Café to start again somewhere else.  [Andy was found out: taking from the till.; it hit hard; it happened at work]",
+      "2034: Andy missed the deadline on the audit and the whole place paid for it.  [the audit landed on the harbour fleet; dreads being looked at; could not stop thinking about what might go wrong]"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P18": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "wording",
+       "quote": "2026: Arthur Moore took Rose along: plays cards at the Anchor on Tuesdays.  [had heard from Terry that Rose slipped a folded note into the hat for Ian when nobody was looking, though Terry made light of it (2026)]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "2030: Arthur Moore played Lily Shaw's song as if it were Arthur Moore's own.  [Lily Shaw brought a song to the Late Ferry, \"The Sunday at the Point\", and everyone knew at once it was the best thing they had.; wanted to keep the peace; respects Lily Shaw]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "2028: Audrey Moore and Arthur Moore drifted out of each other's lives.  [Arthur Moore retired after 19 years at the clinic.]"
+      }
+     ],
+     "good": [
+      "2030: Una was hospitalised with pneumonia.  [age 66; drinking since 2026]",
+      "2032: Arthur Moore finally told Hannah Hale what had been kept back.  [Arthur Moore was diagnosed with cancer.; needed someone to talk to]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "2031: Typical: Arthur is always the last into the sawmill and the first out.  [does no more than he has to]"
+      },
+      {
+       "kind": "false line",
+       "quote": "2029: Arthur is back to normal the next day.  [lets things go]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "2030: Typical: Arthur goes quiet and tense before big moments.  [could not stop thinking about what might go wrong]"
+      }
+     ],
+     "good": [
+      "2027: Arthur now has two pints at the Anchor most evenings.  [Audrey Moore died of a sudden heart attack, aged 69.; it hit hard]",
+      "2033: Arthur came round to see Alice every week.  [Oscar Tanner died after a long illness, aged 75.; that is who Arthur is: never turns anyone away, because someone once did not turn him away (2029); has a soft spot for anyone in trouble]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P19": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "2029: Sarah and Larry drifted out of each other's lives.  [they stopped seeing each other]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "2029: Sarah tells the story of the day she froze better than anyone, and always against herself.  [Sarah froze at the first staff meeting.; that sense of humour]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2032: Lynn and Sarah started seeing each other.  [they kept running into each other]"
+      }
+     ],
+     "good": [
+      "2029: Sarah no longer rings her mother every Sunday evening.  [Grace Lane died of a sudden heart attack, aged 76.]",
+      "2032: Sarah froze Oliver out for weeks.  [Oliver told Sarah exactly what was wrong with the plan to put on music every Friday.; would not be talked down to; would rather be on her own]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "wording",
+       "quote": "2035: At the sawmill, Sarah has the the gutters on a rota pinned to the noticeboard in the hall, and Lynn is on it.  [likes things done properly and on time]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "2029: Sarah and Nora lost touch.  [Nora no longer reads late into every night.]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "2035: Sarah and Mona drifted out of each other's lives.  [Mona retired after nine years at the sawmill.; two people who both need to be the one who matters]"
+      }
+     ],
+     "good": [
+      "2030: Sarah decided to stay with Lynn and give it another go. Nobody was surprised any more: it had been happening since 2019.  [whether to stay with Lynn; 31 years together; that is who Sarah is: the one who holds things together]",
+      "2028: Molly dragged up what Sarah did last year in front of everyone at the sawmill. It had happened before, in 2026.  [Sarah dragged up what Molly did last year in front of everyone at the sawmill.; thought Sarah had it coming; Sarah dragged up the old business (2027)]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P20": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "2029: Mark is no longer at the Anchor every Friday without fail.  [Ivy Sayer died of a sudden heart attack, aged 60.]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "2036: Mark and Alice stopped seeing each other, and that was that.  [Mark no longer spends every spare hour fixing something in the shed.]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2027: Neil and Mark lost touch.  [nothing brought them together any more]"
+      }
+     ],
+     "good": [
+      "2036: Alan Newman dragged up what Mark did last year in front of everyone at the Old Bank Café.  [Mark took the credit for a year that Alan Newman had carried.; would say it in front of anyone; Mark took the credit for Alan Newman's work (2034)]",
+      "2030: Hannah let Mark finish, and said: fair enough.  [Mark waited for a quiet evening to tell Hannah that how little time they had together had been getting to him.; it was put gently; knows how to take the heat out of a row]"
+     ]
+    },
+    "B": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "wording",
+       "quote": "2032: Mark Baker went to pieces during the day the council came round at the sawmill.  [dreads being looked at]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2035: Alex and Mark Baker lost touch.  [they stopped seeing each other]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "2027: Mark Baker and Alex have become friends.  [does not like to judge]"
+      }
+     ],
+     "good": [
+      "2032: Mark Baker put in the smallest coin he could find when the hat went round for Sam.  [Sam needed surgery.; did not want to be seen; helps with anything but money]"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P21": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "2036: Tom was passed over for skipper; Greta got the job.  [Tom had been doing the better work; had wanted it since 2035]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2028: Greta went out into the storm.  [a storm came in]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "2034: Sylvia has been first in and last out, to show who should be skipper. It was the third time, after 2028 and 2031.  [Greta and Sylvia are both after the skipper's job, and it shows.; Greta has been first in and last out, to show who should be skipper.; Greta is ahead]"
+      }
+     ],
+     "good": [
+      "2036: Sylvia confronted Greta about it in front of everyone at the harbour fleet.  [Sylvia was passed over for skipper; Greta got the job.; would not give ground; despite: had heard from Ben that Greta put in more than anyone when the hat went round for John (2031)]",
+      "2028: Greta studied her shoes when they asked who would organise the harbour day.  [the harbour day needed someone to run it; never thinks it is about her; could not stop thinking about what might go wrong]"
+     ]
+    },
+    "B": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "2032: Greta kept away just when Hannah needed people.  [Hannah was signed off with a bad back.; will not leave a job half done]"
+      },
+      {
+       "kind": "false line",
+       "quote": "2033: Ellie kept turning up at Greta's door with something or other.  [Peter Newman died of a sudden heart attack, aged 66.; wanted to be there for Greta; not who Ellie thinks she is: the one who holds things together]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "2035: Mona and Greta stopped seeing each other, and that was that.  [they stopped seeing each other; Greta can tell when someone is performing]"
+      }
+     ],
+     "good": [
+      "2034: Greta no longer talks about wanting to become foreman at the sawmill.  [had wanted it since 2030, and never went after it]"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P22": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "2027: Mary started on Trevor about never going anywhere, and it was \"you always\" and \"you never\" from there.  [it had been building between them (never going anywhere); it had been building for months; had run out of patience]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "2031: Mary has not missed a night when Saltwater played since.  [Saltwater played the Anchor, and \"No Rain Tonight\" got them called back twice.]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "2026: Mary and Ben drifted out of each other's lives.  [they stopped seeing each other]"
+      }
+     ],
+     "good": [
+      "2032: Mary skipped the drink afterwards, again.  [badly in debt; looks after her own first; would rather deal with it alone]",
+      "2034: Mary made an excuse to Stella Tanner.  [Stella Tanner asked Mary straight out for money.; looks after her own first; did not want to part with it]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "2028: Mary got there: a house of her own, after 3 years of wanting it.  [Mary bought a house of her own.; though she rarely does more than she has to; had wanted it since 2026]"
+      },
+      {
+       "kind": "false line",
+       "quote": "2031: Ellie Tanner dragged up what Mary did last year in front of everyone at the garage.  [Mary was found out: taking from the parts bill.; thought Mary had it coming; Mary found out taking from the till (2031)]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "2034: Mary and Kate Baker became friends.  [they run in the same crowd; they want the same things from life]"
+      }
+     ],
+     "good": [
+      "2033: Neil Berry was back to normal with Mary, as if what Mary did last year were forgotten. It was the third time, after 2027 and 2031.  [Mary let Neil Berry take the blame for a mistake at work. It had happened before, in 2026.; had let it go long ago; does not think he is better than anyone]",
+      "2034: By now Mary was someone who kept to herself; nobody remarked on it any more.  [years of carrying something nobody knew; would rather be on her own]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P23": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "2035: Arthur went cold on Victor and stayed that way for weeks.  [strain had been building: dealing with people all day at the Anchor, bad terms with Beth, no one close; would rather be on his own; cannot bear being shown up in front of people, not since 2028]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2029: Victor took it, and kept his head down.  [Agnes Waller picked Victor's work apart in front of everyone; did not think it was about him; could wait it out]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "2027: Ellie Tanner and Victor became friends."
+      }
+     ],
+     "good": [
+      "2034: Victor took a little from the expenses.  [wanted the money; Agnes Waller let Victor take the blame for it (2034)]",
+      "2030: Victor no longer sings with the choir every Thursday.  [Freya dragged up what Victor did last year.; it had shaken him]"
+     ]
+    },
+    "B": {
+     "score": 1,
+     "faults": [
+      {
+       "kind": "out of nowhere",
+       "quote": "2027: Molly Waller died after a long illness, aged 80.  [age 80; health had worn down]"
+      }
+     ],
+     "good": [
+      "2028: Victor rang from the city asking after everyone.  [homesick; though he rarely looks back]"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P24": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "2031: Mona bought the big trip abroad.  [Colin Holmes died of a sudden heart attack, aged 78.; had the money put by; not worn down]"
+      },
+      {
+       "kind": "false line",
+       "quote": "2035: Mona took a job in the city.  [no work here; wanted to know; that is who Mona is: not made for one place]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "2031: Amelia wasn't there for Mona when it mattered.  [Colin Holmes died of a sudden heart attack, aged 78.; will not leave a job half done; disappears when someone really needs them]"
+      }
+     ],
+     "good": [
+      "2031: Ellen Baker looked in on Mona most days.  [Colin Holmes died of a sudden heart attack, aged 78.; thinks the world of Mona; Mona put in more than anyone when the hat went round for Ellen Baker (2029)]",
+      "2030: The money Mona had put by for a boat of her own went.  [money ran short; had been saving since 2029]"
+     ]
+    },
+    "B": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "2033: Lily Holmes has taken to teaching, like her mother, Mona.  [grew up with Mona at it; could wait it out]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "2027: Mona owned up to a mistake at work.  [would rather be straight about it; could not bring herself to lie; money is fine]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2033: Mona is now out in the garden every morning from spring to autumn.  [Mary and Mona lost touch.; it had shaken her]"
+      }
+     ],
+     "good": [
+      "2033: Mona turned down a job in the city.  [word came of work in the city; people here depend on them; money has never meant much to her]"
+     ]
+    },
+    "prefer": "A"
+   }
+  }
+ },
+ "player-r1": {
+  "reader": "player",
+  "pairs": {
+   "P01": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Andy Lane made a joke at Audrey's expense, and nobody laughed.  [Audrey let Andy Lane take the blame for a mistake at work. Nobody was surprised any more: it had been happening since 2025.; Audrey let Andy Lane take the blame for it (2035); likes having people around]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2032: Stella Ash told Andy Lane she had no time for the summer festival."
+      },
+      {
+       "kind": "repeat",
+       "quote": "Lisa told Andy Lane to count her in for the summer festival. It was the third time, after 2028 and 2032.  [Andy Lane has started telling people he means to put on a summer festival on the quay.; could not stand to see Andy Lane go without; believes Andy Lane can do it]"
+      }
+     ],
+     "good": [
+      "Andy Lane dragged up what Audrey did a few months back in front of everyone at the garage.  [Audrey let Andy Lane take the blame for a mistake at work. It had happened before, in 2025.; Audrey let Andy Lane take the blame for it (2030); had not forgotten]",
+      "Andy Lane pulled the face that always ended these, and Audrey laughed despite herself.  [Audrey started on Andy Lane about money and getting on, and it was \"you always\" and \"you never\" from there.; did not think it was about him; they still gave each other the benefit of the doubt]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Agnes Howell and Andy Lane buried the hatchet, three years after the head of the clinic's job."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Andy Lane went to Agnes Howell and apologised.  [It came out that Agnes Howell had been running Andy Lane down to Rose.; did not think it was about him; could wait it out]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Andy Lane let Molly Ash go from the clinic.  [Molly Ash's work had been poor for months; would say it in front of anyone; Molly Ash's work has been poor for months]"
+      }
+     ],
+     "good": [
+      "Andy Lane froze at the first staff meeting.  [could not stop thinking about what might go wrong; though he is not one to hang back]",
+      "Andy Lane picked holes in Agnes Howell's work in front of everyone.  [Agnes Howell and Andy Lane are both after the head of the clinic's job, and it shows.; It came out that Agnes Howell had been running Andy Lane down to Rose.; Agnes Howell is still sore about the head of the clinic's job (2031)]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P02": {
+    "A": {
+     "score": 1,
+     "faults": [
+      {
+       "kind": "wording",
+       "quote": "Hal sounded like a stranger on the phone, people say.  [nothing much holding them here]"
+      }
+     ],
+     "good": []
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Hal and Eve are both after the head mechanic's job, and it shows.; Hal goes out of his way to avoid Eve. It was the third time, after 2018 and 2027.; still sore about the head mechanic's job (2014)"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Hal bought it the day they saw it.  [did not stop to think]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Hal has been talking about the new car for weeks.  [wanted the money]"
+      }
+     ],
+     "good": [
+      "Hal skipped the drink afterwards, again.  [badly in debt; looks after his own first; would rather deal with it alone]",
+      "Hal had left the wallet at home when the hat went round for Alice Fielding.  [Alice Fielding had a heart attack.; did not want to part with it; looks after his own first]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P03": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Ivy lied to cover a mistake at work.  [Edward Kemp took the credit for Ivy's work (2022)]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "2033: Ivy is now out in the garden every morning from spring to autumn."
+      },
+      {
+       "kind": "false line",
+       "quote": "Noticed: Ivy rarely asks questions.  [though curious about everything]"
+      }
+     ],
+     "good": [
+      "Ivy told Edward Kemp exactly what was wrong with the plan to fish further out this winter.  [Edward Kemp asked what she really thought of the plan to fish further out this winter; would rather be straight about it; Edward Kemp came in after Ivy (2026)]",
+      "Stuart Fielding froze while the others went in for Ivy.  [Ivy went over the side at the harbour fleet.; bold about everything except physical danger]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "wording",
+       "quote": "By now Ivy Nash was someone who kept to herself; nobody remarked on it any more.  [years of lost the job at the council office]"
+      },
+      {
+       "kind": "false line",
+       "quote": "At the council office, Ivy Nash would not go out on the water when the wind was up."
+      },
+      {
+       "kind": "false line",
+       "quote": "Ivy Nash was passed over for headteacher; Thea Hughes got the job.  [Thea Hughes had the stronger record; had wanted it since 2032]"
+      }
+     ],
+     "good": [
+      "Ivy Nash resigned on the spot.  [Ivy Nash was passed over for skipper; Stella got the job.; would say it to anyone; had wanted it since 2025]",
+      "Ivy Nash now reads late into every night.  [Lisa Rudd let Ivy Nash go from the council office.; it had shaken her]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P04": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "out of nowhere",
+       "quote": "2035: Sophie had promised Jonah Vale to put in a word for them, and didn't."
+      },
+      {
+       "kind": "wording",
+       "quote": "had heard from Tilly that Tom Fielding took Tilly aside afterwards and said exactly what Tom Fielding thought (2031)"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Jonah Vale slipped a folded note into the hat for Eve when nobody was looking.  [Steve Kemp died of a sudden heart attack, aged 72.; money is fine; looks after his own first]"
+      }
+     ],
+     "good": [
+      "Jonah Vale now has two pints at the Anchor most evenings.  [What Jonah Vale had wanted for 1 year was gone.; it hit hard]",
+      "Jonah Vale had begun to wonder whether to stay with Karen.  [the way Karen had come to talk to him]"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Jonah Vale got there: a boat of his own, within the year.  [Jonah Vale bought a boat of his own.; had wanted it since 2026]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Colin and Jonah Vale stopped seeing each other, and that was that.  [Colin is no longer first in at work every morning.]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Jonah Vale buried himself in work.  [in debt; would rather deal with it alone; generous with money, if nothing else]"
+      }
+     ],
+     "good": [
+      "Jonah Vale has stopped coming out; saving, he says.  [wants a decent car (since 2027)]",
+      "Jonah Vale sat Karen down and asked what was going on.  [Karen has not been herself for months; she keeps to herself and people have started to notice.; thinks the world of Karen; has a soft spot for anyone in trouble]"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P05": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Sam Baker went in after Ellen without a second's thought.  [Ellen got caught in the saw at the sawmill.; shrinks in front of a crowd]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Ellen told Ben Brook the foreman's job would be his to win when it came up.  [a strong record; is not sure of Ben Brook]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Ellen told Sam Baker the foreman's job would be his to win when it came up.  [a strong record]"
+      }
+     ],
+     "good": [
+      "Ivan confronted Ellen about it in front of everyone at the sawmill.  [Ivan was passed over for foreman; Ellen got the job.; that is who Ivan is: meant for more than this; felt it was owed]",
+      "Jonah Vale put in the smallest coin he could find when the hat went round for Ellen.  [Ellen got caught in the saw at the sawmill.; did not want to part with it; short of money]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Peter has taken to teaching, like his mother, Ellen.  [grew up with Ellen at it; could wait it out]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Arthur Lee was passed over for skipper; Ellen got the job.  [Arthur Lee had been doing the better work]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Ellen cannot be in a room with Terry Brook for long.  [thought it needed saying; had run out of patience]"
+      }
+     ],
+     "good": [
+      "Arthur Lee resigned on the spot.  [Arthur Lee was passed over for skipper; Ellen got the job.; did not stop to think; stands up to the boss]",
+      "Ellen froze at the first staff meeting.  [could not stop thinking about what might go wrong; though she is not one to hang back]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P06": {
+    "A": {
+     "score": 1,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "Molly has not been back in years; a card at Christmas and nothing more.  [nothing much holding them here; has never been one to look back]"
+      },
+      {
+       "kind": "wording",
+       "quote": "Molly missed another family do.  [nothing much holding them here; has never been one to look back]"
+      }
+     ],
+     "good": []
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "out of nowhere",
+       "quote": "Ben Brook died of a sudden heart attack, aged 47.  [age 47; health had worn down]"
+      },
+      {
+       "kind": "wording",
+       "quote": "Ivy told Molly exactly what was wrong with the plan.  [Molly asked what she really thought of the plan; respects Molly; is not one to hang back]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Molly listened to the end, and admitted Jonah Brook was right about some of it.  [Jonah Brook had a go at Molly about who did what in the house, and it was not about who did what in the house for long.; was not going to dwell on it; did not think it was about her]"
+      }
+     ],
+     "good": [
+      "The harbour day ran like clockwork; Molly had a list for everything.  [Molly took on organising the harbour day when nobody else would.; likes things done properly and on time; will not leave a job half done]",
+      "Molly bought a boat of her own.  [Molly retired after 14 years at the Old Bank Café.; had the money put by; not worn down]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P07": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "Tom brought a song to the Night Shift, \"Saturday at the Garage\", and it did not come to much.  [though he sticks to what works; they genuinely like each other]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Maisie Nash and Larry Fielding drifted out of each other's lives.  [they stopped seeing each other; thought it needed saying]"
+      },
+      {
+       "kind": "wording",
+       "quote": "Larry Fielding went to pieces during the day the council came round at the Anchor."
+      }
+     ],
+     "good": [
+      "Hannah walked out in front of everyone at the Anchor.  [Hannah was passed over for manager; Larry Fielding got the job.; did not stop to think; cannot bear being shown up in front of people, not since 2024]",
+      "Larry Fielding defended himself line by line.  [Stella Sayer waited for a quiet evening to tell Larry Fielding that the bins had been getting to her.; everything Stella Sayer said sounded like an attack by now; hears every complaint as an attack]"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "2028: Noticed: Larry Fielding arrives with a list.  [likes things done properly and on time]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Larry Fielding waited for a quiet evening to tell Hilda Dale that money and getting on had been getting to him.  [it had been building between them (money and getting on); was not going to dwell on it]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Larry Fielding let Matt Myers go from the sawmill.  [Matt Myers's work had been poor for months; would say it in front of anyone; thought Matt Myers had it coming]"
+      }
+     ],
+     "good": [
+      "Larry Fielding is no longer at the Anchor every Friday without fail.  [Beth dragged up what Larry Fielding did last year in front of everyone at the sawmill. It had happened before, in 2024.; it had shaken him; Beth is there too]",
+      "Hilda Dale had a go at Larry Fielding about it, and it was not about that for long.  [Larry Fielding talked to Hilda Dale about her hours at the clinic, gently, as something Larry Fielding needed rather than something Hilda Dale had done.; everything Larry Fielding said sounded like an attack by now]"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P08": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "Alice let Ian go from the Anchor.  [Ian's work had been poor for months; Ian's work has been poor for months; Ian let Alice take the blame for it (2025)]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Alice gave Colin Lee money toward getting out.  [can afford it; is fond of Colin Lee]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Hannah was found out: taking from the till.  [Hannah took a little from the till.; though she likes things in order]"
+      }
+     ],
+     "good": [
+      "Ellie told Alice what Alice wanted to hear.  [Alice asked what she really thought of the plan to put on music every Friday; felt it was owed; turns into a flatterer around anyone with power]",
+      "Larry Holmes stopped answering and stared at the television until Alice gave up.  [Alice had a go at Larry Holmes about never going anywhere, and it was not about never going anywhere for long.; would rather deal with it alone]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Hannah dragged up what Alice Lyons did a few months back in front of everyone at the Courier.  [Alice Lyons was found out: taking from the expenses.; felt slighted; Alice Lyons found out taking from the till (2035)]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Sid Sayer told Alice Lyons how bad things had got.  [carrying something nobody knew; needed someone to talk to; Alice Lyons told Sid Sayer what was wrong with Sid Sayer's plan, in that tone (2028)]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Alice Lyons took a little from the expenses.  [thought nobody would notice]"
+      }
+     ],
+     "good": [
+      "Alice Lyons is now out in the garden every morning from spring to autumn.  [Alice Lyons was found out: taking from the expenses.; it hit hard]",
+      "Alice Lyons told Sid Sayer exactly what was wrong with the plan to go online and stop the Saturday print. It had happened before, in 2028.  [Sid Sayer asked what she really thought of the plan to go online and stop the Saturday print; had nothing to prove; despite: Sid Sayer took the credit for Alice Lyons's work (2031)]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P09": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Eric Holmes got there: to be heard playing guitar, after 22 years of wanting it."
+      },
+      {
+       "kind": "repeat",
+       "quote": "Lynn brought a song to the Night Shift, \"After March\", and it did not come to much.  [though she sticks to what works; they genuinely like each other]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Eric Holmes took the credit for a year that John Holmes had carried.  [John Holmes's work had been strong all year]"
+      }
+     ],
+     "good": [
+      "Eric Holmes is now out in the garden every morning from spring to autumn.  [Thea Sands died in her sleep, aged 79.; it hit hard]",
+      "Eric Holmes met every word of it with a reason it was not his fault.  [Ruth Tanner had a go at Eric Holmes about never going anywhere, and it was not about never going anywhere for long.; not who Eric Holmes thinks he is: the calm one]"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Eric Holmes no longer talks about wanting to become head of the clinic.  [had wanted it since 2027, and never went after it]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Nothing had changed since 2000: Ruth Tanner had stopped bringing things up with Eric Holmes."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Lily made a joke at Eric Holmes's expense in front of everyone at the clinic, and nobody laughed.  [strain had been building: loneliness, no one close, years without a step up; had run out of patience; likes having people around]"
+      }
+     ],
+     "good": [
+      "Eric Holmes now plays cards at the Anchor on Tuesdays.  [What Eric Holmes had wanted for 2 years was gone.; it had shaken him]",
+      "Eric Holmes told Lily the job should go to Lily.  [Eric Holmes and Lily are both after the head of the clinic's job, and it shows.; Lily is ahead]"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P10": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Andy found reasons to be busy while Karen was going through it.  [Karen was hospitalised with pneumonia.; has never been one to look back; the first to help when someone is really in trouble]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Alex Lane slipped a folded note into the hat for Andy when nobody was looking.  [Andy was hospitalised with pneumonia.; did not mind everyone seeing; could not stand to see Andy go without]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Molly started on Andy about the bills, and it was \"you always\" and \"you never\" from there.  [it had been building between them (the bills); it mattered too much to let go; endlessly patient with family]"
+      }
+     ],
+     "good": [
+      "Andy could see something was wrong with Molly, and said nothing.  [Molly has not been herself for months; she keeps to herself and people have started to notice.; has never been one to look back; dreads being looked at]",
+      "Andy went to pieces during the visit from head office at the school.  [dreads being looked at]"
+     ]
+    },
+    "B": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Molly brought up how little time he gave the family with Andy, and within a minute it was about everything Andy had ever done.  [it had been building between them (how little time he gave the family); it mattered too much to let go; endlessly patient with family]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Andy had left the wallet at home when the hat went round for Alice Baker.  [Alice Baker had a stroke.; did not want to be seen; said what would work]"
+      }
+     ],
+     "good": [
+      "Andy came round to see Evan Brook every week. It had happened before, in 2022.  [Evan Brook was back in hospital.; thinks the world of Evan Brook; the first to help when someone is really in trouble]"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P11": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Alan has started telling people he means to put on a summer festival on the quay.  [is not one to hang back; not one to start things]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "The summer festival that Alan put on was the best night the town had had in years.  [Alan has started telling people he means to put on a summer festival on the quay.; likes things done properly and on time; 2 of the helpers let it down]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Tom Howell told Alan to count him in for the summer festival.  [Alan has started telling people he means to put on a summer festival on the quay.; could not stand to see Alan go without; believes Alan can do it]"
+      }
+     ],
+     "good": [
+      "Alan has started playing with Colin.  [Colin put his name down for the open night.; would follow Colin anywhere; needed someone to lean on]",
+      "Alan was back to normal with Tess, as if what Tess did a few months back were forgotten.  [Tess took the credit for a year that Alan had carried.; does not like to judge; had heard from Maisie that Tess took on organising the harbour day when nobody else would (2028)]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Sophie Hughes and Alan buried the hatchet, 1 year after the place in the Late Ferry."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Alan shied away from a spot at the Anchor's open night.  [has been singing for years; vocals getting good; that is who Alan is: rooted in the town, through and through]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Alan turned down a job in the city.  [money has never meant much to him; people here depend on them; that is who Alan is: will not leave the town again, not after the years away (back in 2033)]"
+      }
+     ],
+     "good": [
+      "Alan came back to the town after 4 years away.  [rooted here: the sea, the people, the house; values loved ones]",
+      "Sophie Hughes left North of Here, quietly: there was a baby at home.  [Ruth was born to Alan and Sophie Hughes.; they genuinely like each other]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P12": {
+    "A": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "out of nowhere",
+       "quote": "Molly and Matt Sayer are both after the foreman's job, and it shows.  [Sam will step down as foreman at the sawmill next year.; neither will give way]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Sam and Matt Sayer lost touch.  [Sam is no longer first in at work every morning.]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Tara Moore went cold on Matt Sayer and stayed that way for weeks.  [Matt Sayer told Tara Moore exactly what was wrong with the plan to open on Sundays.; Matt Sayer came through on the rush job (2024); would rather be on her own]"
+      }
+     ],
+     "good": [
+      "Matt Sayer took a little from the till.  [wanted the money; in debt]",
+      "Matt Sayer no longer talks about wanting to make things right with Sam.  [had wanted it since 2031, and never went after it]"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Matt Sayer kept it to himself.  [Nora Holmes finally told Matt Sayer what had been kept back.; had given his word; that is who Matt Sayer is: someone who says it straight]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Matt Sayer cannot be in a room with Eric Lee for long.  [they see freedom completely differently]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Matt Sayer tells the story of the day he froze better than anyone, and always against himself.  [Matt Sayer went to pieces during the visit from head office at the Courier.; genuinely quick]"
+      }
+     ],
+     "good": [
+      "Tara and Matt Sayer split up.  [Matt Sayer had stopped wanting it; Tara rolled her eyes at Matt Sayer and talked to Matt Sayer like a child about it (2035)]",
+      "Matt Sayer said nothing and got on with it.  [Tilly wasn't there for Matt Sayer when it mattered.; did not think it was about him; wanted to keep the peace]"
+     ]
+    },
+    "prefer": "B"
+   }
+  }
+ },
+ "player-r2": {
+  "reader": "player",
+  "pairs": {
+   "P13": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Ken started trying to put things right with Oliver, and tells everyone.  [wants to make things right with Oliver (since 2024); not worn down; not one to chase things]"
+      },
+      {
+       "kind": "false line",
+       "quote": "2035: Nothing had changed since 2022: Ken had stopped bringing things up with Ivy."
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Ken told the apprentice exactly what was wrong, in front of everyone.  [thought it needed saying]"
+      }
+     ],
+     "good": [
+      "Kate made a joke at Ken's expense, and nobody laughed.  [Ken has a joke about Kate that will not die.; had run out of patience; does not like Ken]",
+      "Ken has not been himself for months; he keeps to himself and people have started to notice.  [carrying something nobody knew; Ken buried himself in work.]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Oliver and Ken lost touch.  [Oliver no longer rings his mother every Sunday evening.; Ken could be hard on people]"
+      },
+      {
+       "kind": "wording",
+       "quote": "Ken no longer has Sunday dinner with the family every week.  [every spare hour goes on to make things right with Oliver]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Ben Lyons gave Ken help, and made sure Ken knew the cost.  [Ken dropped hints to Ben Lyons without ever quite asking.; danger has never stopped him; could not stand to see Ken go without]"
+      }
+     ],
+     "good": [
+      "Eddie dragged up what Ken did last year.  [Ken kept away just when Eddie needed people.; thought Ken had it coming; had not forgotten]",
+      "Eddie told Ken no.  [Ken dropped hints to Eddie without ever quite asking.; was afraid of getting hurt]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P14": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Ivy kept it to herself.  [Steve told Ivy how bad things had got.; that is who Ivy is: the one who holds things together; thinks the world of Steve]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "2034: Ivy told Bert to count her in for the summer festival. Nobody was surprised any more: it had been happening since 2003."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Ivy and Edward Rudd stopped seeing each other, and that was that.  [Edward Rudd became owner at the Old Bank Café.]"
+      }
+     ],
+     "good": [
+      "Ivy no longer sings with the choir every Thursday.  [Greta died in her sleep, aged 93.; it hit hard]",
+      "Ivy heard Larry out, and said Larry had a point.  [Larry raised who did what in the house with Ivy carefully, starting with what Larry needed.; it was put gently; wanted to keep the peace]"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Ivy sat Ken down and asked what was going on.  [Ken has not been himself for months; he keeps to himself and people have started to notice.; wanted to be there for Ken; not who Ivy thinks she is: the one who holds things together]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Una finally told Ivy what had been kept back.  [carrying something nobody knew; trusts Ivy; Ivy had promised Una it, and did it (2024)]"
+      },
+      {
+       "kind": "wording",
+       "quote": "goes silent when it gets close; stonewalling: goes silent when it gets close"
+      }
+     ],
+     "good": [
+      "Ivy no longer plays cards at the Anchor on Tuesdays.  [Evan died in his sleep, aged 83.; it hit hard]",
+      "Kate finally told Ivy what had been kept back.  [carrying something nobody knew; trusts Ivy]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P15": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "Sean Sayer told Beth exactly what was wrong with the plan to go online and stop the Saturday print. It had happened before, in 2031."
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Sean Sayer had promised Beth to pay it back by the end of the month, and did it."
+      },
+      {
+       "kind": "repeat",
+       "quote": "2034: Beth told Bert to count her in for the summer festival. Nobody was surprised any more: it had been happening since 2003."
+      }
+     ],
+     "good": [
+      "Oliver turned every point back on Beth.  [Beth raised the children with Oliver carefully, starting with what Beth needed.; it mattered too much to let go; everything Beth said sounded like an attack by now]",
+      "Beth took it, and kept her head down.  [Sean Sayer told Beth exactly what was wrong with the plan to go online and stop the Saturday print.; did not think it was about her; thinks highly of Sean Sayer]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Beth Sands has been first in and last out for months.  [wants to become owner at the Old Bank Café (since 2021); will not leave a job half done]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Beth Sands became head of the clinic.  [the only one in the running; likes things done properly and on time]"
+      },
+      {
+       "kind": "wording",
+       "quote": "Beth Sands talked to Owen about the drinking, gently, as something Beth Sands needed rather than something Owen had done at the shore road, with people listening."
+      }
+     ],
+     "good": [
+      "Susie found a friend in Beth Sands.  [Susie told Beth Sands what was wrong with Beth Sands's plan, in that tone (2034); shone when it counted (2034); they kept seeking each other out]",
+      "Owen had a stroke.  [age 64; drinking since 2033]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P16": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Hannah Hale took a little from the timber account.  [said what would work; Ian took the credit for Hannah Hale's work (2027)]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Arthur Moore started on Hannah Hale about how little time she gave the family, and it was \"you always\" and \"you never\" from there."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Hannah Hale was back to normal with Ian, as if what Ian did a few months back were forgotten.  [Ian took the credit for a year that Hannah Hale had carried.; does not think she is better than anyone; that is who Hannah Hale is: the one people come to]"
+      }
+     ],
+     "good": [
+      "Arthur Moore finally told Hannah Hale what had been kept back.  [Arthur Moore was diagnosed with cancer.; needed someone to talk to]",
+      "Eric Rudd had left the wallet at home when the hat went round for Hannah Hale.  [Hannah Hale had a heart attack.; looks after his own first; did not want to part with it]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Hannah had left the wallet at home when the hat went round for Lisa.  [Lisa had a heart attack.; did not want to be seen; said what would work]"
+      },
+      {
+       "kind": "wording",
+       "quote": "Hannah whistles the same three bars of a hymn nobody else remembers everywhere."
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Hannah started on Andy about it, and it was \"you always\" and \"you never\" from there (2033)"
+      }
+     ],
+     "good": [
+      "Andy and Hannah divorced.  [Andy told Hannah it was over.; Hannah started on Andy about it, and it was \"you always\" and \"you never\" from there (2033); attachment avoidance: keeps people at a distance, even this one]",
+      "Hannah rang Andy and talked for an hour.  [Hannah had a heart attack.; needed someone to talk to; it mattered too much to let go]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P17": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Andy and Toby Moore have become friends.  [came through on the end-of-year figures (2023); Andy gave Toby Moore another chance (2026); Andy gave Toby Moore another chance (2024)]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Andy gave Toby Moore another chance. Nobody was surprised any more: it had been happening since 2024.  [Toby Moore's work had been poor for months; dreads being looked at; is fond of Toby Moore]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Andy tells the story of the day he froze better than anyone, and always against himself.  [Andy froze at the first staff meeting.; genuinely quick]  (the third time since 2029)"
+      }
+     ],
+     "good": [
+      "Lily Shaw told people what Andy had told Lily Shaw in confidence.  [Andy finally told Lily Shaw what had been kept back.; likes having people around]",
+      "It was known that Andy leaned on people. They had stopped minding, or stopped being there.  [years of dealing with people all day at the Old Bank Café, the weight of being owner, Hannah going silent; needed someone to lean on]"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "2035: Andy and Ellen had stopped talking about anything that mattered; they were polite with each other, and that was all.  [together since 2026]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Andy took a little from the till.  [said what would work]"
+      },
+      {
+       "kind": "wording",
+       "quote": "Ellen let his family go again at the end of the breakwater, with people listening."
+      }
+     ],
+     "good": [
+      "Andy missed the deadline on the audit and the whole place paid for it.  [the audit landed on the harbour fleet; dreads being looked at; could not stop thinking about what might go wrong]",
+      "Una and Andy drifted apart.  [dragged up the old business (2026); Una went cold on Andy and stayed that way for weeks (2026); Una could be hard on people]"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P18": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "wording",
+       "quote": "Arthur Moore took Rose along: plays cards at the Anchor on Tuesdays.  [had heard from Terry that Rose slipped a folded note into the hat for Ian when nobody was looking, though Terry made light of it (2026)]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Una raised how little time they had together with Arthur Moore carefully, starting with what Una needed.  [it had been building between them (how little time they had together); was not going to dwell on it; did not think it was about her]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "2033: Arthur Moore started on Hannah Hale about how little time she gave the family, and it was \"you always\" and \"you never\" from there."
+      }
+     ],
+     "good": [
+      "Una was hospitalised with pneumonia.  [age 66; drinking since 2026]",
+      "Arthur Moore played Lily Shaw's song as if it were Arthur Moore's own.  [Lily Shaw brought a song to the Late Ferry, \"The Sunday at the Point\", and everyone knew at once it was the best thing they had.; wanted to keep the peace; respects Lily Shaw]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Typical: Arthur is always the last into the sawmill and the first out.  [does no more than he has to]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Arthur asked Lynn straight out for help.  [ill, and alone; needed someone to talk to; puts other people first]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Arthur and Maisie drifted out of each other's lives.  [they stopped seeing each other]"
+      }
+     ],
+     "good": [
+      "Arthur came round to see Alice every week.  [Oscar Tanner died after a long illness, aged 75.; that is who Arthur is: never turns anyone away, because someone once did not turn him away (2029); has a soft spot for anyone in trouble]",
+      "Arthur played the Anchor's open night and fell apart.  [Arthur seized a spot at the Anchor's open night.; guitar good, not great; could not stop thinking about what might go wrong]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P19": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Sarah and Oliver are friends now.  [came through on the rush job (2031); they work together at the Anchor]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "2029: Sarah tells the story of the day she froze better than anyone, and always against herself.  [Sarah froze at the first staff meeting.; that sense of humour]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "At the Anchor, Sarah was the first to say how things ought to be done.  [does what people do]"
+      }
+     ],
+     "good": [
+      "Sarah froze Oliver out for weeks.  [Oliver told Sarah exactly what was wrong with the plan to put on music every Friday.; would not be talked down to; would rather be on her own]",
+      "Sarah dragged up what Ryan did a few months back in front of everyone at the Anchor.  [Ryan missed the deadline on the end-of-year figures and the whole place paid for it.; felt slighted]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "wording",
+       "quote": "At the sawmill, Sarah has the the gutters on a rota pinned to the noticeboard in the hall, and Lynn is on it."
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Sarah and Nora lost touch.  [Nora no longer reads late into every night.]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "2030: Sarah tells the story of the day she froze better than anyone, and always against herself.  [Sarah froze at the first staff meeting.; that sense of humour]"
+      }
+     ],
+     "good": [
+      "Sarah dragged up what Molly did last year in front of everyone at the sawmill.  [Molly dragged up what Sarah did last year in front of everyone at the sawmill.; felt slighted]",
+      "Sarah and Mona drifted out of each other's lives.  [Mona retired after nine years at the sawmill.; two people who both need to be the one who matters]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P20": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Mark is no longer at the Anchor every Friday without fail.  [Ivy Sayer died of a sudden heart attack, aged 60.]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Mark and Alice stopped seeing each other, and that was that.  [Mark no longer spends every spare hour fixing something in the shed.]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Mark has started telling people he means to open a café in the old bank.  [has some money put by; not one to start things]"
+      }
+     ],
+     "good": [
+      "Mark bought the big trip abroad.  [Ivy Sayer died of a sudden heart attack, aged 60.; had the money put by; not worn down]",
+      "Alan Newman dragged up what Mark did last year in front of everyone at the Old Bank Café.  [Mark took the credit for a year that Alan Newman had carried.; would say it in front of anyone; Mark took the credit for Alan Newman's work (2034)]"
+     ]
+    },
+    "B": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Mark Baker bought a house of his own.  [turned thirty; had the money put by; not worn down]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Mark Baker had stopped bringing things up with Hannah.  [Mark Baker let how little time they had together go again.; together since 2020]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Mark Baker and Alex have become friends.  [does not like to judge]"
+      }
+     ],
+     "good": [
+      "Mark Baker went to pieces during the day the council came round at the sawmill.  [dreads being looked at]"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P21": {
+    "A": {
+     "score": 5,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Tom was passed over for skipper; Greta got the job.  [Tom had been doing the better work; had wanted it since 2035]"
+      },
+      {
+       "kind": "wording",
+       "quote": "At the harbour fleet, Greta changed their plans for everyone else again.  [wanted to keep the peace]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Rose and Greta drifted out of each other's lives.  [Rose is no longer at the Anchor every Friday without fail.]"
+      }
+     ],
+     "good": [
+      "Sylvia confronted Greta about it in front of everyone at the harbour fleet.  [Sylvia was passed over for skipper; Greta got the job.; would not give ground; despite: had heard from Ben that Greta put in more than anyone when the hat went round for John (2031)]",
+      "Greta froze at the first staff meeting.  [could not stop thinking about what might go wrong]"
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "quote": "Greta kept away just when Hannah needed people.  [Hannah was signed off with a bad back.; will not leave a job half done]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "Mona and Greta stopped seeing each other, and that was that.  [they stopped seeing each other; Greta can tell when someone is performing]"
+      },
+      {
+       "kind": "out of nowhere",
+       "quote": "Tom and Greta picked up where they had left off."
+      }
+     ],
+     "good": [
+      "Greta has let it be known she wants to be foreman too.  [Toby let slip he would want it, if it ever came up: to become foreman at the sawmill.; a strong record; Toby is after it]",
+      "Ellie turned every point back on Greta.  [Greta talked to Ellie about never going anywhere, gently, as something Greta needed rather than something Ellie had done.; everything Greta said sounded like an attack by now]"
+     ]
+    },
+    "prefer": "A"
+   },
+   "P22": {
+    "A": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "2027: Mary started on Trevor about never going anywhere, and it was \"you always\" and \"you never\" from there.  [it had been building between them (never going anywhere); it had been building for months; had run out of patience]"
+      },
+      {
+       "kind": "false line",
+       "quote": "Nothing had changed since 2023: Mary had stopped bringing things up with Trevor."
+      },
+      {
+       "kind": "repeat",
+       "quote": "2031: Trevor had an answer for everything, and none of it was \"you're right\".  [Mary had a go at Trevor about money, and it was not about money for long.; it came at them as an attack; everything Mary said sounded like an attack by now]"
+      }
+     ],
+     "good": [
+      "Mary buried herself in work.  [badly in debt; looks after her own first; would rather deal with it alone]",
+      "Mary made an excuse to Stella Tanner.  [Stella Tanner asked Mary straight out for money.; looks after her own first; did not want to part with it]"
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "repeat",
+       "quote": "2034: Mary and Kate Baker became friends.  [they run in the same crowd; they want the same things from life]"
+      },
+      {
+       "kind": "wording",
+       "quote": "thought Mary had it coming; Mary found out taking from the till (2031)"
+      },
+      {
+       "kind": "false line",
+       "quote": "Mary got there: a house of her own, after 3 years of wanting it.  [Mary bought a house of her own.; though she rarely does more than she has to; had wanted it since 2026]"
+      }
+     ],
+     "good": [
+      "Neil Berry took Mary aside afterwards and said exactly what Neil Berry thought.  [Mary let Neil Berry take the blame for a mistake at work.; Mary let Neil Berry take the blame for it (2026); is not fond of Mary]",
+      "By now Mary was someone who kept to herself; nobody remarked on it any more.  [years of carrying something nobody knew; would rather be on her own]"
+     ]
+    },
+    "prefer": "B"
+   },
+   "P23": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "out of nowhere",
+       "quote": "Arthur went cold on Victor and stayed that way for weeks.  [strain had been building: dealing with people all day at the Anchor, bad terms with Beth, no one close; would rather be on his own; cannot bear being shown up in front of people, not since 2028]"
+      },
+      {
+       "kind": "wording",
+       "quote": "Victor turned down a job in the city.  [word came of work in the city; people here depend on them; had no wish to see anywhere else]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Victor and Gary stopped seeing each other, and that was that.  [Victor started work at the Anchor.]"
+      }
+     ],
+     "good": [
+      "Victor took a little from the expenses.  [wanted the money; Agnes Waller let Victor take the blame for it (2034)]",
+      "Noticed: Victor counts who got credit.  [though he never thinks it is about him]"
+     ]
+    },
+    "B": {
+     "score": 1,
+     "faults": [
+      {
+       "kind": "out of nowhere",
+       "quote": "Victor rang from the city asking after everyone.  [homesick; though he rarely looks back]"
+      }
+     ],
+     "good": []
+    },
+    "prefer": "A"
+   },
+   "P24": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Mona took a job in the city.  [no work here; wanted to know; that is who Mona is: not made for one place]"
+      },
+      {
+       "kind": "repeat",
+       "quote": "2035: The summer festival that Ben put on was the best night the town had had in years.  [Ben has started telling people he means to put on a summer festival on the quay.; likes things done properly and on time; 1 of the helpers let it down]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Amelia wasn't there for Mona when it mattered.  [Colin Holmes died of a sudden heart attack, aged 78.; will not leave a job half done; disappears when someone really needs them]"
+      }
+     ],
+     "good": [
+      "The money Mona had put by for a boat of her own went.  [money ran short; had been saving since 2029]",
+      "Ellen Baker looked in on Mona most days.  [Colin Holmes died of a sudden heart attack, aged 78.; thinks the world of Mona; Mona put in more than anyone when the hat went round for Ellen Baker (2029)]"
+     ]
+    },
+    "B": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "false line",
+       "quote": "Lily Holmes has taken to teaching, like her mother, Mona.  [grew up with Mona at it; could wait it out]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Mona and Jonah stopped seeing each other, and that was that.  [Low Tide split up after 18 years: nobody left to play with. \"The Open Night\" outlived them.; Jonah could be hard on people]"
+      },
+      {
+       "kind": "unfit reason",
+       "quote": "Mona is now out in the garden every morning from spring to autumn.  [Mary and Mona lost touch.; it had shaken her]"
+      }
+     ],
+     "good": [
+      "Hannah congratulated Mona and meant it.  [Hannah was not picked for Red Sky; Mona got the place.; likes Mona; shrinks in front of a crowd]"
+     ]
+    },
+    "prefer": "A"
+   }
+  }
+ }
+}

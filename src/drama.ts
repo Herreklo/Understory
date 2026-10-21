@@ -19,6 +19,8 @@ import {
   OFF,
   ON,
   together,
+  fit,
+  spanWords,
   type World,
   type Person,
   type Event,
@@ -410,7 +412,9 @@ function act(w: World, r: Rivalry, x: Person, y: Person) {
       const e = addEvent(w, {
         type: 'peace',
         who: [x.id, y.id],
-        text: `@${x.id} and @${y.id} buried the hatchet, ${yrs} year${yrs > 1 ? 's' : ''} after ${r.about}.`,
+        text: fit()
+          ? `@${x.id} and @${y.id} buried the hatchet, ${spanWords(w.t - w.events[r.first].t)} after ${r.about}.`
+          : `@${x.id} and @${y.id} buried the hatchet, ${yrs} year${yrs > 1 ? 's' : ''} after ${r.about}.`,
         causes: [eventCause(w, o.event.id, 0.5), traitCause(y, 'forgiveness', 0.4, 1), eventCause(w, r.first, 0.3)],
         vis: 'local',
         evidence: [ev(y.id, 'forgiveness', 1, 0.7, 0.6)],

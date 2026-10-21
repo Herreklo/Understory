@@ -394,6 +394,24 @@ export const ON = new Set<string>();
 // The four (round 40): wants that answer what happens, contests out of season and for band places, a blow's aftermath and telling, on
 // together unless OFF=together. With them off, each can be turned on alone with its own ON=<name>.
 export const together = () => !OFF.has('together');
+// Round 41: lines and reasons that hold up: spans said in words, a folded repeat saying which time it was, a friendship's end saying what
+// changed, lines true of the person when they are said (round 41). On unless OFF=fit.
+export const fit = () => !OFF.has('fit');
+const SMALL = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
+// A span of months as a person would say it: "a few weeks", "five months", "a year", "a year and a half", "three years".
+export function spanWords(months: number): string {
+  const m = Math.max(0, Math.round(months));
+  if (m < 2) return 'a few weeks';
+  if (m < 11) return `${SMALL[m]} months`;
+  if (m < 16) return 'a year';
+  if (m < 22) return 'a year and a half';
+  const y = Math.round(m / 12);
+  return `${y <= 12 ? SMALL[y] : y} years`;
+}
+// How many times, as a person would say it: "once", "twice", "five times".
+export const timesWords = (n: number) => (n === 1 ? 'once' : n === 2 ? 'twice' : `${n <= 12 ? SMALL[n] : n} times`);
+const ORD = ['', 'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth'];
+export const ordinal = (n: number) => ORD[n] ?? `${n}th`;
 // A name a reader can follow: the first name, with the surname when someone else in town (or away) has the same first name, and the
 // year of birth when they share both. Rendering only.
 export function nameOf(w: World, id: number): string {

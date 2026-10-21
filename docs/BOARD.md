@@ -2323,3 +2323,80 @@ Outcome of round 40 (21 Oct 2026, 09:50 Oslo). Battery by `scripts/round.mjs` on
 Reported, not judged: the faults fixed, on 3509–3528 (`fit.ts`): none on (0 of 157 lapses said of someone who acted on it; no winner "still sore", no giving way while ahead, no contest going on after one has left, no refusal of the city against itself), against 137 contests apart and 119 refusals against themselves off. The four's counts on against off: adults who went after something 54% against 46%; things bought 274 against 73; contests over a post or a band place 5.6 against 2.85 a world-decade, none of their acts giving a trait as a reason (417 off); lives changed within three years of a blow 70% against 52%; accounts told, about 1.8 an adult (median).
 
 Read by the rules set beforehand: 1, 2, 3 and 4 hold. **Kept**: the four are on in the default engine; `OFF=together` turns them off together, and with them off each can be turned on alone. Round 36's finding is confirmed on a second pair of readings: the busiest lives read better again (+0.38, now +0.51), most of it through the kinds of happening added. Random adults read no worse but are not shown better (+0.33 then +0.22, lower bounds +0.02 and −0.07): the four mostly reach lives that already move, and the quiet majority is where the next gains are.
+
+## Round 41 — lines and reasons a reader can trust (pre-registered 21 Oct 2026, 10:29 Oslo, before any test world; sized first)
+
+Øystein's choice on 21 Oct ("start with 41"). In rounds 39 and 40, readers quoted 1,693 faults over four packs, in both arms alike. The commonest were the same every time, and most are not choices people make but the way the page says what happened:
+
+- spans no one would say ("no progress for 5.5 years", "5 times in 1 years", "retired after 0 years", "buried the hatchet, 1 year after" within the year);
+- the fold note "(and once more between)", read as an artefact;
+- broken phrases ("Ryan's it was the best thing they had", "fixed a house of his own for Mona", "a kind word for the worst the car washing");
+- a dangling "Instead," with nothing on the page it is instead of;
+- a friendship's end given "they stopped seeing each other" as its reason, or "thought it needed saying" (a cue for speaking up, used for a friend who was hard on people);
+- "Nothing had changed since 2018: Leo had stopped bringing things up" in a year he had brought things up;
+- "there was a baby at home" for a three-year-old, or a child who lives with the other parent;
+- "buried herself in work" by someone with no job.
+
+Counted on the pages of every adult on throwaway worlds 9001–9020 (`src/tools/diag/faults.ts`, whose tests read the page and the record, not the engine's own rules), main's engine shows 154 of them a world.
+
+Hypothesis: pages without these faults read no worse, and readers quote fewer faults on them.
+
+The change, behind `OFF=fit` (on for this round's test; every fix applies only with it on, so with it off the engine is main's):
+
+1. **Spans and counts in words** (`world.ts` `spanWords`, `timesWords`): "no progress for two years", "five times in a year", "buried the hatchet, eight months after", "retired from the clinic".
+2. **A folded repeat says which time it was** (`page.ts`): "(the third time since 2027)"; nothing, when the line already says it ("It had happened before, in 2024").
+3. **Words that hold together:**
+   - praise of a song is retold as of a song;
+   - what someone fixes for a partner is the boat or the car;
+   - "a kind word for whoever is stuck with the car washing";
+   - "Instead, …" cites the way it replaces.
+4. **A friendship's end says what changed** (`social.ts`): the latest change in either life in the last three years (a new job, a band joined or left, a move, a marriage, a child, a routine started or dropped), or else "nothing brought them together any more"; what one found hard in the other is said of the other ("Hal could be hard on people").
+5. **Lines true of the person when said:**
+
+   - "nothing had changed since" only when every row since went the same way;
+   - "had stopped bringing things up" not said of someone who raised something within the year;
+   - "a baby at home" only for a child under two living with them ("a small child" at two or three);
+   - someone with no job "kept herself busy from morning to night".
+
+   That last one is words only: a first build took the act away from the jobless, some drank instead, and `npm test`'s demography check failed at births to deaths 0.58 (`reports/41-size-npmtest.txt`).
+
+Sized on throwaway worlds 9001–9020 before this pre-registration (`reports/41-size.txt`): the counted faults fall from 153.8 a world to 0.15 (three "Instead," lines with no earlier way on the page). Kinds of line a life −0.23 ±0.74 (every adult) and −0.8 ±3.1 (the busiest), lines of the busiest −1.9 ±5.3: no change beyond the noise. `npm test` passes with it on (demography births 6.8, deaths 10.4 a world-decade, 0.65; 12 worlds 0.67 on against 0.74 off); `fit` off is identical to main at `968d2df`.
+
+Test (scripts/round.mjs): the scoreboard paired on fresh worlds **3545–3564**; lives, the round's own count (`faults.ts`, both arms) and kinds a life (`kinds.ts`), the consequence map and demography on **3565–3584**; `npm test`, the coherence counter, props. Two blind paired readings, read before any other number of the round, as in rounds 39 and 40 (`docs/method/reading.md`, scored by `scripts/pairscore.py`): **the busiest**, 24 pairs from **3585–3592**, and **random adults**, 24 pairs from **3593–3600** (`PICK=random`). The same three readers on another model, none of them told what changed.
+Expected:
+
+1. `fit` off: identical to main (`ident.ts`).
+2. **It removes the faults (the floor):** the counted faults on 3565–3584, on at most a tenth of off (sized 0.15 against 153.8 a world).
+3. Gates: the scoreboard within ±2 (decisions that are not a couple's, overall beside it); the coherence counter at zero in both arms; demography and `npm test`.
+4. **Reads no worse, on both packs:** the effect with the order as a term, one-sided 90% lower bound above **−0.3** for the busiest and for random adults.
+
+Keep rule: kept if 1, 2, 3 and 4 hold.
+
+Reported, not judged:
+
+- whether either pack reads better;
+- faults quoted on against off, by kind (expected fewer on: rounds 39 and 40 drew 1,693 faults, and the fixed patterns were a third of the matched ones);
+- quotes matching the fixed patterns (expected none on);
+- the effect with kinds and lines as terms.
+
+What would change our minds:
+
+- if readers quote as many faults on as off, the faults the page carries are not what they quote, and the next step is the reasons a decision gives (stock traits such as "likes things done properly and on time" for a hospital visit), not the words;
+- if a pack reads worse, the plainer page costs something readers valued, and the quotes will say what.
+
+The warnings in `WHY.md` this round risks: optimising what an AI reader quotes rather than what a person would mind (guarded by a counter that tests the page against the record, and by the human test that comes next); a world consistent but empty (the change removes errors, not events: kinds of line are unchanged).
+
+The game lens: a player reads "Hal and Tara drifted out of each other's lives" and sees why ("Tara started at the harbour fleet"); a span reads as a person would say it.
+
+Outcome of round 41 (21 Oct 2026, 11:45 Oslo). Battery by `scripts/round.mjs` on tree `eba5885` (base `968d2df`; `reports/41-battery-summary.md`); both readings from the same tree (`reports/41-reading-busiest*`, `reports/41-reading-random*`); the round's own count and kinds a life in both arms on 3565–3584, the coherence counter on the reading's worlds, props and `npm test` (`reports/41-counts.txt`); the identity check (`reports/41-ident.txt`); CI green on the pull request. A separate agent re-derived the keep rule's numbers from the raw files and agrees with all of them (`reports/rederive-41.md`).
+
+1. `fit` off: identical to main at `968d2df` ✓.
+2. The counted faults on 3565–3584: **5 on against 2,804 off** (floor: on at most a tenth of off) ✓. The five left are "Instead, …" lines whose earlier way was never written down as a way (a pursuit begun before its way was recorded). Kinds of line a life +0.21 ±1.02 (every adult), −1.1 ±2.7 (the busiest): unchanged.
+3. Gates ✓: the scoreboard on decisions that are not a couple's **+0.5 ±1.0** (90%: −0.3 to +1.4), equivalent within ±2; overall −0.0 ±1.3; the key slice −1.0 ±1.5, not shown either way. The coherence counter at zero in both arms; props hold on 50 worlds; `npm test` passes (births 6.8 and deaths 10.4 a world-decade in its demography check); births to deaths over the lives worlds 1.32 on, 1.29 off; honest whys 71% in both arms.
+4. The blind readings (bar: one-sided 90% lower bound above −0.3 on both) ✓:
+   - **the busiest:** **+0.29 ±0.39**, lower bound **+0.04**: reads better, by a thin margin (majority on in 14 of 24);
+   - **random adults:** **+0.32 ±0.51**, lower bound **−0.00**: reads no worse (majority on in 12 of 24).
+
+Read by the rules set beforehand: 1, 2, 3 and 4 hold. **Kept**: the fixes are on in the default engine (`OFF=fit` turns them off).
+
+What the reading showed beside the keep rule, and what it could not: readers gave exactly three faults to 275 of 288 versions (the brief asks for "up to three"), so the totals cannot fall (215 against 215 among the busiest, 214 against 201 among random adults); what moved is the mix. Among the busiest, wording faults halved (18 against 38) and "out of nowhere" fell (24 against 36); unfit reasons (64 against 51) and false lines (61 against 47) rose in their place: readers quote the next-worst thing. Some of the round's own words were quoted as faults, 11 times among the busiest (8 as false lines; expected none): "(the sixth time since 2029)" when only two of the six are shown (three readers), "buried the hatchet, three years after the editor's job" (three), "kept himself busy" given as the reason someone came through an illness, and two friendships' ends given "nothing brought them together any more" or a change in one life that readers did not connect to it. The pre-registered "what would change our minds" fires in its first part: readers quote as many faults on as off, because the reading's brief caps them, and the faults they turn to are the reasons a decision gives (stock traits for acts they do not explain: "likes things done properly and on time" for rushing to a sick friend). The reading needs to count faults without a cap (a method round), and the next engine work on reasons is the decision's own.

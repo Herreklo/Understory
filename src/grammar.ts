@@ -24,6 +24,7 @@ import {
   addEvent,
   broadcast,
   year,
+  fit,
 } from './world';
 import { jobSet } from './scale';
 import {
@@ -401,6 +402,8 @@ export function run(w: World, inst: Instance): Outcome | null {
       ? ` in front of everyone at ${inst.place}`
       : '');
   let said = expr.text(`@${p.id}`, t ? `@${t.id}` : '', inst.thing, self(p), hash(w.seed, p.id, expr.id, w.t));
+  // Someone with no job keeps busy rather than burying themselves in work (round 41, words only).
+  if (fit() && expr.id === 'work' && p.job == null) said = said.replace(/ buried (\S+) in work/, ' kept $1 busy from morning to night');
   // Not taking money is not a confession (round H25, words only).
   if (inst.type === 'temptation' && expr.id === 'ownup' && feats.has('money') && inst.thing)
     said = `@${p.id} kept ${inst.thing} straight, though nobody would have known§`;
@@ -555,7 +558,8 @@ export function shortText(expr: Expression, p: Person, t: Person) {
   const she = p.sex === 'f' ? 'she' : 'he',
     her = p.sex === 'f' ? 'her' : 'him',
     hers = p.sex === 'f' ? 'hers' : 'his';
-  const th = expr.id === 'rake' || expr.id === 'letgo' ? 'the old business' : /song$/.test(expr.id) ? 'song' : 'it';
+  // Round 41: the first to say someone's song was the best thing they had said it of a song.
+  const th = expr.id === 'rake' || expr.id === 'letgo' ? 'the old business' : /song$/.test(expr.id) || (fit() && expr.id === 'cheer') ? 'song' : 'it';
   return expr
     .text(A, 'me', th, self(p))
     .replace('§', '')

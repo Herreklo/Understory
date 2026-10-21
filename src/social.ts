@@ -8,6 +8,8 @@ import { VALUES, FACET_BY_ID } from './core';
 import {
   type Bond,
   type Cause,
+  type Event,
+  fit,
   type Person,
   type World,
   bkA,
@@ -38,7 +40,7 @@ import { around, hoodOf, hoods, idx } from './scale';
 import { z01 } from './decide';
 import { regardWeight } from './regard';
 import { friendsOf, family } from './grammar';
-import { traitCause, stateCause, ev, learned } from './considerations';
+import { traitCause, stateCause, eventCause, ev, learned } from './considerations';
 import { groupPairs } from './group';
 import { resolveWants, wantRestore, pursuing, habitPairs, habitEvidence } from './time';
 
@@ -75,8 +77,17 @@ export function chemWhy(w: World, a: Person, b: Person, sign = 1): Cause[] {
       const k = SIMV.slice().sort((x, y) => Math.abs(a.values[y] - b.values[y]) - Math.abs(a.values[x] - b.values[x]))[0];
       out.push({ kind: 'value', label: `they see ${VN[k].toLowerCase()} completely differently`, weight: 0.4 });
     }
-    if (facet(b, 'gentleness') < -1) out.push(traitCause(b, 'gentleness', 0.3, -1));
-    if (facet(b, 'patience') < -1) out.push(traitCause(b, 'patience', 0.3, -1));
+    // Round 41: what one found hard in the other, said of the other (not as a cue for an act: "thought it needed saying").
+    if (facet(b, 'gentleness') < -1)
+      out.push(
+        fit()
+          ? { kind: 'trait', label: `@${b.id} could be hard on people`, weight: 0.3, key: 'gentleness', who: b.id }
+          : traitCause(b, 'gentleness', 0.3, -1),
+      );
+    if (facet(b, 'patience') < -1)
+      out.push(
+        fit() ? { kind: 'trait', label: `@${b.id} had a short fuse`, weight: 0.3, key: 'patience', who: b.id } : traitCause(b, 'patience', 0.3, -1),
+      );
     if (facet(a, 'modesty') < -1.2 && facet(b, 'modesty') < -1.2)
       out.push({ kind: 'trait', label: 'two people who both need to be the one who matters', weight: 0.3 });
     if (facet(b, 'sincerity') < -1 && facet(a, 'sincerity') > 0.5)
@@ -473,7 +484,7 @@ function checkBond(w: World, a: Person, b: Person) {
       causes: [
         ...(carried ? [carried.cause] : []),
         ...memWhy(w, x, y, -1),
-        ...(contexts(w, a, b).length ? [] : [stateCause('they stopped seeing each other', 0.3)]),
+        ...(contexts(w, a, b).length ? [] : fit() ? [whatChanged(w, a, b)] : [stateCause('they stopped seeing each other', 0.3)]),
         ...chemWhy(w, x, y, -1).slice(0, 1),
       ].slice(0, 3),
       vis: 'local',
@@ -538,6 +549,39 @@ export function memWhy(w: World, x: Person, y: Person, sign: number): Cause[] {
       })
       .slice(0, 2)
   );
+}
+// What took away what two people had in common, for a friendship that faded (round 41): the latest change in either life in the last
+// three years (a new job, a band joined or left, a move, a marriage, a child, a routine started or dropped), or else that nothing
+// brought them together any more. Not "they stopped seeing each other", which is the fading itself.
+const CHANGES = new Set([
+  'hired',
+  'moved',
+  'retired',
+  'promoted',
+  'walkout',
+  'quitpride',
+  'group:joined',
+  'group:left',
+  'group:formed',
+  'group:split',
+  'married',
+  'born',
+  'dating',
+  'habit:new',
+  'habit:broke',
+  'aftermath',
+  'arrived',
+  'home',
+]);
+function whatChanged(w: World, a: Person, b: Person): Cause {
+  let best: Event | undefined;
+  for (const p of [a, b])
+    for (let k = p.events.length - 1; k >= 0 && k >= p.events.length - 60; k--) {
+      const e = w.events[p.events[k]];
+      if (w.t - e.t > 36) continue;
+      if (e.who[0] === p.id && CHANGES.has(e.type) && (!best || e.t > best.t)) best = e;
+    }
+  return best ? eventCause(w, best.id, 0.3) : stateCause('nothing brought them together any more', 0.3);
 }
 export function contexts(w: World, a: Person, b: Person): Cause[] {
   const out: Cause[] = [];

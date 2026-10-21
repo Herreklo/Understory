@@ -39,7 +39,7 @@ export function escalation(rows: number[], warnedAt: number | undefined, now: nu
   if (recent >= 3 || (warnedAt != null && now - warnedAt <= 36)) return 'asked';
   return recent >= 2 ? 'word' : 'row';
 }
-import { topSources } from './world';
+import { topSources, fit, spanWords } from './world';
 const topSourcesLabel = (p: Person) =>
   topSources(p, 2)
     .map(s => s.label)
@@ -922,7 +922,11 @@ export function groupTick(w: World) {
             pride: [bondC(w, p, enemy, 'like', -1)],
             humility: [
               pubC('others', `the others`, clamp((ms.length - 2) / 3 + 0.3, 0, 1)),
-              privC('invested', `${Math.max(1, Math.round((w.t - g.since) / 12))} years in`, clamp((w.t - g.since) / 72, 0, 1)),
+              privC(
+                'invested',
+                fit() ? `${spanWords(w.t - g.since)} in` : `${Math.max(1, Math.round((w.t - g.since) / 12))} years in`,
+                clamp((w.t - g.since) / 72, 0, 1),
+              ),
             ],
           },
         });
@@ -940,20 +944,23 @@ export function groupTick(w: World) {
         (p.kids.some(c => P(w, c).status === 'in' && age(w, P(w, c)) < 4) || (p.stress > 0.7 && !pursuing(p, k.wantKind)))
       ) {
         const baby = p.kids.map(c => P(w, c)).find(c => c.status === 'in' && age(w, c) < 4);
+        // Round 41: a child of two or three is not a baby, and a child who lives with the other parent is not at home.
+        const home = !fit() || (baby != null && baby.parents.every(q => q === p.id || q === p.partner || P(w, q).status !== 'in'));
+        const small = fit() && baby != null && age(w, baby) >= 2;
         leave(
           w,
           g,
           p,
           'life',
-          baby
+          baby && home
             ? p.events
                 .slice()
                 .reverse()
                 .map(x => w.events[x])
                 .find(x => x.type === 'born')?.id
             : undefined,
-          `@${p.id} left ${g.name}, quietly: ${baby ? 'there was a baby at home' : 'there was no room left in the week'}.`,
-          baby ? [] : [stateCause(`worn down: ${topSourcesLabel(p)}`, 0.6)],
+          `@${p.id} left ${g.name}, quietly: ${baby && home ? (small ? 'there was a small child at home' : 'there was a baby at home') : 'there was no room left in the week'}.`,
+          baby && home ? [] : [stateCause(`worn down: ${topSourcesLabel(p)}`, 0.6)],
         );
         break;
       }

@@ -23,7 +23,7 @@
 import { around } from './scale';
 import { Rng, hash, clamp } from './rng';
 import { SETTING, venueName } from './setting';
-import { OFF, type World, type Person, type Event, age, year, live, likeOf, remember, addEvent, broadcast, bond } from './world';
+import { OFF, fit, type World, type Person, type Event, age, year, live, likeOf, remember, addEvent, broadcast, bond } from './world';
 import { ev, traitCause, stateCause, eventCause } from './considerations';
 import { queueProvocation } from './grammar';
 import type { Feature } from './features';
@@ -423,6 +423,8 @@ function quirksOf(w: World, p: Person, r: Rng, taken?: Set<string>, used?: Map<s
 }
 const fill = (t: string, m: Record<string, string | undefined>) => {
   let ok = true;
+  // Round 41: every chore carries its article ("the car washing"), so "the worst {chore}" cannot be said.
+  if (fit()) t = t.replace('for the worst {chore}', 'for whoever is stuck with {chore}');
   const s = t.replace(/\{(\w+)\}/g, (_, k) => {
     const x = m[k];
     if (x == null) ok = false;

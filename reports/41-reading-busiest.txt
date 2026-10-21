@@ -1,0 +1,62 @@
+Round 41: the paired reading of the busiest, fit on against off (21 Oct 2026). 24 pairs, the three adults of each of worlds 3585-3592 most eventful over both arms together (pairarm.ts at eba5885); three readers on Fable 5.1, each part at a separate sitting. Scored by scripts/pairscore.py before any other number of the round was read.
+The regular expression the quotes were listed by (--quote): the \w+ time since|kept (him|her)self busy|nothing brought them together any more|could be hard on people|had a short fuse|a small child at home|whoever is stuck with|retired from|buried the hatchet, [a-z]|no progress for [a-z]|(once|twice|times) in [a-z]
+
+pair  on         novelist          player    socialworker   majority-on
+P01   A            3,4,B           4,3,A           3,3,B   no
+P02   A            3,3,B           3,3,B           3,3,B   no
+P03   A            3,4,B           4,3,A           3,3,B   no
+P04   B            3,3,A           3,2,A           3,3,A   no
+P05   B            4,3,A           4,2,A           3,2,A   no
+P06   B            3,3,B           3,3,A           3,3,B   yes
+P07   B            2,4,B           2,4,B           2,3,B   yes
+P08   B            2,4,B           2,3,B           2,3,B   yes
+P09   A            4,3,A           3,3,A           3,3,A   yes
+P10   B            4,3,A           3,3,A           3,3,A   no
+P11   A            4,2,A           4,2,A           3,2,A   yes
+P12   A            4,3,A           4,3,A           3,3,A   yes
+P13   A            3,4,B           3,4,B           3,4,B   no
+P14   B            3,4,B           3,4,B           3,3,A   yes
+P15   B            2,4,B           2,4,B           3,3,B   yes
+P16   B            4,3,A           3,4,B           4,3,A   no
+P17   B            2,2,A           2,3,B           2,2,B   yes
+P18   B            4,2,A           4,2,A           4,2,A   no
+P19   A            3,3,A           3,3,A           3,2,A   yes
+P20   B            2,3,B           3,4,B           2,3,B   yes
+P21   A            4,3,A           4,3,A           4,3,A   yes
+P22   A            4,3,A           4,3,A           4,3,A   yes
+P23   A            4,3,A           4,3,A           4,3,A   yes
+P24   A            3,3,B           3,3,A           3,3,B   no
+
+The on arm was version B in 12 of 24 pairs; readers chose B in 31 of 72 single choices.
+Majority preferred the on arm in 14 of 24.
+Paired score difference, on minus off: +0.29 ±0.39 (95%, 24 pairs, mean over 3 readers)
+  novelist       +0.29
+  player         +0.46
+  socialworker   +0.12
+With the order as a term: effect +0.29 ±0.39 (95%); one-sided 90% lower bound +0.04; lean toward the second version -0.12
+ordinal  alpha 0.633  95% [0.464, 0.760]  (3 readers, 48 lives)
+interval alpha 0.647  95% [0.472, 0.760]  (3 readers, 48 lives)
+  novelist     mean 3.19
+  player       mean 3.15
+  socialworker mean 2.94
+
+How much happened: 75.2 lines a page on, 66.8 off; on minus off +8.5 a pair (sd 26.1). Where the versions are five or more lines apart, the longer was chosen 36 times and the shorter 27 (9 choices nearer).
+With the order and the difference in lines as terms: effect +0.11 ±0.34 (95%); ten lines more +0.22 ±0.13. Reported beside the effect above, which the round is judged on.
+Kinds of line: 42.5 a page on, 38.4 off; on minus off +4.1 a pair (sd 13.6).
+With the order and the difference in kinds as terms: effect +0.09 ±0.29 (95%); a kind more +0.049 ±0.021.
+faults on: total 215 · unfit reason 64, false line 61, repeat 48, out of nowhere 24, wording 18
+faults off: total 215 · unfit reason 51, false line 47, repeat 43, wording 38, out of nowhere 36
+
+Quotes matching the round's wording (on arm): good 1, faults 11 (unfit reasons 1); off arm: good 3, faults 0
+  good: P01 player: 2033: Karen left Low Tide, quietly: there was a small child at home.  [Ken Ash was born to Gary and Karen.; they genuinely like each other]
+  fault: P02 socialworker (out of nowhere): 2033: Susie can't stand John Sutton.  [John Sutton could be hard on people; John Sutton had a short fuse]
+  fault: P07 novelist (false line): Ryan played the Anchor's open night and fell apart.  [Ryan seized a spot at the Anchor's open night.; guitar good, not great]  (the sixth time since 2029)
+  fault: P07 player (false line): 2034: Ryan played the Anchor's open night and fell apart.  [Ryan seized a spot at the Anchor's open night.; guitar good, not great]  (the sixth time since 2029)
+  fault: P07 socialworker (false line): 2034: Ryan played the Anchor's open night and fell apart.  [Ryan seized a spot at the Anchor's open night.; guitar good, not great]  (the sixth time since 2029)
+  fault: P14 novelist (false line): Eric Ash and Sam Holmes buried the hatchet, three years after the editor's job.
+  fault: P14 player (false line): Eric Ash and Sam Holmes buried the hatchet, three years after the editor's job.
+  fault: P14 socialworker (false line): Eric Ash and Sam Holmes buried the hatchet, three years after the editor's job.
+  fault: P16 socialworker (unfit reason): Neil came through it, after 8 months of illness.  [Neil kept himself busy from morning to night.; the pressure had eased]
+  fault: P16 socialworker (out of nowhere): Neil came through it, after 11 months of carrying something nobody knew.  [Neil kept himself busy from morning to night.; the pressure had eased]
+  fault: P19 player (false line): Oliver Waller left Driftwood, quietly: there was a small child at home.
+  fault: P21 novelist (false line): Olive and Ryan lost touch.  [nothing brought them together any more]

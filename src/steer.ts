@@ -22,6 +22,8 @@ import {
   broadcast,
   addStress,
   year,
+  fit,
+  spanWords,
 } from './world';
 import { type Option, type Consideration } from './decide';
 import { decide, family, friendsOf } from './grammar';
@@ -232,6 +234,8 @@ export function setOut(w: World, p: Person, x: Want, way: Way, lbl: string, why:
   u.way = way.id;
   u.ways = [...(u.ways ?? []), way.id];
   u.asked = undefined;
+  // Round 41: "Instead, …" cites the way it replaces, so a reader sees what it is instead of.
+  const prev = fit() && again ? ((u as any).startEv as number | undefined) : undefined;
   const e = addEvent(w, {
     type: again ? 'otherway' : 'pursuit',
     who: [p.id],
@@ -249,7 +253,9 @@ export function setOut(w: World, p: Person, x: Want, way: Way, lbl: string, why:
             ...why.filter(c => c.key !== 'occasion').slice(0, 1),
           ]
         : [
-            ...(again ? [again] : [{ kind: 'want', label: `wants ${lbl} (since ${year(x.since)})`, weight: 0.5, key: x.kind, who: p.id } as Cause]),
+            ...(again
+              ? [...(prev != null ? [eventCause(w, prev, 0.4)] : []), again]
+              : [{ kind: 'want', label: `wants ${lbl} (since ${year(x.since)})`, weight: 0.5, key: x.kind, who: p.id } as Cause]),
             ...why.filter(c => !again || c.label !== again.label).slice(0, 2),
           ],
     vis: way.id === 'save' || way.id === 'practise' || way.id === 'work' || way.id === 'wait' || way.id === 'show' ? 'private' : 'local',
@@ -258,6 +264,7 @@ export function setOut(w: World, p: Person, x: Want, way: Way, lbl: string, why:
     w: again ? 1.2 : 1.1,
   });
   broadcast(w, e);
+  if (fit()) (u as any).startEv = e.id;
   begin(w, p, x, way, e.id);
   return e;
 }
@@ -446,7 +453,7 @@ export function obstacle(w: World, p: Person, x: Want, lbl: string, what: string
       label: 'keep at it the same way',
       considerations: [
         facetC(p, 'diligence', NONE, 1, 4),
-        pubC('invested', `${Math.max(1, Math.round(years))} years in`, clamp(years / 5, 0, 1)),
+        pubC('invested', fit() ? `${spanWords(years * 12)} in` : `${Math.max(1, Math.round(years))} years in`, clamp(years / 5, 0, 1)),
         privC('close', progress > 0.6 ? 'so close' : 'a long way off', progress, 1, 0.2, undefined, 0.45),
       ],
     },
