@@ -1,0 +1,47 @@
+WARNINGS: ties: 47 of 48 pairs scored the same in both versions by a reader. The reading cannot show what it was meant to.
+pair  on         novelist          player   majority-on
+P01   B            3,3,B           3,3,B   yes
+P02   B            3,3,B           3,3,B   yes
+P03   B            3,3,B           3,3,B   yes
+P04   B            3,3,B           2,2,B   yes
+P05   B            3,3,B           2,2,B   yes
+P06   A            3,3,A           2,2,A   yes
+P07   A            4,4,A           4,4,A   yes
+P08   B            3,3,B           3,3,B   yes
+P09   A            3,3,A           3,3,A   yes
+P10   A            3,3,A           3,3,A   yes
+P11   A            3,3,A           3,3,A   yes
+P12   A            4,4,A           3,3,A   yes
+P13   B            3,3,B           3,3,B   yes
+P14   B            3,3,B           3,3,B   yes
+P15   B            3,3,B           3,3,B   yes
+P16   A            3,3,A           3,3,A   yes
+P17   B            2,2,B           2,2,B   yes
+P18   A            2,2,A           2,2,A   yes
+P19   B            3,3,B           3,4,B   yes
+P20   A            3,3,A           3,3,A   yes
+P21   A            4,4,A           3,3,A   yes
+P22   A            3,3,A           3,3,A   yes
+P23   A            3,3,A           3,3,A   yes
+P24   B            3,3,B           3,3,B   yes
+
+The on arm was version B in 12 of 24 pairs; readers chose B in 24 of 48 single choices.
+Majority preferred the on arm in 24 of 24.
+Paired score difference, on minus off: +0.02 ±0.04 (95%, 24 pairs, mean over 2 readers)
+  novelist       +0.00
+  player         +0.04
+With the order as a term: effect +0.02 ±0.04 (95%); one-sided 90% lower bound -0.01; lean toward the second version +0.02
+ordinal  alpha 0.523  95% [0.210, 0.743]  (2 readers, 48 lives)
+interval alpha 0.521  95% [0.223, 0.746]  (2 readers, 48 lives)
+  novelist     mean 3.04
+  player       mean 2.85
+
+How much happened: 75.2 lines a page on, 75.2 off; on minus off +0.0 a pair (sd 0.0). Where the versions are five or more lines apart, the longer was chosen 0 times and the shorter 0 (48 choices nearer).
+Kinds of line: 42.5 a page on, 42.5 off; on minus off +0.0 a pair (sd 0.0).
+faults on: total 538 · repeat 173, unfit reason 109, wording 102, false line 89, out of nowhere 65
+faults off: total 586 · repeat 173, unfit reason 157, wording 102, false line 87, out of nowhere 67
+Faults per ten lines: 1.49 on, 1.62 off. false line 0.25/0.24, out of nowhere 0.18/0.19, repeat 0.48/0.48, unfit reason 0.30/0.43, wording 0.28/0.28
+Versions given exactly three faults: 3 of 96.
+Severity, and for unfit reasons whether the event shown under them supports them: on awkward 510, source none 88, false 28, source supports 14, source does not 7; off awkward 507, source none 128, false 79, source does not 15, source supports 14
+Faults cited by line: 1124; citing a line the version does not have: 0.
+Planted faults: 24 pairs; the planted line cited by 48 of 48 readings (48 as an unfit reason), the same line in the true version by 1: altered minus true +47. Within a line: 48 against 16.

@@ -1,0 +1,362 @@
+{
+ "P01": {
+  "seed": 3585,
+  "person": 84,
+  "name": "Karen",
+  "onIs": "A",
+  "on": {
+   "lines": 101,
+   "kinds": 59
+  },
+  "off": {
+   "lines": 101,
+   "kinds": 59
+  },
+  "changed": 98
+ },
+ "P02": {
+  "seed": 3585,
+  "person": 42,
+  "name": "Susie",
+  "onIs": "B",
+  "on": {
+   "lines": 88,
+   "kinds": 47
+  },
+  "off": {
+   "lines": 88,
+   "kinds": 47
+  },
+  "changed": 86
+ },
+ "P03": {
+  "seed": 3585,
+  "person": 77,
+  "name": "Alice",
+  "onIs": "B",
+  "on": {
+   "lines": 67,
+   "kinds": 36
+  },
+  "off": {
+   "lines": 67,
+   "kinds": 36
+  },
+  "changed": 67
+ },
+ "P04": {
+  "seed": 3586,
+  "person": 17,
+  "name": "Molly Dale",
+  "onIs": "A",
+  "on": {
+   "lines": 82,
+   "kinds": 40
+  },
+  "off": {
+   "lines": 82,
+   "kinds": 40
+  },
+  "changed": 79
+ },
+ "P05": {
+  "seed": 3586,
+  "person": 19,
+  "name": "Andy",
+  "onIs": "B",
+  "on": {
+   "lines": 71,
+   "kinds": 33
+  },
+  "off": {
+   "lines": 71,
+   "kinds": 33
+  },
+  "changed": 69
+ },
+ "P06": {
+  "seed": 3586,
+  "person": 40,
+  "name": "Steve Kemp",
+  "onIs": "A",
+  "on": {
+   "lines": 74,
+   "kinds": 36
+  },
+  "off": {
+   "lines": 74,
+   "kinds": 36
+  },
+  "changed": 72
+ },
+ "P07": {
+  "seed": 3587,
+  "person": 52,
+  "name": "Ryan",
+  "onIs": "A",
+  "on": {
+   "lines": 106,
+   "kinds": 50
+  },
+  "off": {
+   "lines": 106,
+   "kinds": 50
+  },
+  "changed": 99
+ },
+ "P08": {
+  "seed": 3587,
+  "person": 26,
+  "name": "Hannah Ash",
+  "onIs": "B",
+  "on": {
+   "lines": 81,
+   "kinds": 47
+  },
+  "off": {
+   "lines": 81,
+   "kinds": 47
+  },
+  "changed": 80
+ },
+ "P09": {
+  "seed": 3587,
+  "person": 11,
+  "name": "Sean",
+  "onIs": "B",
+  "on": {
+   "lines": 66,
+   "kinds": 38
+  },
+  "off": {
+   "lines": 66,
+   "kinds": 38
+  },
+  "changed": 60
+ },
+ "P10": {
+  "seed": 3588,
+  "person": 40,
+  "name": "Eve",
+  "onIs": "B",
+  "on": {
+   "lines": 72,
+   "kinds": 41
+  },
+  "off": {
+   "lines": 72,
+   "kinds": 41
+  },
+  "changed": 71
+ },
+ "P11": {
+  "seed": 3588,
+  "person": 37,
+  "name": "Ellie",
+  "onIs": "B",
+  "on": {
+   "lines": 91,
+   "kinds": 54
+  },
+  "off": {
+   "lines": 91,
+   "kinds": 54
+  },
+  "changed": 88
+ },
+ "P12": {
+  "seed": 3588,
+  "person": 69,
+  "name": "Oliver",
+  "onIs": "A",
+  "on": {
+   "lines": 69,
+   "kinds": 35
+  },
+  "off": {
+   "lines": 69,
+   "kinds": 35
+  },
+  "changed": 64
+ },
+ "P13": {
+  "seed": 3589,
+  "person": 73,
+  "name": "Karen",
+  "onIs": "A",
+  "on": {
+   "lines": 98,
+   "kinds": 50
+  },
+  "off": {
+   "lines": 98,
+   "kinds": 50
+  },
+  "changed": 98
+ },
+ "P14": {
+  "seed": 3589,
+  "person": 61,
+  "name": "Eric Ash",
+  "onIs": "A",
+  "on": {
+   "lines": 71,
+   "kinds": 46
+  },
+  "off": {
+   "lines": 71,
+   "kinds": 46
+  },
+  "changed": 68
+ },
+ "P15": {
+  "seed": 3589,
+  "person": 15,
+  "name": "Leo Newman",
+  "onIs": "B",
+  "on": {
+   "lines": 88,
+   "kinds": 52
+  },
+  "off": {
+   "lines": 88,
+   "kinds": 52
+  },
+  "changed": 83
+ },
+ "P16": {
+  "seed": 3590,
+  "person": 73,
+  "name": "Neil Vaughan",
+  "onIs": "B",
+  "on": {
+   "lines": 65,
+   "kinds": 36
+  },
+  "off": {
+   "lines": 65,
+   "kinds": 36
+  },
+  "changed": 62
+ },
+ "P17": {
+  "seed": 3590,
+  "person": 66,
+  "name": "John Sands",
+  "onIs": "A",
+  "on": {
+   "lines": 54,
+   "kinds": 26
+  },
+  "off": {
+   "lines": 54,
+   "kinds": 26
+  },
+  "changed": 49
+ },
+ "P18": {
+  "seed": 3590,
+  "person": 33,
+  "name": "Tilly",
+  "onIs": "B",
+  "on": {
+   "lines": 32,
+   "kinds": 25
+  },
+  "off": {
+   "lines": 32,
+   "kinds": 25
+  },
+  "changed": 28
+ },
+ "P19": {
+  "seed": 3591,
+  "person": 63,
+  "name": "Oliver",
+  "onIs": "A",
+  "on": {
+   "lines": 82,
+   "kinds": 51
+  },
+  "off": {
+   "lines": 82,
+   "kinds": 51
+  },
+  "changed": 78
+ },
+ "P20": {
+  "seed": 3591,
+  "person": 26,
+  "name": "Eric",
+  "onIs": "A",
+  "on": {
+   "lines": 80,
+   "kinds": 50
+  },
+  "off": {
+   "lines": 80,
+   "kinds": 50
+  },
+  "changed": 80
+ },
+ "P21": {
+  "seed": 3591,
+  "person": 28,
+  "name": "Olive",
+  "onIs": "A",
+  "on": {
+   "lines": 94,
+   "kinds": 48
+  },
+  "off": {
+   "lines": 94,
+   "kinds": 48
+  },
+  "changed": 91
+ },
+ "P22": {
+  "seed": 3592,
+  "person": 44,
+  "name": "Mark",
+  "onIs": "B",
+  "on": {
+   "lines": 60,
+   "kinds": 43
+  },
+  "off": {
+   "lines": 60,
+   "kinds": 43
+  },
+  "changed": 58
+ },
+ "P23": {
+  "seed": 3592,
+  "person": 65,
+  "name": "Agnes Rudd",
+  "onIs": "B",
+  "on": {
+   "lines": 49,
+   "kinds": 37
+  },
+  "off": {
+   "lines": 49,
+   "kinds": 37
+  },
+  "changed": 44
+ },
+ "P24": {
+  "seed": 3592,
+  "person": 62,
+  "name": "Harry",
+  "onIs": "A",
+  "on": {
+   "lines": 64,
+   "kinds": 41
+  },
+  "off": {
+   "lines": 64,
+   "kinds": 41
+  },
+  "changed": 60
+ }
+}

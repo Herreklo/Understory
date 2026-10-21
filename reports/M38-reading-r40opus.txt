@@ -1,0 +1,47 @@
+WARNINGS: none (no cap, ceiling, floor or ties above half).
+pair  on         novelist   majority-on
+P01   A            3,3,A   yes
+P02   B            3,3,B   yes
+P03   A            4,2,A   yes
+P04   B            3,3,B   yes
+P05   A            3,4,B   no
+P06   A            3,2,A   yes
+P07   B            2,3,B   yes
+P08   B            2,3,B   yes
+P09   A            3,2,A   yes
+P10   A            3,3,B   no
+P11   A            3,3,A   yes
+P12   B            2,3,B   yes
+P13   B            2,3,B   yes
+P14   B            2,3,B   yes
+P15   A            3,3,A   yes
+P16   B            3,3,A   no
+P17   A            3,2,A   yes
+P18   A            3,3,A   yes
+P19   A            3,2,A   yes
+P20   B            4,3,A   no
+P21   A            3,3,A   yes
+P22   B            2,3,B   yes
+P23   B            3,2,A   no
+P24   B            3,3,B   yes
+
+The on arm was version B in 12 of 24 pairs; readers chose B in 11 of 24 single choices.
+Majority preferred the on arm in 19 of 24.
+Paired score difference, on minus off: +0.38 ±0.33 (95%, 24 pairs, mean over 1 readers)
+  novelist       +0.38
+With the order as a term: effect +0.38 ±0.33 (95%); one-sided 90% lower bound +0.16; lean toward the second version -0.04
+ordinal  alpha nan  95% [nan, nan]  (1 readers, 48 lives)
+interval alpha nan  95% [nan, nan]  (1 readers, 48 lives)
+  novelist     mean 2.81
+
+How much happened: 78.0 lines a page on, 64.9 off; on minus off +13.1 a pair (sd 26.4). Where the versions are five or more lines apart, the longer was chosen 16 times and the shorter 4 (4 choices nearer).
+With the order and the difference in lines as terms: effect +0.16 ±0.32 (95%); ten lines more +0.16 ±0.11. Reported beside the effect above, which the round is judged on.
+Kinds of line: 43.6 a page on, 37.2 off; on minus off +6.3 a pair (sd 14.9).
+With the order and the difference in kinds as terms: effect +0.18 ±0.30 (95%); a kind more +0.031 ±0.019.
+faults on: total 327 · unfit reason 120, repeat 89, false line 48, wording 46, out of nowhere 24
+faults off: total 318 · unfit reason 118, repeat 98, false line 45, wording 36, out of nowhere 21
+Faults per ten lines: 1.75 on, 2.04 off. false line 0.26/0.29, out of nowhere 0.13/0.13, repeat 0.48/0.63, unfit reason 0.64/0.76, wording 0.25/0.23
+Faults a page, on minus off, with the order and the difference in lines as terms: -1.22 ±2.35 (95%); ten lines more +1.21 ±0.81.
+Versions given exactly three faults: 0 of 48.
+Severity, and for unfit reasons whether the event shown under them supports them: on awkward 303, source none 107, false 24, source supports 12, source does not 1; off awkward 287, source none 97, false 31, source supports 18, source does not 3
+Faults cited by line: 645; citing a line the version does not have: 0.

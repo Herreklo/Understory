@@ -21,12 +21,22 @@ What it reports, and why:
   what a round's keep rule should be judged on.
 - Krippendorff's alpha (scripts/alpha.py): how far the readers agree on the scores. It describes the panel, not the effect: a
   change can read better to every reader while they disagree on the scale. Reported, not a gate.
-- Faults by kind in each arm, and the quotes matching --quote.
+- Faults by kind in each arm, and the quotes matching --quote. Readers list every fault they find (M38), so faults are also reported
+  per ten lines in each arm, and paired: the on version's faults minus the off version's, with the order and the difference in lines as
+  terms (a rate on a page of two lines would swamp the pairs). Also: how many versions got exactly three faults, which is where an older
+  brief that asked for "up to three" capped the count; and, when answers carry them, each fault's severity (false or awkward) and, for
+  unfit reasons, whether the event shown under the reason supports it.
 - How much happened: the lines of each version (not counting the cited events shown under a line). Readers choose the version where
   more happens (70% of their choices over rounds 29-34, +0.16 a pair for every ten lines more; round 35), and the two arms of an engine
   change are different worlds, so the people read differ by 16-28 lines (sd) between arms. Reported: the lines in each arm, how often
   the longer version was chosen, and the effect with the difference in lines as a third term. A round is judged on the effect with the
   order as a term, since a change that makes more happen is meant to read better for it; the third term says how much of it is that.
+- Warnings, printed first: a cap (more than half the versions given the most faults any version got), a ceiling or a floor (more than
+  half the scores at 5, or at 1) and ties (more than half the pairs scored the same in both versions by a reader). Each means the reading
+  cannot show what it was meant to (M38: the old brief's cap of three faults was full in 94-100% of versions for twelve rounds).
+- Faults cited by line (M38): the pack numbers each line, and a fault gives its `line` instead of a quote; the scorer finds its text in
+  the pack, and counts citations of a line the version does not have. A key may mark a planted fault ({"planted": {"arm": "off",
+  "line": 12}}): the scorer reports how many readers cited that line.
 - Kinds of line (the event types on a page), when the key carries them: readers score how many kinds of thing happen in a life, not
   its length (+0.05 a kind across lives and within pairs over rounds 29-34; round 36). Reported: kinds in each arm, and the effect with
   the order and the difference in kinds as terms.
@@ -55,16 +65,48 @@ def t(table, df):
 
 def pack_lines(paths):
     """Lines of each version in the pack: {(pair, 'A'|'B'): n}, not counting the cited events shown under a line."""
-    n, cur = {}, None
+    return {k: len(v) for k, v in pack_text(paths).items()}
+
+
+def pack_text(paths):
+    """The text of each version's lines, by number: {(pair, 'A'|'B'): {1: '2026: ...', ...}}, with the events shown under a line (↳)
+    joined to it. A pack from before M38 has no numbers: its lines are numbered here in order."""
+    out, cur = {}, None
     for p in paths:
         for line in open(p, encoding='utf8'):
+            line = line.rstrip('\n')
             m = re.match(r'##### (P\d+), version ([AB])', line)
             if m:
                 cur = (m[1], m[2])
-                n[cur] = 0
-            elif cur and line.strip() and not line.startswith('    ↳'):
-                n[cur] += 1
-    return n
+                out[cur] = {}
+            elif cur and line.strip():
+                if line.lstrip().startswith('↳'):
+                    if out[cur]:
+                        last = max(out[cur])
+                        out[cur][last] += '\n' + line.strip()
+                    continue
+                num = re.match(r'\s*(\d+)  (\d{4}: .*)', line)
+                n = len(out[cur]) + 1
+                out[cur][int(num[1]) if num else n] = num[2] if num else line
+    return out
+
+
+def warnings(readers, names, pairs):
+    """What would stop the reading showing what it was meant to: a cap, a ceiling or floor, ties. Each above half."""
+    counts = [len(readers[r][p][v].get('faults', [])) for r in names for p in pairs for v in 'AB']
+    scores = [readers[r][p][v]['score'] for r in names for p in pairs for v in 'AB']
+    ties = sum(readers[r][p]['A']['score'] == readers[r][p]['B']['score'] for r in names for p in pairs)
+    out, top = [], max(counts) if counts else 0
+    at_top = sum(c == top for c in counts)
+    if top and at_top * 2 > len(counts):
+        out.append(f'cap: {at_top} of {len(counts)} versions got {top} faults, the most any version got; the fault count is capped')
+    for lim in (5, 1):
+        k = sum(x == lim for x in scores)
+        if k * 2 > len(scores):
+            out.append(f"{'ceiling' if lim == 5 else 'floor'}: {k} of {len(scores)} scores are {lim}")
+    if ties * 2 > len(names) * len(pairs):
+        out.append(f'ties: {ties} of {len(names) * len(pairs)} pairs scored the same in both versions by a reader')
+    return out
 
 
 def ols(X, y):
@@ -122,10 +164,29 @@ def main():
     if missing:
         sys.exit(f'pairscore: answers missing for {missing[:5]}')
 
+    warn = warnings(readers, names, pairs)
+    print('WARNINGS: ' + ('; '.join(warn) + '. The reading cannot show what it was meant to.' if warn else 'none (no cap, ceiling, floor or ties above half).'))
+    packs = a.pack
+    if not packs:
+        beside = os.path.join(os.path.dirname(os.path.abspath(a.key)), 'pairs.txt')
+        packs = [beside] if os.path.exists(beside) else []
+    text = pack_text(packs) if packs else {}
+    if not text and any('line' in f for r in names for p in pairs for v in 'AB' for f in readers[r][p][v].get('faults', [])):
+        sys.exit('pairscore: the faults cite lines, and no pack was given to find them in (--pack)')
+
+    def quote(p, v, f):
+        if 'line' not in f:
+            return f.get('quote', '')
+        return text.get((p, v), {}).get(f['line'], '')
+
+    bad_lines, cited_lines = 0, 0
+    planted = {'pairs': 0, 'found': 0, 'asUnfit': 0, 'of': 0, 'inTrue': 0, 'near': 0, 'nearInTrue': 0}
     print('pair  on   ' + '  '.join(f'{r:>14}' for r in names) + '   majority-on')
     maj, d_pair, side, scores, bchoice = 0, [], [], {r: {} for r in names}, 0
     per_reader = {r: [] for r in names}
     faults = {'on': Counter(), 'off': Counter()}
+    severity = {'on': Counter(), 'off': Counter()}
+    fcount, capped, versions = {}, 0, 0
     quotes = {'good': [], 'fault': [], 'good_off': [], 'fault_off': []}
     rq = re.compile(a.quote) if a.quote else None
     arms, prefs = [], []
@@ -146,13 +207,40 @@ def main():
             scores[r][str(2 * i + 1)] = x['A']['score']
             scores[r][str(2 * i + 2)] = x['B']['score']
             for arm, lab in ((on, 'on'), (off, 'off')):
-                for f in x[arm].get('faults', []):
+                fs = x[arm].get('faults', [])
+                fcount[(p, r, lab)] = len(fs)
+                capped += len(fs) == 3
+                versions += 1
+                for f in fs:
+                    if 'line' in f:
+                        cited_lines += 1
+                        bad_lines += (p, arm) in text and f['line'] not in text[(p, arm)]
                     faults[lab][f['kind']] += 1
-                    if rq and rq.search(f['quote']):
-                        quotes['fault' if lab == 'on' else 'fault_off'].append(f"{p} {r} ({f['kind']}): {f['quote']}")
+                    if 'severity' in f:
+                        severity[lab][f['severity']] += 1
+                    if f.get('source'):
+                        severity[lab]['source ' + f['source']] += 1
+                    if rq and rq.search(quote(p, arm, f)):
+                        quotes['fault' if lab == 'on' else 'fault_off'].append(f"{p} {r} ({f['kind']}): {quote(p, arm, f)}")
                 for g in x[arm].get('good', []):
+                    g = text.get((p, arm), {}).get(g, '') if isinstance(g, int) else g
                     if rq and rq.search(g):
                         quotes['good' if lab == 'on' else 'good_off'].append(f'{p} {r}: {g}')
+        pl = key[p].get('planted')
+        if pl:
+            # The control is the same line number in the other version, where nothing was planted: readers who list every fault on a
+            # page of a hundred lines cite any one line now and then.
+            arm, other = (on, off) if pl['arm'] == 'on' else (off, on)
+            planted['pairs'] += 1
+            for r in names:
+                cites = lambda v, d: [f for f in readers[r][p][v].get('faults', []) if abs(f.get('line', -9) - pl['line']) <= d]
+                hit = cites(arm, 0)
+                planted['of'] += 1
+                planted['found'] += bool(hit)
+                planted['asUnfit'] += any(f['kind'] == 'unfit reason' for f in hit)
+                planted['inTrue'] += bool(cites(other, 0))
+                planted['near'] += bool(cites(arm, 1))
+                planted['nearInTrue'] += bool(cites(other, 1))
         m = votes * 2 > len(names)
         maj += m
         d_pair.append(st.mean(ds))
@@ -190,10 +278,6 @@ def main():
     alpha = subprocess.run([sys.executable, sp, tmp], capture_output=True, text=True).stdout.strip()
     print(alpha)
     # How much happened in each version, and how much of the effect it carries.
-    packs = a.pack
-    if not packs:
-        beside = os.path.join(os.path.dirname(os.path.abspath(a.key)), 'pairs.txt')
-        packs = [beside] if os.path.exists(beside) else []
     lines = None
     if packs:
         nl = pack_lines(packs)
@@ -242,6 +326,40 @@ def main():
                   f' {b[2]:+.3f} ±{tt * se[2]:.3f}.')
     for lab in ('on', 'off'):
         print(f'faults {lab}: total {sum(faults[lab].values())} · ' + ', '.join(f'{k} {v}' for k, v in faults[lab].most_common()))
+    # Faults (M38): readers list every fault, so a page with fewer faults can show it. Pooled per ten lines in each arm; paired, the
+    # on version's faults minus the off version's, averaged over the readers, with the order and the difference in lines as terms
+    # (a rate on a page of two lines would swamp the pairs).
+    rate = None
+    if all('lines' in key[p].get('on', {}) and 'lines' in key[p].get('off', {}) for p in pairs):
+        ln = {(p, lab): key[p][lab]['lines'] for p in pairs for lab in ('on', 'off')}
+        dc = [st.mean(fcount[(p, r, 'on')] - fcount[(p, r, 'off')] for r in names) for p in pairs]
+        dln = [ln[(p, 'on')] - ln[(p, 'off')] for p in pairs]
+        fitf = ols([[1.0, s_, x] for s_, x in zip(side, dln)], dc) if n > 3 else None
+        paired = None
+        if fitf:
+            bf, sef, _ = fitf
+            tt = t(T975, n - 3)
+            paired = {'effect': bf[0], 'hw95': tt * sef[0], 'lean': bf[1], 'perTenLines': 10 * bf[2], 'perTenLinesHw95': tt * 10 * sef[2]}
+        per = {lab: 10 * sum(faults[lab].values()) / (len(names) * sum(ln[(p, lab)] for p in pairs)) for lab in ('on', 'off')}
+        kinds = sorted(set(faults['on']) | set(faults['off']))
+        perKind = {lab: {k: 10 * faults[lab][k] / (len(names) * sum(ln[(p, lab)] for p in pairs)) for k in kinds} for lab in ('on', 'off')}
+        rate = {'on': per['on'], 'off': per['off'], 'paired': paired, 'perKind': perKind, 'capped': capped,
+                'versions': versions, 'severity': {k: dict(v) for k, v in severity.items()}}
+        print(f"Faults per ten lines: {per['on']:.2f} on, {per['off']:.2f} off. "
+              + ', '.join(f"{k} {perKind['on'][k]:.2f}/{perKind['off'][k]:.2f}" for k in kinds))
+        if rate['paired']:
+            fp = rate['paired']
+            print(f"Faults a page, on minus off, with the order and the difference in lines as terms: {fp['effect']:+.2f} ±{fp['hw95']:.2f}"
+                  f" (95%); ten lines more {fp['perTenLines']:+.2f} ±{fp['perTenLinesHw95']:.2f}.")
+        print(f'Versions given exactly three faults: {capped} of {versions}' + (' (the count may be capped)' if capped > versions / 2 else '') + '.')
+        if any(severity[lab] for lab in ('on', 'off')):
+            print('Severity, and for unfit reasons whether the event shown under them supports them: ' + '; '.join(f"{lab} " + ', '.join(f'{k} {v}' for k, v in severity[lab].most_common()) for lab in ('on', 'off')))
+    if cited_lines:
+        print(f'Faults cited by line: {cited_lines}; citing a line the version does not have: {bad_lines}.')
+    if planted['pairs']:
+        print(f"Planted faults: {planted['pairs']} pairs; the planted line cited by {planted['found']} of {planted['of']} readings"
+              f" ({planted['asUnfit']} as an unfit reason), the same line in the true version by {planted['inTrue']}: altered minus true"
+              f" {planted['found'] - planted['inTrue']:+d}. Within a line: {planted['near']} against {planted['nearInTrue']}.")
     if rq:
         print(f"\nQuotes matching the round's wording (on arm): good {len(quotes['good'])}, faults {len(quotes['fault'])}"
               f" (unfit reasons {sum('(unfit reason)' in q for q in quotes['fault'])}); off arm: good {len(quotes['good_off'])},"
@@ -252,7 +370,8 @@ def main():
     if a.json:
         json.dump({'pairs': n, 'readers': names, 'majorityOn': maj, 'diff': mean, 'hw95': hw, 'adjusted': adj, 'onB': on_b, 'chooseB': bchoice,
                    'perReader': {r: st.mean(v) for r, v in per_reader.items()}, 'faults': {k: dict(v) for k, v in faults.items()},
-                   'quotes': quotes, 'scores': scores, 'lines': lines}, open(a.json, 'w'), indent=1)
+                   'quotes': quotes, 'scores': scores, 'lines': lines, 'faultRate': rate,
+                   'warnings': warn, 'citedLines': cited_lines, 'badLines': bad_lines, 'planted': planted if planted['pairs'] else None}, open(a.json, 'w'), indent=1)
 
 
 if __name__ == '__main__':

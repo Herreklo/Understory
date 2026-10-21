@@ -1,0 +1,338 @@
+{
+ "P01": {
+  "seed": 3529,
+  "person": 64,
+  "name": "Rose Lane",
+  "onIs": "A",
+  "on": {
+   "lines": 52,
+   "kinds": 29
+  },
+  "off": {
+   "lines": 64,
+   "kinds": 43
+  }
+ },
+ "P02": {
+  "seed": 3529,
+  "person": 35,
+  "name": "Sarah Baker",
+  "onIs": "B",
+  "on": {
+   "lines": 61,
+   "kinds": 44
+  },
+  "off": {
+   "lines": 59,
+   "kinds": 38
+  }
+ },
+ "P03": {
+  "seed": 3529,
+  "person": 21,
+  "name": "Mary",
+  "onIs": "A",
+  "on": {
+   "lines": 88,
+   "kinds": 55
+  },
+  "off": {
+   "lines": 43,
+   "kinds": 24
+  }
+ },
+ "P04": {
+  "seed": 3530,
+  "person": 21,
+  "name": "Ryan",
+  "onIs": "B",
+  "on": {
+   "lines": 74,
+   "kinds": 37
+  },
+  "off": {
+   "lines": 93,
+   "kinds": 44
+  }
+ },
+ "P05": {
+  "seed": 3530,
+  "person": 84,
+  "name": "Trevor",
+  "onIs": "A",
+  "on": {
+   "lines": 77,
+   "kinds": 43
+  },
+  "off": {
+   "lines": 82,
+   "kinds": 52
+  }
+ },
+ "P06": {
+  "seed": 3530,
+  "person": 71,
+  "name": "Toby",
+  "onIs": "A",
+  "on": {
+   "lines": 99,
+   "kinds": 42
+  },
+  "off": {
+   "lines": 56,
+   "kinds": 29
+  }
+ },
+ "P07": {
+  "seed": 3531,
+  "person": 48,
+  "name": "Terry",
+  "onIs": "B",
+  "on": {
+   "lines": 106,
+   "kinds": 59
+  },
+  "off": {
+   "lines": 29,
+   "kinds": 16
+  }
+ },
+ "P08": {
+  "seed": 3531,
+  "person": 8,
+  "name": "Oscar Nash",
+  "onIs": "B",
+  "on": {
+   "lines": 84,
+   "kinds": 52
+  },
+  "off": {
+   "lines": 48,
+   "kinds": 22
+  }
+ },
+ "P09": {
+  "seed": 3531,
+  "person": 10,
+  "name": "Sophie",
+  "onIs": "A",
+  "on": {
+   "lines": 62,
+   "kinds": 40
+  },
+  "off": {
+   "lines": 60,
+   "kinds": 34
+  }
+ },
+ "P10": {
+  "seed": 3532,
+  "person": 9,
+  "name": "John",
+  "onIs": "A",
+  "on": {
+   "lines": 100,
+   "kinds": 48
+  },
+  "off": {
+   "lines": 80,
+   "kinds": 40
+  }
+ },
+ "P11": {
+  "seed": 3532,
+  "person": 86,
+  "name": "Jonah Kemp",
+  "onIs": "A",
+  "on": {
+   "lines": 67,
+   "kinds": 48
+  },
+  "off": {
+   "lines": 71,
+   "kinds": 43
+  }
+ },
+ "P12": {
+  "seed": 3532,
+  "person": 39,
+  "name": "Oliver Sayer",
+  "onIs": "B",
+  "on": {
+   "lines": 107,
+   "kinds": 48
+  },
+  "off": {
+   "lines": 40,
+   "kinds": 28
+  }
+ },
+ "P13": {
+  "seed": 3533,
+  "person": 13,
+  "name": "Sean Ash",
+  "onIs": "B",
+  "on": {
+   "lines": 71,
+   "kinds": 46
+  },
+  "off": {
+   "lines": 70,
+   "kinds": 37
+  }
+ },
+ "P14": {
+  "seed": 3533,
+  "person": 17,
+  "name": "Kate Moore",
+  "onIs": "B",
+  "on": {
+   "lines": 74,
+   "kinds": 41
+  },
+  "off": {
+   "lines": 66,
+   "kinds": 44
+  }
+ },
+ "P15": {
+  "seed": 3533,
+  "person": 71,
+  "name": "Tom",
+  "onIs": "A",
+  "on": {
+   "lines": 72,
+   "kinds": 39
+  },
+  "off": {
+   "lines": 50,
+   "kinds": 33
+  }
+ },
+ "P16": {
+  "seed": 3534,
+  "person": 35,
+  "name": "Larry",
+  "onIs": "B",
+  "on": {
+   "lines": 56,
+   "kinds": 37
+  },
+  "off": {
+   "lines": 76,
+   "kinds": 50
+  }
+ },
+ "P17": {
+  "seed": 3534,
+  "person": 60,
+  "name": "Tara",
+  "onIs": "A",
+  "on": {
+   "lines": 82,
+   "kinds": 43
+  },
+  "off": {
+   "lines": 54,
+   "kinds": 27
+  }
+ },
+ "P18": {
+  "seed": 3534,
+  "person": 44,
+  "name": "Edward",
+  "onIs": "A",
+  "on": {
+   "lines": 62,
+   "kinds": 41
+  },
+  "off": {
+   "lines": 54,
+   "kinds": 32
+  }
+ },
+ "P19": {
+  "seed": 3535,
+  "person": 72,
+  "name": "Libby",
+  "onIs": "A",
+  "on": {
+   "lines": 89,
+   "kinds": 47
+  },
+  "off": {
+   "lines": 81,
+   "kinds": 47
+  }
+ },
+ "P20": {
+  "seed": 3535,
+  "person": 16,
+  "name": "Steve",
+  "onIs": "B",
+  "on": {
+   "lines": 62,
+   "kinds": 37
+  },
+  "off": {
+   "lines": 82,
+   "kinds": 47
+  }
+ },
+ "P21": {
+  "seed": 3535,
+  "person": 4,
+  "name": "Eric",
+  "onIs": "A",
+  "on": {
+   "lines": 77,
+   "kinds": 45
+  },
+  "off": {
+   "lines": 63,
+   "kinds": 35
+  }
+ },
+ "P22": {
+  "seed": 3536,
+  "person": 36,
+  "name": "Peter Eden",
+  "onIs": "B",
+  "on": {
+   "lines": 93,
+   "kinds": 42
+  },
+  "off": {
+   "lines": 104,
+   "kinds": 51
+  }
+ },
+ "P23": {
+  "seed": 3536,
+  "person": 64,
+  "name": "Hilda Brook",
+  "onIs": "B",
+  "on": {
+   "lines": 70,
+   "kinds": 33
+  },
+  "off": {
+   "lines": 76,
+   "kinds": 44
+  }
+ },
+ "P24": {
+  "seed": 3536,
+  "person": 14,
+  "name": "Toby Dale",
+  "onIs": "B",
+  "on": {
+   "lines": 87,
+   "kinds": 50
+  },
+  "off": {
+   "lines": 56,
+   "kinds": 34
+  }
+ }
+}

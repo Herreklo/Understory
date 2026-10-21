@@ -1,0 +1,23 @@
+# M38: CI run locally (22 Oct 2026)
+
+GitHub did not start the PR's jobs ("recent account payments have failed or your spending limit needs to be increased"). The same steps, run on the merge of `a047d20` into main `d8e442f` (merge `9789059`, in a separate worktree):
+
+- `node scripts/check-seeds.mjs`: seeds ok, 112 ranges, none reused
+- `npx tsc --noEmit`, `prettier --check`: pass
+- `npm test`: exit 0 (coherence 11 12: every count 0)
+- `scripts/identity-ci.sh` with the PR's labels (none) and description:
+
+## Identity against main
+
+Engine files changed: 1.
+
+```
+on/11: identical
+on/12: identical
+on/13: identical
+```
+
+- Everything identical to main.
+- Behaviour identical to main (words check).
+
+**✓ Identity holds for what this PR says it is.**
