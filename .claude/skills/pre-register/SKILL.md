@@ -2,7 +2,6 @@
 name: pre-register
 description: Pre-registers a round once it is built and sized - the review of its design and diff, the pre-registration in BOARD, the seeds claimed, and the commit pushed as the timestamp. Use only after the research note and the sizing report exist.
 argument-hint: <round>
-disable-model-invocation: true
 ---
 
 # Pre-register round $ARGUMENTS
