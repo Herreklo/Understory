@@ -9,7 +9,7 @@
 // What a want does once it is open (ways, obstacles, outcomes) is the pursuit machinery in time.ts and steer.ts, unchanged.
 
 import { SETTING } from './setting';
-import { ON, age, addEvent, broadcast, year, type World, type Person, type Event, type Want, type Cause } from './world';
+import { ON, together, age, addEvent, broadcast, year, type World, type Person, type Event, type Want, type Cause } from './world';
 import { eventCause, stateCause } from './considerations';
 import { family } from './grammar';
 import { markGivenUp } from './steer';
@@ -17,7 +17,7 @@ import { markGivenUp } from './steer';
 // Off unless ON=occasions: round 36 was withdrawn before its test. On throwaway worlds it reached people (adults going after something
 // 56% against 46%, things bought four times as often) but less than its expectations, and barely changed the most eventful lives the
 // reading reads (docs/BOARD.md, round 36).
-export const occasionsOn = () => ON.has('occasions');
+export const occasionsOn = () => ON.has('occasions') || together();
 
 // Kinds of want a person goes after themselves (time.ts PLAN); the caps and the lapse count only these.
 export const OWN_KINDS = new Set(['attain', 'acquire', 'escape', 'prove', 'belong', 'restore']);

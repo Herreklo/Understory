@@ -20,6 +20,7 @@ import { EXPR } from './families';
 import { curves, z01, type Consideration, type Option } from './decide';
 import {
   ON,
+  together,
   P,
   bond,
   peekBond,
@@ -36,7 +37,7 @@ import {
   type Heard,
 } from './world';
 
-export const tellingOn = () => ON.has('telling');
+export const tellingOn = () => ON.has('telling') || together();
 const FAM = 0.2; // how well a hearer must know the one it is about, short of sharing a workplace, group or circle with them
 const BOUND = 32; // live told accounts a person holds before the most faded go
 const SECOND = 0.6; // how much surer the first hearer is than the second

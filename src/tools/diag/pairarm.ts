@@ -24,7 +24,10 @@ const onKind = sw.startsWith('+'),
 const A = +(a0 ?? 2921),
   B = +(b0 ?? A + 3),
   PER = +(n0 ?? 3);
-const OUT = `out-pair-${name}`;
+// PICK=random (round 39): the people read are adults drawn at random among those in town in both arms, not the most eventful, so a
+// change meant for the quiet majority is read where it lands.
+const PICK = process.env.PICK === 'random' ? 'random' : 'eventful';
+const OUT = `out-pair-${name}${PICK === 'random' ? '-random' : ''}`;
 mkdirSync(OUT, { recursive: true });
 
 function page(w: World, p: Person): string[] {
@@ -81,7 +84,11 @@ for (let seed = A; seed <= B; seed++) {
   const same = (p: Person) => on.people.find(q => q.first === p.first && q.last === p.last && q.born === p.born && q.sex === p.sex);
   const people = off.people
     .filter(p => p.status !== 'dead' && age(off, p) >= 18 && same(p)?.status === 'in')
-    .sort((x, y) => score(off, y) + score(on, same(y)!) - score(off, x) - score(on, same(x)!))
+    .sort((x, y) =>
+      PICK === 'random'
+        ? hash('pick', seed, x.id) - hash('pick', seed, y.id) || x.id - y.id
+        : score(off, y) + score(on, same(y)!) - score(off, x) - score(on, same(x)!),
+    )
     .slice(0, PER);
   for (const p of people) {
     const q = same(p)!;
@@ -132,5 +139,8 @@ try {
 } catch {
   commit = 'unknown';
 }
-writeFileSync(`${OUT}/meta.json`, JSON.stringify({ switch: name, kind: onKind ? 'ON' : 'OFF', worlds: [A, B], perWorld: PER, commit }, null, 1));
+writeFileSync(
+  `${OUT}/meta.json`,
+  JSON.stringify({ switch: name, kind: onKind ? 'ON' : 'OFF', worlds: [A, B], perWorld: PER, pick: PICK, commit }, null, 1),
+);
 console.log(`${n} pairs in ${OUT}/pairs.txt; key in ${OUT}/key.json`);

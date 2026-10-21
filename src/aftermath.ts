@@ -14,13 +14,13 @@
 
 import { SETTING } from './setting';
 import { clamp } from './rng';
-import { ON, P, age, likeOf, type World, type Person, type Event, type Habit, type Cause } from './world';
+import { ON, together, P, age, likeOf, type World, type Person, type Event, type Habit, type Cause } from './world';
 import { stateC, bondC, stateCause } from './considerations';
 import { type Instance, favour, leaveJob } from './grammar';
 import type { Feature } from './features';
 import { formHabit } from './time';
 
-export const aftermathOn = () => ON.has('aftermath');
+export const aftermathOn = () => ON.has('aftermath') || together();
 
 // Starting again at work answers a blow that came through work: passed over, found out, a shaming at their own workplace, or a want
 // that failed (the amendment to round 34: walking out of a job over a friendship's end does not fit the blow).

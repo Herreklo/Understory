@@ -18,6 +18,7 @@ import {
   titleAt,
   OFF,
   ON,
+  together,
   type World,
   type Person,
   type Event,
@@ -72,7 +73,7 @@ const successions = (w: World) => ((w as any).successions ??= []) as Succession[
 const on = () => !OFF.has('drama');
 // Off unless ON=collide: round 38 was withdrawn before its test. On throwaway worlds it moved contests out of season (2.6 a
 // world-decade) rather than adding to them (5.0 against 4.5 in all), and its contest acts gave no trait as a reason (docs/BOARD.md).
-export const collideOn = () => on() && ON.has('collide');
+export const collideOn = () => on() && (ON.has('collide') || together());
 // Round 38: what an out-of-season rivalry has won, kept for the place until the post is filled.
 const openCampaigns = (w: World) => ((w as any).openCampaigns ??= {}) as Record<string, Record<number, number>>;
 const campaignOf = (w: World, place: string): Record<number, number> | undefined =>

@@ -1,0 +1,7 @@
+Round 39's screen on throwaway worlds 9001-9008 (round 36's probe, kinds of line a life: every adult; the three busiest of each world), each mechanism alone with ON=<name> and the four together (ON=occasions,collide,aftermath,telling), run on round 38's tree before round 39's switch existed.
+off: kinds a life: every adult 22.79; three busiest 42.21 (lines 73.6)
+occasions: kinds a life: every adult 23.73; three busiest 41.96 (lines 74.6)
+collide: kinds a life: every adult 23.90; three busiest 41.25 (lines 77.8)
+aftermath: kinds a life: every adult 24.02; three busiest 42.92 (lines 79.6)
+telling: kinds a life: every adult 23.35; three busiest 41.58 (lines 77.0)
+all: kinds a life: every adult 25.16; three busiest 46.46 (lines 82.6)

@@ -74,7 +74,7 @@ A world is built by `buildWorld` (founders, families, jobs at year zero) and the
 
 ## Switches
 
-`OFF.has(name)` turns a mechanism off, so its contribution can be measured (`OFF=<name>`). `ON.has(name)` is the reverse, for a mechanism that stays in the code off by default (`ON=<name>` turns it on for a test). Every experiment's mechanism gets one. Read a switch where it is used, never in a value set when a module loads: tools turn switches on after the engine has loaded, so a switch read at load time never takes effect. `CLAUDE.md` says when each kind is removed; the tag of the round that settled it keeps the old behaviour reproducible.
+`OFF.has(name)` turns a mechanism off, so its contribution can be measured (`OFF=<name>`). `ON.has(name)` is the reverse, for a mechanism that stays in the code off by default (`ON=<name>` turns it on for a test). Every experiment's mechanism gets one. `ON=together` turns four on at once: occasions, telling, aftermath, and contests out of season and for a place in a band (`ON=collide`, in `drama.ts` and `group.ts`). Read a switch where it is used, never in a value set when a module loads: tools turn switches on after the engine has loaded, so a switch read at load time never takes effect. `CLAUDE.md` says when each kind is removed; the tag of the round that settled it keeps the old behaviour reproducible.
 
 **System and mechanism switches.** They stay: turning one off shows what that part of the model contributes.
 
