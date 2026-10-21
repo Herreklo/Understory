@@ -1,0 +1,67 @@
+Round 37: the paired reading, aftermath (with reasons that fit) on against off (20 Oct 2026). Round M34's method: 24 pairs, the three adults of each of worlds 3377-3384 most eventful over both arms together (src/tools/diag/pairarm.ts at abe2f35), order dealt half and half; three readers on Fable 5.1 (a novelist, a social worker, a player), each reading both parts at separate sittings. Scored by scripts/pairscore.py, before any other number of the round was read.
+
+pair  on         novelist          player    socialworker   majority-on
+P01   A            3,4,B           2,3,B           3,3,A   no
+P02   A            3,3,A           3,3,A           4,3,A   yes
+P03   A            4,2,A           4,2,A           4,2,A   yes
+P04   A            3,4,B           3,4,B           4,4,B   no
+P05   B            4,3,A           4,2,A           4,3,A   no
+P06   B            3,4,B           3,3,B           3,3,B   yes
+P07   B            4,3,A           3,3,A           4,3,A   no
+P08   A            4,3,A           4,2,A           4,2,A   yes
+P09   A            3,3,A           3,2,A           3,2,A   yes
+P10   A            3,4,B           3,3,B           4,3,A   no
+P11   B            3,2,A           4,2,A           4,2,A   no
+P12   B            4,3,A           3,2,A           4,2,A   no
+P13   B            3,3,A           3,3,A           3,3,B   no
+P14   A            3,4,B           3,4,B           3,4,B   no
+P15   A            3,4,B           3,3,B           3,3,B   no
+P16   A            4,3,A           4,3,A           4,4,B   yes
+P17   B            3,4,B           2,4,B           2,4,B   yes
+P18   B            3,4,B           3,3,B           3,3,B   yes
+P19   B            2,3,B           2,4,B           2,4,B   yes
+P20   B            3,3,B           3,4,B           2,4,B   yes
+P21   A            3,2,A           3,2,A           3,2,A   yes
+P22   A            2,3,B           2,3,B           3,3,A   no
+P23   B            4,2,A           4,1,A           4,2,A   no
+P24   B            2,2,B           2,3,B           3,3,B   yes
+
+The on arm was version B in 12 of 24 pairs; readers chose B in 35 of 72 single choices.
+Majority preferred the on arm in 12 of 24.
+Paired score difference, on minus off: +0.04 ±0.48 (95%, 24 pairs, mean over 3 readers)
+  novelist       -0.12
+  player         +0.04
+  socialworker   +0.21
+With the order as a term: effect +0.04 ±0.49 (95%); one-sided 90% lower bound -0.27; lean toward the second version -0.21
+ordinal  alpha 0.671  95% [0.516, 0.774]  (3 readers, 48 lives)
+interval alpha 0.674  95% [0.541, 0.773]  (3 readers, 48 lives)
+  novelist     mean 3.15
+  player       mean 2.94
+  socialworker mean 3.15
+
+How much happened: 72.7 lines a page on, 74.0 off; on minus off -1.3 a pair (sd 27.0). Where the versions are five or more lines apart, the longer was chosen 38 times and the shorter 25 (9 choices nearer).
+With the order and the difference in lines as terms: effect +0.06 ±0.47 (95%); ten lines more +0.16 ±0.18. Reported beside the effect above, which the round is judged on.
+Kinds of line: 40.2 a page on, 39.8 off; on minus off +0.4 a pair (sd 12.9).
+With the order and the difference in kinds as terms: effect +0.02 ±0.41 (95%); a kind more +0.053 ±0.033.
+faults on: total 216 · unfit reason 57, false line 52, repeat 50, out of nowhere 31, wording 26
+faults off: total 215 · false line 67, repeat 45, unfit reason 42, wording 34, out of nowhere 27
+
+Quotes matching the round's wording (on arm): good 17, faults 1 (unfit reasons 1); off arm: good 1, faults 6
+  good: P02 novelist: Sally Holmes died of a sudden heart attack, aged 72.; it hit hard
+  good: P02 socialworker: [Sally Holmes died of a sudden heart attack, aged 72.; it hit hard]
+  good: P03 novelist: Sally dragged up what Sarah did last year in front of everyone at the harbour fleet.; it had shaken her
+  good: P03 player: Sally dragged up what Sarah did last year in front of everyone at the harbour fleet.; it had shaken her
+  good: P03 socialworker: [Sally dragged up what Sarah did last year in front of everyone at the harbour fleet.; it had shaken her]
+  good: P04 socialworker: [Eddie Hale and Stella divorced.; it hit hard]
+  good: P06 novelist: it had shaken her; Stella is there too
+  good: P06 player: Stella dragged up what Una Nash did last year in front of everyone at the Anchor.; it had shaken her; Stella is there too
+  good: P06 socialworker: [Stella dragged up what Una Nash did last year in front of everyone at the Anchor.; it had shaken her; Stella is there too]
+  good: P07 socialworker: [Ivy dragged up what Kate did last year in front of everyone at the Old Bank Café.; it had shaken her]
+  good: P08 socialworker: [Ian Holmes died in his sleep, aged 92.; it hit hard]
+  good: P12 socialworker: [Sid Scott dragged up what Hilda did last year in front of everyone at the school.; it had shaken her]
+  good: P15 novelist: Lynn Scott walked out of the sawmill to start again somewhere else.  [Ivy dragged up what Lynn Scott did a few months back in front of everyone at the sawmill.; it had shaken her; it happened at work]
+  good: P15 player: Ivy dragged up what Lynn Scott did a few months back in front of everyone at the sawmill.; it had shaken her; it happened at work
+  good: P15 socialworker: Ivy dragged up what Lynn Scott did a few months back in front of everyone at the sawmill.; it had shaken her; it happened at work
+  good: P19 novelist: Sarah no longer plays cards at the Anchor on Tuesdays.  [Sarah was found out: Bert Hughes had been blamed for Sarah's mistake.; it hit hard]
+  good: P19 socialworker: Sarah was found out: Bert Hughes had been blamed for Sarah's mistake.; it hit hard
+  fault: P13 novelist (unfit reason): Audrey now plays cards at the Anchor on Tuesdays.  [Lynn Sutton dragged up what Audrey did a few months back.; it had shaken her]

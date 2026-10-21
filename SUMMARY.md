@@ -35,11 +35,11 @@ The people decide like people and can be read, but their lives are thin and repe
 
 ## Next, in order
 
-This is the one priority list. Only Øystein changes its order, and a chat starts an experiment only from the top of it or when he names one. Øystein asked on 20 Oct for a plan to be made and followed; this is it, revised twice the same evening as rounds 35 and 36 were withdrawn before their tests.
+This is the one priority list. Only Øystein changes its order, and a chat starts an experiment only from the top of it or when he names one. Øystein asked on 20 Oct for a plan to be made and followed; this is it, revised as rounds 35 and 36 were withdrawn before their tests and round 37 was read.
 
 What readers score, found on the readings already on file (round 36): **how many different kinds of thing happen in a life**, not how long its page is or how often it repeats. A kind more goes with about +0.05 on the score, across lives and within the same person; length adds nothing once kinds are counted. So the plan aims at lives with more kinds of happening, each with a reason a reader accepts.
 
-1. **Aftermath, with reasons that fit** (exit points 2 and 5). Round 34's change (a blow changes something that lasts) added three kinds of happening a life to the busiest lives and read no better, and readers faulted its reasons: a trait cue for a change ("wanted to know"). It comes back giving the reasons readers accept for a change in someone's life (the blow, how hard it hit, the bond) and no trait cue, judged "reads better" on 24 pairs.
+1. **Wants that collide** (exit points 1, 2 and 5; round 38, chosen by Øystein on 20 Oct as "stakes first"): when two people who want the same post or the same place in a band learn it of each other, a contest the town can see, with a winner, a loser and what it costs. All three readers of round 37 said the strongest lives had a rivalry or a betrayal that cost something.
 2. **Who wants things, again** (exit points 2 and 5): round 36's occasions (behind `ON=occasions`) with more than one pursuit at a time and doors for later life, designed for the kinds of happening it adds, and read on random adults beside the busiest.
 3. **Telling** (round 30's version, the one change that read better), brought back the same way.
 4. **Reasons a reader can follow** (exit point 3), on the page.
@@ -55,6 +55,7 @@ What readers score, found on the readings already on file (round 36): **how many
 
 ## Latest merges
 
+- **Round 37 (21 Oct), not kept:** round 34's aftermath again (a blow changes something that lasts), now giving the reasons readers accept for a change: the blow, how hard it hit, what ties the change to it. The reasons worked (quoted as fitting 17 times, as unfit once) and blows changed lives (71% against 52%), but the lives did not read better (+0.04). A routine taken up or dropped is texture, not a turn. It stays behind `ON=aftermath`; the way a situation gives an act's reasons stays for the rounds that use it.
 - **The reading reports kinds of thing (M36, 20 Oct):** the blind reading now records how many kinds of thing happen in each version of a life, and reports how much of a round's effect that accounts for. Nothing the engine does changed.
 - **Round 36 (20 Oct), withdrawn before its test:** wants that answer what happens (someone close buys something, a colleague gets the job, a round birthday, a wedding, a blow). On trial worlds it worked but fell short: ten more adults in a hundred went after something (56% against 46%), people bought things four times as often, but it barely touched the busiest lives the blind reading reads. It is kept behind a switch (`ON=occasions`). Checking why, the readings already on file showed what readers actually score: how many different kinds of thing happen in a life, not how long it is. The next round brings back round 34's aftermath, which adds kinds of happening, with reasons readers accept.
 - **The reading reports how much happened (M35, 20 Oct):** the blind reading's scorer now counts the lines of each version and reports how much of a round's effect is simply that more happened in one arm, beside the effect a round is judged on. And readers now see the reasons a player sees: the reading's pages had shown a "despite" note the app leaves out on about one line in eleven. Nothing the engine does changed.

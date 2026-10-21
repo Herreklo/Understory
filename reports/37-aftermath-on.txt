@@ -1,0 +1,13 @@
+  startover: @21 walked out of the school to start again somewhere else. [What @21 had wanted for 29 years was gone.; it hit hard]
+  takeup: @53 now has two pints at the Anchor most evenings. [What @53 had wanted for 8 years was gone.; it had shaken her]
+  keepaway: @16 is no longer at the Anchor every Friday without fail. [@10 and @16 stopped seeing each other, and that was that.; it had shaken her]
+  takeup: @73 now has two pints at the Anchor most evenings. [@67 and @73 lost touch.; it had shaken him]
+  takeup: @79 now plays cards at the Anchor on Tuesdays. [@5 let @79 go from the council office.; it had shaken her]
+  takeup: @36 now plays cards at the Anchor on Tuesdays. [@59 died of a sudden heart attack, aged 73.; it hit hard]
+  keepaway: @40 no longer plays cards at the Anchor on Tuesdays. [@59 died of a sudden heart attack, aged 73.; it hit hard]
+  takeup: @48 is now at the Anchor every Friday without fail. [@118 and @48 divorced.; it hit hard]
+  takeup: @60 now runs the coast road every other day. [@59 died of a sudden heart attack, aged 73.; it hit hard]
+  takeup: @62 is now at the Anchor every Friday without fail. [@59 died of a sudden heart attack, aged 73.; it hit hard]
+  takeup: @63 is now out in the garden every morning from spring to autumn. [@59 died of a sudden heart attack, aged 73.; it hit hard]
+  takeup: @122 now has two pints at the Anchor most evenings. [What @122 had wanted for 1 year was gone.; it hit hard]
+AFTERMATH {"seeds":[3357,3376],"worlds":20,"blows":1278,"followed":0,"changed":913,"byWhat":{"habits":719,"job":286,"partner":175,"group":64,"status":57,"music":6},"byBlow":{"cooled":[495,296],"rake":[291,217],"dismiss":[20,20],"death":[235,182],"divorce":[23,21],"want:failed":[86,70],"caught":[76,65],"split":[33,24],"dressdown":[7,6],"passed":[12,12]},"perWorld":[0.597,0.6939,0.6571,0.7619,0.7917,0.8654,0.7586,0.8571,0.7927,0.4912,0.7174,0.6571,0.7727,0.7342,0.7778,0.7037,0.451,0.7037,0.7273,0.6849],"decided":1488,"byKind":{"carryon":672,"startover":150,"takeup":440,"keepaway":226},"lines":748,"traitLines":0,"changedShare":0.7144,"decidedPerWorldDecade":74.4,"changeShare":0.5484}
