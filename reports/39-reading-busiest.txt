@@ -1,0 +1,85 @@
+Round 39: the paired reading of the busiest, the four together (occasions, collide, aftermath, telling) on against off (21 Oct 2026). Round M34's method: 24 pairs, the three adults of each of worlds 3473-3480 most eventful over both arms together (src/tools/diag/pairarm.ts at 9cfe4e8), order dealt half and half; three readers on Fable 5.1 (a novelist, a social worker, a player), each reading both parts at separate sittings. Scored by scripts/pairscore.py, before any other number of the round was read. Quotes listed for the round's wording: telling (had heard from, made light of it, made the most of it), aftermath (it hit hard, had shaken, it happened at work, is there too), contests (is ahead, wants to be ... too, not picked) and occasions (turned thirty to sixty, children grown, never went after it).
+The regular expression the quotes were listed by (--quote): had heard from|made light of it|made the most of it|it hit hard|had shaken (her|him)|it happened at work|is there too|is ahead|wants to be .* too|not picked|turned (thirty|forty|fifty|sixty)|children grown|never went after it
+
+pair  on         novelist          player    socialworker   majority-on
+P01   A            3,4,B           2,3,B           2,3,B   no
+P02   B            3,4,B           3,3,B           2,3,B   yes
+P03   A            3,4,B           4,2,A           3,2,A   yes
+P04   B            2,3,B           3,3,B           3,3,B   yes
+P05   A            3,3,A           3,3,A           3,3,A   yes
+P06   B            3,4,B           3,3,B           3,3,B   yes
+P07   B            3,3,B           2,3,B           3,3,B   yes
+P08   A            3,3,B           3,3,A           3,3,B   no
+P09   B            3,4,B           2,4,B           3,4,B   yes
+P10   B            3,4,B           3,4,B           3,3,B   yes
+P11   A            4,3,A           3,3,B           3,3,B   no
+P12   A            4,3,A           3,2,A           4,2,A   yes
+P13   A            3,3,B           3,4,B           3,3,B   no
+P14   B            2,3,B           3,4,B           2,3,B   yes
+P15   A            4,3,A           4,3,A           3,3,B   yes
+P16   B            2,3,B           3,4,B           2,3,B   yes
+P17   A            2,3,B           2,3,B           2,3,B   no
+P18   A            2,3,B           3,4,B           3,4,B   no
+P19   B            2,4,B           3,4,B           2,4,B   yes
+P20   B            2,3,B           2,4,B           2,3,B   yes
+P21   A            3,4,B           3,4,B           3,4,B   no
+P22   B            2,3,B           2,4,B           2,3,B   yes
+P23   A            2,3,B           3,4,B           2,4,B   no
+P24   B            2,4,B           2,4,B           3,4,B   yes
+
+The on arm was version B in 12 of 24 pairs; readers chose B in 60 of 72 single choices.
+Majority preferred the on arm in 16 of 24.
+Paired score difference, on minus off: +0.38 ±0.39 (95%, 24 pairs, mean over 3 readers)
+  novelist       +0.42
+  player         +0.46
+  socialworker   +0.25
+With the order as a term: effect +0.38 ±0.30 (95%); one-sided 90% lower bound +0.19; lean toward the second version +0.60
+ordinal  alpha 0.510  95% [0.323, 0.653]  (3 readers, 48 lives)
+interval alpha 0.511  95% [0.316, 0.645]  (3 readers, 48 lives)
+  novelist     mean 3.04
+  player       mean 3.10
+  socialworker mean 2.92
+
+How much happened: 80.2 lines a page on, 64.1 off; on minus off +16.1 a pair (sd 20.9). Where the versions are five or more lines apart, the longer was chosen 37 times and the shorter 26 (9 choices nearer).
+With the order and the difference in lines as terms: effect +0.40 ±0.39 (95%); ten lines more -0.01 ±0.15. Reported beside the effect above, which the round is judged on.
+Kinds of line: 45.3 a page on, 37.8 off; on minus off +7.5 a pair (sd 8.8).
+With the order and the difference in kinds as terms: effect +0.16 ±0.38 (95%); a kind more +0.028 ±0.033.
+faults on: total 214 · unfit reason 67, false line 61, repeat 38, wording 27, out of nowhere 21
+faults off: total 213 · false line 61, unfit reason 50, repeat 49, out of nowhere 30, wording 23
+
+Quotes matching the round's wording (on arm): good 27, faults 8 (unfit reasons 2); off arm: good 0, faults 0
+  good: P04 novelist: it had shaken her; it happened at work
+  good: P04 player: Leo dragged up what Freya did last year in front of everyone at the council office. It was the third time, after 2024 and 2027.; it had shaken her; it happened at work
+  good: P04 socialworker: Leo dragged up what Freya did last year in front of everyone at the council office. It was the third time, after 2024 and 2027.; it had shaken her; it happened at work
+  good: P07 novelist: Sean was found out: the cover-up came out.; it hit hard
+  good: P07 player: Sean was found out: the cover-up came out.; it hit hard
+  good: P07 socialworker: Sean was found out: the cover-up came out.; it hit hard
+  good: P08 player: carrying something nobody knew; mostly trusts Tara; had heard from Greta that Tara played Tess's song as if it were Tara's own (2033)
+  good: P09 novelist: Sid died of a sudden heart attack, aged 56.; it hit hard
+  good: P09 player: Sid died of a sudden heart attack, aged 56.; it hit hard
+  good: P09 socialworker: Sid died of a sudden heart attack, aged 56.; it hit hard
+  good: P13 novelist: Eve Reed dragged up what Sophie Scott did last year in front of everyone at the harbour fleet.; it had shaken her; it happened at work
+  good: P13 player: Eve Reed dragged up what Sophie Scott did last year in front of everyone at the harbour fleet.; it had shaken her; it happened at work
+  good: P13 socialworker: it had shaken her; it happened at work
+  good: P14 socialworker: turned thirty; had the money put by; not worn down
+  good: P16 novelist: Sally Kemp was found out: Victor had been blamed for Sally Kemp's mistake.; it hit hard; it happened at work
+  good: P16 player: Sally Kemp was found out: Victor had been blamed for Sally Kemp's mistake.; it hit hard; it happened at work
+  good: P16 socialworker: carrying something nobody knew; trusts Matt; had heard from Sid that Matt put in more than anyone when the hat went round for Freya (2023)
+  good: P16 socialworker: Sally Kemp was found out: Victor had been blamed for Sally Kemp's mistake.; it hit hard; it happened at work
+  good: P17 socialworker: Arthur Baker died after a long illness, aged 87.; it hit hard
+  good: P19 novelist: Grace dragged up what Freya Moore did a few months back in front of everyone at the Courier.; it had shaken her; it happened at work
+  good: P19 player: Grace dragged up what Freya Moore did a few months back in front of everyone at the Courier.; it had shaken her; it happened at work
+  good: P19 socialworker: Ian and Freya Moore are both after the skipper's job, and it shows.; Ian is ahead
+  good: P19 socialworker: Grace dragged up what Freya Moore did a few months back in front of everyone at the Courier.; it had shaken her; it happened at work
+  good: P21 socialworker: Olive and Sophie Myers are both after the headteacher's job, and it shows.; Sophie Myers is ahead
+  good: P23 novelist: Gary and Libby are both after the manager's job, and it shows.; Gary has been first in and last out, to show who should be manager. It was the third time, after 2025 and 2026.; Gary is ahead
+  good: P23 player: Ivan and Libby lost touch.; it had shaken her
+  good: P23 socialworker: Ivan and Libby lost touch.; it had shaken her
+  fault: P04 novelist (false line): had wanted it since 2027, and never went after it
+  fault: P04 player (false line): had wanted it since 2027, and never went after it
+  fault: P04 socialworker (false line): Freya no longer talks about wanting to be heard singing.  [had wanted it since 2027, and never went after it]
+  fault: P14 player (false line): 2030: Eric no longer talks about wanting to be heard playing guitar.  [had wanted it since 2027, and never went after it]
+  fault: P14 socialworker (false line): had wanted it since 2027, and never went after it
+  fault: P15 novelist (false line): Eddie bought the big trip abroad.  [turned forty; had the money put by; not worn down]
+  fault: P17 player (unfit reason): 2033: Sid told Matt everything, the parts nobody else knew.  [carrying something nobody knew; trusts Matt; had heard from Jonah that Matt played Peter's song as if it were Matt's own, and Jonah made the most of it (2030)]
+  fault: P21 novelist (unfit reason): Sophie Myers told Olive the job should go to Olive.  [Olive and Sophie Myers are both after the headteacher's job, and it shows.; Sophie Myers is ahead]

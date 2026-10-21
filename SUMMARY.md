@@ -1,6 +1,6 @@
 # Understory: where we are
 
-_Updated 20 October 2026. One page, plain words, rewritten at every merge to main._
+_Updated 21 October 2026. One page, plain words, rewritten at every merge to main._
 
 ## Where we are going
 
@@ -35,26 +35,26 @@ The people decide like people and can be read, but their lives are thin and repe
 
 ## Next, in order
 
-This is the one priority list. Only Øystein changes its order, and a chat starts an experiment only from the top of it or when he names one. Øystein asked on 20 Oct for a plan to be made and followed; this is it, revised as rounds 35 and 36 were withdrawn before their tests and round 37 was read.
+This is the one priority list. Only Øystein changes its order, and a chat starts an experiment only from the top of it or when he names one. Øystein asked on 20 Oct for a plan to be made and followed; this is it, revised as rounds 35, 36 and 38 were withdrawn before their tests and rounds 37 and 39 were read.
 
-What readers score, found on the readings already on file (round 36): **how many different kinds of thing happen in a life**, not how long its page is or how often it repeats. A kind more goes with about +0.05 on the score, across lives and within the same person; length adds nothing once kinds are counted. So the plan aims at lives with more kinds of happening, each with a reason a reader accepts.
+What readers score, found on the readings already on file (round 36): **how many different kinds of thing happen in a life**, not how long its page is or how often it repeats. A kind more goes with about +0.05 on the score, across lives and within the same person; length adds nothing once kinds are counted. Round 39 showed it is a cause, not only a correlation: with four mechanisms that add kinds of happening turned on together, both the busiest lives and random adults read better, and most of the gain is the kinds added. So the plan aims at lives with more kinds of happening, each with a reason a reader accepts.
 
-1. **Wants that collide** (exit points 1, 2 and 5): round 38 (stakes first, Øystein's choice) was withdrawn before its test: on trial worlds it moved contests out of season rather than adding to them. A contest needs something to contest: posts that open, places in bands, a house two people want. From round 39 a round is sized on throwaway worlds before it is registered (M37).
-2. **Who wants things, again** (exit points 2 and 5): round 36's occasions (behind `ON=occasions`) with more than one pursuit at a time and doors for later life, designed for the kinds of happening it adds, and read on random adults beside the busiest.
-3. **Telling** (round 30's version, the one change that read better), brought back the same way.
-4. **Reasons a reader can follow** (exit point 3), on the page.
-5. **People outside the project** (exit point 5): the human test, random and sifted lives side by side.
-6. Close ties (exit point 1) and the accounts arc (#20), both paused. Their code is kept behind switches (`ON=accounts`, `ON=telling`, `ON=carry`, `ON=reckon`).
-7. For the game (Overstory): the front door's part two (#22), reads of what the player could know, player commands and versions; and the start year from the setting pack (#23).
-8. The city's background: partnering and children fixed, so it stops ageing.
+1. **The four together** (exit points 1, 2, 3 and 5): wants that answer what happens, contests out of season and for band places, a blow that changes something, and telling what one saw (the plan's former steps 1 to 3, bundled by Øystein's choice as round 39). Both readings came out better (busiest +0.38, random adults +0.33), but the round missed its own floor for added kinds by a hundredth (+0.99 against +1.0), so it is not kept and the four stay off (`ON=together`). Readers also quoted more reasons that do not fit. What comes next here is Øystein's choice (Waiting for you).
+2. **Reasons a reader can follow** (exit point 3), on the page.
+3. **People outside the project** (exit point 5): the human test, random and sifted lives side by side.
+4. Close ties (exit point 1) and the accounts arc (#20), both paused. Their code is kept behind switches (`ON=accounts`, `ON=telling`, `ON=carry`, `ON=reckon`).
+5. For the game (Overstory): the front door's part two (#22), reads of what the player could know, player commands and versions; and the start year from the setting pack (#23).
+6. The city's background: partnering and children fixed, so it stops ageing.
 
 ## Waiting for you
 
+- What follows round 39, which only you order: the four together again with the faults readers quoted in their lines fixed, sized first and tested on fresh worlds (recommended); reasons a reader can follow, across the engine, with the four off; or something else.
 - Decide on the repo structure for add-ons.
-- One change to the order of "Next", which only you make: the band for a year (proposed work 8) as the round after who wants things, because it tests close ties, living changing people and a group's character in one setting. (Who wants things is now first, in the plan you asked for on 20 Oct.)
+- One change to the order of "Next", which only you make: the band for a year (proposed work 8) as the round after the four together, because it tests close ties, living changing people and a group's character in one setting.
 
 ## Latest merges
 
+- **Round 39 (21 Oct), not kept:** four mechanisms built since round 30 (wants that answer what happens, contests out of season and for a place in a band, a blow that changes something, telling what one saw) turned on together. Both blind readings found the lives better: the busiest +0.38 and random adults +0.33, the first round to read better on both, and most of it is the extra kinds of happening, which makes the finding that readers reward variety a cause, not a correlation. But the round's own floor asked for at least one more kind of happening for the average adult, and it added 0.99; readers also quoted more reasons that do not fit (a want said to have lapsed in someone who went after it, a winner "still sore" about the job she won). By the rule set beforehand it is not kept, and the four stay behind `ON=together`.
 - **Size first, then register (M37, 21 Oct):** a round now builds its change and runs it on throwaway worlds before it is pre-registered, so its expectations are measured, not guessed; the pre-registration still comes before any fresh test world, and the keep rule rests on the blind reading and the gates. Agreed by Øystein. Nothing the engine does changed.
 - **Round 38 (21 Oct), withdrawn before its test:** wants that collide: two colleagues who learn they want the same post become rivals out of season, and a band's new member is chosen from those who wanted the place. On trial worlds the contests read with fitting reasons, but there were barely more of them (5.0 against 4.5 a world-decade): rivals out of season simply did not form again when the season came. Kept behind `ON=collide`.
 - **Round 37 (21 Oct), not kept:** round 34's aftermath again (a blow changes something that lasts), now giving the reasons readers accept for a change: the blow, how hard it hit, what ties the change to it. The reasons worked (quoted as fitting 17 times, as unfit once) and blows changed lives (71% against 52%), but the lives did not read better (+0.04). A routine taken up or dropped is texture, not a turn. It stays behind `ON=aftermath`; the way a situation gives an act's reasons stays for the rounds that use it.
