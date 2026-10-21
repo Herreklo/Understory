@@ -2,7 +2,6 @@
 name: record-outcome
 description: Records a round's outcome once its battery and readings are done - re-derivation by a separate agent, the outcome in BOARD by the rule set beforehand, and the docs brought up to date. Use after the readings are scored.
 argument-hint: <round>
-disable-model-invocation: true
 ---
 
 # Record the outcome of round $ARGUMENTS

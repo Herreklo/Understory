@@ -2,7 +2,6 @@
 name: release
 description: Tags and releases a merged round - pushes a release branch with RELEASE.json and the raw outputs, which the release workflow turns into a tag and a GitHub release. Use after a round's merge.
 argument-hint: <round>
-disable-model-invocation: true
 ---
 
 # Release round $ARGUMENTS
