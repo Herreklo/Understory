@@ -1,0 +1,96 @@
+Round 40: the paired reading of the busiest, the four together (with the faults quoted in round 39 fixed) on against off (21 Oct 2026). 24 pairs, the three adults of each of worlds 3529-3536 most eventful over both arms together (src/tools/diag/pairarm.ts at 9a03b53), order dealt half and half; three readers on Fable 5.1 (a novelist, a social worker, a player), each reading both parts at separate sittings. Scored by scripts/pairscore.py, before any other number of the round was read.
+The regular expression the quotes were listed by (--quote): had heard from|made light of it|made the most of it|it hit hard|had shaken (her|him)|it happened at work|is there too|is ahead|wants to be .* too|not picked|turned (thirty|forty|fifty|sixty)|children grown|never went after it|is still sore about|though (she|he) had wanted out|though there was no work here
+
+pair  on         novelist          player    socialworker   majority-on
+P01   A            3,4,B           3,4,B           3,3,B   no
+P02   B            3,4,B           3,4,B           3,4,B   yes
+P03   A            4,3,A           4,2,A           3,2,A   yes
+P04   B            3,4,B           3,3,B           4,3,A   yes
+P05   A            3,4,B           3,4,B           2,4,B   no
+P06   A            3,3,A           3,2,A           3,3,B   yes
+P07   B            2,3,B           1,4,B           2,4,B   yes
+P08   B            2,4,B           2,4,B           2,4,B   yes
+P09   A            3,3,A           3,2,A           3,3,B   yes
+P10   A            3,3,B           3,3,B           3,3,B   no
+P11   A            4,3,A           4,3,A           4,3,A   yes
+P12   B            2,4,B           2,4,B           2,5,B   yes
+P13   B            2,3,B           3,4,B           3,4,B   yes
+P14   B            3,4,B           3,4,B           3,4,B   yes
+P15   A            3,3,A           3,4,B           3,4,B   no
+P16   B            4,3,A           3,3,A           4,3,A   no
+P17   A            3,2,A           4,2,A           4,2,A   yes
+P18   A            2,3,B           2,3,B           2,3,B   no
+P19   A            4,3,A           4,3,A           4,3,A   yes
+P20   B            4,3,A           3,4,B           4,3,A   no
+P21   A            4,2,A           4,3,A           4,3,A   yes
+P22   B            2,3,B           3,3,B           2,3,B   yes
+P23   B            2,1,A           3,2,A           3,2,A   no
+P24   B            3,4,B           3,4,B           3,4,B   yes
+
+The on arm was version B in 12 of 24 pairs; readers chose B in 43 of 72 single choices.
+Majority preferred the on arm in 16 of 24.
+Paired score difference, on minus off: +0.51 ±0.44 (95%, 24 pairs, mean over 3 readers)
+  novelist       +0.46
+  player         +0.67
+  socialworker   +0.42
+With the order as a term: effect +0.51 ±0.44 (95%); one-sided 90% lower bound +0.23; lean toward the second version +0.24
+ordinal  alpha 0.738  95% [0.602, 0.828]  (3 readers, 48 lives)
+interval alpha 0.730  95% [0.605, 0.815]  (3 readers, 48 lives)
+  novelist     mean 3.06
+  player       mean 3.12
+  socialworker mean 3.17
+
+How much happened: 78.0 lines a page on, 64.9 off; on minus off +13.1 a pair (sd 26.4). Where the versions are five or more lines apart, the longer was chosen 45 times and the shorter 15 (12 choices nearer).
+With the order and the difference in lines as terms: effect +0.17 ±0.37 (95%); ten lines more +0.26 ±0.13. Reported beside the effect above, which the round is judged on.
+Kinds of line: 43.6 a page on, 37.2 off; on minus off +6.3 a pair (sd 14.9).
+With the order and the difference in kinds as terms: effect +0.19 ±0.33 (95%); a kind more +0.052 ±0.021.
+faults on: total 216 · false line 69, unfit reason 51, repeat 42, wording 37, out of nowhere 17
+faults off: total 216 · false line 61, repeat 55, unfit reason 49, wording 26, out of nowhere 25
+
+Quotes matching the round's wording (on arm): good 38, faults 8 (unfit reasons 2); off arm: good 0, faults 0
+  good: P02 player: Sarah Baker walked out of the sawmill to start again somewhere else.  [What Sarah Baker had wanted for 4 years was gone.; it hit hard]
+  good: P04 novelist: Sid dragged up what Ryan did last year in front of everyone at the sawmill.; it had shaken him
+  good: P04 player: Ryan now reads late into every night.  [Sid dragged up what Ryan did last year in front of everyone at the sawmill.; it had shaken him]
+  good: P04 socialworker: Ryan now reads late into every night.  [Sid dragged up what Ryan did last year in front of everyone at the sawmill.; it had shaken him]
+  good: P05 novelist: Leo and Trevor Sands drifted out of each other's lives.; it had shaken him
+  good: P05 player: Trevor Sands no longer plays cards at the Anchor on Tuesdays.  [Leo and Trevor Sands drifted out of each other's lives.; it had shaken him]
+  good: P05 socialworker: Trevor Sands turned down a job in the city.  [people here depend on them; rooted here: the sea, the people, the house; though he had wanted out since 2015]
+  good: P05 socialworker: Trevor Sands no longer plays cards at the Anchor on Tuesdays.  [Leo and Trevor Sands drifted out of each other's lives.; it had shaken him]
+  good: P06 novelist: Steve Hale died in his sleep, aged 91.; it hit hard
+  good: P06 player: Toby no longer plays cards at the Anchor on Tuesdays.  [Steve Hale died in his sleep, aged 91.; it hit hard]
+  good: P06 socialworker: Toby no longer plays cards at the Anchor on Tuesdays.  [Steve Hale died in his sleep, aged 91.; it hit hard]
+  good: P07 novelist: Harry dragged up what Terry did a few months back in front of everyone at the school.; it had shaken him; it happened at work
+  good: P07 player: Terry walked out of the school to start again somewhere else.  [Harry dragged up what Terry did a few months back in front of everyone at the school.; it had shaken him; it happened at work]
+  good: P07 socialworker: Terry walked out of the sawmill to start again somewhere else.  [Sophie tore into Terry in front of everyone at the sawmill. It was the third time, after 2032 and 2033.; it had shaken him; it happened at work]
+  good: P08 novelist: Maisie dragged up what Oscar did a few months back in front of everyone at the school.; it had shaken him; it happened at work
+  good: P08 player: Oscar walked out of the school to start again somewhere else.  [Maisie dragged up what Oscar did a few months back in front of everyone at the school.; it had shaken him; it happened at work]
+  good: P08 socialworker: Greta took Oscar aside afterwards and said exactly what Greta thought.  [Greta was passed over for headteacher; Oscar got the job.; had been doing the better work; had heard from Owen Reed that Oscar carried it around for months, with a face like thunder (2027)]
+  good: P10 player: John Reed no longer plays cards at the Anchor on Tuesdays.  [John Reed and Mary Shaw lost touch.; it had shaken him]
+  good: P10 socialworker: John Reed was not picked for Saltwater; Karen got the place.  [Saltwater knew Karen; had wanted to be heard since 2025; Karen joined Saltwater, a better player than the one who left.]
+  good: P11 novelist: Eric dragged up what Jonah Kemp did a few months back in front of everyone at the Old Bank Café.; it had shaken him; it happened at work
+  good: P11 player: Jonah Kemp walked out of the sawmill to start again somewhere else.  [What Jonah Kemp had wanted for 1 year was gone.; it hit hard]
+  good: P12 player: Oliver Sayer no longer sings with the choir every Thursday.  [Audrey Newman dragged up what Oliver Sayer did a few months back in front of everyone at the clinic.; it had shaken him]
+  good: P13 player: What Sean Ash had wanted for 7 years was gone.; it hit hard
+  good: P13 socialworker: What Sean Ash had wanted for 7 years was gone.; it hit hard
+  good: P14 novelist: Kate Moore and Peter Hughes drifted out of each other's lives.; it had shaken her
+  good: P14 socialworker: Kate Moore and Peter Hughes drifted out of each other's lives.; it had shaken her
+  good: P16 player: had wanted it since 2023, and never went after it
+  good: P16 socialworker: had wanted it since 2023, and never went after it
+  good: P17 novelist: Susie Lyons and Tara drifted out of each other's lives.; it had shaken her
+  good: P18 player: had heard from Vera that Victor Brook put in more than anyone when the hat went round for Tara (2031)
+  good: P19 novelist: Terry died after a long illness, aged 86.; it hit hard
+  good: P19 player: Terry died after a long illness, aged 86.; it hit hard
+  good: P19 socialworker: Terry died after a long illness, aged 86.; it hit hard
+  good: P22 player: Gary dragged up what Peter Eden did a few months back in front of everyone at the Anchor.; it had shaken him; it happened at work
+  good: P22 socialworker: Gary dragged up what Peter Eden did a few months back in front of everyone at the Anchor.; it had shaken him; it happened at work
+  good: P23 novelist: Jonah died of a sudden heart attack, aged 78.; it hit hard
+  good: P23 player: Jonah died of a sudden heart attack, aged 78.; it hit hard
+  good: P23 socialworker: Jonah died of a sudden heart attack, aged 78.; it hit hard
+  fault: P04 novelist (false line): Ryan has let it be known he wants to be foreman too.
+  fault: P04 player (false line): Ryan has let it be known he wants to be foreman too.  [Ellen Sayer has been taking on everything nobody else wants.; a strong record; Ellen Sayer is after it]
+  fault: P04 socialworker (false line): Ryan has let it be known he wants to be foreman too.  [Ellen Sayer has been taking on everything nobody else wants.; a strong record; Ellen Sayer is after it]
+  fault: P08 socialworker (unfit reason): Oscar walked out of the school to start again somewhere else.  [Maisie dragged up what Oscar did a few months back in front of everyone at the school.; it had shaken him; it happened at work]
+  fault: P10 socialworker (out of nowhere): John Reed is now out in the garden every morning from spring to autumn.  [Stuart Fielding died in his sleep, aged 84.; it hit hard]
+  fault: P12 novelist (unfit reason): had heard from Vera Lyons that Oliver Sayer slipped a folded note into the hat for Sean Moore when nobody was looking (2033); thinks highly of Oliver Sayer
+  fault: P12 player (false line): Oliver Sayer no longer talks about wanting to become head of the clinic.  [had wanted it since 2025, and never went after it]
+  fault: P12 socialworker (false line): Oliver Sayer no longer talks about wanting to become head of the clinic.  [had wanted it since 2025, and never went after it]

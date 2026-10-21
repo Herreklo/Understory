@@ -1,0 +1,5 @@
+Round 40, identity. On the round's tree 9a03b53 with OFF=together (the four off), against main at 98b1ae1 Merge #53: M37: size first, then register (ident.ts, seeds 11-13, eight years):
+on/11: identical
+on/12: identical
+on/13: identical
+all identical
