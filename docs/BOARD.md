@@ -2440,3 +2440,24 @@ Next 1 in `SUMMARY.md`; proposal item 1. The reading capped faults at three for 
 - Opus 5.5's novelist outside Fable's interval on r40: the models disagree; the human test decides. Same maker: agreement is weak evidence.
 
 Game lens: a reading that sees a fault lets a round claim one.
+
+Outcome of round M38 (21 Oct 2026, 22:00 Oslo). Packs from `aa44227` and `bf5f8e4`, read in 18 sittings started 20:53 (16 on Fable 5.1, the r40 novelist twice on Opus 5.5; one sitting rerun after it ran past the output limit), scored at `1b8e632` and `80a93c9` (`reports/M38-reading-*`, `reports/M38-roles.txt`). A separate agent re-derived every number from the raw files and agrees (`reports/rederive-M38.md`).
+
+| Bar | Result | |
+| --- | --- | --- |
+| 1. shuffled, ≥36 of 48 | **48** | ✓ |
+| 2. planted, ≥36 of 48 | **48**; line cited 48 times against 1 in the true page | ✓ |
+| 3. null covers 0, sd ≤0.9 | **−0.04 ±0.21**, sd 0.55 | ✓ |
+| 4. r40 inside +0.07 to +0.95 | **+0.25 ±0.36** | ✓ |
+| 5. no cap on null or r40; citations ≥95% | caps 2 and 0 of 96; 7,292 of 7,292 resolve | ✓ |
+
+Read by the rules set beforehand: 1, 3, 4 and 5 hold. **Adopted**: `docs/method/reading.md` describes it, and round 42 is read with it.
+
+Reported, not judged:
+
+- Planted passed where 26 was expected: both altered pages differ from the true one only where the fault is, so readers find it by comparing the versions. It shows they judge a misplaced reason as unfit, not that they find one small fault in a life that differs throughout.
+- The null tied 30 of 48 (a ties warning; bar 5 names only the cap), and readers chose the second version 36 times in 48 (lean +0.25). Its paired fault count was **+1.41 ±1.19**, clear of zero where nothing changed: the paired count is not yet a measure.
+- r40 scores ran lower than in round 40 (on 2.85 against 3.38, off 2.60 against 2.86), and the effect halved: effects since M38 are on another scale. Opus 5.5's novelist +0.38, inside Fable's interval: the models agree.
+- Roles did not fade: kinds 0.12 then 0.13 apart; same choice 85% then 92%.
+
+The branch that fires: "Passes: adopted; round 42 is judged with it". Next: the research note for round 42.
