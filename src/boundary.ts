@@ -5,7 +5,8 @@
 import { buildWorld } from './build';
 import { tick } from './life';
 import { pickWitness } from './witness';
-import { peekBond, year, type Belief, type Bond, type Event, type Person, type World } from './world';
+import { projects, type Project } from './projects';
+import { peekBond, year, type Belief, type Bond, type Event, type Group, type Person, type Place, type World } from './world';
 
 declare const opaque: unique symbol;
 /** A world, held by the caller and read only through this file. */
@@ -126,4 +127,19 @@ export function beliefsHeld(h: WorldHandle, holder: number, subject?: number): B
     out.push({ subject: s, key: k.slice(bar + 1), ...plain(b) });
   }
   return out;
+}
+
+/** The town's places of work, the ones ventures opened among them, in the order they were made. A place never closes. */
+export function places(h: WorldHandle): Plain<Place>[] {
+  return W(h).places.map(p => plain(p));
+}
+
+/** Every group the town has had (bands and the like), ended or not, with its members, former members and history. */
+export function groups(h: WorldHandle): Plain<Group>[] {
+  return W(h).groups.map(g => plain(g));
+}
+
+/** Every venture or cause someone has tried, whatever came of it, with its owner, helpers, opponents and the place it opened. */
+export function ventures(h: WorldHandle): Plain<Project>[] {
+  return projects(W(h)).map(v => plain(v));
 }

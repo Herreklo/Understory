@@ -1,0 +1,22 @@
+MAIN SESSIONS
+59c97036 reqs=185 models={'opus': 185} maxctx=783k read=53.0M w1h=484k w5m=0k out=128k $=17 shares read/write/out=62%/23%/15% images=0 imgtok~0k
+
+SUBAGENTS
+n agents 78
+$=9 reqs=52 maxctx=288k rawtokens=10.4M images=0 model=fable parent=59c97036 Design round 36: who wants things
+$=8 reqs=11 maxctx=255k rawtokens=1.8M images=0 model=fable parent=59c97036 Reader: social worker, part 2
+$=7 reqs=11 maxctx=251k rawtokens=1.7M images=0 model=fable parent=59c97036 Reader: social worker, part 2
+$=7 reqs=10 maxctx=249k rawtokens=1.5M images=0 model=fable parent=59c97036 Reader: novelist, part 2
+$=7 reqs=10 maxctx=236k rawtokens=1.5M images=0 model=fable parent=59c97036 Reader: novelist, part 1
+$=7 reqs=15 maxctx=259k rawtokens=2.5M images=0 model=fable parent=59c97036 Reader: novelist, part 1
+$=7 reqs=10 maxctx=236k rawtokens=1.5M images=0 model=fable parent=59c97036 Blind reader: novelist (30)
+$=7 reqs=50 maxctx=250k rawtokens=9.2M images=0 model=fable parent=59c97036 Design round 38: wants with stakes
+$=6 reqs=9 maxctx=212k rawtokens=1.2M images=0 model=fable parent=59c97036 Blind reader: novelist
+$=6 reqs=17 maxctx=251k rawtokens=2.8M images=0 model=fable parent=59c97036 Reader: player, part 2
+$=6 reqs=13 maxctx=229k rawtokens=1.9M images=0 model=fable parent=59c97036 Reader: game player, part 1
+$=6 reqs=11 maxctx=258k rawtokens=1.8M images=0 model=fable parent=59c97036 Reader: game player, part 2
+subagent PNG images 0 est tokens (first sight) 0k top dims []
+
+MAIN totals raw: inp=0k read=53.0M w5m=0k w1h=484k out=128k  list$=17
+
+SUB totals raw: inp=3k read=194.7M w5m=18.1M w1h=0k out=2.1M  list$=333

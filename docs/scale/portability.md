@@ -9,7 +9,9 @@ Rules for engine code, so the engine can move to another language, and sit under
 A game, or any front end outside this repo, talks to a world through `src/boundary.ts`, and only through it:
 - **commands in:** `createWorld` (seed, run seed, past years, founding adults, whether to place the witness) and `command` (advance a number of months);
 - **events out:** `events(h, since)`, the record from a month on, each event with its reasons, evidence, decision and who knows it;
-- **queries:** `now`, `townIds` (in a city, everyone simulated month by month), `person`, `bondOf` (never creates a bond), `beliefsHeld`.
+- **queries:** `now`, `townIds` (in a city, everyone simulated month by month), `person`, `bondOf` (never creates a bond), `beliefsHeld`, `places` (every place of work, those ventures opened among them), `groups` (every band and the like, ended or not) and `ventures` (every venture or cause tried, whatever came of it).
+
+`src/tools/fixture.ts` reads one run through these alone and writes it as a JSON fixture for the game: people, households (derived by a stated rule until homes exist), places, ventures, groups and events, with string ids, calendar dates and provenance on every record.
 
 No query writes anything into the world.
 

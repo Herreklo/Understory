@@ -1,0 +1,37 @@
+main 59c97036: 185 requests from 21 Oct 14:20 to 21 Oct 19:17 (Oslo); context per request mean 289k, median 295k, max 783k, min 143k
+  the person's messages in this transcript: 16; requests per message: 11.6
+  context at the first request after each message: mean 283k, median 277k
+  mean context by quarter of the transcript: 190k, 253k, 327k, 383k, 440k
+
+== everything in the transcripts: weighted $350
+  sub                    $  333.4  95.1%   of it: re-read   11%  cache write   60%  output   29%
+  main                   $   17.0   4.9%   of it: re-read   62%  cache write   23%  output   15%
+  kind:review            $  297.5  84.9%   of it: re-read    7%  cache write   63%  output   30%
+  kind:orchestration     $   17.0   4.9%   of it: re-read   62%  cache write   23%  output   15%
+  kind:measure           $   15.7   4.5%   of it: re-read   53%  cache write   31%  output   16%
+  kind:docs              $   15.4   4.4%   of it: re-read   31%  cache write   40%  output   30%
+  kind:build             $    4.8   1.4%   of it: re-read   45%  cache write   54%  output    2%
+  kind:research          $    0.0   0.0%   of it: re-read   22%  cache write   78%  output    0%
+  model:fable            $  312.9  89.3%   of it: re-read    8%  cache write   62%  output   30%
+  model:opus             $   21.9   6.2%   of it: re-read   58%  cache write   30%  output   12%
+  model:sonnet           $   15.7   4.5%   of it: re-read   53%  cache write   31%  output   16%
+  model:haiku            $    0.0   0.0%   of it: re-read   22%  cache write   78%  output    0%
+  model:-                $    0.0   0.0%   of it: re-read    0%  cache write    0%  output    0%
+  re-reading (cache reads) as a share of all usage: 13.4%
+
+== only the window the main transcript covers (from 21 Oct 14:20 Oslo): weighted $22
+  main                   $   17.0  77.8%   of it: re-read   62%  cache write   23%  output   15%
+  sub                    $    4.9  22.2%   of it: re-read   45%  cache write   54%  output    2%
+  kind:orchestration     $   17.0  77.8%   of it: re-read   62%  cache write   23%  output   15%
+  kind:build             $    4.8  22.0%   of it: re-read   45%  cache write   54%  output    2%
+  kind:research          $    0.0   0.1%   of it: re-read   22%  cache write   78%  output    0%
+  model:opus             $   21.9  99.9%   of it: re-read   58%  cache write   30%  output   12%
+  model:haiku            $    0.0   0.1%   of it: re-read   22%  cache write   78%  output    0%
+  re-reading (cache reads) as a share of all usage: 58.3%
+
+== subagents by role
+  cold reader  n= 63 total $ 297.5  median $4.6  median peak context 224k  median requests 11  models {'fable': 63}
+  re-deriver   n= 10 total $  15.7  median $2.1  median peak context 220k  median requests 57  models {'sonnet': 10}
+  design       n=  2 total $  15.4  median $8.6  median peak context 288k  median requests 52  models {'fable': 2}
+  other        n=  3 total $   4.9  median $1.7  median peak context 196k  median requests 25  models {'opus': 2, 'haiku': 1}
+  cold readers by day: 21 Oct $150, 20 Oct $133, 19 Oct $15

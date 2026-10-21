@@ -8,3 +8,5 @@ out-*/
 .DS_Store
 .env
 __pycache__/
+.claude/battery.lock
+.claude/settings.local.json
