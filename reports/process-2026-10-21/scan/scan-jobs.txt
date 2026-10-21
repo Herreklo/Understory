@@ -1,0 +1,97 @@
+start        job       d status  kind          model   reqs act h  input    read  write    out     w$ fam w$ share  summary | produced
+19 Oct 23:15 ae5f2c85c 1 done    review        fable      9   0.1     0k    872k   334k    39k      6      6  1.8%  Blind reader: novelist | report 1 words
+19 Oct 23:15 ab1a130b9 1 done    review        fable      8   0.1     0k    963k   150k    29k      4      4  1.0%  Blind reader: social worker | report 1 words
+19 Oct 23:15 a41d46c3b 1 done    review        fable      8   0.1     0k    846k   276k    34k      5      5  1.5%  Blind reader: sim-game player | report 1 words
+20 Oct 00:41 ab54be817 1 done    measure       sonnet    22   0.1     0k    2.1M   120k    13k      1      1  0.2%  Re-derive round 29 numbers | report 361 words
+20 Oct 08:48 a93a62cb7 1 done    review        fable     10   0.1     0k    1.1M   383k    38k      7      7  2.0%  Blind reader: novelist (30) | report 1 words
+20 Oct 08:48 ab3b679cb 1 done    review        fable     12   0.1     0k    1.6M   174k    28k      4      4  1.1%  Blind reader: social worker (30) | report 1 words
+20 Oct 08:48 a7ca98298 1 done    review        fable     13   0.1     0k    1.7M   178k    31k      4      4  1.2%  Blind reader: sim player (30) | report 1 words
+20 Oct 09:46 ab2dd7a00 1 done    measure       sonnet    31   0.1     0k    3.4M   133k    15k      1      1  0.2%  Re-derive round 30 numbers | report 372 words
+20 Oct 10:47 ac9121f48 1 cut     review        fable      9   0.1     0k    759k   184k    36k      4      4  1.2%  Blind reader: novelist (31) | cut off
+20 Oct 10:47 ab841452a 1 cut     review        fable      9   0.1     0k    812k   131k    45k      4      4  1.2%  Blind reader: social worker (31) | cut off
+20 Oct 10:47 a4c7ff6dc 1 cut     review        fable     12   0.1     0k    1.0M   344k     1k      5      5  1.3%  Blind reader: sim player (31) | cut off
+20 Oct 12:38 a04bc68f0 1 done    measure       sonnet    21   0.1     0k    1.9M   111k    16k      1      1  0.2%  Re-derive round 31 numbers | report 501 words
+20 Oct 13:58 a187b8661 1 done    review        fable     12   0.1     0k    1.4M   220k    29k      5      5  1.3%  Blind reader: novelist | report 34 words
+20 Oct 13:58 a76544b23 1 done    review        fable     11   0.1     0k    1.4M   225k    35k      5      5  1.4%  Blind reader: social worker | report 19 words
+20 Oct 13:58 a433842aa 1 done    review        fable     10   0.1     0k    1.3M   172k    34k      4      4  1.2%  Blind reader: game player | report 12 words
+20 Oct 15:04 a48ef1105 1 done    measure       sonnet    32   0.1     0k    3.5M   142k    20k      1      1  0.3%  Re-derive round 32 numbers | report 719 words
+20 Oct 17:04 ae30202e2 1 done    review        fable     14   0.1     0k    1.7M   215k    32k      5      5  1.3%  Blind reader: novelist | report 39 words
+20 Oct 17:04 a9596e594 1 done    review        fable     10   0.1     0k    1.1M   304k    40k      6      6  1.7%  Blind reader: social worker | report 13 words
+20 Oct 17:05 aeeae18df 1 done    review        fable     12   0.1     0k    1.4M   156k    25k      4      4  1.0%  Blind reader: game player | report 17 words
+20 Oct 17:48 a7fa216bb 1 done    measure       sonnet    63   0.4     0k   10.0M   222k    64k      2      2  0.6%  Re-derive round 33 numbers | report 558 words
+20 Oct 19:25 ab8da4ad9 1 done    review        fable     10   0.1     0k    1.1M   374k    46k      7      7  2.1%  Reader: novelist, part 1 | report 25 words
+20 Oct 19:25 abf6141d7 1 done    review        fable     10   0.2     0k    1.1M   338k    56k      7      7  2.1%  Reader: novelist, part 2 | report 207 words
+20 Oct 19:25 a75617800 1 done    review        fable     10   0.1     0k    1.3M   185k    47k      5      5  1.4%  Reader: social worker, part 1 | report 46 words
+20 Oct 19:25 afefd0585 1 done    review        fable     11   0.2     0k    1.3M   340k    57k      7      7  2.1%  Reader: social worker, part 2 | report 42 words
+20 Oct 19:25 a2a51db27 1 done    review        fable     13   0.1     0k    1.5M   315k    38k      6      6  1.8%  Reader: game player, part 1 | report 17 words
+20 Oct 19:25 a3f9d0a66 1 done    review        fable     11   0.2     0k    1.5M   206k    65k      6      6  1.8%  Reader: game player, part 2 | report 35 words
+20 Oct 20:23 a3f26e617 1 done    measure       sonnet    61   0.3     0k    9.5M   220k    66k      2      2  0.6%  Re-derive round 34 numbers | report 723 words
+20 Oct 21:14 ade4fa450 1 done    docs          fable     52   0.3     0k   10.0M   288k    50k      9      9  2.5%  Design round 36: who wants things | report 663 words
+20 Oct 22:38 a19891488 1 done    review        fable     15   0.2     0k    2.2M   259k    64k      7      7  2.0%  Reader: novelist, part 1 | report 46 words
+20 Oct 22:38 a49e8cfe0 1 done    review        fable     11   0.2     0k    1.4M   178k    44k      5      5  1.4%  Reader: novelist, part 2 | report 251 words
+20 Oct 22:38 a2c3cf964 1 done    review        fable     18   0.2     0k    2.6M   197k    54k      6      6  1.7%  Reader: social worker, part 1 | report 189 words
+20 Oct 22:39 a872298de 1 done    review        fable     11   0.2     0k    1.3M   377k    69k      8      8  2.4%  Reader: social worker, part 2 | report 200 words
+20 Oct 22:39 aedfb3f63 1 done    review        fable     12   0.2     0k    1.6M   185k    43k      5      5  1.4%  Reader: player, part 1 | report 136 words
+20 Oct 22:39 a70a91eae 1 done    review        fable     17   0.2     0k    2.5M   199k    64k      6      6  1.8%  Reader: player, part 2 | report 194 words
+20 Oct 22:54 a549947fc 1 done    docs          fable     50   0.3     0k    9.0M   198k    41k      7      7  1.9%  Design round 38: wants with stakes | report 634 words
+20 Oct 23:37 a34fedfab 1 done    measure       sonnet    57   0.4     0k    9.6M   229k    54k      2      2  0.6%  Re-derive round 37's headline numbers | report 909 words
+21 Oct 00:51 a1a5ae5a0 1 done    review        fable     11   0.2     0k    1.4M   245k    31k      5      5  1.4%  Reader: social worker, part 1 | report 79 words
+21 Oct 00:51 a8c8a59bd 1 done    review        fable     18   0.2     0k    2.5M   257k    36k      6      6  1.6%  Reader: social worker, part 2 | report 230 words
+21 Oct 00:51 a9cee225b 1 done    review        fable      9   0.1     0k    934k   184k    18k      3      3  1.0%  Reader: player, part r2 | report 149 words
+21 Oct 00:51 adb5e9b4c 1 done    review        fable     11   0.2     0k    1.1M   296k     1k      4      4  1.1%  Reader: player, part r1 | report 408 words
+21 Oct 00:51 a3ebb7a1e 1 done    review        fable      9   0.2     0k    958k   197k    21k      4      4  1.1%  Reader: social worker, part r1 | report 663 words
+21 Oct 00:51 a63d79b94 1 done    review        fable     13   0.1     0k    1.4M   184k    22k      4      4  1.1%  Reader: novelist, part r2 | report 183 words
+21 Oct 00:51 a98fefa2f 1 done    review        fable      9   0.2     0k    943k   188k    20k      4      4  1.0%  Reader: social worker, part r2 | report 46 words
+21 Oct 00:51 a23df194f 1 done    review        fable     14   0.2     0k    1.9M   239k    21k      5      5  1.3%  Reader: novelist, part 2 | report 209 words
+21 Oct 00:51 a4bdeca23 1 done    review        fable     12   0.2     0k    1.7M   243k    30k      5      5  1.4%  Reader: novelist, part 1 | report 259 words
+21 Oct 00:51 ab0d1106c 1 done    review        fable     11   0.1     0k    1.2M   186k    15k      3      3  1.0%  Reader: novelist, part r1 | report 227 words
+21 Oct 00:51 a62c37d14 1 done    review        fable     11   0.2     0k    1.4M   238k    22k      4      4  1.3%  Reader: player, part 1 | report 320 words
+21 Oct 00:51 a80c175bf 1 done    review        fable     11   0.2     0k    1.4M   245k    22k      5      5  1.3%  Reader: player, part 2 | report 273 words
+21 Oct 01:42 a48d18a72 1 done    measure       sonnet    87   0.4     0k   18.0M   308k     1k      3      3  0.7%  Re-derive round 39's headline numbers | report 791 words
+21 Oct 08:06 acf298301 1 done    review        fable     11   0.2     0k    1.3M   202k    21k      4      4  1.1%  Reader: social worker, part r1 | report 156 words
+21 Oct 08:06 aa8a72d4c 1 done    review        fable     11   0.2     0k    1.4M   253k    36k      5      5  1.5%  Reader: player, part 2 | report 178 words
+21 Oct 08:06 a8ae43e58 1 done    review        fable     11   0.2     0k    1.3M   202k    17k      4      4  1.1%  Reader: novelist, part r1 | report 209 words
+21 Oct 08:06 a3f8cfd70 1 done    review        fable     12   0.2     0k    1.7M   245k    28k      5      5  1.4%  Reader: social worker, part 1 | report 262 words
+21 Oct 08:06 abd61f1d7 1 done    review        fable     12   0.2     0k    1.6M   236k    26k      5      5  1.3%  Reader: novelist, part 2 | report 241 words
+21 Oct 08:06 ad6a0cfc2 1 done    review        fable     11   0.2     0k    1.2M   195k    20k      4      4  1.1%  Reader: player, part r2 | report 247 words
+21 Oct 08:06 a7af1ffce 1 done    review        fable     10   0.2     0k    1.0M   197k    28k      4      4  1.2%  Reader: social worker, part r2 | report 243 words
+21 Oct 08:06 ad8e364a9 1 done    review        fable     10   0.2     0k    1.2M   195k    22k      4      4  1.1%  Reader: novelist, part r2 | report 237 words
+21 Oct 08:06 af3d1c2b6 1 done    review        fable     11   0.2     0k    1.3M   213k    31k      5      5  1.3%  Reader: player, part r1 | report 224 words
+21 Oct 08:06 a6e9f8ad6 1 done    review        fable     11   0.2     0k    1.4M   241k    30k      5      5  1.4%  Reader: social worker, part 2 | report 254 words
+21 Oct 08:06 a9b2f451a 1 done    review        fable     15   0.2     0k    2.1M   253k    44k      6      6  1.7%  Reader: novelist, part 1 | report 241 words
+21 Oct 08:06 a10d95828 1 done    review        fable     14   0.2     0k    1.9M   240k    26k      5      5  1.4%  Reader: player, part 1 | report 226 words
+21 Oct 09:09 a03d28e5a 1 done    measure       sonnet   100   0.7     0k   21.9M   321k     1k      3      3  0.9%  Re-derive round 40's headline numbers | report 937 words
+21 Oct 10:34 a3e1a65e4 1 done    review        fable     11   0.2     0k    1.4M   234k    18k      4      4  1.2%  Reader: social worker, part 2 | report 44 words
+21 Oct 10:34 a65683a3e 1 done    review        fable      9   0.1     0k    933k   183k     1k      3      3  0.7%  Reader: social worker, part r1 | report 37 words
+21 Oct 10:34 a17922bf4 1 done    review        fable     11   0.1     0k    1.2M   360k     1k      5      5  1.4%  Reader: social worker, part 1 | report 40 words
+21 Oct 10:34 a97011505 1 done    review        fable      8   0.1     0k    768k   170k     1k      2      2  0.7%  Reader: player, part r2 | report 22 words
+21 Oct 10:34 a81398db9 1 done    review        fable      8   0.1     0k    681k   268k     1k      4      4  1.0%  Reader: novelist, part r2 | report 18 words
+21 Oct 10:34 a26f00c6e 1 done    review        fable     13   0.1     0k    1.6M   228k    18k      4      4  1.2%  Reader: player, part 2 | report 240 words
+21 Oct 10:34 ad07fd465 1 done    review        fable     10   0.1     0k    983k   166k     1k      2      2  0.7%  Reader: social worker, part r2 | report 39 words
+21 Oct 10:34 a17967af4 1 done    review        fable     10   0.1     0k    1.0M   361k     1k      5      5  1.4%  Reader: player, part 1 | report 39 words
+21 Oct 10:34 a01ad5a74 1 done    review        fable      9   0.1     0k    936k   186k     1k      3      3  0.7%  Reader: player, part r1 | report 63 words
+21 Oct 10:34 a7ee0239f 1 done    review        fable     12   0.1     0k    1.3M   366k     1k      5      5  1.4%  Reader: novelist, part 2 | report 21 words
+21 Oct 10:34 a6b5faa54 1 done    review        fable     13   0.1     0k    1.5M   184k    13k      3      3  0.9%  Reader: novelist, part r1 | report 16 words
+21 Oct 10:34 adefd20c2 1 done    review        fable     11   0.1     0k    1.2M   361k     1k      5      5  1.4%  Reader: novelist, part 1 | report 202 words
+21 Oct 11:36 a5563ca4d 1 done    measure       sonnet    26   0.1     0k    2.9M   141k     0k      1      1  0.2%  Re-derive round 41's headline numbers | report 575 words
+21 Oct 14:20 59c97036  0         orchestration opus     185   1.7     0k   53.0M   484k   128k     17     17  4.9%  :  | 11 commits; 15 docs; 4 code
+21 Oct 19:16 ac35ee827 1 running build         opus      26   0.1     0k    5.6M   316k     2k      3      3  0.8%  Understory process lessons | still running
+21 Oct 19:16 a2c9f952d 1 running build         opus      21   0.1     0k    2.5M   181k     1k      1      1  0.4%  Overstory practices and usage | still running
+21 Oct 19:16 aef6b98c9 1 running research      haiku      7   0.1     0k    574k   164k     0k      0      0  0.0%  Claude Code setup for the repo | still running
+
+SHARES BY KIND (19 Oct 23:15 to 21 Oct 19:20, 79 jobs, weighted $350)
+kind            jobs  by job   tokens  by request  main-session share  main h  agent h
+build              2    1.2%     8.6M        1.4%                3.8%     0.0      0.1
+measure           10    4.5%    85.1M        4.8%                5.8%     0.0      2.8
+review            63   85.1%   101.8M       85.1%                0.0%     0.0      9.5
+research           1    0.0%     738k        0.0%                0.0%     0.0      0.1
+docs               2    4.4%    19.6M        5.1%               15.1%     0.1      0.6
+orchestration      1    4.9%    53.6M        3.7%               75.3%     1.5      0.0
+
+UNIT COSTS (weighted $; tokens processed = input + cache reads + cache writes + output)
+finished study (wrote docs/research), with its helpers: none
+digest of studies: none
+strict review on fable: n=60 median $5 (range 2 to 8), tokens median 1.6M (range 939k to 2.9M), total $285
+hour of building, in build agents: 0.1 h active, $4, $35 and 71.0M tokens per hour
+hour of building, in the main sessions: 0.0 h active, $1, $20 and 58.8M tokens per hour
+hour of building, all: 0.2 h active, $5, $31 and 68.4M tokens per hour

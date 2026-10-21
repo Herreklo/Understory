@@ -1,0 +1,16 @@
+19 Oct 23:15  sittings= 3  $ 15.3  per sitting $5.1  cut=0  peak ctx median 207k
+20 Oct 08:48  sittings= 3  $ 15.1  per sitting $5.0  cut=0  peak ctx median 230k
+20 Oct 10:47  sittings= 3  $ 13.0  per sitting $4.3  cut=3  peak ctx median 184k
+20 Oct 13:58  sittings= 3  $ 13.6  per sitting $4.5  cut=0  peak ctx median 224k
+20 Oct 17:04  sittings= 3  $ 14.3  per sitting $4.8  cut=0  peak ctx median 215k
+20 Oct 19:25  sittings= 6  $ 39.4  per sitting $6.6  cut=0  peak ctx median 249k
+20 Oct 22:38  sittings= 6  $ 37.2  per sitting $6.2  cut=0  peak ctx median 251k
+21 Oct 00:51  sittings=12  $ 50.9  per sitting $4.2  cut=0  peak ctx median 238k
+21 Oct 08:06  sittings=12  $ 54.2  per sitting $4.5  cut=0  peak ctx median 236k
+21 Oct 10:34  sittings=12  $ 44.5  per sitting $3.7  cut=0  peak ctx median 221k
+re-derivers 10 $15.7 requests [22, 31, 21, 32, 63, 61, 57, 87, 100, 26]
+main: $17.2 over 5.0 h wall, 1.8 h active, 186 requests; $3.4/h wall
+switch to Fable at 289k context: 1h write $5.8, 5m write $3.6; back to Opus 1h $2.3
+switch to Fable at 440k context: 1h write $8.8, 5m write $5.5; back to Opus 1h $3.5
+switch to Fable at 783k context: 1h write $15.7, 5m write $9.8; back to Opus 1h $6.3
+reader first-request context median 73268
