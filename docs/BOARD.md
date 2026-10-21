@@ -2402,3 +2402,41 @@ Read by the rules set beforehand: 1, 2, 3 and 4 hold. **Kept**: the fixes are on
 What the reading showed beside the keep rule, and what it could not: readers gave exactly three faults to 275 of 288 versions (the brief asks for "up to three"), so the totals cannot fall (215 against 215 among the busiest, 214 against 201 among random adults); what moved is the mix. Among the busiest, wording faults halved (18 against 38) and "out of nowhere" fell (24 against 36); unfit reasons (64 against 51) and false lines (61 against 47) rose in their place: readers quote the next-worst thing. Some of the round's own words were quoted as faults, 11 times among the busiest (8 as false lines; expected none): "(the sixth time since 2029)" when only two of the six are shown (three readers), "buried the hatchet, three years after the editor's job" (three), "kept himself busy" given as the reason someone came through an illness, and two friendships' ends given "nothing brought them together any more" or a change in one life that readers did not connect to it. The pre-registered "what would change our minds" fires in its first part: readers quote as many faults on as off, because the reading's brief caps them, and the faults they turn to are the reasons a decision gives (stock traits for acts they do not explain: "likes things done properly and on time" for rushing to a sick friend). The reading needs to count faults without a cap (a method round), and the next engine work on reasons is the decision's own.
 
 Note (21 Oct, after the outside review of `bffdb33`, `reports/external/2026-10-21-lab-reading.md`): the pre-registration says the change "removes errors, not events". That is not exact: some of the fixes change which events happen, not only how they are said. The round was tested as an experiment, so its outcome stands; the sentence is corrected here, not in the pre-registration.
+
+## Round M38 — the instrument round (pre-registered 21 Oct 2026, 20:50 Oslo, before any sitting or null world; tools built and reviewed first)
+
+Next 1 in `SUMMARY.md`; proposal item 1. The reading capped faults at three for twelve rounds and has never met a null or a known fault. Nothing the engine does changes.
+
+**Built:** the brief asks for every fault, cited by line (`docs/method/brief.md`); packs number their lines; the scorer warns first when a cap, ceiling, floor or ties pass half, and counts a planted fault's citations against the same line in the true page; `NULL=2` in `pairarm.ts` runs the present on a second run seed.
+
+**Roles, fixed now:** a novelist and a player of simulation games (the score's question is a reader's, the mission's lens a player's).
+
+**Sittings** (Fable 5.1 `blind-reader`, one per role and part, 18):
+
+| Pack | Pages | Readers |
+| --- | --- | --- |
+| null | `NULL=2`, busiest, fresh worlds **3601–3608** | both roles |
+| shuffled | round 41's busiest, on arm, true page against its reasons shuffled between lines of the same year | both |
+| planted | the same, against one line given the reason of a line ten or more earlier | both |
+| r40 | round 40's busiest as read, lines numbered (calibration) | both; and the novelist on Opus 5.5 |
+
+**Bars** (choices of the true page, of 48; expectations are estimates, not sized):
+
+1. shuffled: at least **36** (18 of 24 pairs); expected about 44;
+2. planted: at least **36**; expected to fail, about 26; the line cited in the altered page by about 16 readings more than in the true page;
+3. null: the effect's 95% interval covers 0, and the per-pair sd is at most **0.9** (0.7 on real rounds with three readers); reported: order lean, lines term;
+4. r40: the two roles' effect inside round 40's interval, **+0.07 to +0.95**; expected about +0.4 (catches a broken brief, not a shift); reported: mean scores per arm against round 40's;
+5. the brief: no cap warning on null or r40; at least 95% of faults cite a line the version has.
+
+**Adopted** if 1, 3, 4 and 5 hold; round 42 is then judged with it.
+
+**What would change our minds:**
+
+- 1 fails: readers do not see reasons; round 42 is judged on its counter alone and the reading goes back to research;
+- 2 fails with the line cited 8 or more readings more often in the altered page than the true: preference misses one small fault, faults see it. Fewer: faults miss it too;
+- 3 fails on its interval: the lean becomes a scorer term before round 42; on its sd: 24 pairs with two roles cannot resolve ±0.3, and SUMMARY says what they can;
+- 4 fails: the brief moved the scores; not adopted; one role re-reads r40 with quotes to find which part;
+- roles fade (`reports/M38-roles.py`, 39–41 and M38: second-half kind distance under three quarters of the first, same choice up five points): parts shrink to eight pairs;
+- Opus 5.5's novelist outside Fable's interval on r40: the models disagree; the human test decides. Same maker: agreement is weak evidence.
+
+Game lens: a reading that sees a fault lets a round claim one.
