@@ -318,10 +318,14 @@ function act(w: World, r: Rivalry, x: Person, y: Person) {
   const peaceLately = w.t - (x.tried['peace:' + r.id]?.t ?? -99) < 24;
   const burned = w.t - (x.tried['found:' + r.id]?.t ?? -99) < 24; // found out lately: not again, not soon
   const holder = r.stake === 'grudge' && x.id === r.b; // the one who got the post has nothing to win by talk
+  // Round 40, with contests on: nobody gives way while ahead, and picking holes in someone's work needs the two to work together.
+  const behind = (camp?.[x.id] ?? 0) + x.perf < (camp?.[y.id] ?? 0) + y.perf;
+  const yields = !collideOn() || !post || behind;
+  const colleagues = !collideOn() || (x.job != null && x.job === y.job);
   const families = post
     ? decider && decider.status === 'in' && decider !== x && decider !== y && !burned
-      ? ['duty', 'dishonesty', 'anger', 'humility']
-      : ['duty', 'anger', 'humility']
+      ? ['duty', 'dishonesty', 'anger', ...(yields ? ['humility'] : [])]
+      : ['duty', 'anger', ...(yields ? ['humility'] : [])]
     : ['anger', ...(burned || holder ? [] : ['dishonesty']), 'withdrawal', ...(peaceLately ? [] : ['humility'])];
   const grudgeTarget = !post
     ? staffOf(w, y.job).find(q => q !== x && q !== y && q.job != null && q.job === y.job && regard(w, q.id, y.id) > 0.1)
@@ -338,7 +342,7 @@ function act(w: World, r: Rivalry, x: Person, y: Person) {
     families: families as any,
     only: post
       ? { duty: ['outwork'], dishonesty: ['whisper'], anger: ['needle'], humility: ['concede'] }
-      : { anger: ['needle', 'cold'], dishonesty: ['whisper'], withdrawal: ['avoid'], humility: ['makepeace'] },
+      : { anger: colleagues ? ['needle', 'cold'] : ['cold'], dishonesty: ['whisper'], withdrawal: ['avoid'], humility: ['makepeace'] },
     cause: r.first,
     causeLabel: label,
     place: w.placeById.get(r.place)?.name,
@@ -508,7 +512,8 @@ export function dramaTick(w: World) {
   for (const r of activeR(w)) {
     const a = w.byId.get(r.a)!,
       b = w.byId.get(r.b)!;
-    if (a.status !== 'in' || b.status !== 'in') {
+    // Round 40, with contests on: a contest over a post ends when either no longer works there.
+    if (a.status !== 'in' || b.status !== 'in' || (collideOn() && r.stake === 'post' && (a.job !== r.place || b.job !== r.place))) {
       r.over = w.t;
       r.outcome = 'parted';
       continue;
@@ -547,7 +552,14 @@ function contestReasons(w: World, r: Rivalry, y: Person, open: boolean, camp: Re
   const ahead = (camp?.[x.id] ?? 0) + x.perf < (camp?.[y.id] ?? 0) + y.perf ? `@${y.id} is ahead` : `@${x.id} is ahead`;
   return [
     ...(theirs != null ? [eventCause(w, theirs, 0.4)] : []),
-    stateCause(open ? ahead : `still sore about ${r.about} (${year(w.events[r.first].t)})`, 0.4),
+    stateCause(
+      open
+        ? ahead
+        : r.winner === x.id || (r.stake === 'grudge' && r.b === x.id)
+          ? `@${y.id} is still sore about ${r.about} (${year(w.events[r.first].t)})` // round 40: the one who won it is not the sore one
+          : `still sore about ${r.about} (${year(w.events[r.first].t)})`,
+      0.4,
+    ),
   ];
 }
 // Whether someone who had not thought of the post goes for it too, on learning a colleague wants it: a season's decision, with the

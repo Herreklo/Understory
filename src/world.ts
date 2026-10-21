@@ -391,9 +391,9 @@ export const OFF = new Set<string>();
 // Mechanisms that are off unless asked for: a round that did not meet its expectations keeps its code behind one of these, so the
 // default model is the one before it. Turned on for a test with ON=<name>, as OFF=<name> turns a kept one off.
 export const ON = new Set<string>();
-// Round 39: wants that answer what happens, contests out of season, aftermath and telling, on together with ON=together. Each is
-// also on alone with its own ON=<name>.
-export const together = () => ON.has('together');
+// The four (round 40): wants that answer what happens, contests out of season and for band places, a blow's aftermath and telling, on
+// together unless OFF=together. With them off, each can be turned on alone with its own ON=<name>.
+export const together = () => !OFF.has('together');
 // A name a reader can follow: the first name, with the surname when someone else in town (or away) has the same first name, and the
 // year of birth when they share both. Rendering only.
 export function nameOf(w: World, id: number): string {

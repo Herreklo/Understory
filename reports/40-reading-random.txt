@@ -1,0 +1,76 @@
+Round 40: the paired reading of random adults, the four together on against off (21 Oct 2026). 24 pairs, three adults drawn at random among the adults in town in both arms in each of worlds 3537-3544 (pairarm.ts PICK=random, at 9a03b53), order dealt half and half; the same three readers on Fable 5.1, each part at a separate sitting. Scored by scripts/pairscore.py, before any other number of the round was read.
+The regular expression the quotes were listed by (--quote): had heard from|made light of it|made the most of it|it hit hard|had shaken (her|him)|it happened at work|is there too|is ahead|wants to be .* too|not picked|turned (thirty|forty|fifty|sixty)|children grown|never went after it|is still sore about|though (she|he) had wanted out|though there was no work here
+
+pair  on         novelist          player    socialworker   majority-on
+P01   B            3,4,B           3,4,B           3,4,B   yes
+P02   A            4,3,A           3,3,B           4,3,A   yes
+P03   B            3,3,B           2,3,B           3,3,A   yes
+P04   A            3,4,B           3,4,B           3,4,B   no
+P05   B            3,3,A           3,2,A           3,2,A   no
+P06   B            4,3,A           4,3,A           4,2,A   no
+P07   A            4,3,A           4,3,A           4,3,A   yes
+P08   A            3,2,A           3,2,A           4,2,A   yes
+P09   B            3,2,A           3,2,A           3,2,A   no
+P10   A            2,1,A           1,1,B           2,1,A   yes
+P11   B            2,4,B           2,3,B           2,4,B   yes
+P12   A            4,3,A           3,3,A           3,3,A   yes
+P13   A            3,4,B           2,4,B           3,4,B   no
+P14   B            3,3,B           3,3,B           3,3,B   yes
+P15   B            2,4,B           2,3,B           2,4,B   yes
+P16   A            4,3,A           3,3,A           4,3,A   yes
+P17   B            3,4,B           3,4,B           3,4,B   yes
+P18   A            3,4,B           3,3,B           3,4,B   no
+P19   A            2,4,B           2,4,B           2,4,B   no
+P20   B            2,4,B           2,4,B           2,4,B   yes
+P21   A            1,2,B           1,1,B           1,2,B   no
+P22   B            3,3,A           3,3,A           3,3,B   no
+P23   A            3,3,B           3,2,A           3,2,A   yes
+P24   B            3,4,B           3,4,B           3,4,B   yes
+
+The on arm was version B in 12 of 24 pairs; readers chose B in 42 of 72 single choices.
+Majority preferred the on arm in 15 of 24.
+Paired score difference, on minus off: +0.22 ±0.46 (95%, 24 pairs, mean over 3 readers)
+  novelist       +0.29
+  player         +0.12
+  socialworker   +0.25
+With the order as a term: effect +0.22 ±0.46 (95%); one-sided 90% lower bound -0.07; lean toward the second version +0.25
+ordinal  alpha 0.850  95% [0.740, 0.920]  (3 readers, 48 lives)
+interval alpha 0.861  95% [0.766, 0.924]  (3 readers, 48 lives)
+  novelist     mean 3.06
+  player       mean 2.81
+  socialworker mean 3.00
+
+How much happened: 49.9 lines a page on, 45.3 off; on minus off +4.6 a pair (sd 17.1). Where the versions are five or more lines apart, the longer was chosen 39 times and the shorter 15 (18 choices nearer).
+With the order and the difference in lines as terms: effect +0.04 ±0.37 (95%); ten lines more +0.40 ±0.21. Reported beside the effect above, which the round is judged on.
+Kinds of line: 30.8 a page on, 27.8 off; on minus off +3.0 a pair (sd 11.4).
+With the order and the difference in kinds as terms: effect +0.02 ±0.34 (95%); a kind more +0.066 ±0.029.
+faults on: total 213 · unfit reason 67, false line 54, repeat 42, out of nowhere 26, wording 24
+faults off: total 208 · unfit reason 66, false line 51, out of nowhere 38, repeat 34, wording 19
+
+Quotes matching the round's wording (on arm): good 25, faults 1 (unfit reasons 0); off arm: good 0, faults 0
+  good: P03 player: turned sixty; had the money put by; not worn down
+  good: P04 novelist: Harry Sutton was found out: taking from the medicine cupboard.; it hit hard
+  good: P04 player: Harry Sutton was found out: taking from the medicine cupboard.; it hit hard
+  good: P04 socialworker: Harry Sutton was found out: taking from the medicine cupboard.; it hit hard
+  good: P05 novelist: Tom dragged up what Mary did last year in front of everyone at the Courier.; it had shaken her
+  good: P05 player: Tom dragged up what Mary did last year in front of everyone at the Courier.; it had shaken her
+  good: P05 socialworker: Tom dragged up what Mary did last year in front of everyone at the Courier.; it had shaken her
+  good: P06 novelist: Ken Eden died in his sleep, aged 79.; it hit hard
+  good: P06 player: Ken Eden died in his sleep, aged 79.; it hit hard
+  good: P06 socialworker: Ken Eden died in his sleep, aged 79.; it hit hard
+  good: P15 novelist: Lynn Shaw died in her sleep, aged 88.; it hit hard
+  good: P15 player: Lynn Shaw died in her sleep, aged 88.; it hit hard
+  good: P15 socialworker: Lynn Shaw died in her sleep, aged 88.; it hit hard
+  good: P17 novelist: What Kate Vale had wanted for 3 years was gone.; it hit hard
+  good: P17 novelist: Sarah Vale dragged up what Kate Vale did a few months back in front of everyone at the sawmill.; it had shaken her; it happened at work
+  good: P17 player: Sarah Vale dragged up what Kate Vale did a few months back in front of everyone at the sawmill.; it had shaken her; it happened at work
+  good: P17 socialworker: Sarah Vale dragged up what Kate Vale did a few months back in front of everyone at the sawmill.; it had shaken her; it happened at work
+  good: P18 socialworker: turned forty; had the money put by; not worn down
+  good: P20 novelist: Vera Moore was passed over for manager; Steve got the job.; it had shaken her
+  good: P20 socialworker: Vera Moore was passed over for manager; Steve got the job.; it had shaken her
+  good: P22 novelist: Ryan let Kate go from the Courier.; it had shaken her
+  good: P22 player: Ryan let Kate go from the Courier.; it had shaken her
+  good: P22 socialworker: Ryan let Kate go from the Courier.; it had shaken her
+  good: P24 novelist: Hal died after a long illness, aged 78.; it hit hard
+  good: P24 socialworker: Hal died after a long illness, aged 78.; it hit hard
+  fault: P24 player (false line): Ivan no longer talks about wanting to become skipper at the harbour fleet.  [had wanted it since 2026, and never went after it]

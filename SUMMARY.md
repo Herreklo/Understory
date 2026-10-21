@@ -1,6 +1,6 @@
 # Understory: where we are
 
-_Updated 21 October 2026. One page, plain words, rewritten at every merge to main._
+_Updated 21 October 2026 (round 40). One page, plain words, rewritten at every merge to main._
 
 ## Where we are going
 
@@ -28,32 +28,33 @@ The people decide like people and can be read, but their lives are thin and repe
 
 - **Lives are repetitive.** Both readers found the same few dilemmas again and again, and neither wanted a second round.
 - **Events lead nowhere.** One weighty event in five leads to anything later; one in seventeen reaches anyone outside the people involved.
-- **Few people want anything.** 62% of adults pursue nothing in ten years.
+- **Many people still want nothing.** Nearly half of adults pursue nothing in ten years (with the four on, 54% go after something, against 46%), mostly those past 65.
 - **Life barely changes people.** Thirty years move how someone chooses about 3% of the way toward being someone else, once growing older is set aside.
 - **The page doesn't help a stranger yet.** The human test so far shows no gain from reading it.
 - **The city's background ages.** The cheap simulation of everyone off-screen has about a quarter too few children, and people brought into focus from it carry about half the marks of a lived life.
 
 ## Next, in order
 
-This is the one priority list. Only Øystein changes its order, and a chat starts an experiment only from the top of it or when he names one. Øystein asked on 20 Oct for a plan to be made and followed; this is it, revised as rounds 35, 36 and 38 were withdrawn before their tests and rounds 37 and 39 were read.
+This is the one priority list. Only Øystein changes its order, and a chat starts an experiment only from the top of it or when he names one. Øystein asked on 20 Oct for a plan to be made and followed; this is it, revised as rounds 35, 36 and 38 were withdrawn before their tests, rounds 37 and 39 were read, and round 40 was kept.
 
-What readers score, found on the readings already on file (round 36): **how many different kinds of thing happen in a life**, not how long its page is or how often it repeats. A kind more goes with about +0.05 on the score, across lives and within the same person; length adds nothing once kinds are counted. Round 39 showed it is a cause, not only a correlation: with four mechanisms that add kinds of happening turned on together, both the busiest lives and random adults read better, and most of the gain is the kinds added. So the plan aims at lives with more kinds of happening, each with a reason a reader accepts.
+What readers score, found on the readings already on file (round 36): **how many different kinds of thing happen in a life**, not how long its page is or how often it repeats. A kind more goes with about +0.05 on the score, across lives and within the same person; length adds nothing once kinds are counted. Rounds 39 and 40 showed it is a cause, not only a correlation: with four mechanisms that add kinds of happening turned on together, the busiest lives read better twice (+0.38, +0.51), most of it through the kinds added; random adults read no worse but not clearly better. The four are now on. So the plan aims at lives with more kinds of happening, each with a reason a reader accepts.
 
-1. **The four together** (exit points 1, 2, 3 and 5): wants that answer what happens, contests out of season and for band places, a blow that changes something, and telling what one saw (the plan's former steps 1 to 3, bundled by Øystein's choice as round 39). Both readings came out better (busiest +0.38, random adults +0.33), but the round missed its own floor for added kinds by a hundredth (+0.99 against +1.0), so it is not kept and the four stay off (`ON=together`). Readers also quoted more reasons that do not fit. What comes next here is Øystein's choice (Waiting for you).
-2. **Reasons a reader can follow** (exit point 3), on the page.
-3. **People outside the project** (exit point 5): the human test, random and sifted lives side by side.
-4. Close ties (exit point 1) and the accounts arc (#20), both paused. Their code is kept behind switches (`ON=accounts`, `ON=telling`, `ON=carry`, `ON=reckon`).
+1. **Lines and reasons a reader can trust** (exit point 3), round 41, Øystein's choice on 21 Oct: the faults every reader quotes in both arms of every reading (spans like "5.5 years" and "1 years", "(and once more between)", a friendship's end given "they stopped seeing each other" as its reason, "nothing had changed since" when something had, "buried herself in work" after retiring, "a baby at home" for a three-year-old, a broken "Freya's it", a dangling "Instead,"), fixed behind one switch and read blind.
+2. **People outside the project** (exit point 5): the human test, random and sifted lives side by side.
+3. **The quiet majority** (exit points 2 and 5): random adults gain little from the four; doors for later life and more than one pursuit at a time (round 36's open design).
+4. Close ties (exit point 1) and the accounts arc (#20), both paused. Their code is kept behind switches (`ON=accounts`, `ON=carry`, `ON=reckon`).
 5. For the game (Overstory): the front door's part two (#22), reads of what the player could know, player commands and versions; and the start year from the setting pack (#23).
 6. The city's background: partnering and children fixed, so it stops ageing.
 
 ## Waiting for you
 
-- What follows round 39, which only you order: the four together again with the faults readers quoted in their lines fixed, sized first and tested on fresh worlds (recommended); reasons a reader can follow, across the engine, with the four off; or something else.
+- For the human test (Next 2): 10 to 20 people who would each read about twenty minutes of lives; the pack and instructions can be prepared while round 41 runs.
 - Decide on the repo structure for add-ons.
-- One change to the order of "Next", which only you make: the band for a year (proposed work 8) as the round after the four together, because it tests close ties, living changing people and a group's character in one setting.
+- One change to the order of "Next", which only you make: the band for a year (proposed work 8) after the quiet majority, because it tests close ties, living changing people and a group's character in one setting.
 
 ## Latest merges
 
+- **Round 40 (21 Oct), kept:** the four together again, with the faults readers had quoted in their lines fixed (a want said to have lapsed in someone who went after it, a winner "still sore" about the job she won, rivals going on after one had left, turning down the city "because" one had wanted out). The busiest lives read better (+0.51) and random adults no worse (+0.22); the extra unfit reasons of round 39 are gone (51 against 49, 67 against 66); kinds of happening a life +2.2. The four are now on: wants that answer what happens, contests out of season and for band places, a blow that changes something, and telling what one saw.
 - **Round 39 (21 Oct), not kept:** four mechanisms built since round 30 (wants that answer what happens, contests out of season and for a place in a band, a blow that changes something, telling what one saw) turned on together. Both blind readings found the lives better: the busiest +0.38 and random adults +0.33, the first round to read better on both, and most of it is the extra kinds of happening, which makes the finding that readers reward variety a cause, not a correlation. But the round's own floor asked for at least one more kind of happening for the average adult, and it added 0.99; readers also quoted more reasons that do not fit (a want said to have lapsed in someone who went after it, a winner "still sore" about the job she won). By the rule set beforehand it is not kept, and the four stay behind `ON=together`.
 - **Size first, then register (M37, 21 Oct):** a round now builds its change and runs it on throwaway worlds before it is pre-registered, so its expectations are measured, not guessed; the pre-registration still comes before any fresh test world, and the keep rule rests on the blind reading and the gates. Agreed by Øystein. Nothing the engine does changed.
 - **Round 38 (21 Oct), withdrawn before its test:** wants that collide: two colleagues who learn they want the same post become rivals out of season, and a band's new member is chosen from those who wanted the place. On trial worlds the contests read with fitting reasons, but there were barely more of them (5.0 against 4.5 a world-decade): rivals out of season simply did not form again when the season came. Kept behind `ON=collide`.

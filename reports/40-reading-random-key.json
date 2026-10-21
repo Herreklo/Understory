@@ -1,0 +1,338 @@
+{
+ "P01": {
+  "seed": 3537,
+  "person": 48,
+  "name": "Stuart",
+  "onIs": "B",
+  "on": {
+   "lines": 65,
+   "kinds": 37
+  },
+  "off": {
+   "lines": 45,
+   "kinds": 23
+  }
+ },
+ "P02": {
+  "seed": 3537,
+  "person": 75,
+  "name": "Tom",
+  "onIs": "A",
+  "on": {
+   "lines": 52,
+   "kinds": 36
+  },
+  "off": {
+   "lines": 58,
+   "kinds": 41
+  }
+ },
+ "P03": {
+  "seed": 3537,
+  "person": 38,
+  "name": "Sally Sands",
+  "onIs": "B",
+  "on": {
+   "lines": 40,
+   "kinds": 25
+  },
+  "off": {
+   "lines": 27,
+   "kinds": 17
+  }
+ },
+ "P04": {
+  "seed": 3538,
+  "person": 21,
+  "name": "Harry Sutton",
+  "onIs": "A",
+  "on": {
+   "lines": 84,
+   "kinds": 41
+  },
+  "off": {
+   "lines": 82,
+   "kinds": 46
+  }
+ },
+ "P05": {
+  "seed": 3538,
+  "person": 71,
+  "name": "Mary",
+  "onIs": "B",
+  "on": {
+   "lines": 47,
+   "kinds": 31
+  },
+  "off": {
+   "lines": 39,
+   "kinds": 29
+  }
+ },
+ "P06": {
+  "seed": 3538,
+  "person": 12,
+  "name": "Susie Sutton",
+  "onIs": "B",
+  "on": {
+   "lines": 68,
+   "kinds": 33
+  },
+  "off": {
+   "lines": 86,
+   "kinds": 55
+  }
+ },
+ "P07": {
+  "seed": 3539,
+  "person": 30,
+  "name": "Sally",
+  "onIs": "A",
+  "on": {
+   "lines": 79,
+   "kinds": 50
+  },
+  "off": {
+   "lines": 64,
+   "kinds": 39
+  }
+ },
+ "P08": {
+  "seed": 3539,
+  "person": 26,
+  "name": "Neil Hale",
+  "onIs": "A",
+  "on": {
+   "lines": 58,
+   "kinds": 34
+  },
+  "off": {
+   "lines": 26,
+   "kinds": 15
+  }
+ },
+ "P09": {
+  "seed": 3539,
+  "person": 42,
+  "name": "Molly Sutton",
+  "onIs": "B",
+  "on": {
+   "lines": 29,
+   "kinds": 16
+  },
+  "off": {
+   "lines": 48,
+   "kinds": 23
+  }
+ },
+ "P10": {
+  "seed": 3540,
+  "person": 2,
+  "name": "Ivy",
+  "onIs": "A",
+  "on": {
+   "lines": 10,
+   "kinds": 7
+  },
+  "off": {
+   "lines": 6,
+   "kinds": 3
+  }
+ },
+ "P11": {
+  "seed": 3540,
+  "person": 41,
+  "name": "Arthur",
+  "onIs": "B",
+  "on": {
+   "lines": 38,
+   "kinds": 25
+  },
+  "off": {
+   "lines": 38,
+   "kinds": 19
+  }
+ },
+ "P12": {
+  "seed": 3540,
+  "person": 5,
+  "name": "Amelia",
+  "onIs": "A",
+  "on": {
+   "lines": 57,
+   "kinds": 40
+  },
+  "off": {
+   "lines": 53,
+   "kinds": 39
+  }
+ },
+ "P13": {
+  "seed": 3541,
+  "person": 79,
+  "name": "Una Sayer",
+  "onIs": "A",
+  "on": {
+   "lines": 37,
+   "kinds": 22
+  },
+  "off": {
+   "lines": 76,
+   "kinds": 50
+  }
+ },
+ "P14": {
+  "seed": 3541,
+  "person": 5,
+  "name": "Sophie",
+  "onIs": "B",
+  "on": {
+   "lines": 27,
+   "kinds": 14
+  },
+  "off": {
+   "lines": 41,
+   "kinds": 18
+  }
+ },
+ "P15": {
+  "seed": 3541,
+  "person": 2,
+  "name": "Gary Waller",
+  "onIs": "B",
+  "on": {
+   "lines": 24,
+   "kinds": 17
+  },
+  "off": {
+   "lines": 17,
+   "kinds": 11
+  }
+ },
+ "P16": {
+  "seed": 3542,
+  "person": 10,
+  "name": "Ivy Kemp",
+  "onIs": "A",
+  "on": {
+   "lines": 58,
+   "kinds": 31
+  },
+  "off": {
+   "lines": 41,
+   "kinds": 24
+  }
+ },
+ "P17": {
+  "seed": 3542,
+  "person": 30,
+  "name": "Kate",
+  "onIs": "B",
+  "on": {
+   "lines": 77,
+   "kinds": 45
+  },
+  "off": {
+   "lines": 76,
+   "kinds": 37
+  }
+ },
+ "P18": {
+  "seed": 3542,
+  "person": 17,
+  "name": "Trevor",
+  "onIs": "A",
+  "on": {
+   "lines": 68,
+   "kinds": 47
+  },
+  "off": {
+   "lines": 81,
+   "kinds": 45
+  }
+ },
+ "P19": {
+  "seed": 3543,
+  "person": 37,
+  "name": "Lisa",
+  "onIs": "A",
+  "on": {
+   "lines": 28,
+   "kinds": 22
+  },
+  "off": {
+   "lines": 25,
+   "kinds": 19
+  }
+ },
+ "P20": {
+  "seed": 3543,
+  "person": 30,
+  "name": "Vera",
+  "onIs": "B",
+  "on": {
+   "lines": 67,
+   "kinds": 46
+  },
+  "off": {
+   "lines": 27,
+   "kinds": 23
+  }
+ },
+ "P21": {
+  "seed": 3543,
+  "person": 17,
+  "name": "Gary",
+  "onIs": "A",
+  "on": {
+   "lines": 19,
+   "kinds": 11
+  },
+  "off": {
+   "lines": 9,
+   "kinds": 7
+  }
+ },
+ "P22": {
+  "seed": 3544,
+  "person": 53,
+  "name": "Kate",
+  "onIs": "B",
+  "on": {
+   "lines": 43,
+   "kinds": 29
+  },
+  "off": {
+   "lines": 33,
+   "kinds": 28
+  }
+ },
+ "P23": {
+  "seed": 3544,
+  "person": 13,
+  "name": "Freya",
+  "onIs": "A",
+  "on": {
+   "lines": 38,
+   "kinds": 27
+  },
+  "off": {
+   "lines": 24,
+   "kinds": 18
+  }
+ },
+ "P24": {
+  "seed": 3544,
+  "person": 74,
+  "name": "Ivan",
+  "onIs": "B",
+  "on": {
+   "lines": 85,
+   "kinds": 53
+  },
+  "off": {
+   "lines": 65,
+   "kinds": 37
+  }
+ }
+}

@@ -1,7 +1,8 @@
 import type { Feature } from '../features';
-import { age, live, P, year } from '../world';
+import { age, live, P, year, together } from '../world';
 import { facetC, valueC, pubC, attachC } from '../considerations';
 import { type Instance, favour } from '../grammar';
+import type { Family } from '../families';
 import type { SituationType } from './index';
 
 // Offer from outside: work in the city.
@@ -29,6 +30,21 @@ export const offer: SituationType = {
         families: ['openness', 'reluctance'],
         only: { openness: ['take'], reluctance: ['decline'] },
         causeLabel: wants ? `had wanted out since ${year(wants.since)}` : p.job ? 'word came of work in the city' : 'no work here',
+        // Round 40: turning it down, a want to get out (or having no work) is what argued the other way, said last; and not wanting to see
+        // anywhere else is no reason for someone who wants out.
+        ...(together()
+          ? {
+              against: (fam: Family) =>
+                fam !== 'reluctance'
+                  ? undefined
+                  : wants
+                    ? `though ${p.sex === 'f' ? 'she' : 'he'} had wanted out since ${year(wants.since)}`
+                    : p.job == null
+                      ? 'though there was no work here'
+                      : undefined,
+              hide: (fam: Family) => (fam === 'reluctance' && wants ? ['inquisitiveness'] : []),
+            }
+          : {}),
         extra: [favour(pubC('ties', tied ? 'people here depend on them' : 'nobody here depends on them', tied ? 0.9 : 0.1, -1, 0.15), 'openness')],
         familyExtra: {
           openness: [facetC(p, 'unconventionality', feats, 1, 3), valueC(p, wants ? wants.value : 'success'), attachC(p, -1)],
