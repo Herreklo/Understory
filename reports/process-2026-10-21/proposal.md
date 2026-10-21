@@ -49,6 +49,8 @@ Readers as a subagent pinned to Fable with read-only access and without `CLAUDE.
 
 ## Decisions for Øystein
 
+**Decided 21 Oct:** all three as recommended. The human test waits until Øystein picks it up again; until then no round is kept on "reads better" alone.
+
 1. Agree the proposal, or change parts of it.
 2. Round 42 judged on its counter and "reads no worse" until the human test (recommended).
 3. Models: Opus for all but the blind readers; Fable for readers, big-round pre-mortems and close calls (recommended).
