@@ -2403,7 +2403,7 @@ What the reading showed beside the keep rule, and what it could not: readers gav
 
 Note (21 Oct, after the outside review of `bffdb33`, `reports/external/2026-10-21-lab-reading.md`): the pre-registration says the change "removes errors, not events". That is not exact: some of the fixes change which events happen, not only how they are said. The round was tested as an experiment, so its outcome stands; the sentence is corrected here, not in the pre-registration.
 
-## Round M38 — the instrument round (pre-registered 21 Oct 2026, 20:50 Oslo, before any sitting or null world; tools built and reviewed first)
+## Round M38 — the instrument round (pre-registered 21 Oct 2026, 20:35 Oslo, before any sitting or null world; tools built and reviewed first)
 
 Next 1 in `SUMMARY.md`; proposal item 1. The reading capped faults at three for twelve rounds and has never met a null or a known fault. Nothing the engine does changes.
 

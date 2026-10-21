@@ -1,0 +1,11 @@
+{
+ "switch": "null",
+ "kind": "NULL=2",
+ "worlds": [
+  3601,
+  3608
+ ],
+ "perWorld": 3,
+ "pick": "eventful",
+ "commit": "aa4422747b437da39c81226c653b39bbc023945c"
+}
