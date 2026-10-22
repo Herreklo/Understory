@@ -110,13 +110,16 @@ if (mode === 'run') {
   if (rule !== 'on') for (const x of rule.split('+')) OFF.add(x);
   mkdirSync(OUT, { recursive: true });
   const done: WorldOut[] = [];
+  // A world already written is kept only if it was run the same way (its years, and the state whose flips it counts).
+  const same = (x: WorldOut) => x.years === years && (x.flip?.state ?? '') === (process.env.FLIP ?? '');
   for (let seed = A; seed <= B; seed++) {
     const f = `${OUT}/${rule}-${seed}.json`;
-    if (!existsSync(f)) {
-      writeFileSync(f, JSON.stringify(runWorld(seed, rule, years)));
+    let x: WorldOut | undefined = existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) : undefined;
+    if (!x || !same(x)) {
+      writeFileSync(f, JSON.stringify((x = runWorld(seed, rule, years))));
       console.error(`measures ${rule}: world ${seed}`);
     }
-    done.push(JSON.parse(readFileSync(f, 'utf8')));
+    done.push(x);
   }
   console.log(
     'MEASURES ' +
