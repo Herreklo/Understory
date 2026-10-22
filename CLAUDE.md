@@ -40,7 +40,7 @@ Check Overstory's channel cheaply: `gh api "repos/Herreklo/Understory/issues/60/
 | Job | Model | Takes | Gives, and done when |
 | --- | --- | --- | --- |
 | **Research** | Opus 5.5 | the item in "Next", `docs/method/prior-art.md`, data on file | `notes/research/<topic>.md`, one page: what Talk of the Town, Crusader Kings, Dwarf Fortress, The Sims, Versu or PsychSim did and where it went wrong; effect sizes from the literature; what data on file says; an estimate; five lines of "this fails if …", each tied to a sizing check |
-| **Design, build, size** | Opus 5.5 | the research note | the change behind its switch, a draft PR, `reports/<round>-size.md`: 20+ throwaway worlds with intervals and a power check (can 24 pairs resolve it?); CI identical with the switch off |
+| **Design, build, size** | Opus 5.5 | the research note | the change behind its switch, a draft PR, `reports/<round>-size.md`: 20+ throwaway worlds with intervals and a power check (can 48 pairs, or a page round's 24, resolve it?); CI identical with the switch off |
 | **Review** | `reviewer` agent, Fable 5.1 (never the builder's model) | the diff, the draft pre-registration, the sizing | findings in the PR, none left marked BLOCKS; a pre-mortem too for a big round (homes, the band year, the front door's part two) |
 | **Pre-register and run** | Opus 5.5 | the reviewed round | `/pre-register`, pushed before any fresh world; the battery's outputs |
 | **Read** | `blind-reader` agents, Fable 5.1, via `/run-reading` | the packs | answers and scores in `reports/`, before any other number of the round is read |

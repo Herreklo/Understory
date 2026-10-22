@@ -1,11 +1,12 @@
 // One command for a round's whole test battery (round T1). From the round's switches and seed ranges it runs, from a frozen copy of
 // the committed tree, the scoreboard with and without the switches (and without each one, when there are several), the lives measures
-// on and off, the identity check with the switches off against the base branch, the round's own fault tool, `npm test`, and a blind
-// cold-read pack written before anything else; then it writes one summary. Jobs run in parallel; any job that fails, or leaves an
-// expected output missing, is named and makes the command exit nonzero. A separate agent still re-derives the headline numbers.
+// and the counters (src/tools/diag/measures.ts: the page's copies, lasting change and, with --flip, one state's flips) on and off,
+// the identity check with the switches off against the base branch, the round's own fault tool, `npm test`, and a blind cold-read
+// pack written before anything else; then it writes one summary. Jobs run in parallel; any job that fails, or leaves an expected
+// output missing, is named and makes the command exit nonzero. A separate agent still re-derives the headline numbers.
 //   node scripts/round.mjs --id F26 --switches name1,name2 --train 1501-1520 --eval 1721-1740 --test 3001-3020
 //        [--faults src/tools/diag/f26.ts --faults-range 3021-3024] [--cold 3025-3026] [--commit HEAD] [--base origin/main]
-//        [--out out-round-F26] [--jobs 4] [--years 10] [--chunk 5] [--skip ident,npmtest,lives,loo,cold,board]
+//        [--flip <state>] [--out out-round-F26] [--jobs 4] [--years 10] [--chunk 5] [--skip ident,npmtest,lives,measures,loo,cold,board]
 import { execFileSync, spawn } from 'node:child_process';
 import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { cpus } from 'node:os';
@@ -37,6 +38,7 @@ const JOBS = +(args.jobs ?? Math.max(1, cpus().length));
 const YEARS = +(args.years ?? 10);
 const CHUNK = +(args.chunk ?? 5);
 const SKIP = new Set((args.skip ?? '').split(',').filter(Boolean));
+const FLIP = args.flip ?? null;
 const git = (...a) => execFileSync('git', ['-C', ROOT, ...a], { encoding: 'utf8' }).trim();
 const COMMIT = git('rev-parse', args.commit ?? 'HEAD');
 const BASE = git('rev-parse', args.base ?? 'origin/main');
@@ -126,6 +128,15 @@ if (!SKIP.has('lives'))
             },
           ],
         });
+// The counters, world by world (a tree from before them has none to run).
+const MEASURES = !SKIP.has('measures') && existsSync(join(T, 'src/tools/diag/measures.ts'));
+if (MEASURES)
+  for (const rule of ['on', RULE_OFF])
+    for (const [a, b] of chunks(TEST))
+      job(`measures ${rule === 'on' ? 'on' : 'off'} ${a}`, T, run('src/tools/diag/measures.ts', 'run', a, b, rule, YEARS), {
+        env: FLIP ? { FLIP } : {},
+        outputs: Array.from({ length: b - a + 1 }, (_, i) => join(T, 'out-measures', `${rule}-${a + i}.json`)),
+      });
 if (FAULTS && FAULTS_RANGE)
   for (const [arm, off] of ARMS.slice(0, 2))
     job(`faults ${arm}`, T, run(FAULTS, FAULTS_RANGE[0], FAULTS_RANGE[1], YEARS), { env: { OFF: off.join(',') } });
@@ -384,6 +395,11 @@ if (!SKIP.has('lives')) {
       : 'missing',
   );
 }
+if (MEASURES)
+  block(
+    `Counters: the page, lasting change${FLIP ? `, flips of '${FLIP}'` : ''} (on / off)`,
+    ok('measures') ? sh(T, run('src/tools/diag/measures.ts', 'report', 'on', RULE_OFF)) : 'missing',
+  );
 for (const j of jobs.filter(j => j.name.startsWith('faults ')))
   block(`Faults (${j.name.split(' ')[1]})`, j.state === 'done' ? j.log.trim() : 'missing');
 const id = jobs.find(j => j.name === 'ident check');
