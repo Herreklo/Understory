@@ -14,8 +14,14 @@ export interface PageLine {
 // What makes two lines the same act: type, the same people, the same words apart from years.
 const sameAs = (e: Event) => `${e.type}|${[...new Set(e.who)].sort((a, b) => a - b).join(',')}|${e.text.replace(/\b(19|20)\d{2}\b/g, 'Y')}`;
 
-// The reasons a line shows: the first three that are not an "against" note.
-export const shownCauses = (e: Event) => e.causes.filter(c => !c.key?.startsWith('against:')).slice(0, 3);
+// The reasons a line shows: the first three that are not an "against" note, nor one its decision marks as not bearing on the act (round
+// 42). `all` shows those too, as the page was before (for the round's counter).
+export const shownCauses = (e: Event, all = false) =>
+  e.causes
+    .filter(
+      c => !c.key?.startsWith('against:') && (all || !c.key || (c.kind !== 'trait' && c.kind !== 'belief') || !e.decision?.idle?.includes(c.key)),
+    )
+    .slice(0, 3);
 
 // The lines of a life, in the order given. `shown` is the set of event ids the page shows (the person's own list); it grows with the
 // cited events, so a later line does not cite the same event twice.

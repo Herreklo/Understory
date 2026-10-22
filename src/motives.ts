@@ -206,3 +206,8 @@ export function motive(facet: string, high: boolean, kind: string | undefined, a
     .replace(/\{self\}/g, v.self);
 }
 export const MOTIVE_FACETS = Object.keys(M);
+// Whether a pole of a facet has its own wording for a kind of answer, as `motive` would say it (round 42).
+export function wordedFor(facet: string, high: boolean, kind: string, t?: string): boolean {
+  const pair = (high ? M[facet]?.hiBy : M[facet]?.loBy)?.[kind];
+  return !!pair && (!!t || !pair[0].includes('{t}'));
+}

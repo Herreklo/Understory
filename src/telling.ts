@@ -17,7 +17,7 @@
 
 import { clamp } from './rng';
 import { EXPR } from './families';
-import { curves, z01, type Consideration, type Option } from './decide';
+import { curves, z01, honestWhy, truthView, type Consideration, type Option } from './decide';
 import {
   ON,
   together,
@@ -397,6 +397,17 @@ export function counterpart<T>(w: World, who: number, n: number, pick: () => T, 
     ((w as any).flips ??= new Map()).set(`${who}|${chosen}`, { t: w.t, label, ev: top.ev } as Flip);
   }
   return got;
+}
+
+// Round 42: the told accounts among a decision's reasons that decided nothing, which the page does not show. An account decided the
+// choice if setting it aside would halve the odds of the answer chosen (the honest-why test, on the scores, with no draw), or if it
+// turned a choice of counterpart this month.
+export function idleAccounts(w: World, p: Person, options: Option[], chosenId: string, why: Cause[]): string[] {
+  const flips = (w as any).flips as Map<string, Flip> | undefined;
+  return why
+    .map(c => c.key ?? '')
+    .filter(k => k.startsWith('account:'))
+    .filter(k => flips?.get(`${p.id}|${k.slice(8)}`)?.t !== w.t && !honestWhy(truthView(w), options, p.variability, chosenId, k));
 }
 
 // The event that follows a flipped choice, between the chooser and the one chosen, this month: the account is one of its reasons, once.
