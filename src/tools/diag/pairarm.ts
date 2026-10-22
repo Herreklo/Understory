@@ -27,6 +27,10 @@ const A = +(a0 ?? 2921),
 // PICK=random (round 39): the people read are adults drawn at random among those in town in both arms, not the most eventful, so a
 // change meant for the quiet majority is read where it lands.
 const PICK = process.env.PICK === 'random' ? 'random' : 'eventful';
+// NULL=<run seed> (M38): a null pair. Both arms run the engine as it is, with no switch changed; the on arm lives the present on another
+// run seed, so the same people with the same past live another present by chance. Read blind, it shows what readers find where nothing
+// changed.
+const NULL = process.env.NULL ? +process.env.NULL : 0;
 const OUT = `out-pair-${name}${PICK === 'random' ? '-random' : ''}`;
 mkdirSync(OUT, { recursive: true });
 
@@ -34,15 +38,23 @@ function page(w: World, p: Person): string[] {
   const plain = (s: string) => s.replace(/@(\d+)/g, (_, id) => nameOf(w, +id));
   const events = p.events.map(i => w.events[i]).filter(e => e.t >= w.startPresent);
   const out: string[] = [];
+  let n = 0;
+  // Each line is numbered, so readers cite a fault by its line (M38); an earlier event shown under a line (↳) has no number of its own.
   for (const { e, cited, again, firstT } of pageLines(w, events, new Set(p.events))) {
     const shown = shownCauses(e);
     const why = shown.length ? '  [' + shown.map(c => plain(c.label)).join('; ') + ']' : '';
-    out.push(`${year(e.t)}: ${plain(e.text)}${why}${again ? `  (${againNote(again, firstT)})` : ''}`);
-    for (const x of cited) out.push(`    ↳ ${year(x.t)}: ${plain(x.text)}`);
+    out.push(`${String(++n).padStart(3)}  ${year(e.t)}: ${plain(e.text)}${why}${again ? `  (${againNote(again, firstT)})` : ''}`);
+    for (const x of cited) out.push(`       ↳ ${year(x.t)}: ${plain(x.text)}`);
   }
   return out;
 }
 function world(seed: number, on: boolean): World {
+  if (NULL) {
+    const w = buildWorld(seed, on ? NULL : 1);
+    pickWitness(w);
+    runYears(w, 10);
+    return w;
+  }
   if (onKind) {
     if (on) ON.add(name);
     else ON.delete(name);
@@ -141,6 +153,6 @@ try {
 }
 writeFileSync(
   `${OUT}/meta.json`,
-  JSON.stringify({ switch: name, kind: onKind ? 'ON' : 'OFF', worlds: [A, B], perWorld: PER, pick: PICK, commit }, null, 1),
+  JSON.stringify({ switch: name, kind: NULL ? `NULL=${NULL}` : onKind ? 'ON' : 'OFF', worlds: [A, B], perWorld: PER, pick: PICK, commit }, null, 1),
 );
 console.log(`${n} pairs in ${OUT}/pairs.txt; key in ${OUT}/key.json`);
