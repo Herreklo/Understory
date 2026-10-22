@@ -7,7 +7,7 @@ Rules for engine code, so the engine can move to another language, and sit under
 ## 1. A game meets the engine only at the boundary
 
 A game, or any front end outside this repo, talks to a world through `src/boundary.ts`, and only through it:
-- **commands in:** `createWorld` (seed, run seed, past years, founding adults, whether to place the witness) and `command` (advance a number of months);
+- **commands in:** `createWorld` (seed, run seed, past years, founding adults, whether to place the witness) and `command`: advance a number of months, or invite someone to a rehearsal (`src/invite.ts`). Every command answers: refused with the condition that failed, and the world untouched, or carried out with the events it recorded. An invitation is answered by the asked person's own decision, recorded like any event, and a yes starts a band or joins one by the engine's own code. A world given no invitation is the world as it was;
 - **events out:** `events(h, since)`, the record from a month on, each event with its reasons, evidence, decision and who knows it;
 - **queries:** `now`, `townIds` (in a city, everyone simulated month by month), `person`, `bondOf` (never creates a bond), `beliefsHeld`, `places` (every place of work, those ventures opened among them), `groups` (every band and the like, ended or not) and `ventures` (every venture or cause tried, whatever came of it).
 
@@ -21,7 +21,7 @@ The Understory page and the tools in `src/tools/` read the engine directly: they
 
 **Why:** with one boundary, a game and the engine can each change language, or be replaced, without the other noticing. A game built on the engine's internals is welded to them.
 
-**Checked by** `src/tools/boundarytest.ts` (in `npm test`): a world run through the boundary hashes identical to one run directly, every answer survives a JSON round trip unchanged, reading the world and changing an answer leave it identical to a world nobody read, and reading the world through a handle does not type-check.
+**Checked by** `src/tools/boundarytest.ts` (in `npm test`): a world run through the boundary hashes identical to one run directly, every answer survives a JSON round trip unchanged, reading the world, a refused command and changing an answer leave it identical to a world nobody read, the same invitation in the same world gives the same answer and the same months after it, and reading the world through a handle does not type-check.
 
 ## 2. The record is the reference
 
