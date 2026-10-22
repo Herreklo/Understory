@@ -24,7 +24,7 @@ Football is both: contracts, transfers, a squad, a captain and a club's characte
 
 ## 3. How the repositories are arranged
 
-- **Understory** holds the engine, `packs/town` (today's town, identical), `packs/test` (the unlike pack, run in CI) and `domains/music`: today's songs and shows, moved out of `group.ts` as the default domain.
+- **Understory** holds the engine and the town as its pack. When the first game is chosen (phase C), the town moves to `packs/town` (identical), an unlike pack joins it as `packs/test`, run in CI, and today's songs and shows move out of `group.ts` to `domains/music`, the default domain. A pack format built before a second user exists would be built from guesses.
 - **Each game** holds its own pack and domain module in its own repo. The engine loads a pack through `createWorld` and refuses a version it does not know.
 - **A world** is its seed, its pack and pack version, and its engine tag. A saved game adds a snapshot and the commands since.
 - Domains become packages of their own only when a second game exists.
@@ -62,13 +62,23 @@ Each becomes a pack field holding today's value.
 
 **The current "Next" (finding 9)** is right to finish reasons first: unfit reasons are the fault readers quote most (683 on M38's true pages), faulted in rounds 29, 33 and 34, so every later reading of substance is fairer for the fix. Two things in it are wrong. The human test waits "when Øystein picks it up", though every kept change rests on it. And after this round, no page-only round should run until phase A keeps a bundle: page rounds pass and substance rounds mostly fail, so the work drifts to the page, the complexity mistaken for progress that `WHY.md` warns of.
 
+### Beside phase A: the slice
+
+Neither project has anything to play. Phase A can run for weeks with nothing a player has touched, so a rough slice runs beside it from the start.
+
+- **What:** the band, rough and end to end. A text client in `src/tools/` plays one witness in the town through the front door alone. It shows who is around and the knowable events, and gives one command: inviting someone to a rehearsal, which they answer by their own decision. Then months pass, and the band forms, fails or rows. Plain text, no art.
+- **Why the band:** it is the origin (`WHY.md`), the music domain exists, it is the milestone Overstory proposed to share (its request 8), and it needs the first command (#22), which Overstory asks for anyway.
+- **Whose:** the client is an instrument, like the page, and proves the front door. Overstory may adopt or replace it. It is offered on #60 in one note once it runs.
+- **What it does to phase A:** each arc's pre-registration says what it should change in the slice, and Øystein plays it before and after. It is a look, not a gate: it cannot keep or drop a part. It shows early whether the mechanisms reach a player, and its players are exit point 5's first outside readers.
+- **Costs** two or three neutral sessions (the command, the client), no readings, and Øystein's time to play. One decision: the band as the slice.
+
 ### Phase A: what people are made of
 
 Four arcs, each starting with research, at most two full rounds each.
 
 1. **Consequences that reach:** obligation owed and called in, and shared hardship, where one blow binds or splits the people it hits. Moves exit points 2 (reach, 7% today, 15% needed) and 1.
 2. **Close ties,** starting from the moments a tie is tested: a blow, an ask, a move. A ledger read everywhere decided under 1% of choices (round 32). Moves exit point 1.
-3. **Organisations:** norms held in members' beliefs (`notes/organisations-concept.md`), first the row escalation made each group's own, tried in the band for a year. That band is the milestone Overstory proposed to share (its request 8). Moves exit points 9, 1 and 8.
+3. **Organisations:** norms held in members' beliefs (`notes/organisations-concept.md`), first the row escalation made each group's own, tried in the band for a year. It grows out of the slice's band. Moves exit points 9, 1 and 8.
 4. **Wants for the quiet majority:** doors for later life (round 43). Moves exit point 2.
 
 **How substance shows (finding 2).** Each part is kept on its own counter, fixed before the test: the share of decisions it decides, the change a what-if finds, and its reach. Each pre-registration says the smallest effect its reading can resolve. The reading checks "reads no worse", on one pack. Parts that pass are bundled, arcs 1 and 2 and then 3 and 4. A bundle is read on two packs and its "reads better" is reported, not judged: round 40, the one substance round kept, re-read at +0.25 ±0.36, which a bar of "better" would not clear. The human test decides when "better" judges again.
@@ -76,29 +86,28 @@ Four arcs, each starting with research, at most two full rounds each.
 **A stop rule.** The record gives one kept change in thirteen tries; sizing first (M37) should stop failures before they cost a reading. If arcs 1 and 2 keep no part, phase A stops and phase C starts with the engine as it is.
 
 - **Brings closer** the band manager, hotel, life simulation, football, union, festival and the kingpin. Of the 27 ideas, 13 need consequences, 10 close ties, 7 organisations, 5 wants.
-- **Costs** six to eight rounds, a third likely stopped at sizing: about five one-pack and two two-pack readings, some 36 sittings. Five decisions: each arc's branches, and the band as a shared milestone, built end to end first, rough, with Overstory watching, so a player's view pulls the mechanisms.
+- **Costs** six to eight rounds, a third likely stopped at sizing: about five one-pack and two two-pack readings, some 36 sittings. Four decisions: each arc's branches.
 
 Round 43 goes last: it is the third try at wants (25d, 36), and wants serve the fewest ideas.
 
-### Phase B: the structure
+### Phase B: the structure that pays now
 
 All neutral, so CI proves each job identical. While an arc's round is open, phase B works only in `boundary.ts`, `src/tools/` and `scale/`. Sweeps of the engine's own files run between rounds, when no PR claims them.
 
 1. **Content as data** (finding 6): one `refactor` PR per file: `motives.ts` in "Now", `setting.ts` beside the wording round (which does not touch it), `families.ts` after it merges.
-2. **The pack format and the test pack.** Institutions and convictions, the town pack identical, the start year from the pack (#23). The test pack must pass determinism and the invariants in CI; its demography is reported, not gated. An engine edit made so it passes is an experiment.
-3. **The front door's part two** (#22). First reads by viewer, `eventsAfter`, versions, and save and load. Then branching (request 15, finding 4), without save and load. Then commands, scenes that play a situation the engine raised, and domain outcomes given back as events. Each is announced on #60 before it lands.
-4. **The music domain** behind the domain interface.
-5. **Homes as plumbing** (#59, step 1), and **focus that follows an organisation** for the city.
-6. **A measure of event density** (finding 5), added to the battery.
+2. **The front door's part two** (#22), in the order the slice needs it: the first command (an invitation, answered by the other person's own decision), reads by viewer, `eventsAfter` and versions; then branching (request 15, finding 4); then scenes that play a situation the engine raised, domain outcomes given back as events, and save and load. Each is announced on #60 before it lands.
+3. **A measure of event density** (finding 5), added to the battery.
 
-- **Moves** the tests in section 1, not exit points, so all of it can be neutral. **Brings closer** every game; branching serves Inquest and the observer games.
-- **Costs** no readings. Three decisions: the pack format and its Rule 8 closure, the repo structure, and whether commands are judged by a counter without a reading.
+The pack format, the test pack, the music domain behind its interface and focus that follows an organisation wait for phase C, and homes as plumbing for #59's turn in "Next". Each is built for what uses it.
+
+- **Moves** the tests in section 1, not exit points, so all of it can be neutral. **Brings closer** every game; the command serves the slice, branching serves Inquest and the observer games.
+- **Costs** no readings. Two decisions: the order of #22's parts, and whether a command is judged by a counter without a reading.
 
 ### Phase C: the first game
 
-Øystein chooses it once Overstory's register is in and exit points 1, 2 and 9 are close, or the stop rule fires. The game brings its pack and domain module in its own repo; the engine pulls forward the phase D work it needs, and story sifting is built for what it finds storyful. Its players are the outside readers exit point 5 asks for.
+Øystein chooses it once Overstory's register is in and exit points 1, 2 and 9 are close, or the stop rule fires. The game brings its pack and domain module in its own repo. Here, the pack format with its Rule 8 closure, the town as `packs/town`, the unlike test pack, the music domain behind its interface and focus that follows an organisation are built for it, all neutral. The engine pulls forward the phase D work it needs, and story sifting is built for what it finds storyful. Its players are the outside readers exit point 5 asks for.
 
-- **Costs** none of our readings. Three decisions: which game, its pack, and who builds its domain.
+- **Costs** none of our readings. Four decisions: which game, its pack, the pack format, and who builds its domain.
 
 ### Phase D: as games ask
 
@@ -147,13 +156,14 @@ Both are one neutral session. Save and load as plain data is #22's own job.
 
 ## 7. Decisions for Øystein
 
-All eight are recommended.
+All nine are recommended.
 
 1. **The wording round, capped** as in "Now".
 2. **Date the human test,** before phase A's first bundle is read.
 3. **Phase A's order:** reach, close ties, organisations through the band year, then wants (round 43 last).
 4. **How substance is judged:** its own counter and "reads no worse"; "reads better" reported until the human test; the stop rule.
 5. **Content as data,** one sweep per file, `motives.ts` first.
-6. **The repo structure** of section 3.
+6. **The repo structure** of section 3, with the packs and the music domain built in phase C, for the chosen game.
 7. **Branching** as a neutral job in phase B.
 8. **The register may pull one phase D arc forward;** accounts lead phase C if the first game is the newspaper or a mystery.
+9. **The slice:** the band, rough and in plain text, beside phase A, with the first command first in #22.
