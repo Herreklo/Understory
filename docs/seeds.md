@@ -120,8 +120,8 @@ Uses: `train`, `eval` (scoreboard), `test` (fresh worlds for a round), `quiz`, `
 | 9001 | 9999 | all   | smoke |                                                                                    |
 | 9001 | 9020 | lab   | diag  | event density and reach (`src/tools/diag/density.ts`, 22 Oct)                      |
 | 9001 | 9020 | lab   | diag  | situation kinds audit (`notes/research/sources/intrigue-scripts/dump.ts`, 22 Oct)  |
+| 9001 | 9020 | lab   | diag  | environment audit (`notes/research/sources/environment-scripts/dump.ts`, 22 Oct)   |
 
 Next free: eval **3609**, test **3609** (the check in CI is the truth; this line was wrong once). Scale: test **411**, train **1061**.
 
 The lab's ranges are as recorded in each round's pre-registration and outcome in `docs/BOARD.md`. Below 1501, the lab's earliest rounds used scoreboard defaults (1–20, 101–120, 201–220, 301–320) and its identity checks use seeds 11–13 by design; the lab takes no new range below 1501. The scale rows were all run on round 19c with the scale branch.
-| 9001 | 9020 | lab   | diag  | environment audit, 10 present years (`notes/research/sources/environment-scripts/dump.ts`, 22 Oct) |
