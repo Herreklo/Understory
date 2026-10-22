@@ -1,10 +1,10 @@
 {
   "about": [
     "The words a trait reason is said in, as a motive: what the trait makes a person want, fear or feel. Read by src/motives.ts. Words only: no decision reads them.",
-    "facets: each facet has a wording for its high pole (hi) and its low pole (lo), and may have its own where that pole meets a kind of answer (hiBy, loBy, keyed by the kind).",
+    "facets: each facet has a wording for its high pole (hi) and its low pole (lo), and may have its own where that pole meets a kind of answer (hiBy, loBy, keyed by the kind), and where it meets one act (round 43w): an expression chosen (hiAct, loAct, keyed by the expression) or an event that is not a choice of expression (hiEvent, loEvent, keyed by the event's type). An act's wording may give one form only.",
     "Each wording has two forms: for (the reason as given for the act) and against (the same pull when it argued against the act).",
     "Tokens: {she} {her} (possessive) {obj} {hers} {self}, from voices; {t} for the other person, and a wording with {t} is used only when there is one.",
-    "Facets and kinds are read in the order written here. Reword freely; adding or removing a facet or a kind changes what is said, so it belongs to a round."
+    "Facets, kinds and acts are read in the order written here: the act's wording, then the kind's, then the pole's. Reword freely; adding or removing a facet, a kind or an act changes what is said, so it belongs to a round."
   ],
   "voices": {
     "f": { "she": "she", "her": "her", "obj": "her", "hers": "hers", "self": "herself" },
@@ -20,6 +20,14 @@
       },
       "loBy": {
         "dishonesty": { "for": "said what would work", "against": "though a smooth word usually comes easily to {obj}" }
+      },
+      "hiAct": {
+        "ownup": { "for": "could not have lived with the pretence" }
+      },
+      "loAct": {
+        "skim": { "for": "knew {she} could talk {her} way out of it" },
+        "nowallet": { "for": "had an excuse ready" },
+        "tell": { "for": "had never meant to keep {t}'s secret" }
       }
     },
     "fairness": {
@@ -33,6 +41,9 @@
       },
       "loBy": {
         "dishonesty": { "for": "thought nobody would notice", "against": "though {she} has never been fussy about rules" }
+      },
+      "loAct": {
+        "skim": { "for": "saw no harm in helping {self} to a little" }
       }
     },
     "greedAvoidance": {
@@ -45,6 +56,9 @@
       "loBy": {
         "refusal": { "for": "did not want to part with it", "against": "though {she} hates to part with money" },
         "dishonesty": { "for": "wanted the money", "against": "though {she} wanted the money" }
+      },
+      "hiAct": {
+        "hangback": { "for": "would not risk {her} neck for money" }
       }
     },
     "modesty": {
@@ -62,15 +76,31 @@
         "dishonesty": { "for": "felt it was owed", "against": "though {she} felt it was owed" },
         "anger": { "for": "would not be talked down to", "against": "though {she} hates being talked down to" },
         "humility": { "for": "wanted the credit", "against": "though {she} wanted the credit" }
+      },
+      "hiAct": {
+        "backsong": { "for": "did not need the song to be {hers}" },
+        "congratulate": { "for": "was happy for {t} to have the praise" }
+      },
+      "loAct": {
+        "rake": { "for": "felt {she} was still owed an apology" },
+        "blame": { "for": "thought {self} above taking the blame" },
+        "sulk": { "for": "felt {she} deserved better" },
+        "quietword": { "for": "would not be taken lightly" }
       }
     },
     "fearfulness": {
       "hi": { "for": "was afraid of getting hurt", "against": "though {she} was afraid" },
-      "lo": { "for": "danger has never stopped {obj}", "against": "though danger has never stopped {obj}" }
+      "lo": { "for": "danger has never stopped {obj}", "against": "though danger has never stopped {obj}" },
+      "loAct": {
+        "give": { "for": "was not one to be put off by the risk" }
+      }
     },
     "anxiety": {
       "hi": { "for": "could not stop thinking about what might go wrong", "against": "though the worry kept {obj} up at night" },
-      "lo": { "for": "does not panic", "against": "though {she} does not panic" }
+      "lo": { "for": "does not panic", "against": "though {she} does not panic" },
+      "hiAct": {
+        "rough": { "for": "goes to pieces under pressure" }
+      }
     },
     "dependence": {
       "hi": { "for": "needed someone to lean on", "against": "though {she} needs people" },
@@ -90,6 +120,9 @@
       },
       "loBy": {
         "humility": { "for": "was not going to dwell on it", "against": "though {she} rarely dwells on things" }
+      },
+      "loAct": {
+        "absent": { "for": "was never one for sitting with other people's troubles" }
       }
     },
     "socialSelfEsteem": {
@@ -107,6 +140,14 @@
       },
       "loBy": {
         "refusal": { "for": "did not want to be seen", "against": "though {she} hates being seen" }
+      },
+      "hiAct": {
+        "confront": { "for": "did not care who heard" },
+        "sulk": { "for": "never hides what {she} feels" },
+        "quietgive": { "for": "was not one to hang back when the hat went round" }
+      },
+      "hiEvent": {
+        "plan": { "for": "was happy to say it out loud" }
       }
     },
     "sociability": {
@@ -114,6 +155,12 @@
       "lo": { "for": "would rather be on {her} own", "against": "though {she} would rather be on {her} own" },
       "loBy": {
         "withdrawal": { "for": "wanted to be left alone", "against": "though {she} would rather be left alone" }
+      },
+      "hiAct": {
+        "tell": { "for": "could never keep a good story to {self}" }
+      },
+      "loAct": {
+        "cold": { "for": "never minded keeping people at a distance" }
       }
     },
     "liveliness": {
@@ -129,6 +176,15 @@
       "loBy": {
         "anger": { "for": "had not forgiven it", "against": "though {she} does not forget" },
         "severity": { "for": "had not forgotten", "against": "though {she} does not forget" }
+      },
+      "hiAct": {
+        "quietword": { "for": "wanted it said and done with" }
+      },
+      "hiEvent": {
+        "peace": { "for": "was ready to put it behind {obj}" }
+      },
+      "loEvent": {
+        "rebuffed": { "for": "had not forgiven {t}" }
       }
     },
     "gentleness": {
@@ -140,6 +196,14 @@
       },
       "loBy": {
         "severity": { "for": "thought {t} had it coming", "against": "though {she} is quick to judge" }
+      },
+      "hiAct": {
+        "cheer": { "for": "always finds something kind to say" },
+        "quietword": { "for": "would not shame {t} in front of others" }
+      },
+      "hiEvent": {
+        "friends": { "for": "takes people as {she} finds them" },
+        "dating": { "for": "has a gentle way with people" }
       }
     },
     "flexibility": {
@@ -150,6 +214,9 @@
       },
       "loBy": {
         "push": { "for": "does not change course easily", "against": "though {she} does not change course easily" }
+      },
+      "hiAct": {
+        "backsong": { "for": "would rather play it {t}'s way than argue" }
       }
     },
     "patience": {
@@ -161,6 +228,12 @@
       },
       "loBy": {
         "seeking": { "for": "could not sit with it any longer", "against": "though {her} temper is short" }
+      },
+      "hiAct": {
+        "backsong": { "for": "was content to wait {her} turn" }
+      },
+      "hiEvent": {
+        "thread:cost": { "against": "though {she} had given {t} more chances than most would" }
       }
     },
     "organisation": {
@@ -168,29 +241,53 @@
       "lo": { "for": "had let it slide, as {she} does", "against": "though {her} life is usually a muddle" },
       "hiBy": {
         "lapse": { "for": "had too much else on", "against": "though {she} usually keeps on top of things" }
+      },
+      "hiAct": {
+        "show": { "for": "does not keep people waiting" }
+      },
+      "hiEvent": {
+        "night:good": { "for": "had seen to every last detail" }
       }
     },
     "diligence": {
       "hi": { "for": "will not leave a job half done", "against": "though {she} works hard" },
-      "lo": { "for": "does no more than {she} has to", "against": "though {she} rarely does more than {she} has to" }
+      "lo": { "for": "does no more than {she} has to", "against": "though {she} rarely does more than {she} has to" },
+      "hiAct": {
+        "absent": { "for": "put {her} work first" }
+      }
     },
     "perfectionism": {
       "hi": { "for": "it had to be right", "against": "though {she} wants things right" },
-      "lo": { "for": "good enough was good enough", "against": "though good enough usually does for {obj}" }
+      "lo": { "for": "good enough was good enough", "against": "though good enough usually does for {obj}" },
+      "loAct": {
+        "rough": { "for": "saw no need to fuss over the details" }
+      }
     },
     "prudence": {
       "hi": { "for": "thought it through first", "against": "though {she} usually thinks first" },
-      "lo": { "for": "did not stop to think", "against": "though {she} rarely stops to think" }
+      "lo": { "for": "did not stop to think", "against": "though {she} rarely stops to think" },
+      "hiEvent": {
+        "council:no": { "for": "would not take a chance on it" }
+      }
     },
     "aesthetic": {
       "hi": { "for": "is moved by beautiful things", "against": "though moved by beautiful things" },
-      "lo": { "for": "has no time for art", "against": "though {she} has no time for art" }
+      "lo": { "for": "has no time for art", "against": "though {she} has no time for art" },
+      "hiAct": {
+        "seize": { "for": "wanted to make something beautiful" }
+      }
     },
     "inquisitiveness": {
       "hi": { "for": "wanted to know", "against": "though curious about everything" },
       "lo": { "for": "is happy with what {she} knows", "against": "though content with what {she} knows" },
       "loBy": {
         "reluctance": { "for": "had no wish to see anywhere else", "against": "though {she} had no wish to see anywhere else" }
+      },
+      "hiAct": {
+        "seize": { "for": "wanted to find out what {she} could do" }
+      },
+      "loAct": {
+        "decline": { "for": "had never wondered what else was out there" }
       }
     },
     "creativity": {
@@ -212,6 +309,15 @@
       "loBy": {
         "lapse": { "for": "had {her} own life to get on with", "against": "though {she} usually puts {her} own life first" },
         "refusal": { "for": "looks after {her} own first", "against": "though {she} looks after {her} own first" }
+      },
+      "hiAct": {
+        "ask": { "for": "would have done the same for {t}" },
+        "give": { "for": "gives without keeping count" },
+        "pitchin": { "for": "will always lend a hand" },
+        "cheer": { "for": "wanted {t} to get the credit" }
+      },
+      "loAct": {
+        "absent": { "for": "did not want {t}'s trouble to become {hers}" }
       }
     }
   }
