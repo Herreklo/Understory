@@ -1,19 +1,20 @@
-// Round 42's sizing: reasons that bear on the act. Behaviour is the same with the switch on and off (the words check), so one run gives
+// Round 42's sizing: reasons that bear on the act (off unless ON=bear; this tool turns it on). Behaviour is the same with it on and off (the words check), so one run gives
 // both pages: on as the page shows it, off with every reason the decision marks as idle shown again (`shownCauses(e, true)`), which is
 // main's page. Never read by the model.
 //   ./run.sh src/tools/diag/bear.ts A B          → one JSON line a world on stdout: the round's counter and the sizing checks
-//   ARMS=1 ./run.sh src/tools/diag/bear.ts A B   → also runs each world with OFF=bear and checks that it differs from the on arm only
+//   ARMS=1 ./run.sh src/tools/diag/bear.ts A B   → also runs each world with bear off and checks that it differs from the on arm only
 //                                                    in the decision records' `idle` (every event's words and reasons, every bond)
 //   PACK=<switch>|null ./run.sh src/tools/diag/bear.ts A B [per world]  → the people pairarm.ts reads, chosen as it chooses them, each
 //                                                    line of each page with whether bear changes it (check 2), as JSON on stdout
 import '../env';
 import { buildWorld, runYears } from '../../build';
 import { pickWitness } from '../../witness';
-import { age, nameOf, year, OFF, type Cause, type Event, type Person, type World } from '../../world';
+import { age, nameOf, year, OFF, ON, type Cause, type Event, type Person, type World } from '../../world';
 import { againNote, pageLines, shownCauses } from '../../page';
 import { EXPR } from '../../families';
 import { FACET_BY_ID } from '../../core';
 
+ON.add('bear');
 const [a0, b0, n0] = process.argv.slice(2);
 const A = +(a0 ?? 9001),
   B = +(b0 ?? A + 3);
@@ -144,11 +145,11 @@ function sizeMode() {
   }
 }
 
-// The on arm against OFF=bear: the same world but for the decision records' `idle`.
+// The on arm against bear off: the same world but for the decision records' `idle`.
 function arms(seed: number, on: World) {
-  OFF.add('bear');
+  ON.delete('bear');
   const off = world(seed);
-  OFF.delete('bear');
+  ON.add('bear');
   const strip = (e: Event) => JSON.stringify({ ...e, knownBy: [...e.knownBy], decision: e.decision && { ...e.decision, idle: undefined } });
   let events = on.events.length === off.events.length ? 0 : -1,
     idle = 0;

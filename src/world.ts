@@ -399,8 +399,9 @@ export const together = () => !OFF.has('together');
 // changed, lines true of the person when they are said (round 41). On unless OFF=fit.
 export const fit = () => !OFF.has('fit');
 // Round 42: reasons that bear on the act. A trait is shown as a reason only where the act chosen reads it, and a told account only where
-// it decided the choice. The page only: the decision record marks the rest (`idle`), and nothing anyone does changes. On unless OFF=bear.
-export const bear = () => !OFF.has('bear');
+// it decided the choice. The page only: the decision record marks the rest (`idle`), and nothing anyone does changes. Stopped at its
+// sizing (it reached a third of the reasons readers fault): off unless ON=bear.
+export const bear = () => ON.has('bear');
 const SMALL = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
 // A span of months as a person would say it: "a few weeks", "five months", "a year", "a year and a half", "three years".
 export function spanWords(months: number): string {

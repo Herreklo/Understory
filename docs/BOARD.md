@@ -2461,3 +2461,25 @@ Reported, not judged:
 - Roles did not fade: kinds 0.12 then 0.13 apart; same choice 85% then 92%.
 
 The branch that fires: "Passes: adopted; round 42 is judged with it". Next: the research note for round 42.
+
+## Round 42 — reasons that bear on the act (sized 22 Oct 2026, 08:15 Oslo; stopped at its sizing, never pre-registered)
+
+Next 2 in `SUMMARY.md`; exit point 3. Research: `notes/research/reasons.md`. A decision's reasons are what won the choice between kinds of answer, printed beside the act picked within that kind. Proposed: a trait shown as a reason only where the act chosen reads it (the expression prefers or shows the facet, or `motives.ts` words it for the family); a told account only where it decided the choice (honest-why on the scores, or a counterpart it turned). Page only: the decision record marks the rest (`idle`) and `shownCauses` leaves them out; behaviour identical with it on and off.
+
+Sized on throwaway worlds 9001–9024 (`reports/42-size.md`, `-size.txt`, tool `src/tools/diag/bear.ts`), against the note's five checks; M38's true pages rebuilt with it, each on its own tree (all 10,977 lines match the pages read):
+
+| Check | Number | Stop line | |
+| --- | --- | --- | --- |
+| counter: trait reasons that do not bear, a world | 166 ±7 → 0 | | |
+| counter: accounts that decided nothing, a world | 36 ±4 → 0 | | |
+| 1. drops reasons readers accept | the motive clause keeps 48% of what the expression test alone drops; 62% of the drops are phrases M38 faulted at or below the base rate | a quarter worded for the family | met by the clause |
+| 2. misses what readers fault | **140 of 434** faulted trait-reason line-readings change (**32%**); accounts 33 of 40 | under 40% | **✗ stop** |
+| 3. lines left bare | 1.41% ±0.19 | above 5% | ✓ |
+| 4. the reading can see it | 30% power for half the drop; the score needs +0.27 for 80% | under 80% | ✗ counter only |
+| 5. accounts vanish | 36% of the busiest pages keep one (89% off) | under a third | ✓ |
+
+Outcome of round 42 (22 Oct 2026, 08:55 Oslo). Tree `1156c9b` on `round/42`, base main `d566bfd`. The reviewer (Fable 5.1) reproduced check 2 and rebuilt the null pack on its own: the stop stands on every reading of the note (35% on its denominator of 398; 36% on null with the expression test alone, without the motive clause). A separate agent re-derived the counter and checks 2, 3 and 5 from the raw files and agrees (`reports/rederive-42.md`).
+
+**Stopped before a reading**, by its own check 2: no pre-registration, no fresh world. Most unfit reasons readers fault on trait lines are reasons that do bear on the act by the test but are worded badly for it ("had her own life to get on with", "said what would work", "likes things done properly and on time" beside a duty), and 236 of the 294 left untouched had no event under them to check. Showing only reasons that bear reaches a third of the fault. Accounts are the exception (33 of 40 faulted account lines change), but they are too few to read.
+
+The mechanism stays in the code, off unless `ON=bear`. Fixed after the sizing, from the review: an if-then signature at work was marked as not bearing (about 100 of 4,848 instances left out); it now bears, which can only lower check 2. The branch that fires, by SUMMARY's agreed plan and Øystein's choice on 22 Oct: not kept, so at most one more round on reasons, starting from research into the wording, then back to research.

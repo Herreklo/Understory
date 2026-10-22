@@ -2,6 +2,8 @@
 
 _22 October 2026, tree `62986f5` on `round/42`. Throwaway worlds only (9001–9024); no fresh world was run. Full output: `reports/42-size.txt`; one line a world: `reports/42-size-worlds.jsonl`._
 
+_Since the sizing: off by default (`ON=bear`), and an if-then signature at work now counts as bearing (the review's one bug; it can only lower check 2). See BOARD's outcome._
+
 **Verdict: check 2 hits its stop line, so the round stops before a reading.** Bear changes 140 of the 434 line-readings M38's readers faulted for an unfit reason on a line with a trait reason (32%, against a line of 40%). Most of what readers fault is in the wording, not in whether the trait bears. Check 4 also says the reading could not see the effect, so the round could only ever have been judged on its counter.
 
 ## What was built

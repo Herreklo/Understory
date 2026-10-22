@@ -403,14 +403,16 @@ export function run(w: World, inst: Instance): Outcome | null {
     .slice(0, against ? 4 : 5);
   if (against) causes.push(stateCause(against, 0.3));
   // Round 42: the reasons that do not bear on the act, marked for the page to leave out. A trait bears where the expression prefers it or
-  // shows it, or where its motive has words of its own for this kind of answer; a told account where it decided the choice. Reasons a
-  // situation gives as its own (`reasonsFor`) are given as written.
+  // shows it, or where its motive has words of its own for this kind of answer, or an if-then on it is at work; a told account where it
+  // decided the choice. Reasons a situation gives as its own (`reasonsFor`) are given as written.
   if (bear()) {
     const reads = (k: string) =>
       (expr.prefers[k] ?? 0) !== 0 ||
       ((expr.evidence as Record<string, number | undefined>)[k] ?? 0) !== 0 ||
       wordedFor(k, (p.facets[k] ?? 0) > 0, fam, t && `@${t.id}`);
-    const traits = inst.reasonsFor ? [] : causes.filter(c => c.kind === 'trait' && c.key && FACET_BY_ID[c.key] && !reads(c.key)).map(c => c.key!);
+    const traits = inst.reasonsFor
+      ? []
+      : causes.filter(c => c.kind === 'trait' && c.key && FACET_BY_ID[c.key] && c.key !== ifthen?.facet && !reads(c.key)).map(c => c.key!);
     const idle = [...new Set([...traits, ...idleAccounts(w, p, options, fam, why)])];
     if (idle.length) rec.idle = idle;
   }
