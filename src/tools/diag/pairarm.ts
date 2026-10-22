@@ -14,7 +14,7 @@ import { execSync } from 'child_process';
 import { buildWorld, runYears } from '../../build';
 import { pickWitness } from '../../witness';
 import { age, nameOf, year, OFF, ON, type Person, type World } from '../../world';
-import { againNote, pageLines, shownCauses } from '../../page';
+import { packPage as page, pageMeasure as measure } from './pages';
 import { hash } from '../../rng';
 
 const [sw, a0, b0, n0] = process.argv.slice(2);
@@ -34,20 +34,6 @@ const NULL = process.env.NULL ? +process.env.NULL : 0;
 const OUT = `out-pair-${name}${PICK === 'random' ? '-random' : ''}`;
 mkdirSync(OUT, { recursive: true });
 
-function page(w: World, p: Person): string[] {
-  const plain = (s: string) => s.replace(/@(\d+)/g, (_, id) => nameOf(w, +id));
-  const events = p.events.map(i => w.events[i]).filter(e => e.t >= w.startPresent);
-  const out: string[] = [];
-  let n = 0;
-  // Each line is numbered, so readers cite a fault by its line (M38); an earlier event shown under a line (↳) has no number of its own.
-  for (const { e, cited, again, firstT } of pageLines(w, events, new Set(p.events))) {
-    const shown = shownCauses(e);
-    const why = shown.length ? '  [' + shown.map(c => plain(c.label)).join('; ') + ']' : '';
-    out.push(`${String(++n).padStart(3)}  ${year(e.t)}: ${plain(e.text)}${why}${again ? `  (${againNote(again, firstT)})` : ''}`);
-    for (const x of cited) out.push(`       ↳ ${year(x.t)}: ${plain(x.text)}`);
-  }
-  return out;
-}
 function world(seed: number, on: boolean): World {
   if (NULL) {
     const w = buildWorld(seed, on ? NULL : 1);
@@ -69,15 +55,6 @@ function world(seed: number, on: boolean): World {
 // Each pair is kept as both pages until every pair is chosen; then which arm comes first is dealt out half and half (an odd pair
 // out goes by the hash), shuffled by a hash of the switch, so readers who lean toward the version they read second lean equally
 // toward both arms.
-// How much happens in a page: its lines, and its kinds of line (the event types on it), which readers score (round 36).
-function measure(w: World, p: Person) {
-  const lines = pageLines(
-    w,
-    p.events.map(i => w.events[i]).filter(e => e.t >= w.startPresent),
-    new Set(p.events),
-  );
-  return { lines: lines.length, kinds: new Set(lines.map(l => l.e.type)).size };
-}
 const made: {
   id: string;
   head: string;
