@@ -2,7 +2,7 @@
 """Scores a blind paired reading (src/tools/diag/pairarm.ts) against its key.
 
 Usage:
-  python3 scripts/pairscore.py KEY ANSWERS... [--pack PACK...] [--quote REGEX] [--json OUT] [--pool KEY2 ANSWERS2...]...
+  python3 scripts/pairscore.py KEY ANSWERS... [--pack PACK...] [--quote REGEX] [--json OUT] [--pool KEY2 ANSWERS2... [PACK2]]... [--changed]
 
 KEY      key.json from pairarm.ts: {"P01": {"onIs": "A" | "B", ...}, ...}
 ANSWERS  one or more reader files in the brief's shape, {"reader": name, "pairs": {"P01": {"A": {...}, "B": {...}, "prefer": "A"}}},
@@ -12,7 +12,9 @@ ANSWERS  one or more reader files in the brief's shape, {"reader": name, "pairs"
          the key is used when it is there. A key from pairarm.ts after round M36 carries each version's lines and kinds of line itself.
 --quote  a regular expression for the round's own wording: its quotes in faults and good reasons are listed, by arm.
 --pool   another pack of the same round, its key and its answers (repeat for a third). The first pack is reported in full as above;
-         then every pack's effect, and the effect over all of them with the order and the pack as terms.
+         then every pack's effect, and the effect over all of them with the order and the pack as terms. A .txt file in the group is
+         that pack's pages (else pairs.txt beside its key).
+--changed  a page round's counter (43w), over every pack given: faults on the lines that differ between a pair's two versions.
 
 What it reports, and why:
 - Majority preference: in how many pairs most readers preferred the on arm. Easy to read, coarse.
@@ -47,6 +49,10 @@ What it reports, and why:
 - Kinds of line (the event types on a page), when the key carries them: readers score how many kinds of thing happen in a life, not
   its length (+0.05 a kind across lives and within pairs over rounds 29-34; round 36). Reported: kinds in each arm, and the effect with
   the order and the difference in kinds as terms.
+- Faults on the changed lines (--changed, a page round on the same lives): a line that reads alike in both versions draws the same
+  faults in both (M38's planted pack: 109 of 109), so the faults cited on the lines that differ are the changed words' own. Per pair,
+  averaged over its readers: unfit reasons off minus on (the drop, with its one-sided 95% lower bound over pairs), other kinds and every
+  kind on minus off, the faults on the unchanged lines, and the changed lines cited as good. Pooled over every pack given.
 """
 import argparse, json, math, re, statistics as st, subprocess, sys, os
 from collections import Counter
@@ -153,6 +159,84 @@ def pack_text(paths):
     return out
 
 
+def changed_lines(label, key, readers, names, text):
+    """A page round's own counter (round 43w): the faults readers cite on the lines that differ between a pair's two versions. On the
+    same lives every act is the same and only words change, so a line that reads alike in both versions draws the same faults in both
+    (M38's planted pack: 109 of 109), and what differs is the changed words' own. A pair whose versions do not number the same lines is
+    not the same lives: it is left out, and counted."""
+    out = []
+    for p in sorted(key):
+        on = key[p]['onIs']
+        off = 'B' if on == 'A' else 'A'
+        a, b = text.get((p, on)), text.get((p, off))
+        if not a or not b or set(a) != set(b):
+            out.append({'pack': label, 'pair': p, 'same': False})
+            continue
+        ch = {k for k in a if a[k] != b[k]}
+        rec = {'pack': label, 'pair': p, 'same': True, 'readers': len(names), 'lines': len(a), 'changed': len(ch),
+               'side': 1 if on == 'B' else -1, 'kinds': {'on': Counter(), 'off': Counter()}, 'unchanged': {'on': 0, 'off': 0},
+               'good': {'on': 0, 'off': 0}}
+        for r in names:
+            for arm, lab in ((on, 'on'), (off, 'off')):
+                x = readers[r][p][arm]
+                for f in x.get('faults', []):
+                    if f.get('line') in ch:
+                        rec['kinds'][lab][f['kind']] += 1
+                    elif 'line' in f:
+                        rec['unchanged'][lab] += 1
+                rec['good'][lab] += sum(g in ch for g in x.get('good', []))
+        out.append(rec)
+    return out
+
+
+def changed_report(recs):
+    """The counter over every pack given: per pair, averaged over its readers, unfit reasons cited on the changed lines off minus on
+    (the drop), and every fault kind on them on minus off. Judged as sized (reports/43w-size.py, check 5): the drop over pairs, with
+    its one-sided 95% lower bound (t at 0.95, n − 1 degrees of freedom); the order as a term is reported beside it. The round is not
+    kept if all kinds on the changed lines, on minus off, are above zero: other kinds rose more than unfit reasons fell."""
+    U = 'unfit reason'
+    same = [x for x in recs if x['same']]
+    out = [x['pair'] for x in recs if not x['same']]
+    print(f'\nFaults on the changed lines (a page round, the same lives): {len(same)} of {len(recs)} pairs number the same lines'
+          + (f"; left out: {', '.join(out[:6])}{' ...' if len(out) > 6 else ''}" if out else '') + '.')
+    n = len(same)
+    if n < 3:
+        return {'pairs': n, 'of': len(recs)}
+    reads = sum(x['changed'] * x['readers'] for x in same)
+    kinds = sorted({k for x in same for lab in ('on', 'off') for k in x['kinds'][lab]})
+    tot = lambda lab, k: sum(x['kinds'][lab][k] for x in same)
+    drop = [(x['kinds']['off'][U] - x['kinds']['on'][U]) / x['readers'] for x in same]
+    every = [(sum(x['kinds']['on'].values()) - sum(x['kinds']['off'].values())) / x['readers'] for x in same]
+    other = [e + d for e, d in zip(every, drop)]
+    side = [x['side'] for x in same]
+
+    def est(v):
+        m, sd = st.mean(v), st.stdev(v)
+        se = sd / math.sqrt(n)
+        return {'mean': m, 'hw95': t(T975, n - 1) * se, 'lo95': m - t(T95, n - 1) * se}
+
+    res = {'pairs': n, 'of': len(recs), 'changedLines': sum(x['changed'] for x in same), 'lines': sum(x['lines'] for x in same),
+           'readings': reads, 'per100': {lab: {k: 100 * tot(lab, k) / reads for k in kinds} for lab in ('on', 'off')},
+           'drop': est(drop), 'dropPer100': 100 * sum(d * x['readers'] for d, x in zip(drop, same)) / reads, 'dropOrder': order_term(drop, side),
+           'other': est(other), 'every': est(every),
+           'unchanged': {lab: sum(x['unchanged'][lab] for x in same) for lab in ('on', 'off')},
+           'good': {lab: sum(x['good'][lab] for x in same) for lab in ('on', 'off')}, 'unfitOn': tot('on', U), 'unfitOff': tot('off', U)}
+    d, o, e = res['drop'], res['other'], res['every']
+    print(f"Changed lines: {res['changedLines']} of {res['lines']} ({100 * res['changedLines'] / res['lines']:.1f}%), {reads} line-readings"
+          f" in each arm. Per hundred changed line-readings, on/off: " + ', '.join(f"{k} {res['per100']['on'][k]:.2f}/{res['per100']['off'][k]:.2f}" for k in kinds) + '.')
+    print(f"Unfit reasons on the changed lines: {res['unfitOn']} on, {res['unfitOff']} off. The drop, off minus on: {d['mean']:+.3f} a pair"
+          f" ±{d['hw95']:.3f} (95%), {res['dropPer100']:+.2f} per hundred changed line-readings; one-sided 95% lower bound {d['lo95']:+.3f}:"
+          + (' the drop is shown.' if d['lo95'] > 0 else ' the drop is not shown.'))
+    if res['dropOrder']:
+        print(f"  With the order as a term (reported): {res['dropOrder']['effect']:+.3f} ±{res['dropOrder']['hw95']:.3f}; one-sided 95% lower"
+              f" bound {res['dropOrder']['lo95']:+.3f}.")
+    print(f"Other kinds on the changed lines, on minus off: {o['mean']:+.3f} a pair ±{o['hw95']:.3f}. Every kind, on minus off: {e['mean']:+.3f}"
+          f" ±{e['hw95']:.3f}: " + ('other kinds rose more than unfit reasons fell.' if e['mean'] > 0 else 'other kinds did not rise more than unfit reasons fell.'))
+    print(f"Faults on the unchanged lines: {res['unchanged']['on']} on, {res['unchanged']['off']} off. Changed lines cited as good:"
+          f" {res['good']['on']} on, {res['good']['off']} off.")
+    return res
+
+
 def warnings(readers, names, pairs):
     """What would stop the reading showing what it was meant to: a cap, a ceiling or floor, ties. Each above half."""
     counts = [len(readers[r][p][v].get('faults', [])) for r in names for p in pairs for v in 'AB']
@@ -218,6 +302,7 @@ def main():
     ap.add_argument('--quote')
     ap.add_argument('--json')
     ap.add_argument('--pool', nargs='+', action='append', default=[])
+    ap.add_argument('--changed', action='store_true')
     a = ap.parse_args()
     key = json.load(open(a.key))
     readers = load(a.answers)
@@ -236,6 +321,8 @@ def main():
     text = pack_text(packs) if packs else {}
     if not text and any('line' in f for r in names for p in pairs for v in 'AB' for f in readers[r][p][v].get('faults', [])):
         sys.exit('pairscore: the faults cite lines, and no pack was given to find them in (--pack)')
+    if a.changed and not text:
+        sys.exit('pairscore: --changed needs the pages the readers read (--pack)')
 
     def quote(p, v, f):
         if 'line' not in f:
@@ -421,14 +508,16 @@ def main():
         for k in ('good', 'fault'):
             for q in quotes[k]:
                 print(f'  {k}: {q}')
+    changed = changed_lines(a.key, key, readers, names, text) if a.changed else []
     pool = None
     if a.pool:
         packs = [(a.key, d_pair, side)]
         print(f'\nPooled: {1 + len(a.pool)} packs, with the order and the pack as terms.')
         for grp in a.pool:
-            if len(grp) < 2:
+            ans, txt = [f for f in grp[1:] if not f.endswith('.txt')], [f for f in grp[1:] if f.endswith('.txt')]
+            if not ans:
                 sys.exit('pairscore: --pool takes a key and its answers')
-            k2, r2 = json.load(open(grp[0])), load(grp[1:])
+            k2, r2 = json.load(open(grp[0])), load(ans)
             n2 = sorted(r2)
             miss = [(r, p) for r in n2 for p in sorted(k2) if p not in r2[r]]
             if miss:
@@ -436,6 +525,12 @@ def main():
             w2 = warnings(r2, n2, sorted(k2))
             print(f'  WARNINGS for {grp[0]}: ' + ('; '.join(w2) + '.' if w2 else 'none.'))
             packs.append((grp[0], *pair_diffs(k2, r2, n2)))
+            if a.changed:
+                beside = os.path.join(os.path.dirname(os.path.abspath(grp[0])), 'pairs.txt')
+                t2 = pack_text(txt or ([beside] if os.path.exists(beside) else []))
+                if not t2:
+                    sys.exit(f'pairscore: --changed needs the pages of {grp[0]} (a .txt file in its --pool)')
+                changed += changed_lines(grp[0], k2, r2, n2, t2)
         pool = pooled(packs)
         for x in pool['packs']:
             print(f"  {x['pack']}: {x['pairs']} pairs, effect {x['effect']:+.2f} ±{x['hw95']:.2f} (95%); one-sided 95% lower bound"
@@ -446,12 +541,13 @@ def main():
                   + ('holds' if pool['lo95'] > NO_WORSE else 'misses') + f". Lean toward the second version {pool['lean']:+.2f}.")
             for x in pool['packTerms']:
                 print(f"  {x['pack']} against the average of the packs: {x['deviation']:+.2f} ±{x['hw95']:.2f}")
+    counter = changed_report(changed) if a.changed else None
     if a.json:
         json.dump({'pairs': n, 'readers': names, 'majorityOn': maj, 'diff': mean, 'hw95': hw, 'adjusted': adj, 'onB': on_b, 'chooseB': bchoice,
                    'perReader': {r: st.mean(v) for r, v in per_reader.items()}, 'faults': {k: dict(v) for k, v in faults.items()},
                    'quotes': quotes, 'scores': scores, 'lines': lines, 'faultRate': rate,
                    'warnings': warn, 'citedLines': cited_lines, 'badLines': bad_lines, 'planted': planted if planted['pairs'] else None,
-                   **({'pooled': pool} if pool else {})}, open(a.json, 'w'), indent=1)
+                   **({'pooled': pool} if pool else {}), **({'changed': counter} if counter else {})}, open(a.json, 'w'), indent=1)
 
 
 if __name__ == '__main__':
