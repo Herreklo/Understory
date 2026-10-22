@@ -120,7 +120,7 @@ Each line is a cell with main's words and the round's. M38 gives line-readings a
 | seize, aesthetic hi | 14 / 3 | 12 / 0 | 4.0 | is moved by beautiful things | wanted to make something beautiful |
 | sulk, socialBoldness hi | 10 / 3 | 4 / 0 | 3.1 | would say it to anyone | never hides what {she} feels |
 | confront, socialBoldness hi | 52 / 3 | 12 / 0 | 3.0 | would say it to anyone | did not care who heard |
-| quietgive, socialBoldness hi | 8 / 3 | 0 / 0 | 2.9 | did not mind everyone seeing | was not one to hang back when the hat went round |
+| quietgive, socialBoldness hi | 8 / 3 | 0 / 0 | 2.9 | did not mind everyone seeing | did not wait to be asked* |
 | rough, anxiety hi | 12 / 3 | 4 / 0 | 2.9 | could not stop thinking about what might go wrong | goes to pieces under pressure |
 | rough, perfectionism lo | 6 / 3 | 0 / 0 | 2.9 | good enough was good enough | saw no need to fuss over the details |
 | cheer, altruism hi | 22 / 3 | 8 / 0 | 2.8 | wanted to be there for {t} | wanted {t} to get the credit |
@@ -130,8 +130,10 @@ Each line is a cell with main's words and the round's. M38 gives line-readings a
 | quietword, modesty lo | 4 / 3 | 8 / 0 | 0.7 | would not be talked down to | would not be taken lightly |
 | thread:cost, patience hi, against | 6 / 3 | 0 / 0 | 0.7 | though slow to anger | though {she} had given {t} more chances than most would |
 | council:no, prudence hi | 10 / 3 | 4 / 0 | 0.6 | thought it through first | would not take a chance on it |
-| give, fearfulness lo | 4 / 3 | 4 / 0 | 0.5 | danger has never stopped {obj} | was not one to be put off by the risk |
+| give, fearfulness lo | 4 / 3 | 4 / 0 | 0.5 | danger has never stopped {obj} | did not stop to think what it might cost {obj}* |
 | congratulate, modesty hi | 6 / 3 | 4 / 3 | 0.3 | did not think it was about {obj} | was happy for {t} to have the praise |
+
+\* Reworded after the review (22 October, PR #89), before the pre-registration. Sized as "was not one to hang back when the hat went round" (it sat beside "when nobody was looking") and "was not one to be put off by the risk" (the page shows no risk to the giver). Checks 1–3 and 5 count cells, not their words, so they are unchanged.
 
 **Where to look hardest:**
 

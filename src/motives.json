@@ -92,7 +92,7 @@
       "hi": { "for": "was afraid of getting hurt", "against": "though {she} was afraid" },
       "lo": { "for": "danger has never stopped {obj}", "against": "though danger has never stopped {obj}" },
       "loAct": {
-        "give": { "for": "was not one to be put off by the risk" }
+        "give": { "for": "did not stop to think what it might cost {obj}" }
       }
     },
     "anxiety": {
@@ -144,7 +144,7 @@
       "hiAct": {
         "confront": { "for": "did not care who heard" },
         "sulk": { "for": "never hides what {she} feels" },
-        "quietgive": { "for": "was not one to hang back when the hat went round" }
+        "quietgive": { "for": "did not wait to be asked" }
       },
       "hiEvent": {
         "plan": { "for": "was happy to say it out loud" }

@@ -321,6 +321,8 @@ def main():
     text = pack_text(packs) if packs else {}
     if not text and any('line' in f for r in names for p in pairs for v in 'AB' for f in readers[r][p][v].get('faults', [])):
         sys.exit('pairscore: the faults cite lines, and no pack was given to find them in (--pack)')
+    if a.changed and not text:
+        sys.exit('pairscore: --changed needs the pages the readers read (--pack)')
 
     def quote(p, v, f):
         if 'line' not in f:
