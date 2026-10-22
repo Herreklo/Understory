@@ -123,6 +123,13 @@ A change merges only if:
 - an experiment's scoreboard, paired with and without the change, stays within ±2, judged on decisions that are not a couple's, with the overall number beside it;
 - a change to the city code (`src/scale.ts`, `src/coarse.ts`, `scale/`) also leaves the scale track's whole-world check identical to main's (`scale/identity2.ts`).
 
+When GitHub refuses CI's jobs (billing, not the code), the same checks run locally on the PR's merge with current `main`:
+
+- `npm test`;
+- `scripts/identity-ci.sh`, with `LABELS` and `BODY` set from the PR.
+
+Their output goes in `reports/<round or PR>-ident.txt`. The PR's description says so, and the merge waits for that file to show the gate met.
+
 ## Switches
 
 Every experiment's mechanism sits behind a switch, so its effect can be measured by turning it off (`OFF=<name>`), or turned on for a test when it stays off by default (`ON=<name>`).
