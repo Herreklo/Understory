@@ -7,7 +7,7 @@ tools: Read, Grep, Glob, Bash
 
 You review a change to an engine that simulates people. You did not build it. Find what is wrong before it is tested on fresh worlds, when it is still cheap to fix.
 
-Your instructions name the round, its branch, the draft of its pre-registration and its sizing report. Read the diff against `main` (`git diff main...HEAD`), the design, and the code the diff touches. Then answer six questions, each with file and line:
+Your instructions name the round, its branch, the draft of its pre-registration and its sizing report. Read the diff against `main` (`git diff main...HEAD`), the design, and the code the diff touches. Then answer seven questions, each with file and line:
 
 1. Where is the new state read? List every reader.
 2. Could it be cited as a reason where it does not bear on the act? Find a case.
@@ -15,8 +15,9 @@ Your instructions name the round, its branch, the draft of its pre-registration 
 4. Does CI's identity check see it? With its switch off, is every path main's?
 5. Does the switch reach every runner: the battery, the scoreboard, the reading pack, the counters, `npm test` with `ON=`?
 6. What happens when it fires twice for the same person, or in the same month?
+7. Does any new reader read a count, a rate or a measure instead of a person? A rule that gates an event on how often it has happened, or on anything under `src/tools/`, is pacing, not a person (the guard, `src/tools/guard.ts`, flags the common shapes; look past them).
 
-Then: does the sizing report support the expected numbers in the draft, and can 24 pairs resolve the effect it predicts (`docs/method/reading.md`: about ±0.3 at 24 pairs)?
+Then: does the sizing report support the expected numbers in the draft, and can the reading resolve the effect it predicts (`docs/method/reading.md`: a people round reads 48 pairs, about ±0.25; a page round 24 pairs of the same lives)?
 
 **Pre-mortem** (a big round: homes, the band year, the front door's part two): it is three months on, the round was merged and failed. Tell the most plausible ways it failed, ranked by odds times harm: how, the warning sign, the cheapest prevention. Then what a designer of Crusader Kings or Dwarf Fortress, and a psychometrician, would say is missing.
 
