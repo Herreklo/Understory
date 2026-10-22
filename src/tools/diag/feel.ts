@@ -121,6 +121,7 @@ function runWorld(seed: number, rule: string, years: number): WorldOut {
   const flips: Record<string, ReturnType<typeof countFlips>> = { all: countFlips(w, 'feel:*') };
   for (const k of KINDS) flips[k] = countFlips(w, 'feel:' + k);
   flips.owes = countFlips(w, '/^feel:owe[sd]$/');
+  flips.kinds = countFlips(w, '/^feel:(grief|resentment|guilt|gratitude)$/'); // the four kinds' own reasons, without the debt's
   const debts: WorldOut['debts'] = { calledIn: 0, asked: 0, answered: 0, paid: 0, own: { severity: [0, 0], humility: [0, 0] } };
   const prev = w.hooks.predict;
   w.hooks.predict = (w2: World, p: Person, options: any[], chosen: string, rec: any) => {
@@ -305,7 +306,7 @@ if (mode === 'run') {
   out.griefRatio = +ratio.toFixed(3);
 
   console.log('\n2. Flips: of decisions weighing it, the share whose likeliest answer changes without it (%); stop below 5');
-  for (const k of ['all', ...KINDS, 'owes']) {
+  for (const k of ['all', 'kinds', ...KINDS, 'owes']) {
     const r = row(`  ${k} (flips)`, x => (100 * x.flips[k].flips) / Math.max(1, x.flips[k].weighed), 1, 'flip_' + k);
     const tot = seeds.reduce(
       (s, x) => ({ w: s.w + A.get(x)!.flips[k].weighed, f: s.f + A.get(x)!.flips[k].flips, d: s.d + A.get(x)!.flips[k].decisions }),
