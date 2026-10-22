@@ -32,6 +32,7 @@ In the engine, substance is the record and the people (TRUTH), knowledge is the 
 | H | Knowledge | Records and traces | Documents, artefacts and physical evidence with provenance | Overstory's lane; the engine supplies the event record | none |
 | S | Agency | Story sifting | Finding storyful sequences in the record as they unfold | Not built | proposed work 4 |
 | X | Agency | Clean counterfactuals | The same world from a choice, branched so only what follows from it differs | Built (`whatif.ts`, `clone.ts`) | none |
+| L | Substance | Leverage | Debts, favours and fear as reasons someone says yes when asked, and passes an ask on | Missing | none |
 
 ## What each idea needs
 
@@ -92,6 +93,25 @@ In the engine, substance is the record and the people (TRUTH), knowledge is the 
 **Organisations are needed and unowned.** Seven ideas, from the band to rival institutions, need groups whose identity outlives their members. No exit point asks for it, so no round can build it yet; it can be thought through as a concept now.
 
 **Random lives versus selected ones.** Exit point 5 asks whether cold readers find random lives worth reading. A game shows selected lives. Testing the two separately tells apart lives that are thin from a page that shows their thin parts.
+
+## Ideas added later
+
+Not in the counts above, which cover the notebook's 27.
+
+| Idea | Needs | Source |
+| --- | --- | --- |
+| Inquest: a ghost works out the holes that lined up to kill them, then closes one | A, H, X, C | Overstory, 22 October 2026 (requests 11, 14–16; `notes/time-and-moments.md`) |
+| The hidden kingpin: find the person who runs others, mostly young people, from three steps away | R, A, O, T, L | Øystein, 22 October 2026 |
+
+**The hidden kingpin.** Someone in the town gets others to do harm for them, through intermediaries, and the player works out who from incomplete evidence. Each recruit has their own reason for saying yes (money, a debt, an older sibling, fear, wanting to belong), and understanding why one said yes leads to the next link. Pressure reshapes the network: a removed middleman is replaced, someone gets out, someone talks. Multiplayer shapes: the kingpin as a hidden player acting only through the town's people (as in Scotland Yard); a traitor among the investigators who uses true evidence; players as families pulling their own child out. Precedents: Covert Action (1990), whose generated networks became a recognisable template, and Shadow of Mordor's Nemesis hierarchy.
+
+It needs three things to hold:
+
+- The kingpin is not the most connected person: they hide among ordinary ties (family, work, the football club), or players solve the graph instead of the people.
+- The kingpin lives in the town and can be reached.
+- Who leads and who is recruited never follows origin or ethnicity (Rule 8), and the game is fictional and names no real case.
+
+Leverage (L) is the new capability. It would also serve town politics (05), the union representative (09) and the fixer (13), and the kingpin is the hardest test of organisations (`notes/organisations-concept.md`): a group whose head stays hidden and which outlives its members.
 
 ## Decisions for the owner
 
