@@ -118,6 +118,8 @@ Uses: `train`, `eval` (scoreboard), `test` (fresh worlds for a round), `quiz`, `
 | 3565 | 3600 | lab   | test  | 41 (3585–3592 busiest read, 3593–3600 random adults read)                          |
 | 3601 | 3608 | lab   | test  | M38 (the null pack: `NULL=2`, busiest)                                             |
 | 9001 | 9999 | all   | smoke |                                                                                    |
+| 9001 | 9020 | lab   | diag  | event density and reach (`src/tools/diag/density.ts`, 22 Oct)                      |
+| 9001 | 9020 | lab   | diag  | situation kinds audit (`notes/research/sources/intrigue-scripts/dump.ts`, 22 Oct)  |
 
 Next free: eval **3609**, test **3609** (the check in CI is the truth; this line was wrong once). Scale: test **411**, train **1061**.
 

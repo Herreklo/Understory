@@ -1,0 +1,64 @@
+lines 3429, versions 48; lines in a within-version repeat group: 1254 (36.6%); excess copies 734 (21.4%); groups 520
+  selection  lines  815 (65%)  excess  501 (68%)   | act-rule-first: lines 0 (0%) excess 0 (0%)
+  acts       lines  241 (19%)  excess  134 (18%)   | act-rule-first: lines 772 (62%) excess 493 (67%)
+  words      lines  198 (16%)  excess   99 (13%)   | act-rule-first: lines 482 (38%) excess 241 (33%)
+excess copies by kind and verdict:
+   134 story act / acts
+   113 band routine / selection
+   106 town calendar / selection
+   100 friend made / selection
+    99 story act / words
+    85 small kindness / selection
+    40 friend ended / selection
+    35 friend renewed / selection
+    18 habit/persona / selection
+     4 want resolved / selection
+loose key: lines in repeat groups 1290 {'acts': 264, 'selection': 826, 'words': 200} excess 753 {'acts': 146, 'selection': 507, 'words': 100}
+family acts recurring within a version: {'recurring family acts (expr, version)': 351, 'their lines': 903, 'lines with several wordings available': 370, 'lines differing in words from an earlier one of the same act': 233}
+  recurrences of a family act, by wordings in code: {'several recurrences': 228, 'several new wording': 145, 'one recurrences': 324, 'one new wording': 88}
+lines matched to a family expression: 1532 (45%); of those with several wordings in code: 576
+pack-wide: distinct normalised lines 808
+top 25 normalised lines carry 904 lines (26.4%); top 50 39.4%
+normalised lines seen once in the pack: 360 of 808
+lines per version: mean 71.4, min 29, max 107; per year (10-year page): 7.1; observed span mean 10.4
+lines by kind:
+   1568 45.7% story act
+    425 12.4% small kindness
+    324  9.4% habit/persona
+    299  8.7% band routine
+    273  8.0% town calendar
+    232  6.8% friend made
+    122  3.6% friend ended
+    121  3.5% friend renewed
+     65  1.9% want resolved
+events already folded away by the page (and N more times between): 37
+lines referred to by a later reason in the same version: 599 (17.5%)
+  story act: 449 of 1568 (29%)
+  small kindness: 26 of 425 (6%)
+  habit/persona: 2 of 324 (1%)
+  band routine: 38 of 299 (13%)
+  town calendar: 43 of 273 (16%)
+  friend made: 3 of 232 (1%)
+  friend ended: 8 of 122 (7%)
+  friend renewed: 23 of 121 (19%)
+  want resolved: 7 of 65 (11%)
+↳ lines (earlier events shown under a line because a reason cites them): 548
+particulars: {'place': 567, 'time of year/day': 424, 'object': 494, 'song title': 129, 'any': 1192, 'none': 2237, 'any (place/time/object)': 1106} of 3429
+  lines whose particular varies between instances of the template: 210; fixed in the template: 862
+  commonest fixed: [('X told X to count her in for the P festival.', 77), ("X kept turning up at X's P with something or other.", 33), ('The P festival that X put on was the best P the town had had in years.', 29), ('X had left the P at home when the P went round for X.', 20), ('X put a P in the P for X, and not a small one.', 20), ('X emptied her P into the P for X.', 19), ('X put in more than anyone when the P went round for X.', 18), ("The council said yes to X's P festival.", 17), ('X had promised X to help with the P, and did it.', 17), ('X took on organising P day when nobody else would.', 16), ('X had promised X to help with P, and did it.', 14), ('X is no longer ORD in at work every P.', 13)]
+  commonest varying: [('X made sure everyone knew X had carried P that year.', 31, 7), ('X dragged up what X did last year in front of everyone at P.', 22, 6), ('X confronted X about it in front of everyone at P.', 18, 6), ('X dragged up what X did a few months back in front of everyone at P.', 16, 8), ('X fixed P for X without being asked.', 13, 3), ("X still holds X's hand on the way to P.", 13, 5), ('X started work at P.', 11, 7), ('X retired after N years at P.', 9, 5), ('X told people at P how proud she was of X.', 9, 5), ('X walked out of P to start again somewhere else.', 8, 5), ('X tore into X in front of everyone at P.', 7, 4), ("X made a joke at X's expense in front of everyone at P, and nobody laughed.", 6, 4)]
+QUIRKS patterns in persona.ts: 128
+lines using a setting material item (quirk fillers): 21
+    Sarah Baker dances in the attic when a hymn nobody else remembers comes on the radio.
+    Sarah Baker dances in the attic when a hymn nobody else remembers comes on the radio.
+    Mary has worn the same kind of jacket since 2023.
+    At the Courier, Trevor has been halfway through painting the garden fence since 2025.
+    Terry stands up at every council meeting, whatever old weather records is on the agenda.
+    People have noticed: Oscar Nash has written down what the old pickup cost, and what it would cost now.
+    Typical: Jonah Kemp will tell you to your face that the mustard is terrible.
+    At the clinic, Jonah Kemp keeps important papers in the biscuit tin, along with everything else.
+    People have noticed: Oliver Sayer will not let Oscar near the old mine shaft.
+    People have noticed: Sean Ash would go in to the sawmill on the morning of a wedding, his own included.
+    People have noticed: Tom would go in to the garage on the morning of a wedding, his own included.
+    Larry has a kind word for the worst the car washing at the sawmill.
+text callbacks: {'names an earlier event in words': 284, 'repeat note (how often, since when)': 235} of 3429

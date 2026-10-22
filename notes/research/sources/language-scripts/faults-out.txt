@@ -1,0 +1,96 @@
+files: 22
+repeat faults 2290 of 11764 faults (19%); line-readings 128555; matched 2283, unmatched 7, via a reason 54
+all fault kinds: [('unfit reason', 5581), ('repeat', 2290), ('false line', 1872), ('wording', 1050), ('out of nowhere', 971)]
+  31-reading-answers.json                       repeat  47 of  216; line-readings 4773
+  32-reading-answers.json                       repeat  47 of  214; line-readings 5097
+  33-reading-answers.json                       repeat  59 of  214; line-readings 4899
+  34-reading-answers.json                       repeat  88 of  431; line-readings 10098
+  37-reading-answers.json                       repeat  95 of  431; line-readings 10566
+  39-reading-busiest-answers.json               repeat  87 of  427; line-readings 10386
+  39-reading-random-answers.json                repeat 101 of  413; line-readings 6501
+  40-reading-busiest-answers.json               repeat  97 of  432; line-readings 10287
+  40-reading-random-answers.json                repeat  76 of  421; line-readings 6855
+  41-reading-busiest-answers.json               repeat  91 of  430; line-readings 10221
+  41-reading-random-answers.json                repeat  81 of  415; line-readings 6834
+  M38-reading-null-answers.json                 repeat 328 of  888; line-readings 7876
+  M38-reading-planted-answers.json              repeat 346 of 1124; line-readings 7220
+  M38-reading-r40-answers.json                  repeat 265 of  864; line-readings 6858
+  M38-reading-r40opus-answers.json              repeat 187 of  645; line-readings 3429
+  M38-reading-shuffled-answers.json             repeat 197 of 3771; line-readings 7220
+  29-reading-novelist.json                      repeat  13 of   72; line-readings 1415
+  30-reading-novelist.json                      repeat  18 of   72; line-readings 1730
+  29-reading-player.json                        repeat  17 of   68; line-readings 1415
+  30-reading-player.json                        repeat  16 of   72; line-readings 1730
+  29-reading-socialworker.json                  repeat  18 of   72; line-readings 1415
+  30-reading-socialworker.json                  repeat  16 of   72; line-readings 1730
+
+Top 15 templates by repeat faults: faults, line-readings, per 100, kind
+ 248   3198    7.8  town calendar   X told X to count her in for the summer festival.
+ 137   1079   12.7  town calendar   The summer festival that X put on was the best night the town had had in years.
+  52    727    7.2  story act       X had stopped talking about anything that mattered; they were polite with each other, and that was all.
+  48    807    5.9  band routine    X brought a song to BAND, "T", and everyone knew at once it was the best thing they had.
+  44   1391    3.2  band routine    X brought a song to BAND, "T", and it did not come to much.
+  34   1258    2.7  small kindness  X gave X the money without being asked twice.
+  31    143   21.7  story act       X tells the story of the day she froze better than anyone, and always against herself.
+  29    499    5.8  town calendar   The council said yes to X's summer festival.
+  28    805    3.5  story act       X finally told X what had been kept back.
+  26   1206    2.2  friend ended    X stopped seeing each other, and that was that.
+  25    808    3.1  story act       X took the credit for a year that X had carried.
+  25    621    4.0  story act       Nothing had changed since Y: X had stopped bringing things up with X.
+  24    188   12.8  band routine    BAND played the Anchor; X froze and the rest fell apart around her.
+  24   1521    1.6  band routine    X brought a song to BAND, "T", and it was good.
+  23    325    7.1  town calendar   X said, not quite joking, that she could play the open night if she wanted to.
+
+share of matched repeat faults in the top 15 templates: 35%; top 5: 23%
+repeat faults by line kind (faults, line-readings, per 100):
+  story act       1046   61072 1.71
+  town calendar    507   10461 4.85
+  habit/persona    208   11572 1.80
+  band routine     198   11464 1.73
+  want resolved    146    2664 5.48
+  small kindness    79   15698 0.50
+  friend ended      49    3882 1.26
+  friend made       36    7565 0.48
+  friend renewed    14    4177 0.34
+
+Highest rates among templates read 150+ times:
+   12.8  24/  188 BAND played the Anchor; X froze and the rest fell apart around her.
+   12.7 137/ 1079 The summer festival that X put on was the best night the town had had in years.
+   12.4  23/  186 X got there: to make things right with X, within the year.
+    8.1  15/  186 X was passed over for foreman; X got the job.
+    7.8 248/ 3198 X told X to count her in for the summer festival.
+    7.2  52/  727 X had stopped talking about anything that mattered; they were polite with each other, and that was a
+    7.1  23/  325 X said, not quite joking, that she could play the open night if she wanted to.
+    6.2  15/  242 X turned down a job in the city.
+    5.9  48/  807 X brought a song to BAND, "T", and everyone knew at once it was the best thing they had.
+    5.8  29/  499 The council said yes to X's summer festival.
+repeat faults by the within-version verdict of the line quoted: [('selection', 986), ('acts', 755), ('not repeated in its version', 299), ('loose selection', 105), ('loose acts', 82), ('words', 56)]
+
+unmatched sample: [('32-reading-answers.json', 'P02', 'A', "[Andy Sands's work had been poor for months; would say it in front of anyone; Andy Sands's work has been poor for months]"), ('39-reading-random-answers.json', 'P02', 'A', '[nothing much holding them here; has never been one to look back]'), ('39-reading-random-answers.json', 'P05', 'B', '[they genuinely like each other; each brings something the others cannot]'), ('39-reading-random-answers.json', 'P19', 'A', '[nothing much holding them here]'), ('39-reading-random-answers.json', 'P22', 'B', '[homesick; it mattered too much to let go]'), ('41-reading-random-answers.json', 'P06', 'A', '[nothing much holding them here; has never been one to look back]'), ('30-reading-novelist.json', 'P03', 'B', 'The harbour day ran like clockwork; Alex Hughes had a list for everything.')]
+not repeated in version, top:
+  17 X quietly started practising guitar in earnest.
+  7 X had the whole of the Anchor laughing about the ferry that left without the priest.
+  7 X has been ORD in and last out for months.
+  5 X rolled her eyes at X and talked to X like a child about never going anywhere.
+  5 X rang from the city asking after everyone.
+  5 X brought X something back from the next town over, for no reason.
+  5 X was passed over for foreman; X got the job.
+  5 X got there: to make things right with X, within the year.
+  4 X went at X about it, and it got personal fast.
+  4 X sounded like a stranger on the phone, people say.
+  4 X finally told X what had been kept back.
+  4 X had the whole of the Anchor laughing about the time the measuring tape went over the side.
+  4 X let X go from the clinic.
+  4 X had the whole of the church hill laughing about the summer the sheep got into the churchyard.
+  4 X became friends.
+  4 X got there: people have started to talk about her guitar, after N years of wanting it.
+  4 X told X how bad things had got.
+  4 X has taken to carpentry, like her mother, X.
+  4 X met every word of it with a reason it was not her fault.
+  4 However gently X put things, X heard an accusation.
+  4 X got there: to become foreman at the sawmill, after N year of wanting it.
+  4 X got what she had wanted for N years: make things right with X.
+  4 X was passed over for headteacher; X got the job.
+  4 X was the one who shone during the day the council came round at the garage.
+  3 X gave X another chance.
+not repeated in version: also in the other version of the pair? {False: 178, True: 121}
