@@ -123,12 +123,12 @@ A change merges only if:
 - an experiment's scoreboard, paired with and without the change, stays within ±2, judged on decisions that are not a couple's, with the overall number beside it;
 - a change to the city code (`src/scale.ts`, `src/coarse.ts`, `scale/`) also leaves the scale track's whole-world check identical to main's (`scale/identity2.ts`).
 
-When GitHub refuses CI's jobs (billing, not the code), the same checks run locally on the PR's merge with current `main`:
+When GitHub refuses a PR's CI jobs (billing, not the code) and a re-run is refused too, every CI check runs locally on the PR's merge with current `main`:
 
-- `npm test`;
-- `scripts/identity-ci.sh`, with `LABELS` and `BODY` set from the PR.
+- `node scripts/check-seeds.mjs`, `npx tsc --noEmit`, the `prettier --check` that `ci.yml` runs, and `npm test`;
+- `scripts/identity-ci.sh`, with `LABELS` and `BODY` set from the PR, and for city code `scale/identity2.ts` as well.
 
-Their output goes in `reports/<round or PR>-ident.txt`. The PR's description says so, and the merge waits for that file to show the gate met.
+A second agent (the `rederiver`), not the builder, re-runs the identity check on the same commit. The output of both goes in `reports/<round or PR>-ident.txt`, with the merge commit's hash and main's. The PR's description says so, and the merge waits for that file to show the gate met.
 
 ## Switches
 
