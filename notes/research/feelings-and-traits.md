@@ -56,7 +56,7 @@ Thirteen systems are in `sources/feelings-games.md`, among them the Sims 4, RimW
 5. yields a story the current set cannot;
 6. is one number, made from what the person has.
 
-**Cut, in a neutral change:** `selfBias` and `lastProvoked`, which have no reader. `owes` stays, because feelings part one gives it its job; SUMMARY names that round. **Give a job or cut:** creativity and unconventionality, with 13 and 24 references in `src/`.
+**Cut, in a neutral change:** `selfBias` and `lastProvoked`, which have no reader. `owes` stays: feelings part one gives it its job. **Give a job or cut:** creativity and unconventionality, with 13 and 24 references in `src/`.
 
 **Change, each as its own experiment:**
 - Values follow traits at r ≈ .55–.6, against modest links in the literature: cap them at .4.
