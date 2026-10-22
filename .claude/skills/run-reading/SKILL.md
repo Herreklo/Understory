@@ -27,7 +27,7 @@ The reading is read and scored **before any other number of the round is read**.
 
 One `blind-reader` agent per role and part, each a fresh agent, all started at once in the background. For each:
 
-1. Make a fresh directory (`mktemp -d`) and copy into it only the part (`pairs-<part>.txt`) and its brief (as `brief.md`). Nothing else: no key, no meta, no path that names the round or the switch.
+1. Make a fresh directory (`mktemp -d`) and copy into it only the part (`pairs-<part>.txt`) and its brief (as `brief.md`). Nothing else: no key, no meta, no path that names the round or the switch. The agent is given no git context either: the project's settings set `CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS`, so no session here, and no agent it starts, sees the branch or the recent commits, which name the round and often what it changed. (The app still gives every agent Øystein's email; it says nothing about the pack.)
 2. Start the agent with this prompt, and nothing that says what changed or which version is which:
    > You are <the role, as reading.md words it>. Your brief is `<dir>/brief.md`. The part you read is `<dir>/pairs-<part>.txt`. Write your answers to `<dir>/answers.json`.
 3. When it finishes, check its answers with a script: valid JSON, every pair of the part, both versions, integer scores 1 to 5, a `prefer` for each pair. A sitting that fails the check is run again by a fresh agent; say so in the reading's report.
