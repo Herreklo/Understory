@@ -2527,3 +2527,24 @@ Next 1 in `SUMMARY.md`, G1 in `notes/build-plan.md`; exit point 3. Readers fault
 **`WHY.md`'s warning:** optimising what an AI reader faults rather than what a person minds. The human test checks it.
 
 **Game lens:** "did not want Ann's trouble to become hers", beside staying away, reads as a reason.
+
+Outcome of round 43w (22 Oct 2026, 21:55 Oslo). Tree `b43c5a7` on `round/43w`, base main `f7f2b07`. Packs built locked from that tree, read in 8 sittings on Fable 5.1 (none rerun), scored at `e0579e4` (`reports/43w-reading-*`); the battery is in `out-round-43w/`. A separate agent re-derived every number from the raw files and agrees, except that the scorer's two-sided t for 47 degrees of freedom is 2.000, not 2.012: its intervals are 0.5% narrow, and none quoted here changes (`reports/rederive-43w.md`).
+
+| Rule | Result | |
+| --- | --- | --- |
+| 1. identical with `OFF=wording`; words only | identity all identical; 20 of 20 worlds differ only in words, 0 untraced | ✓ |
+| 2. the counter's one-sided 95% bound above 0 | unfit reasons on the changed lines **24 on, 360 off**: a drop of **+3.50 ±0.95** a pair (36.6 per hundred line-readings), bound **+2.70** | ✓ |
+| 3. every kind on the changed lines, on − off ≤ 0 | **−3.60 ±0.95** a pair; the other kinds −0.10 ±0.09 | ✓ |
+| 4. npm test, scoreboard ±2, coherence 0 | passes (below); **0.0 ±0.0**, every decision the same; 0 | ✓ |
+| 5. reads no worse, bound above −0.3 | **+0.31 ±0.12**, order and pack as terms; bound **+0.21** | ✓ |
+
+Read by the rules set beforehand: all five hold. **Kept.**
+
+Reported, not judged:
+
+- The drop is 24 times the 1.5 expected. The sizing took the rate of these lines from round 41's pages, where whole lives differ (7.2 per hundred); here only the reasons differ, so readers compare the versions, as on M38's planted pack. The old words drew 39.2 per hundred, the new 2.6, under the 3.1 of any line. The size belongs to the comparison; the sign is the claim.
+- Unchanged lines drew 930 faults in each arm. Changed lines cited as good: 24 on, 6 off.
+- Reads better +0.31 ±0.12, with the ties warning in both packs (31 and 35 of 48), as expected; the on arm preferred by the majority in 23 of 24 in each.
+- npm test failed inside the battery: tsx's socket under `round.mjs`'s TMPDIR is 118 characters, past macOS's 104. With the system's tmp it passes (`b43c5a7`, as in CI). No code changed.
+
+The branch that fires: "Kept: the switch goes in the next neutral change." Reasons rest. The plan's second pass (#92, merged after this pre-registration) moved selection last; the page goes on as SUMMARY orders it.
