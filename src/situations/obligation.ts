@@ -4,7 +4,6 @@ import { stateC, learned } from '../considerations';
 import { type Instance, friendsOf, family } from '../grammar';
 import type { SituationType } from './index';
 import { strain } from './strain';
-import { feelingsOn } from '../feelings';
 
 // Obligation: a promise comes due.
 export const obligation: SituationType = {
@@ -12,8 +11,7 @@ export const obligation: SituationType = {
   match(w) {
     const out: Instance[] = [];
     for (const p of live(w)) {
-      // No promise at random once debts are called in (round 44).
-      if (!feelingsOn() && age(w, p) >= 16 && w.rng.chance(0.015) && p.promises.length < 1) {
+      if (age(w, p) >= 16 && w.rng.chance(0.015) && p.promises.length < 1) {
         const pool = [
           ...friendsOf(w, p),
           ...(p.partner != null ? [P(w, p.partner)] : []),

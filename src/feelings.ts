@@ -10,7 +10,7 @@
 //   resentment   a named person wronged me: an act done to me that hurt (the acts that provoke an answer, grammar.ts). Fast, with a long
 //                tail while the wrong stands; amends end its standing. Patience, forgiveness and gentleness lower it.
 //   guilt        my act hurt someone I value. It stands until amends are made. Sincerity, fairness and altruism raise it.
-//   gratitude    another's costly help when I was in need, not owed. It stands until repaid, and leaves a bond gain when it is.
+//   gratitude    another's costly help when I was in need, not owed (not a duty, and not a small kindness). It stands until repaid, and leaves a bond gain when it is.
 //
 // In a situation that involves its object (grief: any choice it bears on), a feeling weighs for the families it pulls toward and against
 // the rest, as one consideration on every answer, so it is the reason when it decides, worded with its kind and its object. A strong
@@ -18,8 +18,9 @@
 // apology where the two meet under strain or old business. A feeling left unresolved past its kind's horizon becomes a lasting change.
 //
 // The debt: a wrong leaves the wrongdoer owing the one wronged, costly help leaves the helped owing the helper (`Person.owes`, the latest
-// debt). It is paid by amends or help in return, and called in when the creditor next needs the debtor: in need, they ask the one who owes
-// them first (situations/request.ts), and the debtor weighs it. The random promise is not made (situations/obligation.ts).
+// debt, beside the gratitude or guilt that carries it). It is paid by amends or help in return, and called in when the creditor next needs
+// the debtor: in need, they ask the one who owes them first (situations/request.ts), the debt weighs for asking, and the debtor weighs it
+// in answering.
 //
 // On unless OFF=feelings. Mood is unchanged: the emotions written at the same events still bend it, with no object.
 
@@ -108,10 +109,11 @@ function grieve(w: World, q: Person, o: number, ev: number, v: number, what: str
 // ---------- acts between two people (grammar.ts `run`, after the act) ----------
 // A wrong: the acts that provoke an answer (an act that hurt, done hard enough), outside a couple's row, which is answered inside it.
 const isWrong = (inst: Instance, x: Expression) => x.like <= -0.25 && x.intensity >= 0.45 && !inst.type.startsWith('row');
-// Costly help: a giving act done for someone in need or in danger.
-const HELPS = new Set<Family>(['generosity', 'warmth', 'duty', 'courage']);
+// Costly help, not owed: a giving act of some weight (not a visit or a coin in the hat), done for someone in need or in danger, and
+// not a duty (a promise kept, a child at a parent's bedside), which is owed already.
+const HELPS = new Set<Family>(['generosity', 'warmth', 'courage']);
 const isHelp = (inst: Instance, fam: Family, x: Expression) =>
-  x.like > 0 && x.intensity >= 0.35 && HELPS.has(fam) && (inst.features.has('need') || inst.features.has('danger'));
+  x.like > 0 && x.intensity >= 0.5 && HELPS.has(fam) && (inst.features.has('need') || inst.features.has('danger'));
 // Amends: any kind act toward the one owed.
 const AMENDS = new Set<Family>(['humility', 'generosity', 'warmth', 'leniency', 'duty', 'courage']);
 
@@ -334,6 +336,9 @@ export function withFeelings(w: World, p: Person, t: Person | undefined, options
     const label = feelingWords(w, p, f);
     add(options, toward, 'feel:' + f.k, label, 0.5 + 0.5 * f.v, KNOW[f.k], p, f.ev);
   }
+  // A debt called in: with the one who owes them, the one owed is pulled toward asking.
+  const owed = t && fams.includes('seeking') ? debtOf(w, t, p) : undefined;
+  if (owed && fams.length > 1) add(options, ['seeking'], 'owed', `@${t!.id} owed ${pron(p)} (since ${year(owed.t)})`, 0.85, 'close', p, owed.ev);
   // A debt the feeling no longer carries is still owed: called in, it weighs for the answers that pay it.
   if (!debt && t && p.owes?.to === t.id) {
     const toward = PULLS.gratitude.filter(x => fams.includes(x));
@@ -387,21 +392,26 @@ export function offerFeelings(w: World, inst: Instance): Instance {
 }
 
 // ---------- the debt called in ----------
+// What q owes p, if anything: a gratitude or guilt toward p that still stands, else the latest debt.
+function debtOf(w: World, q: Person, p: Person): { v: number; t: number; ev: number } | undefined {
+  const f = [find(w, q.id, 'gratitude', p.id), find(w, q.id, 'guilt', p.id)]
+    .filter(x => x && x.stands && x.v >= WEIGH)
+    .sort((a, b) => b!.v - a!.v)[0];
+  if (f) return { v: f.v, t: f.t, ev: f.ev };
+  if (q.owes?.to === p.id) return { v: 0.05, t: q.owes.t, ev: q.owes.ev };
+  return undefined;
+}
 // Of the people someone in need could ask, the one who owes them most, if any.
 export function debtorAmong(w: World, p: Person, pool: Person[]): Person | undefined {
   if (!feelingsOn()) return undefined;
   let best: Person | undefined,
     bv = 0;
   for (const q of pool) {
-    if (q.owes?.to !== p.id) continue;
-    const f = find(w, q.id, 'gratitude', p.id) ?? find(w, q.id, 'guilt', p.id);
-    const v = f?.v ?? 0.05;
-    if (!best || v > bv) {
+    const v = debtOf(w, q, p)?.v ?? 0;
+    if (v > bv) {
       best = q;
       bv = v;
     }
   }
   return best;
 }
-// The words of a debt called in, for the one who calls it in.
-export const owedBy = (q: Person, p: Person) => `@${q.id} owed ${pron(p)} (since ${year(q.owes!.t)})`;

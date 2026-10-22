@@ -11,6 +11,7 @@
 //                  friendships ended
 //   5. named       every line a feeling decided names its kind and its object, in the record and on the page
 // And beside them: kinds of line per page, adults with a lasting change, pages touched, debts called in and paid, own answers taken.
+// The repeat measures are also given without the random promise's lines, for a design that retires it.
 // Last line: FEEL {...}
 import '../env';
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'fs';
@@ -58,25 +59,34 @@ interface WorldOut {
   flips: Record<string, FlipRow>;
   feuds: { wrongs: number; inKind: number; rows: number; dislikes: number; ended: number; adultYears: number };
   named: { lines: number; named: number; shown: number; byKind: Record<string, number> };
-  busiest: Pages;
-  random: Pages;
-  all: Pages & { top25: number };
+  busiest: Pages & { top25: number; linesX: number; copiesX: number; top25X: number };
+  random: Pages & { top25: number; linesX: number; copiesX: number; top25X: number };
+  all: Pages & { top25: number; linesX: number; copiesX: number; top25X: number };
   lasting: { adults: number; byKey: Record<string, number> };
-  debts: { calledIn: number; answered: number; paid: number; own: Record<string, [number, number]> };
+  debts: { calledIn: number; asked: number; answered: number; paid: number; own: Record<string, [number, number]> };
 }
 
 // The key of the reason a decision gave first, if any (the situation's own cause carries none).
 const topKey = (e: Event) => e.causes.find(c => c.key && !c.key.startsWith('against:'))?.key;
-const feltKey = (k?: string) => !!k && (k.startsWith('feel:') || k === 'owes');
+const feltKey = (k?: string) => !!k && (k.startsWith('feel:') || k === 'owes' || k === 'owed');
 function named(w: World, e: Event): { ok: boolean; shown: boolean; kind: string } {
   const k = topKey(e)!;
   const c = e.causes.find(x => x.key === k)!;
-  const kind = k === 'owes' ? 'owes' : k.slice(5);
-  const re = kind === 'owes' ? /owed @\d+/ : WORDS[kind as Kind];
+  const kind = k.startsWith('feel:') ? k.slice(5) : k;
+  const re = kind === 'owes' ? /owed @\d+/ : kind === 'owed' ? /@\d+ owed/ : WORDS[kind as Kind];
   return { ok: re.test(c.label) && /@\d+/.test(c.label), shown: shownCauses(e).includes(c), kind };
 }
 
-function pagesOf(w: World, people: Person[]): Pages & { top25: number } {
+const PROMISE = /had promised/;
+function top25(pages: string[][]): number {
+  const freq = new Map<string, number>();
+  for (const pg of pages) for (const t of lineTexts(pg)) freq.set(norm(t), (freq.get(norm(t)) ?? 0) + 1);
+  return [...freq.values()]
+    .sort((a, b) => b - a)
+    .slice(0, 25)
+    .reduce((s, x) => s + x, 0);
+}
+function pagesOf(w: World, people: Person[]): Pages & { top25: number; linesX: number; copiesX: number; top25X: number } {
   const pages = people.map(p => packPage(w, p));
   const c = copies(pages);
   let kinds = 0,
@@ -88,24 +98,39 @@ function pagesOf(w: World, people: Person[]): Pages & { top25: number } {
     feelLines += n;
     if (n) touched++;
   }
-  const freq = new Map<string, number>();
-  for (const pg of pages) for (const t of lineTexts(pg)) freq.set(norm(t), (freq.get(norm(t)) ?? 0) + 1);
-  const top = [...freq.values()].sort((a, b) => b - a).slice(0, 25);
-  return { pages: c.pages, lines: c.lines, copies: c.copies, kinds, touched, feelLines, top25: top.reduce((s, x) => s + x, 0) };
+  // The same, without the random promise's lines, which the switch retires: what is left is the feelings' own effect on repeats.
+  const kept = pages.map(pg => pg.filter(l => !PROMISE.test(l)));
+  const cx = copies(kept);
+  return {
+    pages: c.pages,
+    lines: c.lines,
+    copies: c.copies,
+    kinds,
+    touched,
+    feelLines,
+    top25: top25(pages),
+    linesX: cx.lines,
+    copiesX: cx.copies,
+    top25X: top25(kept),
+  };
 }
 
 function runWorld(seed: number, rule: string, years: number): WorldOut {
   const w = buildWorld(seed, 1);
   pickWitness(w);
-  const flips: Record<string, ReturnType<typeof countFlips>> = { all: countFlips(w, '/^(feel:.*|owes)$/') };
+  const flips: Record<string, ReturnType<typeof countFlips>> = { all: countFlips(w, '/^(feel:.*|owes|owed)$/') };
   for (const k of KINDS) flips[k] = countFlips(w, 'feel:' + k);
-  flips.owes = countFlips(w, 'owes');
-  const debts: WorldOut['debts'] = { calledIn: 0, answered: 0, paid: 0, own: { severity: [0, 0], humility: [0, 0] } };
+  flips.owes = countFlips(w, '/^(owes|owed)$/');
+  const debts: WorldOut['debts'] = { calledIn: 0, asked: 0, answered: 0, paid: 0, own: { severity: [0, 0], humility: [0, 0] } };
   const prev = w.hooks.predict;
   w.hooks.predict = (w2: World, p: Person, options: any[], chosen: string, rec: any) => {
     prev?.(w2, p, options, chosen, rec);
     const has = (id: string) => options.some(o => o.considerations.some((c: any) => c.id === id));
-    if (rec.trigger === 'request' && has('owed')) debts.calledIn++;
+    // A debt called in: a decision of the one owed, with the one who owes them, weighing it; asked when they sought them out.
+    if (has('owed')) {
+      debts.calledIn++;
+      if (chosen === 'seeking') debts.asked++;
+    }
     if (rec.trigger === 'request-answer' && (has('feel:gratitude') || has('feel:guilt') || has('owes'))) {
       debts.answered++;
       if (chosen === 'generosity') debts.paid++;
@@ -145,7 +170,7 @@ function runWorld(seed: number, rule: string, years: number): WorldOut {
   for (const e of present) {
     const trig = e.decision?.trigger as string | undefined;
     if (WRONGS.has(e.type) && trig && !trig.startsWith('row')) feuds.wrongs++;
-    if (trig === 'provocation' && ['anger', 'pride'].includes(e.decision.chosen)) feuds.inKind++;
+    if (trig === 'provocation' && ['anger', 'pride'].includes(e.decision!.chosen)) feuds.inKind++;
     if (trig === 'row') feuds.rows++;
     if (e.type === 'dislike') feuds.dislikes++;
     if (e.type === 'cooled') feuds.ended++;
@@ -244,7 +269,9 @@ if (mode === 'run') {
     process.exit(1);
   }
   const out: Record<string, unknown> = { worlds: seeds.length, seeds: [seeds[0], seeds[seeds.length - 1]] };
-  console.log(`${seeds.length} worlds (${seeds[0]}–${seeds[seeds.length - 1]}), ${A.get(seeds[0])!.years} present years · ${ra} / ${rb} · mean per world ±95%`);
+  console.log(
+    `${seeds.length} worlds (${seeds[0]}–${seeds[seeds.length - 1]}), ${A.get(seeds[0])!.years} present years · ${ra} / ${rb} · mean per world ±95%`,
+  );
   const row = (name: string, f: (x: WorldOut) => number, d = 1, key?: string) => {
     const a = ci(seeds.map(s => f(A.get(s)!))),
       b = ci(seeds.map(s => f(B.get(s)!))),
@@ -255,7 +282,16 @@ if (mode === 'run') {
         `${fmt(b.m, d)} ±${fmt(b.h, d)}`.padStart(16) +
         `${fmt(dd.m, d)} ±${fmt(dd.h, d)}`.padStart(18),
     );
-    if (key) out[key] = { on: +a.m.toFixed(4), onH: +a.h.toFixed(4), off: +b.m.toFixed(4), offH: +b.h.toFixed(4), d: +dd.m.toFixed(4), dH: +dd.h.toFixed(4), dSd: +dd.sd.toFixed(4) };
+    if (key)
+      out[key] = {
+        on: +a.m.toFixed(4),
+        onH: +a.h.toFixed(4),
+        off: +b.m.toFixed(4),
+        offH: +b.h.toFixed(4),
+        d: +dd.m.toFixed(4),
+        dH: +dd.h.toFixed(4),
+        dSd: +dd.sd.toFixed(4),
+      };
     return { a, b, dd };
   };
   console.log(''.padEnd(58) + ra.padStart(16) + rb.padStart(16) + `${ra} − ${rb}`.padStart(18));
@@ -275,7 +311,9 @@ if (mode === 'run') {
       (s, x) => ({ w: s.w + A.get(x)!.flips[k].weighed, f: s.f + A.get(x)!.flips[k].flips, d: s.d + A.get(x)!.flips[k].decisions }),
       { w: 0, f: 0, d: 0 },
     );
-    console.log(`      pooled: ${tot.f} of ${tot.w} weighed (${fmt((100 * tot.f) / Math.max(1, tot.w))}%), weighed in ${fmt((100 * tot.w) / Math.max(1, tot.d))}% of ${tot.d} decisions`);
+    console.log(
+      `      pooled: ${tot.f} of ${tot.w} weighed (${fmt((100 * tot.f) / Math.max(1, tot.w))}%), weighed in ${fmt((100 * tot.w) / Math.max(1, tot.d))}% of ${tot.d} decisions`,
+    );
     void r;
   }
 
@@ -287,6 +325,14 @@ if (mode === 'run') {
   ] as const)
     row(`  copy share, ${name} (%)`, x => (100 * x[k].copies) / Math.max(1, x[k].lines), 2, 'copy_' + k);
   row(`  the 25 commonest templates' share of every adult's lines (%)`, x => (100 * x.all.top25) / Math.max(1, x.all.lines), 2, 'top25');
+  console.log("  without the retired promise's lines, in both arms:");
+  for (const [k, name] of [
+    ['busiest', 'the three busiest'],
+    ['random', 'three at random'],
+    ['all', 'every adult'],
+  ] as const)
+    row(`  copy share, ${name} (%)`, x => (100 * x[k].copiesX) / Math.max(1, x[k].linesX), 2, 'copyX_' + k);
+  row(`  the 25 commonest templates' share (%)`, x => (100 * x.all.top25X) / Math.max(1, x.all.linesX), 2, 'top25X');
 
   console.log('\n4. Feuds, per thousand adult-years: inside the off arm, or said');
   for (const [k, name] of [
@@ -304,8 +350,14 @@ if (mode === 'run') {
     ns = sum(seeds.map(s => A.get(s)!.named.shown));
   const byKind: Record<string, number> = {};
   for (const s of seeds) for (const [k, v] of Object.entries(A.get(s)!.named.byKind)) byKind[k] = (byKind[k] ?? 0) + v;
-  console.log(`  ${nl} lines; ${nn} name kind and object (${fmt((100 * nn) / Math.max(1, nl))}%); shown on the page in ${ns} (${fmt((100 * ns) / Math.max(1, nl))}%)`);
-  console.log(`  by kind: ${Object.entries(byKind).map(([k, v]) => `${k} ${v}`).join(', ')}`);
+  console.log(
+    `  ${nl} lines; ${nn} name kind and object (${fmt((100 * nn) / Math.max(1, nl))}%); shown on the page in ${ns} (${fmt((100 * ns) / Math.max(1, nl))}%)`,
+  );
+  console.log(
+    `  by kind: ${Object.entries(byKind)
+      .map(([k, v]) => `${k} ${v}`)
+      .join(', ')}`,
+  );
   out.named = { lines: nl, named: nn, shown: ns, byKind };
 
   console.log('\nBeside: what the reading can see');
@@ -319,21 +371,23 @@ if (mode === 'run') {
     row(`  lines a feeling decided per page, ${name}`, x => x[k].feelLines / Math.max(1, x[k].pages), 2, 'feelLines_' + k);
   }
   row('  adults with a lasting change from the present (%)', x => (100 * x.lasting.adults) / Math.max(1, x.adults), 1, 'lasting');
-  for (const k of ['grief', 'forgiveness'])
-    row(`    ${k} (adults per world)`, x => x.lasting.byKey[k] ?? 0, 2, 'lasting_' + k);
+  for (const k of ['grief', 'forgiveness']) row(`    ${k} (adults per world)`, x => x.lasting.byKey[k] ?? 0, 2, 'lasting_' + k);
 
   console.log('\nDebts and own answers (on), summed over worlds');
   const d = seeds.map(s => A.get(s)!.debts);
   const cin = sum(d.map(x => x.calledIn)),
     ans = sum(d.map(x => x.answered)),
-    paid = sum(d.map(x => x.paid));
-  console.log(`  debts called in (asked first): ${cin}; requests answered by one who owes the asker: ${ans}, given in ${paid} (${fmt((100 * paid) / Math.max(1, ans))}%)`);
+    paid = sum(d.map(x => x.paid)),
+    asked = sum(d.map(x => x.asked ?? 0));
+  console.log(
+    `  decisions of the one owed weighing the debt (called in): ${cin}, asking in ${asked} (${fmt((100 * asked) / Math.max(1, cin))}%); requests answered by one who owes the asker: ${ans}, given in ${paid} (${fmt((100 * paid) / Math.max(1, ans))}%)`,
+  );
   for (const fam of ['severity', 'humility']) {
     const off = sum(d.map(x => x.own[fam][0])),
       took = sum(d.map(x => x.own[fam][1]));
     console.log(`  ${fam} offered by a feeling: ${off}, taken ${took} (${fmt((100 * took) / Math.max(1, off))}%)`);
   }
-  out.debts = { calledIn: cin, answered: ans, paid };
+  out.debts = { calledIn: cin, asked, answered: ans, paid };
   console.log('FEEL ' + JSON.stringify(out));
 } else {
   console.error('usage: feel.ts run A B [rule] [years] | report [ruleA] [ruleB]');

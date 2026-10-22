@@ -5,7 +5,7 @@ import { stateC, lastTime } from '../considerations';
 import { type Instance, friendsOf, family } from '../grammar';
 import type { SituationType } from './index';
 import { counterpart } from '../telling';
-import { debtorAmong, owedBy } from '../feelings';
+import { debtorAmong } from '../feelings';
 
 // Request: someone in need asks someone who can help.
 export const request: SituationType = {
@@ -22,7 +22,7 @@ export const request: SituationType = {
         ...(p.partner != null ? [P(w, p.partner)] : []),
       ].filter(q => q !== p && !(p.tried['ask:' + q.id] && (!p.tried['ask:' + q.id].ok || w.t - p.tried['ask:' + q.id].t < 24)));
       if (!pool.length) continue;
-      // A debt is called in: the one who owes them is asked first (round 44).
+      // A debt is called in: the one who owes them is asked first, and the debt weighs for asking (feelings.ts; round 44).
       const debtor = debtorAmong(w, p, pool);
       const q =
         debtor ??
@@ -45,11 +45,7 @@ export const request: SituationType = {
         only: { seeking: ['ask', 'hint'], withdrawal: ['work', 'skip'] },
         causeLabel: need === 'money' ? (p.savings < -8 ? 'badly in debt' : 'in debt') : 'ill, and alone',
         familyExtra: {
-          seeking: [
-            stateC('need', p.savings < -8 ? 'desperate' : 'struggling', p.savings < -8 ? 0.95 : 0.5),
-            lastTime(p, 'ask', 'asking for help'),
-            ...(debtor ? [stateC('owed', owedBy(debtor, p), 0.85, 1, 0.2, debtor.owes!.ev)] : []),
-          ],
+          seeking: [stateC('need', p.savings < -8 ? 'desperate' : 'struggling', p.savings < -8 ? 0.95 : 0.5), lastTime(p, 'ask', 'asking for help')],
         },
       });
     }
