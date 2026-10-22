@@ -5,6 +5,7 @@ import { stateC, lastTime } from '../considerations';
 import { type Instance, friendsOf, family } from '../grammar';
 import type { SituationType } from './index';
 import { counterpart } from '../telling';
+import { debtorAmong, owedBy } from '../feelings';
 
 // Request: someone in need asks someone who can help.
 export const request: SituationType = {
@@ -21,13 +22,17 @@ export const request: SituationType = {
         ...(p.partner != null ? [P(w, p.partner)] : []),
       ].filter(q => q !== p && !(p.tried['ask:' + q.id] && (!p.tried['ask:' + q.id].ok || w.t - p.tried['ask:' + q.id].t < 24)));
       if (!pool.length) continue;
-      const q = counterpart(
-        w,
-        p.id,
-        pool.length,
-        () => pool.sort((a, b) => regard(w, p.id, b.id) - regard(w, p.id, a.id))[0],
-        x => [x.id],
-      );
+      // A debt is called in: the one who owes them is asked first (round 44).
+      const debtor = debtorAmong(w, p, pool);
+      const q =
+        debtor ??
+        counterpart(
+          w,
+          p.id,
+          pool.length,
+          () => pool.sort((a, b) => regard(w, p.id, b.id) - regard(w, p.id, a.id))[0],
+          x => [x.id],
+        );
       const feats = new Set<Feature>(['private', 'need', need === 'money' ? 'money' : 'safety', family(p, q) ? 'family' : 'friend']);
       out.push({
         type: 'request',
@@ -40,7 +45,11 @@ export const request: SituationType = {
         only: { seeking: ['ask', 'hint'], withdrawal: ['work', 'skip'] },
         causeLabel: need === 'money' ? (p.savings < -8 ? 'badly in debt' : 'in debt') : 'ill, and alone',
         familyExtra: {
-          seeking: [stateC('need', p.savings < -8 ? 'desperate' : 'struggling', p.savings < -8 ? 0.95 : 0.5), lastTime(p, 'ask', 'asking for help')],
+          seeking: [
+            stateC('need', p.savings < -8 ? 'desperate' : 'struggling', p.savings < -8 ? 0.95 : 0.5),
+            lastTime(p, 'ask', 'asking for help'),
+            ...(debtor ? [stateC('owed', owedBy(debtor, p), 0.85, 1, 0.2, debtor.owes!.ev)] : []),
+          ],
         },
       });
     }
