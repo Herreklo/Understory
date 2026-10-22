@@ -1,6 +1,6 @@
 # Reasons worded for the act
 
-_Research for the second and last round on reasons (exit point 3), 22 October 2026. Round 42 (`OFF=bear`, PR #77) stopped at sizing: it reaches 32% of the trait-reason lines M38's readers faulted. How should a reason be worded to fit its act, and when should it carry an event?_
+_Research for the second and last round on reasons (exit point 3), 22 October 2026. Round 42 (`OFF=bear`, PR #77) stopped at sizing: it reaches 32% of the trait-reason lines M38's readers faulted. How should a reason be worded to fit its act, and when should it carry an event? Reviewed the same day (`reviewer`, Fable 5.1, PR #78): the estimate is now taken on held-out pages._
 
 ## How the engine words a reason
 
@@ -26,42 +26,47 @@ Those that fit word the reason at the act or its event, and pay in authoring.
 
 ## What the data on file says
 
-M38's true pages: 288 page-readings, 683 unfit reasons (3.11 per hundred line-readings).
+M38's true pages: 288 page-readings, 683 unfit reasons (3.11 per hundred line-readings). 434 faulted line-readings carry a trait reason, 399 of them worded as a motive.
 
-- **Wording.** 399 faulted line-readings carry a motive phrase (bear's 434 also counts trait labels): 267 general-worded only, 72 family-worded only, 60 both, none worded for its act. General phrases are faulted 4.33 per hundred readings, family phrases 2.46 (confounded: family wording appears only where the family fits).
+- **Wording.** None of the 399 is worded for its act: 267 general only, 72 family only, 60 both. Lines whose motives are all general are faulted 3.4 per hundred readings, all family 2.5, lines with no motive 2.9 (confounded: family wording appears only where the family fits).
 - **The fault is the pairing.** A phrase is faulted on one act, not another:
   - "could wait it out": 35 of 76 on "played X's song as if it were X's own", 2 of 50 on an apology;
   - "thought it needed saying": 28 of 48 on friends losing touch;
   - "had her own life to get on with": 25 of 118 on staying away from a friend in trouble.
-- **Concentrated.** 20 of 6,172 phrase–act pairs hold 43% of all faults; the 22 worst motive pairs take in 185 of the 399.
-- **Sometimes it is the act's words.** `backsong` is humility, but "played X's song as if it were X's own" reads as theft. Its humble reasons draw 63 faults.
-- **Events.** 80% of motive faults had no event under the line, yet lines with one are faulted more (4.4 per hundred against 3.1). More events is not the lever.
+- **Concentrated.** 20 of 6,756 phrase–act pairs hold 49% of all faults.
+- **Sometimes it is the act's words.** `backsong` is humility, but "played X's song as if it were X's own" reads as theft. Its humble reasons draw 55 faults.
+- **Events.** 80% of motive faults had no event under the line, yet motive lines with one are faulted more (4.6 per hundred against 3.3). More events is not the lever.
+- **History reasons** (a bond whose reason points at a remembered event) are faulted at the base rate: 2.8 per hundred on null and r40, 3.8 on round 41's pages.
 
 ## Proposal and estimate
 
-Words only, behind one switch:
+Words only, behind one switch.
 
-- Motives worded by expression for the facets it prefers (279 pairs in `families.ts`), falling back to family, then general. Non-decision events pass their type as the kind.
-- `backsong` reworded to read as backing the song.
-- Only a history reason (a grudge, a debt, a soft spot since) carries its event, named inside the reason, not as a new ↳ line.
+- **The unit is a cell:** the act, the facet, its pole and the reason's form (for the act, or against it). The act is the expression chosen, or the event's type where there is no expression, so non-decision events are worded too.
+- **Which cells:** those with three or more unfit faults on the null and r40 pages, worst first: 45 cells (36 expressions, 9 event types; 44 for, 1 against). Round 41's pages are held out and consulted once, after the rule is fixed. A cell keeps its pole's sense and falls back to the family, then the general wording.
+- **`backsong`** reworded to read as backing the song.
+- **History reasons wait for G3** (particulars and callbacks). They are faulted at the base rate, so naming their event cannot move this round's counter, only dilute it, and a reason that recalls an event is a callback, G3's claim.
+- **Authoring:** about 50 strings, each read by the reviewer against its facet's pole, so a word cannot drift from what the trait is.
 
 Bear has not been read, so it cannot be bundled with this.
 
-**Reach.** The 22 worst pairs plus `backsong` change 185 of the 434 faulted lines (43%, in-sample); a full table up to 399 (92%). Bear: 32%.
+**Reach.** The 45 cells change 73% of the 338 faulted trait line-readings in-sample and 58% of the 96 held out (70% of all 434). Bear: 32%. Keyed by phrase and act text instead, the 22 worst pairs picked the same way reach only 28% held out (the review): the act and facet generalise, the phrase does not.
 
-**Effect.** If rewritten lines fall to the family rate, the worst pairs lose about 200 of their 222 faults. Shrunk by half for selection: **about 100 fewer unfit reasons (15%; 0.35 a page-reading), range 40 to 190.**
+**Effect.** The cells' lines are faulted 12.3 per hundred in-sample but 6.1 held out, and the held-out rate is the estimate. If reworded lines fall to the pages' base rate (3.1), the whole drop is 3.0 per hundred changed line-readings, about 0.3 a page-reading (10 changed lines a page). **Shrunk by half: 1.5 per hundred, about 0.15 a page-reading (45 fewer in 288), range 0 to 90.**
 
-**Visibility.** The score cannot see it (+0.01; 24 pairs and two roles need about +0.27). Faults on the changed lines can. Power, calibrated on round 42's simulation:
+**Visibility.** The score cannot see it (+0.01; 24 pairs need about +0.27). The counter can, because a same-lives pack cancels what is shared: on M38's planted pack, readers faulted an unchanged line in both versions or in neither, 109 of 109. Only the changed words' own faults are noise. Power for half the drop, with new words faulted on their own at 0.5 to 1.5 per hundred:
 
-| | the whole expected drop | half of it |
+| | 24 pairs | 48 pairs |
 | --- | --- | --- |
-| targeted pairs | over 95% | about 50% |
-| full table (diluted) | about 60% | about 20% |
+| the whole drop | 85–96% | 99–100% |
+| half of it | 45–67% | 71–91% (81% at 1.0) |
+
+Round 42's model, which takes the two versions as independent, gives 27% and 45% for half the drop.
 
 ## This fails if …
 
 1. **… it misses what readers fault.** Rebuild M38's true pages with the change. Stop if under 50% of the 434 faulted lines change words.
-2. **… the worst pairs are noise.** Pick them from the null and r40 packs only, and measure reach on round 41's pages. Stop if it is under half the in-sample reach.
-3. **… the words claim what was not weighed.** Every act-worded reason must trace to a consideration favouring the chosen expression or family, and the coherence counter stays at 0. Stop above 0.5% untraced.
-4. **… backing events crowd the page.** Count ↳ lines on the busiest pages, on against off, over 9001–9024. Stop above a 10% rise.
-5. **… the reading cannot see it.** Simulate faults on changed lines from M38's rates, with an order term for the null's +1.41 lean. Under 80% power for half the drop: the claim is the counter, and the reading checks only "reads no worse".
+2. **… the worst cells are noise.** The cells are fixed by the rule above on null and r40; round 41's pages are consulted once. Stop if reach there is under half the in-sample reach. The reading is on fresh worlds, so no life used to pick the cells is read.
+3. **… the words claim what was not weighed.** On a decision, every act-worded reason must trace to a consideration that favoured the chosen family (argued against it, for an against form) or to a facet the expression prefers. On another event, it must be the event's own cause, given by the code that wrote it. The coherence counter stays at 0. Stop above 0.5% untraced.
+4. **… the new words draw other faults.** The sizing lists every cell with its old and new words for the reviewer. The reading counts faults of every kind on the changed lines, and the round is not kept if other kinds rise by more than unfit reasons fall.
+5. **… the reading cannot see it.** Simulate the counter on the held-out rate, paired as above, with new words faulted on their own at 1 per hundred. The reading uses the fewest pairs, 24 or 48, that reach 80% power for half the drop. If 48 do not, the round stops at its sizing: no other counter can judge it.
