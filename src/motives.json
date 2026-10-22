@@ -1,0 +1,218 @@
+{
+  "about": [
+    "The words a trait reason is said in, as a motive: what the trait makes a person want, fear or feel. Read by src/motives.ts. Words only: no decision reads them.",
+    "facets: each facet has a wording for its high pole (hi) and its low pole (lo), and may have its own where that pole meets a kind of answer (hiBy, loBy, keyed by the kind).",
+    "Each wording has two forms: for (the reason as given for the act) and against (the same pull when it argued against the act).",
+    "Tokens: {she} {her} (possessive) {obj} {hers} {self}, from voices; {t} for the other person, and a wording with {t} is used only when there is one.",
+    "Facets and kinds are read in the order written here. Reword freely; adding or removing a facet or a kind changes what is said, so it belongs to a round."
+  ],
+  "voices": {
+    "f": { "she": "she", "her": "her", "obj": "her", "hers": "hers", "self": "herself" },
+    "m": { "she": "he", "her": "his", "obj": "him", "hers": "his", "self": "himself" }
+  },
+  "facets": {
+    "sincerity": {
+      "hi": { "for": "would not pretend", "against": "though {she} hates to pretend" },
+      "lo": { "for": "said what would work", "against": "though {she} usually says what people want to hear" },
+      "hiBy": {
+        "honesty": { "for": "could not bring {self} to lie", "against": "though lying does not come easily to {obj}" },
+        "discretion": { "for": "had given {her} word", "against": "though {she} keeps {her} word" }
+      },
+      "loBy": {
+        "dishonesty": { "for": "said what would work", "against": "though a smooth word usually comes easily to {obj}" }
+      }
+    },
+    "fairness": {
+      "hi": { "for": "wanted it to be fair", "against": "though {she} likes things to be fair" },
+      "lo": { "for": "thought rules are for people who get caught", "against": "though {she} has never been fussy about rules" },
+      "hiBy": {
+        "honesty": { "for": "would rather be straight about it", "against": "though it was not like {obj} to be anything but straight" },
+        "generosity": { "for": "thought it only fair", "against": "though {she} likes things to be fair" },
+        "duty": { "for": "had given {her} word", "against": "though {she} keeps {her} word" },
+        "dishonesty": { "for": "thought it was owed", "against": "though it was not like {obj} to cheat" }
+      },
+      "loBy": {
+        "dishonesty": { "for": "thought nobody would notice", "against": "though {she} has never been fussy about rules" }
+      }
+    },
+    "greedAvoidance": {
+      "hi": { "for": "money has never meant much to {obj}", "against": "though money has never meant much to {obj}" },
+      "lo": { "for": "wanted the money", "against": "though {she} likes money" },
+      "hiBy": {
+        "generosity": { "for": "money has never meant much to {obj}", "against": "though money has never meant much to {obj}" },
+        "honesty": { "for": "did not want it that badly", "against": "though {she} has never wanted much" }
+      },
+      "loBy": {
+        "refusal": { "for": "did not want to part with it", "against": "though {she} hates to part with money" },
+        "dishonesty": { "for": "wanted the money", "against": "though {she} wanted the money" }
+      }
+    },
+    "modesty": {
+      "hi": { "for": "never thinks it is about {obj}", "against": "though {she} never thinks it is about {obj}" },
+      "lo": { "for": "felt it was owed", "against": "though {she} felt it was owed" },
+      "hiBy": {
+        "humility": { "for": "did not think it was about {obj}", "against": "though {she} seldom makes things about {obj}" },
+        "lower": { "for": "has never needed the best of everything", "against": "though {she} has never needed the best of everything" },
+        "honesty": { "for": "had nothing to prove", "against": "though {she} has nothing to prove" },
+        "leniency": { "for": "does not think {she} is better than anyone", "against": "though {she} does not think {she} is better than anyone" }
+      },
+      "loBy": {
+        "pride": { "for": "felt it was owed", "against": "though {she} felt it was owed" },
+        "severity": { "for": "felt slighted", "against": "though {she} felt slighted" },
+        "dishonesty": { "for": "felt it was owed", "against": "though {she} felt it was owed" },
+        "anger": { "for": "would not be talked down to", "against": "though {she} hates being talked down to" },
+        "humility": { "for": "wanted the credit", "against": "though {she} wanted the credit" }
+      }
+    },
+    "fearfulness": {
+      "hi": { "for": "was afraid of getting hurt", "against": "though {she} was afraid" },
+      "lo": { "for": "danger has never stopped {obj}", "against": "though danger has never stopped {obj}" }
+    },
+    "anxiety": {
+      "hi": { "for": "could not stop thinking about what might go wrong", "against": "though the worry kept {obj} up at night" },
+      "lo": { "for": "does not panic", "against": "though {she} does not panic" }
+    },
+    "dependence": {
+      "hi": { "for": "needed someone to lean on", "against": "though {she} needs people" },
+      "lo": { "for": "would rather manage alone", "against": "though {she} would rather manage alone" },
+      "hiBy": {
+        "seeking": { "for": "needed someone to talk to", "against": "though {she} needed someone to talk to" }
+      },
+      "loBy": {
+        "withdrawal": { "for": "would rather deal with it alone", "against": "though {she} would rather deal with things alone" }
+      }
+    },
+    "sentimentality": {
+      "hi": { "for": "it mattered too much to let go", "against": "though {she} feels things deeply" },
+      "lo": { "for": "has never been one to look back", "against": "though {she} rarely looks back" },
+      "hiBy": {
+        "duty": { "for": "could not let people down who mattered to {obj}", "against": "though {she} feels things deeply" }
+      },
+      "loBy": {
+        "humility": { "for": "was not going to dwell on it", "against": "though {she} rarely dwells on things" }
+      }
+    },
+    "socialSelfEsteem": {
+      "hi": { "for": "is easy in {her} own skin", "against": "though easy in {her} own skin" },
+      "lo": { "for": "did not think much of {self}", "against": "though {she} seldom thinks much of {self}" }
+    },
+    "socialBoldness": {
+      "hi": { "for": "is not one to hang back", "against": "though {she} is not one to hang back" },
+      "lo": { "for": "dreads being looked at", "against": "though {she} dreads being looked at" },
+      "hiBy": {
+        "generosity": { "for": "did not mind everyone seeing", "against": "though {she} did not mind everyone seeing" },
+        "pride": { "for": "would say it to anyone", "against": "though {she} would say it to anyone" },
+        "severity": { "for": "would say it in front of anyone", "against": "though {she} would say it in front of anyone" },
+        "duty": { "for": "was happy to stand up and do it", "against": "though {she} likes to be the one doing it" }
+      },
+      "loBy": {
+        "refusal": { "for": "did not want to be seen", "against": "though {she} hates being seen" }
+      }
+    },
+    "sociability": {
+      "hi": { "for": "likes having people around", "against": "though {she} likes company" },
+      "lo": { "for": "would rather be on {her} own", "against": "though {she} would rather be on {her} own" },
+      "loBy": {
+        "withdrawal": { "for": "wanted to be left alone", "against": "though {she} would rather be left alone" }
+      }
+    },
+    "liveliness": {
+      "hi": { "for": "has energy for everything", "against": "though usually full of life" },
+      "lo": { "for": "had no lift in {obj}", "against": "though seldom one to make a fuss" }
+    },
+    "forgiveness": {
+      "hi": { "for": "lets things go", "against": "though {she} usually lets things go" },
+      "lo": { "for": "does not forget", "against": "though {she} does not forget" },
+      "hiBy": {
+        "leniency": { "for": "had let it go long ago", "against": "though {she} usually lets things go" }
+      },
+      "loBy": {
+        "anger": { "for": "had not forgiven it", "against": "though {she} does not forget" },
+        "severity": { "for": "had not forgotten", "against": "though {she} does not forget" }
+      }
+    },
+    "gentleness": {
+      "hi": { "for": "does not like to judge", "against": "though slow to judge" },
+      "lo": { "for": "thought it needed saying", "against": "though {she} is quick to judge" },
+      "hiBy": {
+        "warmth": { "for": "has a soft spot for anyone in trouble", "against": "though {she} has a soft heart" },
+        "leniency": { "for": "does not like to judge", "against": "though slow to judge" }
+      },
+      "loBy": {
+        "severity": { "for": "thought {t} had it coming", "against": "though {she} is quick to judge" }
+      }
+    },
+    "flexibility": {
+      "hi": { "for": "wanted to keep the peace", "against": "though {she} usually gives way" },
+      "lo": { "for": "would not give ground", "against": "though {she} rarely gives ground" },
+      "hiBy": {
+        "other": { "for": "is quick to try something else", "against": "though {she} is usually quick to try something else" }
+      },
+      "loBy": {
+        "push": { "for": "does not change course easily", "against": "though {she} does not change course easily" }
+      }
+    },
+    "patience": {
+      "hi": { "for": "could wait it out", "against": "though slow to anger" },
+      "lo": { "for": "had run out of patience", "against": "though {her} temper is short" },
+      "hiBy": {
+        "withdrawal": { "for": "would rather wait it out than fight", "against": "though {she} usually waits things out" },
+        "anger": { "for": "had been patient long enough", "against": "though it takes a lot to make {obj} angry" }
+      },
+      "loBy": {
+        "seeking": { "for": "could not sit with it any longer", "against": "though {her} temper is short" }
+      }
+    },
+    "organisation": {
+      "hi": { "for": "likes things done properly and on time", "against": "though {she} likes things in order" },
+      "lo": { "for": "had let it slide, as {she} does", "against": "though {her} life is usually a muddle" },
+      "hiBy": {
+        "lapse": { "for": "had too much else on", "against": "though {she} usually keeps on top of things" }
+      }
+    },
+    "diligence": {
+      "hi": { "for": "will not leave a job half done", "against": "though {she} works hard" },
+      "lo": { "for": "does no more than {she} has to", "against": "though {she} rarely does more than {she} has to" }
+    },
+    "perfectionism": {
+      "hi": { "for": "it had to be right", "against": "though {she} wants things right" },
+      "lo": { "for": "good enough was good enough", "against": "though good enough usually does for {obj}" }
+    },
+    "prudence": {
+      "hi": { "for": "thought it through first", "against": "though {she} usually thinks first" },
+      "lo": { "for": "did not stop to think", "against": "though {she} rarely stops to think" }
+    },
+    "aesthetic": {
+      "hi": { "for": "is moved by beautiful things", "against": "though moved by beautiful things" },
+      "lo": { "for": "has no time for art", "against": "though {she} has no time for art" }
+    },
+    "inquisitiveness": {
+      "hi": { "for": "wanted to know", "against": "though curious about everything" },
+      "lo": { "for": "is happy with what {she} knows", "against": "though content with what {she} knows" },
+      "loBy": {
+        "reluctance": { "for": "had no wish to see anywhere else", "against": "though {she} had no wish to see anywhere else" }
+      }
+    },
+    "creativity": {
+      "hi": { "for": "had an idea of {her} own", "against": "though full of ideas" },
+      "lo": { "for": "sticks to what works", "against": "though {she} sticks to what works" }
+    },
+    "unconventionality": {
+      "hi": { "for": "has never cared what is usual", "against": "though {she} never cares what is usual" },
+      "lo": { "for": "does what people do", "against": "though {she} does what people do" }
+    },
+    "altruism": {
+      "hi": { "for": "puts other people first", "against": "though {she} usually puts other people first" },
+      "lo": { "for": "looks after {her} own first", "against": "though {she} looks after {her} own first" },
+      "hiBy": {
+        "generosity": { "for": "could not stand to see {t} go without", "against": "though {she} hates to see anyone go without" },
+        "warmth": { "for": "wanted to be there for {t}", "against": "though {she} usually wants to help" },
+        "duty": { "for": "would not let {t} down", "against": "though {she} hates to let anyone down" }
+      },
+      "loBy": {
+        "lapse": { "for": "had {her} own life to get on with", "against": "though {she} usually puts {her} own life first" },
+        "refusal": { "for": "looks after {her} own first", "against": "though {she} looks after {her} own first" }
+      }
+    }
+  }
+}
