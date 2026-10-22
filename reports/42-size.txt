@@ -1,0 +1,77 @@
+Round 42 sizing: throwaway worlds 9001–9024 (24 worlds), ten present years, every
+decision line on someone's page. Off is main's page (every reason shown), on is the page with bear; behaviour is the same.
+
+Arms (ARMS=1): with OFF=bear each world differs from the on arm only in the decision records' idle:
+  worlds where events, bonds or the random stream differ: 0 
+  decisions marked idle a world: 2012
+
+The counter, a world (mean, 95% interval between worlds):
+  decision lines on pages                                       856.0  ±26.5  (sd 62.8; 761.0 to 950.0)
+  trait reasons shown, off                                      814.0  ±28.0  (sd 66.4; 673.0 to 938.0)
+  trait reasons shown that do not bear, off                     166.0  ±7.1  (sd 16.8; 139.0 to 205.0)
+    the same, on (0 by construction)                              0.0  ±0.0  (sd 0.0; 0.0 to 0.0)
+    share of trait reasons shown, off (%)                        20.4  ±0.7  (sd 1.6; 17.6 to 23.6)
+  accounts shown as reasons, off                                 42.5  ±3.8  (sd 8.9; 30.0 to 63.0)
+  accounts shown that decided nothing, off                       36.0  ±3.7  (sd 8.7; 24.0 to 53.0)
+    the same, on (0 by construction)                              0.0  ±0.0  (sd 0.0; 0.0 to 0.0)
+  accounts shown as reasons, on                                   6.7  ±0.9  (sd 2.1; 4.0 to 11.0)
+  decision lines whose reasons change (%)                        22.1  ±0.6  (sd 1.5; 17.6 to 24.7)
+  events shown under a line, every adult's page, off            456.9  ±30.4  (sd 72.0; 322.0 to 621.0)
+    the same, on                                                456.9  ±30.4  (sd 72.0; 322.0 to 621.0)
+
+M38's true pages: 288 page-readings, 683 unfit reasons, 3.11 per hundred line-readings.
+
+Check 1, it drops reasons readers accept:
+  trait reasons the expression alone does not read: 7698; kept by the motive clause (worded for the family): 3713
+  (48% of them). Of the trait reasons left out with the clause in, worded for the family: 0, by construction.
+  left out by bear (traits and accounts): 4848 instances; read at least four times in M38: 4659; of those, faulted at or below the base rate
+    (3.1 per hundred): 2886 (62%); above it: 1773. Weighted rate: 4.0 per hundred line-readings.
+  trait reasons bear keeps, for comparison: 15550 instances; read at least four times in M38: 15283; of those, faulted at or below the base rate
+    (3.1 per hundred): 10058 (66%); above it: 5225. Weighted rate: 3.2 per hundred line-readings.
+  The phrases left out most, with M38's line-readings, faults and rate per hundred:
+     598  it mattered too much to let go                                          316   7   2.2
+     415  likes things done properly and on time                                 1138  32   2.8
+     412  could wait it out                                                       398  44  11.1
+     299  wanted to keep the peace                                                192  16   8.3
+     239  had run out of patience                                                 220   5   2.3
+     216  dreads being looked at                                                  100   2   2.0
+     211  would not give ground                                                   158   1   0.6
+     187  does not panic                                                          288   4   1.4
+     145  felt it was owed                                                        652  17   2.6
+     131  is not one to hang back                                                 276   4   1.4
+     127  wanted the money                                                        100   6   6.0
+     115  X wasn't there for X when it mattered (Y)                                58   4   6.9
+     105  has never been one to look back                                         150  13   8.7
+      99  could not stop thinking about what might go wrong                       160   7   4.4
+      92  had let it slide, as she does                                           244   4   1.6
+
+Check 2, the true pages M38's readers read, rebuilt with bear:
+  null: lines rebuilt that match the pages read: 3938 of 3938; unfit-reason faults on a
+    line with a trait reason 185, changed 60 (32%); with a motive 185, changed 60; every one 263, changed 63; citing an account 12, changed 11
+  r40: lines rebuilt that match the pages read: 3429 of 3429; unfit-reason faults on a
+    line with a trait reason 153, changed 37 (24%); with a motive 153, changed 37; every one 240, changed 40; citing an account 13, changed 12
+  shuffled (true halves): lines rebuilt that match the pages read: 1805 of 1805; unfit-reason faults on a
+    line with a trait reason 35, changed 20 (57%); with a motive 35, changed 20; every one 71, changed 25; citing an account 9, changed 6
+  planted (true halves): lines rebuilt that match the pages read: 1805 of 1805; unfit-reason faults on a
+    line with a trait reason 61, changed 23 (38%); with a motive 61, changed 23; every one 109, changed 26; citing an account 6, changed 4
+  all 288 page-readings: faulted line-readings with a trait reason 434, of which bear changes 140 (32%); with a motive
+  434, changed 140 (32%); every unfit reason 683, changed 154 (23%); citing an
+  account 40, changed 33 (82%). The stop line is 40% of the faulted motive line-readings.
+
+Check 3, decision lines left with no reason beyond their event (sized at 2.5%, stop above 5%):
+  left bare, of decision lines with a reason off (%)             1.41  ±0.19  (sd 0.46; 0.52 to 2.49)
+
+Check 5, told accounts on the busiest pages (three a world), on against off (stop if fewer than one page in three keeps one):
+  pages: 72; with an account shown off: 64 (89%); on: 26 (36%); of the 64 that had one,
+  26 keep one (41%).
+  M38 null pages: 48; with an account off: 40; whose account lines all keep their reasons: 13
+  M38 r40 pages: 48; with an account off: 21; whose account lines all keep their reasons: 5
+
+Check 4, can 24 pairs and two roles see it?
+  rate on the lines bear changes, as main shows them: 7.07 per hundred line-readings (103 of 1456); lines changed a busiest
+  page (null pack, this tree): mean 8.0, 2 to 19; overdispersion of faults a page-reading: 0.86
+  the drop the note expects on those lines: 7.1 to 3.0 per hundred; half of it: to 5.0
+  power, one-sided paired t at .05 over the 24 pairs (roles averaged), the whole drop: 82%
+  power, one-sided paired t at .05 over the 24 pairs (roles averaged), half the drop: 30%
+  the score (effect with order as a term; M38 null −0.04 ±0.21): power to see +0.01 is 6%, +0.05 12%;
+  80% power needs about +0.27.

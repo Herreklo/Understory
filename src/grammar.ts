@@ -1,7 +1,8 @@
 // The Situation Grammar: types matched against the world, answered through behaviour families.
 // Every instance becomes an event with causes and evidence. Nothing here is a scene.
 
-import { withAccounts } from './telling';
+import { withAccounts, idleAccounts } from './telling';
+import { wordedFor } from './motives';
 import { withCarry, carryAct } from './carry';
 import { clamp, hash } from './rng';
 import { FACET_BY_ID, VALUES } from './core';
@@ -10,6 +11,7 @@ import { BY_FAMILY, type Expression, type Family } from './families';
 import { threadStep, openedUp } from './threads';
 import {
   OFF,
+  bear,
   plasticity,
   type World,
   type Person,
@@ -88,6 +90,10 @@ export function decide(w: World, p: Person, trigger: string, options: Option[]) 
   const rec: any = { trigger, person: p.id, options: scored.map(o => ({ id: o.id, label: o.label, p: o.p, score: o.score })), chosen: chosen.id };
   const top = why.find(c => c.key && !c.key.startsWith('against:'))?.key;
   rec.honest = honestWhy(truthView(w), options, p.variability, chosen.id, top);
+  if (bear()) {
+    const idle = idleAccounts(w, p, options, chosen.id, why);
+    if (idle.length) rec.idle = idle;
+  }
   recordStats(w, p, options, chosen.id, rec);
   return { chosen: chosen.id, why, rec };
 }
@@ -396,6 +402,20 @@ export function run(w: World, inst: Instance): Outcome | null {
     })
     .slice(0, against ? 4 : 5);
   if (against) causes.push(stateCause(against, 0.3));
+  // Round 42: the reasons that do not bear on the act, marked for the page to leave out. A trait bears where the expression prefers it or
+  // shows it, or where its motive has words of its own for this kind of answer, or an if-then on it is at work; a told account where it
+  // decided the choice. Reasons a situation gives as its own (`reasonsFor`) are given as written.
+  if (bear()) {
+    const reads = (k: string) =>
+      (expr.prefers[k] ?? 0) !== 0 ||
+      ((expr.evidence as Record<string, number | undefined>)[k] ?? 0) !== 0 ||
+      wordedFor(k, (p.facets[k] ?? 0) > 0, fam, t && `@${t.id}`);
+    const traits = inst.reasonsFor
+      ? []
+      : causes.filter(c => c.kind === 'trait' && c.key && FACET_BY_ID[c.key] && c.key !== ifthen?.facet && !reads(c.key)).map(c => c.key!);
+    const idle = [...new Set([...traits, ...idleAccounts(w, p, options, fam, why)])];
+    if (idle.length) rec.idle = idle;
+  }
   const where =
     inst.where ??
     (feats.has('public') && inst.place && ['shout', 'sarcasm', 'dressdown', 'confront', 'walkout', 'speakup', 'rake'].includes(expr.id)

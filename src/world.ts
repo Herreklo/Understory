@@ -55,6 +55,7 @@ export interface DecisionRecord {
   pWitness?: number; // witness's predicted probability of the chosen option
   witnessGuess?: string;
   honest?: boolean; // neutralising the top cause changes the choice
+  idle?: string[]; // round 42: the keys of reasons that do not bear on the act chosen, which the page does not show (the record keeps them)
 }
 
 // Kinds of event that are the texture of a life, not news: never weighty, whatever their weight (the consequence map's line too).
@@ -397,6 +398,10 @@ export const together = () => !OFF.has('together');
 // Round 41: lines and reasons that hold up: spans said in words, a folded repeat saying which time it was, a friendship's end saying what
 // changed, lines true of the person when they are said (round 41). On unless OFF=fit.
 export const fit = () => !OFF.has('fit');
+// Round 42: reasons that bear on the act. A trait is shown as a reason only where the act chosen reads it, and a told account only where
+// it decided the choice. The page only: the decision record marks the rest (`idle`), and nothing anyone does changes. Stopped at its
+// sizing (it reached a third of the reasons readers fault): off unless ON=bear.
+export const bear = () => ON.has('bear');
 const SMALL = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
 // A span of months as a person would say it: "a few weeks", "five months", "a year", "a year and a half", "three years".
 export function spanWords(months: number): string {
