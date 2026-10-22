@@ -22,7 +22,7 @@ Only Øystein changes this order. The branches are proposed, for him to agree.
    - _Not kept:_ back to research; reasons rest.
 3. **The human test**, when Øystein picks it up: people read round 40's busiest pack; it decides which role to keep and whether "reads better" counts again.
 
-Then: round 43, doors for later life; homes (#59, with the front door's part two, #22); the band for a year. Housekeeping beside any: the identity signature covers each person's events; `advance` refuses part of a month; retire `fit` and `together`. Paused: close ties, the accounts arc (#20), the background's ageing, the start year (#23).
+Then: round 43, doors for later life; homes (#59, with the front door's part two, #22); the band for a year. Housekeeping beside any: the identity signature covers each person's events; `advance` refuses part of a month; retire `fit` and `together`. Paused: close ties, the accounts arc (#20), the background's ageing, the start year (#23), time and moments (`notes/time-and-moments.md`).
 
 ## Waiting for you
 
