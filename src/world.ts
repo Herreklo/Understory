@@ -402,6 +402,10 @@ export const fit = () => !OFF.has('fit');
 // it decided the choice. The page only: the decision record marks the rest (`idle`), and nothing anyone does changes. Stopped at its
 // sizing (it reached a third of the reasons readers fault): off unless ON=bear.
 export const bear = () => ON.has('bear');
+// Round 43w: reasons worded for the act. A trait reason is said in its pole's wording for the act chosen (the expression, or the type of an
+// event that is no choice of expression) where motives.json has one, and `backsong` reads as backing the song. Words only. On unless
+// OFF=wording.
+export const wording = () => !OFF.has('wording');
 const SMALL = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
 // A span of months as a person would say it: "a few weeks", "five months", "a year", "a year and a half", "three years".
 export function spanWords(months: number): string {
@@ -594,10 +598,10 @@ export function recentEvents(w: World, since: number): Event[] {
   while (i > 0 && w.events[i - 1].t >= since) i--;
   return w.events.slice(i);
 }
-// A reason as a person would give it: a trait said as the motive it gives in this kind of answer (motives.ts), and a feeling for
+// A reason as a person would give it: a trait said as the motive it gives in this kind of answer or act (motives.ts), and a feeling for
 // someone that argued against the act said as one ("though she is fond of Ben"). Only a reason in the exact form a trait reason takes
 // is rewritten, so if-then signatures, the self-story and every other reason keep their own words.
-function saidAsMotive(w: World, ev: { who: number[]; decision?: DecisionRecord }, c: Cause): Cause {
+function saidAsMotive(w: World, ev: { type: string; who: number[]; decision?: DecisionRecord }, c: Cause): Cause {
   const p = w.byId.get(c.who ?? ev.who[0]);
   if (!p) return c;
   if (c.kind === 'bond' && c.label.startsWith('despite: ')) return { ...c, label: `though ${voiceOf(p.sex).she} ${c.label.slice(9)}` };
@@ -612,7 +616,8 @@ function saidAsMotive(w: World, ev: { who: number[]; decision?: DecisionRecord }
   if (!against && c.label !== plain) return c;
   const d = ev.decision as any;
   const other = d?.target ?? (ev.who[0] === p.id ? ev.who[1] : undefined);
-  const said = motive(key, z > 0, d?.chosen, against, voiceOf(p.sex), other != null ? `@${other}` : undefined);
+  const act = wording() ? { expr: d?.expr as string | undefined, type: ev.type } : undefined;
+  const said = motive(key, z > 0, d?.chosen, against, voiceOf(p.sex), other != null ? `@${other}` : undefined, act);
   return said ? { ...c, label: said } : c;
 }
 export function addEvent(w: World, ev: Omit<Event, 'id' | 't' | 'knownBy'> & { knownBy?: Map<number, 'seen' | 'heard'> }): Event {

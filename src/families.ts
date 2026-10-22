@@ -3,7 +3,7 @@
 
 import type { Feature } from './features';
 import { SETTING } from './setting';
-import type { Person } from './world';
+import { wording, type Person } from './world';
 
 export type Family =
   | 'anger'
@@ -1240,7 +1240,9 @@ export const EXPRESSIONS: Expression[] = [
     family: 'humility',
     intensity: 0.45,
     prefers: { modesty: 0.8, altruism: 0.4, flexibility: 0.4 },
-    text: (a, t, th) => `${a} played ${t}'s ${th} as if it were ${a}'s own`,
+    // Round 43w: said as backing the song; "as if it were X's own" read as taking it.
+    text: (a, t, th) =>
+      wording() ? `${a} played ${t}'s ${th} the way it was written, and gave it everything` : `${a} played ${t}'s ${th} as if it were ${a}'s own`,
     evidence: { modesty: 0.8, flexibility: 0.4 },
     like: 0.25,
     trust: 0.15,
