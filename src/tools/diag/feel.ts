@@ -68,11 +68,11 @@ interface WorldOut {
 
 // The key of the reason a decision gave first, if any (the situation's own cause carries none).
 const topKey = (e: Event) => e.causes.find(c => c.key && !c.key.startsWith('against:'))?.key;
-const feltKey = (k?: string) => !!k && (k.startsWith('feel:') || k === 'owes' || k === 'owed');
+const feltKey = (k?: string) => !!k && k.startsWith('feel:');
 function named(w: World, e: Event): { ok: boolean; shown: boolean; kind: string } {
   const k = topKey(e)!;
   const c = e.causes.find(x => x.key === k)!;
-  const kind = k.startsWith('feel:') ? k.slice(5) : k;
+  const kind = k.slice(5);
   const re = kind === 'owes' ? /owed @\d+/ : kind === 'owed' ? /@\d+ owed/ : WORDS[kind as Kind];
   return { ok: re.test(c.label) && /@\d+/.test(c.label), shown: shownCauses(e).includes(c), kind };
 }
@@ -118,20 +118,20 @@ function pagesOf(w: World, people: Person[]): Pages & { top25: number; linesX: n
 function runWorld(seed: number, rule: string, years: number): WorldOut {
   const w = buildWorld(seed, 1);
   pickWitness(w);
-  const flips: Record<string, ReturnType<typeof countFlips>> = { all: countFlips(w, '/^(feel:.*|owes|owed)$/') };
+  const flips: Record<string, ReturnType<typeof countFlips>> = { all: countFlips(w, 'feel:*') };
   for (const k of KINDS) flips[k] = countFlips(w, 'feel:' + k);
-  flips.owes = countFlips(w, '/^(owes|owed)$/');
+  flips.owes = countFlips(w, '/^feel:owe[sd]$/');
   const debts: WorldOut['debts'] = { calledIn: 0, asked: 0, answered: 0, paid: 0, own: { severity: [0, 0], humility: [0, 0] } };
   const prev = w.hooks.predict;
   w.hooks.predict = (w2: World, p: Person, options: any[], chosen: string, rec: any) => {
     prev?.(w2, p, options, chosen, rec);
     const has = (id: string) => options.some(o => o.considerations.some((c: any) => c.id === id));
     // A debt called in: a decision of the one owed, with the one who owes them, weighing it; asked when they sought them out.
-    if (has('owed')) {
+    if (has('feel:owed')) {
       debts.calledIn++;
       if (chosen === 'seeking') debts.asked++;
     }
-    if (rec.trigger === 'request-answer' && (has('feel:gratitude') || has('feel:guilt') || has('owes'))) {
+    if (rec.trigger === 'request-answer' && (has('feel:gratitude') || has('feel:guilt') || has('feel:owes'))) {
       debts.answered++;
       if (chosen === 'generosity') debts.paid++;
     }

@@ -325,11 +325,13 @@ function pulls(p: Person, t: Person | undefined, f: Feeling): Family[] {
   return PULLS[f.k];
 }
 
-export function withFeelings(w: World, p: Person, t: Person | undefined, options: Option[]) {
+// A feeling whose cause is the event the situation answers adds nothing: the answer already weighs the act, and the line already says it.
+export function withFeelings(w: World, p: Person, t: Person | undefined, options: Option[], answers?: number) {
   if (!feelingsOn()) return;
   const fams = options.map(o => o.id as Family);
   let debt = false;
   for (const f of bearing(w, p, t)) {
+    if (f.ev === answers) continue;
     const toward = pulls(p, t, f).filter(x => fams.includes(x));
     if (!toward.length || toward.length === fams.length) continue;
     if (f.k === 'gratitude' || f.k === 'guilt') debt = true;
@@ -338,12 +340,12 @@ export function withFeelings(w: World, p: Person, t: Person | undefined, options
   }
   // A debt called in: with the one who owes them, the one owed is pulled toward asking.
   const owed = t && fams.includes('seeking') ? debtOf(w, t, p) : undefined;
-  if (owed && fams.length > 1) add(options, ['seeking'], 'owed', `@${t!.id} owed ${pron(p)} (since ${year(owed.t)})`, 0.85, 'close', p, owed.ev);
+  if (owed && fams.length > 1) add(options, ['seeking'], 'feel:owed', `@${t!.id} owed ${pron(p)} (since ${year(owed.t)})`, 0.85, 'close', p, owed.ev);
   // A debt the feeling no longer carries is still owed: called in, it weighs for the answers that pay it.
   if (!debt && t && p.owes?.to === t.id) {
     const toward = PULLS.gratitude.filter(x => fams.includes(x));
     if (toward.length && toward.length < fams.length)
-      add(options, toward, 'owes', `owed @${t.id} since ${year(p.owes.t)}`, 0.7, 'close', p, p.owes.ev);
+      add(options, toward, 'feel:owes', `owed @${t.id} since ${year(p.owes.t)}`, 0.7, 'close', p, p.owes.ev);
   }
 }
 // One consideration on every answer: as written on those it pulls toward, read the other way on the rest, so it pushes one way.
