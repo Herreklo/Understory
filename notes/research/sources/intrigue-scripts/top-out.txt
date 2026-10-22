@@ -1,0 +1,115 @@
+# Reliability of a version's score
+40b vs M38r40, same 48 pages: r(zadj) = 0.80; r(within-pair difference) = 0.87
+40b vs M38r40opus, same 48 pages: r(zadj) = 0.68; r(within-pair difference) = 0.79
+M38r40 vs M38r40opus, same 48 pages: r(zadj) = 0.78; r(within-pair difference) = 0.84
+between two readers of the same reading, r(z) mean 0.71 (range 0.40 to 0.93, 40 reader pairs over 14 readings)
+
+# Highest-scored versions (order lean taken out; z within reader and reading)
+| reading | pair | ver | arm | name | raw scores | zadj | lines | kinds |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 31 | P07 | A | off | Arthur | 4,4,4 | +2.19 | 79 | 54 |
+| 30 | P03 | B | on | Alice Moore | 4,4,4 | +1.92 | 72 | 53 |
+| 39r | P16 | A | off | Lisa | 4,4,4 | +1.60 | 54 | 39 |
+| 39r | P20 | A | off | Ben Shaw | 4,4,4 | +1.60 | 60 | 44 |
+| 41b | P13 | B | off | Karen | 4,4,4 | +1.55 | 89 | 55 |
+| 29 | P10 | A | on | Eve | 4,4,4 | +1.52 | 75 | 52 |
+| 41r | P21 | A | on | Greta | 4,5,4 | +1.49 | 50 | 33 |
+| 39b | P12 | A | on | Tilly | 4,3,4 | +1.47 | 71 | 43 |
+| 40b | P12 | B | on | Oliver Sayer | 4,4,5 | +1.47 | 107 | 48 |
+| 34 | P08 | A | on | Karen Dale | 4,4,4 | +1.44 | 74 | 53 |
+| 34 | P23 | A | off | Libby Vaughan | 4,4,4 | +1.44 | 78 | 55 |
+| 32 | P11 | A | on | Ben | 3,4,4 | +1.43 | 115 | 72 |
+| 37 | P04 | B | off | Stella | 4,4,4 | +1.42 | 101 | 54 |
+| 37 | P14 | B | off | Sophie | 4,4,4 | +1.42 | 65 | 32 |
+| 37 | P17 | B | on | Terry | 4,4,4 | +1.42 | 118 | 61 |
+
+Versions every reader scored 4 or more (rounds 29-41):
+  31 P07A Arthur [4, 4, 4] zadj +2.19 lines 79
+  30 P03B Alice Moore [4, 4, 4] zadj +1.92 lines 72
+  39r P16A Lisa [4, 4, 4] zadj +1.60 lines 54
+  39r P20A Ben Shaw [4, 4, 4] zadj +1.60 lines 60
+  41b P13B Karen [4, 4, 4] zadj +1.55 lines 89
+  29 P10A Eve [4, 4, 4] zadj +1.52 lines 75
+  41r P21A Greta [4, 4, 5] zadj +1.49 lines 50
+  40b P12B Oliver Sayer [4, 4, 5] zadj +1.47 lines 107
+  34 P08A Karen Dale [4, 4, 4] zadj +1.44 lines 74
+  34 P23A Libby Vaughan [4, 4, 4] zadj +1.44 lines 78
+  37 P04B Stella [4, 4, 4] zadj +1.42 lines 101
+  37 P14B Sophie [4, 4, 4] zadj +1.42 lines 65
+  37 P17B Terry [4, 4, 4] zadj +1.42 lines 118
+  40r P06A Susie Sutton [4, 4, 4] zadj +1.41 lines 86
+  40r P07A Sally [4, 4, 4] zadj +1.41 lines 79
+  41b P18A Tilly [4, 4, 4] zadj +1.34 lines 78
+  41b P21A Olive [4, 4, 4] zadj +1.34 lines 94
+  41b P22A Mark [4, 4, 4] zadj +1.34 lines 60
+  41b P23A Agnes Rudd [4, 4, 4] zadj +1.34 lines 49
+  40b P11A Jonah Kemp [4, 4, 4] zadj +1.34 lines 67
+  40b P19A Libby [4, 4, 4] zadj +1.34 lines 89
+  40b P21A Eric [4, 4, 4] zadj +1.34 lines 77
+  34 P03B Sophie Brook [4, 4, 4] zadj +1.30 lines 70
+  34 P09B Larry [4, 4, 4] zadj +1.30 lines 78
+  34 P13B Eve [4, 4, 4] zadj +1.30 lines 84
+  34 P17B Sally Reed [4, 4, 4] zadj +1.30 lines 108
+  34 P24B Bert Myers [4, 4, 4] zadj +1.30 lines 76
+  37 P03A Sarah [4, 4, 4] zadj +1.14 lines 67
+  37 P05A Leo [4, 4, 4] zadj +1.14 lines 71
+  37 P08A Ellen [4, 4, 4] zadj +1.14 lines 90
+  37 P16A Amelia [4, 4, 4] zadj +1.14 lines 99
+  37 P23A Eve [4, 4, 4] zadj +1.14 lines 79
+  33 P01B Ben [4, 4, 4] zadj +1.11 lines 84
+  33 P02B Grace Shaw [4, 4, 4] zadj +1.11 lines 98
+  33 P03B Alex Eden [4, 4, 4] zadj +1.11 lines 77
+  33 P07B Audrey [4, 4, 4] zadj +1.11 lines 86
+  30 P11A Karen Waller [4, 4, 4] zadj +1.11 lines 85
+  30 P12A Olive [4, 4, 4] zadj +1.11 lines 92
+  40r P01B Stuart [4, 4, 4] zadj +1.11 lines 65
+  40r P04B Harry Sutton [4, 4, 4] zadj +1.11 lines 82
+  40r P13B Una Sayer [4, 4, 4] zadj +1.11 lines 76
+  40r P17B Kate [4, 4, 4] zadj +1.11 lines 77
+  40r P19B Lisa [4, 4, 4] zadj +1.11 lines 25
+  40r P20B Vera [4, 4, 4] zadj +1.11 lines 67
+  40r P24B Ivan [4, 4, 4] zadj +1.11 lines 85
+  41r P07A Larry Fielding [4, 4, 4] zadj +1.10 lines 88
+  41r P17A Andy [4, 4, 4] zadj +1.10 lines 57
+  41r P18A Arthur [4, 4, 4] zadj +1.10 lines 68
+  41r P23A Victor [4, 4, 4] zadj +1.10 lines 55
+  32 P01B Mark [4, 4, 4] zadj +1.08 lines 71
+  32 P08B Lily Ash [4, 4, 4] zadj +1.08 lines 63
+  32 P10B Eric [4, 4, 4] zadj +1.08 lines 111
+  39r P07B Mark Scott [4, 4, 4] zadj +1.07 lines 64
+  39r P10B Amelia [4, 4, 4] zadj +1.07 lines 42
+  39r P11B John [4, 4, 4] zadj +1.07 lines 70
+  39r P15B Terry Vaughan [4, 4, 4] zadj +1.07 lines 70
+  39b P09B Olive [4, 4, 4] zadj +1.05 lines 56
+  39b P19B Freya Moore [4, 4, 4] zadj +1.05 lines 113
+  39b P21B Sophie Myers [4, 4, 4] zadj +1.05 lines 62
+  39b P24B Alan [4, 4, 4] zadj +1.05 lines 50
+  40b P02B Sarah Baker [4, 4, 4] zadj +1.02 lines 61
+  40b P05B Trevor [4, 4, 4] zadj +1.02 lines 82
+  40b P08B Oscar Nash [4, 4, 4] zadj +1.02 lines 84
+  40b P14B Kate Moore [4, 4, 4] zadj +1.02 lines 74
+  40b P24B Toby Dale [4, 4, 4] zadj +1.02 lines 87
+  41r P01B Andy Lane [4, 4, 4] zadj +0.99 lines 61
+  41r P03B Ivy [4, 4, 4] zadj +0.99 lines 63
+  41r P05B Ellen [4, 4, 4] zadj +0.99 lines 49
+  41r P13B Ken [4, 4, 4] zadj +0.99 lines 30
+  41r P16B Hannah [4, 4, 4] zadj +0.99 lines 47
+  41r P19B Sarah [4, 4, 4] zadj +0.99 lines 54
+  29 P02B Libby [4, 4, 4] zadj +0.89 lines 79
+  29 P06B Eric [4, 4, 4] zadj +0.89 lines 49
+  29 P10B Eve [4, 4, 4] zadj +0.89 lines 80
+  29 P11B Jonah Holmes [4, 4, 4] zadj +0.89 lines 64
+
+Any 5s:
+  40b P12B Oliver Sayer by socialworker; all: {'novelist': 4, 'socialworker': 5, 'player': 4}
+  41r P21A Greta by player; all: {'novelist': 4, 'socialworker': 4, 'player': 5}
+
+# Lowest-scored versions
+  40b P23B Hilda Brook raw {'novelist': 1, 'socialworker': 2, 'player': 2} zadj -2.10 lines 70
+  40r P21A Gary raw {'novelist': 1, 'socialworker': 1, 'player': 1} zadj -2.22 lines 19
+  M38null P18B Hal raw {'novelist': 2, 'player': 2} zadj -2.27 lines 58
+  39r P22B Toby raw {'novelist': 1, 'socialworker': 1, 'player': 1} zadj -2.48 lines 3
+  41r P02A Hal raw {'novelist': 1, 'socialworker': 1, 'player': 1} zadj -2.50 lines 2
+  41r P06A Molly raw {'novelist': 1, 'socialworker': 1, 'player': 1} zadj -2.50 lines 3
+  40r P10B Ivy raw {'novelist': 1, 'socialworker': 1, 'player': 1} zadj -2.53 lines 6
+  41r P23B Victor raw {'novelist': 1, 'socialworker': 1, 'player': 1} zadj -2.62 lines 3

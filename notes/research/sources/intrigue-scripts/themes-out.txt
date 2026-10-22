@@ -1,0 +1,89 @@
+# Citations by kind of line
+unmatched citations: old brief 0, M38 0
+
+## Citations per 100 line-readings, by kind of line: rounds 29-41, old brief (up to 3 faults, up to 2 good, quoted; 504 versions, 3 readers)
+| kind of line | lines | share | good | unfit reason | repeat | out of nowhere | false line | wording |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| all lines | 31984 | 100% | 3.0 | 1.3 | 1.0 | 0.6 | 1.2 | 0.6 |
+| other act | 7692 | 24.0% | 4.8 | 1.5 | 1.2 | 1.0 | 1.9 | 0.8 |
+| conflict | 4202 | 13.1% | 3.6 | 1.2 | 1.2 | 0.4 | 0.8 | 0.5 |
+| small kindness | 3758 | 11.7% | 1.9 | 0.6 | 0.3 | 0.1 | 0.7 | 0.3 |
+| habit/persona | 2837 | 8.9% | 2.4 | 0.6 | 1.0 | 0.4 | 1.4 | 0.9 |
+| band routine | 2557 | 8.0% | 0.4 | 0.7 | 1.1 | 0.0 | 0.2 | 0.1 |
+| town calendar | 1996 | 6.2% | 1.4 | 0.9 | 2.7 | 0.4 | 0.5 | 0.5 |
+| friend made | 1863 | 5.8% | 1.0 | 0.3 | 0.4 | 0.1 | 0.7 | 0.8 |
+| secret / confiding | 1072 | 3.4% | 3.1 | 2.1 | 1.2 | 1.2 | 0.7 | 0.3 |
+| friend renewed | 1066 | 3.3% | 1.1 | 0.4 | 0.2 | 0.3 | 0.9 | 0.3 |
+| want: start or end | 1000 | 3.1% | 0.9 | 1.5 | 1.4 | 0.7 | 3.7 | 0.9 |
+| friend ended | 986 | 3.1% | 3.0 | 2.8 | 0.8 | 1.4 | 0.9 | 1.7 |
+| lost out | 958 | 3.0% | 7.1 | 2.6 | 0.8 | 0.8 | 2.6 | 0.2 |
+| let down | 695 | 2.2% | 5.6 | 5.9 | 0.1 | 0.3 | 0.7 | 0.0 |
+| job turn | 366 | 1.1% | 6.3 | 1.5 | 0.0 | 1.0 | 3.8 | 0.8 |
+| partner turn | 274 | 0.9% | 5.4 | 5.7 | 1.0 | 1.5 | 3.0 | 0.6 |
+| illness | 247 | 0.8% | 2.4 | 0.0 | 0.4 | 1.6 | 0.8 | 0.0 |
+| birth | 184 | 0.6% | 0.0 | 0.0 | 0.0 | 0.0 | 0.5 | 0.2 |
+| death | 143 | 0.4% | 3.0 | 0.0 | 0.0 | 3.3 | 0.5 | 1.6 |
+| want resolved | 52 | 0.2% | 1.9 | 0.0 | 1.9 | 2.6 | 2.6 | 1.3 |
+| home turn | 36 | 0.1% | 3.7 | 0.0 | 1.9 | 0.0 | 8.3 | 0.0 |
+
+## Citations per 100 line-readings, by kind of line: M38 null and the re-read of round 40's busiest (every fault, by line; 96 versions, 2 readers)
+| kind of line | lines | share | good | unfit reason | repeat | out of nowhere | false line | wording |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| all lines | 7367 | 100% | 2.5 | 3.4 | 4.0 | 1.3 | 2.2 | 1.0 |
+| other act | 1671 | 22.7% | 5.4 | 2.9 | 3.8 | 1.4 | 2.8 | 1.6 |
+| conflict | 885 | 12.0% | 3.3 | 3.3 | 3.0 | 0.7 | 2.9 | 1.6 |
+| small kindness | 748 | 10.2% | 1.3 | 1.6 | 1.3 | 0.1 | 0.9 | 1.1 |
+| band routine | 742 | 10.1% | 0.2 | 3.3 | 2.4 | 0.2 | 1.3 | 0.2 |
+| habit/persona | 647 | 8.8% | 2.0 | 0.6 | 4.9 | 2.3 | 1.5 | 1.2 |
+| town calendar | 599 | 8.1% | 1.0 | 4.3 | 11.6 | 0.7 | 0.8 | 0.0 |
+| friend made | 472 | 6.4% | 1.2 | 1.2 | 0.8 | 0.2 | 1.3 | 0.7 |
+| want: start or end | 240 | 3.3% | 0.2 | 2.5 | 13.1 | 2.3 | 7.5 | 0.2 |
+| secret / confiding | 240 | 3.3% | 1.9 | 3.1 | 6.7 | 1.0 | 1.0 | 2.1 |
+| friend ended | 237 | 3.2% | 4.0 | 20.3 | 2.5 | 6.5 | 1.9 | 1.5 |
+| friend renewed | 233 | 3.2% | 0.6 | 0.6 | 1.1 | 3.0 | 3.6 | 0.0 |
+| lost out | 210 | 2.9% | 3.3 | 4.8 | 5.0 | 2.9 | 2.1 | 0.0 |
+| let down | 155 | 2.1% | 1.0 | 15.8 | 1.9 | 0.0 | 1.3 | 0.0 |
+| job turn | 90 | 1.2% | 2.8 | 2.2 | 0.0 | 3.3 | 6.7 | 0.0 |
+| partner turn | 71 | 1.0% | 4.9 | 4.9 | 0.7 | 2.1 | 1.4 | 2.1 |
+| illness | 49 | 0.7% | 0.0 | 0.0 | 0.0 | 0.0 | 3.1 | 0.0 |
+| death | 29 | 0.4% | 0.0 | 0.0 | 0.0 | 3.4 | 0.0 | 3.4 |
+| birth | 22 | 0.3% | 0.0 | 0.0 | 0.0 | 0.0 | 2.3 | 0.0 |
+| home turn | 18 | 0.2% | 0.0 | 0.0 | 16.7 | 0.0 | 11.1 | 0.0 |
+| want resolved | 9 | 0.1% | 5.6 | 0.0 | 5.6 | 0.0 | 0.0 | 0.0 |
+
+## A reader's score (z) on its own fault counts in that version, with lines/10, kinds/10 and order as terms: M38 null + r40 re-read (every-fault brief, counts not capped) (192 reader-versions)
+| term | z per fault (or per good line) | mean count a version |
+| --- | --- | --- |
+| unfit reason | -0.033 | 2.62 |
+| repeat | -0.111 | 3.09 |
+| out of nowhere | -0.054 | 0.98 |
+| false line | -0.016 | 1.67 |
+| wording | +0.004 | 0.77 |
+| good lines given | +1.027 | 1.94 |
+
+## A reader's score (z) on its own fault counts in that version, with lines/10, kinds/10 and order as terms: rounds 37-41 (old brief, faults capped at 3) (1008 reader-versions)
+| term | z per fault (or per good line) | mean count a version |
+| --- | --- | --- |
+| unfit reason | +0.020 | 0.81 |
+| repeat | -0.251 | 0.62 |
+| out of nowhere | -0.170 | 0.38 |
+| false line | -0.074 | 0.75 |
+| wording | +0.109 | 0.38 |
+| good lines given | +1.056 | 1.88 |
+
+## Most cited lines, by citation and kind of line (rounds 29-41, normalised text, count)
+- good / death: X died of a sudden heart attack, aged N. (9) || X died after a long illness, aged N. (3) || X died in her sleep, aged N. (1)
+- good / secret / confiding: X finally told X what had been kept back. (25) || X kept it to herself. (18) || The harbour day was chaos: nobody knew where the tables were, and X was nowhere to be found. (14) || X told X everything, the parts nobody else knew. (11)
+- good / conflict: X made a joke at X's expense, and nobody laughed. (49) || X froze X out for weeks. (23) || X stopped answering and stared at the television until X gave up. (19) || X pulled the face that always ended these, and X laughed despite herself. (17)
+- good / other act: X started drinking more than was good for her. (39) || X decided to stay with X and give it another go. (38) || X went in after X without a ORD's thought. (37) || X told X it was over. (36)
+- good / small kindness: X looked in on X most days. (37) || X kept turning up at X's door with something or other. (25) || X came round to see X every week. (25) || X rang X and talked for an hour. (19)
+- out of nowhere / other act: X took it badly, and let everyone see it. (28) || X went to X and apologised. (16) || X stopped drinking. (15) || X tells the story of the day she froze better than anyone, and always against herself. (15)
+- out of nowhere / conflict: X are both after the foreman's job, and it shows. (8) || X took X aside after practice: one more row and BAND would be done with her. (6) || X sulked about it for month. (6) || X can't stand X. (4)
+- out of nowhere / friend ended: X stopped seeing each other, and that was that. (17) || X lost touch. (10) || X drifted out of each other's lives. (9) || X stopped trying to reach X. (6)
+- repeat / band routine: X brought a song to BAND, "T", and it did not come to much. (24) || BAND played the Anchor; X froze and the rest fell apart around her. (20) || X brought a song to BAND, "T", and everyone knew at once it was the best thing they had. (14) || X brought a song to BAND, "T", and it was good. (7)
+- repeat / town calendar: The summer festival that X put on was the best night the town had had in year. (74) || X told X to count her in for the summer festival. (57) || The council said yes to X's summer festival. (7) || The harbour day ran like clockwork; X had a list for everything. (5)
+- repeat / conflict: X took the credit for N year that X had carried. (12) || X said, not quite joking, that she could play the open night if she wanted to. (8) || X picked holes in X's work in front of everyone. (6) || X let X take the blame for a mistake at work. (6)
+- unfit reason / small kindness: X was at X's side within the hour. (11) || X gave X help without being asked twice. (10) || X cleared her week for X. (7) || X had promised X to put in a word for them, and did it. (7)
+- unfit reason / conflict: X let X take the blame for a mistake at work. (25) || X took the credit for N year that X had carried. (20) || X made a joke at X's expense, and nobody laughed. (11) || X picked holes in X's work in front of everyone. (8)
+- false line / habit/persona: X has been taking on everything nobody else wants. (7) || X is no longer at the Anchor every Friday without fail. (7) || X has been ORD in and last out for month. (7) || X would not go out on the water when the wind was up. (6)
+- false line / secret / confiding: X has not been herself for month; she keeps to herself and people have started to notice. (9) || X came through it, after N year of badly in debt. (3) || X told X everything was fine, when it wasn't. (3) || X found out what X had been saying about "T". (2)
