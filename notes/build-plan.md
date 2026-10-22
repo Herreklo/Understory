@@ -101,6 +101,7 @@ Each round claims an effect on how a page reads, so each is an experiment. None 
 **G1. The wording round** (Next 2; exit 3).
 
 - **What:** reasons worded by the expression chosen, from the table of 279 expression–facet pairs in `families.ts`, worst pairs and `backsong` first, until reach on held-out pages passes 50%. A history reason carries its event inside it.
+- **Amended 22 October (its design, #89):** the cells (act, facet, pole, form) are fixed by a rule on null and r40, three or more unfit faults, and round 41's pages are consulted once. Iterating to a held-out target would make those pages in-sample. 44 cells reach 64% of the 434, 60% held out (`reports/43w-size.md`). History reasons wait for G3: they are faulted at the base rate, and a reason that recalls an event is G3's callback.
 - **Why not capped at 22 pairs:** they alone reach 43% of the 434 faulted lines, under the note's own stop at 50%.
 - **Primary counter:** unfit reasons cited on the changed lines, on against off. The score cannot see it.
 - **The last round on reasons:** if it stops or is not kept, reasons rest.
@@ -219,6 +220,7 @@ On 22 October Øystein left the decisions to the lead session ("you do what you 
 4. **The felt question (M39)** goes in the brief, as a check, calibrated on round 40 and the planted pack.
 5. **The human test by 12 November:** at least five outsiders, part of round 40's busiest pack, exit point 5's bar, with the felt question. Only Øystein can find the readers.
 6. **The wording round is not capped at 22 pairs,** since they reach 43% of faulted lines, under the note's own 50% stop. It words pairs worst first until reach on held-out pages (round 41's) passes the stop, up to the full table of 279. Its design job settles the number.
+   _Amended 22 October by the round's design (#89):_ the cells are fixed by a rule on in-sample pages and round 41's consulted once, so held-out reach is a check, not a target: 44 cells, 60% held out. Its reading needs 48 pairs on the same lives, not decision 2's 24: 24 pairs see half the drop 71% of the time, 48 pairs 94%.
 7. **The reviewer stays on Fable 5.1.** Sonnet is cheaper, but quality decides the model, and the reviewer is what stops a failed round before it costs a reading.
 8. **The repo structure** of the first plan, with packs made in phase C.
 9. **The register may pull one arc forward,** P7 likeliest, never displacing an open round.
