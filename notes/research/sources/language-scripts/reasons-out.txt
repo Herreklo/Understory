@@ -1,0 +1,17 @@
+reason segments 7469; in a within-version repeat 4974 (67%)
+  206 they genuinely like each other
+  188 likes things done properly and on time
+  165 X has started telling people she means to put on a summer festival on the quay.
+  145 thinks the world of X
+  115 felt it was owed
+  111 together since Y
+  98 could not stand to see X go without
+  95 X got the job.
+  93 they stopped seeing each other
+  92 has energy for everything
+  90 does not like to judge
+  78 will not leave a job half done
+  69 could wait it out
+  66 had an idea of her own
+  66 a real gift
+distinct normalised lines per version / lines: 79%

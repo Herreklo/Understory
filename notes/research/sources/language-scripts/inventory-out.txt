@@ -1,0 +1,44 @@
+families.ts: 115 expressions (3 quiet, never logged), 148 wordings; one wording 100, several 15
+  several: [('cold', 3), ('confide', 3), ('ownup', 3), ('sulk', 3), ('swallow', 3), ('show', 3), ('absent', 3), ('chipin', 3), ('visit', 3), ('criticise', 4), ('soften', 3), ('defend', 4), ('stonewall', 4), ('repairjoke', 3), ('hearout', 3)]
+literals with a person token, by file (engine, not tools): 550
+   148 src/families.ts
+    79 src/time.ts
+    37 src/group.ts
+    33 src/steer.ts
+    27 src/love.ts
+    27 src/social.ts
+    19 src/drama.ts
+    18 src/work.ts
+    17 src/coarse.ts
+    14 src/migration.ts
+    13 src/projects.ts
+    13 src/threads.ts
+    13 src/telling.ts
+    13 src/romance.ts
+    11 src/effects.ts
+    10 src/body.ts
+     8 src/grammar.ts
+     7 src/carry.ts
+     6 src/stress.ts
+     6 src/persona.ts
+     5 src/aftermath.ts
+     4 src/yearly.ts
+     3 src/situations/yearly.ts
+     2 src/app.ts
+     2 src/situations/raised.ts
+     2 src/situations/hometruth.ts
+     2 src/situations/index.ts
+     1 src/occasions.ts
+     1 src/money.ts
+     1 src/witness.ts
+src/grammar.ts: 16 template literals, 160 quoted phrases (12+ chars with a space)
+src/telling.ts: 27 template literals, 43 quoted phrases (12+ chars with a space)
+src/families.ts: 149 template literals, 295 quoted phrases (12+ chars with a space)
+src/page.ts: 6 template literals, 9 quoted phrases (12+ chars with a space)
+src/witness.ts: 3 template literals, 55 quoted phrases (12+ chars with a space)
+src/setting.ts: 2 template literals, 375 quoted phrases (12+ chars with a space)
+motives.json: facets 25 phrase leaves (for/against, all poles and kinds): 198 top-level keys ['about', 'voices', 'facets']
+  wordings per facet pole (generic + by kind): {1: 23, 2: 15, 3: 7, 4: 1, 5: 3, 6: 1}
+setting.ts material (quirk fillers): 160 items
+setting.ts habits: 15
+setting.ts loves: 27
