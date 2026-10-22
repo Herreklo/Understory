@@ -76,7 +76,7 @@ Neither project has anything to play. Phase A can run for weeks with nothing a p
 
 Four arcs, each starting with research, at most two full rounds each.
 
-1. **Consequences that reach:** obligation owed and called in, and shared hardship, where one blow binds or splits the people it hits. Moves exit points 2 (reach, 7% today, 15% needed) and 1.
+1. **Consequences that reach:** shared hardship first, where one blow binds or splits the people it hits. Death is the template: the one blow that reaches (88% of deaths reach 4.1 people on average), while blows people survive reach almost no one. Obligation follows only once a calling-in can be seen: a promise coming due makes no turn and no reach today, and the witness knows 3% of them (`reports/density-22oct.md`). Moves exit points 2 (reach, 7% today, 15% needed) and 1.
 2. **Close ties,** starting from the moments a tie is tested: a blow, an ask, a move. A ledger read everywhere decided under 1% of choices (round 32). Moves exit point 1.
 3. **Organisations:** norms held in members' beliefs (`notes/organisations-concept.md`), first the row escalation made each group's own, tried in the band for a year. It grows out of the slice's band. Moves exit points 9, 1 and 8.
 4. **Wants for the quiet majority:** doors for later life (round 43). Moves exit point 2.
@@ -87,6 +87,8 @@ Four arcs, each starting with research, at most two full rounds each.
 
 - **Brings closer** the band manager, hotel, life simulation, football, union, festival and the kingpin. Of the 27 ideas, 13 need consequences, 10 close ties, 7 organisations, 5 wants.
 - **Costs** six to eight rounds, a third likely stopped at sizing: about five one-pack and two two-pack readings, some 36 sittings. Four decisions: each arc's branches.
+
+The density measure (`reports/density-22oct.md`) backs the order. Friendship repair and cooling make the most knowable turns but reach no one outside the pair, so close ties raise what a player can act on, not exit point 2. Reach comes from positions others depend on (a promotion, a step-down, a plan), which is organisations' ground. Two thirds of knowable turns follow no weighty event, so a consequence arc moves the rate a player sees only if its blows end in turns of their own.
 
 Round 43 goes last: it is the third try at wants (25d, 36), and wants serve the fewest ideas.
 
