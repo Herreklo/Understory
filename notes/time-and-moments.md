@@ -21,6 +21,8 @@ Rules for a focus period:
 
 Talk of the Town did this (fine simulation near the player, coarse elsewhere) and its lesson holds: the levels must agree, or the town changes when you look at it.
 
+Rain World (2017) shows it can feel like one living world. Creatures near the player run in full; the rest move between rooms and dens as a cheaper sketch, and become full when the player arrives. Players describe the whole ecosystem as simulated live, because the seam does not show: what they walk into always looks like it had a past. That is the game argument for this arc. Today an event is a point in a month, so nothing is ever in progress; a player who arrives on a Tuesday cannot walk into a row half-way through. Scenes and the focus period give events a place, people present and a duration a player can arrive in the middle of.
+
 ## The arc, in order
 
 | Step | What                                                                                                                          | Measured by                                  | Size                                 |
