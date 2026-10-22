@@ -1,0 +1,41 @@
+20 worlds x 8 present years; mean town 83 people. Rates per world-decade (±95%).
+kind                                                               n        /decade  leads   turn  known
+1 rivalry declared (rivals)                                       92      5.8 ± 1.4    72%    18%    64%
+1 contest for a post/place (contest, passed)                     212     13.2 ± 2.9    62%    22%    79%
+2 betrayal: confidence told and it got back                       25      1.6 ± 0.6    60%    20%    64%
+2 betrayal: scheme against rival found out                        27      1.7 ± 0.8    90%    40%   100%
+2 hostile act by a friend/partner/kin (not a row)                623     38.9 ± 4.4    38%     6%    35%
+3 secret made (skim, liecover, blame, allfine, whisper)          472     29.5 ± 3.2    47%    13%     8%
+3 secret out: caught at work                                     109      6.8 ± 1.5    89%    12%    77%
+3 secret confided                                                283     17.7 ± 2.9    73%     3%     7%
+3 confidant tells/confronts                                       49      3.1 ± 0.8    68%    10%     6%
+4 promise due: kept                                             1213     75.8 ± 4.8     7%     2%     3%
+4 promise due: broken (slip)                                     388     24.2 ± 3.5    12%     3%     6%
+4 ill parent: came / stayed away                                 503     31.4 ± 4.6     8%     0%     3%
+5 asked for help and refused (request-answer)                    105      6.6 ± 1.6    43%     4%     5%
+5 ... refused by friend/kin/partner                               64      4.0 ± 1.2    41%     7%     8%
+5 pursuit rebuffed / want failed / setback                       163     10.2 ± 2.1    45%     0%    59%
+5 plan turned down by council / plan failed                       32      2.0 ± 1.0    38%    12%    94%
+6 rivalry or split with 2+ friends of both                       360     22.5 ± 4.7    70%    42%    81%
+7 retaliation: hostile act citing target's earlier act           490     30.6 ± 5.3    41%     9%    47%
+7 grudge acts (grudge situation)                                 425     26.6 ± 6.0    67%    34%     9%
+9 newcomer arrived                                                99      6.2 ± 1.7    79%     6%    97%
+9 newcomer welcomed / cooled to                                  300     18.8 ± 4.2     3%     3%    80%
+10 succession: promoted                                          126      7.9 ± 1.3    82%    78%    98%
+10 succession: stepped down                                       70      4.4 ± 1.1    94%    80%   100%
+11 temptation: took / lied / blamed another                      326     20.4 ± 2.1    48%     5%     6%
+11 temptation: owned up                                          432     27.0 ± 2.4     0%     0%     2%
+12 friendship ended (cooled)                                     666     41.6 ± 4.5    64%    44%    79%
+12 made up / mended                                              426     26.6 ± 3.4    86%    79%    57%
+12 came home after leaving                                        75      4.7 ± 1.2    50%     6%    97%
+13 rescue in danger                                               46      2.9 ± 1.4    32%    20%    70%
+13 stayed for the group / stepped up                             155      9.7 ± 0.5    96%     6%    77%
+15 death                                                          97      6.1 ± 1.2    88%    62%    99%
+15 loss situation answered                                       782     48.9 ± 4.0     8%     0%     5%
+
+8 fall and recovery: 342 blows (first 5 years); a rise for the same person within 36 months 56% (base rate for anyone active, 36 months: 30%); the rise descends from the blow 3%
+state: adult-months holding a secret 12.7%; holding a promise 3.4%
+rivalries begun in the present, by stake and source: {('post', 'season'): 61, ('grudge', 'season'): 72, ('post', 'open'): 31, ('grudge', 'band'): 8, ('trade', 'season'): 2}
+their outcomes: {'turned': 15, 'parted': 41, 'peace': 41, 'won': 10, 'conceded': 22, None: 44, 'cooled': 1}
+6 split/rivalry/betrayal with 2+ friends of both: 39 (first 5 years); a decision by someone outside the pair cites it: 23%
+3 secret acts in the first 5 years: 300; come out by the end of year 8 (caught, told, found): 29%
