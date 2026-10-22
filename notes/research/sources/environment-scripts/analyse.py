@@ -105,3 +105,6 @@ ex = collections.Counter()
 for meta, _ in worlds: ex.update(meta['exposed'])
 A = sum(m['adults'] for m, _ in worlds)
 print('\nExposed adults at the end (share of adults, mean per world): ' + '; '.join(f'{k} {v/A:.0%} ({v/NW:.1f})' for k, v in ex.items()))
+per = [m['exposed']['oldOrIll'] for m, _ in worlds]
+mu = sum(per) / NW; sd = (sum((x - mu) ** 2 for x in per) / (NW - 1)) ** 0.5
+print(f'Old (75+) or ill, the union: {mu:.1f} ±{1.96 * sd / NW ** 0.5:.1f} a world (range {min(per)}–{max(per)})')

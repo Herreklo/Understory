@@ -61,6 +61,7 @@ for (let seed = A; seed <= B; seed++) {
     friendless: adults.filter(p => !p.friends?.size).length,
     aloneFriendless: alone.filter(p => !p.friends?.size).length,
     aloneOld: alone.filter(p => yrs(p) >= 75).length,
+    oldOrIll: adults.filter(p => yrs(p) >= 75 || p.ill > 0).length, // the set a power cut or a hard winter would expose
   };
   const meta = { seed, t0, months: years * 12, pop0, pop: live(w).length, adults: adults.length, wit: wit.id, harbour, exposed, portraits: portraits.filter(x => x.lines.length) };
   writeFileSync(`${out}/${seed}.jsonl`, JSON.stringify(meta) + '\n' + rows.map(r => JSON.stringify(r)).join('\n') + '\n');

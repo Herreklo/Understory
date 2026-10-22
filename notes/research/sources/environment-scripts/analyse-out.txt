@@ -4,10 +4,10 @@ Rates per world-decade, 95% interval over worlds.
 Storm months that reached someone: 3.1 ±0.7 a world-decade; harbour workers in a month: mean 5.6 (0 in 0% of months)
   deciders per storm: mean 5.5; storms where everyone hung back (so "the others went out" is false): 5 of 62 (8%)
 storm: went out (risk, go)                                    6.8 ± 2.0  leads   2%  turn   0%  witness  72%  town knows  23%
-                                                             descendants within 36 months (share of sources): ill 1%, quietgive 1%, token 1%, pitchin 1%
+                                                             descendants within 36 months (share of sources): ill 1%, token 1%, quietgive 1%, pitchin 1%
 storm: hung back (risk, hangback)                            10.1 ± 2.6  leads   0%  turn   0%  witness  77%  town knows  24%
 storm: hurt by the wave (ill citing a go)                     0.2 ± 0.2  leads 100%  turn   0%  witness 100%  town knows  78%
-                                                             descendants within 36 months (share of sources): quietgive 100%, token 100%
+                                                             descendants within 36 months (share of sources): token 100%, quietgive 100%
 accident at work (danger source)                              1.6 ± 0.5  leads 100%  turn  53%  witness  94%  town knows  81%
                                                              descendants within 36 months (share of sources): froze 100%, rescue 95%, letgo 74%, chipin 74%, token 74%, friends 47%
 accident: went in (rescue)                                    2.8 ± 1.2  leads  40%  turn  29%  witness  70%  town knows  22%
@@ -23,4 +23,5 @@ Events naming 3+ people: 119.7 ±23.9 a world-decade; commonest kinds: group:wor
 
 Adults whose portrait names weather: 408 of 1331 (31%); lines by kind: loves "storms, from inside" / "the first snow" 184; proud of "the day in the storm" (a rescue at work) 151; a quirk or habit naming weather 119
 
-Exposed adults at the end (share of adults, mean per world): old 20% (13.1); ill 3% (1.9); alone 36% (23.7); friendless 12% (8.0); aloneFriendless 8% (5.0); aloneOld 9% (6.2)
+Exposed adults at the end (share of adults, mean per world): old 20% (13.1); ill 3% (1.9); alone 36% (23.7); friendless 12% (8.0); aloneFriendless 8% (5.0); aloneOld 9% (6.2); oldOrIll 21% (13.8)
+Old (75+) or ill, the union: 13.8 ±1.2 a world (range 10–19)
