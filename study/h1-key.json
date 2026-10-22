@@ -1,0 +1,678 @@
+{
+ "page": "a74182c1",
+ "rule": "study/h1.md",
+ "pairs": {
+  "H01": {
+   "source": "r40",
+   "pack": "40-reading-busiest",
+   "pair": "P23",
+   "flipped": true,
+   "arm": {
+    "A": "on",
+    "B": "off"
+   },
+   "model": {
+    "majority": "B",
+    "clear": true,
+    "unanimous": true,
+    "roles": 3,
+    "forIt": 3,
+    "margin": 1
+   },
+   "lines": {
+    "A": 70,
+    "B": 76
+   },
+   "kinds": {
+    "A": 33,
+    "B": 44
+   },
+   "linesAminusB": -6,
+   "kindsAminusB": -11
+  },
+  "H02": {
+   "source": "length",
+   "pack": "31-reading",
+   "pair": "P12",
+   "flipped": false,
+   "arm": {
+    "A": "off",
+    "B": "on"
+   },
+   "model": {
+    "majority": "B",
+    "clear": false,
+    "unanimous": true,
+    "roles": 3,
+    "forIt": 3,
+    "margin": 0.67
+   },
+   "lines": {
+    "A": 57,
+    "B": 44
+   },
+   "kinds": {
+    "A": 33,
+    "B": 33
+   },
+   "linesAminusB": 13,
+   "kindsAminusB": 0
+  },
+  "H03": {
+   "source": "r40",
+   "pack": "40-reading-busiest",
+   "pair": "P07",
+   "flipped": true,
+   "arm": {
+    "A": "on",
+    "B": "off"
+   },
+   "model": {
+    "majority": "A",
+    "clear": true,
+    "unanimous": true,
+    "roles": 3,
+    "forIt": 3,
+    "margin": 2
+   },
+   "lines": {
+    "A": 106,
+    "B": 29
+   },
+   "kinds": {
+    "A": 59,
+    "B": 16
+   },
+   "linesAminusB": 77,
+   "kindsAminusB": 43
+  },
+  "H04": {
+   "source": "null",
+   "pack": "M38-reading-null",
+   "pair": "P18",
+   "flipped": true,
+   "arm": {
+    "A": "null",
+    "B": "null"
+   },
+   "model": {
+    "majority": "B",
+    "clear": true,
+    "unanimous": true,
+    "roles": 2,
+    "forIt": 2,
+    "margin": 1
+   },
+   "lines": {
+    "A": 58,
+    "B": 83
+   },
+   "kinds": {
+    "A": 35,
+    "B": 46
+   },
+   "linesAminusB": -25,
+   "kindsAminusB": -11
+  },
+  "H05": {
+   "source": "r40",
+   "pack": "40-reading-busiest",
+   "pair": "P13",
+   "flipped": true,
+   "arm": {
+    "A": "on",
+    "B": "off"
+   },
+   "model": {
+    "majority": "A",
+    "clear": true,
+    "unanimous": true,
+    "roles": 3,
+    "forIt": 3,
+    "margin": 1
+   },
+   "lines": {
+    "A": 71,
+    "B": 70
+   },
+   "kinds": {
+    "A": 46,
+    "B": 37
+   },
+   "linesAminusB": 1,
+   "kindsAminusB": 9
+  },
+  "H06": {
+   "source": "length",
+   "pack": "29-reading",
+   "pair": "P07",
+   "flipped": false,
+   "arm": {
+    "A": "on",
+    "B": "off"
+   },
+   "model": {
+    "majority": "A",
+    "clear": false,
+    "unanimous": false,
+    "roles": 3,
+    "forIt": 2,
+    "margin": -0.33
+   },
+   "lines": {
+    "A": 55,
+    "B": 72
+   },
+   "kinds": {
+    "A": 39,
+    "B": 41
+   },
+   "linesAminusB": -17,
+   "kindsAminusB": -2
+  },
+  "H07": {
+   "source": "r40",
+   "pack": "40-reading-busiest",
+   "pair": "P08",
+   "flipped": true,
+   "arm": {
+    "A": "on",
+    "B": "off"
+   },
+   "model": {
+    "majority": "A",
+    "clear": true,
+    "unanimous": true,
+    "roles": 3,
+    "forIt": 3,
+    "margin": 2
+   },
+   "lines": {
+    "A": 84,
+    "B": 48
+   },
+   "kinds": {
+    "A": 52,
+    "B": 22
+   },
+   "linesAminusB": 36,
+   "kindsAminusB": 30
+  },
+  "H08": {
+   "source": "null",
+   "pack": "M38-reading-null",
+   "pair": "P07",
+   "flipped": false,
+   "arm": {
+    "A": "null",
+    "B": "null"
+   },
+   "model": {
+    "majority": "A",
+    "clear": false,
+    "unanimous": true,
+    "roles": 2,
+    "forIt": 2,
+    "margin": 0
+   },
+   "lines": {
+    "A": 94,
+    "B": 60
+   },
+   "kinds": {
+    "A": 54,
+    "B": 37
+   },
+   "linesAminusB": 34,
+   "kindsAminusB": 17
+  },
+  "H09": {
+   "source": "r40",
+   "pack": "40-reading-busiest",
+   "pair": "P18",
+   "flipped": true,
+   "arm": {
+    "A": "off",
+    "B": "on"
+   },
+   "model": {
+    "majority": "A",
+    "clear": true,
+    "unanimous": true,
+    "roles": 3,
+    "forIt": 3,
+    "margin": 1
+   },
+   "lines": {
+    "A": 54,
+    "B": 62
+   },
+   "kinds": {
+    "A": 32,
+    "B": 41
+   },
+   "linesAminusB": -8,
+   "kindsAminusB": -9
+  },
+  "H10": {
+   "source": "length",
+   "pack": "32-reading",
+   "pair": "P08",
+   "flipped": false,
+   "arm": {
+    "A": "off",
+    "B": "on"
+   },
+   "model": {
+    "majority": "B",
+    "clear": true,
+    "unanimous": true,
+    "roles": 3,
+    "forIt": 3,
+    "margin": 1
+   },
+   "lines": {
+    "A": 78,
+    "B": 63
+   },
+   "kinds": {
+    "A": 39,
+    "B": 38
+   },
+   "linesAminusB": 15,
+   "kindsAminusB": 1
+  },
+  "H11": {
+   "source": "r40",
+   "pack": "40-reading-busiest",
+   "pair": "P11",
+   "flipped": false,
+   "arm": {
+    "A": "on",
+    "B": "off"
+   },
+   "model": {
+    "majority": "A",
+    "clear": true,
+    "unanimous": true,
+    "roles": 3,
+    "forIt": 3,
+    "margin": 1
+   },
+   "lines": {
+    "A": 67,
+    "B": 71
+   },
+   "kinds": {
+    "A": 48,
+    "B": 43
+   },
+   "linesAminusB": -4,
+   "kindsAminusB": 5
+  },
+  "H12": {
+   "source": "null",
+   "pack": "M38-reading-null",
+   "pair": "P08",
+   "flipped": true,
+   "arm": {
+    "A": "null",
+    "B": "null"
+   },
+   "model": {
+    "majority": "A",
+    "clear": false,
+    "unanimous": true,
+    "roles": 2,
+    "forIt": 2,
+    "margin": 0
+   },
+   "lines": {
+    "A": 74,
+    "B": 81
+   },
+   "kinds": {
+    "A": 47,
+    "B": 41
+   },
+   "linesAminusB": -7,
+   "kindsAminusB": 6
+  },
+  "H13": {
+   "source": "r40",
+   "pack": "40-reading-busiest",
+   "pair": "P21",
+   "flipped": false,
+   "arm": {
+    "A": "on",
+    "B": "off"
+   },
+   "model": {
+    "majority": "A",
+    "clear": true,
+    "unanimous": true,
+    "roles": 3,
+    "forIt": 3,
+    "margin": 1.33
+   },
+   "lines": {
+    "A": 77,
+    "B": 63
+   },
+   "kinds": {
+    "A": 45,
+    "B": 35
+   },
+   "linesAminusB": 14,
+   "kindsAminusB": 10
+  },
+  "H14": {
+   "source": "length",
+   "pack": "34-reading",
+   "pair": "P18",
+   "flipped": true,
+   "arm": {
+    "A": "on",
+    "B": "off"
+   },
+   "model": {
+    "majority": "B",
+    "clear": false,
+    "unanimous": false,
+    "roles": 3,
+    "forIt": 2,
+    "margin": 0.67
+   },
+   "lines": {
+    "A": 63,
+    "B": 77
+   },
+   "kinds": {
+    "A": 46,
+    "B": 44
+   },
+   "linesAminusB": -14,
+   "kindsAminusB": 2
+  },
+  "H15": {
+   "source": "r40",
+   "pack": "40-reading-busiest",
+   "pair": "P12",
+   "flipped": true,
+   "arm": {
+    "A": "on",
+    "B": "off"
+   },
+   "model": {
+    "majority": "A",
+    "clear": true,
+    "unanimous": true,
+    "roles": 3,
+    "forIt": 3,
+    "margin": 2.33
+   },
+   "lines": {
+    "A": 107,
+    "B": 40
+   },
+   "kinds": {
+    "A": 48,
+    "B": 28
+   },
+   "linesAminusB": 67,
+   "kindsAminusB": 20
+  },
+  "H16": {
+   "source": "null",
+   "pack": "M38-reading-null",
+   "pair": "P16",
+   "flipped": true,
+   "arm": {
+    "A": "null",
+    "B": "null"
+   },
+   "model": {
+    "majority": "A",
+    "clear": false,
+    "unanimous": true,
+    "roles": 2,
+    "forIt": 2,
+    "margin": 0.5
+   },
+   "lines": {
+    "A": 92,
+    "B": 80
+   },
+   "kinds": {
+    "A": 48,
+    "B": 46
+   },
+   "linesAminusB": 12,
+   "kindsAminusB": 2
+  },
+  "H17": {
+   "source": "r40",
+   "pack": "40-reading-busiest",
+   "pair": "P03",
+   "flipped": false,
+   "arm": {
+    "A": "on",
+    "B": "off"
+   },
+   "model": {
+    "majority": "A",
+    "clear": true,
+    "unanimous": true,
+    "roles": 3,
+    "forIt": 3,
+    "margin": 1.33
+   },
+   "lines": {
+    "A": 88,
+    "B": 43
+   },
+   "kinds": {
+    "A": 55,
+    "B": 24
+   },
+   "linesAminusB": 45,
+   "kindsAminusB": 31
+  },
+  "H18": {
+   "source": "length",
+   "pack": "29-reading",
+   "pair": "P09",
+   "flipped": true,
+   "arm": {
+    "A": "on",
+    "B": "off"
+   },
+   "model": {
+    "majority": "B",
+    "clear": false,
+    "unanimous": false,
+    "roles": 3,
+    "forIt": 2,
+    "margin": -0.33
+   },
+   "lines": {
+    "A": 47,
+    "B": 58
+   },
+   "kinds": {
+    "A": 31,
+    "B": 30
+   },
+   "linesAminusB": -11,
+   "kindsAminusB": 1
+  },
+  "H19": {
+   "source": "r40",
+   "pack": "40-reading-busiest",
+   "pair": "P02",
+   "flipped": false,
+   "arm": {
+    "A": "off",
+    "B": "on"
+   },
+   "model": {
+    "majority": "B",
+    "clear": true,
+    "unanimous": true,
+    "roles": 3,
+    "forIt": 3,
+    "margin": 1
+   },
+   "lines": {
+    "A": 59,
+    "B": 61
+   },
+   "kinds": {
+    "A": 38,
+    "B": 44
+   },
+   "linesAminusB": -2,
+   "kindsAminusB": -6
+  },
+  "H20": {
+   "source": "null",
+   "pack": "M38-reading-null",
+   "pair": "P09",
+   "flipped": false,
+   "arm": {
+    "A": "null",
+    "B": "null"
+   },
+   "model": {
+    "majority": null,
+    "clear": null,
+    "unanimous": false,
+    "roles": 2,
+    "forIt": 1,
+    "margin": 0
+   },
+   "lines": {
+    "A": 82,
+    "B": 72
+   },
+   "kinds": {
+    "A": 41,
+    "B": 45
+   },
+   "linesAminusB": 10,
+   "kindsAminusB": -4
+  },
+  "H21": {
+   "source": "r40",
+   "pack": "40-reading-busiest",
+   "pair": "P05",
+   "flipped": false,
+   "arm": {
+    "A": "on",
+    "B": "off"
+   },
+   "model": {
+    "majority": "B",
+    "clear": true,
+    "unanimous": true,
+    "roles": 3,
+    "forIt": 3,
+    "margin": 1.33
+   },
+   "lines": {
+    "A": 77,
+    "B": 82
+   },
+   "kinds": {
+    "A": 43,
+    "B": 52
+   },
+   "linesAminusB": -5,
+   "kindsAminusB": -9
+  },
+  "H22": {
+   "source": "length",
+   "pack": "34-reading",
+   "pair": "P06",
+   "flipped": true,
+   "arm": {
+    "A": "on",
+    "B": "off"
+   },
+   "model": {
+    "majority": "B",
+    "clear": true,
+    "unanimous": true,
+    "roles": 3,
+    "forIt": 3,
+    "margin": 1.33
+   },
+   "lines": {
+    "A": 55,
+    "B": 69
+   },
+   "kinds": {
+    "A": 35,
+    "B": 37
+   },
+   "linesAminusB": -14,
+   "kindsAminusB": -2
+  },
+  "H23": {
+   "source": "r40",
+   "pack": "40-reading-busiest",
+   "pair": "P17",
+   "flipped": false,
+   "arm": {
+    "A": "on",
+    "B": "off"
+   },
+   "model": {
+    "majority": "A",
+    "clear": true,
+    "unanimous": true,
+    "roles": 3,
+    "forIt": 3,
+    "margin": 1.67
+   },
+   "lines": {
+    "A": 82,
+    "B": 54
+   },
+   "kinds": {
+    "A": 43,
+    "B": 27
+   },
+   "linesAminusB": 28,
+   "kindsAminusB": 16
+  },
+  "H24": {
+   "source": "null",
+   "pack": "M38-reading-null",
+   "pair": "P01",
+   "flipped": false,
+   "arm": {
+    "A": "null",
+    "B": "null"
+   },
+   "model": {
+    "majority": "B",
+    "clear": false,
+    "unanimous": true,
+    "roles": 2,
+    "forIt": 2,
+    "margin": 0
+   },
+   "lines": {
+    "A": 73,
+    "B": 69
+   },
+   "kinds": {
+    "A": 36,
+    "B": 37
+   },
+   "linesAminusB": 4,
+   "kindsAminusB": -1
+  }
+ }
+}

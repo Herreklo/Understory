@@ -37,4 +37,27 @@ if (existsSync('dist/study.html')) {
   if (qerrs.length || !parsed || parsed.items.length !== n || n < 16) { console.error('STUDY PAGE CHECK FAILED', qerrs.join(' | '), 'items answered', n, 'parsed', !!parsed); process.exit(1); }
   console.log(`browser ok: the study page runs a sitting of ${n} items and hands back ${text.length} characters`);
 }
+// H1's pair page (study/h1.md): on a phone-sized screen, every pair chosen, a line marked and a feeling named, a block of answers that parses.
+if (existsSync('dist/h1.html')) {
+  const q = await b.newPage({ viewport: { width: 375, height: 812 } }); const herrs = [];
+  q.on('pageerror', e => herrs.push(e.message.slice(0, 200)));
+  await q.goto('file://' + process.cwd() + '/dist/h1.html');
+  await q.fill('#who', 'check');
+  await q.getByRole('button', { name: 'Begin' }).click();
+  const total = await q.evaluate(() => DATA.pairs.length);
+  await q.locator('.ln').nth(2).click(); await q.getByRole('button', { name: 'Rings false' }).click();
+  await q.locator('.ln').nth(4).click(); await q.getByRole('button', { name: 'Shows what they felt' }).click(); await q.fill('#fw', 'grief'); await q.fill('#ft', 'her brother');
+  for (let i = 0; i < total; i++) {
+    await q.locator('.tabs button').nth(1).click();
+    await q.locator('#pick .btn').nth(i % 2).click();
+    await q.locator('#next').click();
+  }
+  const text = await q.locator('#out').inputValue();
+  const wide = await q.evaluate(() => document.documentElement.scrollWidth);
+  let h = null; try { h = JSON.parse(text); } catch (e) {}
+  await q.close();
+  const first = h?.pairs?.H01;
+  if (herrs.length || !h || h.answered !== total || wide > 375 || first?.marks.A[0]?.[1] !== 'false' || first?.felt.A[0]?.[1] !== 'grief') { console.error('H1 PAGE CHECK FAILED', herrs.join(' | '), 'answered', h?.answered, 'of', total, 'width', wide); process.exit(1); }
+  console.log(`browser ok: the H1 page takes ${total} pairs on a phone and hands back ${text.length} characters`);
+}
 await b.close();
