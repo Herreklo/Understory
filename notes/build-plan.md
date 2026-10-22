@@ -1,106 +1,188 @@
 # Building the engine: the plan
 
-_Outline agreed with Øystein on 22 October 2026. A planning session writes the full plan into this file from the outline, the findings and the questions below, and replaces them with the plan. Until then this is a brief, not a plan._
+_Written 22 October 2026 from the outline Øystein agreed that day. Engine claims are checked against `main` at `db36ffd`; costs come from `docs/BOARD.md` and `scripts/usage_scan.py`. The plan orders work. "Next" in `SUMMARY.md` changes only when Øystein says so._
 
-## The outline (agreed)
+## 1. What "built properly" means
 
-1. **What "built properly" means.** The tests a finished engine passes:
-   - a new game needs a pack, a domain module and a front end, and no change to an engine rule;
-   - a second pack, very unlike the town, runs in CI;
-   - every mechanism moves an exit point;
-   - the city runs on the same people.
-2. **Four layers, and the test for each.**
-   - **The engine:** people, decisions, ties, beliefs, accounts, time, the city, and general mechanisms (obligation, shared hardship, inheritance, feuds, organisations). It is the same in any world.
-   - **The world pack:** institutions (can a marriage end, who learns where, how property passes, what is a crime) and convictions. The answer depends on the world. It is data, in a format the engine versions, and that format leaves no field that could break Rule 8.
-   - **The domain module:** a match, a song, evidence. Only one kind of game needs it. It is deterministic, reads people through the front door, and gives back outcomes as events.
-   - **The content:** places, names, words, era tables. Data.
+The engine is built properly when four tests pass:
 
-   Worked example: football is both. Contracts, transfers, a squad, a captain and a club's character are the engine's; the match, the league and form are the module's.
-3. **How the repositories are arranged** (the "repo structure for add-ons" decision in SUMMARY):
-   - Understory holds the engine, the town pack and a small test pack;
-   - domain modules sit beside the engine, with the engine's music as the default;
-   - each game holds its own pack and domain;
-   - a world is its seed, its pack version and its engine tag.
-4. **Where the engine stands against the layers:**
-   - what fits;
-   - what modern life is written into rules (school about 32 times and divorce about 28 times outside the setting);
-   - what content is still code (portability rule 7);
-   - which general mechanisms are missing.
-5. **The order of work, in phases.** Each with its rounds, the exit point each moves, its neutral jobs and its cost in rounds and readings.
-   - **A. What people are made of:**
-     - consequences that reach (shared hardship, obligation);
-     - close ties;
-     - organisations (exit point 9);
-     - wants for the quiet majority.
-   - **B. The structure:**
-     - content as data;
-     - the world pack format and the test pack;
-     - the front door's part two (commands, scenes, outcomes given back);
-     - focus that follows an organisation.
-   - **C. The first game:** chosen, with its domain module and pack.
-   - **D. As games ask:**
-     - accounts;
-     - time and moments;
-     - crime and killings;
-     - inheritance with homes;
-     - fame.
-6. **Throughput:** which work can be neutral, where readings can be shared, what not to build.
-7. **Decisions for Øystein**, each with a recommendation.
+- **A new game needs a pack, a domain module and a front end, and no change to an engine rule.**
+- **A second pack, very unlike the town, runs in CI.** It has no school, marriages that cannot end, work from twelve, and an elder who decides what the town's council decides. Its worlds pass determinism, the invariants and the demography check.
+- **Every mechanism moves an exit point** (`docs/STATUS.md`), or it is cut.
+- **The city runs on the same people** (exit point 7).
 
-The first game stays open: the plan orders work by what all games share, and says which game each phase brings closer.
+## 2. Four layers, and the test for each
 
-## What is already settled
+| Layer | What it holds | Its test |
+| --- | --- | --- |
+| **The engine** | People, decisions, ties, beliefs, accounts, time, the city, and general mechanisms: obligation, shared hardship, inheritance, feuds, organisations | The same in any world. No rule names a place, an institution or an era |
+| **The world pack** | Institutions (can a marriage end, who learns where, how property passes, what is a crime), convictions, era tables | The answer depends on the world. Data, in a format the engine versions. An institution applies to everyone alike, and a conviction is about an act, so no field can say what a person may be or do by sex, origin or belief (Rule 8) |
+| **The domain module** | A match, a song, evidence | Only one kind of game needs it. Deterministic, reads people through the front door, gives outcomes back as events, never decides an act |
+| **The content** | Places, names, words, era tables | Data. Another language needs no code |
 
-`notes/game-shapes.md` (20 October) settles the contract between engine and games:
-- the player acts, and people decide;
-- people live in the engine, and domains beside it;
-- two clocks, one truth;
-- select, never script;
-- one kind of organisation from two people to hundreds, and focus that follows people and organisations;
-- the setting as data before a second pack.
+Football is both. Contracts, transfers, a squad, a captain and a club's character are the engine's: organisations, obligation and rivalry. The match, the league and form are the module's.
 
-The plan builds on it and does not reopen it without saying why. Also on file:
-- `notes/game-demand-map.md`, the capabilities and which ideas need them;
-- `notes/organisations-concept.md`;
-- `notes/time-and-moments.md`;
-- the exit criterion in `docs/STATUS.md`;
-- the portability and scaling contracts in `docs/scale/`.
+## 3. How the repositories are arranged
 
-## What Overstory is doing (22 October)
+- **Understory** holds the engine, `packs/town` (today's town, identical), `packs/test` (the unlike pack, run in CI) and `domains/music`: today's songs and shows, moved out of `group.ts` as the default domain.
+- **Each game** holds its own pack and domain module in its own repo. The engine loads a pack through `createWorld` and refuses a version it does not know.
+- **A world** is its seed, its pack and pack version, and its engine tag. A saved game adds a snapshot and the commands since.
+- Domains become packages of their own only when a second game exists.
 
-- **The visual lab.** LT1 (the harbour street in 1989) has its building system done; its Unity part is next. Then the people deep dive, LT2 (two people talking in a venue at night) and LT3 (the street through the years). LT1 and LT2 run on authored fixtures. The engine link is sixth in its order of bets (`docs/research/reality-check.md` in `Herreklo/Overstory`).
-- **Paper playtests of six game concepts on world 9989**, scored "ready today" and "with the missing pieces". A must-improve register will come to #60 as one bundle. The early signals are from the design panel only:
-  - the newspaper and a mystery lead, because accounts with tellers, the council, festivals and the till skims are rich;
-  - sport waits on a club, and mystery on non-natural death;
-  - the export lacks places, witnesses, records and habits as timetables;
-  - the town makes about one notable, knowable event a week.
-- **Engine requests 1 to 17** (`docs/engine-requests.md` there):
-  - the front door's part two (#22);
-  - the start year and one timeline for the economy and the buildings (#23);
-  - places that close;
-  - records as accounts (11–13);
-  - deaths with a moment (14);
-  - branching from a checkpoint (15);
-  - things in events (16);
-  - moments in focus (17).
+This is the recommendation for the "repo structure for add-ons" decision in SUMMARY.
 
-## Findings the plan must answer
+## 4. Where the engine stands
 
-1. **My time note conflicts with game-shapes.** `notes/time-and-moments.md` proposes a focus period run day by day in the engine. game-shapes rule 3 keeps the engine's clock at a month, with scenes as the game's clock, and lists "an engine clock shorter than a month" as flexibility to resist. My lean: scenes on the month come first, and a finer clock only if scenes cannot carry a week. The plan decides, and corrects whichever note is wrong.
-2. **The rounds have gone into the page, not the substance.** Of the rounds since 24, most worked on how a life reads (the reasons, the wording, the reading itself). Many substance rounds were not kept: accounts (29, 31), carrying a friendship (32, 33), everyone wants something (25d), wants that answer (36, withdrawn). Effects of a single mechanism are small next to what a reading resolves (about ±0.35 at 24 pairs). The four together (39, 40) is the one bundle that read better. WHY.md warns about confusing complexity with progress. The plan says how substance gets built so that it shows: bundles, a round's own counter, or a different measure.
-3. **Overstory's leading concepts lean on paused work.** The newspaper and the mystery need accounts (#20, paused), and the mystery needs non-natural death. The plan weighs unpausing accounts against its place in phase D.
-4. **Branching may already exist.** Overstory asks for branching from a checkpoint (15). The engine has `src/tools/whatif.ts` and `clone.ts`, and the demand map marks clean counterfactuals as built. The plan checks what is missing, if anything, for a game to use it, and whether it is a cheap neutral win.
-5. **Event density is a game requirement.** "One notable, knowable event a week" is Overstory's arithmetic, and game-shapes calls quiet worlds the largest risk to the games. The plan asks whether that rate should be a measure of its own beside the consequence share (exit point 2).
-6. **Content as data collides with experiments.** It touches `families.ts`, `motives.ts` and `setting.ts`, which most experiments also touch, and an open PR claims its files. The plan schedules it: one sweep between rounds, or piece by piece as each system is touched.
-7. **The pace is fast, the hit rate low.** About five to eight rounds a day since 18 October. So a phase of ten rounds takes days, not months. The constraints are credits (readings), Øystein's attention and the human test, not calendar time. The plan costs phases in readings and decisions, not weeks.
-8. **The instrument is a model reading.** No person outside the project has read a life since Q3. A plan that runs fifteen rounds judged by blind model readers risks optimising for them. The plan places the human test.
-9. **The current "Next"** (the wording research, PR #78, and the second and last round on reasons) is Øystein's order. The plan says plainly whether phase A should come before it. It weighs that round's cost against leaving the reasons arc unfinished.
-10. **Overstory's register is coming.** The plan leaves a defined place for it: how a request maps to a phase. It does not guess the register's contents.
+**What fits.** People (`core.ts`, `generate.ts`); decisions with reasons (`decide.ts`, `considerations.ts`, `grammar.ts`); ties and regard (`world.ts`, `regard.ts`); beliefs and the witness (`witness.ts`); accounts told along close ties (`telling.ts`, on since round 40); wants, steering and aftermath (`time.ts`, `steer.ts`, `aftermath.ts`, `occasions.ts`); rivalry and plans (`drama.ts`, `projects.ts`); groups (`group.ts`); the city (`scale.ts`, `coarse.ts`); the front door (`boundary.ts`); the engine's own arithmetic (`mathx.ts`).
 
-## How the plan is written and checked
+**Modern life written into rules.** Outside `setting.ts` and the tools, "school" appears 25 times in 7 engine files and "divorce" 18 times in 7. The brief's 32 and 28 counted the setting or the tools. The rules behind the words:
 
-- Every claim about the engine is checked against the code, with file and line, never taken from this brief.
-- Costs come from the record: `docs/BOARD.md`'s rounds and outcomes, and `scripts/usage_scan.py` for what readings cost.
-- A pre-mortem by the `reviewer` agent on Fable 5.1, with "pre-mortem" in its brief: assume the plan was followed for a month and failed, and say why. The plan answers each point or changes.
-- No battery, no reading, no fresh world: this is a document.
-- The result is this file, at most about 2,500 words, plus a short entry in SUMMARY's "Waiting for you". The PR stays a draft for Øystein to read. "Next" changes only when he says so.
+- **School.** Everyone from 6 to 18 who does not work meets age-mates every day (`social.ts:645–652`, again at 890 for the city). Friendships start at twelve (`social.ts:387`). There are music lessons at school (`group.ts:345–382`) and a child who struggles at school (`romance.ts:219, 239`).
+- **Marriage.** From 18 (`romance.ts:85`). It can end in divorce (`romance.ts:126–146`, `coarse.ts:45, 385`), and aftermath and wants are keyed on that (`aftermath.ts:31, 65`, `occasions.ts:163`).
+- **Work.** Hiring runs from 18 to 62 (`work.ts:205`) and retirement from 62 to 67 (`work.ts:69–70`).
+- **Named institutions.** The council decides ventures (`projects.ts:269–346`). The bar holds the collection and the town's day (`situations/collection.ts:14`, `situations/yearly.ts:15–34`, `time.ts:755`). The witness prefers the bar, the paper or the clinic (`witness.ts:11`).
+
+Each becomes a pack field holding today's value.
+
+**Content still code** (portability rule 7). `setting.ts` has 762 lines with 17 functions, most of them habit fits that are only weights. `families.ts` has 115 acts with 124 inline functions, which are conditions and words. `motives.ts` is data apart from 2 functions. Marks' texts sit in `core.ts` (364). The music domain sits inside `group.ts` (`chemistry` at 63, `work` at 438, `show` at 549).
+
+**General mechanisms missing:**
+
+- **Obligation owed and called in.** The promise that comes due is 8% of all decisions (round 41's battery) and leads nowhere: 0% weighty descendants (`reports/consequences-f26.txt`).
+- **Shared hardship,** feuds between families or groups, and leverage.
+- **Organisations with norms** (exit point 9).
+- **Homes and inheritance of property.** Only traits are inherited (`generate.ts:174`).
+- **Fame as reach** (`docs/scale/contract.md`, rule 4).
+- **Time inside the month:** places and presence, deaths with a moment, records, things in events.
+
+## 5. The order of work
+
+**The record.** Between 18 and 22 October there were 39 rounds of every kind. Since round 24a, rounds on the page, the record and the reading were kept 18 times in 20, and rounds that change what people do 4 times in 16. Since round 25d, 13 such rounds were tried and one was kept: round 40, which bundled four mechanisms that had each failed or been withdrawn alone (rounds 31, 34 and 37, 36, 38). A blind sitting costs about $4 to $6 at list price (M38's 19 sittings, median $4). One pack (two roles, two parts, four sittings) costs about $20, two packs about $45. In the one window the usage scan covers, readings were two thirds of everything spent. So each phase below is costed in readings and in Øystein's decisions. Calendar time is not the limit.
+
+### Now: finish the reasons arc, and the human test
+
+- **Neutral:** `motives.ts` as data, before the wording round is built.
+- **The second and last round on reasons** (Next 2), held to a cap. It changes words only: the 22 worst phrase–act pairs and `backsong`, written as data. It is read on one pack, and it stops at its sizing if fail-if 1 or 2 fires (`notes/research/wording.md`, PR #78).
+- **The human test** (Next 3): people read round 40's busiest pack. It decides whether "reads better" counts again.
+- **Moves** exit points 3 and 5. **Brings closer** every game, since every "why?" a player asks shows a reason.
+- **Costs** one pack or none. Two decisions: the cap, and who reads.
+
+The current order is right to finish reasons first. Unfit reasons are the fault readers quote most (683 on M38's true pages), and readers faulted them in rounds 29, 33 and 34, so every later reading of substance is fairer for the fix. Two things in it are wrong. The human test is placed "when Øystein picks it up", but every kept change from here rests on it, so it should be dated, before phase A's first bundle is read. And after this round, no round that changes only the page should run until phase A has kept a bundle. Rounds on the page pass and rounds on substance mostly fail, so the work drifts to the page; that drift is the complexity mistaken for progress `WHY.md` warns of.
+
+### Phase A: what people are made of
+
+Four arcs. Each starts with research and runs at most two full rounds.
+
+1. **Consequences that reach:** obligation owed and called in, and shared hardship, where one blow binds or splits the people it hits. Moves exit points 2 (reach, 7% today, 15% needed) and 1.
+2. **Close ties,** starting from the moments a tie is tested: a blow, an ask, a move. A ledger read everywhere decided under 1% of choices (round 32). Moves exit point 1.
+3. **Organisations:** norms held in members' beliefs (`notes/organisations-concept.md`), first the row escalation made each group's own, tried in the band for a year. That band is the milestone Overstory proposed to share (its request 8). Moves exit points 9, 1 and 8.
+4. **Wants for the quiet majority:** doors for later life (round 43). Moves exit point 2.
+
+**How substance shows (finding 2).** Each part is judged on its own counter, fixed before the test: the share of decisions it decides, the change a what-if finds, and its reach. The reading checks only "reads no worse", on one pack. Parts that pass are bundled, arcs 1 and 2 together and then 3 and 4, and each bundle is read on two packs for "reads better", once the human test has said that verdict counts.
+
+- **Brings closer** the band manager, hotel, life simulation, football, union representative, festival and the hidden kingpin. Close ties are needed by 10 of the 27 ideas, consequences by 13, organisations by 7, wants by 5.
+- **Costs** six to eight rounds, a third of them likely stopped at sizing: about five one-pack readings and two two-pack readings, some 36 sittings. Five decisions: each arc's branches, and the band as a shared milestone.
+
+The order puts round 43 last. It is the third try at wants (25d not kept, 36 withdrawn), and wants are needed by the fewest ideas.
+
+### Phase B: the structure
+
+All neutral, so CI proves each job identical, and all run beside phase A on files no open round claims.
+
+1. **Content as data** (finding 6): one sweep per file, each a `refactor` PR merged the day CI is green. `motives.ts` goes in "Now". `setting.ts` can go while the wording round runs, since that round does not touch it. `families.ts` goes after the wording round merges and before phase A's first build.
+2. **The pack format and the test pack.** Institutions and convictions, the town pack identical, the start year from the pack (#23), and the test pack in CI.
+3. **The front door's part two** (#22). First reads by viewer, `eventsAfter`, versions, and save and load. Then branching (request 15, finding 4). Then commands, scenes that play a situation the engine raised, and domain outcomes given back as events. Each is announced on #60 before it lands.
+4. **The music domain** behind the domain interface.
+5. **Homes as plumbing** (#59, step 1), and **focus that follows an organisation** for the city.
+6. **A measure of event density** (finding 5), added to the battery.
+
+- **Moves** the tests in section 1, not the exit points, which is why all of it can be neutral. **Brings closer** every game. Branching serves Inquest and the observer games.
+- **Costs** no readings. Three decisions: the pack format and its Rule 8 closure, the repo structure, and whether commands are judged by a counter without a reading.
+
+### Phase C: the first game
+
+Øystein chooses it when exit points 1, 2 and 9 are close and Overstory's register is in. The game brings its pack and domain module in its own repo. The engine pulls forward the phase D work that game needs, and story sifting is built here, for what that game finds storyful. Its players are the outside readers exit point 5 asks for.
+
+- **Costs** none of our readings. Three decisions: which game, its pack, and who builds its domain.
+
+### Phase D: as games ask
+
+| Capability | Needed by | Moves |
+| --- | --- | --- |
+| Accounts: records with a maker and a stake (Overstory 11–13), opinions | Newspaper, detective, mediator, radio | 2, 6 |
+| Time and moments (`notes/time-and-moments.md`), deaths with a moment (14), things in events (16) | Inquest, detective | 2 |
+| Crime and killings | Detective, kingpin | 2 |
+| Inheritance with homes (#59, step 2) | Family legacy | 2, 8 |
+| Fame as reach | Newspaper, radio, football | 2 |
+
+Each is an arc of research and at most two rounds, about three one-pack readings and one decision.
+
+**Accounts (finding 3).** Overstory's two leading concepts lean on accounts. The part they praise, accounts told with their tellers, is on since round 40. What is paused is records and opinions. They stay in phase D, with one rule set now: if Øystein chooses the newspaper or a mystery as the first game, records become that game's first engine arc in phase C. Reads by viewer (phase B) give both concepts what each person could know before then.
+
+### Where Overstory's register slots in (finding 10)
+
+Each request is placed by its layer:
+
+- **An engine capability** joins the phase A or D arc for its capability code in `notes/game-demand-map.md`.
+- **The front door or the export** joins phase B, item 3.
+- **The pack or content** joins phase B, item 2.
+- **A domain** belongs in the game's repo.
+- **Presentation** is Overstory's.
+
+A request that moves no exit point waits, unless Øystein adds a point. Requests that share a capability are taken as one arc. What we take is recorded in SUMMARY. The register informs the choice of the first game; it reorders nothing by itself.
+
+## 6. Throughput
+
+**What can be neutral.** All of phase B. CI proves each job identical, it runs on Opus 5.5 or Sonnet 5.5, and it costs no reading.
+
+**Branching is the cheapest win (finding 4).** `cloneWorld` (`src/tools/clone.ts`) copies a world exactly, and `whatif.ts check` proves the copy runs the same. Three things are missing for a game:
+
+- a `branch(h)` at the front door, since a game may use nothing else;
+- a way to change the decision a game saw, named by its event's decision (person, trigger and option, `world.ts:50–59`). Today's hook is a global (`decide.ts:209`) that counts choices and flips to the likeliest other answer, which a game cannot aim and two worlds at once would share. On the world, with the same draw and another answer, nothing else moves;
+- save and load as plain data (#22, item 4).
+
+It is one neutral session.
+
+**Where readings can be shared:**
+
+- A round that claims something about one group of lives is read on one pack (`CLAUDE.md`).
+- Parts are read only for "reads no worse"; "reads better" is spent once per bundle.
+- A round sized first and stopped costs nothing (round 42).
+- Overstory's paper playtests are a second instrument, scored against our truth, on their credits.
+
+**The instrument (finding 8).** No outsider has read a life since Q3. The human test comes before phase A's first bundle reading. People read once more before phase C, on the kept bundles. If the human test has not run when the first bundle is ready, the bundle is judged on its counters and "reads no worse", and phase C waits.
+
+**Event density (finding 5).** Round 41's consequence map gives about eleven weighty events a world-month in a town of about 85 people, and about one that leads to a turn. Overstory counts about one notable, knowable event a week. The battery will report, beside exit point 2, the turns a witness could know, per hundred people a month. That number becomes a game requirement when the register sets its floor. It is not an exit point of its own, because a rate pushed alone makes forced drama (`WHY.md`).
+
+**What not to build:**
+
+- An engine clock shorter than a month (finding 1). Moments live inside the month; a finer clock waits for a game that proves it needs one.
+- Domain systems inside the engine, game modes, or a director.
+- A table of motives for every act written by hand. The worst pairs, and a rule for the rest.
+- Rounds on the page alone after the wording round, until phase A keeps a bundle.
+- A reputation score. Opinions are accounts, when a game asks for them.
+- Killings before deaths with a moment.
+
+## 7. Decisions for Øystein
+
+1. **The wording round, capped:** words only, worst pairs as data, one pack, stop at sizing. Recommended.
+2. **Date the human test,** before phase A's first bundle is read. Recommended.
+3. **Phase A's order:** reach and close ties, then organisations through the band year, then wants for later life. This moves round 43 behind the others. Recommended.
+4. **Substance judged by its own counter** and "reads no worse"; "reads better" only for bundles. Recommended.
+5. **Content as data in one sweep per file,** `motives.ts` first. Recommended.
+6. **The repo structure** of section 3. Recommended.
+7. **Branching as a neutral job in phase B.** Recommended.
+8. **Accounts stay in phase D,** and move to phase C if the first game is the newspaper or a mystery. Recommended.
+
+## The ten findings, answered
+
+1. **Time:** game-shapes rule 3 holds, and `notes/time-and-moments.md` is corrected (section 6).
+2. **Substance that shows:** each part on its own counter, bundles read for "reads better" (phase A).
+3. **Accounts:** phase D, or phase C's first arc if the newspaper or a mystery is chosen.
+4. **Branching:** one neutral session (section 6).
+5. **Density:** a line in the battery, its floor from the register (section 6).
+6. **Content as data:** one sweep per file, between rounds (phase B).
+7. **Pace:** phases costed in readings and decisions (section 5).
+8. **The human test:** dated, before phase A's first bundle and before phase C (section 6).
+9. **Next:** finish the wording round, capped; then no rounds on the page alone until phase A keeps a bundle ("Now").
+10. **The register:** placed by layer and capability code (section 5).
