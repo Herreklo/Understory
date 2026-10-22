@@ -24,8 +24,8 @@ export const shownCauses = (e: Event, all = false) =>
     .slice(0, 3);
 
 // The lines of a life, in the order given. `shown` is the set of event ids the page shows (the person's own list); it grows with the
-// cited events, so a later line does not cite the same event twice.
-export function pageLines(w: World, events: Event[], shown: Set<number>): PageLine[] {
+// cited events, so a later line does not cite the same event twice. `all` as for shownCauses.
+export function pageLines(w: World, events: Event[], shown: Set<number>, all = false): PageLine[] {
   // Fold repeats: for each key, the first and the last occurrence stay.
   const last = new Map<string, number>();
   events.forEach((e, i) => last.set(sameAs(e), i));
@@ -47,7 +47,7 @@ export function pageLines(w: World, events: Event[], shown: Set<number>): PageLi
     } else seen.set(k, n + 1);
   });
   for (const line of out)
-    for (const c of shownCauses(line.e)) {
+    for (const c of shownCauses(line.e, all)) {
       if (c.kind !== 'event' || c.ref == null || c.ref < 0 || shown.has(c.ref)) continue;
       const cited = w.events[c.ref];
       if (!cited) continue;
