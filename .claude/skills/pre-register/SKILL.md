@@ -14,7 +14,7 @@ Stop and say what is missing if any of these is not there:
 
 - the round's branch, from current `main`, with a draft PR whose description has `Switch: OFF=<name>` (or `ON=<name>`) on a line of its own;
 - its research note, `notes/research/<topic>.md`: prior art (games and models), effect sizes from the literature, what data on file already says, a back-of-envelope estimate, and five lines of "this fails if …", each tied to a sizing check;
-- its sizing report, `reports/<round>-size.md`: at least 20 throwaway worlds (9001 and up), with and without, the round's own count and kinds of line a life with intervals, and a power check: can 24 pairs resolve the effect it predicts (about ±0.3 at 24 pairs, `docs/method/reading.md`)? If not, the claim can only be "reads no worse";
+- its sizing report, `reports/<round>-size.md`: at least 20 throwaway worlds (9001 and up), with and without, the round's own count and kinds of line a life with intervals, and a power check: can the reading resolve the effect it predicts (a people round reads 48 pairs, about ±0.25; a page round 24 pairs of the same lives; `docs/method/reading.md`)? Until the human test, the claim is "reads no worse" beside the round's own counter;
 - CI green on the branch: with the switch off, identical to `main`.
 
 ## 1. The review

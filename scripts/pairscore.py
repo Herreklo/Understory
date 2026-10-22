@@ -2,7 +2,7 @@
 """Scores a blind paired reading (src/tools/diag/pairarm.ts) against its key.
 
 Usage:
-  python3 scripts/pairscore.py KEY ANSWERS... [--pack PACK...] [--quote REGEX] [--json OUT]
+  python3 scripts/pairscore.py KEY ANSWERS... [--pack PACK...] [--quote REGEX] [--json OUT] [--pool KEY2 ANSWERS2...]...
 
 KEY      key.json from pairarm.ts: {"P01": {"onIs": "A" | "B", ...}, ...}
 ANSWERS  one or more reader files in the brief's shape, {"reader": name, "pairs": {"P01": {"A": {...}, "B": {...}, "prefer": "A"}}},
@@ -11,6 +11,8 @@ ANSWERS  one or more reader files in the brief's shape, {"reader": name, "pairs"
 --pack   the pages the readers read (pairs.txt, or its parts), for how much happened in each version. Without it, pairs.txt beside
          the key is used when it is there. A key from pairarm.ts after round M36 carries each version's lines and kinds of line itself.
 --quote  a regular expression for the round's own wording: its quotes in faults and good reasons are listed, by arm.
+--pool   another pack of the same round, its key and its answers (repeat for a third). The first pack is reported in full as above;
+         then every pack's effect, and the effect over all of them with the order and the pack as terms.
 
 What it reports, and why:
 - Majority preference: in how many pairs most readers preferred the on arm. Easy to read, coarse.
@@ -18,7 +20,12 @@ What it reports, and why:
   version they read second higher (about half a point in rounds 29, 31 and 32), so the difference is also estimated with the order as
   a second term (difference = effect + lean × (+1 if on was B, −1 if A)). With the order dealt half and half the two agree on the
   point; the adjusted interval is narrower, because the lean is taken out of the noise. The adjusted effect and its interval are
-  what a round's keep rule should be judged on.
+  what a round's keep rule should be judged on: "reads no worse" holds when its one-sided 95% lower bound (t at 0.95, n − 2 degrees
+  of freedom) is above −0.3. The one-sided 90% bound is reported beside it, as before.
+- Pooled packs (--pool): a people round reads two packs, one of random lives and one of the busiest, 48 pairs. Each pack's effect is
+  reported with the order as a term, and the effect over all of them is estimated with the order and the pack as terms (difference =
+  effect + lean × order + the pack's deviation, the deviations summing to zero, so every pack weighs alike whatever its size), with its
+  interval and both one-sided bounds on n − 1 − (number of packs) degrees of freedom. The warnings are given for each pack.
 - Krippendorff's alpha (scripts/alpha.py): how far the readers agree on the scores. It describes the panel, not the effect: a
   change can read better to every reader while they disagree on the scale. Reported, not a gate.
 - Faults by kind in each arm, and the quotes matching --quote. Readers list every fault they find (M38), so faults are also reported
@@ -51,6 +58,13 @@ T975 = {1: 12.706, 2: 4.303, 3: 3.182, 4: 2.776, 5: 2.571, 6: 2.447, 7: 2.365, 8
 T90 = {1: 3.078, 2: 1.886, 3: 1.638, 4: 1.533, 5: 1.476, 6: 1.440, 7: 1.415, 8: 1.397, 9: 1.383, 10: 1.372, 11: 1.363, 12: 1.356,
        13: 1.350, 14: 1.345, 15: 1.341, 16: 1.337, 17: 1.333, 18: 1.330, 19: 1.328, 20: 1.325, 21: 1.323, 22: 1.321, 23: 1.319,
        24: 1.318, 25: 1.316, 26: 1.315, 27: 1.314, 28: 1.313, 29: 1.311, 30: 1.310, 34: 1.307, 40: 1.303, 46: 1.300, 60: 1.296}
+# One-sided 95%, the bound "reads no worse" is judged on (N1a), exact to three places up to 50, where pooled packs fall.
+T95 = {1: 6.314, 2: 2.920, 3: 2.353, 4: 2.132, 5: 2.015, 6: 1.943, 7: 1.895, 8: 1.860, 9: 1.833, 10: 1.812, 11: 1.796, 12: 1.782,
+       13: 1.771, 14: 1.761, 15: 1.753, 16: 1.746, 17: 1.740, 18: 1.734, 19: 1.729, 20: 1.725, 21: 1.721, 22: 1.717, 23: 1.714,
+       24: 1.711, 25: 1.708, 26: 1.706, 27: 1.703, 28: 1.701, 29: 1.699, 30: 1.697, 31: 1.696, 32: 1.694, 33: 1.692, 34: 1.691,
+       35: 1.690, 36: 1.688, 37: 1.687, 38: 1.686, 39: 1.685, 40: 1.684, 41: 1.683, 42: 1.682, 43: 1.681, 44: 1.680, 45: 1.679,
+       46: 1.679, 47: 1.678, 48: 1.677, 50: 1.676, 60: 1.671, 70: 1.667, 94: 1.661, 120: 1.658}
+NO_WORSE = -0.3  # the bar for "reads no worse" (notes/build-plan.md, section 3)
 
 
 def t(table, df):
@@ -60,7 +74,55 @@ def t(table, df):
     for k in ks:
         if k >= df:
             return table[k]
-    return 1.960 if table is T975 else 1.282
+    return 1.960 if table is T975 else 1.645 if table is T95 else 1.282
+
+
+def order_term(d_pair, side):
+    """The effect with the order as a second term: d = e + b*s, by least squares; the interval for e from the residuals."""
+    n = len(d_pair)
+    ms, md = st.mean(side), st.mean(d_pair)
+    sxx = sum((s - ms) ** 2 for s in side)
+    if not (sxx > 0 and n > 2):
+        return None
+    b = sum((s - ms) * (d - md) for s, d in zip(side, d_pair)) / sxx
+    e = md - b * ms
+    res = [d - e - b * s for s, d in zip(side, d_pair)]
+    rsd = math.sqrt(sum(x * x for x in res) / (n - 2))
+    se_e = rsd * math.sqrt(1 / n + ms * ms / sxx)
+    return {'effect': e, 'lean': b, 'hw95': t(T975, n - 2) * se_e, 'lo90': e - t(T90, n - 2) * se_e, 'se': se_e,
+            'lo95': e - t(T95, n - 2) * se_e}
+
+
+def pair_diffs(key, readers, names):
+    """Each pair's on minus off, averaged over the readers, and the order (+1 if the on arm was B, −1 if A), in the key's order."""
+    d_pair, side = [], []
+    for p in sorted(key):
+        on = key[p]['onIs']
+        off = 'B' if on == 'A' else 'A'
+        d_pair.append(st.mean(readers[r][p][on]['score'] - readers[r][p][off]['score'] for r in names))
+        side.append(1 if on == 'B' else -1)
+    return d_pair, side
+
+
+def pooled(packs):
+    """Packs pooled with the pack as a term: [(label, d_pair, side)] → each pack's effect, and the effect over all of them."""
+    k = len(packs)
+    X, y, each = [], [], []
+    for j, (label, d, s) in enumerate(packs):
+        each.append({'pack': label, 'pairs': len(d), **(order_term(d, s) or {})})
+        for dd, ss in zip(d, s):
+            # Deviation coding: pack j > 0 has its own column, and the first pack is −1 in all of them, so the effect is the
+            # average over packs.
+            X.append([1.0, ss] + [1.0 if j == c else -1.0 if j == 0 else 0.0 for c in range(1, k)])
+            y.append(dd)
+    fit = ols(X, y)
+    if not fit:
+        return {'packs': each}
+    b, se, _ = fit
+    df = len(y) - len(X[0])
+    return {'packs': each, 'pairs': len(y), 'df': df, 'effect': b[0], 'lean': b[1], 'se': se[0], 'hw95': t(T975, df) * se[0],
+            'lo90': b[0] - t(T90, df) * se[0], 'lo95': b[0] - t(T95, df) * se[0],
+            'packTerms': [{'pack': packs[c][0], 'deviation': b[1 + c], 'hw95': t(T975, df) * se[1 + c]} for c in range(1, k)]}
 
 
 def pack_lines(paths):
@@ -155,6 +217,7 @@ def main():
     ap.add_argument('--pack', nargs='+')
     ap.add_argument('--quote')
     ap.add_argument('--json')
+    ap.add_argument('--pool', nargs='+', action='append', default=[])
     a = ap.parse_args()
     key = json.load(open(a.key))
     readers = load(a.answers)
@@ -251,18 +314,7 @@ def main():
     mean = st.mean(d_pair)
     sd = st.stdev(d_pair) if n > 1 else 0
     hw = t(T975, n - 1) * sd / math.sqrt(n)
-    # The order as a second term: d = e + b*s, by least squares; the interval for e from the residuals.
-    ms, md = st.mean(side), mean
-    sxx = sum((s - ms) ** 2 for s in side)
-    if sxx > 0 and n > 2:
-        b = sum((s - ms) * (d - md) for s, d in zip(side, d_pair)) / sxx
-        e = md - b * ms
-        res = [d - e - b * s for s, d in zip(side, d_pair)]
-        rsd = math.sqrt(sum(x * x for x in res) / (n - 2))
-        se_e = rsd * math.sqrt(1 / n + ms * ms / sxx)
-        adj = {'effect': e, 'lean': b, 'hw95': t(T975, n - 2) * se_e, 'lo90': e - t(T90, n - 2) * se_e, 'se': se_e}
-    else:
-        adj = None
+    adj = order_term(d_pair, side)
     on_b = sum(1 for s in side if s > 0)
     print(f'\nThe on arm was version B in {on_b} of {n} pairs; readers chose B in {bchoice} of {n * len(names)} single choices.')
     print(f'Majority preferred the on arm in {maj} of {n}.')
@@ -272,7 +324,9 @@ def main():
     if adj:
         print(f"With the order as a term: effect {adj['effect']:+.2f} ±{adj['hw95']:.2f} (95%); one-sided 90% lower bound {adj['lo90']:+.2f};"
               f" lean toward the second version {adj['lean']:+.2f}")
-    sp = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'alpha.py')
+        print(f"One-sided 95% lower bound {adj['lo95']:+.2f}: reads no worse (above {NO_WORSE:+.1f}) "
+              + ('holds.' if adj['lo95'] > NO_WORSE else 'misses.'))
+    sp =os.path.join(os.path.dirname(os.path.abspath(__file__)), 'alpha.py')
     tmp = (a.json or '/tmp/pairscore') + '.scores.json'
     json.dump({'readers': scores}, open(tmp, 'w'))
     alpha = subprocess.run([sys.executable, sp, tmp], capture_output=True, text=True).stdout.strip()
@@ -367,11 +421,37 @@ def main():
         for k in ('good', 'fault'):
             for q in quotes[k]:
                 print(f'  {k}: {q}')
+    pool = None
+    if a.pool:
+        packs = [(a.key, d_pair, side)]
+        print(f'\nPooled: {1 + len(a.pool)} packs, with the order and the pack as terms.')
+        for grp in a.pool:
+            if len(grp) < 2:
+                sys.exit('pairscore: --pool takes a key and its answers')
+            k2, r2 = json.load(open(grp[0])), load(grp[1:])
+            n2 = sorted(r2)
+            miss = [(r, p) for r in n2 for p in sorted(k2) if p not in r2[r]]
+            if miss:
+                sys.exit(f'pairscore: answers missing for {miss[:5]} in {grp[0]}')
+            w2 = warnings(r2, n2, sorted(k2))
+            print(f'  WARNINGS for {grp[0]}: ' + ('; '.join(w2) + '.' if w2 else 'none.'))
+            packs.append((grp[0], *pair_diffs(k2, r2, n2)))
+        pool = pooled(packs)
+        for x in pool['packs']:
+            print(f"  {x['pack']}: {x['pairs']} pairs, effect {x['effect']:+.2f} ±{x['hw95']:.2f} (95%); one-sided 95% lower bound"
+                  f" {x['lo95']:+.2f}" if 'effect' in x else f"  {x['pack']}: {x['pairs']} pairs, too few for an effect")
+        if 'effect' in pool:
+            print(f"All {pool['pairs']} pairs: effect {pool['effect']:+.2f} ±{pool['hw95']:.2f} (95%); one-sided 90% lower bound"
+                  f" {pool['lo90']:+.2f}; one-sided 95% lower bound {pool['lo95']:+.2f}: reads no worse (above {NO_WORSE:+.1f}) "
+                  + ('holds' if pool['lo95'] > NO_WORSE else 'misses') + f". Lean toward the second version {pool['lean']:+.2f}.")
+            for x in pool['packTerms']:
+                print(f"  {x['pack']} against the average of the packs: {x['deviation']:+.2f} ±{x['hw95']:.2f}")
     if a.json:
         json.dump({'pairs': n, 'readers': names, 'majorityOn': maj, 'diff': mean, 'hw95': hw, 'adjusted': adj, 'onB': on_b, 'chooseB': bchoice,
                    'perReader': {r: st.mean(v) for r, v in per_reader.items()}, 'faults': {k: dict(v) for k, v in faults.items()},
                    'quotes': quotes, 'scores': scores, 'lines': lines, 'faultRate': rate,
-                   'warnings': warn, 'citedLines': cited_lines, 'badLines': bad_lines, 'planted': planted if planted['pairs'] else None}, open(a.json, 'w'), indent=1)
+                   'warnings': warn, 'citedLines': cited_lines, 'badLines': bad_lines, 'planted': planted if planted['pairs'] else None,
+                   **({'pooled': pool} if pool else {})}, open(a.json, 'w'), indent=1)
 
 
 if __name__ == '__main__':

@@ -5,6 +5,7 @@
 import { buildWorld } from './build';
 import { tick } from './life';
 import { pickWitness } from './witness';
+import { invite } from './invite';
 import { projects, type Project } from './projects';
 import { peekBond, year, type Belief, type Bond, type Event, type Group, type Person, type Place, type World } from './world';
 
@@ -51,7 +52,18 @@ export interface CreateWorld {
   witness?: boolean; // place the witness, the one person whose view the page shows (default true)
 }
 
-export type Command = { kind: 'advance'; months: number };
+/** `advance`: run the world on, month by month. `invite`: `by` asks `to` to a rehearsal, with `by`'s band or, if they have none, to
+ * start playing together; `to` answers by their own decision, and a yes starts the band or brings them into it. */
+export type Command = { kind: 'advance'; months: number } | { kind: 'invite'; by: number; to: number; what: 'rehearsal' };
+
+/** What the engine says to a command. `ok` false: a condition does not hold, `why` names it, and the world is exactly as it was.
+ * An invitation that was put is `ok` whatever the answer: the first event is the answer (`type` 'invite', its `decision.chosen`
+ * 'yes' or 'no'), and any after it are what the yes led to. */
+export interface Answer {
+  ok: boolean;
+  why: string[]; // a refusal's condition, or the reasons the answer gives; people as @id, as in events
+  events: Plain<Event>[]; // what the command recorded, in order; an advance's events are read with `events(h, since)`
+}
 
 export function createWorld(c: CreateWorld): WorldHandle {
   const w = buildWorld(c.seed, c.runSeed ?? 1, c.pastYears ?? 30, c.adults ?? 46);
@@ -59,11 +71,15 @@ export function createWorld(c: CreateWorld): WorldHandle {
   return w as unknown as WorldHandle;
 }
 
-export function command(h: WorldHandle, c: Command): void {
+export function command(h: WorldHandle, c: Command): Answer {
   switch (c.kind) {
     case 'advance':
       for (let i = 0; i < c.months; i++) tick(W(h));
-      return;
+      return { ok: true, why: [], events: [] };
+    case 'invite': {
+      const a = invite(W(h), c.by, c.to);
+      return { ok: a.ok, why: a.why, events: a.events.map(e => plain(e)) };
+    }
   }
 }
 
