@@ -1,0 +1,7520 @@
+{
+ "novelist-1": {
+  "reader": "novelist",
+  "pairs": {
+   "P01": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 1,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 2,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 7,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "wording",
+       "line": 10,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 11,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 15,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 18,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 21,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 28,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 47,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 54,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "repeat",
+       "line": 55,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 59,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 60,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 61,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 62,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 64,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 65,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 66,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 68,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 72,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 73,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 74,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 81,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 94,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 98,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 106,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 112,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 118,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 120,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 121,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      87,
+      107
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 1,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 2,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 7,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "wording",
+       "line": 10,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 11,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 18,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 21,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 28,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 54,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "repeat",
+       "line": 55,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 59,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 60,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 64,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 65,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 66,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 68,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 72,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 73,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 74,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 81,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 94,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 98,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 106,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 118,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 120,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 121,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      62,
+      87
+     ]
+    },
+    "prefer": "B"
+   },
+   "P02": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 7,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 8,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 10,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 21,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 30,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 35,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 38,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 40,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 41,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 44,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 46,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 49,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 57,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 67,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 69,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 70,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 71,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 74,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 75,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 79,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 83,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 84,
+       "severity": "false"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 89,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "false line",
+       "line": 90,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 92,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 97,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 105,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 106,
+       "severity": "awkward",
+       "source": "supports"
+      }
+     ],
+     "good": [
+      26,
+      58
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 7,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 8,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 21,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 30,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 35,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 44,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 57,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 67,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 71,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 79,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 83,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 84,
+       "severity": "false"
+      },
+      {
+       "kind": "false line",
+       "line": 90,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 92,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 105,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      26,
+      87
+     ]
+    },
+    "prefer": "B"
+   },
+   "P03": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "line": 12,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 20,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 37,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 38,
+       "severity": "false"
+      },
+      {
+       "kind": "repeat",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 44,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 56,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 70,
+       "severity": "false"
+      },
+      {
+       "kind": "false line",
+       "line": 73,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 74,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      34,
+      31
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "line": 12,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 15,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 20,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 24,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 25,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 37,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 38,
+       "severity": "false"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 40,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "repeat",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 44,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 56,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 62,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 63,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "false line",
+       "line": 70,
+       "severity": "false"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 72,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "false line",
+       "line": 73,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 74,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      34,
+      21
+     ]
+    },
+    "prefer": "A"
+   },
+   "P04": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "wording",
+       "line": 3,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 5,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 10,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 13,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 20,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 24,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 40,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 55,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 60,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 88,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      42,
+      8
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "wording",
+       "line": 3,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 5,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 10,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 13,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 20,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 24,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 40,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 55,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 60,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 88,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      42,
+      8
+     ]
+    },
+    "prefer": "B"
+   },
+   "P05": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 4,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 6,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 6,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 15,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 20,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 34,
+       "severity": "false",
+       "source": "supports"
+      },
+      {
+       "kind": "false line",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 44,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "false line",
+       "line": 46,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 47,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 49,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 51,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 58,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 66,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 72,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 74,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 75,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 81,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      10,
+      80
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 4,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 6,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 15,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 20,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 34,
+       "severity": "false",
+       "source": "supports"
+      },
+      {
+       "kind": "false line",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 44,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "false line",
+       "line": 46,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 47,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 49,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 51,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 58,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 72,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 74,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 75,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 81,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      10,
+      80
+     ]
+    },
+    "prefer": "B"
+   },
+   "P06": {
+    "A": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 2,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 5,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "repeat",
+       "line": 20,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 22,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 37,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 38,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "false line",
+       "line": 40,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 50,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 58,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 61,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 72,
+       "severity": "awkward",
+       "source": "supports"
+      }
+     ],
+     "good": [
+      24,
+      78
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 2,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 20,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 22,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 37,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 38,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "false line",
+       "line": 40,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 50,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 58,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 61,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      24,
+      78
+     ]
+    },
+    "prefer": "B"
+   },
+   "P07": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 9,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 10,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "wording",
+       "line": 18,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 29,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 47,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 56,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 72,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 77,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "repeat",
+       "line": 78,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 81,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      84,
+      66
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 9,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 18,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 29,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 47,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 56,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 72,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 78,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      84,
+      10
+     ]
+    },
+    "prefer": "B"
+   },
+   "P08": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 3,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 7,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 21,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 31,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 38,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 39,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 50,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 54,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 64,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 75,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      9,
+      60
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 3,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 7,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 21,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 31,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 38,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 39,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 50,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 54,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 64,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 75,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      9,
+      60
+     ]
+    },
+    "prefer": "A"
+   },
+   "P09": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 2,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 5,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 8,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 12,
+       "severity": "false",
+       "source": "supports"
+      },
+      {
+       "kind": "repeat",
+       "line": 14,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 20,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 26,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 27,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 40,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 53,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 57,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 60,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 76,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "repeat",
+       "line": 83,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 84,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 86,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      74,
+      58
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 2,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 5,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 8,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 12,
+       "severity": "false",
+       "source": "supports"
+      },
+      {
+       "kind": "repeat",
+       "line": 14,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 26,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 27,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 40,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 53,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 57,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 60,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 83,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 84,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 86,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      74,
+      58
+     ]
+    },
+    "prefer": "B"
+   },
+   "P10": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 6,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 41,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 61,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 64,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 66,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 69,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 77,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 89,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 91,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      46,
+      17
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 6,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 41,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 61,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 64,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 66,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 69,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 77,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 89,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 91,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      46,
+      17
+     ]
+    },
+    "prefer": "B"
+   },
+   "P11": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 18,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 21,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 29,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 36,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 41,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 56,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 68,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      42,
+      53
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 18,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 21,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 29,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 36,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 41,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 48,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 56,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 68,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 73,
+       "severity": "awkward",
+       "source": "supports"
+      }
+     ],
+     "good": [
+      53,
+      27
+     ]
+    },
+    "prefer": "A"
+   },
+   "P12": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 16,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 27,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 33,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 48,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 58,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 67,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 84,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 85,
+       "severity": "false"
+      }
+     ],
+     "good": [
+      37,
+      9
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 16,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 27,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 33,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 48,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 58,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 67,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 84,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 85,
+       "severity": "false"
+      }
+     ],
+     "good": [
+      37,
+      9
+     ]
+    },
+    "prefer": "A"
+   }
+  }
+ },
+ "player-1": {
+  "reader": "player",
+  "pairs": {
+   "P01": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 1,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 2,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 10,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 15,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 18,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 21,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 28,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 47,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 54,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 59,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 60,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 61,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 62,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 66,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 68,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 72,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 73,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 85,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 94,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 98,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 106,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 112,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 118,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 120,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 121,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      19,
+      114
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 1,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 2,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 10,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 18,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 21,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 28,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 54,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 59,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 60,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 66,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 68,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 72,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 73,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 85,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 94,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 98,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 106,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 118,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 120,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 121,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      19,
+      114
+     ]
+    },
+    "prefer": "B"
+   },
+   "P02": {
+    "A": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 5,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 7,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 8,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 10,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 30,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 38,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 40,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 41,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 46,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 49,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 57,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 68,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 69,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 70,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 71,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 74,
+       "severity": "false",
+       "source": "does not"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 75,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 78,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 82,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 83,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 84,
+       "severity": "false"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 89,
+       "severity": "false",
+       "source": "does not"
+      },
+      {
+       "kind": "wording",
+       "line": 92,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 97,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 105,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 106,
+       "severity": "false",
+       "source": "does not"
+      }
+     ],
+     "good": [
+      26,
+      87
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 5,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 7,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 8,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 30,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 57,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 68,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 71,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 78,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 82,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 83,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 84,
+       "severity": "false"
+      },
+      {
+       "kind": "wording",
+       "line": 92,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 105,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      26,
+      87
+     ]
+    },
+    "prefer": "B"
+   },
+   "P03": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "line": 12,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 32,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 37,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 38,
+       "severity": "false"
+      },
+      {
+       "kind": "repeat",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 44,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 56,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 70,
+       "severity": "false"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 74,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      34,
+      21
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "line": 12,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 15,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 24,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 25,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 32,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 37,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 38,
+       "severity": "false"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 40,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 44,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 56,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 62,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 63,
+       "severity": "false",
+       "source": "does not"
+      },
+      {
+       "kind": "false line",
+       "line": 70,
+       "severity": "false"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 72,
+       "severity": "false",
+       "source": "does not"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 74,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      34,
+      21
+     ]
+    },
+    "prefer": "A"
+   },
+   "P04": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 5,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 10,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 13,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 20,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 24,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 40,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 60,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 72,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      42,
+      8
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 5,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 10,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 13,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 20,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 24,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 40,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 60,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 72,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      42,
+      8
+     ]
+    },
+    "prefer": "B"
+   },
+   "P05": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 4,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 6,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 6,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 15,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 20,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 26,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 34,
+       "severity": "false",
+       "source": "does not"
+      },
+      {
+       "kind": "false line",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 46,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 47,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 48,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 66,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 74,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 81,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      37,
+      39
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 4,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 6,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 15,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 20,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 26,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 34,
+       "severity": "false",
+       "source": "does not"
+      },
+      {
+       "kind": "false line",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 46,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 47,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 48,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 74,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 81,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      37,
+      39
+     ]
+    },
+    "prefer": "B"
+   },
+   "P06": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 5,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 22,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 37,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 40,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 45,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 58,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 72,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 74,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      24,
+      41
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 22,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 37,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 40,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 45,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 58,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 74,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      24,
+      41
+     ]
+    },
+    "prefer": "B"
+   },
+   "P07": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 10,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "wording",
+       "line": 18,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 29,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 56,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 67,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 68,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 77,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "repeat",
+       "line": 78,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 81,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      66,
+      84
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "wording",
+       "line": 18,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 29,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 56,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 67,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 68,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 78,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      66,
+      84
+     ]
+    },
+    "prefer": "B"
+   },
+   "P08": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 3,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 21,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 31,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 39,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 54,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 56,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 61,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 64,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      9,
+      72
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 3,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 21,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 31,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 39,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 54,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 56,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 61,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 64,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      9,
+      72
+     ]
+    },
+    "prefer": "A"
+   },
+   "P09": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 2,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 12,
+       "severity": "false",
+       "source": "does not"
+      },
+      {
+       "kind": "repeat",
+       "line": 14,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 19,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 20,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 34,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 40,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 53,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 54,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 62,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 64,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 68,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 76,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 83,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 84,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 86,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      30,
+      74
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 2,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 12,
+       "severity": "false",
+       "source": "does not"
+      },
+      {
+       "kind": "repeat",
+       "line": 14,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 34,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 40,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 53,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 54,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 62,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 68,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 83,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 84,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 86,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      30,
+      74
+     ]
+    },
+    "prefer": "B"
+   },
+   "P10": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 4,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 7,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 41,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 42,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 60,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 64,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 65,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 66,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 69,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 72,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 76,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 77,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 89,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      46,
+      88
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 4,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 7,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 41,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 60,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 64,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 66,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 69,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 72,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 76,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 89,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      46,
+      88
+     ]
+    },
+    "prefer": "B"
+   },
+   "P11": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 9,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 36,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 56,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 68,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      42,
+      47
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 9,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 36,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 48,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 56,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 68,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 73,
+       "severity": "false",
+       "source": "none"
+      }
+     ],
+     "good": [
+      42,
+      47
+     ]
+    },
+    "prefer": "A"
+   },
+   "P12": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 9,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 16,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 25,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 33,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 48,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 58,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 84,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 85,
+       "severity": "false"
+      }
+     ],
+     "good": [
+      82,
+      37
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 9,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 16,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 25,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 33,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 41,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 48,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 58,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 84,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 85,
+       "severity": "false"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 87,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      82,
+      37
+     ]
+    },
+    "prefer": "A"
+   }
+  }
+ },
+ "novelist-2": {
+  "reader": "novelist",
+  "pairs": {
+   "P13": {
+    "A": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 5,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 9,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 10,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 10,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 11,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 12,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 12,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 19,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 26,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 27,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 29,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 40,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 40,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 42,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 42,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 45,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 47,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 51,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 54,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 55,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 59,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 62,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 64,
+       "severity": "false"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 65,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 67,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 68,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 69,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 69,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 70,
+       "severity": "false"
+      },
+      {
+       "kind": "repeat",
+       "line": 72,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 75,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 75,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 76,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 80,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 81,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 86,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 90,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 92,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 92,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 94,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 95,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 96,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 96,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 97,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      23,
+      28
+     ]
+    },
+    "B": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 5,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 10,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 11,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 12,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 19,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 27,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 29,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 40,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 42,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 45,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 47,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 51,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 54,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 55,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 59,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 62,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 64,
+       "severity": "false"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 65,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 67,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 68,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "repeat",
+       "line": 69,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 70,
+       "severity": "false"
+      },
+      {
+       "kind": "repeat",
+       "line": 72,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 75,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 76,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 80,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 81,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 86,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 90,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 92,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 92,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 94,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 95,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 96,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 96,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 97,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      23,
+      28
+     ]
+    },
+    "prefer": "B"
+   },
+   "P14": {
+    "A": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "out of nowhere",
+       "line": 6,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 10,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 13,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 14,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 26,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 27,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "false line",
+       "line": 39,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 42,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 48,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 58,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 58,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 67,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 73,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 76,
+       "severity": "false"
+      },
+      {
+       "kind": "repeat",
+       "line": 78,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 79,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 80,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 82,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 84,
+       "severity": "false"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 86,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 89,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 90,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 93,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 94,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      4,
+      33
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "out of nowhere",
+       "line": 6,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 10,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 13,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 26,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "false line",
+       "line": 39,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 42,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 48,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 58,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 58,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 73,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 76,
+       "severity": "false"
+      },
+      {
+       "kind": "repeat",
+       "line": 78,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 79,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 80,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 82,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 84,
+       "severity": "false"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 86,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 89,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 90,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 93,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 94,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      4,
+      33
+     ]
+    },
+    "prefer": "B"
+   },
+   "P15": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 15,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 20,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 36,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 54,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 54,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 58,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 68,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 82,
+       "severity": "awkward",
+       "source": "supports"
+      }
+     ],
+     "good": [
+      17,
+      44
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 36,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 54,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 54,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 58,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 68,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      17,
+      44
+     ]
+    },
+    "prefer": "B"
+   },
+   "P16": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 18,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 20,
+       "severity": "false"
+      },
+      {
+       "kind": "repeat",
+       "line": 30,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 32,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 38,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 46,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 48,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 63,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 71,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 74,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 76,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 77,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      33,
+      65
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 18,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 20,
+       "severity": "false"
+      },
+      {
+       "kind": "repeat",
+       "line": 30,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 32,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 38,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 46,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 48,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 63,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 71,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 74,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 76,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 77,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 78,
+       "severity": "awkward",
+       "source": "supports"
+      }
+     ],
+     "good": [
+      33,
+      65
+     ]
+    },
+    "prefer": "A"
+   },
+   "P17": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 24,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 32,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 33,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 41,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 48,
+       "severity": "false"
+      },
+      {
+       "kind": "false line",
+       "line": 57,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 59,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 63,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      27,
+      42
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 24,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 32,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 33,
+       "severity": "false",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 41,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 48,
+       "severity": "false"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 54,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 57,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 59,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 63,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 74,
+       "severity": "awkward",
+       "source": "supports"
+      }
+     ],
+     "good": [
+      27,
+      42
+     ]
+    },
+    "prefer": "A"
+   },
+   "P18": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "out of nowhere",
+       "line": 6,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 10,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 45,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 50,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 51,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 59,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 60,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 70,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 73,
+       "severity": "awkward",
+       "source": "does not"
+      }
+     ],
+     "good": [
+      33,
+      39
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "out of nowhere",
+       "line": 6,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 10,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 35,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 45,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 50,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 51,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 59,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 60,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 70,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 73,
+       "severity": "awkward",
+       "source": "does not"
+      }
+     ],
+     "good": [
+      33,
+      39
+     ]
+    },
+    "prefer": "A"
+   },
+   "P19": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 6,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 22,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 25,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 33,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 38,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 63,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 68,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 71,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 83,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 86,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 96,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 97,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      45,
+      74
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 2,
+       "severity": "false",
+       "source": "supports"
+      },
+      {
+       "kind": "repeat",
+       "line": 6,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 14,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 22,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 25,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 33,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 38,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 53,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 59,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 63,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 68,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 71,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 83,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 86,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 89,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 96,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 97,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      45,
+      74
+     ]
+    },
+    "prefer": "A"
+   },
+   "P20": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 17,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "wording",
+       "line": 35,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 58,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 60,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 61,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 70,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 84,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 86,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      2,
+      30
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 17,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 18,
+       "severity": "false",
+       "source": "supports"
+      },
+      {
+       "kind": "wording",
+       "line": 35,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 36,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 40,
+       "severity": "false",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 54,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 58,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 60,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 61,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 70,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 84,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 86,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      2,
+      30
+     ]
+    },
+    "prefer": "A"
+   },
+   "P21": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "out of nowhere",
+       "line": 12,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 25,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 43,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 50,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 58,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 59,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 66,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 67,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 69,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 73,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      2,
+      44
+     ]
+    },
+    "B": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 6,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 12,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 21,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 22,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 25,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 35,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 36,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 41,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 43,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 48,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 49,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 50,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 58,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 59,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 61,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 63,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "repeat",
+       "line": 66,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 67,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 69,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 73,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      2,
+      44
+     ]
+    },
+    "prefer": "A"
+   },
+   "P22": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "line": 11,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 11,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 21,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 24,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 26,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 28,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 29,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 36,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 40,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 44,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 63,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 65,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 85,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 86,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 91,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      18,
+      48
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "line": 11,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 11,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 21,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 24,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 26,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 28,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 29,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 36,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 40,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 44,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 63,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 65,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 85,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 86,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 91,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      18,
+      48
+     ]
+    },
+    "prefer": "B"
+   },
+   "P23": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 22,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 31,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 55,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 59,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      10,
+      64
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 15,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 16,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 22,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 31,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 40,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 48,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 55,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 59,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 71,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      10,
+      64
+     ]
+    },
+    "prefer": "A"
+   },
+   "P24": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "out of nowhere",
+       "line": 22,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 23,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 46,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "repeat",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 50,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 55,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      28,
+      61
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 1,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 8,
+       "severity": "false",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 11,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 22,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 23,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 46,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "repeat",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 50,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 55,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 59,
+       "severity": "false",
+       "source": "supports"
+      }
+     ],
+     "good": [
+      28,
+      61
+     ]
+    },
+    "prefer": "A"
+   }
+  }
+ },
+ "player-2": {
+  "reader": "player",
+  "pairs": {
+   "P13": {
+    "A": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 5,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 9,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 10,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 12,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 19,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 21,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 26,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 29,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 40,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 40,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 42,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 42,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 46,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 47,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 51,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 54,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 62,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 64,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 65,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 67,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 69,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 69,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 70,
+       "severity": "false"
+      },
+      {
+       "kind": "repeat",
+       "line": 72,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 75,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 75,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 76,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 81,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 82,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 86,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 90,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 92,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 92,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 94,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 95,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 96,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 97,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      25,
+      28
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 5,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 19,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 21,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 29,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 40,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 42,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 43,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 46,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 47,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 51,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 54,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 62,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 64,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 65,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 67,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 69,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 70,
+       "severity": "false"
+      },
+      {
+       "kind": "repeat",
+       "line": 72,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 75,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 76,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 81,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 82,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 86,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 90,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 92,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 92,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 94,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 95,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 96,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 97,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      25,
+      28
+     ]
+    },
+    "prefer": "B"
+   },
+   "P14": {
+    "A": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "wording",
+       "line": 13,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 14,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 26,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 29,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 39,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 58,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 58,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 67,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "false line",
+       "line": 76,
+       "severity": "false"
+      },
+      {
+       "kind": "repeat",
+       "line": 79,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 80,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 82,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 84,
+       "severity": "false"
+      },
+      {
+       "kind": "wording",
+       "line": 88,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 89,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 90,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 93,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 94,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      21,
+      56
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "wording",
+       "line": 13,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 26,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 29,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 39,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 58,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 58,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "false line",
+       "line": 76,
+       "severity": "false"
+      },
+      {
+       "kind": "repeat",
+       "line": 79,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 80,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 82,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 84,
+       "severity": "false"
+      },
+      {
+       "kind": "wording",
+       "line": 88,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 89,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 90,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 93,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 94,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      21,
+      56
+     ]
+    },
+    "prefer": "B"
+   },
+   "P15": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 15,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 20,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 36,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 54,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 58,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 68,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 82,
+       "severity": "awkward",
+       "source": "supports"
+      }
+     ],
+     "good": [
+      33,
+      44
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 36,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 54,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 58,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 68,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      20,
+      44
+     ]
+    },
+    "prefer": "B"
+   },
+   "P16": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "wording",
+       "line": 9,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 18,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 20,
+       "severity": "false"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 38,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 46,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 74,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 76,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 77,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      26,
+      65
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "wording",
+       "line": 9,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 18,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 20,
+       "severity": "false"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 38,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 46,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 52,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 74,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 76,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 77,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 78,
+       "severity": "awkward",
+       "source": "supports"
+      }
+     ],
+     "good": [
+      26,
+      65
+     ]
+    },
+    "prefer": "A"
+   },
+   "P17": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "wording",
+       "line": 6,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 33,
+       "severity": "false",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 41,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "false line",
+       "line": 43,
+       "severity": "false"
+      }
+     ],
+     "good": [
+      13,
+      49
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "wording",
+       "line": 6,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 33,
+       "severity": "false",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 41,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "false line",
+       "line": 43,
+       "severity": "false"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 54,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 74,
+       "severity": "awkward",
+       "source": "supports"
+      }
+     ],
+     "good": [
+      13,
+      49
+     ]
+    },
+    "prefer": "A"
+   },
+   "P18": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "wording",
+       "line": 20,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 45,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 50,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 59,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 60,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 70,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 73,
+       "severity": "awkward",
+       "source": "supports"
+      }
+     ],
+     "good": [
+      27,
+      39
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "wording",
+       "line": 20,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 45,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 49,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 50,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 59,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 60,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 70,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 73,
+       "severity": "awkward",
+       "source": "supports"
+      }
+     ],
+     "good": [
+      27,
+      39
+     ]
+    },
+    "prefer": "A"
+   },
+   "P19": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "false line",
+       "line": 22,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 33,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 38,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 63,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 66,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 83,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 86,
+       "severity": "false"
+      }
+     ],
+     "good": [
+      18,
+      77
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 2,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 14,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 22,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 33,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 38,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 53,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 59,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 63,
+       "severity": "awkward"
+      },
+      {
+       "kind": "wording",
+       "line": 66,
+       "severity": "awkward"
+      },
+      {
+       "kind": "out of nowhere",
+       "line": 83,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 86,
+       "severity": "false"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 89,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      18,
+      77
+     ]
+    },
+    "prefer": "A"
+   },
+   "P20": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 17,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "wording",
+       "line": 35,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 60,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 61,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 70,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 86,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      9,
+      30
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 17,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 18,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "wording",
+       "line": 35,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 36,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 40,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 54,
+       "severity": "false",
+       "source": "supports"
+      },
+      {
+       "kind": "false line",
+       "line": 60,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 61,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 70,
+       "severity": "awkward"
+      },
+      {
+       "kind": "false line",
+       "line": 86,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      9,
+      30
+     ]
+    },
+    "prefer": "A"
+   },
+   "P21": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 25,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 43,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 50,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 58,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 59,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "false line",
+       "line": 65,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 66,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 73,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      1,
+      68
+     ]
+    },
+    "B": {
+     "score": 2,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 6,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 21,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 22,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 25,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 35,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 36,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 41,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 43,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 48,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 49,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 50,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "wording",
+       "line": 58,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 59,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 61,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 63,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "false line",
+       "line": 65,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 66,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 73,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      1,
+      68
+     ]
+    },
+    "prefer": "A"
+   },
+   "P22": {
+    "A": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "line": 11,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 11,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      25,
+      48
+     ]
+    },
+    "B": {
+     "score": 4,
+     "faults": [
+      {
+       "kind": "false line",
+       "line": 11,
+       "severity": "awkward"
+      },
+      {
+       "kind": "repeat",
+       "line": 11,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      25,
+      48
+     ]
+    },
+    "prefer": "A"
+   },
+   "P23": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 22,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 59,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      10,
+      44
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 15,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 16,
+       "severity": "false",
+       "source": "none"
+      },
+      {
+       "kind": "repeat",
+       "line": 22,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 40,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 48,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 59,
+       "severity": "awkward",
+       "source": "none"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 71,
+       "severity": "awkward",
+       "source": "none"
+      }
+     ],
+     "good": [
+      10,
+      44
+     ]
+    },
+    "prefer": "A"
+   },
+   "P24": {
+    "A": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "repeat",
+       "line": 23,
+       "severity": "awkward"
+      }
+     ],
+     "good": [
+      31,
+      61
+     ]
+    },
+    "B": {
+     "score": 3,
+     "faults": [
+      {
+       "kind": "unfit reason",
+       "line": 1,
+       "severity": "awkward",
+       "source": "supports"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 8,
+       "severity": "awkward",
+       "source": "does not"
+      },
+      {
+       "kind": "repeat",
+       "line": 23,
+       "severity": "awkward"
+      },
+      {
+       "kind": "unfit reason",
+       "line": 59,
+       "severity": "awkward",
+       "source": "does not"
+      }
+     ],
+     "good": [
+      31,
+      61
+     ]
+    },
+    "prefer": "A"
+   }
+  }
+ }
+}
