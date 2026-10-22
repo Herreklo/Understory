@@ -10,6 +10,7 @@ import {
   type World,
   type Person,
   type Group,
+  type Event,
   type Cause,
   age,
   live,
@@ -138,11 +139,22 @@ function tryForm(w: World, p: Person, k: Kind) {
     .sort((a, b) => b[1] - a[1])
     .slice(0, k.maxSize - 1);
   if (pool.length + 1 < k.minSize) return;
+  form(
+    w,
+    k,
+    p,
+    pool.map(x => x[0]),
+    { kind: 'want', label: `@${p.id} had been wanting to be heard`, weight: 0.5, key: k.wantKind, who: p.id },
+  );
+}
+// A group starts: its founder and those who play with them, for the reason given. Also how an invitation answered yes starts one
+// (invite.ts, through the front door).
+export function form(w: World, k: Kind, p: Person, others: Person[], why: Cause): Group {
   const g: Group = {
     id: w.groups.length,
     kind: k.id,
     name: w.rng.pick(k.names.filter(n => !w.groups.some(x => x.name === n))) ?? k.names[0],
-    members: [p.id, ...pool.map(x => x[0].id)],
+    members: [p.id, ...others.map(q => q.id)],
     founder: p.id,
     since: w.t,
     works: [],
@@ -167,7 +179,7 @@ function tryForm(w: World, p: Person, k: Kind) {
     type: 'group:formed',
     who: [...g.members], // the event keeps who was there, not the live list
     text: `${names(g.members)} started a ${k.noun}: ${g.name}.`,
-    causes: [{ kind: 'want', label: `@${p.id} had been wanting to be heard`, weight: 0.5, key: k.wantKind, who: p.id }, ...c.why.slice(0, 2)],
+    causes: [why, ...c.why.slice(0, 2)],
     vis: 'public',
     evidence: g.members.map(m => ev(m, 'sociability', 1, 0.3, 0.4)),
     w: 1.8,
@@ -175,6 +187,7 @@ function tryForm(w: World, p: Person, k: Kind) {
   broadcast(w, e);
   g.events.push(e.id);
   for (const m of g.members) addEmotion(w, P(w, m), 'group', `something starting with ${g.name}`, 0.12, 8, e.id);
+  return g;
 }
 
 // A title nobody in town has used: the setting's fixed titles first, then its patterns over its own words.
@@ -725,7 +738,14 @@ function recruit(w: World, g: Group, k: Kind) {
         .sort((a, b) => b[1] - a[1])[0][0],
     x => [x.id],
   );
-  const better = bestSkill(q, k) > Math.max(...g.former.slice(-1).map(i => bestSkill(P(w, i), k)), 0);
+  const e = join(w, g, k, q, stateCause(`${g.name} needed someone`, 0.5));
+  if (running.length >= 2) notPicked(w, g, k, q, running, e.id);
+}
+// Someone joins a group, for the reason given. Also how an invitation answered yes brings someone in (invite.ts, through the front
+// door), which compares the newcomer with the one who left only when someone has left (`compare`).
+export function join(w: World, g: Group, k: Kind, q: Person, why: Cause, compare = true): Event {
+  const ms = g.members.map(i => P(w, i));
+  const better = compare && bestSkill(q, k) > Math.max(...g.former.slice(-1).map(i => bestSkill(P(w, i), k)), 0);
   g.members.push(q.id);
   q.group = g.id;
   formHabit(w, q, 'practise', `joined ${g.name}`, 0.6, false);
@@ -737,18 +757,14 @@ function recruit(w: World, g: Group, k: Kind) {
     type: 'group:joined',
     who: [q.id, ...ms.map(p => p.id)],
     text: `@${q.id} joined ${g.name}${better ? ', a better player than the one who left' : ''}${g.chem < before - 0.15 ? '; it was not the same' : ''}.`,
-    causes: [
-      stateCause(`${g.name} needed someone`, 0.5),
-      ...(better ? [{ kind: 'state', label: 'the best player going', weight: 0.3 } as Cause] : []),
-      ...c.why.slice(0, 1),
-    ],
+    causes: [why, ...(better ? [{ kind: 'state', label: 'the best player going', weight: 0.3 } as Cause] : []), ...c.why.slice(0, 1)],
     vis: 'public',
     evidence: [],
     w: 1.2,
   });
   broadcast(w, e);
   g.events.push(e.id);
-  if (running.length >= 2) notPicked(w, g, k, q, running, e.id);
+  return e;
 }
 // Round 38: when two or more wanted the place, those not taken are told so, and answer it as someone passed over for a post does;
 // pride or anger turns it into a grudge.
