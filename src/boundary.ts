@@ -53,17 +53,24 @@ export interface CreateWorld {
 
 export type Command = { kind: 'advance'; months: number };
 
+/** What the engine says to a command. `ok` false: a condition does not hold, `why` names it, and the world is exactly as it was. */
+export interface Answer {
+  ok: boolean;
+  why: string[]; // a refusal's condition, or the reasons the event gives; people as @id, as in events
+  events: Plain<Event>[]; // what the command recorded, in order; an advance's events are read with `events(h, since)`
+}
+
 export function createWorld(c: CreateWorld): WorldHandle {
   const w = buildWorld(c.seed, c.runSeed ?? 1, c.pastYears ?? 30, c.adults ?? 46);
   if (c.witness ?? true) pickWitness(w);
   return w as unknown as WorldHandle;
 }
 
-export function command(h: WorldHandle, c: Command): void {
+export function command(h: WorldHandle, c: Command): Answer {
   switch (c.kind) {
     case 'advance':
       for (let i = 0; i < c.months; i++) tick(W(h));
-      return;
+      return { ok: true, why: [], events: [] };
   }
 }
 
