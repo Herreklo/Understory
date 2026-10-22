@@ -28,9 +28,10 @@ Then: round 43, doors for later life; homes (#59, with the front door's part two
 
 - Agree the branches above, or change them.
 - Effects read since M38 run about half as large (round 40's +0.51 re-read as +0.25), so "reads no worse" at −0.3 is looser than it was. Keep it, or −0.15?
-- The reviewer agent runs on Fable 5.1 (never the builder's model); Sonnet would be cheaper.
-- The human test, when you pick it up.
+- The reviewer on Fable 5.1, or the cheaper Sonnet?
+- The human test: when?
 - The repo structure for add-ons.
+- The build plan is ready to read, in PR #82.
 
 ## Latest
 

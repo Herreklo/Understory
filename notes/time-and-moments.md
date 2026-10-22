@@ -30,7 +30,7 @@ Rain World (2017) shows it can feel like one living world. Creatures near the pl
 | Step | What                                                                                                                          | Measured by                                  | Size                 |
 | ---- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | -------------------- |
 | 0    | Measure today's engine: of weighty events, the share with weighty consequences, and how many lives each reaches               | a diagnostic, no change                      | a neutral job        |
-| 1    | **Places and presence**: an event has a place and who is present, and those present are witnesses                            | the same share and reach, up                 | research + one round |
+| 1    | **Places and presence**: an event has a place and who is present, and those present are witnesses                             | the same share and reach, up                 | research + one round |
 | 2    | **Moments**: gatherings found by pressure, resolved inside the month with a day and a span of hours                           | rule 1 holds; an evening reads as an evening | about two rounds     |
 | 3    | **Deaths with a moment** (Overstory request 14): an accident or a choice, with who was present and what could have changed it | deaths that point to a day; their aftermath  | one round            |
 | 4    | **Killings**, last: a path to them, rare, with aftermath and memory. Rule 8 allows it: controversy in acts, never identity    | rarity and aftermath, read blind             | one round            |
