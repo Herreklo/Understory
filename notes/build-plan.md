@@ -1,6 +1,6 @@
 # Building the engine: the plan
 
-_Rewritten 22 October 2026 around three research notes: `notes/research/feelings-and-traits.md`, `language.md` (PR #85) and `intriguing-lives.md` (PR #86). Also drawn on: `wording.md` (PR #78, a draft), `reasons.md` and `reports/density-22oct.md`. Øystein agreed the outline that day: two tracks, feelings first, and the bar in section 3. A pre-mortem by the `reviewer` agent (Fable 5.1) followed; its findings are answered here and listed on PR #82. The plan proposes; "Next" in `SUMMARY.md` changes only when Øystein says so. The first version, with its file-by-file audit of the engine, is commit `cccad45`._
+_Rewritten 22 October 2026 around three research notes: `notes/research/feelings-and-traits.md`, `language.md` (PR #85) and `intriguing-lives.md` (PR #86). Also drawn on: `wording.md` (PR #78, a draft), `reasons.md` and `reports/density-22oct.md`. Øystein agreed the outline that day: two tracks, feelings first, and the bar in section 3. A pre-mortem by the `reviewer` agent (Fable 5.1) followed; its findings are answered here and listed on PR #82. Øystein then left the remaining decisions to the lead session; section 6 records them. The first version, with its file-by-file audit of the engine, is commit `cccad45`._
 
 ## 1. In short
 
@@ -100,8 +100,8 @@ Each round claims an effect on how a page reads, so each is an experiment. None 
 
 **G1. The wording round** (Next 2; exit 3).
 
-- **What:** reasons worded by the expression chosen, from the table of 279 expression–facet pairs in `families.ts`, the 22 worst pairs and `backsong` written first. A history reason carries its event inside it.
-- **Why the full table:** the 22 worst pairs alone reach 43% of the 434 faulted lines, under the note's own stop at 50%.
+- **What:** reasons worded by the expression chosen, from the table of 279 expression–facet pairs in `families.ts`, worst pairs and `backsong` first, until reach on held-out pages passes 50%. A history reason carries its event inside it.
+- **Why not capped at 22 pairs:** they alone reach 43% of the 434 faulted lines, under the note's own stop at 50%.
 - **Primary counter:** unfit reasons cited on the changed lines, on against off. The score cannot see it.
 - **The last round on reasons:** if it stops or is not kept, reasons rest.
 
@@ -202,26 +202,28 @@ Engine, world pack, domain module and content are separate layers. The repo stru
 
 **What not to build:** a director or any pacing; a clock shorter than a month; domain systems in the engine; a live language model; a reputation score; a meter shown to the player.
 
-## 6. Decisions for Øystein
+## 6. Decisions, taken
 
-1. **Two tracks, feelings first** (agreed). This reverses the first plan's rule of no page round until a people round is kept.
-2. **The bar** (agreed), with section 3's rule that a miss with a passed counter buys one more pack. Recommended: yes.
-3. **"Next", proposed:**
+On 22 October Øystein left the decisions to the lead session ("you do what you think is best. analyse before you continue"). Each was checked again and taken as below. Any of them is his to reverse in one dated line in `SUMMARY.md`.
+
+1. **Two tracks, feelings first.** This reverses the first plan's rule of no page round until a people round is kept.
+2. **The bar:** −0.3 on the one-sided 95% bound; 48 pairs for people rounds, 24 on the same lives for page rounds. A miss with a passed counter buys one more pack.
+3. **"Next":**
 
    1. the wording round (G1);
    2. feelings part one (P1), built now and read after G1;
    3. the human test.
 
-   Then selection, taking sides, shared hardship, particulars and callbacks, feelings part two, round 43, homes with the front door's part two, and the band year. Beside any: N1a first, N2, M39, S1.
+   Then selection, taking sides, shared hardship, particulars and callbacks, feelings part two, round 43, homes with the front door's part two, and the band year. Beside any: N1a first, then N2, M39 and S1.
 
-4. **The felt question (M39)** in the brief, as a check, calibrated on round 40 and the planted pack. Recommended: yes.
-5. **The human test,** dated before P1 is read: at least five outsiders, part of round 40's busiest pack, exit point 5's bar, with the felt question. Recommended: within three weeks.
-6. **The wording round words the full table** (279 pairs, as data), not the first plan's cap of 22. Recommended: yes.
-7. **The reviewer stays on Fable 5.1.** Sonnet is cheaper, but quality decides the model, and the reviewer is what stops a failed round before it costs a reading. Recommended: yes.
-8. **The repo structure** of the first plan, with packs made in phase C. Recommended: yes.
-9. **The register may pull one arc forward,** P7 likeliest. Recommended: yes.
+4. **The felt question (M39)** goes in the brief, as a check, calibrated on round 40 and the planted pack.
+5. **The human test by 12 November:** at least five outsiders, part of round 40's busiest pack, exit point 5's bar, with the felt question. Only Øystein can find the readers.
+6. **The wording round is not capped at 22 pairs,** since they reach 43% of faulted lines, under the note's own 50% stop. It words pairs worst first until reach on held-out pages (round 41's) passes the stop, up to the full table of 279. Its design job settles the number.
+7. **The reviewer stays on Fable 5.1.** Sonnet is cheaper, but quality decides the model, and the reviewer is what stops a failed round before it costs a reading.
+8. **The repo structure** of the first plan, with packs made in phase C.
+9. **The register may pull one arc forward,** P7 likeliest, never displacing an open round.
 
-**Carried unchanged from the first plan** (recommended, no change needed):
+**Carried unchanged from the first plan:**
 
 - content as data, one file at a time between rounds;
 - branching as a neutral job;
