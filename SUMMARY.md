@@ -17,7 +17,7 @@ People you come to understand from incomplete evidence, who surprise you for rea
 
 One experiment at a time per track (`notes/build-plan.md`). _22 Oct: Øystein left the plan's decisions to the lead (section 6), his to reverse here._
 
-1. **Feelings meet their object** (P4; people; exits 1, 2, 8), research first: a resentment held in 13% of adult-months weighs in 1.4% of decisions. It says whether P4 builds on round 44's code (off unless `ON=feelings`) or feelings go back to research.
+1. **Feelings meet their object** (P4; people; exits 1, 2, 8), with round 44's code folded in (26 Oct, plan decision 23). Research (#97): a strong feeling may bring its holder to its object. Counter: strong feelings changing an act toward it, about 4% expected, stop 2.5%.
    - _Kept or not:_ taking sides follows.
 2. **The page** (exit 3): reasons rest after 43w; N3, then particulars.
 

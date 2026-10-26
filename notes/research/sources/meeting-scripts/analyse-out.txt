@@ -1,0 +1,82 @@
+24 worlds, 10 present years each
+
+## Episodes with a whole year observed (onset at 0.12+), per world-decade and shares (%)
+-- onset 0.12 or more
+resentment  per decade 94.3 ±8.2    met 13.9 ±1.2    (pooled 14.2) flipped there 0.9 ±0.3    (pooled 0.9) any contact 94.6 ±0.9    share a place at onset 92.7 ±1.5
+guilt       per decade 42.3 ±3.5    met 15.9 ±2.2    (pooled 16.2) flipped there 1.2 ±0.7    (pooled 1.3) any contact 96.4 ±1.1    share a place at onset 96.7 ±1.3
+gratitude   per decade 35.3 ±4.5    met 13.4 ±2.4    (pooled 13.8) flipped there 0.7 ±0.6    (pooled 0.7) any contact 74.0 ±3.2    share a place at onset 90.4 ±3.2
+all         per decade 171.9 ±10.8  met 14.4 ±1.1    (pooled 14.6) flipped there 1.0 ±0.3    (pooled 1.0) any contact 90.7 ±1.1    share a place at onset 93.4 ±1.2
+-- onset 0.3 or more
+resentment  per decade 47.5 ±5.6    met 15.0 ±1.7    (pooled 15.3) flipped there 0.9 ±0.6    (pooled 0.9) any contact 99.3 ±0.7    share a place at onset 92.0 ±2.4
+guilt       per decade 20.2 ±1.8    met 21.1 ±3.5    (pooled 21.2) flipped there 1.3 ±0.9    (pooled 1.4) any contact 99.1 ±0.7    share a place at onset 97.0 ±1.6
+gratitude   per decade 27.7 ±3.7    met 12.8 ±2.8    (pooled 13.1) flipped there 0.6 ±0.7    (pooled 0.6) any contact 79.6 ±3.8    share a place at onset 90.3 ±3.9
+all         per decade 95.5 ±7.0    met 15.8 ±1.5    (pooled 15.9) flipped there 0.9 ±0.4    (pooled 0.9) any contact 93.4 ±1.3    share a place at onset 92.9 ±1.6
+
+## Where met, by kind of decision (pooled, onset 0.12+)
+resentment [('grudge', 45), ('request', 45), ('oldwound', 31), ('row', 30), ('aftermath', 29), ('obligation', 26), ('rivalry', 16), ('request-answer', 15)]
+guilt [('collection', 32), ('provocation', 22), ('support', 22), ('oldwound', 21), ('request-answer', 18), ('grudge', 14), ('row', 11), ('row-answer', 7)]
+gratitude [('row', 36), ('row-answer', 20), ('support', 14), ('obligation', 11), ('request-answer', 10), ('provocation', 8), ('oldwound', 8), ('turneddown', 3)]
+
+## Eligible holder-months (0.3+, cause standing, object in town, a shared place), per world-decade; what won the month
+resentment  133.0 ±17.9    none 85.5 ±1.8 0.8-0.9 5.0 ±0.9 1.0 9.0 ±1.4 1.2-1.5 0.2 ±0.2 1.8-2 0.3 ±0.2 | redirectable 2.5 ±0.7
+guilt       90.9 ±10.8     none 83.2 ±1.7 0.8-0.9 5.6 ±0.9 1.0 10.5 ±1.6 1.2-1.5 0.5 ±0.4 1.8-2 0.2 ±0.2 | redirectable 2.2 ±0.7
+gratitude   671.4 ±108.9   none 87.4 ±1.2 0.8-0.9 3.0 ±0.5 1.0 8.9 ±1.0 1.2-1.5 0.3 ±0.1 1.8-2 0.4 ±0.2 | redirectable 2.9 ±0.4
+all         895.2 ±112.6   none 86.7 ±1.0 0.8-0.9 3.5 ±0.4 1.0 9.0 ±0.8 1.2-1.5 0.3 ±0.1 1.8-2 0.4 ±0.1 | redirectable 2.8 ±0.4
+
+## The old wound: decisions where the actor resents the target, and of those, the resentment weighed (pooled)
+[293, 46] 16% weighed
+
+## Flip share of each kind by kind of decision (pooled; weighed n, flips, %), top by n
+grief: all 757 34 4.5% | row 310/18 (6%), row-answer 218/5 (2%), aftermath 86/5 (6%), grudge 39/5 (13%), newcomer 28/0 (0%), chance 26/1 (4%), strain 22/0 (0%)
+resentment: all 609 33 5.4% | grudge 95/3 (3%), row 70/2 (3%), request 64/7 (11%), oldwound 46/0 (0%), aftermath 40/5 (12%), obligation 39/3 (8%), strain 29/1 (3%)
+guilt: all 233 21 9.0% | collection 35/5 (14%), oldwound 31/1 (3%), support 31/4 (13%), provocation 22/1 (5%), request-answer 21/0 (0%), row 20/5 (25%), grudge 17/0 (0%)
+gratitude: all 443 14 3.2% | row 118/8 (7%), row-answer 85/3 (4%), support 72/0 (0%), obligation 47/0 (0%), provocation 22/0 (0%), request-answer 22/0 (0%), oldwound 20/0 (0%)
+owes: all 1085 87 8.0% | oldwound 187/6 (3%), aftermath 153/17 (11%), support 116/17 (15%), provocation 111/4 (4%), obligation 99/7 (7%), grudge 83/7 (8%), row-answer 54/2 (4%)
+owed: all 282 54 19.1% | request 141/21 (15%), loss 56/8 (14%), confide 50/20 (40%), strain 35/5 (14%)
+
+## Raising a meeting: P(met within a year) if each eligible month raises one with chance c x intensity (pooled episodes, onset 0.3+)
+c=0.1 resentment  raised 8.6%  raised or met already 22.1%  n=1140
+c=0.1 guilt       raised 15.3%  raised or met already 33.6%  n=486
+c=0.1 gratitude   raised 34.7%  raised or met already 43.9%  n=665
+c=0.1 all         raised 17.6%  raised or met already 30.9%  n=2291
+c=0.25 resentment  raised 19.8%  raised or met already 31.3%  n=1140
+c=0.25 guilt       raised 32.4%  raised or met already 47.3%  n=486
+c=0.25 gratitude   raised 61.5%  raised or met already 67.3%  n=665
+c=0.25 all         raised 34.5%  raised or met already 45.1%  n=2291
+c=0.5 resentment  raised 34.9%  raised or met already 43.9%  n=1140
+c=0.5 guilt       raised 51.2%  raised or met already 62.3%  n=486
+c=0.5 gratitude   raised 78.6%  raised or met already 81.6%  n=665
+c=0.5 all         raised 51.0%  raised or met already 58.7%  n=2291
+
+## Demography, 20 years from the present, per world-decade (paired worlds)
+24 worlds in every arm
+off            births 7.2 ±1.1   deaths 9.2 ±0.9   ratio 0.78 marriages 4.6 ±0.4  splits 4.5 ±0.6  couple-months 638 low-like 7.8% mean like 0.620 pop end/start 1.03 toward partner (per 100 adult-months) 
+on             births 7.5 ±0.9   deaths 9.3 ±0.8   ratio 0.80 marriages 4.5 ±0.6  splits 3.7 ±0.6  couple-months 663 low-like 5.9% mean like 0.635 pop end/start 1.03 toward partner (per 100 adult-months) gratitude 1.09, grief 0.01, guilt 0.16, resentment 0.45
+on-gratitude   births 7.6 ±1.0   deaths 9.0 ±0.7   ratio 0.84 marriages 4.5 ±0.6  splits 3.7 ±0.6  couple-months 659 low-like 5.3% mean like 0.645 pop end/start 1.04 toward partner (per 100 adult-months) grief 0.01, guilt 0.17, resentment 0.46
+on-grief       births 7.4 ±0.8   deaths 9.1 ±0.8   ratio 0.82 marriages 4.4 ±0.5  splits 4.0 ±0.7  couple-months 679 low-like 6.7% mean like 0.621 pop end/start 1.04 toward partner (per 100 adult-months) gratitude 1.15, guilt 0.17, resentment 0.52
+on-guilt       births 7.4 ±0.9   deaths 9.4 ±0.8   ratio 0.80 marriages 4.5 ±0.5  splits 3.8 ±0.7  couple-months 658 low-like 6.1% mean like 0.636 pop end/start 1.03 toward partner (per 100 adult-months) gratitude 1.06, grief 0.01, resentment 0.46
+on-owes        births 7.0 ±0.8   deaths 9.3 ±0.8   ratio 0.76 marriages 4.4 ±0.7  splits 3.9 ±0.7  couple-months 668 low-like 6.7% mean like 0.620 pop end/start 1.02 toward partner (per 100 adult-months) gratitude 1.07, grief 0.02, guilt 0.22, resentment 0.64
+on-resentment  births 7.4 ±0.9   deaths 9.4 ±0.8   ratio 0.78 marriages 4.5 ±0.6  splits 4.2 ±0.7  couple-months 669 low-like 6.1% mean like 0.633 pop end/start 1.02 toward partner (per 100 adult-months) gratitude 1.31, grief 0.00, guilt 0.18
+paired on - off per world-decade:
+  births: 0.3 ±0.8
+  deaths: 0.1 ±0.6
+  marriages: -0.1 ±0.6
+  splits: -0.8 ±0.5
+off 24 worlds; ratio over all 0.78 ; six-world blocks 0.84 0.97 0.77 0.59 ; below 0.6: 1
+on 24 worlds; ratio over all 0.80 ; six-world blocks 0.89 0.86 0.71 0.76 ; below 0.6: 0
+
+## Why a meeting with the object does not weigh the feeling (why.ts, pooled over 24 worlds)
+resentment 3100 {'own-cause': '1907 (62%)', 'weighed': '609 (20%)', 'none-pulled': '223 (7%)', 'weak': '356 (11%)', 'all-pulled': '5 (0%)'}
+    own-cause [('provocation', 1406), ('aftermath', 253), ('oldwound', 247), ('loss', 1)]
+    none-pulled [('aftermath', 186), ('asked', 18), ('temptation', 11), ('danger', 5), ('stay', 3)]
+    weak [('oldwound', 139), ('aftermath', 48), ('row', 21), ('obligation', 17), ('support', 14), ('request', 14)]
+guilt 470 {'weighed': '233 (50%)', 'none-pulled': '91 (19%)', 'weak': '143 (30%)', 'own-cause': '3 (1%)'}
+    own-cause [('support', 3)]
+    none-pulled [('aftermath', 65), ('request', 15), ('loss', 6), ('confide', 3), ('danger', 1), ('grudge', 1)]
+    weak [('aftermath', 29), ('collection', 23), ('obligation', 15), ('oldwound', 13), ('support', 8), ('temptation', 7)]
+gratitude 982 {'weak': '135 (14%)', 'weighed': '443 (45%)', 'none-pulled': '404 (41%)'}
+    own-cause []
+    none-pulled [('request', 308), ('confide', 32), ('loss', 25), ('aftermath', 20), ('temptation', 7), ('strain', 5)]
+    weak [('request', 66), ('row-answer', 12), ('obligation', 10), ('confide', 9), ('support', 6), ('reachout', 5)]
+CI seeds 1-6, off: 6 worlds × 20 years, per decade per world: births 6.8 · deaths 10.4 · arrivals 5.0 · population 73 → 72
+CI seeds 1-6, on: 6 worlds × 20 years, per decade per world: births 5.3 · deaths 10.1 · arrivals 6.3 · population 74 → 73
