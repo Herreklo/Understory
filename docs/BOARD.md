@@ -2603,3 +2603,5 @@ Next 1, P4 with round 44's code folded in (plan decision 23); exits 1, 2, 8. Res
 **`WHY.md`'s warning:** forced drama feels artificial; fail-if 5 would show it.
 
 **Game lens:** the man who wronged you is at the lodge; you have it out or leave early, and something changes.
+
+**Battery fix (26 Oct, 23:40, before the re-run).** `npm test` inside `round.mjs` stopped at its first `tsx` step: tsx's IPC socket, under `out-round-45/tmp/`, passed macOS's 104-character limit on socket paths. The fault is in where the run was placed, not in the code. `npm test` runs again in the same frozen tree (e7a302b) with a short `TMPDIR`. No code changed, and every other job of the battery stands as it ran.
