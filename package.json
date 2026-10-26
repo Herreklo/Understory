@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "tsc --noEmit && tsx src/tools/guard.ts && npm run -s build && node scripts/browser-check.mjs && tsx src/tools/replay.ts && tsx src/tools/twoworlds.ts && tsx src/tools/grouptest.ts && tsx src/tools/boundarytest.ts && tsx src/tools/mathtest.ts && tsx src/tools/sigtest.ts && tsx src/tools/invariants.ts && tsx src/tools/demography.ts 6 20 && tsx src/tools/props.ts 5 2 9201 && tsx src/tools/coherence.ts 11 12 --fail",
+    "test": "tsc --noEmit && tsx src/tools/guard.ts && npm run -s build && node scripts/browser-check.mjs && tsx src/tools/replay.ts && tsx src/tools/twoworlds.ts && tsx src/tools/grouptest.ts && tsx src/tools/boundarytest.ts && tsx src/tools/mathtest.ts && tsx src/tools/sigtest.ts && tsx src/tools/invariants.ts && tsx src/tools/demography.ts 24 20 && tsx src/tools/props.ts 5 2 9201 && tsx src/tools/coherence.ts 11 12 --fail",
     "check": "tsc --noEmit",
     "batch": "tsx src/tools/test.ts 40 10",
     "board": "./board.sh",
