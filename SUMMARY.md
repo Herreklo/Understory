@@ -17,12 +17,9 @@ People you come to understand from incomplete evidence, who surprise you for rea
 
 One experiment at a time per track (`notes/build-plan.md`). _22 Oct: Øystein left the plan's decisions to the lead (section 6), his to reverse here._
 
-1. **Feelings, part one** (round 44, #91; people; exits 1, 5, 8): built and sized, 5.0% of decisions flipped on the four kinds alone (7.1% with debts) against a 5% stop. Review and pre-registration next.
-   - _Kept, or not kept with the four kinds under 5%:_ go on to 2.
-   - _Otherwise:_ feelings go back to research, and taking sides uses liking alone.
-2. **Feelings meet their object** (people; exits 1, 2, 8), research first: a resentment held in 13% of adult-months weighs in 1.4% of decisions.
+1. **Feelings meet their object** (P4; people; exits 1, 2, 8), research first: a resentment held in 13% of adult-months weighs in 1.4% of decisions. It says whether P4 builds on round 44's code (off unless `ON=feelings`) or feelings go back to research.
    - _Kept or not:_ taking sides follows.
-3. **The page** (exit 3): reasons rest after 43w; N3, then particulars.
+2. **The page** (exit 3): reasons rest after 43w; N3, then particulars.
 
 Then:
 
@@ -46,5 +43,6 @@ For the register to ask: secrets, a third person, more kinds of feeling. Paused:
 
 ## Latest
 
+- **Round 44 (26 Oct), stopped at its sizing,** never pre-registered: the four kinds of feeling flip 4.95% of decisions against a 5% stop (3.7% once shrunk). With feelings on, births also fall to half of deaths. #91.
 - **Catch-up (26 Oct):** play, not read; shared hardship's counter; both outside reviews disposed (`reports/external/`); games may author causes of their own domain (plan, decisions 18–22).
 - **Round 43w (22 Oct), kept:** reasons worded for their act. On the lines it changes, 24 reasons faulted as unfit against 360; the busiest read no worse (+0.31 ±0.12).
