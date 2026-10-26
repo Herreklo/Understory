@@ -474,10 +474,12 @@ export function metObject(w: World, p: Person, t: Person, k: Kind, x: Expression
   else if (x.family === 'withdrawal') f.away = (f.away ?? 1) * 0.5;
   else end(w, p.id, f);
 }
-// The one apologised to answers: forgiven, the resentment is over; refused, it stands again.
-export function apologyAnswered(w: World, q: Person, p: Person, x: Expression) {
+// Whether q's resentment of p stands: read before an apology, which ends its standing (amends).
+export const resentmentStands = (w: World, q: Person, p: Person) => !!find(w, q.id, 'resentment', p.id)?.stands;
+// The one apologised to answers: forgiven, the resentment is over; refused, it stands as it did before the apology.
+export function apologyAnswered(w: World, q: Person, p: Person, x: Expression, stood: boolean) {
   const r = find(w, q.id, 'resentment', p.id);
   if (!r) return;
   if (x.family === 'leniency') end(w, q.id, r);
-  else r.stands = true;
+  else r.stands = stood;
 }

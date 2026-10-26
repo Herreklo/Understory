@@ -2,7 +2,7 @@ import type { Feature } from '../features';
 import { type World, type Person, age, live } from '../world';
 import { facetC, bondC } from '../considerations';
 import { type Instance, type Outcome, family } from '../grammar';
-import { meetingFeeling, metObject, apologyAnswered, type Kind } from '../feelings';
+import { meetingFeeling, metObject, apologyAnswered, resentmentStands, type Kind } from '../feelings';
 import type { SituationType } from './index';
 
 // The meeting (round 45; feelings.ts): a strong feeling brings its holder to its object, in a place the two share. The feeling is weighed
@@ -59,11 +59,12 @@ export const meeting: SituationType = {
       else if (f.k === 'guilt')
         out.push({
           ...base,
+          stood: resentmentStands(w, q, p),
           thing: '',
           families: ['humility', 'withdrawal'],
           only: { humility: ['apologise'], withdrawal: ['avoid'] },
           familyExtra: { humility: [facetC(p, 'modesty', priv, 1, 4), bondC(w, p, q, 'like', 1, 3)], withdrawal: away },
-        });
+        } as Instance & { stood: boolean });
       else
         out.push({
           ...base,
@@ -89,6 +90,7 @@ export function afterMeeting(w: World, inst: Instance, out: Outcome) {
   metObject(w, p, q, inst.type.slice('meeting:'.length) as Kind, out.expr);
   if (out.expr.id !== 'apologise' || q.status !== 'in') return;
   w.queue.push({
+    stood: (inst as Instance & { stood?: boolean }).stood ?? false,
     type: 'meeting-answer',
     actor: q,
     target: p,
@@ -104,6 +106,7 @@ export function afterMeeting(w: World, inst: Instance, out: Outcome) {
     },
     ownFirst: true,
     w: 1,
-  });
+  } as Instance & { stood: boolean });
 }
-export const afterMeetingAnswer = (w: World, inst: Instance, out: Outcome) => apologyAnswered(w, inst.actor, inst.target!, out.expr);
+export const afterMeetingAnswer = (w: World, inst: Instance, out: Outcome) =>
+  apologyAnswered(w, inst.actor, inst.target!, out.expr, (inst as Instance & { stood?: boolean }).stood ?? false);
