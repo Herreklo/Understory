@@ -1,4 +1,4 @@
-// Round 44's sizing: feelings, part one, on against off (OFF=feelings), paired by world, with the five fail-ifs of
+// Round 44's sizing: feelings, part one, on (ON=feelings, which the tool sets) against off (OFF=feelings), paired by world, with the five fail-ifs of
 // notes/research/feelings-and-traits.md as checks.
 //   ./run.sh src/tools/diag/feel.ts run A B [rule] [years]   → out-feel/<rule>-<seed>.json, one world each (a stopped run resumes)
 //   ./run.sh src/tools/diag/feel.ts report [on] [off]          → the checks; rules as measures.ts takes them ('on', or switches joined by '+')
@@ -22,7 +22,7 @@ import { hash } from '../../rng';
 import { shownCauses } from '../../page';
 import { BY_FAMILY } from '../../families';
 import { feelingsOf, type Kind } from '../../feelings';
-import { age, OFF, type Event, type Person, type World } from '../../world';
+import { age, ON, OFF, type Event, type Person, type World } from '../../world';
 import { copies, lineTexts, norm, packPage, pageMeasure } from './pages';
 import { countFlips, type FlipRow } from './flip';
 
@@ -242,6 +242,7 @@ if (mode === 'run') {
     B = +(process.argv[4] ?? process.argv[3]),
     rule = process.argv[5] ?? 'on',
     years = +(process.argv[6] ?? 10);
+  ON.add('feelings');
   if (rule !== 'on') for (const x of rule.split('+')) OFF.add(x);
   mkdirSync(OUT, { recursive: true });
   for (let seed = A; seed <= B; seed++) {

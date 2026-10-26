@@ -22,17 +22,17 @@
 // the debtor: in need, they ask the one who owes them first (situations/request.ts), the debt weighs for asking, and the debtor weighs it
 // in answering.
 //
-// On unless OFF=feelings. Mood is unchanged: the emotions written at the same events still bend it, with no object.
+// Off unless ON=feelings (round 44, stopped at its sizing; OFF=feelings still turns it off). Mood is unchanged: the emotions written at the same events still bend it, with no object.
 
 import { clamp } from './rng';
 import { pow } from './mathx';
 import { curves, type Consideration, type Know, type Option } from './decide';
-import { OFF, facet, peekBond, bond, year, type World, type Person } from './world';
+import { ON, OFF, facet, peekBond, bond, year, type World, type Person } from './world';
 import { chanceOf } from './considerations';
 import { BY_FAMILY, type Expression, type Family } from './families';
 import type { Instance } from './grammar';
 
-export const feelingsOn = () => !OFF.has('feelings');
+export const feelingsOn = () => ON.has('feelings') && !OFF.has('feelings');
 
 export type Kind = 'grief' | 'resentment' | 'guilt' | 'gratitude';
 export interface Feeling {
