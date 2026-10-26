@@ -152,7 +152,7 @@ Every experiment's mechanism sits behind a switch, so its effect can be measured
 - **Unique yet alike, at city scale.** Generation works from what a person already has, never hand-written per person.
 - **Don't optimise for prediction lift.** People must stay able to surprise, for understandable reasons.
 - **Rule 8.** No homophobic, sexist or racial content. Controversy lives in convictions and acts, never in identity.
-- **External reviews** are read and checked against the code, never acted on reactively.
+- **External reviews** are read and checked against the code, never acted on reactively. Each is filed in `reports/external/` with a table of dispositions: every finding taken, taken in part or not, and where it lands.
 - **Randomness** comes from `w.rng` inside a system's turn, or `chanceOf(w, p)` for a choice, never from a stream kept across months.
 
 ## Credits
