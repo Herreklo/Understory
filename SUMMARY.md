@@ -11,7 +11,7 @@ People you come to understand from incomplete evidence, who surprise you for rea
 - **Works:** decisions feel human to people; watching someone helps predict them; pages tell the truth, and their reasons are worded for the act; more kinds of thing happen in a life since round 40; the city runs on today's engine; games read it through one front door (`src/boundary.ts`), with a first command and a text client (`src/tools/play.ts`).
 - **Doesn't yet:** feelings change no act, and a fifth of a page's lines repeat; nearly half of adults, mostly past 65, want nothing; events rarely lead anywhere; life barely changes people; no one has played the engine yet.
 - **The instrument (M38):** a blind paired reading. It guards each round against harm ("reads no worse": a one-sided 95% bound above −0.3) and never keeps one.
-- **People play; they do not read** (agreed 22 Oct). Human evidence comes from Overstory's playtests, then the slice, then five outsiders playing cold at phase C's gate. H1 is retired; exit point 5 is now "players care about the people around them" (plan, section 0).
+- **People play; they do not read** (agreed 22 Oct). Human evidence comes from Overstory's playtests, then the slice, then five outsiders playing cold at phase C's gate. H1 is retired; exit point 5 is "players care about the people around them" (plan, section 0).
 
 ## Next, in order
 
