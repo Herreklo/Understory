@@ -22,6 +22,7 @@ import { stressTick } from './stress';
 import { workTick, skillTick } from './work';
 import { yearly } from './yearly';
 import { aftermathTick } from './aftermath';
+import { feelingsTick } from './feelings';
 
 export function tick(w: World) {
   w.t++;
@@ -76,4 +77,5 @@ export function tick(w: World) {
   use(w, 'misc');
   scoreRecent(w);
   aftermathTick(w); // what this month's blows will change (round 34): queued for next month's situations; no dice
+  feelingsTick(w); // feelings fade, unless their cause renews them (round 44); no dice
 }

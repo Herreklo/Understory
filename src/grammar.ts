@@ -46,6 +46,7 @@ import {
 } from './decide';
 import { traitCause, stateCause, eventCause, ev, facetC, pubC, bondC, lastTime, learned, chanceOf } from './considerations';
 import { strain } from './situations/strain';
+import { offerFeelings, withFeelings, feelAct } from './feelings';
 
 export const VN = Object.fromEntries(VALUES.map(v => [v.id, v.name]));
 export const TYPICAL_VARIABILITY = 0.7; // what a witness assumes about how erratic anyone is; the true value is hidden
@@ -301,6 +302,7 @@ export interface Outcome {
   event: Event;
 }
 export function run(w: World, inst: Instance): Outcome | null {
+  inst = offerFeelings(w, inst);
   const p = inst.actor,
     t = inst.target,
     feats = inst.features;
@@ -337,6 +339,7 @@ export function run(w: World, inst: Instance): Outcome | null {
   });
   withAccounts(w, p, options);
   withCarry(w, inst.type, p, t, options);
+  withFeelings(w, p, t, options, inst.cause);
   const scored = score(options, truthView(w), p.variability);
   const chosen = choose(scored, chanceOf(w, p), { t: w.t, who: p.id, kind: inst.type, nudge: () => w.rng.next() });
   if ((globalThis as any).WEIGH) {
@@ -539,6 +542,7 @@ export function run(w: World, inst: Instance): Outcome | null {
     remember(w, t, p, e.id, expr.like * k, expr.respect * k, expr.trust * k, shortText(expr, p, t));
     if (expr.like < -0.25 && expr.intensity >= 0.45 && !inst.type.startsWith('row')) queueProvocation(w, t, p, e, feats.has('public')); // a row is answered inside the row
   }
+  feelAct(w, inst, p, t, fam, expr, e.id);
   if (vis === 'local' && expr.like !== 0)
     for (const [id, how] of e.knownBy)
       if (how === 'seen' && id !== p.id && id !== t?.id) {

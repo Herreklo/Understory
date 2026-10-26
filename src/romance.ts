@@ -27,6 +27,7 @@ import { loss } from './situations/raised';
 import { family, decide } from './grammar';
 import { stateCause, ev, facetC, valueC, pubC, attachC } from './considerations';
 import { leftBy } from './love';
+import { griefAtSplit } from './feelings';
 import { resolveWants, wantRestore } from './time';
 import type { Feature } from './features';
 import { leaveTown } from './migration';
@@ -142,6 +143,7 @@ export function split(w: World, p: Person, q: Person, married: boolean, leaver?:
     remember(w, x, y, e.id, -0.15, 0, -0.1, 'the break-up');
     addEmotion(w, x, 'breakup', married ? 'divorced' : 'heartbroken', x === lo ? -0.06 : married ? -0.2 : -0.12, married ? 18 : 8, e.id);
     addStress(x, 'breakup', married ? 'the divorce' : 'the break-up', x === lo ? 0.05 : married ? 0.16 : 0.09, e.id);
+    griefAtSplit(w, x, y, e.id, married, x === lo);
     if (x !== lo) {
       loss(w, x, e.id, married ? 'the divorce' : 'the break-up');
       leftBy(w, x);

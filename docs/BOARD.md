@@ -2548,3 +2548,24 @@ Reported, not judged:
 - npm test failed inside the battery: tsx's socket under `round.mjs`'s TMPDIR is 118 characters, past macOS's 104. With the system's tmp it passes (`b43c5a7`, as in CI). No code changed.
 
 The branch that fires: "Kept: the switch goes in the next neutral change." Reasons rest. The plan's second pass (#92, merged after this pre-registration) moved selection last; the page goes on as SUMMARY orders it.
+
+## Round 44 — feelings, part one (sized 22 Oct 2026; stopped at its sizing 26 Oct 2026, 16:45 Oslo, never pre-registered)
+
+Next 2 in `SUMMARY.md` (P1 in `notes/build-plan.md`); exit points 1, 5, 8. Research: `notes/research/feelings-and-traits.md`. Grief, resentment, guilt and gratitude, each toward a named person, weigh in a situation with their object and are named as the reason when they decide; a debt (`owes`) is set by a wrong or costly help and called in.
+
+Sized on throwaway worlds 9001–9024, v4 (`reports/44-size.md`, tool `src/tools/diag/feel.ts`):
+
+| Check                                                                         | Number                                                      | Stop line       |            |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------- | --------------- | ---------- |
+| 1. always sore                                                                | resentment 12.7% ±1.7 of adult-months, the most of any kind | a kind over 25% | ✓          |
+| 2. flips, the four kinds alone (the counter, settled in the plan before this) | **4.95% pooled (99 of 1,998); 5.0 ±1.2 a world**            | below 5%        | **✗ stop** |
+| 2. flips with the debt, beside                                                | 7.1% ±1.2                                                   |                 |            |
+| 3. repeats                                                                    | copy share −0.02 ±0.57                                      | must not rise   | ✓          |
+| 4. feuds                                                                      | all inside the off arm                                      | inside, or said | ✓          |
+| 5. named                                                                      | 224 of 224 lines                                            | every line      | ✓          |
+
+Outcome (26 Oct 2026). Tree `8b20398` on `round/44`, main merged in. The reviewer (Fable 5.1) recomputed check 2 from the raw worlds and agrees: 11 of 24 worlds under 5%. Shrunk by a quarter, as a pre-registration must, the counter expects 3.7%, where a point estimate reaches 5% in 1–2% of runs and a bound in none.
+
+**Stopped before a reading**, by its own check 2: no pre-registration, no fresh world. The cause is named: a held feeling rarely meets its object (resentment, held in 12.7% of adult-months, is weighed in 1.4% of decisions). With feelings on, `npm test`'s demography check also fails (births to deaths 0.52; births 5.3 a decade a world against 6.8 off), found only now.
+
+The mechanism stays in the code, off unless `ON=feelings`. The branch that fires, from the plan: not kept with the four kinds under 5%, so P4's research runs and says whether P4 builds on this code or feelings go back to research. P4 may carry this code only if it reads no worse on its own (the plan's "Branches"), and it has not been read.

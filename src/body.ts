@@ -3,6 +3,7 @@
 import { clamp } from './rng';
 import { type Cause, type Person, type World, age, P, facet, addEvent, broadcast, addStress, topSources, addEmotion, year } from './world';
 import { carryReset } from './carry';
+import { griefAtDeath } from './feelings';
 import { jobSet, moved } from './scale';
 import { healthTarget } from './generate';
 import { loss } from './situations/raised';
@@ -182,4 +183,5 @@ function grief(w: World, q: Person, p: Person, ref: number, moodHit: number, str
   const sent = facet(q, 'sentimentality');
   addEmotion(w, q, 'grief' + p.id, `grieving @${p.id}`, -moodHit * (1 + 0.3 * sent), Math.round(months * (1 + 0.3 * sent)), ref);
   addStress(q, 'grief' + p.id, `grief for @${p.id}`, stress, ref);
+  griefAtDeath(w, q, p, ref, moodHit);
 }

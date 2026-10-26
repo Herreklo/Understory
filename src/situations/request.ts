@@ -5,6 +5,7 @@ import { stateC, lastTime } from '../considerations';
 import { type Instance, friendsOf, family } from '../grammar';
 import type { SituationType } from './index';
 import { counterpart } from '../telling';
+import { debtorAmong } from '../feelings';
 
 // Request: someone in need asks someone who can help.
 export const request: SituationType = {
@@ -21,13 +22,17 @@ export const request: SituationType = {
         ...(p.partner != null ? [P(w, p.partner)] : []),
       ].filter(q => q !== p && !(p.tried['ask:' + q.id] && (!p.tried['ask:' + q.id].ok || w.t - p.tried['ask:' + q.id].t < 24)));
       if (!pool.length) continue;
-      const q = counterpart(
-        w,
-        p.id,
-        pool.length,
-        () => pool.sort((a, b) => regard(w, p.id, b.id) - regard(w, p.id, a.id))[0],
-        x => [x.id],
-      );
+      // A debt is called in: the one who owes them is asked first, and the debt weighs for asking (feelings.ts; round 44).
+      const debtor = debtorAmong(w, p, pool);
+      const q =
+        debtor ??
+        counterpart(
+          w,
+          p.id,
+          pool.length,
+          () => pool.sort((a, b) => regard(w, p.id, b.id) - regard(w, p.id, a.id))[0],
+          x => [x.id],
+        );
       const feats = new Set<Feature>(['private', 'need', need === 'money' ? 'money' : 'safety', family(p, q) ? 'family' : 'friend']);
       out.push({
         type: 'request',

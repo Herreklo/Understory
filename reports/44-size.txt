@@ -1,0 +1,70 @@
+24 worlds (9001–9024), 10 present years · on / feelings · mean per world ±95%
+                                                                        on        feelings     on − feelings
+
+1. Carrying: share of adult-months with each kind at a weight it is weighed at (%); stop above 25
+  grief                                                           5.5 ±0.7        0.0 ±0.0          5.5 ±0.7
+  resentment                                                     12.7 ±1.7        0.0 ±0.0         12.7 ±1.7
+  guilt                                                           4.7 ±0.5        0.0 ±0.0          4.7 ±0.5
+  gratitude                                                       9.0 ±1.4        0.0 ±0.0          9.0 ±1.4
+  grief, the most in any month                                   23.6 ±2.7        0.0 ±0.0         23.6 ±2.7
+  resentment, the most in any month                              21.6 ±2.2        0.0 ±0.0         21.6 ±2.2
+  guilt, the most in any month                                   11.1 ±0.8        0.0 ±0.0         11.1 ±0.8
+  gratitude, the most in any month                               13.0 ±1.9        0.0 ±0.0         13.0 ±1.9
+  grief-emotion months, per 100 adult-months                    5.57 ±0.91      5.37 ±1.04        0.20 ±1.08
+  grief-months (on) over grief-emotion months (off): 1.04; stop above 2
+
+2. Flips: of decisions weighing it, the share whose likeliest answer changes without it (%); stop below 5
+  all (flips)                                                     7.1 ±1.2        0.0 ±0.0          7.1 ±1.2
+      pooled: 223 of 3138 weighed (7.1%), weighed in 7.3% of 42843 decisions
+  kinds (flips)                                                   5.0 ±1.2        0.0 ±0.0          5.0 ±1.2
+      pooled: 99 of 1998 weighed (5.0%), weighed in 4.7% of 42843 decisions
+  grief (flips)                                                   4.5 ±1.9        0.0 ±0.0          4.5 ±1.9
+      pooled: 34 of 757 weighed (4.5%), weighed in 1.8% of 42843 decisions
+  resentment (flips)                                              6.0 ±2.0        0.0 ±0.0          6.0 ±2.0
+      pooled: 33 of 609 weighed (5.4%), weighed in 1.4% of 42843 decisions
+  guilt (flips)                                                   8.6 ±4.1        0.0 ±0.0          8.6 ±4.1
+      pooled: 21 of 233 weighed (9.0%), weighed in 0.5% of 42843 decisions
+  gratitude (flips)                                               4.0 ±3.0        0.0 ±0.0          4.0 ±3.0
+      pooled: 14 of 443 weighed (3.2%), weighed in 1.0% of 42843 decisions
+  owes (flips)                                                   10.0 ±2.1        0.0 ±0.0         10.0 ±2.1
+      pooled: 141 of 1367 weighed (10.3%), weighed in 3.2% of 42843 decisions
+
+3. Repeats: must not rise
+  copy share, the three busiest (%)                            23.10 ±1.89     23.60 ±2.13       -0.50 ±2.82
+  copy share, three at random (%)                              14.89 ±2.27     14.20 ±2.36        0.69 ±3.47
+  copy share, every adult (%)                                  15.15 ±0.56     15.16 ±0.49       -0.02 ±0.57
+  the 25 commonest templates' share of every adult's lines (%)     24.93 ±0.70     24.59 ±0.78        0.34 ±0.89
+  without the retired promise's lines, in both arms:
+  copy share, the three busiest (%)                            23.48 ±1.96     23.71 ±2.20       -0.23 ±2.90
+  copy share, three at random (%)                              15.30 ±2.41     14.58 ±2.44        0.72 ±3.67
+  copy share, every adult (%)                                  15.39 ±0.59     15.35 ±0.51        0.03 ±0.60
+  the 25 commonest templates' share (%)                        25.67 ±0.75     25.29 ±0.80        0.38 ±0.98
+
+4. Feuds, per thousand adult-years: inside the off arm, or said
+  hostile acts (the wrongs)                                    174.0 ±12.7     183.0 ±15.7        -9.0 ±13.1
+  provocations answered in kind                                  67.9 ±7.0       69.4 ±8.3         -1.5 ±7.7
+  couples' rows                                                427.0 ±28.6     432.6 ±29.9        -5.6 ±27.8
+  dislikes                                                       22.9 ±4.6       23.5 ±4.1         -0.6 ±6.4
+  friendships ended                                              64.5 ±5.8       63.5 ±5.8          1.0 ±6.3
+
+5. Named: lines a feeling decided, and those naming kind and object
+  224 lines; 224 name kind and object (100.0%); shown on the page in 224 (100.0%)
+  by kind: owed 65, grief 21, guilt 11, owes 61, resentment 30, gratitude 36
+
+Beside: what the reading can see
+  kinds of line per page, the three busiest                    45.42 ±2.69     46.28 ±2.20       -0.86 ±3.15
+  lines per page, the three busiest                              82.3 ±5.0       83.3 ±4.3         -1.1 ±5.7
+  pages with a line a feeling decided, the three busiest (%)      23.6 ±11.4        0.0 ±0.0        23.6 ±11.4
+  lines a feeling decided per page, the three busiest           0.29 ±0.16      0.00 ±0.00        0.29 ±0.16
+  kinds of line per page, three at random                      23.04 ±2.92     25.04 ±1.90       -2.00 ±3.10
+  lines per page, three at random                                37.0 ±5.3       40.4 ±3.9         -3.4 ±5.5
+  pages with a line a feeling decided, three at random (%)       13.9 ±7.1        0.0 ±0.0         13.9 ±7.1
+  lines a feeling decided per page, three at random             0.15 ±0.08      0.00 ±0.00        0.15 ±0.08
+  adults with a lasting change from the present (%)              14.0 ±2.1       11.1 ±2.5          2.9 ±2.6
+    grief (adults per world)                                    0.83 ±0.44      0.00 ±0.00        0.83 ±0.44
+    forgiveness (adults per world)                              1.25 ±0.47      0.50 ±0.25        0.75 ±0.56
+
+Debts and own answers (on), summed over worlds
+  decisions of the one owed weighing the debt (called in): 282, asking in 152 (53.9%); requests answered by one who owes the asker: 74, given in 40 (54.1%)
+  severity offered by a feeling: 15, taken 6 (40.0%)
+  humility offered by a feeling: 7, taken 4 (57.1%)
