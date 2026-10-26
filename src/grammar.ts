@@ -339,7 +339,7 @@ export function run(w: World, inst: Instance): Outcome | null {
   });
   withAccounts(w, p, options);
   withCarry(w, inst.type, p, t, options);
-  withFeelings(w, p, t, options, inst.cause);
+  withFeelings(w, p, t, options, inst.cause, inst.type);
   const scored = score(options, truthView(w), p.variability);
   const chosen = choose(scored, chanceOf(w, p), { t: w.t, who: p.id, kind: inst.type, nudge: () => w.rng.next() });
   if ((globalThis as any).WEIGH) {
