@@ -6,7 +6,7 @@ _26 October 2026, `round/45`. Throwaway worlds only (9001–9024, claimed in `do
 
 ## What was built
 
-Behind `OFF=feelings`, now **on by default** (`feelings.ts`, `situations/meeting.ts`; hooks in `grammar.ts`, `effects.ts`, `situations/index.ts`). With `OFF=feelings` every hook returns before any draw. CI's identity script, run locally, passes on seeds 11–13.
+Behind `OFF=feelings`, now **on by default** (`feelings.ts`, `situations/meeting.ts`; hooks in `grammar.ts`, `effects.ts`, `situations/index.ts`). With `OFF=feelings` every hook returns before any draw. CI's identity script, run locally on this branch merged into `main`, passes on seeds 11–13 (`reports/45-ident.txt`).
 
 - **The meeting** is a matcher (`meeting`, after `reckon`). It considers a resentment, guilt or gratitude at 0.3 or more whose cause stands, held by someone 16 or older, whose object is in town and shares a place with the holder: a job, a circle, a band, a friendship, a partner or kin.
   - **Its chance each month** is 0.25 × intensity × approach × seeking. **Approach** is 1 + 0.15 × social boldness, plus a lean by kind: −0.25 × forgiveness for resentment, +0.25 × sincerity for guilt, +0.25 × sentimentality for gratitude. It is clamped to 0.3–1.7, and facets are read toward the object, so "never forgave" counts. **Seeking** is 1 until the holder keeps away.
@@ -81,7 +81,7 @@ Of 278 apologies answered, 146 were forgiven. Raised within a year: guilt 36.3% 
 | splits    | 4.1 ±0.6  | 4.5 ±0.6  | −0.4 ±0.6 | +0.4 ±0.7        |
 | hires     | 21.3 ±1.8 | 20.6 ±1.6 | +0.6 ±2.3 | +1.4 ±2.4        |
 
-Births over deaths: 0.77 on, 0.78 main. **`npm test` with feelings on** passes every step except the six-world demography check (births/deaths 0.59, seeds 1–6), the fragility the research named. The 24-world check of #98 (`demography.ts 24 20`) passes on this branch: 6.7 births, 10.1 deaths, "demography ok". `npm test` goes green once #98 merges and `main` is merged in.
+Births over deaths: 0.77 on, 0.78 main. **`npm test` with feelings on** passes on this branch with `main` merged in (#98's 24-world demography check: "demography ok"). Before that merge it failed only at the old six-world check (births/deaths 0.59, seeds 1–6), the fragility the research named.
 
 ## Power
 
