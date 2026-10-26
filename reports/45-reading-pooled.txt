@@ -1,0 +1,90 @@
+WARNINGS: none (no cap, ceiling, floor or ties above half).
+pair  on         novelist          player   majority-on
+P01   A            3,3,B           3,4,B   no
+P02   A            1,2,B           2,2,B   no
+P03   B            3,3,B           3,4,B   yes
+P04   A            3,3,A           3,3,A   yes
+P05   A            3,3,A           3,3,A   yes
+P06   B            3,2,A           3,2,A   no
+P07   A            3,2,A           3,2,A   yes
+P08   B            3,3,A           3,3,A   no
+P09   B            4,3,A           3,3,A   no
+P10   A            3,3,A           3,3,A   yes
+P11   B            2,3,B           2,3,B   yes
+P12   B            3,2,A           3,2,A   no
+P13   B            2,3,B           2,3,B   yes
+P14   A            3,3,B           2,3,B   no
+P15   B            3,3,B           3,4,B   yes
+P16   B            3,2,A           2,3,B   no
+P17   B            3,2,A           3,2,A   no
+P18   A            3,2,A           2,2,A   yes
+P19   B            2,3,B           2,4,B   yes
+P20   A            3,4,B           3,4,B   no
+P21   A            2,3,B           2,3,B   no
+P22   A            3,3,B           3,3,A   no
+P23   A            3,3,A           3,3,A   yes
+P24   B            1,3,B           1,3,B   yes
+
+The on arm was version B in 12 of 24 pairs; readers chose B in 24 of 48 single choices.
+Majority preferred the on arm in 12 of 24.
+Paired score difference, on minus off: +0.04 ±0.35 (95%, 24 pairs, mean over 2 readers)
+  novelist       -0.04
+  player         +0.12
+With the order as a term: effect +0.04 ±0.35 (95%); one-sided 90% lower bound -0.18; lean toward the second version +0.21
+One-sided 95% lower bound -0.25: reads no worse (above -0.3) holds.
+ordinal  alpha 0.753  95% [0.546, 0.890]  (2 readers, 48 lives)
+interval alpha 0.740  95% [0.550, 0.870]  (2 readers, 48 lives)
+  novelist     mean 2.73
+  player       mean 2.77
+
+How much happened: 56.2 lines a page on, 48.6 off; on minus off +7.6 a pair (sd 27.0). Where the versions are five or more lines apart, the longer was chosen 28 times and the shorter 10 (10 choices nearer).
+With the order and the difference in lines as terms: effect -0.12 ±0.27 (95%); ten lines more +0.21 ±0.10. Reported beside the effect above, which the round is judged on.
+Kinds of line: 32.6 a page on, 28.7 off; on minus off +3.9 a pair (sd 14.0).
+With the order and the difference in kinds as terms: effect -0.12 ±0.28 (95%); a kind more +0.040 ±0.020.
+faults on: total 342 · repeat 98, false line 76, unfit reason 70, wording 58, out of nowhere 40
+faults off: total 285 · repeat 82, unfit reason 68, false line 58, wording 50, out of nowhere 27
+Faults per ten lines: 1.27 on, 1.22 off. false line 0.28/0.25, out of nowhere 0.15/0.12, repeat 0.36/0.35, unfit reason 0.26/0.29, wording 0.21/0.21
+Faults a page, on minus off, with the order and the difference in lines as terms: +0.15 ±1.38 (95%); ten lines more +1.36 ±0.52.
+Versions given exactly three faults: 6 of 96.
+Severity, and for unfit reasons whether the event shown under them supports them: on awkward 317, source none 61, false 25, source supports 9; off awkward 278, source none 54, source does not 8, false 7, source supports 6
+Faults cited by line: 627; citing a line the version does not have: 0.
+
+Quotes matching the round's wording (on arm): good 4, faults 21 (unfit reasons 6); off arm: good 1, faults 7
+  good: P06 player: 2027: Ivy is now out in the garden every morning from spring to autumn.  [Audrey Lee dragged up what Ivy did.; it had shaken her]
+  good: P12 novelist: 2026: Trevor dragged up what Thea did a few months back.  [Thea had promised Trevor to be there on the day, and didn't.; can't stand Thea; felt he was still owed an apology]
+  good: P15 player: 2030: Stuart and Grace became friends.  [Grace gave Stuart credit (2028); Grace was back to normal with Stuart, as if the old business were forgotten (2028); came through on the end-of-year figures (2027)]
+↳ 2028: Grace was back to normal with Stuart, as if what Stuart did last year were forgotten.
+  good: P21 player: 2031: Ken was back to normal with Ralph, as if what Ralph did were forgotten.  [guilty about not being there for Ralph (2031); likes Ralph]
+  fault: P01 novelist (false line): 2032: Alan found a friend in Trevor.  [Trevor went to Alan and apologised (2032); Alan told Trevor how bad things had got (2032); Alan was back to normal with Trevor, as if the old business were forgotten (2032)]
+↳ 2032: Alan was back to normal with Trevor, as if what Trevor did were forgotten.
+  fault: P01 player (false line): 2032: Alan found a friend in Trevor.  [Trevor went to Alan and apologised (2032); Alan told Trevor how bad things had got (2032); Alan was back to normal with Trevor, as if the old business were forgotten (2032)]
+↳ 2032: Alan was back to normal with Trevor, as if what Trevor did were forgotten.
+  fault: P04 novelist (false line): 2026: Leo Howell gave Mary Vaughan something back for the rescue without being asked twice.  [does not panic; gives without keeping count]
+  fault: P04 player (unfit reason): 2026: Leo Howell gave Mary Vaughan something back for the rescue without being asked twice.  [does not panic; gives without keeping count]
+  fault: P13 novelist (unfit reason): 2032: Amelia gave Matt something back for the rescue without being asked twice.  [does not panic; though she looks after her own first]
+  fault: P13 novelist (false line): 2032: Matt dragged up what Ellen did last year.  [Ellen let people think the best of Matt's song was Ellen's. It had happened before, in 2022.; thought Ellen had it coming; Ellen let people think the best of Matt's song was hers (2030)]
+  fault: P13 novelist (unfit reason): 2034: Matt is now at the Anchor every Friday without fail.  [Ellen dragged up what Matt did last year. It had happened before, in 2033.; it had shaken him]
+↳ 2034: Ellen dragged up what Matt did last year. It had happened before, in 2033.
+  fault: P13 player (wording): 2028: Matt dragged up what Una did last year.  [Una would not play Matt's song the way it was written.; thought Una had it coming; Una would not play Matt's song the way it was written (2027)]
+  fault: P13 player (false line): 2032: Matt dragged up what Ellen did last year.  [Ellen let people think the best of Matt's song was Ellen's. It had happened before, in 2022.; thought Ellen had it coming; Ellen let people think the best of Matt's song was hers (2030)]
+  fault: P13 player (wording): 2033: Ellen dragged up what Matt did.  [felt she was still owed an apology; Matt walked out of it after a row with Ellen (2032); had not forgotten]
+  fault: P13 player (unfit reason): 2034: Matt is now at the Anchor every Friday without fail.  [Ellen dragged up what Matt did last year. It had happened before, in 2033.; it had shaken him]
+↳ 2034: Ellen dragged up what Matt did last year. It had happened before, in 2033.
+  fault: P15 novelist (wording): 2031: Stuart dragged up what Libby did a few months back in front of everyone at the Courier.  [Libby went cold on Stuart and stayed that way for weeks.; would say it in front of anyone; Libby went cold on Stuart and stayed that way for weeks (2030)]
+  fault: P15 player (wording): 2036: Stuart was back to normal with Alan, as if what Alan did last year were forgotten.  [Alan dragged up what Stuart did.; had let it go long ago; does not think he is better than anyone]
+  fault: P17 novelist (false line): 2026: Freya was back to normal with John, as if what John did last year were forgotten.  [John had promised Freya to be there on the day, and didn't.; thinks the world of John; puts other people first]
+↳ 2024: John had promised Freya to be there on the day, and didn't.
+  fault: P19 novelist (wording): 2035: Mona dragged up what Rose did a few months back in front of everyone at the Anchor.  [Rose dragged up what Mona did last year in front of everyone at the Anchor.; Rose dragged up the old business (2034); still sore at Rose over the old business dragged up (2034)]
+  fault: P21 novelist (wording): 2031: Ken was back to normal with Ralph, as if what Ralph did were forgotten.  [guilty about not being there for Ralph (2031); likes Ralph]
+  fault: P23 novelist (unfit reason): 2028: Maisie Baker was back to normal with Ben, as if what Ben did a few months back were forgotten.  [Ben was found out: Bert had been blamed for Ben's mistake.; does not think she is better than anyone; had let it go long ago]
+  fault: P23 novelist (false line): 2030: Grace dragged up what Ben did last year in front of everyone at the clinic.  [Ben was found out: Bert had been blamed for Ben's mistake.; can't stand Ben; would say it in front of anyone]
+  fault: P23 player (unfit reason): 2028: Maisie Baker was back to normal with Ben, as if what Ben did a few months back were forgotten.  [Ben was found out: Bert had been blamed for Ben's mistake.; does not think she is better than anyone; had let it go long ago]
+  fault: P24 novelist (false line): 2026: Bert dragged up what Edward did last year in front of everyone at the clinic.  [It got back to Bert that Edward had been talking.; felt he was still owed an apology; Edward told everyone what Bert told them in confidence (2024)]
+  fault: P24 novelist (false line): 2028: Edward was back to normal with Bert, as if what Bert did last year were forgotten.  [Bert dragged up what Edward did last year in front of everyone at the clinic.; does not think he is better than anyone; had let it go long ago]
+
+Pooled: 2 packs, with the order and the pack as terms.
+  WARNINGS for reports/45-reading-busiest-key.json: none.
+  reports/45-reading-random-key.json: 24 pairs, effect +0.04 ±0.35 (95%); one-sided 95% lower bound -0.25
+  reports/45-reading-busiest-key.json: 24 pairs, effect +0.10 ±0.33 (95%); one-sided 95% lower bound -0.17
+All 48 pairs: effect +0.07 ±0.23 (95%); one-sided 90% lower bound -0.08; one-sided 95% lower bound -0.12: reads no worse (above -0.3) holds. Lean toward the second version +0.09.
+  reports/45-reading-busiest-key.json against the average of the packs: +0.03 ±0.23
