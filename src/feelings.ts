@@ -27,8 +27,9 @@
 // for that kind, from facets; never a timer or a count. Its answers are the kind's own: have it out, let it go or keep away; make amends
 // or keep away; thank, repay or keep away. Every answer changes the feeling, so the same state never raises the meeting twice: had out
 // halves it, let go ends its standing, kept away halves the holder's seeking of the object, amends and thanks pay it. An apology is
-// answered by its object through the queue, a hard word by the provocation it raises. A feeling is muted only in the immediate answer to
-// its own cause, where the line already says it.
+// answered by its object through the queue. A have-out is a wrong (`isWrong`), so its object resents it and is owed, and that
+// resentment may bring them to a meeting of their own; it raises no provocation (`rake` sits at the threshold, grammar.ts). A feeling is
+// muted only in the immediate answer to its own cause, where the line already says it.
 //
 // On unless OFF=feelings; OFF=meeting turns off the meeting alone and restores round 44's wider mute, for measuring its part. Mood is
 // unchanged: the emotions written at the same events still bend it, with no object.

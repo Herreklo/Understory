@@ -2569,3 +2569,37 @@ Outcome (26 Oct 2026). Tree `8b20398` on `round/44`, main merged in. The reviewe
 **Stopped before a reading**, by its own check 2: no pre-registration, no fresh world. The cause is named: a held feeling rarely meets its object (resentment, held in 12.7% of adult-months, is weighed in 1.4% of decisions). With feelings on, `npm test`'s demography check also fails (births to deaths 0.52; births 5.3 a decade a world against 6.8 off), found only now.
 
 The mechanism stays in the code, off unless `ON=feelings`. The branch that fires, from the plan: not kept with the four kinds under 5%, so P4's research runs and says whether P4 builds on this code or feelings go back to research. P4 may carry this code only if it reads no worse on its own (the plan's "Branches"), and it has not been read.
+
+## Round 45 — feelings meet their object (pre-registered 26 Oct 2026, 21:01 Oslo, before any test world; sized first)
+
+Next 1, P4 with round 44's code folded in (plan decision 23); exits 1, 2, 8. Research: `notes/research/meeting.md`.
+
+**The change**, behind `OFF=feelings`: round 44's feelings, and a meeting. A resentment, guilt or gratitude at 0.3+ whose cause stands may bring its holder to its object where they share a place, each month at 0.25 × intensity × approach (facets by kind). Every answer changes the feeling; a have-out is a wrong its object resents. No timer, count or quota. `OFF=meeting` measures the meeting's part.
+
+**Sizing** (`reports/45-size.md`, v2; its review section settles three BLOCKS):
+
+| | Check | Number | Stop |
+| --- | --- | --- | --- |
+| 1 | **Counter:** held feelings at 0.3+ changing an act toward their object within a year | **5.1% ±1.3**; meeting off 1.0; paired +4.1 ±1.2. Resentment 2.5 ±1.0 (paired +1.5 ±1.0), guilt 6.3, gratitude 7.9 | under 2.5 |
+| 2 | Recurs unchanged; something follows in a year | 0 of 1,030; 84.7% | any; under 50% |
+| 3 | Displaced; births, deaths, marriages, splits, hires against main | 0.11%; all inside | over 2%; a 99% interval off zero |
+| 4 | Answers in kind, rows, dislikes, friendships ended against main | +0.8, +7.6, +1.4, +0.2, all inside | a 99% interval above zero |
+| 5 | Raised in a year; forgiveness, boldness ratios; meeting lines in a top 25; copy share | 19.0%; 2.05×; 1.50×; 0; +0.58 ±0.60 | outside 15–60%; under 1.3×; any; one-sided 95% bound above +0.6 |
+
+**Test.** `round.mjs --id 45 --switches feelings`, evaluation **3673–3692**, lives **3693–3716**, with `meet.ts` (on, meeting, feelings; 20 years) and `feel.ts` on the lives. Reading first: random **3717–3724**, busiest **3725–3732**, 48 pairs; **3733–3748** if called. Feelings touch 32% of busiest pages, 14% of random: the reading guards only; random ties above half are expected.
+
+**Expected** (shrunk by a quarter): counter **3.8%**, paired +3.1; resentment 1.9 (paired +1.1), guilt 4.7, gratitude 5.9; copy share +0.44; wrongs +12 against meeting off (the have-outs).
+
+**Kept if:** (1) `OFF=feelings` identical to main; (2) **the counter**, pooled: at 2.5% or above, its rise over meeting off bounded above 0 (one-sided 95%); (3) fail-ifs 2–5 hold; (4) `npm test` passes, scoreboard within ±2 off couples; (5) **reads no worse**, bound above −0.3, pack and order as terms. If 2 holds and 5 misses, or random ties above half, one more busiest pack.
+
+**Reported:** each kind; round 44's counter; what followed, the feeling's own change apart from ties and debts; gratitude raised (sized 64.5%); wrongs.
+
+**What would change our minds.** Whatever the outcome, P2 (taking sides) follows and feelings return to research.
+
+- Kept: the switch goes in the next neutral change; the background's odds are refit. If resentment's paired bound is not above 0, gratitude and guilt carried it, and P2 sizes its own resentment first.
+- 2, 3 or 5 (twice) fails: not kept, cause named; feelings off, for research. A copy-share stop names the reused lines (`rake`, `letgo`, `give`); no wording fix here. P2 runs on liking and trust.
+- 1 or 4 fails: withdrawn; a fix is written here first.
+
+**`WHY.md`'s warning:** forced drama feels artificial; fail-if 5 would show it.
+
+**Game lens:** the man who wronged you is at the lodge; you have it out or leave early, and something changes.

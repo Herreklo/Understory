@@ -29,7 +29,7 @@ Behind `OFF=feelings`, now **on by default** (`feelings.ts`, `situations/meeting
   - Kept away: seeking halves.
   - Amends and thanks: it is paid.
 - **The object answers through the queue.**
-  - A have-out is a wrong, so it raises the provocation the object answers (existing code).
+  - A have-out is a wrong, so the object resents it and is owed (round 44's code). It raises no provocation: `rake` has `like` −0.25, and a provocation needs less than −0.25 (`grammar.ts`). Corrected after the review; the code was not changed.
   - An apology is answered next month (`meeting-answer`): forgiven (`letgo`), the resentment ends; refused (`sulk`), it stands as it did before the apology.
   - Letting go, keeping away and thanks ask nothing of the object, and get no answer.
 - **The mute rule narrows** to the immediate answer (`provocation`, `row-answer`, `aftermath`).
@@ -113,3 +113,13 @@ Births over deaths: 0.77 on, 0.78 main. **`npm test` with feelings on** passes o
    - Whether an apology may be refused is read when the meeting is matched, not when it runs.
 4. **The guard (plan, section 2).** No new reader reads a count, rate or measure. `away` is a state of the feeling that scales a chance and never gates one.
 5. **The battery.** `meet.ts run A B on|meeting|feelings 10` gives the counter on fresh worlds. `feel.ts` takes the arms `on` and `meeting`.
+
+## The review (Fable 5.1, 26 Oct, before the pre-registration)
+
+Three findings marked BLOCKS, each settled without a change to what people do, so nothing was re-sized:
+
+1. **A have-out raised no provocation,** against what this report, the comments and the draft said. The text is corrected (above; `feelings.ts`, `meeting.ts` comments). The object's answer is the resentment the wrong leaves, which may bring them to a meeting of their own. Adding a provocation now would be a new mechanism after sizing, aimed at fail-if 4.
+2. **Fail-if 4 could be read either way:** wrongs against meeting off are outside the interval (189.6 against 174.0 ±12.7), by about the have-outs. The pre-registration judges feuds on answers in kind, rows, dislikes and friendships ended against main, and reports wrongs with the rise the have-outs give. Four measures (and demography's five) are judged at once, so each stops only when its 99% interval (the 95% one × 1.36, t on 23 degrees of freedom) leaves zero.
+3. **The copy share had no rule,** and at a true +0.6 a 24-world interval excludes zero about half the time. The cause is named: `rake` and `letgo` reuse the old wound's line ("the old business"), and `give` reads "something back for the rescue" in 61% of gratitude's meetings. The pre-registration expects the rise (+0.44 shrunk) and stops only when its one-sided 95% bound is above the sized +0.6, a point above about +1.1 (per-world sd 1.42); a true +0.6 stops about 4% of the time.
+
+Notes taken into the pre-registration: fail-if 2's "followed" is mostly the meeting's own change to the feeling (1,937 ended and 266 no longer standing, against 33 ties and 106 debts), reported as a split; gratitude raises a meeting within a year for 64.5% of strong gratitudes, reported; a refused apology still pays the debt and ends the guilt, since amends run before the answer; `stood` is read at match; the scheduler's `SCHED` log is read through `globalThis` as `WEIGH` is, which the guard cannot see; the counter's denominators differ by arm, because the meeting ends feelings and new ones begin.

@@ -82,8 +82,8 @@ export const meeting: SituationType = {
   },
 };
 
-// After a meeting: the feeling changes by the answer, and an apology is answered by the one apologised to, next month (the queue). A hard
-// word is answered by the provocation it raises (grammar.ts).
+// After a meeting: the feeling changes by the answer, and an apology is answered by the one apologised to, next month (the queue). A
+// have-out is answered by the resentment it leaves in its object (feelings.ts), not by a provocation.
 export function afterMeeting(w: World, inst: Instance, out: Outcome) {
   const p = inst.actor,
     q = inst.target!;
