@@ -2483,3 +2483,68 @@ Outcome of round 42 (22 Oct 2026, 08:55 Oslo). Tree `1156c9b` on `round/42`, bas
 **Stopped before a reading**, by its own check 2: no pre-registration, no fresh world. Most unfit reasons readers fault on trait lines are reasons that do bear on the act by the test but are worded badly for it ("had her own life to get on with", "said what would work", "likes things done properly and on time" beside a duty), and 236 of the 294 left untouched had no event under them to check. Showing only reasons that bear reaches a third of the fault. Accounts are the exception (33 of 40 faulted account lines change), but they are too few to read.
 
 The mechanism stays in the code, off unless `ON=bear`. Fixed after the sizing, from the review: an if-then signature at work was marked as not bearing (about 100 of 4,848 instances left out); it now bears, which can only lower check 2. The branch that fires, by SUMMARY's agreed plan and Øystein's choice on 22 Oct: not kept, so at most one more round on reasons, starting from research into the wording, then back to research.
+
+## Round 43w — reasons worded for the act (pre-registered 22 Oct 2026, 20:49 Oslo, before any test world; sized first)
+
+Next 1 in `SUMMARY.md`, G1 in `notes/build-plan.md`; exit point 3. Readers fault a reason on one act and not on another ("could wait it out": 35 of 76 readings on `backsong`, 2 of 50 on an apology). The fault is the pairing (`notes/research/wording.md`).
+
+**The change**, behind `OFF=wording`: a trait reason is said in its pole's wording for the act, in 44 cells of `src/motives.json`, and `backsong` reads "played X's song the way it was written". Words only. The review (Fable 5.1, PR #89) reworded `give` and `quietgive`, and accepted `ask`'s reciprocity as a known case: the reason it words is the asker's own need.
+
+**Sizing** (`reports/43w-size.md`, worlds 9001–9024):
+
+| | Check | Number | Stop line |
+| --- | --- | --- | --- |
+| 1 | Reach on M38's true pages | 277 of 434 (64%) | under 50% |
+| 2 | Held out against in-sample | 60% against 65%; ratio 0.93 | under 0.5 |
+| 3 | Untraced reworded reasons | 0 of 6,327; coherence 0 | above 0.5% |
+| 4 | Every cell's words, both versions | reviewed | — |
+| 5 | Power for half the drop (2.0 per hundred) | 94% on 48 pairs, 71% on 24 | under 80% on 48 |
+
+**Test.**
+
+- The battery: `round.mjs --switches wording`, evaluation **3609–3628**, lives **3629–3648**, and `ARMS=1 wording.ts 3629 3648`.
+- The reading comes first: two busiest packs of 24 pairs on the same lives, **3649–3656** and **3657–3664**, in 8 sittings. That is 48 pairs, by check 5, not `reading.md`'s 24.
+- About 10 of a page's 83 lines change. The score is `pairscore.py --changed`, pooled.
+
+**Expected:** unfit reasons on the changed lines fall by **1.5 per hundred line-readings**, the sized half-drop shrunk (81% power). Other kinds and the score stay flat.
+
+**Kept if:**
+
+1. `OFF=wording` is identical to main, and the arms differ only in words;
+2. **the counter:** the drop's one-sided 95% lower bound is above 0;
+3. every fault kind on the changed lines, summed, is on minus off ≤ 0 (a point estimate, not sized);
+4. `npm test` passes, the scoreboard is within ±2, and coherence is at zero;
+5. **reads no worse** (a guard): the one-sided 95% bound, order and pack as terms, is above −0.3. Ties are expected. If 2 and 3 hold and 5 misses, a third pack (3665–3672) is read.
+
+**Reported:** reads better; faults by kind, changed and unchanged lines; changed lines cited as good.
+
+**What would change our minds.** Kept or not, reasons rest, and selection (G2) is next on the page track.
+
+- Kept: the switch goes in the next neutral change.
+- 2 or 3 fails: off, and cut. With 3, the quotes name the cells.
+- 1 or 4 fails: withdrawn; a fix is written here first.
+
+**`WHY.md`'s warning:** optimising what an AI reader faults rather than what a person minds. The human test checks it.
+
+**Game lens:** "did not want Ann's trouble to become hers", beside staying away, reads as a reason.
+
+Outcome of round 43w (22 Oct 2026, 21:55 Oslo). Tree `b43c5a7` on `round/43w`, base main `f7f2b07`. Packs built locked from that tree, read in 8 sittings on Fable 5.1 (none rerun), scored at `e0579e4` (`reports/43w-reading-*`); the battery is in `out-round-43w/`. A separate agent re-derived every number from the raw files and agrees, except that the scorer's two-sided t for 47 degrees of freedom is 2.000, not 2.012: its intervals are 0.5% narrow, and none quoted here changes (`reports/rederive-43w.md`).
+
+| Rule | Result | |
+| --- | --- | --- |
+| 1. identical with `OFF=wording`; words only | identity all identical; 20 of 20 worlds differ only in words, 0 untraced | ✓ |
+| 2. the counter's one-sided 95% bound above 0 | unfit reasons on the changed lines **24 on, 360 off**: a drop of **+3.50 ±0.95** a pair (36.6 per hundred line-readings), bound **+2.70** | ✓ |
+| 3. every kind on the changed lines, on − off ≤ 0 | **−3.60 ±0.95** a pair; the other kinds −0.10 ±0.09 | ✓ |
+| 4. npm test, scoreboard ±2, coherence 0 | passes (below); **0.0 ±0.0**, every decision the same; 0 | ✓ |
+| 5. reads no worse, bound above −0.3 | **+0.31 ±0.12**, order and pack as terms; bound **+0.21** | ✓ |
+
+Read by the rules set beforehand: all five hold. **Kept.**
+
+Reported, not judged:
+
+- The drop is 24 times the 1.5 expected. The sizing took the rate of these lines from round 41's pages, where whole lives differ (7.2 per hundred); here only the reasons differ, so readers compare the versions, as on M38's planted pack. The old words drew 39.2 per hundred, the new 2.6, under the 3.1 of any line. The size belongs to the comparison; the sign is the claim.
+- Unchanged lines drew 930 faults in each arm. Changed lines cited as good: 24 on, 6 off.
+- Reads better +0.31 ±0.12, with the ties warning in both packs (31 and 35 of 48), as expected; the on arm preferred by the majority in 23 of 24 in each.
+- npm test failed inside the battery: tsx's socket under `round.mjs`'s TMPDIR is 118 characters, past macOS's 104. With the system's tmp it passes (`b43c5a7`, as in CI). No code changed.
+
+The branch that fires: "Kept: the switch goes in the next neutral change." Reasons rest. The plan's second pass (#92, merged after this pre-registration) moved selection last; the page goes on as SUMMARY orders it.

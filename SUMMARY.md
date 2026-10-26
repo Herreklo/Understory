@@ -1,36 +1,51 @@
 # Understory: where we are
 
-_Updated 22 October 2026, after round 42. At most 600 words, rewritten at every merge; history is in `docs/BOARD.md` and git._
+_Updated 22 October 2026, after round 43w. At most 600 words, rewritten at every merge; history is in `docs/BOARD.md` and git._
 
 ## Where we are going
 
-People you come to understand from incomplete evidence, who surprise you for reasons you recognise afterwards. A player should feel discovery ("I think I understand this person"), agency ("my decision changed what happened") and recognition ("I remember when that started"). The exit criterion (`docs/STATUS.md`) measures how close we are.
+People you come to understand from incomplete evidence, who surprise you for reasons you recognise afterwards. A player should feel discovery, agency and recognition. The exit criterion (`docs/STATUS.md`) measures how close we are.
 
 ## Where we stand
 
-- **Works:** decisions feel human to people; watching someone helps predict them; pages tell the truth; more kinds of thing happen in a life since round 40, and the busiest lives read better for it; the city runs on today's engine; games read it through one front door (`src/boundary.ts`), and can ask someone to a rehearsal through it.
-- **Doesn't yet:** readers fault reasons that do not fit the act most, and mostly for their wording (round 42); feelings change no act, and a fifth of a page's lines repeat; nearly half of adults, mostly past 65, want nothing; events rarely lead anywhere; life barely changes people; no outsider has read a life since Q3.
-- **The instrument (M38):** the reading was checked on known answers and adopted with two roles (a novelist, a player), every fault counted and cited by line. Where nothing changed it finds nothing (−0.04 ±0.21); it sees a reason put on the wrong line every time it is what differs. "Reads no worse" is a one-sided 95% bound above −0.3, on 48 pairs for a people round. Until people have read, no round is kept on "reads better" alone.
+- **Works:** decisions feel human to people; watching someone helps predict them; pages tell the truth, and their reasons are worded for the act; more kinds of thing happen in a life since round 40; the city runs on today's engine; games read it through one front door (`src/boundary.ts`).
+- **Doesn't yet:** feelings change no act, and a fifth of a page's lines repeat; nearly half of adults, mostly past 65, want nothing; events rarely lead anywhere; life barely changes people; no outsider has read a life since Q3.
+- **The instrument (M38):** a blind paired reading, checked on known answers. "Reads no worse" is a one-sided 95% bound above −0.3. Until people have read, no round is kept on "reads better" alone.
 
 ## Next, in order
 
-From the build plan (`notes/build-plan.md`): a people track, one experiment at a time, and a page track beside it. _22 Oct: Øystein left the plan's decisions to the lead session; taken as its section 6 says. His to reverse here._
+From `notes/build-plan.md`, one experiment at a time per track. _22 Oct: Øystein left the plan's decisions to the lead (section 6, 10–17), his to reverse here, and put the rest of the credits on Overstory: readings wait; research, sizing and neutral jobs go on._
 
-1. **The wording round** (page; exit point 3), once its note (#78) merges: reasons worded for the act.
-   - _Kept or not:_ reasons rest; selection is next on the page.
-2. **Feelings, part one** (people; exit points 1, 5, 8): grief, resentment, guilt, gratitude; debts called in. Built after its measures; read after the wording round merges.
-   - _Kept:_ taking sides, with resentment. _Not kept:_ taking sides with liking alone; feelings back to research.
-3. **The human test, by 12 November:** five outsiders read part of round 40's busiest pack, with a question on what was felt.
+_Øystein, 22 Oct: wait with the human test until the work that can be done before it is done._ Superseded by decision 12: H1 now, H2 at phase C's gate.
 
-Then: selection; taking sides; shared hardship; particulars and callbacks; feelings part two; round 43; homes (#59, with #22); the band year. Beside any: the measures and the guard (N1a first), cleanups, the felt question in the brief; housekeeping (per-person identity signature, `advance` refusing part of a month, retire `fit` and `together`). Paused: the background's ageing, the start year (#23), time and moments.
+1. **Feelings, part one** (round 44; people; exits 1, 5, 8): sized at 5.0% of decisions flipped (four kinds, the counter; 7.1% with debts) against a 5% stop. Review and pre-registration next.
+   - _Kept, or not kept with the four kinds under 5%:_ go on to 2.
+   - _Otherwise:_ feelings go back to research, and taking sides uses liking alone.
+2. **Feelings meet their object** (people; exits 1, 2, 8), research first. No situation is raised by a feeling, so a resentment held in 13% of adult-months weighs in 1.4% of decisions.
+   - _Kept or not:_ taking sides follows.
+3. **The page** (exit 3): reasons rest after 43w; N3, then particulars.
+
+Then:
+
+- taking sides;
+- shared hardship (environment research under way);
+- the band year;
+- wants for later life;
+- selection, last on the page, after H1.
+
+Homes (#59, #22) wait for phase D. Beside any: H1, a blind pair page; N1b; the neutral change that takes out `OFF=wording`; N4, the milestone tool; cleanups; the felt question.
+
+For the register to ask: secrets, a third person, more kinds of feeling. Paused: the background's ageing, the start year (#23).
 
 ## Waiting for you
 
-- Five outside readers for the human test, by 12 November.
-- Overstory's register, when it lands: whether it pulls an arc forward.
+- **GitHub Actions billing:** CI refused jobs on 22 Oct. While it does, merges use CLAUDE.md's local fallback.
+- **H1:** read its 24 pairs once built (30 minutes, no credits).
+- **Five cold outsiders for H2,** at phase C's gate. The first game waits on them; without them it is chosen with exit 5 open.
+- **The human test's move:** yours to put back.
+- **Overstory's register:** whether it pulls an arc forward.
 
 ## Latest
 
-- **The build plan (22 Oct):** rewritten around three notes (feelings, a lived-in page, intriguing lives), with a guard: no rule reads a story measure or caps an event by a count.
-- **Round 42 (22 Oct), stopped at its sizing:** showing only reasons that bear on the act reaches 32% of faulted trait lines (stop line 40%); off unless `ON=bear`.
-- **S1 (22 Oct), neutral:** the front door's first command, an invitation to a rehearsal answered by the other's own decision, and a text client that plays the witness.
+- **Round 43w (22 Oct), kept:** reasons worded for their act. On the lines it changes, 24 reasons faulted as unfit against 360; the busiest read no worse (+0.31 ±0.12).
+- **The plan's second pass (22 Oct), reviewed:** counters judge rounds; readers guard against harm; every third kept round, a milestone reading says whether lives read better.

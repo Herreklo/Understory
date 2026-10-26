@@ -1,0 +1,84 @@
+Round 43w sizing: throwaway worlds 9001–9024 (24 worlds), ten present years.
+Off is main's words, on is the round's; behaviour is the same.
+
+Arms (ARMS=1): with OFF=wording each world differs from the on arm only in words:
+  worlds where anything else differs: 0 
+  reasons reworded a world (whole record): 876; texts and reasons quoting backsong: 20
+
+The counter, a world over the present (mean, 95% interval between worlds):
+  trait reasons                                                3429.1  ±132.4  (sd 313.4; 2939.0 to 3946.0)
+    said as a motive                                           2810.6  ±100.8  (sd 238.8; 2424.0 to 3228.0)
+    in words the round changed                                  263.6  ±15.9  (sd 37.6; 186.0 to 372.0)
+    share of motives the round rewords (%)                        9.4  ±0.4  (sd 1.0; 7.7 to 11.5)
+  backsong events                                                 6.3  ±2.4  (sd 5.6; 0.0 to 19.0)
+  cells seen in 24 worlds: 43
+  lines on a page a pack would read                              83.3  ±3.1  (sd 13.5; 58.0 to 122.0)
+    changed lines on it                                          10.4  ±1.5  (sd 6.4; 2.0 to 32.0)
+    share changed (%)                                            12.5  ±1.7  (sd 7.4; 2.9 to 36.0)
+    changed lines on each world's busiest page                   13.2  ±3.6  (sd 8.5; 3.0 to 32.0)
+
+M38's true pages, rebuilt with the round's words:
+  null      page-readings  96; lines matching what was read 3938 of 3938; unfit reasons recovered 263
+  r40       page-readings  96; lines matching what was read 3429 of 3429; unfit reasons recovered 240
+  shuffled  page-readings  48; lines matching what was read 1805 of 1805; unfit reasons recovered 71
+  planted   page-readings  48; lines matching what was read 1805 of 1805; unfit reasons recovered 109
+
+Check 1: faulted trait-reason line-readings whose words change: 277 of 434 (64%; stop under 50%)
+Check 2: in-sample (null, r40) 219/338 = 65%; held out (round 41) 58/96 = 60%; ratio 0.93 (stop under 0.5)
+  in   unfit reasons 503/14734 = 3.41 per hundred line-readings; on lines the round changes 223/1898 = 11.75
+  out  unfit reasons 180/7220 = 2.49 per hundred line-readings; on lines the round changes 65/908 = 7.16
+  all  unfit reasons 683/21954 = 3.11 per hundred line-readings; on lines the round changes 288/2806 = 10.26
+
+Check 3: reworded reasons by where they come from, 24 worlds: own 737 (11.6%), prefers 3680 (58.2%), weighed 1910 (30.2%), untraced 0 (0.0%)
+  untraced 0 of 6327 (0.00%; stop above 0.5%)
+
+Check 4: every cell the round words. M38: line-readings and unfit reasons in-sample, then held out; worlds: reasons a world.
+  backsong|patience|hi|for                   M38  56 26 |  40 13   worlds   4.8   "could wait it out" → "was content to wait her turn"
+  absent|altruism|lo|for                     M38 104 23 |  32  3   worlds  15.4   "had his own life to get on with" → "did not want {t}'s trouble to become his"
+  type:night:good|organisation|hi|for        M38 164 23 |  84  0   worlds   2.6   "likes things done properly and on time" → "had seen to every last detail"
+  backsong|modesty|hi|for                    M38  42 15 |  24  9   worlds   2.6   "did not think it was about her" → "did not need the song to be hers"
+  absent|diligence|hi|for                    M38  14 13 |   4  3   worlds   1.5   "will not leave a job half done" → "put her work first"
+  absent|sentimentality|lo|for               M38  54 11 |  12  1   worlds   6.0   "has never been one to look back" → "was never one for sitting with other people's troubles"
+  skim|sincerity|lo|for                      M38  38 10 |  16  1   worlds   5.5   "said what would work" → "knew she could talk her way out of it"
+  backsong|flexibility|hi|for                M38  12  8 |   8  3   worlds   3.3   "wanted to keep the peace" → "would rather play it {t}'s way than argue"
+  type:rebuffed|forgiveness|lo|for           M38  52  8 |  24  0   worlds   2.3   "does not forget" → "had not forgiven {t}"
+  show|organisation|hi|for                   M38 104  6 |  52  2   worlds  18.2   "likes things done properly and on time" → "does not keep people waiting"
+  ownup|sincerity|hi|for                     M38  62  6 |  40  1   worlds  16.5   "could not bring herself to lie" → "could not have lived with the pretence"
+  nowallet|sincerity|lo|for                  M38  24  6 |  12  0   worlds   8.2   "said what would work" → "had an excuse ready"
+  tell|sociability|hi|for                    M38  26  6 |  16  6   worlds   1.6   "likes having people around" → "could never keep a good story to herself"
+  rake|modesty|lo|for                        M38 144  5 |  32  0   worlds  13.0   "felt slighted" → "felt he was still owed an apology"
+  ask|altruism|hi|for                        M38  10  5 |  16  7   worlds   7.2   "puts other people first" → "would have done the same for {t}"
+  cheer|gentleness|hi|for                    M38  28  5 |   0  0   worlds   2.9   "has a soft spot for anyone in trouble" → "always finds something kind to say"
+  type:peace|forgiveness|hi|for              M38  52  5 |  12  0   worlds   1.4   "lets things go" → "was ready to put it behind her"
+  type:friends|gentleness|hi|for             M38 254  4 | 104  0   worlds  22.3   "does not like to judge" → "takes people as he finds them"
+  give|altruism|hi|for                       M38  68  4 |  52  0   worlds  20.8   "could not stand to see {t} go without" → "gives without keeping count"
+  skim|fairness|lo|for                       M38  22  4 |   8  0   worlds   5.3   "thought nobody would notice" → "saw no harm in helping herself to a little"
+  hangback|greedAvoidance|hi|for             M38   8  4 |   0  0   worlds   4.6   "money has never meant much to him" → "would not risk his neck for money"
+  blame|modesty|lo|for                       M38  68  4 |  20  0   worlds   4.6   "felt it was owed" → "thought herself above taking the blame"
+  decline|inquisitiveness|lo|for             M38  16  4 |   8  0   worlds   4.0   "had no wish to see anywhere else" → "had never wondered what else was out there"
+  tell|sincerity|lo|for                      M38  56  4 |  28  6   worlds   2.2   "said what would work" → "had never meant to keep {t}'s secret"
+  quietword|gentleness|hi|for                M38   6  4 |   0  0   worlds   0.9   "does not like to judge" → "would not shame {t} in front of others"
+  quietword|forgiveness|hi|for               M38   4  4 |   0  0   worlds   0.0   "lets things go" → "wanted it said and done with"
+  sulk|modesty|lo|for                        M38  42  3 |  12  4   worlds  36.3   "felt it was owed" → "felt she deserved better"
+  pitchin|altruism|hi|for                    M38 252  3 | 156  0   worlds  14.5   "could not stand to see {t} go without" → "will always lend a hand"
+  cold|sociability|lo|for                    M38  12  3 |  12  0   worlds   4.2   "would rather be on his own" → "never minded keeping people at a distance"
+  seize|aesthetic|hi|for                     M38  14  3 |  12  0   worlds   4.0   "is moved by beautiful things" → "wanted to make something beautiful"
+  sulk|socialBoldness|hi|for                 M38  10  3 |   4  0   worlds   3.1   "would say it to anyone" → "never hides what she feels"
+  confront|socialBoldness|hi|for             M38  52  3 |  12  0   worlds   3.0   "would say it to anyone" → "did not care who heard"
+  quietgive|socialBoldness|hi|for            M38   8  3 |   0  0   worlds   2.9   "did not mind everyone seeing" → "was not one to hang back when the hat went round"
+  rough|anxiety|hi|for                       M38  12  3 |   4  0   worlds   2.9   "could not stop thinking about what might go wrong" → "goes to pieces under pressure"
+  rough|perfectionism|lo|for                 M38   6  3 |   0  0   worlds   2.9   "good enough was good enough" → "saw no need to fuss over the details"
+  cheer|altruism|hi|for                      M38  22  3 |   8  0   worlds   2.8   "wanted to be there for {t}" → "wanted {t} to get the credit"
+  seize|inquisitiveness|hi|for               M38  10  3 |  16  1   worlds   2.6   "wanted to know" → "wanted to find out what she could do"
+  type:plan|socialBoldness|hi|for            M38  38  3 |  12  0   worlds   2.1   "is not one to hang back" → "was happy to say it out loud"
+  type:dating|gentleness|hi|for              M38  22  3 |   0  0   worlds   1.4   "does not like to judge" → "has a gentle way with people"
+  quietword|modesty|lo|for                   M38   4  3 |   8  0   worlds   0.7   "would not be talked down to" → "would not be taken lightly"
+  type:thread:cost|patience|hi|against       M38   6  3 |   0  0   worlds   0.7   "though slow to anger" → "though she had given {t} more chances than most would"
+  type:council:no|prudence|hi|for            M38  10  3 |   4  0   worlds   0.6   "thought it through first" → "would not take a chance on it"
+  give|fearfulness|lo|for                    M38   4  3 |   4  0   worlds   0.5   "danger has never stopped her" → "was not one to be put off by the risk"
+  congratulate|modesty|hi|for                M38   6  3 |   4  3   worlds   0.3   "did not think it was about him" → "was happy for {t} to have the praise"
+
+Check 5: held-out rate on changed lines 7.16 per hundred; base 3.11; whole drop 4.05, half 2.02. Changed lines a page: mean 10.4 (72 pages).
+  new words faulted on their own at 0.5/100: 24 pairs whole 99%, half 83%; 48 pairs whole 100%, half 99%
+  new words faulted on their own at 1.0/100: 24 pairs whole 98%, half 71%; 48 pairs whole 100%, half 94%
+  new words faulted on their own at 1.5/100: 24 pairs whole 95%, half 62%; 48 pairs whole 100%, half 89%
