@@ -95,7 +95,9 @@ A game may choose:
 - **Whom to follow, what to show and which scenes to play.**
 - **External events**, from the setting's timeline: the economy, the seasons, the town's day. These are fixed in the pack, not aimed at the player.
 
-A game may never write an event into a life, change a decision, or make the world react to the player except through people.
+A game may never write a person's act into a life, change a decision, or make the world react to the player except through people.
+
+A game may author a cause of its own domain or setting: a fire at the mill, a will read out, a gig that drew forty people. It is recorded through the front door as an event with its reasons, and people answer it through their own decisions. What no game authors is what a person does about it, or how that turns out.
 
 This is what makes "nobody knows who the murderer is" true, for the player and the designer alike, and what makes every playthrough unique. It also means the murderer's motive is real: it is the reasons in the record.
 
@@ -154,7 +156,7 @@ Flexibility to resist:
 ## Where it stops
 
 - **Action and reflex play.** Scenes are conversations, choices and outcomes, not seconds of movement. None of the notebook's games needs reflexes.
-- **Authored plots.** A fixed mystery with a twist written in advance conflicts with rule 4. The engine makes something closer to nonfiction than fiction, so the games must be built around player-driven, systemic stories. The notebook's games already are.
+- **Authored plots.** A fixed mystery with a twist written in advance conflicts with rule 4. A game can author the premise (a body found, a will read out) as a cause of its domain, but not who did it or what anyone does next. The engine makes something closer to nonfiction than fiction, so the games must be built around player-driven, systemic stories. The notebook's games already are.
 - **Everyone deep at once.** A few thousand people at full depth at a time; the rest of the city exists in full but is lived once a year. Until a city month is timed (exit point 7), games with a wide reach carry that risk.
 - **Quiet worlds.** If a small cast meets too little that matters, rule 4 forbids forcing it. The fix lies in the engine (exit point 2), in choosing worlds, and in wider focus. This is the largest risk to the games.
 

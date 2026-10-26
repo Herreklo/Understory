@@ -10,15 +10,16 @@ _Second pass, the evening of 22 October. Øystein asked for a deep analysis of t
 
 _A review by a fresh Fable 5.1 agent followed (3 blocking findings, 12 others; summarised on PR #92). Its blocking findings are fixed here: the cause above, aimed packs picked over both arms, and the exit points counted right._
 
-## 0. Where people must read, and where they need not
+_Third pass, agreed with Øystein on 22 October and written on 26 October, when Understory resumed. Shown H1's pair page, he found a cold page of a stranger's life uninvolving, as his pilot reading and Q3's two readers had: "like reading a police log of daily life". Players care about people through a stake of their own, as in Crusader Kings, RimWorld, Football Manager and The Sims. So human evidence comes from play, H1 is retired, and exit point 5 is about players. Section 6 records this as decisions 18 to 22, with P3's counter and the review of `2d696e6` (`reports/external/2026-10-22-review-2d696e6-dispositions.md`)._
 
-**People are needed in three places, and only there:**
+## 0. Where people must play, and where they need not
 
-1. **Before a reader's taste steers a design.** Selection (G2) trades length against sameness. In round 35, readers chose the longer page 70% of the time. Judges built on language models are known to prefer longer answers (Zheng et al. 2023; Saito et al. 2023), so that finding may be the model's taste rather than a reader's. Selection is read only after people have answered it. CLAUDE.md forbids keeping any round on "reads better" until people have read; H1 does not lift that, only H2 does.
-2. **To check the instrument that guards every round.** Do people choose as the model readers do, and do they reward kinds of line too? This needs readers who do not know which version is which, not readers cold to the project, so Øystein can read. It calibrates his and a few others' taste against the model's, not people's in general. **H1** below.
-3. **To close exit point 5,** which is people by definition. A cold reader is cold only once, so outsiders are spent on the engine that will be built on: at phase C's gate, when exit points 1, 2 and 9 are close or the stop rule fires. **H2** below.
+**People are needed in two places, and they play there rather than read.** A cold page of a stranger's life tests none of what a game needs: a player cares about people through a stake of their own (their person, their circle, what their acts led to).
 
-**Everything else needs no person.** Exit points 1, 2, 3, 6, 7 and 8 are judged by counters: decisions flipped, reach, links, faults on the page, the scoreboard, the city's budget and lasting change. Points 4 and 9 are judged by counters too (dead lives; a group's character surviving its founders), and each ends with a cold reader's clause: saying who four of five people are, or what four of five groups are like, in one sentence. The model readers answer those clauses between rounds, as they did for point 4 in rounds 24a–24c, and H2's readers answer them once. The model reading guards each round against harm, and is never the reason to keep one. The work any game needs regardless of a reading is the same work: ties with an inner life, consequences that travel, groups, places and homes, the front door's second part, content as data, the city. Section 4 orders it first.
+1. **To close exit point 5,** which is people by definition: players come to care about the people around them. Overstory's playtests are the first evidence. The slice (S1) is next: the text client through the front door, played by Øystein and people who know the project, once feelings part one gives a refusal that reads a feeling. What they say they cared about, about whom and why, goes in `reports/`, with no pass mark. H2, five outsiders playing cold at phase C's gate, judges it.
+2. **Before a reader's taste steers a design.** Selection (G2) decides what the page shows. In round 35, model readers chose the longer page 70% of the time, and judges built on language models are known to prefer longer answers (Zheng et al. 2023; Saito et al. 2023). What players skip and what they ask to see answers it better, so G2 waits for the slice to have been played.
+
+**Everything else needs no person.** Exit points 1, 2, 3, 6, 7 and 8 are judged by counters: decisions flipped, reach and links, faults on the page, the scoreboard, the city's budget and lasting change. Points 4 and 9 are judged by counters too (dead lives; a group's character surviving its founders), and each ends with a reader's clause: saying who four of five people are, or what four of five groups are like, in one sentence. The model readers answer those clauses between rounds, as they did for point 4 in rounds 24a–24c, and H2's players answer them once. **The model reading guards each round against harm, and is never the reason to keep one.** CLAUDE.md forbids keeping a round on "reads better" until people have read; here that means until people have played. The work any game needs regardless is the same work: ties with an inner life, consequences that travel, groups, places and homes, the front door's second part, content as data, the city. Section 4 orders it first.
 
 ## 1. In short
 
@@ -32,7 +33,7 @@ _A review by a fresh Fable 5.1 agent followed (3 blocking findings, 12 others; s
 The answer is two tracks of rounds and one of plumbing:
 
 - **People track,** one experiment at a time: feelings part one; feelings meet their object; taking sides; shared hardship; the band year; wants for later life. Secrets with accounts, a third person and feelings' further kinds wait for Overstory's register to ask for them.
-- **Page track,** beside it, on page files only: the wording round; every clause carrying its IDs (N3); particulars and callbacks; then selection, once people have read (H1).
+- **Page track,** beside it, on page files only: the wording round; every clause carrying its IDs (N3); particulars and callbacks; then selection, once people have played the slice (S1).
 - **Neutral jobs** beside both, the measures and the guard first.
 
 Every round has one primary counter, which can fail it. The reading checks "reads no worse".
@@ -113,20 +114,18 @@ At −0.15, a harmless round would pass 80% of the time only at 70 to 200 pairs,
   - whether a want loses the blow that caused it. Only 3% of rises after a blow descend from it today. If the record loses the chain, recording the cause is its own small change, with every act identical.
 - **N2, cleanups** (`refactor`, then `words`): cut `selfBias` and `lastProvoked`; name the secret in "carrying something nobody knew"; say who the dead person was to the subject; give the habit line its job-loss event.
 - **M39, the felt question,** before feelings part one is read: about six sittings, once.
-- **H1, the pair page for people** (no reading credits, a tool in `study/`, as Q3's page):
-  - **What a reader does:** sees two versions of a life, blind to the arm, and picks the one they would rather read on. They may mark up to three lines that ring false or repeat, and they answer the felt question. Their answers leave the page as a block of text, and nothing is sent anywhere.
-  - **What they read,** from packs on file: 12 pairs of round 40's busiest where the model readers' majority was clear; 6 pairs from rounds 29–34's packs (as round 35 analysed them, with round 36's rebuilt kinds) that differ in length but not in kinds; and 6 of M38's null. As many more as 30 minutes allows are added from the same sources, in the same proportions.
-  - **Who reads:** Øystein and people who will not be among H2's cold readers. Versions are in random order with nothing marking the arm, but Øystein knows what round 40 added and can often tell its arm by content; the length and null pairs are where he is truly blind, and the report says so.
-  - **What it reports:** agreement with the model readers' majority per reader, with its interval; whether length predicts the choice once kinds are counted; and the lean on the null. It has no pass mark: at a dozen pairs a reader at chance reaches 8 of 12 one time in five.
-  - **What it decides:** only selection's pre-registration. If people do not prefer the longer page where kinds are equal, G2 drops round 35's length cost from its prediction. If agreement where the model was clear is under half for every reader, a method round on the brief is proposed to Øystein before G2.
+- **H1, the pair page, is retired** (decision 18). Its tool stays in `study/` unused, and goes in the next cleanup.
 - **N4, the milestone tool:** builds the same seeds at two tags in two worktrees, matches adults across them by name and birth as `pairarm.ts` does across arms, and writes a pack with its key and both commits in `meta.json`.
 - **The gate when GitHub refuses CI's jobs** (billing, as in rounds 37 and 39 and on 22 October, and a re-run is refused too): every CI check runs locally on the PR's merge with main, a second agent re-runs the identity check on that commit, and the output is committed to `reports/`. CLAUDE.md's gate says how.
 - **N3, every clause carries its IDs:** CI fails a clause with no event behind it. Also a Rule 8 lint over a rendered world, a frame render over random states, a model-tics list and one pseudo-localised pass. It touches `grammar.ts` and `page.ts`, so it runs between page rounds.
-- **S1, the first command and the slice:**
+- **S1, the first command and the slice** (the command and the client are on main, #88):
   - #22's first command, an invitation answered by the other person's own decision;
-  - a text client in `src/tools/` that plays one witness through the front door, with the band, rough and end to end;
-  - once feelings part one is in, a refusal can read a feeling ("still sore at you"): the first place a player acts on one.
-- **S2, the front door's part two:** reads by viewer, `eventsAfter` and versions; then branching (an override named by event id, kept on the world); then save and load. Each is announced on #60 before it lands.
+  - a text client in `src/tools/play.ts` that plays one witness through the front door, with the band, rough and end to end;
+  - once feelings part one is in, a refusal can read a feeling ("still sore at you"): the first place a player acts on one;
+  - **then people play it** (section 0): Øystein and people who know the project, about an hour each, no credits. Each says whom they came to care about and why, and what they skipped. It is written in `reports/`, with no pass mark.
+- **S2, the front door's part two:** reads by viewer, `eventsAfter` and versions; then branching (an override named by event id, kept on the world); then save and load. Game-facing reads are scoped to a viewer by default; the truth is a separate, privileged read a game asks for by name; a command says whom the caller acts as (the review of `2d696e6`). Each is announced on #60 before it lands.
+- **N5, the front door's checks** (`refactor` for the town, announced on #60): `invite.what` is checked; `advance` takes a positive whole number of months; an unknown kind is refused with its reason; worlds are held in a `WeakMap` behind an opaque handle, not a cast.
+- **N6, hearsay cited where it decided** (`words`): `citeFlip` (`src/telling.ts`) cites a flipped account on any event between the two people that month. First count how often that is not the flipped decision, then key the citation to the decision. Raised by the reviews of `bffdb33` and `2d696e6`.
 - **S3, content as data,** one `refactor` per file between rounds. `motives.ts` is done (#83); `setting.ts` is next, then `families.ts` once the wording round has merged.
 
 ### Page track: one round at a time
@@ -141,14 +140,14 @@ Each round claims an effect on how a page reads, so each is an experiment. None 
 - **Primary counter:** unfit reasons cited on the changed lines, on against off. The score cannot see it.
 - **The last round on reasons:** if it stops or is not kept, reasons rest.
 
-**The order:** G1, then N3, then G3, then G2. Selection is the one round whose reading would be steered by a model's taste for length, so it is read only after H1.
+**The order:** G1, then N3, then G3, then G2. Selection is the one round whose design a model's taste for length would steer, so it waits until people have played the slice.
 
-**G2. Selection** (exit 5), after H1.
+**G2. Selection** (exit 5), after the slice is played.
 
 - **What:** fold the town calendar into one line with its span, and drop the want echoes. They are the most-faulted repeats (4.8 and 5.5 per hundred readings), and the festival alone draws 19% of all repeat faults on file.
 - **Expected:** copies fall from 21% to about 18%.
 - **Primary counter:** the 15 most-faulted templates' occurrences; stop under half removed.
-- **The score may move here.** Readers score sameness, but a shorter page costs 0.16 a ten lines (round 35). The pre-registration writes the predicted change for the lines lost, with or without that cost as H1 decides.
+- **The score may move here.** Readers score sameness, but a shorter page costs 0.16 a ten lines (round 35). The pre-registration writes the predicted change for the lines lost with that cost and without it, and what players skipped in the slice says which to expect.
 
 **G3. Particulars and callbacks** (exits 5 and 3).
 
@@ -158,14 +157,14 @@ Each round claims an effect on how a page reads, so each is an experiment. None 
 
 ### People track: one experiment at a time
 
-| Round                              | Mechanism                                                                                | Exits   | Triggers per world-decade                                                           | Primary counter                                                                                      | Depends on                       |
-| ---------------------------------- | ---------------------------------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | -------------------------------- |
-| **P1. Feelings, part one**         | grief, resentment, guilt, gratitude, each with an object; debts called in                | 1, 5, 8 | about 30 wrongs, 12 costly helps; deaths, splits, lost jobs                         | removing the feeling flips the family in ≥5% of decisions it is weighed in                           | N1a, N2, M39                     |
-| **P4. Feelings meet their object** | a held feeling or debt may raise a situation with its object: seek them out or keep away | 1, 2, 8 | P1's held feelings: resentment in 12.7% of adult-months, gratitude 9.0%, guilt 4.7% | the share of held feelings that meet their object within a year, and the flips there                 | P1 sized; its research           |
-| **P2. Taking sides**               | a friend of both sides chooses one, the other or neither                                 | 1, 2    | 3.9 rifts, 22.5 with friendships ending                                             | ≥15% of side-takings end or start a tie, or are cited by a weighty event, within 3 years (40 worlds) | N1b                              |
-| **P3. Shared hardship**            | a blow binds or splits the people it hits                                                | 2       | loss and support, 0.58 per 100 a month                                              | reach, 6% today, 15% needed                                                                          | P1's grief, P2; `environment.md` |
-| **P6. The band year**              | norms held in members' beliefs; each group's own row escalation                          | 9, 1, 8 | one band, a year                                                                    | at its research                                                                                      | S1                               |
-| **P5. Wants for later life**       | doors past 65; more than one pursuit at a time                                           | 2       | nearly half of adults want nothing, mostly past 65                                  | turns in random lives                                                                                | N1b                              |
+| Round                              | Mechanism                                                                                | Exits   | Triggers per world-decade                                                           | Primary counter                                                                                       | Depends on                       |
+| ---------------------------------- | ---------------------------------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | -------------------------------- |
+| **P1. Feelings, part one**         | grief, resentment, guilt, gratitude, each with an object; debts called in                | 1, 5, 8 | about 30 wrongs, 12 costly helps; deaths, splits, lost jobs                         | removing the feeling flips the family in ≥5% of decisions it is weighed in                            | N1a, N2, M39                     |
+| **P4. Feelings meet their object** | a held feeling or debt may raise a situation with its object: seek them out or keep away | 1, 2, 8 | P1's held feelings: resentment in 12.7% of adult-months, gratitude 9.0%, guilt 4.7% | the share of held feelings that meet their object within a year, and the flips there                  | P1 sized; its research           |
+| **P2. Taking sides**               | a friend of both sides chooses one, the other or neither                                 | 1, 2    | 3.9 rifts, 22.5 with friendships ending                                             | ≥15% of side-takings end or start a tie, or are cited by a weighty event, within 3 years (40 worlds)  | N1b                              |
+| **P3. Shared hardship**            | a blow binds or splits the people it hits                                                | 2       | loss and support, 0.58 per 100 a month                                              | help acts that lead somewhere within three years; stop under 15%, about 20% expected; reach beside it | P1's grief, P2; `environment.md` |
+| **P6. The band year**              | norms held in members' beliefs; each group's own row escalation                          | 9, 1, 8 | one band, a year                                                                    | at its research                                                                                       | S1                               |
+| **P5. Wants for later life**       | doors past 65; more than one pursuit at a time                                           | 2       | nearly half of adults want nothing, mostly past 65                                  | turns in random lives                                                                                 | N1b                              |
 
 **Waiting for Overstory's register to ask,** in no order: **P7. Secrets, with accounts** (any knower may expose, or hold it over the owner; 29.5 secret acts a world-decade, 3.1 told); **P8. A third person** (attraction that persists across a partnership; 12% of married partners doubting; after P7); **feelings' further kinds** (worry, shame, pride, envy, regret; keeping one's head; the illness that recurs and worsens, as worry's first pending threat). Each begins with its own research note.
 
@@ -189,7 +188,7 @@ Each round claims an effect on how a page reads, so each is an experiment. None 
 
 **P2. Taking sides.** A friend of both sides decides by liking, regard, fairness and whose account came first. With P1 kept, the side not taken carries resentment toward a named person, and with P4 kept that resentment can seek its object. The witness must know at least 30% of these acts.
 
-**P3. Shared hardship,** the reach arc's second and last round. Death is the template: 88% of deaths reach 4.1 people, and 62% lead to a turn. P1's grief gives the people a blow hits together their reason to draw closer or apart. At least 70% of new turns must have a cause on an earlier line. Its research is `notes/research/environment.md` (22 October): blackouts, storms, hard winters and places with qualities, as shared conditions that bind or split people.
+**P3. Shared hardship,** the reach arc's second and last round. Death is the template: 88% of deaths reach 4.1 people, and 62% lead to a turn. P1's grief gives the people a blow hits together their reason to draw closer or apart. At least 70% of new turns must have a cause on an earlier line. Its research is `notes/research/environment.md` (22 October): blackouts, storms, hard winters and places with qualities, as shared conditions that bind or split people. Its primary counter is the link rate, not reach: the share of help and no-help acts that lead to a tie begun or ended, a move, money, a want or a turn within three years. The note expects about 20% and stops under 15%. Reach goes beside it: a condition's help stays between helper and helped, so reach would move only from 6.7% to about 6.5% in a round that works.
 
 **P6. The band year** comes before P5. Exit point 9 has not started, and every game the notebook names needs a group with a character of its own: a band, a club, a workplace. Its counter is a group's character outliving its founders; the clause about naming groups is read as section 0 says.
 
@@ -213,15 +212,15 @@ The page track claims `grammar.ts`, `page.ts`, `motives.json` and the words in `
 
 ### Each round's reach on the exit criterion
 
-| Exit point                                    | Moved by                                           | Today                    |
-| --------------------------------------------- | -------------------------------------------------- | ------------------------ |
-| 1. Close ties with an inner life              | P1, P4, P2, P6                                     | partners and rivals only |
-| 2. Weighty events change something, and reach | P1, P4, P2, P3, P5                                 | reach 6%, needed 15%     |
-| 3. Nothing false on a page                    | G1, N3, G3                                         | open: unfit reasons      |
-| 4. Few dead lives, and each one sayable       | held; H2 re-asks its reader's clause               | dead 2%; 9–10 of 12 said |
-| 5. Outsiders find lives worth reading         | H2 judges it; H1 checks the instrument; G2, G3, P1 | no outsider since Q3     |
-| 8. Living changes people                      | P1, P4, P6                                         | about 3% of the distance |
-| 9. A group outlives its members               | P6; its reader's clause at H2                      | not started              |
+| Exit point                                    | Moved by                                             | Today                    |
+| --------------------------------------------- | ---------------------------------------------------- | ------------------------ |
+| 1. Close ties with an inner life              | P1, P4, P2, P6                                       | partners and rivals only |
+| 2. Weighty events change something, and reach | P1, P4, P2, P3, P5                                   | reach 6%, needed 15%     |
+| 3. Nothing false on a page                    | G1, N3, G3                                           | open: unfit reasons      |
+| 4. Few dead lives, and each one sayable       | held; H2 re-asks its reader's clause                 | dead 2%; 9–10 of 12 said |
+| 5. Players care about the people around them  | played tests: Overstory's, the slice, H2; G2, G3, P1 | no one has played yet    |
+| 8. Living changes people                      | P1, P4, P6                                           | about 3% of the distance |
+| 9. A group outlives its members               | P6; its reader's clause at H2                        | not started              |
 
 Points 6 and 7 are held: the scoreboard gate guards 6, and refitting the city's odds after each kept people round guards 7.
 
@@ -229,7 +228,7 @@ Points 6 and 7 are held: the scoreboard gate guards 6, and refitting the city's 
 
 - **The register** from Overstory's paper playtests is coming (#60, 21 October). Each request is placed by its layer: an engine capability joins its round, the front door or export joins S1 or S2, content joins S3. A domain or presentation stays Overstory's.
 - **It may pull one arc forward** by Øystein's choice, never displacing an open round. P7 is likeliest: their panel leads with the paper and a mystery. What we take is recorded in SUMMARY.
-- **H2, the human test, at phase C's gate:** at least five outsiders read cold, on random lives of the engine to be built on, by exit point 5's bar, with the felt question, and points 4 and 9's sentences. They read single pages, never pairs, since two versions of one person would show them a model behind the page: random lives from main at the time, the same people as the latest milestone's random pack. Only Øystein can find the readers, and they are cold only once. If none are found by phase C's gate, the game is chosen without H2, and exit point 5 stays open.
+- **H2, the human test, at phase C's gate:** at least five outsiders play cold, as a person in a town of the engine to be built on, through the slice or Overstory's build of the day, by exit point 5's bar. They also give points 4 and 9's sentences about the people and groups they met. Only Øystein can find the players, and they are cold only once. If none are found by phase C's gate, the game is chosen without H2, and exit point 5 stays open.
 - **Phase C, the first game,** is chosen once the register is in and exit points 1, 2 and 9 are close, or once the stop rule fires, and after H2. Built for it then: the pack format with its Rule 8 closure, the town as `packs/town`, an unlike test pack in CI, and the music domain behind its interface.
 - **Phase D, as games ask:** time and moments, crime, inheritance with homes (#59), fame as reach. Each is an arc of research and at most two rounds.
 
@@ -247,9 +246,9 @@ Engine, world pack, domain module and content are separate layers. The repo stru
 **Costs.**
 
 - **Per round:** a sitting costs about $4, so a page round's reading is about $20 and a people round's about $40, plus $40 for a miss's extra pack. M39 costs about $24, once.
-- **For the rounds ordered here** (P1, P4, P2, P3, P6, P5, G3, G2, and two milestones): about $360 if all are read, about $240 if a third stop at sizing, as round 42 did. G1's reading and M39 are outside that sum. H1 costs no credits, and N3 and the neutral jobs need no reading.
+- **For the rounds ordered here** (P1, P4, P2, P3, P6, P5, G3, G2, and two milestones): about $360 if all are read, about $240 if a third stop at sizing, as round 42 did. G1's reading and M39 are outside that sum. Played tests cost no credits, and N3 and the neutral jobs need no reading.
 - **Throughput:** two tracks about double the rate of rounds, once P1's build runs beside G1.
-- **When credits are short,** as from 22 October, when Øystein put the rest of the credits on Overstory: research, sizing and neutral jobs go on, and readings wait. A round sized and reviewed can wait at its pre-registration without losing anything.
+- **When credits are short,** as from 22 to 26 October, when Øystein put the credits on Overstory: research, sizing and neutral jobs go on, and readings wait. A round sized and reviewed can wait at its pre-registration without losing anything.
 
 **What not to build:** a director or any pacing; a clock shorter than a month; domain systems in the engine; a live language model; a reputation score; a meter shown to the player.
 
@@ -279,12 +278,20 @@ On 22 October Øystein left the decisions to the lead session ("you do what you 
 
 10. **Feelings meet their object (P4) comes second,** and replaces feelings part two's new kinds. Round 44 found a resentment held in 12.7% of adult-months weighed in 1.4% of all decisions, because no situation is raised by a feeling: matchers pick counterparts without reading one. Every later round is a tie held across time, so this is the missing piece. More kinds of feeling would add more of what cannot act.
 11. **Readers judge less; counters judge more.** Section 0 sets where people must read. The model reading guards against harm and never keeps a round. Aimed packs, picked over both arms, may replace the busiest where a round touches under a third of its pages, and milestone readings, once N4 exists, say whether lives read better across rounds.
-12. **The human test splits in two.** H1 is a pair page that Øystein and readers who are not cold can use at no credit cost, and it gates selection. H2, the cold outsiders, waits for phase C's gate, because a cold reader is spent once. Nothing in the people track waits for either.
-13. **Selection (G2) moves last on the page track,** after H1. Its predicted cost for a shorter page rests on a preference that judges built on language models are known to have for length.
+12. **The human test splits in two** (H1 superseded by decision 18). H1 is a pair page that Øystein and readers who are not cold can use at no credit cost, and it gates selection. H2, the cold outsiders, waits for phase C's gate, because a cold reader is spent once. Nothing in the people track waits for either.
+13. **Selection (G2) moves last on the page track,** after H1 (now after the slice is played, decision 18). Its predicted cost for a shorter page rests on a preference that judges built on language models are known to have for length.
 14. **The band year (P6) moves before wants for later life (P5).** Exit point 9 has not started, and every game named needs groups. The cost is that the quiet majority, where exit point 2 is farthest off, waits one round more.
 15. **Secrets, a third person and feelings' further kinds wait** for Overstory's register to ask. They need P4's meetings first, and each is rare (3.1 secrets told a world-decade).
 16. **The gate gets a fallback when GitHub refuses CI** (CLAUDE.md): it has refused jobs for billing in rounds 37 and 39, and again on 22 October. The fallback runs every CI check, and a second agent re-runs the identity check, so the gate keeps an independent check.
 17. **Homes wait for phase D,** as games ask (#59, #22); they are not in the people track's order.
+
+**Third pass, agreed 22 October, written 26 October** when Understory resumed. Each is his to reverse in one dated line in `SUMMARY.md`.
+
+18. **People play; they do not read cold pages.** H1 is retired. Human evidence comes from Overstory's playtests, then the slice (S1) played by Øystein and people who know the project, then H2's outsiders playing at phase C's gate. The model reading is a guard against harm only. G2 waits for the slice to have been played.
+19. **Exit point 5 becomes "players care about the people around them"** (`docs/STATUS.md`): a player can say who the people around their person are to them and why they acted, and wants to see what they do next.
+20. **P3's primary counter is the link rate,** with reach beside it (`environment.md`). Reach measures spread, and a round that works would leave it near 6.5%.
+21. **A game may author a cause of its own domain or setting,** recorded as an event with its reasons through the front door; people answer it through their own decisions. No game decides a person's act or its outcome (`notes/game-shapes.md`, rule 4; the review of `2d696e6`).
+22. **Every external review gets a disposition table** in `reports/external/` when it is filed. The review of `bffdb33` had none, and its hearsay finding went unslotted for a week. Both reviews are now disposed: N5 and N6 come from them, and S2 takes the sharper rule on reads.
 
 **Carried unchanged from the first plan:**
 

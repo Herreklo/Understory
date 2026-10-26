@@ -1,51 +1,50 @@
 # Understory: where we are
 
-_Updated 22 October 2026, after round 43w. At most 600 words, rewritten at every merge; history is in `docs/BOARD.md` and git._
+_Updated 26 October 2026, when Understory resumed. At most 600 words, rewritten at every merge; history is in `docs/BOARD.md` and git._
 
 ## Where we are going
 
-People you come to understand from incomplete evidence, who surprise you for reasons you recognise afterwards. A player should feel discovery, agency and recognition. The exit criterion (`docs/STATUS.md`) measures how close we are.
+People you come to understand from incomplete evidence, who surprise you for reasons you recognise afterwards. The exit criterion (`docs/STATUS.md`) measures how close we are.
 
 ## Where we stand
 
-- **Works:** decisions feel human to people; watching someone helps predict them; pages tell the truth, and their reasons are worded for the act; more kinds of thing happen in a life since round 40; the city runs on today's engine; games read it through one front door (`src/boundary.ts`).
-- **Doesn't yet:** feelings change no act, and a fifth of a page's lines repeat; nearly half of adults, mostly past 65, want nothing; events rarely lead anywhere; life barely changes people; no outsider has read a life since Q3.
-- **The instrument (M38):** a blind paired reading, checked on known answers. "Reads no worse" is a one-sided 95% bound above −0.3. Until people have read, no round is kept on "reads better" alone.
+- **Works:** decisions feel human to people; watching someone helps predict them; pages tell the truth, and their reasons are worded for the act; more kinds of thing happen in a life since round 40; the city runs on today's engine; games read it through one front door (`src/boundary.ts`), with a first command and a text client (`src/tools/play.ts`).
+- **Doesn't yet:** feelings change no act, and a fifth of a page's lines repeat; nearly half of adults, mostly past 65, want nothing; events rarely lead anywhere; life barely changes people; no one has played the engine yet.
+- **The instrument (M38):** a blind paired reading. It guards each round against harm ("reads no worse": a one-sided 95% bound above −0.3) and never keeps one.
+- **People play; they do not read** (agreed 22 Oct). Human evidence comes from Overstory's playtests, then the slice, then five outsiders playing cold at phase C's gate. H1 is retired; exit point 5 is now "players care about the people around them" (plan, section 0).
 
 ## Next, in order
 
-From `notes/build-plan.md`, one experiment at a time per track. _22 Oct: Øystein left the plan's decisions to the lead (section 6, 10–17), his to reverse here, and put the rest of the credits on Overstory: readings wait; research, sizing and neutral jobs go on._
+One experiment at a time per track (`notes/build-plan.md`). _22 Oct: Øystein left the plan's decisions to the lead (section 6), his to reverse here._
 
-_Øystein, 22 Oct: wait with the human test until the work that can be done before it is done._ Superseded by decision 12: H1 now, H2 at phase C's gate.
-
-1. **Feelings, part one** (round 44; people; exits 1, 5, 8): sized at 5.0% of decisions flipped (four kinds, the counter; 7.1% with debts) against a 5% stop. Review and pre-registration next.
+1. **Feelings, part one** (round 44, #91; people; exits 1, 5, 8): built and sized, 5.0% of decisions flipped on the four kinds alone (7.1% with debts) against a 5% stop. Review and pre-registration next.
    - _Kept, or not kept with the four kinds under 5%:_ go on to 2.
    - _Otherwise:_ feelings go back to research, and taking sides uses liking alone.
-2. **Feelings meet their object** (people; exits 1, 2, 8), research first. No situation is raised by a feeling, so a resentment held in 13% of adult-months weighs in 1.4% of decisions.
+2. **Feelings meet their object** (people; exits 1, 2, 8), research first: a resentment held in 13% of adult-months weighs in 1.4% of decisions.
    - _Kept or not:_ taking sides follows.
 3. **The page** (exit 3): reasons rest after 43w; N3, then particulars.
 
 Then:
 
 - taking sides;
-- shared hardship (environment research under way);
+- shared hardship, judged on its link rate;
 - the band year;
 - wants for later life;
-- selection, last on the page, after H1.
+- selection, last on the page, after people have played the slice.
 
-Homes (#59, #22) wait for phase D. Beside any: H1, a blind pair page; N1b; the neutral change that takes out `OFF=wording`; N4, the milestone tool; cleanups; the felt question.
+Homes (#59, #22) wait for phase D. Beside any: N1b; N5, the front door's checks, and N6, hearsay cited where it decided (both from the outside reviews); the neutral change that takes out `OFF=wording`; N4, the milestone tool; cleanups; the felt question.
 
 For the register to ask: secrets, a third person, more kinds of feeling. Paused: the background's ageing, the start year (#23).
 
 ## Waiting for you
 
-- **GitHub Actions billing:** CI refused jobs on 22 Oct. While it does, merges use CLAUDE.md's local fallback.
-- **H1:** read its 24 pairs once built (30 minutes, no credits).
-- **Five cold outsiders for H2,** at phase C's gate. The first game waits on them; without them it is chosen with exit 5 open.
-- **The human test's move:** yours to put back.
+- **The review of `2d696e6`:** copy it from Downloads into `reports/external/`, which the app cannot read.
+- **Play the slice** once feelings part one is in: about an hour, no credits.
+- **Five cold players for H2,** at phase C's gate; without them the first game is chosen with exit 5 open.
 - **Overstory's register:** whether it pulls an arc forward.
+- **GitHub Actions billing:** CI refused jobs on 22 Oct. While it does, merges use CLAUDE.md's local fallback.
 
 ## Latest
 
+- **Catch-up (26 Oct):** play, not read; shared hardship's counter; both outside reviews disposed (`reports/external/`); games may author causes of their own domain (plan, decisions 18–22).
 - **Round 43w (22 Oct), kept:** reasons worded for their act. On the lines it changes, 24 reasons faulted as unfit against 360; the busiest read no worse (+0.31 ±0.12).
-- **The plan's second pass (22 Oct), reviewed:** counters judge rounds; readers guard against harm; every third kept round, a milestone reading says whether lives read better.
