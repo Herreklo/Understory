@@ -129,6 +129,7 @@ Uses: `train`, `eval` (scoreboard), `test` (fresh worlds for a round), `quiz`, `
 | 9001 | 9024 | lab   | diag  | 44 sizing (`src/tools/diag/feel.ts`, 22 Oct)                                       |
 | 9001 | 9024 | lab   | diag  | P4 research: meetings and demography (`notes/research/sources/meeting-scripts/`, 26 Oct) |
 | 9001 | 9024 | lab   | diag  | 45 sizing (`src/tools/diag/meet.ts`, `feel.ts`, 26 Oct)                            |
+| 9001 | 9040 | lab   | diag  | N1b baseline (`src/tools/diag/measures.ts`, `story.ts`, 27 Oct); 9101–9112 its want chains |
 
 Next free: eval **3749**, test **3749** (the check in CI is the truth; this line was wrong once). Scale: test **411**, train **1061**.
 

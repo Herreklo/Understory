@@ -1,7 +1,7 @@
 // The counters a round is judged on beside its reading (notes/build-plan.md, sections 3 and 4), from fresh worlds or from packs on file.
 //   ./run.sh src/tools/diag/measures.ts run A B [rule] [years]   → out-measures/<rule>-<seed>.json, one world each (a stopped run resumes)
 //   ./run.sh src/tools/diag/measures.ts report <ruleA> [ruleB]   → the table: each measure's mean per world, and A − B paired by world
-//   ./run.sh src/tools/diag/measures.ts pack <pack.txt>...        → the page measures of packs on file
+//   ./run.sh src/tools/diag/measures.ts pack <pack.txt>...        → the page measures of packs on file (copies, templates, callbacks)
 // rule: 'on', or switches to turn off joined by '+', as the lives tools take it. FLIP=<state> also counts that state's flips (flip.ts).
 // Per world, the pages are those a reading would pick (pairarm.ts, one arm alone): the three most eventful adults in town and three
 // drawn at random, and every adult in town. On them:
@@ -356,11 +356,15 @@ if (mode === 'run') {
   for (const f of process.argv.slice(3)) {
     const v = packVersions(readFileSync(f, 'utf8'));
     const c = copies(v.map(x => x.page));
+    const cb = v
+      .map(x => callbacks(x.page))
+      .reduce((s, x) => ({ lines: s.lines + x.lines, callbacks: s.callbacks + x.callbacks }), { lines: 0, callbacks: 0 });
     console.log(
       `${f}: ${c.pages} pages, ${c.lines} lines, ${c.copies} extra copies (${(100 * share(c)).toFixed(1)}%), the fifteen templates ${sum(c.templates)} lines`,
     );
     TEMPLATES.forEach(([t], i) => c.templates[i] && console.log(`${String(c.templates[i]).padStart(6)}  ${t}`));
-    console.log('MEASURES ' + JSON.stringify({ pack: f, ...c }));
+    console.log(`callbacks ${cb.callbacks} of ${cb.lines} lines (${((100 * cb.callbacks) / Math.max(1, cb.lines)).toFixed(1)}%)`);
+    console.log('MEASURES ' + JSON.stringify({ pack: f, ...c, callbacks: cb.callbacks }));
   }
 } else {
   console.error('usage: measures.ts run A B [rule] [years] | report <ruleA> [ruleB] | pack <pack.txt>...');

@@ -13,7 +13,7 @@
 //                  and by one that descends from the blow by citation (the intrigue audit's kind 8: 56% and 3% on 22 October)
 //   blow → want    of wants the engine opened as the answer to a blow (Want.origin), the share met within three years whose meeting
 //                  descends from the blow by citation: whether the record loses the chain at the want
-import { pageLines } from '../../page';
+import { pageLines, shownCauses } from '../../page';
 import { type Event, type Person, type World } from '../../world';
 import { knowable, TURNS, weighty } from '../consequence-defs';
 
@@ -75,7 +75,7 @@ export function pageStory(w: World, p: Person, memo = new Map<number, Set<number
     if (life || turn) {
       const anc = ancestors(w, l.e, memo);
       const caused = [...above].some(id => anc.has(id)) ? 1 : 0;
-      const cited = l.e.causes.slice(0, 3).some(c => c.ref != null && above.has(c.ref)) ? 1 : 0;
+      const cited = shownCauses(l.e).some(c => c.ref != null && above.has(c.ref)) ? 1 : 0;
       if (life) out.lifeTurns++, (out.lifeCaused += caused), (out.lifeCited += cited);
       if (turn) out.turns++, (out.turnsCaused += caused), (out.turnsCited += cited);
     }
