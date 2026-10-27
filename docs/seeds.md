@@ -121,6 +121,8 @@ Uses: `train`, `eval` (scoreboard), `test` (fresh worlds for a round), `quiz`, `
 | 3629 | 3672 | lab   | test  | 43w (3649–3664 two busiest packs read, same lives; 3665–3672 a third if called)    |
 | 3673 | 3692 | lab   | eval  | 45                                                                                 |
 | 3693 | 3748 | lab   | test  | 45 (3693–3716 lives and counter; 3717–3724 random read, 3725–3732 busiest read; 3733–3748 packs if called) |
+|  411 |  420 | scale | test  | S13 (the background's odds refitted on r45)                                        |
+| 1061 | 1090 | scale | train | background odds fit, S13 (held out from 1084)                                      |
 | 9001 | 9999 | all   | smoke |                                                                                    |
 | 9001 | 9020 | lab   | diag  | event density and reach (`src/tools/diag/density.ts`, 22 Oct)                      |
 | 9001 | 9020 | lab   | diag  | situation kinds audit (`notes/research/sources/intrigue-scripts/dump.ts`, 22 Oct)  |
@@ -130,6 +132,6 @@ Uses: `train`, `eval` (scoreboard), `test` (fresh worlds for a round), `quiz`, `
 | 9001 | 9024 | lab   | diag  | P4 research: meetings and demography (`notes/research/sources/meeting-scripts/`, 26 Oct) |
 | 9001 | 9024 | lab   | diag  | 45 sizing (`src/tools/diag/meet.ts`, `feel.ts`, 26 Oct)                            |
 
-Next free: eval **3749**, test **3749** (the check in CI is the truth; this line was wrong once). Scale: test **411**, train **1061**.
+Next free: eval **3749**, test **3749** (the check in CI is the truth; this line was wrong once). Scale: test **421**, train **1091**.
 
 The lab's ranges are as recorded in each round's pre-registration and outcome in `docs/BOARD.md`. Below 1501, the lab's earliest rounds used scoreboard defaults (1–20, 101–120, 201–220, 301–320) and its identity checks use seeds 11–13 by design; the lab takes no new range below 1501. The scale rows were all run on round 19c with the scale branch.

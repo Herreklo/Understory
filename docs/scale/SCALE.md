@@ -609,3 +609,30 @@ The independent re-derivation from the raw files reproduced every number above, 
 **Review note (19 Oct 2026, by the reviewing chat, after the merge).** The independent review confirmed item 1: main with S12 merged is identical to main on seeds 11–13 and on all 50 switch arms the two trees share, and `npm test` passes. It read two items differently from the result above, and the record keeps both readings:
 - **Deaths 65–79.** The bar was "within 25% of the new engine's rates". Against r27's own rates the ratio is 0.74 with deaths banded by age at the start of the year, 0.77 banded by age at death; the banding that meets the bar was chosen after the result was seen. By the bar as written, this is not met.
 - **Promotion invariance.** The bar was that nothing outside texture changes; promotion changed the wants of three people. By the bar as written, this fails, in one field, for a reason that is understood. The next scale step decides, in its pre-registration, whether wants are texture or the replayed years stop creating them.
+
+## S13 — the background's odds refitted on r45 (pre-registered 27 Oct 2026; the pushed commit is the timestamp)
+
+**Why.** Rounds 28–45 changed how people behave; the background still lives on odds fitted to r27. `CLAUDE.md` asks for a refit after a kept change to how people behave. (The twin test with an ageing arm, called S13 in S12's plan, takes the next number when it runs.)
+
+**Change.** `src/coarse-odds.ts` refitted by `scale/README.md`'s two commands on the engine at `r45` (main `f545484`): fresh train seeds **1061–1090**, 20 present years, held out from **1084**. Nothing else in the engine changes. `report7.py` takes its death reference from those training towns (deaths per person-year, banded by age at the start of the year), not r19c's stored rates, as S12's review asked.
+
+**Switch.** None: the odds are read only by the background, which exists only when a harness asks for a city. A town is a `refactor`: `ident.ts` in CI (every switch arm) and `scale/identity2.ts` on seeds 1–10, main and branch, give identical hashes.
+
+**Sizing** (throwaway: train 9101–9130, cities 9131–9135; `reports/S13-size.md`). Background against monthly half, mean of five cities; the same cities with r27's odds beside it:
+
+| Bar (S3's) | Refit | r27 odds | Sd between cities |
+| --- | --- | --- | --- |
+| Under-20, within 5 pt | −4.8 | −4.5 | 1–2 pt |
+| Over-65, within 5 pt | +1.8 | +1.4 | |
+| Partnered, within 5 pt | −4.7 | −2.4 | 3.3 pt |
+| Working, within 5 pt | +2.9 | +4.0 | 5 pt |
+| Drinkers, within 5 pt | +0.7 | +0.2 | |
+| Kids of 40–54, ratio within 25% | **0.73** | 0.88 | 0.2 |
+| Deaths 65–79 / 80+, within 25% of the engine's | 0.77 / 1.12 | 0.76 / 1.10 | |
+| Promoted, ten bars | 9 (two years on, partnered +7.6) | 10 | |
+
+**Test.** `city2.ts 920 <seed> 2 2` on fresh seeds **411–420**, with the refit and, paired, with r27's odds; `report7.py` over each arm with the training towns as the death reference. Capacity is strict, as before. Independence and promotion invariance are structural and do not read the odds; they are not re-run. Ten cities give about ±1.5 pt on under-20 and ±0.13 on the kids ratio, so a bar within that of its line is reported as at the bar.
+
+**Expected** (the sizing): the town identical; capacity passes; five of six coarse bars pass, under-20 and partnered at the bar; kids of 40–54 fails (about 0.75); deaths 80+ pass, 65–79 at the bar (about 0.77); promoted people pass, partnered two years on at the bar.
+
+**What would change our minds.** The refit replaces r27's odds whatever the bars show: odds fitted to an older engine describe a different one. The bars say what the next scale step fixes. If kids of 40–54 fails again, S12's diagnosis stands (fewer young couples, fewer children per couple) and the background's matching by the town's own age pattern is that step. If the refit is clearly worse than r27's odds on the same cities on a bar r27's passes (outside the noise above), the fit is examined for a fault before it merges; none is tuned on 411–420.
