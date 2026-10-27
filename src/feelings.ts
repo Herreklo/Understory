@@ -31,8 +31,7 @@
 // resentment may bring them to a meeting of their own; it raises no provocation (`rake` sits at the threshold, grammar.ts). A feeling is
 // muted only in the immediate answer to its own cause, where the line already says it.
 //
-// On unless OFF=feelings; OFF=meeting turns off the meeting alone and restores round 44's wider mute, for measuring its part. Mood is
-// unchanged: the emotions written at the same events still bend it, with no object.
+// On unless OFF=feelings, the system's switch. Mood is unchanged: the emotions written at the same events still bend it, with no object.
 
 import { clamp } from './rng';
 import { pow } from './mathx';
@@ -43,7 +42,6 @@ import { BY_FAMILY, type Expression, type Family } from './families';
 import type { Instance } from './grammar';
 
 export const feelingsOn = () => !OFF.has('feelings');
-export const meetingsOn = () => feelingsOn() && !OFF.has('meeting');
 
 export type Kind = 'grief' | 'resentment' | 'guilt' | 'gratitude';
 export interface Feeling {
@@ -345,7 +343,7 @@ export function withFeelings(w: World, p: Person, t: Person | undefined, options
   const fams = options.map(o => o.id as Family);
   let debt = false;
   for (const f of bearing(w, p, t)) {
-    if (f.ev === answers && (IMMEDIATE.has(type) || !meetingsOn())) continue;
+    if (f.ev === answers && IMMEDIATE.has(type)) continue;
     const toward = pulls(p, t, f).filter(x => fams.includes(x));
     if (!toward.length || toward.length === fams.length) continue;
     if (f.k === 'gratitude' || f.k === 'guilt') debt = true;
@@ -452,7 +450,7 @@ function approach(p: Person, f: Feeling): number {
 // place they share, each draws its chance (the intensity times the approach, times how far the holder still seeks the object out); the
 // strongest that comes up goes.
 export function meetingFeeling(w: World, p: Person, shares: (q: Person) => boolean): Feeling | undefined {
-  if (!meetingsOn()) return undefined;
+  if (!feelingsOn()) return undefined;
   let best: Feeling | undefined;
   for (const f of feelingsOf(w, p.id)) {
     if (f.k === 'grief' || f.v < OWN || !f.stands) continue;
