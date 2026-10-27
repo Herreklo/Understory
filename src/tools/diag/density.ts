@@ -4,17 +4,14 @@
 // within three years), reach (people in weighty descendants outside the source's own people), and the part of the model.
 //   ./run.sh src/tools/diag/density.ts run A B [years]   → out-density/<seed>.json, one world each (a stopped run resumes)
 //   ./run.sh src/tools/diag/density.ts report [A B]      → the tables, from the files
-// Knowable, two tiers, both read at the end of the run (the record's "who knows it" grows as talk spreads):
-//   known       the witness is in the event's knownBy, or is one of its people (as the app and the witness's scores count it);
-//   could know  known, or the event is public, or someone the witness knows (a bond from the witness with familiarity > 0.25, the
-//               engine's own line in witness.ts `knows`) is one of its people or in its knownBy: one question away.
+// Knowable, two tiers (known, could know), as consequence-defs.ts `knowable` defines them.
 import '../env';
 import { mkdirSync, readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
 import { buildWorld } from '../../build';
 import { tick } from '../../life';
 import { pickWitness } from '../../witness';
-import { live, peekBond, type Event, type World } from '../../world';
-import { TURNS, weighty, system } from '../consequence-defs';
+import { live, type World } from '../../world';
+import { knowable, TURNS, weighty, system } from '../consequence-defs';
 
 const OUT = process.env.DENSITY_OUT ?? 'out-density';
 const FOLLOW = 36; // months a source is followed, as the consequence map
@@ -49,9 +46,7 @@ function runWorld(seed: number, years: number): WorldOut {
     popSum += live(w).length;
     if (wit.status === 'in') witIn++;
   }
-  const close = (id: number) => id !== wit.id && (peekBond(w, wit.id, id)?.fam ?? 0) > 0.25;
-  const known = (e: Event) => e.knownBy.has(wit.id) || e.who.includes(wit.id);
-  const could = (e: Event) => known(e) || e.vis === 'public' || e.who.some(close) || [...e.knownBy.keys()].some(close);
+  const { known, could } = knowable(w, wit.id);
   const b = (x: boolean) => (x ? 1 : 0) as 0 | 1;
   // Children by cited cause, present only (as the consequence map).
   const kids = new Map<number, number[]>();

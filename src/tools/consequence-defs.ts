@@ -1,6 +1,6 @@
 // What the consequence map counts: a weighty event, a turn, and the part of the model an event comes from. Shared by the map
 // (consequences.ts) and the density diagnostic (diag/density.ts), so both count the same things.
-import { TEXTURE, type Event } from '../world';
+import { peekBond, TEXTURE, type Event, type World } from '../world';
 export const TURNS = new Set([
   'hired',
   'dismiss',
@@ -66,4 +66,14 @@ export function system(e: Event) {
   if (['left', 'home', 'arrived', 'stayed', 'follow', 'unfollow'].includes(ty)) return 'home';
   if (['death', 'born', 'accident', 'loss'].includes(ty) || tr === 'loss' || tr === 'support') return 'life';
   return tr ? `situation:${tr}` : 'other';
+}
+// What a witness knows of an event, two tiers, both read at the end of a run (the record's "who knows it" grows as talk spreads):
+//   known       the witness is in the event's knownBy, or is one of its people (as the app and the witness's scores count it);
+//   could know  known, or the event is public, or someone the witness knows (a bond from the witness with familiarity > 0.25, the
+//               engine's own line in witness.ts `knows`) is one of its people or in its knownBy: one question away.
+export function knowable(w: World, wit: number) {
+  const close = (id: number) => id !== wit && (peekBond(w, wit, id)?.fam ?? 0) > 0.25;
+  const known = (e: Event) => e.knownBy.has(wit) || e.who.includes(wit);
+  const could = (e: Event) => known(e) || e.vis === 'public' || e.who.some(close) || [...e.knownBy.keys()].some(close);
+  return { known, could };
 }

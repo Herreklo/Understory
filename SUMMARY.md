@@ -17,7 +17,7 @@ People you come to understand from incomplete evidence, who surprise you for rea
 
 One experiment at a time per track (`notes/build-plan.md`). _22 Oct: Øystein left the plan's decisions to the lead (section 6), his to reverse here._ _27 Oct: Øystein accepted round 45's gate reading as holding._
 
-1. **Taking sides** (P2; people; exits 1, 2), on `round/46`: a friend of both sides chooses one, the other or neither; the side not taken carries a resentment that can now seek its object. Research first. Before its build: N1b, and the background's odds refit on r45 (S13, `docs/scale/README.md`). Round 45's switch is out (27 Oct): `OFF=meeting` gone, `OFF=feelings` stays as the system's switch.
+1. **Taking sides** (P2; people; exits 1, 2), on `round/46`: a friend of both sides chooses one, the other or neither; the side not taken carries a resentment that can now seek its object. Research first, on N1b's baseline. Before its build: the background's odds refit on r45 (S13, `docs/scale/README.md`). Round 45's switch is out (27 Oct): `OFF=meeting` gone, `OFF=feelings` stays as the system's switch.
    - _Kept or not:_ shared hardship follows.
 2. **The page** (exit 3): reasons rest after 43w; N3, then particulars.
 3. **Shared hardship** (P3), judged on its link rate.
@@ -35,5 +35,5 @@ Homes (#59, #22) wait for phase D. Beside any: N5 and N6 (from the outside revie
 
 ## Latest
 
+- **N1b (27 Oct):** the battery now measures whether lives lead somewhere (`reports/n1b-baseline.md`). A blow's want keeps its cause, so no engine change. #101.
 - **Round 45 (27 Oct), kept:** feelings meet their object, with round 44's feelings folded in. 4.5% ±1.3 of strong feelings change an act toward their object within a year (0.9% without the meeting; stop 2.5%), every kind on its own. Something follows a meeting within a year in 83%; nothing is crowded out; 48 pairs read no worse (+0.07 ±0.23). #99.
-- **Catch-up (26 Oct):** play, not read; shared hardship's counter; both outside reviews disposed (`reports/external/`); games may author causes of their own domain (plan, decisions 18–22).

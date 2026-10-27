@@ -46,6 +46,25 @@ export function lineTexts(page: string[]): string[] {
   }
   return out;
 }
+// Callbacks, the intrigue readings' feature (notes/research/sources/intrigue-scripts/features.py, `callback_n`): lines whose reasons, or an
+// event shown under them, name a year of the page before the line's own. The page's years start at its first line.
+export function callbacks(page: string[]): { lines: number; callbacks: number } {
+  const L: { year: number; ys: number[] }[] = [];
+  for (const raw of page) {
+    if (!raw.trim()) continue;
+    const sub = raw.match(SUB);
+    if (sub) {
+      L[L.length - 1]?.ys.push(+sub[1]);
+      continue;
+    }
+    const m = raw.match(LINE);
+    if (!m) continue;
+    const i = m[3].indexOf('  [');
+    L.push({ year: +m[2], ys: i >= 0 ? [...m[3].slice(i + 3).matchAll(/\b(19\d\d|20\d\d)\b/g)].map(x => +x[1]) : [] });
+  }
+  const y0 = Math.min(...L.map(l => l.year));
+  return { lines: L.length, callbacks: L.filter(l => l.ys.some(y => y0 <= y && y < l.year)).length };
+}
 // A pack file's versions, in order: each version's heading (P01, A) and its page.
 export function packVersions(text: string): { id: string; page: string[] }[] {
   const out: { id: string; page: string[] }[] = [];

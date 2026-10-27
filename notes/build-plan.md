@@ -112,6 +112,7 @@ At −0.15, a harmless round would pass 80% of the time only at 70 to 200 pairs,
   - knowable turns per 100 people a month (`density.ts`), reported beside exit point 2 and never a target;
   - the callback share;
   - whether a want loses the blow that caused it. Only 3% of rises after a blow descend from it today. If the record loses the chain, recording the cause is its own small change, with every act identical.
+  - _Done 27 Oct (#101): baseline in `reports/n1b-baseline.md`. The record keeps the chain: 88% of wants a blow opened and met cite it, so no engine change. The 3% is that few blows open a want._
 - **N2, cleanups** (`refactor`, then `words`): cut `selfBias` and `lastProvoked`; name the secret in "carrying something nobody knew"; say who the dead person was to the subject; give the habit line its job-loss event.
 - **M39, the felt question,** before feelings part one is read: about six sittings, once.
 - **H1, the pair page, is retired** (decision 18). Its tool stays in `study/` unused, and goes in the next cleanup.
