@@ -1,0 +1,56 @@
+40 worlds, 10 present years; population at the end 82.85 ±2.30; adult-years 639.95 ±15.07
+rifts by kind (all worlds): {'rivals': 274, 'scheme:found': 65, 'split': 90, 'fellout': 77, 'divorce': 62, 'betrayed': 46}
+
+== all rifts
+ rifts per world-decade 15.35 ±2.20
+ … with 1+ friend of both 7.17 ±1.23
+ … with 2+ 3.85 ±0.98
+ side-takings (deciders) per world-decade 14.90 ±3.24
+ deciders per rift with any: 2.08 max 8
+ by kind, side-takings per world-decade: {'rivals': 6.3, 'scheme:found': 1.6, 'split': 1.4, 'fellout': 3.0, 'divorce': 1.4, 'betrayed': 1.3}
+
+== without falling-outs
+ rifts per world-decade 13.43 ±2.13
+ … with 1+ friend of both 5.92 ±1.20
+ … with 2+ 3.08 ±0.92
+ side-takings (deciders) per world-decade 11.95 ±3.05
+ deciders per rift with any: 2.02 max 8
+
+== deciders followed 36 months: 434
+ friendship with a side ended 12.0% (n=434)
+ … by falling out 0.5% (n=434)
+ a rift between decider and a side 8.8% (n=434)
+ a weighty event shared with a side 61.1% (n=434)
+ baseline "counter" (a tie ended or a rift, or a weighty event with a side) 61.1% (n=434)
+ baseline tie only (ended or rift) 20.7% (n=434)
+ decider life events in 36 months (share of deciders): {'friends': '51.2%', 'cooled': '26.5%', 'want:achieved': '18.9%', 'retired': '11.3%', 'mended': '9.4%', 'hired': '8.5%', 'promoted': '6.7%', 'want:failed': '6.2%', 'bought': '5.5%', 'stepdown': '3.7%', 'group:left': '3.7%', 'numb': '3.0%'}
+ liking toward the less liked side: median 0.63, quartiles [0.5, 0.63, 0.8]
+ familiarity toward the less familiar side: median 1.00; under 0.35: 0%
+ gap in liking between the sides: median 0.19; under 0.1: 32%
+  a loss of 0.1 in liking toward the side not taken (the less liked) ends the tie at once: 0%
+  a loss of 0.2 in liking toward the side not taken (the less liked) ends the tie at once: 2%
+  a loss of 0.3 in liking toward the side not taken (the less liked) ends the tie at once: 3%
+  a loss of 0.4 in liking toward the side not taken (the less liked) ends the tie at once: 10%
+
+== the witness, per rift with 1+ decider (all rifts)
+ side: 4.9%
+ decider: 5.9%
+ knowsSide: 87.8%
+ knowsDecider: 85.4%
+ knowsRift: 70.4%
+ reach (side, decider, or knows any of the three): 93.2% ±3.9
+ side-takings within reach of the witness per witness-year: 1.44 ±0.33
+ … as actor or side per witness-year: 0.21 ±0.11
+ side-takings in the town per year: 1.49 ±0.32
+ rifts with a decider within reach, per witness-year: 0.68 ±0.12
+ worlds where the witness is actor or side in none over the decade: 22 of 40
+ [no falling-outs] side-takings within reach per witness-year: 1.14 ±0.30 ; town per year 1.20 ±0.30
+
+== per side-taking, per witness-year (town per year beside it)
+ familiarity ≥ 0.1 (the brief): 1.41 ±0.33; worlds with none in ten years: 0 of 40
+ familiarity ≥ 0.5: 0.95 ±0.27; worlds with none in ten years: 2 of 40
+ friend, partner or kin: 0.69 ±0.24; worlds with none in ten years: 8 of 40
+ a side or a decider: 0.21 ±0.11; worlds with none in ten years: 22 of 40
+ the witness decides (is a friend of both): 0.04 ±0.02
+ town per year: 1.49 ±0.32 ; in six years 8.94 ±1.94
+ witness as actor, side, or close to one, in six years: range 0.0 – 24.0 median 3.6
