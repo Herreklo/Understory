@@ -1,0 +1,68 @@
+24 worlds (3693–3716), 20 present years; mean per world ±95%
+
+The counter: held feelings (0.3 or more at onset, first ten years) changing an act toward their object within a year (%)
+  all         on 4.5 ±1.3 (115/2653)   meeting off 0.9 ±0.4 (25/2580)   paired 3.6 ±1.3   sd a world 3.04
+  resentment  on 2.5 ±1.1 (32/1344)   meeting off 1.0 ±0.6 (14/1373)   paired 1.5 ±1.1   sd a world 2.60
+  guilt       on 4.9 ±2.2 (24/540)   meeting off 1.7 ±1.5 (10/552)   paired 3.2 ±2.8   sd a world 5.21
+  gratitude   on 8.2 ±5.0 (59/769)   meeting off 0.2 ±0.4 (1/655)   paired 8.1 ±5.1   sd a world 11.88
+
+Round 44's counter (first ten years): flips among decisions weighing the four kinds; with the debt beside (%)
+  on           four kinds 5.5 ±1.0 (pooled 184/3357, weighed in 7.8% of decisions); with the debt 6.1 ±0.7
+  meeting off  four kinds 3.6 ±1.1 (pooled 77/2156, weighed in 5.2% of decisions); with the debt 5.8 ±1.1
+
+Meetings (on)
+  per world-decade: 52.7 ±7.5
+  resentment  16.6 ±2.7 a world-decade; answers severity 47%, withdrawal 29%, leniency 24%
+  guilt       10.6 ±2.3 a world-decade; answers humility 63%, withdrawal 37%
+  gratitude   25.5 ±5.0 a world-decade; answers warmth 31%, generosity 60%, withdrawal 9%
+  apologies answered: 319 of 321; forgiven 188
+
+Fail-if 1: the counter, above; stop under 2.5%. Power: below.
+
+Fail-if 2: the meeting recurs where nothing changed
+  met again: 793; with the feeling as it was at the last meeting: 0 (must be 0)
+  beside it: met again with nothing changed since the last meeting's own answer: 126 (gratitude 48, guilt 31, resentment 47); the last answer was keeping away in 118
+  something followed within a year: 82.8 ±2.3% (stop under 50, line 60); pooled no longer stands 281, ended 1565, nothing 396, a debt paid 119, a tie 30, a lasting change 2
+    resentment: 65.0% of 751
+    guilt: 81.0% of 485
+    gratitude: 96.5% of 1157
+
+Fail-if 3: crowding out
+  decisions displaced by a meeting (first ten years): 0.10 ±0.03% of decisions (stop above 2)
+  paired on − off (main), per world-decade over 20 years:
+    births     on 6.9 ±0.9   other 6.6 ±0.8   paired 0.3 ±0.9
+    deaths     on 9.3 ±0.8   other 9.4 ±0.6   paired -0.1 ±0.8
+    marriages  on 4.1 ±0.6   other 4.5 ±0.5   paired -0.5 ±0.7
+    splits     on 4.3 ±0.7   other 4.7 ±0.9   paired -0.5 ±1.0
+    hires      on 20.5 ±1.8   other 20.1 ±1.8   paired 0.4 ±2.1
+    births over deaths: on 0.73, other 0.70
+  paired on − meeting off, per world-decade over 20 years:
+    births     on 6.9 ±0.9   other 7.0 ±0.8   paired -0.1 ±0.9
+    deaths     on 9.3 ±0.8   other 9.0 ±0.9   paired 0.3 ±1.2
+    marriages  on 4.1 ±0.6   other 4.1 ±0.4   paired -0.1 ±0.5
+    splits     on 4.3 ±0.7   other 4.3 ±0.8   paired -0.1 ±1.1
+    hires      on 20.5 ±1.8   other 20.5 ±1.5   paired -0.0 ±2.3
+    births over deaths: on 0.73, other 0.78
+
+Fail-if 4: feuds: round 44's check 4, from feel.ts (report on feelings and on meeting)
+
+Fail-if 5: a script
+  strong resentments raising a meeting within a year: 20.6 ±2.1% (between 15 and 60)
+    guilt: 32.0 ±4.2%
+    gratitude: 62.9 ±6.2%
+  raising by forgiveness: bottom third 29.4%, top third 11.8%, ratio 2.49 (at least 1.3)
+  keeping away at a resentment's meeting by social boldness: bottom third 37.4%, top third 22.6%, ratio 1.66 (at least 1.3)
+  raising by social boldness: bottom third 17.5%, top third 23.0%
+  meeting lines at ten years: 1358, in 508 world-templates; in a world's top 25: 0
+  copy share and the top-25 share: round 44's check 3, from feel.ts
+
+Power: 24 fresh worlds, the counter on its per-world sd, against the stop line
+  n 24, true 4%: point ≥ 2.5 in 99%; lower bound > 2.5 in 76%
+  n 24, true 3.5%: point ≥ 2.5 in 95%; lower bound > 2.5 in 46%
+  n 24, true 3%: point ≥ 2.5 in 79%; lower bound > 2.5 in 18%
+  n 24, true 2.5%: point ≥ 2.5 in 50%; lower bound > 2.5 in 4%
+  n 48, true 4%: point ≥ 2.5 in 100%; lower bound > 2.5 in 96%
+  n 48, true 3.5%: point ≥ 2.5 in 99%; lower bound > 2.5 in 71%
+  n 48, true 3%: point ≥ 2.5 in 87%; lower bound > 2.5 in 28%
+  n 48, true 2.5%: point ≥ 2.5 in 50%; lower bound > 2.5 in 4%
+MEET {"worlds":24,"seeds":[3693,3716],"counter_all":{"on":4.507,"onH":1.283,"sd":3.037,"off":0.934,"d":3.573,"dH":1.29},"counter_resentment":{"on":2.49,"onH":1.098,"sd":2.6,"off":0.975,"d":1.515,"dH":1.058},"counter_guilt":{"on":4.909,"onH":2.2,"sd":5.21,"off":1.739,"d":3.171,"dH":2.846},"counter_gratitude":{"on":8.246,"onH":5.016,"sd":11.876,"off":0.181,"d":8.065,"dH":5.085},"r44_on":{"m":5.498,"h":0.954,"withDebt":6.083},"r44_meetingoff":{"m":3.639,"h":1.054,"withDebt":5.769},"recur":{"again":793,"same":0,"still":126},"followed":{"m":82.8,"h":2.3},"displaced":{"m":0.096,"h":0.032},"demog_births_main":{"on":6.85,"other":6.6,"d":0.25,"dH":0.94},"demog_deaths_main":{"on":9.33,"other":9.42,"d":-0.08,"dH":0.81},"demog_marriages_main":{"on":4.06,"other":4.52,"d":-0.46,"dH":0.71},"demog_splits_main":{"on":4.25,"other":4.71,"d":-0.46,"dH":1.02},"demog_hires_main":{"on":20.48,"other":20.1,"d":0.38,"dH":2.06},"demog_births_meeting":{"on":6.85,"other":7,"d":-0.15,"dH":0.88},"demog_deaths_meeting":{"on":9.33,"other":9.02,"d":0.31,"dH":1.2},"demog_marriages_meeting":{"on":4.06,"other":4.13,"d":-0.06,"dH":0.5},"demog_splits_meeting":{"on":4.25,"other":4.31,"d":-0.06,"dH":1.07},"demog_hires_meeting":{"on":20.48,"other":20.5,"d":-0.02,"dH":2.26},"raised":{"m":20.56,"h":2.06},"thirds":{"forgLo":29.4,"forgHi":11.83,"awayLo":37.41,"awayHi":22.56},"sd":3.037}

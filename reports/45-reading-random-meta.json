@@ -1,0 +1,11 @@
+{
+ "switch": "feelings",
+ "kind": "OFF",
+ "worlds": [
+  3717,
+  3724
+ ],
+ "perWorld": 3,
+ "pick": "random",
+ "commit": "e7a302b7181d10d1b2e0d184bef238658784dd99"
+}

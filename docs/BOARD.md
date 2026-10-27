@@ -2569,3 +2569,60 @@ Outcome (26 Oct 2026). Tree `8b20398` on `round/44`, main merged in. The reviewe
 **Stopped before a reading**, by its own check 2: no pre-registration, no fresh world. The cause is named: a held feeling rarely meets its object (resentment, held in 12.7% of adult-months, is weighed in 1.4% of decisions). With feelings on, `npm test`'s demography check also fails (births to deaths 0.52; births 5.3 a decade a world against 6.8 off), found only now.
 
 The mechanism stays in the code, off unless `ON=feelings`. The branch that fires, from the plan: not kept with the four kinds under 5%, so P4's research runs and says whether P4 builds on this code or feelings go back to research. P4 may carry this code only if it reads no worse on its own (the plan's "Branches"), and it has not been read.
+
+## Round 45 — feelings meet their object (pre-registered 26 Oct 2026, 21:01 Oslo, before any test world; sized first)
+
+Next 1, P4 with round 44's code folded in (plan decision 23); exits 1, 2, 8. Research: `notes/research/meeting.md`.
+
+**The change**, behind `OFF=feelings`: round 44's feelings, and a meeting. A resentment, guilt or gratitude at 0.3+ whose cause stands may bring its holder to its object where they share a place, each month at 0.25 × intensity × approach (facets by kind). Every answer changes the feeling; a have-out is a wrong its object resents. No timer, count or quota. `OFF=meeting` measures the meeting's part.
+
+**Sizing** (`reports/45-size.md`, v2; its review section settles three BLOCKS):
+
+| | Check | Number | Stop |
+| --- | --- | --- | --- |
+| 1 | **Counter:** held feelings at 0.3+ changing an act toward their object within a year | **5.1% ±1.3**; meeting off 1.0; paired +4.1 ±1.2. Resentment 2.5 ±1.0 (paired +1.5 ±1.0), guilt 6.3, gratitude 7.9 | under 2.5 |
+| 2 | Recurs unchanged; something follows in a year | 0 of 1,030; 84.7% | any; under 50% |
+| 3 | Displaced; births, deaths, marriages, splits, hires against main | 0.11%; all inside | over 2%; a 99% interval off zero |
+| 4 | Answers in kind, rows, dislikes, friendships ended against main | +0.8, +7.6, +1.4, +0.2, all inside | a 99% interval above zero |
+| 5 | Raised in a year; forgiveness, boldness ratios; meeting lines in a top 25; copy share | 19.0%; 2.05×; 1.50×; 0; +0.58 ±0.60 | outside 15–60%; under 1.3×; any; one-sided 95% bound above +0.6 |
+
+**Test.** `round.mjs --id 45 --switches feelings`, evaluation **3673–3692**, lives **3693–3716**, with `meet.ts` (on, meeting, feelings; 20 years) and `feel.ts` on the lives. Reading first: random **3717–3724**, busiest **3725–3732**, 48 pairs; **3733–3748** if called. Feelings touch 32% of busiest pages, 14% of random: the reading guards only; random ties above half are expected.
+
+**Expected** (shrunk by a quarter): counter **3.8%**, paired +3.1; resentment 1.9 (paired +1.1), guilt 4.7, gratitude 5.9; copy share +0.44; wrongs +12 against meeting off (the have-outs).
+
+**Kept if:** (1) `OFF=feelings` identical to main; (2) **the counter**, pooled: at 2.5% or above, its rise over meeting off bounded above 0 (one-sided 95%); (3) fail-ifs 2–5 hold; (4) `npm test` passes, scoreboard within ±2 off couples; (5) **reads no worse**, bound above −0.3, pack and order as terms. If 2 holds and 5 misses, or random ties above half, one more busiest pack.
+
+**Reported:** each kind; round 44's counter; what followed, the feeling's own change apart from ties and debts; gratitude raised (sized 64.5%); wrongs.
+
+**What would change our minds.** Whatever the outcome, P2 (taking sides) follows and feelings return to research.
+
+- Kept: the switch goes in the next neutral change; the background's odds are refit. If resentment's paired bound is not above 0, gratitude and guilt carried it, and P2 sizes its own resentment first.
+- 2, 3 or 5 (twice) fails: not kept, cause named; feelings off, for research. A copy-share stop names the reused lines (`rake`, `letgo`, `give`); no wording fix here. P2 runs on liking and trust.
+- 1 or 4 fails: withdrawn; a fix is written here first.
+
+**`WHY.md`'s warning:** forced drama feels artificial; fail-if 5 would show it.
+
+**Game lens:** the man who wronged you is at the lodge; you have it out or leave early, and something changes.
+
+**Battery fix (26 Oct, 23:40, before the re-run).** `npm test` inside `round.mjs` stopped at its first `tsx` step: tsx's IPC socket, under `out-round-45/tmp/`, passed macOS's 104-character limit on socket paths. The fault is in where the run was placed, not in the code. `npm test` runs again with a short `TMPDIR`, in a frozen tree at the same commit (e7a302b; `round.mjs` removes its own when done). No code changed, and every other job of the battery stands as it ran. The re-run passed (`out-r45-diag/logs/npm-test.log`).
+
+Outcome of round 45 (27 Oct 2026, 11:05 Oslo). Tree `e7a302b` on `round/45`, base main `7411bad`. The battery ran on that tree under `battery.sh` (`out-round-45/`, attached to the release; the round's own reports in `reports/45-battery-summary.md`, `45-meet.txt`, `45-feel.txt` and `45-feel-meeting.txt`); the packs were read and scored at `920f183` before any other number (`reports/45-reading.md`). A separate agent re-derived every number from the raw files with its own code and agrees (`reports/rederive-45.md`).
+
+| Rule | Result | |
+| --- | --- | --- |
+| 1. `OFF=feelings` identical to main | all identical, in the battery and in CI (`reports/45-ident.txt`) | ✓ |
+| 2. the counter at 2.5% or above; its rise over meeting off bounded above 0 | **4.5% ±1.3** (115 of 2,653), meeting off 0.9 ±0.4; paired **+3.6 ±1.3**, one-sided bound +2.5 | ✓ |
+| 3. fail-ifs 2–5 | 2: recurs unchanged **0** of 793; something follows within a year **82.8 ±2.3%**. 3: displaced **0.10%**; births +0.3 ±0.9, deaths −0.1 ±0.8, marriages −0.5 ±0.7, splits −0.5 ±1.0, hires +0.4 ±2.1, none off zero at 99%. 4: in kind −5.2 ±6.9, rows −3.3 ±31.4, dislikes −1.7 ±4.6, friendships ended +4.6 ±8.4, none above zero at 99%. 5: raised **20.6 ±2.1%**; forgiveness **2.49×**, boldness **1.66×**; meeting lines in a top 25: **0**; copy share, every adult, **−0.78 ±0.74**, bound −0.17 | ✓ |
+| 4. `npm test`; the scoreboard within ±2 off couples | passes (the battery's re-run, and CI). Not a couple's **−1.1 ±1.3** (90%: −2.2 to −0.0): inside ±2 on the estimate, equivalence not shown by the runner's verdict, by 0.2; overall −0.8 ±1.0 and the key slice 0.0 ±1.2, both equivalent | ✓ by the letter |
+| 5. reads no worse, bound above −0.3 | pooled **+0.07 ±0.23**, bound **−0.12**; random −0.25, busiest −0.17; no warnings | ✓ |
+
+Read by the rules set beforehand: all five hold. **Kept.** Rule 4 is read as round F27's was (−0.8 ±1.7, kept); round 30's ✗ came with a regression overall. The meeting's own decisions (1,247, in the on arm only) are the hard ones to call: without them the number is −0.4 ±1.2, equivalent.
+
+Reported, not judged:
+
+- By kind: resentment **2.5 ±1.1** (paired +1.5 ±1.1, bound +0.6, above 0: it carried its own), guilt 4.9 ±2.2, gratitude 8.2 ±5.0; expected 1.9, 4.7 and 5.9, the pooled 3.8 (sized 5.1). Round 44's counter 5.5 ±1.0, meeting off 3.6 ±1.1.
+- 52.7 meetings a world-decade. Of 2,393 with a year left: the feeling ended 1,565, lost its standing 281, a debt paid 119, a tie 30, a lasting change 2, nothing 396. Apologies answered 319 of 321, 188 forgiven. Gratitude raised 62.9% (sized 64.5%).
+- Wrongs +11.6 ±13.1 against main (expected +12; against meeting off +4.0 ±12.5). The copy share fell instead of its sized rise (+0.58): the busiest −2.8 ±2.5.
+- The round's wording was quoted as good 18 times and as unfit 12.
+
+The branch that fires: kept. The switch goes in the next neutral change, with the background's odds refit; resentment's bound is above 0, so P2 does not size its own resentment first. P2 (taking sides) follows, and feelings return to research.

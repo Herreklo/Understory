@@ -17,6 +17,7 @@ import { hometruth } from './hometruth';
 import { newcomer } from './newcomer';
 import { obligation } from './obligation';
 import { offer } from './offer';
+import { meeting } from './meeting';
 import { oldwound } from './oldwound';
 import { reckon } from './reckon';
 import { request } from './request';
@@ -48,6 +49,7 @@ const TYPES: SituationType[] = [
   collection,
   oldwound,
   reckon,
+  meeting,
   yearly,
 ];
 
@@ -103,7 +105,9 @@ export function situationsTick(w: World) {
   for (const ty of TYPES) found.push(...ty.match(w));
   // One situation per actor per tick, the most consequential first.
   const seen = new Set<number>();
+  const shown = (globalThis as any).SCHED as ((inst: Instance, won: boolean) => void) | undefined; // a sizing tool's log; changes nothing
   for (const inst of found.sort((a, b) => (b.w ?? 1) - (a.w ?? 1))) {
+    shown?.(inst, !seen.has(inst.actor.id) && inst.actor.status === 'in');
     if (seen.has(inst.actor.id) || inst.actor.status !== 'in') continue;
     seen.add(inst.actor.id);
     const o = run(w, inst);

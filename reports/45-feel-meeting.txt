@@ -1,0 +1,71 @@
+24 worlds (3693–3716), 10 present years · on / meeting · mean per world ±95%
+                                                                        on         meeting      on − meeting
+
+1. Carrying: share of adult-months with each kind at a weight it is weighed at (%); stop above 25
+  grief                                                           6.3 ±0.7        5.5 ±1.0          0.8 ±1.1
+  resentment                                                     12.7 ±1.3       14.9 ±2.2         -2.2 ±1.6
+  guilt                                                           4.3 ±0.5        5.1 ±0.6         -0.8 ±0.5
+  gratitude                                                       4.1 ±0.6        8.9 ±1.5         -4.8 ±1.4
+  grief, the most in any month                                   23.3 ±2.6       22.6 ±3.1          0.7 ±3.6
+  resentment, the most in any month                              22.4 ±2.0       24.7 ±2.6         -2.3 ±2.6
+  guilt, the most in any month                                   11.1 ±1.4       11.9 ±1.1         -0.8 ±1.2
+  gratitude, the most in any month                                8.0 ±0.8       13.0 ±1.9         -5.0 ±1.7
+  grief-emotion months, per 100 adult-months                    6.28 ±1.02      5.46 ±1.09        0.81 ±1.02
+  grief-months (on) over grief-emotion months (off): 1.14; stop above 2
+
+2. Flips: of decisions weighing it, the share whose likeliest answer changes without it (%); stop below 5
+  all (flips)                                                     6.1 ±0.7        5.7 ±1.1          0.3 ±1.4
+      pooled: 269 of 4483 weighed (6.0%), weighed in 10.4% of 43222 decisions
+  kinds (flips)                                                   5.5 ±1.0        3.6 ±1.1          1.8 ±1.3
+      pooled: 185 of 3391 weighed (5.5%), weighed in 7.8% of 43222 decisions
+  grief (flips)                                                   3.9 ±1.4        4.5 ±2.3         -0.6 ±2.9
+      pooled: 40 of 953 weighed (4.2%), weighed in 2.2% of 43222 decisions
+  resentment (flips)                                              3.8 ±1.2        3.6 ±1.5          0.2 ±1.5
+      pooled: 56 of 1434 weighed (3.9%), weighed in 3.3% of 43222 decisions
+  guilt (flips)                                                   8.1 ±3.0        5.1 ±3.3          3.1 ±4.1
+      pooled: 38 of 517 weighed (7.4%), weighed in 1.2% of 43222 decisions
+  gratitude (flips)                                               9.4 ±4.8        2.4 ±1.6          6.9 ±4.5
+      pooled: 66 of 753 weighed (8.8%), weighed in 1.7% of 43222 decisions
+  owes (flips)                                                    7.6 ±1.5        8.7 ±2.0         -1.0 ±2.8
+      pooled: 112 of 1490 weighed (7.5%), weighed in 3.4% of 43222 decisions
+
+3. Repeats: must not rise
+  copy share, the three busiest (%)                            22.23 ±2.21     22.12 ±2.32        0.11 ±3.25
+  copy share, three at random (%)                              14.12 ±2.47     15.33 ±2.43       -1.20 ±2.68
+  copy share, every adult (%)                                  14.60 ±0.66     15.29 ±0.87       -0.69 ±0.99
+  the 25 commonest templates' share of every adult's lines (%)     24.06 ±0.67     24.21 ±0.86       -0.15 ±0.92
+  without the retired promise's lines, in both arms:
+  copy share, the three busiest (%)                            22.58 ±2.24     22.39 ±2.32        0.20 ±3.29
+  copy share, three at random (%)                              14.37 ±2.51     15.59 ±2.52       -1.22 ±2.73
+  copy share, every adult (%)                                  14.81 ±0.68     15.46 ±0.89       -0.65 ±1.04
+  the 25 commonest templates' share (%)                        24.71 ±0.70     24.90 ±0.87       -0.20 ±0.95
+
+4. Feuds, per thousand adult-years: inside the off arm, or said
+  hostile acts (the wrongs)                                    195.3 ±18.4     191.3 ±19.3         4.0 ±12.5
+  provocations answered in kind                                  71.3 ±7.2       73.1 ±9.9         -1.8 ±8.3
+  couples' rows                                                422.5 ±23.9     405.9 ±31.3        16.6 ±37.6
+  dislikes                                                       25.0 ±5.6       27.7 ±5.8         -2.7 ±5.5
+  friendships ended                                              65.7 ±6.9       61.7 ±7.9          4.0 ±9.7
+
+5. Named: lines a feeling decided, and those naming kind and object
+  317 lines; 317 name kind and object (100.0%); shown on the page in 317 (100.0%)
+  by kind: guilt 70, owes 72, resentment 46, owed 60, grief 37, gratitude 32
+
+Beside: what the reading can see
+  kinds of line per page, the three busiest                    46.82 ±2.11     46.10 ±1.29        0.72 ±2.34
+  lines per page, the three busiest                              85.0 ±4.2       82.8 ±3.8          2.2 ±5.5
+  pages with a line a feeling decided, the three busiest (%)      38.9 ±12.2      20.8 ±13.0        18.1 ±17.1
+  lines a feeling decided per page, the three busiest           0.56 ±0.19      0.24 ±0.15        0.32 ±0.22
+  kinds of line per page, three at random                      26.81 ±2.39     28.96 ±2.44       -2.15 ±2.73
+  lines per page, three at random                                43.3 ±5.4       46.4 ±4.8         -3.0 ±5.3
+  pages with a line a feeling decided, three at random (%)      20.8 ±10.0      16.7 ±11.7         4.2 ±13.3
+  lines a feeling decided per page, three at random             0.28 ±0.15      0.17 ±0.12        0.11 ±0.15
+  adults with a lasting change from the present (%)              13.8 ±2.0       14.0 ±1.9         -0.2 ±2.7
+    grief (adults per world)                                    0.79 ±0.30      0.67 ±0.39        0.13 ±0.56
+    forgiveness (adults per world)                              1.54 ±0.54      1.33 ±0.44        0.21 ±0.69
+
+Debts and own answers (on), summed over worlds
+  decisions of the one owed weighing the debt (called in): 261, asking in 137 (52.5%); requests answered by one who owes the asker: 69, given in 34 (49.3%)
+  severity offered by a feeling: 21, taken 7 (33.3%)
+  humility offered by a feeling: 4, taken 3 (75.0%)
+FEEL {"worlds":24,"seeds":[3693,3716],"carry_grief":{"on":6.2787,"onH":0.7241,"off":5.469,"offH":1.0373,"d":0.8097,"dH":1.1495,"dSd":2.7219},"carry_resentment":{"on":12.7141,"onH":1.2874,"off":14.8911,"offH":2.1965,"d":-2.177,"dH":1.571,"dSd":3.7199},"carry_guilt":{"on":4.2681,"onH":0.5315,"off":5.0574,"offH":0.6031,"d":-0.7893,"dH":0.4537,"dSd":1.0743},"carry_gratitude":{"on":4.097,"onH":0.6342,"off":8.8612,"offH":1.543,"d":-4.7642,"dH":1.4032,"dSd":3.3224},"peak_grief":{"on":23.3018,"onH":2.6309,"off":22.6176,"offH":3.0774,"d":0.6842,"dH":3.5766,"dSd":8.4687},"peak_resentment":{"on":22.3748,"onH":1.9836,"off":24.7188,"offH":2.6028,"d":-2.344,"dH":2.5551,"dSd":6.05},"peak_guilt":{"on":11.1452,"onH":1.3555,"off":11.9016,"offH":1.0679,"d":-0.7564,"dH":1.236,"dSd":2.9266},"peak_gratitude":{"on":8.0197,"onH":0.8132,"off":12.9763,"offH":1.8821,"d":-4.9566,"dH":1.682,"dSd":3.9827},"griefEmotion":{"on":6.2751,"onH":1.0153,"off":5.4613,"offH":1.0946,"d":0.8138,"dH":1.015,"dSd":2.4034},"griefRatio":1.135,"flip_all":{"on":6.0517,"onH":0.6886,"off":5.7432,"offH":1.1406,"d":0.3084,"dH":1.4163,"dSd":3.3535},"flip_kinds":{"on":5.4761,"onH":0.963,"off":3.6263,"offH":1.0552,"d":1.8498,"dH":1.2604,"dSd":2.9843},"flip_grief":{"on":3.9427,"onH":1.4318,"off":4.4971,"offH":2.3012,"d":-0.5544,"dH":2.8798,"dSd":6.8188},"flip_resentment":{"on":3.8317,"onH":1.2376,"off":3.6494,"offH":1.4693,"d":0.1823,"dH":1.4883,"dSd":3.524},"flip_guilt":{"on":8.1315,"onH":3.0233,"off":5.0603,"offH":3.3298,"d":3.0712,"dH":4.1019,"dSd":9.7126},"flip_gratitude":{"on":9.3551,"onH":4.7569,"off":2.4121,"offH":1.605,"d":6.943,"dH":4.5185,"dSd":10.6988},"flip_owes":{"on":7.6363,"onH":1.4517,"off":8.6568,"offH":2.0007,"d":-1.0205,"dH":2.812,"dSd":6.6583},"copy_busiest":{"on":22.2322,"onH":2.2099,"off":22.1235,"offH":2.3152,"d":0.1087,"dH":3.2471,"dSd":7.6885},"copy_random":{"on":14.1213,"onH":2.4694,"off":15.3251,"offH":2.4338,"d":-1.2038,"dH":2.6763,"dSd":6.337},"copy_all":{"on":14.6049,"onH":0.6611,"off":15.2933,"offH":0.8676,"d":-0.6885,"dH":0.9938,"dSd":2.353},"top25":{"on":24.0558,"onH":0.6711,"off":24.2107,"offH":0.8568,"d":-0.1549,"dH":0.9156,"dSd":2.1679},"copyX_busiest":{"on":22.5838,"onH":2.2438,"off":22.3852,"offH":2.3173,"d":0.1986,"dH":3.2921,"dSd":7.7951},"copyX_random":{"on":14.3741,"onH":2.5139,"off":15.5929,"offH":2.5201,"d":-1.2188,"dH":2.7332,"dSd":6.4717},"copyX_all":{"on":14.8072,"onH":0.6827,"off":15.4615,"offH":0.8921,"d":-0.6543,"dH":1.0419,"dSd":2.467},"top25X":{"on":24.7088,"onH":0.7016,"off":24.9047,"offH":0.8722,"d":-0.196,"dH":0.949,"dSd":2.2471},"feud_wrongs":{"on":195.2707,"onH":18.4166,"off":191.3078,"offH":19.2862,"d":3.9629,"dH":12.5069,"dSd":29.6138},"feud_inKind":{"on":71.3407,"onH":7.2182,"off":73.132,"offH":9.8994,"d":-1.7913,"dH":8.2673,"dSd":19.5753},"feud_rows":{"on":422.4855,"onH":23.9451,"off":405.8512,"offH":31.2944,"d":16.6343,"dH":37.6162,"dSd":89.0678},"feud_dislikes":{"on":24.9759,"onH":5.6354,"off":27.7159,"offH":5.7939,"d":-2.74,"dH":5.486,"dSd":12.9898},"feud_ended":{"on":65.7307,"onH":6.9305,"off":61.7276,"offH":7.9068,"d":4.0031,"dH":9.6856,"dSd":22.9336},"named":{"lines":317,"named":317,"shown":317,"byKind":{"guilt":70,"owes":72,"resentment":46,"owed":60,"grief":37,"gratitude":32}},"kinds_busiest":{"on":46.8194,"onH":2.1127,"off":46.0972,"offH":1.2926,"d":0.7222,"dH":2.3431,"dSd":5.5479},"lines_busiest":{"on":85,"onH":4.1505,"off":82.8194,"offH":3.837,"d":2.1806,"dH":5.4692,"dSd":12.9499},"touched_busiest":{"on":38.8889,"onH":12.2211,"off":20.8333,"offH":13.0039,"d":18.0556,"dH":17.1058,"dSd":40.5031},"feelLines_busiest":{"on":0.5556,"onH":0.1932,"off":0.2361,"offH":0.1524,"d":0.3194,"dH":0.2176,"dSd":0.5153},"kinds_random":{"on":26.8056,"onH":2.3912,"off":28.9583,"offH":2.4427,"d":-2.1528,"dH":2.7291,"dSd":6.4621},"lines_random":{"on":43.3333,"onH":5.4134,"off":46.3611,"offH":4.7994,"d":-3.0278,"dH":5.2663,"dSd":12.4694},"touched_random":{"on":20.8333,"onH":10.0084,"off":16.6667,"offH":11.7417,"d":4.1667,"dH":13.3311,"dSd":31.5654},"feelLines_random":{"on":0.2778,"onH":0.1535,"off":0.1667,"offH":0.1174,"d":0.1111,"dH":0.1477,"dSd":0.3498},"lasting":{"on":13.8156,"onH":2.0277,"off":13.9765,"offH":1.9233,"d":-0.1609,"dH":2.7044,"dSd":6.4036},"lasting_grief":{"on":0.7917,"onH":0.3045,"off":0.6667,"offH":0.3872,"d":0.125,"dH":0.5613,"dSd":1.329},"lasting_forgiveness":{"on":1.5417,"onH":0.5426,"off":1.3333,"offH":0.4432,"d":0.2083,"dH":0.6932,"dSd":1.6413},"debts":{"calledIn":261,"asked":137,"answered":69,"paid":34}}

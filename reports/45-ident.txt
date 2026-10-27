@@ -1,0 +1,21 @@
+# Round 45 identity: scripts/identity-ci.sh, BODY 'Switch: OFF=feelings', run locally on round/45 merged into main (26 Oct)
+
+merge b49871146af7b85bb579e9d2afc6bee577f4919c, main 7411bad2858eb6cd09080e28663fb7b120e0effa, round/45 39fc14d3c28684fdd93237994b3397cd7608f88d
+## Identity against main
+
+Engine files changed: 6.
+Checked with `OFF=feelings`, the switch this PR declares.
+
+```
+on/11: identical
+on/12: identical
+on/13: identical
+```
+
+- Everything identical to main.
+- Behaviour identical to main (words check).
+
+**✓ Identity holds for what this PR says it is.**
+exit 0
+
+npm test with feelings on, round/45 at 39fc14d3c28684fdd93237994b3397cd7608f88d (main merged in): exit 0, demography ok (24 worlds)

@@ -1,0 +1,97 @@
+WARNINGS: none (no cap, ceiling, floor or ties above half).
+pair  on         novelist          player   majority-on
+P01   B            3,2,A           3,2,A   no
+P02   B            3,3,B           3,3,B   yes
+P03   A            3,3,A           3,3,B   no
+P04   B            2,3,B           2,3,B   yes
+P05   A            2,2,A           2,2,B   no
+P06   A            3,2,A           3,3,B   no
+P07   A            3,3,B           3,3,A   no
+P08   A            3,3,A           3,2,A   yes
+P09   A            3,2,A           3,2,A   yes
+P10   B            3,3,B           3,3,A   no
+P11   B            3,3,B           3,4,B   yes
+P12   B            3,3,A           3,3,A   no
+P13   B            2,3,B           3,4,B   yes
+P14   B            3,3,B           3,4,B   yes
+P15   A            3,3,A           3,3,A   yes
+P16   A            2,2,A           3,2,A   yes
+P17   A            3,3,B           3,4,B   no
+P18   B            2,3,B           2,4,B   yes
+P19   A            3,2,A           3,2,A   yes
+P20   A            3,4,B           3,4,B   no
+P21   B            3,2,A           4,2,A   no
+P22   B            3,3,B           3,3,B   yes
+P23   B            4,3,A           4,3,A   no
+P24   A            3,3,A           3,4,B   no
+
+The on arm was version B in 12 of 24 pairs; readers chose B in 24 of 48 single choices.
+Majority preferred the on arm in 12 of 24.
+Paired score difference, on minus off: +0.10 ±0.32 (95%, 24 pairs, mean over 2 readers)
+  novelist       +0.08
+  player         +0.12
+With the order as a term: effect +0.10 ±0.33 (95%); one-sided 90% lower bound -0.10; lean toward the second version -0.02
+One-sided 95% lower bound -0.17: reads no worse (above -0.3) holds.
+ordinal  alpha 0.679  95% [0.452, 0.834]  (2 readers, 48 lives)
+interval alpha 0.657  95% [0.443, 0.813]  (2 readers, 48 lives)
+  novelist     mean 2.79
+  player       mean 2.98
+
+How much happened: 76.6 lines a page on, 71.0 off; on minus off +5.6 a pair (sd 21.6). Where the versions are five or more lines apart, the longer was chosen 30 times and the shorter 14 (4 choices nearer).
+With the order and the difference in lines as terms: effect -0.00 ±0.29 (95%); ten lines more +0.19 ±0.13. Reported beside the effect above, which the round is judged on.
+Kinds of line: 43.2 a page on, 39.6 off; on minus off +3.7 a pair (sd 10.2).
+With the order and the difference in kinds as terms: effect -0.07 ±0.27 (95%); a kind more +0.049 ±0.026.
+faults on: total 471 · repeat 195, unfit reason 109, false line 71, out of nowhere 55, wording 41
+faults off: total 474 · repeat 214, unfit reason 90, false line 79, out of nowhere 60, wording 31
+Faults per ten lines: 1.28 on, 1.39 off. false line 0.19/0.23, out of nowhere 0.15/0.18, repeat 0.53/0.63, unfit reason 0.30/0.26, wording 0.11/0.09
+Faults a page, on minus off, with the order and the difference in lines as terms: -0.55 ±2.02 (95%); ten lines more +0.88 ±0.92.
+Versions given exactly three faults: 2 of 96.
+Severity, and for unfit reasons whether the event shown under them supports them: on awkward 459, source none 80, source supports 23, false 12, source does not 6; off awkward 458, source none 69, false 16, source supports 16, source does not 5
+Faults cited by line: 945; citing a line the version does not have: 0.
+
+Quotes matching the round's wording (on arm): good 14, faults 19 (unfit reasons 6); off arm: good 8, faults 12
+  good: P04 novelist: 2028: Sid dragged up what Sarah did last year in front of everyone at the school.  [Sarah took the credit for a year that Sid had carried.; felt he was still owed an apology; would say it in front of anyone]
+  good: P04 novelist: 2028: Sarah walked out of the school to start again somewhere else.  [Sid dragged up what Sarah did last year in front of everyone at the school.; it had shaken her; it happened at work]
+  good: P04 player: 2028: Sarah walked out of the school to start again somewhere else.  [Sid dragged up what Sarah did last year in front of everyone at the school.; it had shaken her; it happened at work]
+  good: P05 player: 2026: Neil dragged up what Audrey Howell did in front of everyone at the sawmill.  [felt he was still owed an apology; thought Audrey Howell had it coming; Audrey Howell wasn't there for Neil when it mattered (2026)]
+  good: P06 novelist: 2028: Sid dragged up what Sarah did last year in front of everyone at the school.  [Sarah took the credit for a year that Sid had carried.; felt he was still owed an apology; would say it in front of anyone]
+  good: P06 player: 2028: Sid dragged up what Sarah did last year in front of everyone at the school.  [Sarah took the credit for a year that Sid had carried.; felt he was still owed an apology; would say it in front of anyone]
+  good: P07 novelist: 2026: Mark dragged up what Hilda did.  [felt he was still owed an apology; thought Hilda had it coming; had not forgotten]
+  good: P09 player: 2027: Hilda dragged up what Freya Nash did last year in front of everyone at the sawmill.  [Freya Nash dragged up what Hilda did last year in front of everyone at the sawmill. It had happened before, in 2020.; felt she was still owed an apology; Freya Nash dragged up the old business (2025)]
+  good: P10 novelist: 2032: Mark was back to normal with Leo, as if what Leo did a few months back were forgotten.  [Leo dragged up what Mark did last year.; owed Leo since 2030; likes Leo]
+  good: P14 novelist: 2035: Karen Rudd and Ivy have become friends.  [Ivy put in more than anyone when the hat went round for Karen Rudd (2034); Karen Rudd was back to normal with Ivy, as if the old business were forgotten (2034); they work together at the garage]
+↳ 2034: Ivy put in more than anyone when the hat went round for Karen Rudd.
+↳ 2034: Karen Rudd was back to normal with Ivy, as if what Ivy did a few months back were forgotten.
+  good: P14 player: 2035: Karen Rudd and Ivy have become friends.  [Ivy put in more than anyone when the hat went round for Karen Rudd (2034); Karen Rudd was back to normal with Ivy, as if the old business were forgotten (2034); they work together at the garage]
+↳ 2034: Ivy put in more than anyone when the hat went round for Karen Rudd.
+↳ 2034: Karen Rudd was back to normal with Ivy, as if what Ivy did a few months back were forgotten.
+  good: P19 novelist: 2031: Eve walked out of the Anchor to start again somewhere else.  [Thea Fielding dragged up what Eve did last year in front of everyone at the Anchor.; it had shaken her; it happened at work]
+↳ 2031: Thea Fielding dragged up what Eve did last year in front of everyone at the Anchor.
+  good: P19 player: 2031: Eve walked out of the Anchor to start again somewhere else.  [Thea Fielding dragged up what Eve did last year in front of everyone at the Anchor.; it had shaken her; it happened at work]
+↳ 2031: Thea Fielding dragged up what Eve did last year in front of everyone at the Anchor.
+  good: P21 novelist: 2027: Molly dragged up what Stuart did last year.  [Stuart missed the deadline on his part of the summer festival and the whole place paid for it.; Stuart let the summer festival down (2026); would say it in front of anyone]
+  fault: P09 novelist (unfit reason): 2030: Freya Nash was back to normal with Leo, as if what Leo did last year were forgotten.  [Leo made a joke at Freya Nash's expense in front of everyone at the sawmill, and nobody laughed.; does not like to judge; thinks the world of Leo]
+  fault: P09 novelist (false line): 2035: Freya Nash dragged up what Tess Rudd did last year.  [Tess Rudd made a joke at Freya Nash's expense, and nobody laughed.; felt she was still owed an apology; Tess Rudd made a joke at Freya Nash's expense, and nobody laughed (2033)]
+  fault: P10 novelist (repeat): 2035: Leo dragged up what Nora did a few months back.  [Nora would not play Leo's song the way it was written.; thought Nora had it coming; Nora would not play Leo's song the way it was written (2035)]
+  fault: P11 novelist (unfit reason): 2032: Edward told Hannah how bad things had got.  [carrying something nobody knew; needed someone to talk to; had heard from Susie that Hannah gave Susie something back for backing the plan without being asked twice (2029)]
+  fault: P11 player (false line): 2028: Susie was back to normal with Hannah, as if what Hannah did last year were forgotten.  [Hannah was found out: taking from the catch.; does not think she is better than anyone; had let it go long ago]
+  fault: P11 player (unfit reason): 2032: Edward told Hannah how bad things had got.  [carrying something nobody knew; needed someone to talk to; had heard from Susie that Hannah gave Susie something back for backing the plan without being asked twice (2029)]
+  fault: P12 novelist (wording): 2026: Arthur and Una Tanner became friends.  [Una Tanner gave it to Arthur without being asked twice (2026); Una Tanner gave it to Arthur without being asked twice (2023); Arthur gave it to Una Tanner without being asked twice (2025)]
+↳ 2026: Una Tanner gave Arthur something back for the money without being asked twice. Nobody was surprised any more: it had been happening since 2015.
+↳ 2023: Una Tanner gave Arthur something back for the money without being asked twice. It was the third time, after 2015 and 2018.
+↳ 2025: Arthur gave Una Tanner the money without being asked twice. Nobody was surprised any more: it had been happening since 2015.
+  fault: P12 player (repeat): 2028: Una Tanner gave Arthur something back for the money without being asked twice. Nobody was surprised any more: it had been happening since 2015.  [gives without keeping count]
+  fault: P13 novelist (wording): 2035: Eric Nash gave Oscar something back for the money without being asked twice. Nobody was surprised any more: it had been happening since 2008.  [gives without keeping count]
+  fault: P13 player (wording): 2035: Eric Nash gave Oscar something back for the money without being asked twice. Nobody was surprised any more: it had been happening since 2008.  [gives without keeping count]
+  fault: P14 novelist (false line): 2028: Ralph Howell dragged up what Karen Rudd did last year in front of everyone at the harbour fleet.  [Karen Rudd was found out: taking from the catch.; felt he was still owed an apology; Karen Rudd found out taking from the till (2027)]
+  fault: P14 player (false line): 2028: Ralph Howell dragged up what Karen Rudd did last year in front of everyone at the harbour fleet.  [Karen Rudd was found out: taking from the catch.; felt he was still owed an apology; Karen Rudd found out taking from the till (2027)]
+  fault: P17 novelist (false line): 2029: Thea Tanner dragged up what Tess did a few months back in front of everyone at the council office.  [Tess was found out: taking from the expense claims.; Tess found out taking from the till (2028)]
+  fault: P17 player (false line): 2029: Thea Tanner dragged up what Tess did a few months back in front of everyone at the council office.  [Tess was found out: taking from the expense claims.; Tess found out taking from the till (2028)]
+  fault: P18 novelist (unfit reason): 2033: Lily dragged up what Trevor did last year.  [Trevor dragged up what Lily did last year.; felt she was still owed an apology; Trevor dragged up the old business (2032)]
+  fault: P20 player (unfit reason): 2033: Victor was back to normal with Sarah, as if what Sarah did a few months back were forgotten.  [Sarah was civil to Victor for weeks, and nothing more.; is fond of Sarah; wants the credit, whatever they say]
+↳ 2032: Sarah was civil to Victor for weeks, and nothing more.
+  fault: P23 novelist (unfit reason): 2031: Toby dragged up what Beth Howell did. It had happened before, in 2024.  [felt he was still owed an apology; had not forgotten; thought Beth Howell had it coming]
+  fault: P24 novelist (false line): 2028: Mark Sands dragged up what Ben did last year in front of everyone at the council office.  [Ben was found out: taking from the expense claims.; had not forgotten; Ben found out taking from the till (2026)]
+↳ 2026: Ben was found out: taking from the expense claims.
+  fault: P24 player (false line): 2028: Mark Sands dragged up what Ben did last year in front of everyone at the council office.  [Ben was found out: taking from the expense claims.; had not forgotten; Ben found out taking from the till (2026)]
+↳ 2026: Ben was found out: taking from the expense claims.

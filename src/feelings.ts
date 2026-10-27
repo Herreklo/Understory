@@ -22,17 +22,28 @@
 // the debtor: in need, they ask the one who owes them first (situations/request.ts), the debt weighs for asking, and the debtor weighs it
 // in answering.
 //
-// Off unless ON=feelings (round 44, stopped at its sizing; OFF=feelings still turns it off). Mood is unchanged: the emotions written at the same events still bend it, with no object.
+// The meeting (round 45, notes/research/meeting.md): a strong resentment, guilt or gratitude whose cause still stands may bring its holder
+// to its object, where the two share a place (situations/meeting.ts). Its chance each month is the intensity times the holder's approach
+// for that kind, from facets; never a timer or a count. Its answers are the kind's own: have it out, let it go or keep away; make amends
+// or keep away; thank, repay or keep away. Every answer changes the feeling, so the same state never raises the meeting twice: had out
+// halves it, let go ends its standing, kept away halves the holder's seeking of the object, amends and thanks pay it. An apology is
+// answered by its object through the queue. A have-out is a wrong (`isWrong`), so its object resents it and is owed, and that
+// resentment may bring them to a meeting of their own; it raises no provocation (`rake` sits at the threshold, grammar.ts). A feeling is
+// muted only in the immediate answer to its own cause, where the line already says it.
+//
+// On unless OFF=feelings; OFF=meeting turns off the meeting alone and restores round 44's wider mute, for measuring its part. Mood is
+// unchanged: the emotions written at the same events still bend it, with no object.
 
 import { clamp } from './rng';
 import { pow } from './mathx';
 import { curves, type Consideration, type Know, type Option } from './decide';
-import { ON, OFF, facet, peekBond, bond, year, type World, type Person } from './world';
+import { OFF, facet, peekBond, bond, year, type World, type Person } from './world';
 import { chanceOf } from './considerations';
 import { BY_FAMILY, type Expression, type Family } from './families';
 import type { Instance } from './grammar';
 
-export const feelingsOn = () => ON.has('feelings') && !OFF.has('feelings');
+export const feelingsOn = () => !OFF.has('feelings');
+export const meetingsOn = () => feelingsOn() && !OFF.has('meeting');
 
 export type Kind = 'grief' | 'resentment' | 'guilt' | 'gratitude';
 export interface Feeling {
@@ -46,6 +57,7 @@ export interface Feeling {
   what: string; // the cause in words, for its reason (@id tokens allowed)
   half?: number; // grief: months to fade to half, drawn at onset
   lasting?: boolean; // it has become a lasting change
+  away?: number; // how far the holder still seeks the object out, 1 unless they have kept away at a meeting
 }
 
 const CAP = 8; // feelings a person holds at once
@@ -325,13 +337,15 @@ function pulls(p: Person, t: Person | undefined, f: Feeling): Family[] {
   return PULLS[f.k];
 }
 
-// A feeling whose cause is the event the situation answers adds nothing: the answer already weighs the act, and the line already says it.
-export function withFeelings(w: World, p: Person, t: Person | undefined, options: Option[], answers?: number) {
+// A feeling whose cause is the event the situation answers adds nothing in the immediate answer to it: the answer already weighs the act,
+// and the line already says it. Anywhere later (the old wound, a meeting), it weighs the grudge it is about.
+const IMMEDIATE = new Set(['provocation', 'row-answer', 'aftermath']);
+export function withFeelings(w: World, p: Person, t: Person | undefined, options: Option[], answers: number | undefined, type: string) {
   if (!feelingsOn()) return;
   const fams = options.map(o => o.id as Family);
   let debt = false;
   for (const f of bearing(w, p, t)) {
-    if (f.ev === answers) continue;
+    if (f.ev === answers && (IMMEDIATE.has(type) || !meetingsOn())) continue;
     const toward = pulls(p, t, f).filter(x => fams.includes(x));
     if (!toward.length || toward.length === fams.length) continue;
     if (f.k === 'gratitude' || f.k === 'guilt') debt = true;
@@ -416,4 +430,57 @@ export function debtorAmong(w: World, p: Person, pool: Person[]): Person | undef
     }
   }
   return best;
+}
+
+// ---------- the meeting (round 45) ----------
+// A meeting's chance a month at full intensity and an average approach: the top of the research's range (c = 0.1 to 0.25), the least
+// at which a strong resentment raises one within a year in 15% of cases (meeting.md, fail-if 5).
+const RAISE = 0.25;
+// How readily the holder goes to the object, by kind, from facets (r ≈ .1 to .3, meeting.md): the forgiving let a grudge lie, the sincere
+// make amends, the sentimental go back to thank, and the bold go.
+function approach(p: Person, f: Feeling): number {
+  const bold = 0.15 * facet(p, 'socialBoldness', f.o);
+  const lean =
+    f.k === 'resentment'
+      ? -0.25 * facet(p, 'forgiveness', f.o)
+      : f.k === 'guilt'
+        ? 0.25 * facet(p, 'sincerity', f.o)
+        : 0.25 * facet(p, 'sentimentality', f.o);
+  return clamp(1 + lean + bold, 0.3, 1.7);
+}
+// The feeling that brings its holder to its object this month, if any. Of those strong enough, whose cause stands, toward someone in a
+// place they share, each draws its chance (the intensity times the approach, times how far the holder still seeks the object out); the
+// strongest that comes up goes.
+export function meetingFeeling(w: World, p: Person, shares: (q: Person) => boolean): Feeling | undefined {
+  if (!meetingsOn()) return undefined;
+  let best: Feeling | undefined;
+  for (const f of feelingsOf(w, p.id)) {
+    if (f.k === 'grief' || f.v < OWN || !f.stands) continue;
+    const q = w.byId.get(f.o);
+    if (!q || q.status !== 'in' || !shares(q)) continue;
+    if (w.rng.chance(clamp(RAISE * f.v * approach(p, f) * (f.away ?? 1), 0, 1)) && (!best || f.v > best.v)) best = f;
+  }
+  return best;
+}
+// Every answer at a meeting changes the feeling it was about: had out, it halves (and so does what a later meeting renews it to); let go,
+// it no longer stands; kept away, the holder seeks the object out half as much; amends made or thanks given, it is paid (feelAct's
+// amends has usually paid it already).
+export function metObject(w: World, p: Person, t: Person, k: Kind, x: Expression) {
+  const f = find(w, p.id, k, t.id);
+  if (!f) return;
+  if (x.family === 'severity') {
+    f.v0 *= 0.5;
+    f.v = Math.min(f.v, f.v0);
+  } else if (x.family === 'leniency') f.stands = false;
+  else if (x.family === 'withdrawal') f.away = (f.away ?? 1) * 0.5;
+  else end(w, p.id, f);
+}
+// Whether q's resentment of p stands: read before an apology, which ends its standing (amends).
+export const resentmentStands = (w: World, q: Person, p: Person) => !!find(w, q.id, 'resentment', p.id)?.stands;
+// The one apologised to answers: forgiven, the resentment is over; refused, it stands as it did before the apology.
+export function apologyAnswered(w: World, q: Person, p: Person, x: Expression, stood: boolean) {
+  const r = find(w, q.id, 'resentment', p.id);
+  if (!r) return;
+  if (x.family === 'leniency') end(w, q.id, r);
+  else r.stands = stood;
 }
