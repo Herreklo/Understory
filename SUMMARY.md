@@ -15,9 +15,9 @@ People you come to understand from incomplete evidence, who surprise you for rea
 
 ## Next, in order
 
-One experiment at a time per track (`notes/build-plan.md`). _22 Oct: Øystein left the plan's decisions to the lead (section 6), his to reverse here._
+One experiment at a time per track (`notes/build-plan.md`). _22 Oct: Øystein left the plan's decisions to the lead (section 6), his to reverse here._ _27 Oct: Øystein accepted round 45's gate reading as holding._
 
-1. **Taking sides** (P2; people; exits 1, 2), on `round/46`: a friend of both sides chooses one, the other or neither; the side not taken carries a resentment that can now seek its object. Research first. Before its build: N1b, and round 45's neutral change (its switch, as pre-registered; the background's odds refit, `docs/scale/README.md`).
+1. **Taking sides** (P2; people; exits 1, 2), on `round/46`: a friend of both sides chooses one, the other or neither; the side not taken carries a resentment that can now seek its object. Research first. Before its build: N1b, and the background's odds refit on r45 (S13, `docs/scale/README.md`). Round 45's switch is out (27 Oct): `OFF=meeting` gone, `OFF=feelings` stays as the system's switch.
    - _Kept or not:_ shared hardship follows.
 2. **The page** (exit 3): reasons rest after 43w; N3, then particulars.
 3. **Shared hardship** (P3), judged on its link rate.
@@ -28,7 +28,6 @@ Homes (#59, #22) wait for phase D. Beside any: N5 and N6 (from the outside revie
 
 ## Waiting for you
 
-- **Round 45's gate, read as holding:** off couples −1.1 ±1.3 (90%: −2.2 to −0.0): inside ±2 on the estimate, equivalence not shown by 0.2, as round F27's when kept. Reverse in one dated line here if you read the rule otherwise.
 - **The review of `2d696e6`:** copy it from Downloads into `reports/external/`.
 - **Play the slice** now that feelings act: about an hour, no credits.
 - **Five cold players for H2,** at phase C's gate; without them the first game is chosen with exit 5 open.
