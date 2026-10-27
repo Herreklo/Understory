@@ -1,0 +1,27 @@
+S13 identity: scale/identity2.ts <seed> 10, seeds 1-10
+main: fe87d83   branch (scale/S13 merged with main): 533536e
+cmp of the two outputs: identical (byte for byte)
+
+== main
+{"arm":"default","seed":1,"years":10,"people":116,"events":10232,"hashes":{"people":"514d2340495c","events":"741aa36f2ef7","bonds":"d7cebb92d8ce","beliefs":"4d7d31f66ffb","rest":"9645944f139a"}}
+{"arm":"default","seed":2,"years":10,"people":105,"events":9301,"hashes":{"people":"81349ec7a486","events":"f2e746dd287c","bonds":"94f0d507a42e","beliefs":"d2660507c8ab","rest":"fbf2bd6e75df"}}
+{"arm":"default","seed":3,"years":10,"people":118,"events":8909,"hashes":{"people":"941e88f8bd20","events":"6d3b66344ca5","bonds":"48d4174b226d","beliefs":"428965c93078","rest":"4ec4aaa6bd08"}}
+{"arm":"default","seed":4,"years":10,"people":131,"events":9738,"hashes":{"people":"4ae91b5a58ce","events":"e14253bef93a","bonds":"33d1f0ad6143","beliefs":"a4a6418141a7","rest":"592f354a7638"}}
+{"arm":"default","seed":5,"years":10,"people":120,"events":9874,"hashes":{"people":"43ef91a8c6f7","events":"c7f01d34a650","bonds":"cfd3cfe99d99","beliefs":"ca2858abf5a8","rest":"bb6491994a7b"}}
+{"arm":"default","seed":6,"years":10,"people":132,"events":11717,"hashes":{"people":"e17860f70741","events":"4ae185555aef","bonds":"c337b1176b81","beliefs":"0735cdaba03c","rest":"5d4b224c3b99"}}
+{"arm":"default","seed":7,"years":10,"people":110,"events":9846,"hashes":{"people":"aae53ec7b611","events":"5f47074bdf02","bonds":"27e427e6dd98","beliefs":"3f3ff350c1c3","rest":"6b9bb34617df"}}
+{"arm":"default","seed":8,"years":10,"people":115,"events":11285,"hashes":{"people":"1adc4856b1b4","events":"e0507e46ad25","bonds":"786e464c1f3c","beliefs":"daa2971b340f","rest":"95b45a0f5a11"}}
+{"arm":"default","seed":9,"years":10,"people":125,"events":10601,"hashes":{"people":"cb4bdd57242b","events":"dbd15500d432","bonds":"6134c3db4052","beliefs":"22f8bd9c2238","rest":"a7f42d57b359"}}
+{"arm":"default","seed":10,"years":10,"people":141,"events":10688,"hashes":{"people":"373f3a5a0fa2","events":"4acdc4671650","bonds":"16b2c6bdec1b","beliefs":"4ac0ac0c58bc","rest":"0bf7b6e732f2"}}
+
+== branch
+{"arm":"default","seed":1,"years":10,"people":116,"events":10232,"hashes":{"people":"514d2340495c","events":"741aa36f2ef7","bonds":"d7cebb92d8ce","beliefs":"4d7d31f66ffb","rest":"9645944f139a"}}
+{"arm":"default","seed":2,"years":10,"people":105,"events":9301,"hashes":{"people":"81349ec7a486","events":"f2e746dd287c","bonds":"94f0d507a42e","beliefs":"d2660507c8ab","rest":"fbf2bd6e75df"}}
+{"arm":"default","seed":3,"years":10,"people":118,"events":8909,"hashes":{"people":"941e88f8bd20","events":"6d3b66344ca5","bonds":"48d4174b226d","beliefs":"428965c93078","rest":"4ec4aaa6bd08"}}
+{"arm":"default","seed":4,"years":10,"people":131,"events":9738,"hashes":{"people":"4ae91b5a58ce","events":"e14253bef93a","bonds":"33d1f0ad6143","beliefs":"a4a6418141a7","rest":"592f354a7638"}}
+{"arm":"default","seed":5,"years":10,"people":120,"events":9874,"hashes":{"people":"43ef91a8c6f7","events":"c7f01d34a650","bonds":"cfd3cfe99d99","beliefs":"ca2858abf5a8","rest":"bb6491994a7b"}}
+{"arm":"default","seed":6,"years":10,"people":132,"events":11717,"hashes":{"people":"e17860f70741","events":"4ae185555aef","bonds":"c337b1176b81","beliefs":"0735cdaba03c","rest":"5d4b224c3b99"}}
+{"arm":"default","seed":7,"years":10,"people":110,"events":9846,"hashes":{"people":"aae53ec7b611","events":"5f47074bdf02","bonds":"27e427e6dd98","beliefs":"3f3ff350c1c3","rest":"6b9bb34617df"}}
+{"arm":"default","seed":8,"years":10,"people":115,"events":11285,"hashes":{"people":"1adc4856b1b4","events":"e0507e46ad25","bonds":"786e464c1f3c","beliefs":"daa2971b340f","rest":"95b45a0f5a11"}}
+{"arm":"default","seed":9,"years":10,"people":125,"events":10601,"hashes":{"people":"cb4bdd57242b","events":"dbd15500d432","bonds":"6134c3db4052","beliefs":"22f8bd9c2238","rest":"a7f42d57b359"}}
+{"arm":"default","seed":10,"years":10,"people":141,"events":10688,"hashes":{"people":"373f3a5a0fa2","events":"4acdc4671650","bonds":"16b2c6bdec1b","beliefs":"4ac0ac0c58bc","rest":"0bf7b6e732f2"}}

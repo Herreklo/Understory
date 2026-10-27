@@ -636,3 +636,33 @@ The independent re-derivation from the raw files reproduced every number above, 
 **Expected** (the sizing): the town identical; capacity passes; five of six coarse bars pass, under-20 and partnered at the bar; kids of 40–54 fails (about 0.75); deaths 80+ pass, 65–79 at the bar (about 0.77); promoted people pass, partnered two years on at the bar.
 
 **What would change our minds.** The refit replaces r27's odds whatever the bars show: odds fitted to an older engine describe a different one. The bars say what the next scale step fixes. If kids of 40–54 fails again, S12's diagnosis stands (fewer young couples, fewer children per couple) and the background's matching by the town's own age pattern is that step. If the refit is clearly worse than r27's odds on the same cities on a bar r27's passes (outside the noise above), the fit is examined for a fault before it merges; none is tuned on 411–420.
+
+### S13 result (27 Oct 2026; tree `82731c5` on `scale/S13`; train seeds 1061–1090; test seeds 411–420)
+
+**Outcome: the refit holds the town exactly and the city as it was. On r45 the background matches the monthly world on five of six bars; it still has about a quarter too few children of parents aged 40–54, with either odds.**
+
+The pre-registration commit (`118d2c8`) went to `main` directly instead of to this branch: the new branch tracked `origin/main`, and its first push followed it. It holds only docs, seeds, `report7.py` and the sizing report, and it was pushed before any fresh world ran, so it stands as the timestamp.
+
+1. **The town is the town: pass.** `ident.ts` in CI identical on every switch arm; `scale/identity2.ts` on seeds 1–10, main `fe87d83` and the branch merged with it: the same five hashes on all ten (`reports/S13-ident.txt`).
+2. **The fit.** 46,908 person-years; held-out AUC from 0.64 (promoted) to 0.93 (died); predicted against seen on the held-out towns within a point for every outcome but finding work (19.2% against 23.0%).
+3. **The city, ten cities, refit and r27's odds on the same seeds** (background against monthly half; `reports/S13-size.md` has the sizing):
+
+   | Bar | Refit | r27 odds | Refit − r27, paired (95%) |
+   | --- | --- | --- | --- |
+   | Capacity, strict | pass | pass | |
+   | Under-20, within 5 pt | −4.4, at the bar | −4.7 | +0.3 ±2.7 |
+   | Over-65 | +1.0 | +1.9 | −0.9 ±1.9 |
+   | Partnered | −3.2 | −0.7 | −2.4 ±4.5 |
+   | Working | +1.1 | +2.8 | −1.7 ±2.7 |
+   | Drinkers | +0.9 | +0.7 | +0.2 ±1.0 |
+   | Kids of 40–54, ratio within 25% | **0.72, fail** | 0.72, fail | −0.01 ±0.10 |
+   | Deaths 65–79, within 25% of the engine's 1.86% | **0.74**, at the bar, short by 0.01 | 0.74 | |
+   | Deaths 80+ (9.70%) | 1.02 | 1.03 | |
+   | Promoted, ten bars | **10** (two years on, partnered +6.1) | 9 (partnered +8.4) | |
+
+   Births are 8.8 per thousand in the background against 10.5 in the monthly half. Marks per over-40 promoted: 0.50 against 0.88 after catch-up.
+4. **Read by the rules set beforehand.** As expected: the town identical, capacity, five coarse bars and the promoted bars pass; kids of 40–54 fails at 0.72; deaths 65–79 sit at the bar. The refit is nowhere clearly worse than r27's odds on the same cities, so there was no fault to look for. The refitted odds replace r27's.
+
+The independent re-derivation from the raw files is in `reports/rederive-S13.md`.
+
+**What follows.** S12's diagnosis stands on r45: the odds are not the cause, since both sets give the same 0.72. The background's matching by the town's own age pattern, with the death reference from the engine it is checked against, is the next scale step.

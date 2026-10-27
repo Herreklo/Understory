@@ -13,7 +13,7 @@ The engine on `main` runs a city. A town of one neighbourhood is identical to th
 **The background** lives a year at once.
 - Rules about one person run by the engine's own formulas, month by month: growing older, the body, illness, retirement and death.
 - Rules that depend on other people are drawn from odds fitted to the full engine, refitted for each engine.
-- On the current engine it matches the monthly world on the over-65 share, partnership and drinking, but has about a quarter too few children: young people pair up less often than in full towns, and couples have fewer children, so the background ages and works more. Deaths at 80 and over match the engine's; at 65–79 they are about a quarter low.
+- On the current engine (refitted on r45, S13) it matches the monthly world on the under-20 and over-65 shares, partnership, work and drinking, but parents of 40–54 have about a quarter fewer children: young people pair up less often than in full towns, and couples have fewer children. Deaths at 80 and over match the engine's; at 65–79 they are about a quarter low.
 - A background neighbourhood's past depends on nothing outside it.
 
 **Promotion.** When the player's story reaches a neighbourhood, it comes into focus.
