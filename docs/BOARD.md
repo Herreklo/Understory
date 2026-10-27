@@ -2605,3 +2605,24 @@ Next 1, P4 with round 44's code folded in (plan decision 23); exits 1, 2, 8. Res
 **Game lens:** the man who wronged you is at the lodge; you have it out or leave early, and something changes.
 
 **Battery fix (26 Oct, 23:40, before the re-run).** `npm test` inside `round.mjs` stopped at its first `tsx` step: tsx's IPC socket, under `out-round-45/tmp/`, passed macOS's 104-character limit on socket paths. The fault is in where the run was placed, not in the code. `npm test` runs again with a short `TMPDIR`, in a frozen tree at the same commit (e7a302b; `round.mjs` removes its own when done). No code changed, and every other job of the battery stands as it ran. The re-run passed (`out-r45-diag/logs/npm-test.log`).
+
+Outcome of round 45 (27 Oct 2026, 11:05 Oslo). Tree `e7a302b` on `round/45`, base main `7411bad`. The battery ran on that tree under `battery.sh` (`out-round-45/`, attached to the release; the round's own reports in `reports/45-battery-summary.md`, `45-meet.txt`, `45-feel.txt` and `45-feel-meeting.txt`); the packs were read and scored at `920f183` before any other number (`reports/45-reading.md`). A separate agent re-derived every number from the raw files with its own code and agrees (`reports/rederive-45.md`).
+
+| Rule | Result | |
+| --- | --- | --- |
+| 1. `OFF=feelings` identical to main | all identical, in the battery and in CI (`reports/45-ident.txt`) | ✓ |
+| 2. the counter at 2.5% or above; its rise over meeting off bounded above 0 | **4.5% ±1.3** (115 of 2,653), meeting off 0.9 ±0.4; paired **+3.6 ±1.3**, one-sided bound +2.5 | ✓ |
+| 3. fail-ifs 2–5 | 2: recurs unchanged **0** of 793; something follows within a year **82.8 ±2.3%**. 3: displaced **0.10%**; births +0.3 ±0.9, deaths −0.1 ±0.8, marriages −0.5 ±0.7, splits −0.5 ±1.0, hires +0.4 ±2.1, none off zero at 99%. 4: in kind −5.2 ±6.9, rows −3.3 ±31.4, dislikes −1.7 ±4.6, friendships ended +4.6 ±8.4, none above zero at 99%. 5: raised **20.6 ±2.1%**; forgiveness **2.49×**, boldness **1.66×**; meeting lines in a top 25: **0**; copy share, every adult, **−0.78 ±0.74**, bound −0.17 | ✓ |
+| 4. `npm test`; the scoreboard within ±2 off couples | passes (the battery's re-run, and CI). Not a couple's **−1.1 ±1.3** (90%: −2.2 to −0.0): inside ±2 on the estimate, equivalence not shown by the runner's verdict, by 0.2; overall −0.8 ±1.0 and the key slice 0.0 ±1.2, both equivalent | ✓ by the letter |
+| 5. reads no worse, bound above −0.3 | pooled **+0.07 ±0.23**, bound **−0.12**; random −0.25, busiest −0.17; no warnings | ✓ |
+
+Read by the rules set beforehand: all five hold. **Kept.** Rule 4 is read as round F27's was (−0.8 ±1.7, kept); round 30's ✗ came with a regression overall. The meeting's own decisions (1,247, in the on arm only) are the hard ones to call: without them the number is −0.4 ±1.2, equivalent.
+
+Reported, not judged:
+
+- By kind: resentment **2.5 ±1.1** (paired +1.5 ±1.1, bound +0.6, above 0: it carried its own), guilt 4.9 ±2.2, gratitude 8.2 ±5.0; expected 1.9, 4.7 and 5.9, the pooled 3.8 (sized 5.1). Round 44's counter 5.5 ±1.0, meeting off 3.6 ±1.1.
+- 52.7 meetings a world-decade. Of 2,393 with a year left: the feeling ended 1,565, lost its standing 281, a debt paid 119, a tie 30, a lasting change 2, nothing 396. Apologies answered 319 of 321, 188 forgiven. Gratitude raised 62.9% (sized 64.5%).
+- Wrongs +11.6 ±13.1 against main (expected +12; against meeting off +4.0 ±12.5). The copy share fell instead of its sized rise (+0.58): the busiest −2.8 ±2.5.
+- The round's wording was quoted as good 18 times and as unfit 12.
+
+The branch that fires: kept. The switch goes in the next neutral change, with the background's odds refit; resentment's bound is above 0, so P2 does not size its own resentment first. P2 (taking sides) follows, and feelings return to research.
