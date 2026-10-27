@@ -67,6 +67,7 @@ function store(w: World): Map<number, Feeling[]> {
   return ((w as any).feelings ??= new Map<number, Feeling[]>()) as Map<number, Feeling[]>;
 }
 export const feelingsOf = (w: World, id: number): Feeling[] => ((w as any).feelings as Map<number, Feeling[]> | undefined)?.get(id) ?? [];
+export const weighs = (f: Feeling) => f.v >= WEIGH;
 const find = (w: World, id: number, k: Kind, o: number) => feelingsOf(w, id).find(f => f.k === k && f.o === o);
 const strongest = (fs: Feeling[]) => fs.reduce<Feeling | undefined>((a, f) => (!a || f.v > a.v ? f : a), undefined);
 
@@ -359,6 +360,13 @@ export function withFeelings(w: World, p: Person, t: Person | undefined, options
     if (toward.length && toward.length < fams.length)
       add(options, toward, 'feel:owes', `owed @${t.id} since ${year(p.owes.t)}`, 0.7, 'close', p, p.owes.ev);
   }
+}
+// A yes-or-no answer to `t` (the front door's invitation, invite.ts): resentment toward `t` weighs for no, gratitude and guilt for yes.
+export function withFeelingsToward(w: World, p: Person, t: Person, options: Option[]) {
+  if (!feelingsOn()) return;
+  for (const f of feelingsOf(w, p.id))
+    if (weighs(f) && f.o === t.id && f.k !== 'grief')
+      add(options, [(f.k === 'resentment' ? 'no' : 'yes') as Family], 'feel:' + f.k, feelingWords(w, p, f), 0.5 + 0.5 * f.v, KNOW[f.k], p, f.ev);
 }
 // One consideration on every answer: as written on those it pulls toward, read the other way on the rest, so it pushes one way.
 function add(options: Option[], toward: Family[], id: string, label: string, x: number, know: Know, p: Person, ref: number) {

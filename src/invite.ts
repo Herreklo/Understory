@@ -10,8 +10,10 @@ import { decide } from './grammar';
 import { pubC, privC, closeC, bondC, facetC, eventCause, ev } from './considerations';
 import { pursuing } from './time';
 import { form, join } from './group';
+import { withFeelingsToward } from './feelings';
 import { type World, type Person, type Event, P, age, year, addEvent, broadcast, remember, recentEvents } from './world';
 import type { Feature } from './features';
+import type { Option } from './decide';
 
 type Kind = (typeof SETTING.groupKinds)[number];
 const kindOf = (id: string): Kind => SETTING.groupKinds.find(k => k.id === id)!;
@@ -65,7 +67,7 @@ function answer(w: World, p: Person, q: Person, k: Kind, g: World['groups'][numb
   const skill = z01((bestSkill(p, k) - 1150) / 150); // against the engine's own bar for wanting to be heard (group.ts)
   const spare = clamp(1 - (q.job ? 0.4 : 0) - 0.3 * q.stress - (q.kids.some(c => P(w, c).status === 'in' && age(w, P(w, c)) < 4) ? 0.3 : 0), 0, 1);
   const what = g ? `rehearse with ${g.name}` : 'come and play';
-  const d = decide(w, q, `whether to ${what}, when @${p.id} asked`, [
+  const options: Option[] = [
     {
       id: 'yes',
       label: what,
@@ -94,7 +96,10 @@ function answer(w: World, p: Person, q: Person, k: Kind, g: World['groups'][numb
         closeC('time', spare > 0.5 ? 'has the evenings free' : 'has no evenings to give', 1 - spare, 1, 0.2),
       ],
     },
-  ]);
+  ];
+  // What the asked one still feels toward the asker: a resentment weighs against coming, a debt of gratitude or guilt for it.
+  withFeelingsToward(w, q, p, options);
+  const d = decide(w, q, `whether to ${what}, when @${p.id} asked`, options);
   const yes = d.chosen === 'yes';
   const asked = g ? `to rehearse with ${g.name}` : 'to come and play';
   const e = addEvent(w, {

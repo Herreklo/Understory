@@ -4,7 +4,21 @@ import './env'; // OFF= and ON= from the environment, before anything runs
 import { deepStrictEqual, strictEqual } from 'assert';
 import { buildWorld, runYears } from '../build';
 import { pickWitness } from '../witness';
-import { beliefsHeld, bondOf, command, createWorld, events, groups, now, person, places, townIds, ventures, type WorldHandle } from '../boundary';
+import {
+  beliefsHeld,
+  bondOf,
+  command,
+  createWorld,
+  events,
+  feelingsHeld,
+  groups,
+  now,
+  person,
+  places,
+  townIds,
+  ventures,
+  type WorldHandle,
+} from '../boundary';
 import { signature } from './diag/signature';
 import type { World } from '../world';
 
@@ -34,6 +48,7 @@ strictEqual(ids.length, direct.people.filter(q => q.status === 'in').length, 'to
 for (const id of ids.slice(0, 10)) {
   roundTrip(`person ${id}`, person(h, id));
   roundTrip(`beliefs of ${id}`, beliefsHeld(h, id));
+  roundTrip(`feelings of ${id}`, feelingsHeld(h, id));
   for (const other of ids.slice(0, 10)) roundTrip(`bond ${id}→${other}`, bondOf(h, id, other));
 }
 roundTrip('places', places(h));

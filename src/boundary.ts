@@ -7,6 +7,7 @@ import { tick } from './life';
 import { pickWitness } from './witness';
 import { invite } from './invite';
 import { projects, type Project } from './projects';
+import { feelingsOf, feelingWords, weighs } from './feelings';
 import { peekBond, year, type Belief, type Bond, type Event, type Group, type Person, type Place, type World } from './world';
 
 declare const opaque: unique symbol;
@@ -143,6 +144,28 @@ export function beliefsHeld(h: WorldHandle, holder: number, subject?: number): B
     out.push({ subject: s, key: k.slice(bar + 1), ...plain(b) });
   }
   return out;
+}
+
+export interface FeelingOut {
+  kind: 'grief' | 'resentment' | 'guilt' | 'gratitude';
+  toward: number; // the person it is about (for grief, the one lost or parted from)
+  cause: number; // the event behind it
+  strength: number; // 0..1 now
+  since: number; // the month it began
+  stands: boolean; // its cause still stands (a wrong not made right, a debt not repaid)
+  words: string; // as a reason says it, people as @id: "still sore at @12 over what @12 did (2026)"
+}
+
+/** What `holder` feels toward named people, strongest first: grief, resentment, guilt and gratitude, each with its cause. A feeling
+ * too faint to weigh in any decision is left out. */
+export function feelingsHeld(h: WorldHandle, holder: number): FeelingOut[] {
+  const w = W(h);
+  const p = w.byId.get(holder);
+  if (!p) return [];
+  return feelingsOf(w, holder)
+    .filter(weighs)
+    .sort((a, b) => b.v - a.v)
+    .map(f => ({ kind: f.k, toward: f.o, cause: f.ev, strength: f.v, since: f.t, stands: f.stands, words: feelingWords(w, p, f) }));
 }
 
 /** The town's places of work, the ones ventures opened among them, in the order they were made. A place never closes. */
