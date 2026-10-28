@@ -540,7 +540,7 @@ export function run(w: World, inst: Instance): Outcome | null {
     if (p.partner != null) e.knownBy.set(p.partner, 'seen');
     for (const f of p.friends) if (w.rng.chance(0.5)) e.knownBy.set(f, 'seen');
   }
-  broadcast(w, e);
+  broadcast(w, e, inst.told);
   // Effects on the target and on watchers.
   if (t && !expr.solo) {
     const k = 0.5 + expr.intensity * 0.5;
@@ -548,7 +548,7 @@ export function run(w: World, inst: Instance): Outcome | null {
     if (expr.like < -0.25 && expr.intensity >= 0.45 && !inst.type.startsWith('row')) queueProvocation(w, t, p, e, feats.has('public')); // a row is answered inside the row
   }
   feelAct(w, inst, p, t, fam, expr, e.id);
-  if (vis === 'local' && expr.like !== 0)
+  if (vis === 'local' && expr.like !== 0 && !inst.told)
     for (const [id, how] of e.knownBy)
       if (how === 'seen' && id !== p.id && id !== t?.id) {
         const r = bond(w, id, p.id);

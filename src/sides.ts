@@ -24,6 +24,7 @@ import { type Instance, type Outcome, family } from './grammar';
 import type { Expression } from './families';
 import { facetC, traitCause, eventCause, ev, learned } from './considerations';
 import { regardPart } from './telling';
+import { wantRestore } from './time';
 import { carryReset } from './carry';
 import { feelingsOf, sideNotTaken } from './feelings';
 import { sidesOn, age, facet, peekBond, remember, addEvent, broadcast, type World, type Person, type Event } from './world';
@@ -295,5 +296,6 @@ function cut(w: World, n: Person, p: Person, taken: Person, side: Event) {
     w: 1.4,
   });
   broadcast(w, e);
+  wantRestore(w, p, n, e.id); // the decider who still cares may try to put it right, as after any falling-out
 }
 export const isSided = (id: string) => SIDED.has(id);

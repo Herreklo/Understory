@@ -706,25 +706,27 @@ export function observeAs(w: World, holder: number, e: Evidence, how: 'seen' | '
 
 // Deliver an event's evidence to everyone who saw it. Public events reach the whole town, faintly.
 // People whose work is all people (the bar, the clinic, the school) hear local news more than most.
-export function broadcast(w: World, e: Event) {
+// `told`: decided in private and told about town (round 46): the parties know it, those closest to them hear it, nobody saw it.
+export function broadcast(w: World, e: Event, told = false) {
   const prevTag = obsTag,
     prevEv = obsEvent;
   obsTag = 'act:' + e.type;
   obsEvent = e;
   try {
-    broadcastInner(w, e);
+    broadcastInner(w, e, told);
   } finally {
     obsTag = prevTag;
     obsEvent = prevEv;
   }
 }
-function broadcastInner(w: World, e: Event) {
-  const seen = witnessesOf(w, e);
+function broadcastInner(w: World, e: Event, told: boolean) {
+  const seen = told ? [...e.who] : witnessesOf(w, e);
   for (const id of seen) {
     if (!e.knownBy.has(id)) e.knownBy.set(id, 'seen');
     for (const ev of e.evidence) observeAs(w, id, ev, 'seen');
   }
   keepAccounts(w, e, seen);
+  if (told) for (const id of witnessesOf(w, e)) learnOf(w, id, e, 0.8);
   if (w.quiet) return;
   if (e.vis === 'public') {
     for (const q of residentsNear(w, e.who)) {

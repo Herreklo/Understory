@@ -3,12 +3,60 @@
 Two passes, each on 40 throwaway worlds, 10 present years, paired by world (`on` against `OFF=sides`), means per world ±95%. Tool:
 `src/tools/diag/sides.ts` (`run A B on|sides 10`, then `report`; `SIDES_OUT` names the folder).
 
+**Latest verdict, after the review's fixes (next section):** fail-if 2 misses on agreeableness (1.13×), and fail-if 5 misses on both clauses: side-taking lines take five top-25 places, in two worlds, and the copy share's bound is +0.80. These are not the misses accepted on 28 Oct, so round 46 stops before pre-registration for the lead and Øystein.
+
 **Verdict after the second pass: two fail-ifs still miss, so round 46 stops here for the lead and Øystein to decide.**
 
 - The counter clears both times: **33.1% ±5.3** on the second pass, beside the first pass's 27.2% ±4.8. The note's estimate was ~19% and its stop is under 15%.
 - Fail-ifs 3 and 4 hold.
 - **Fail-if 2 misses narrowly.** "Neither" differs **1.28×** by fairness and **1.23×** by agreeableness, against a bar of 1.3×, though both now point the right way.
 - **Fail-if 5 misses by the letter.** One world of 40 has one side-taking line in its 25 commonest templates: the cut, "X stopped speaking to X after X took X's side.", 16 times against the 25th template's 15. The copy share no longer rises.
+
+## After the review: the same worlds again (9041–9080), 28 Oct 2026
+
+The review (`reports/46-review.md`) found three engine faults, fixed before any pre-registration. Nothing else changed:
+
+- **Told, not seen** (item 4). A side-taking is decided in private and told about town. Its parties know it, and those closest to them (partners, co-workers) hear it at reliability 0.8. The other side no longer sees it as a watcher first. Before the fix, the side taken netted +0.006 liking, so it in effect did not remember being backed. No outsider keeps a seen account of the act. (`broadcast(w, e, told)` in `world.ts`; `grammar.ts` skips its watcher step for told acts.)
+- **A side gone in between** (item 5). A queued choice whose side died or left in the month between is dropped (`situations/index.ts`).
+- **The cut offers making up** (item 6). After the cut, the decider who still cares may want to restore the friendship, as after any falling-out (`wantRestore`).
+
+The off arm is the second pass's, unchanged: with `OFF=sides` none of these paths is reachable. The on arm was re-run on the same 40 seeds. A world diverges from the first changed act, so this is a fresh draw of the same worlds, not a small edit of the second pass.
+
+| | After review | Second pass | Bar | |
+| --- | --- | --- | --- | --- |
+| **1. Counter** | **35.2 ±6.9** (183/568) | 33.1 ±5.3 | stop under 15 | ✓ |
+| … ties; the cut at once; only through a meeting | 15.6; 14.5; 4.3 | 18.8; 15.9; 3.8 | | ✓ |
+| Would-be deciders, paired | +13.0 ±5.9 | +14.1 ±6.2 | | |
+| **2.** Not the side liked more | 40.1% of 424 | 31.8% | ≥ 25 | ✓ |
+| "Neither", fairness | 29.3% vs 18.4%, **1.59×** | 1.28× | ≥ 1.3 | ✓ |
+| "Neither", agreeableness | 23.7% vs 21.1%, **1.13×** | 1.23× | ≥ 1.3 | ✗ |
+| Fairness flips: the act's / both | 4.4% / 12.5% | 4.2% / 13.1% | ≥ 5 | ✓ on both together |
+| **3.** Friendships per adult | 0.00 ±0.21 | −0.21 ±0.24 | within 10% | ✓ |
+| Reversals, p90 | 3.45 | 3.10 | ≤ 4 | ✓ |
+| Wrongs / dislikes / ended | −0.1 / −0.8 / +3.9 | −4.2 / −0.1 / +2.9 | within | ✓ |
+| Rows | **+25.2 ±18.5** | +24.7 ±21.4 | within, or named | not traced to the mechanism (review) |
+| Deaths | −0.9 ±0.8 | −0.4 ±0.9 | watch | ✓ |
+| **4.** The witness knows | 71.8% | 74.5% | ≥ 30 | ✓ |
+| **5.** Answers | 37.8 / 37.6 / 24.6% | 35.4 / 38.1 / 26.4 | each ≥ 15 | ✓ |
+| Side-taking lines in a world's top 25 | **5**, in 2 worlds (9058: 4; 9078: 1) | 1, in 1 world | any | ✗ |
+| Copy share, every adult | **+0.30 ±0.60**, one-sided bound **+0.80** | −0.05 ±0.52, bound +0.39 | bound above +0.6 fails | ✗ |
+| Copy share, random / busiest | +0.33 ±2.64 / −0.81 ±2.57 | +0.25 / −0.42 | | |
+
+**Fail-if 5, world 9058.** A long rivalry asks the same cast again each time it flares. Across every adult's page, the world's top 25 holds four side-taking templates:
+
+- the cut, "X stopped speaking to X after X took X's side.", 29 times;
+- "X, like X, backed X in the rivalry with X.", 23 times;
+- "X backed X in the rivalry with X.", 21 times;
+- "X took X's side against X.", 20 times.
+
+The 25th template has 20. World 9078 has one, "X took X's side against X.", 17 times against 17.
+
+**Verdict after the review's fixes.**
+- The counter and fail-ifs 1, 3 and 4 hold.
+- Fail-if 2 still misses, now on agreeableness alone (1.13×).
+- Fail-if 5 misses on both of its clauses.
+
+These are not the misses Øystein accepted on 28 Oct: those were 1.28× and 1.23×, with the cut in one world's top 25 and the copy share holding. The round stops before pre-registration for the lead and Øystein to decide. Pooled over both draws (80 worlds), "neither" is about 1.4× by fairness and 1.17× by agreeableness, and three worlds carry side-taking lines in their top 25.
 
 ## Second pass (9041–9080), 28 Oct 2026, round/46 at 77366c1
 
