@@ -410,6 +410,9 @@ export const wording = () => !OFF.has('wording');
 // that a new cause renews stands on that cause (feelings.ts). Stopped at its sizing (big casts put side-taking lines among a town's
 // commonest): off unless ON=sides.
 export const sidesOn = () => ON.has('sides');
+// Round 48: the band year. How things are done in a band is held in its members' beliefs, told to a newcomer, and weighed in their answers
+// to a song and in what follows a repeated row (norms.ts). Off unless ON=norms.
+export const normsOn = () => ON.has('norms');
 const SMALL = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
 // A span of months as a person would say it: "a few weeks", "five months", "a year", "a year and a half", "three years".
 export function spanWords(months: number): string {

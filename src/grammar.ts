@@ -82,6 +82,9 @@ export interface Instance {
   // Reasons not shown for a choice, by consideration: ones the situation's own words contradict (round 40: "had no wish to see anywhere
   // else" beside a want to get out). The decision record keeps them.
   hide?: (fam: Family) => string[];
+  // Considerations weighed beside the five strongest, as the self-story is, never cut for want of room (round 48: how things are done
+  // in the group the act happens in, norms.ts).
+  beside?: Partial<Record<Family, Consideration[]>>;
 }
 
 export function decide(w: World, p: Person, trigger: string, options: Option[]) {
@@ -330,6 +333,7 @@ export function run(w: World, inst: Instance): Outcome | null {
     if (idc && !idc.who) idc.who = p;
     // Who they take themselves to be is weighed every time, beside the five strongest considerations, never cut for want of room.
     const kept = idc ? [...cs.slice(0, 5), idc] : cs.slice(0, 5);
+    for (const c of inst.beside?.[fam] ?? []) kept.push(c.who ? c : { ...c, who: p });
     if ((globalThis as any).WEIGH)
       WEIGH_LOG.push({
         type: inst.type,
