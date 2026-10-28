@@ -2714,3 +2714,21 @@ The reading cannot see the mechanism (about one norm-decided act a decade reache
 **`WHY.md`'s warning:** consequences never visible; fail-if 5 would show it.
 
 **Game lens:** told "here a song is everyone's", a newcomer cheers years after the founders left.
+
+Outcome of round 48 (28 Oct 2026, 23:25 Oslo). Tree `d7d7096` on `round/48`, base main `2f8adf1`. Everything ran from a frozen checkout under `battery.sh`: the battery (`out-round-48/`, summary in `reports/48-battery-summary.md`) and the from-founding and page runs (`out-round-48/norms/`, `reports/48-norms-report.txt` and `48-norms-contrast.txt`). The first two packs were scored at `3491339`, before any other number; the second random pack at `cdadf3a` (`reports/48-reading.md`). A separate agent re-derived every number with its own code and agrees (`reports/rederive-48.md`).
+
+| Rule | Result | |
+| --- | --- | --- |
+| 1. `OFF=norms` identical to main | all identical, in the battery and in CI | ✓ |
+| 2. the counter's one-sided bound above 0 | members who joined after the last founder went, five years on: **0.28** (n 415) against `OFF=normtell` **0.09** (n 178); Fisher-z **0.19 ±0.18, bound +0.04** | ✓ |
+| 3. fail-ifs 1, 3, 4, 5 | 1: **10.2%** flipped. 3: r **0.22**; matched bands apart **57.8%**. 4: one teller at most; top-25 norm lines **0**; copy share **−0.02 ±0.19**, bound +0.14; "did not come to much" +1.2 ±1.9. 5: **74.5%** in the ten present years | ✓ |
+| 4. `npm test`; scoreboard within ±2 off couples | passes; not a couple's **+0.1 ±1.0** (90%: −0.8 to 0.9), equivalent; overall +0.1 ±1.1 | ✓ |
+| 5. reads no worse, bound above −0.3 | warnings first: busiest ties 33 of 48, random 2 ties 29 of 48. Random **−0.31**, bound −0.54; random 2 +0.02. Both random packs: **−0.15 ±0.17, bound −0.29** | ✓ by 0.01 |
+
+Rule 5 applies the ties rule. The busiest pack tied, and `reading.md` covers only a tied random pack, so the lead decided on 28 Oct, before the second pack was built or read, to take the bound on two random packs (3809–3816). The pre-registered pooled pair, random with busiest, gives −0.25 and is reported, not judged. The battery's summary was read before that decision.
+
+Read by the rules set beforehand: all five hold. **Kept.** The counter came in at two-thirds of its expectation (0.19 against 0.28).
+
+Reported, not judged: one-year counter 0.77; all members at five years 0.53 against 0.46; partial r −0.00; fail-if 5 over 40 years **26.7%**, under 30%; adults with a lasting change from parenthood −1.7 ±1.0 a world (the battery's 24 worlds).
+
+The branch that fires: kept. The switch goes in the next neutral change with the background's odds refit; the rows decision becomes its own round. Next: the page (exit 3). The merge waits for the #60 note on `beliefsHeld`.

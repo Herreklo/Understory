@@ -1,4 +1,4 @@
-# Understory: status (round 45, 27 Oct 2026)
+# Understory: status (round 48, 28 Oct 2026)
 
 ## What Understory is
 
@@ -147,7 +147,7 @@ The person model is good enough to build on when all nine hold. Every round must
 6. **Readability holds:** the calibrated witness beats the notebook on the key slice on a fresh range. Holds (+5.5 ±1.2 on twenty fresh worlds, round F26; +4.1 ±1.7 in round H25).
 7. **The city track meets its budget with the same people model.** Not met. The city runs on the engine on `main`, and a town is identical with it (S12): a month at about 2,600 people runs 8.6× faster. On this engine the background has about a quarter too few children, so it ages and works more than the monthly world, and the month cost of a city of 100,000 has not been timed on it (`docs/scale/`).
 8. **Living changes people.** What thirty years of lived life change in how someone chooses, beyond growing older, is at least twice what it is today: about 3% of the distance between two people (the twin test with an ageing arm, on one throwaway seed; measured properly on fresh seeds with the engine's real situations in the scale track's next twin test). With feelings on, 14% of adults carry a lasting change from ten present years, against 11% without (round 45).
-9. **A group outlives its members.** A group a person belongs to (a band, a workplace) has a character its members act on and can name, carried in their beliefs and never in a mind of its own, which survives the departure of every founder; and a cold reader can say what four of five groups are like in one sentence. Not started: a group today is exactly its current members, and the one habit groups have (how rows escalate) is the same in every group.
+9. **A group outlives its members.** A group a person belongs to (a band, a workplace) has a character its members act on and can name, carried in their beliefs and never in a mind of its own, which survives the departure of every founder; and a cold reader can say what four of five groups are like in one sentence. Started in bands (round 48): how a bandmate's song is answered is a norm each member holds and weighs, and an incumbent may tell a newcomer how things go. It decides about a tenth of the answers it is weighed in. Members who joined after the last founder went hold the founders' norm five years on at r 0.28, against 0.09 when newcomers are not told. Open: workplaces; what follows a row (`ON=normrows`, untested); and whether a cold reader can name a group's character. A witness sees a norm decide about one act a decade.
 
 ## How work is done
 
