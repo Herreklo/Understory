@@ -1,6 +1,6 @@
 # Review of 2d696e6: dispositions
 
-The independent incremental review of the zip `2d696e6` (22 October 2026) reached Øystein as `Understory_2d696e6_Independent_Incremental_Review_2026-10-22.md`. He pasted it into the lead session on 23 October, where every claim it makes about the code was checked against the code. The review's text is not in the repo yet: the app cannot read the folder it was saved to, so it goes here beside this file when Øystein copies it in.
+The independent incremental review of the zip `2d696e6` (22 October 2026) reached Øystein as `Understory_2d696e6_Independent_Incremental_Review_2026-10-22.md`. He pasted it into the lead session on 23 October, where every claim it makes about the code was checked against the code. Its text is beside this file (`2026-10-22-review-2d696e6.md`), filed on 28 October.
 
 Each finding is taken, taken in part or not taken, and slotted where it lands. The slots are in `notes/build-plan.md`.
 

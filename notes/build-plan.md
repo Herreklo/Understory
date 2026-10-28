@@ -127,6 +127,7 @@ At −0.15, a harmless round would pass 80% of the time only at 70 to 200 pairs,
 - **S2, the front door's part two:** reads by viewer, `eventsAfter` and versions; then branching (an override named by event id, kept on the world); then save and load. Game-facing reads are scoped to a viewer by default; the truth is a separate, privileged read a game asks for by name; a command says whom the caller acts as (the review of `2d696e6`). Each is announced on #60 before it lands.
 - **N5, the front door's checks** (`refactor` for the town, announced on #60): `invite.what` is checked; `advance` takes a positive whole number of months; an unknown kind is refused with its reason; worlds are held in a `WeakMap` behind an opaque handle, not a cast.
 - **N6, hearsay cited where it decided** (`words`): `citeFlip` (`src/telling.ts`) cites a flipped account on any event between the two people that month. First count how often that is not the flipped decision, then key the citation to the decision. Raised by the reviews of `bffdb33` and `2d696e6`.
+- **N7, the identity sees explanations** (CI only): a `refactor` is also checked with `event.explain` and each person's event index in the signature, which leaves them out so that a `words` change may alter them. Raised by the review of `9204298`.
 - **S3, content as data,** one `refactor` per file between rounds. `motives.ts` is done (#83); `setting.ts` is next, then `families.ts` once the wording round has merged.
 
 ### Page track: one round at a time
