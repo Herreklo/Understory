@@ -2661,3 +2661,56 @@ Next 1, P3; exit 2. Research: `notes/research/environment.md`, refreshed on 28 O
 Help along a tie that exists cannot begin one: only the helped remember an act, and a friendship needs both likes above 0.45. An old or ill adult has a median of 13 ties, and in a town `around` is everyone, so "the people around" would repeat round 46's big casts. The refreshed design takes its casts from state. It is estimated at about 9%, shrunk to **7% (range 5–13%)**, under the 15% stop.
 
 **Outcome.** Øystein stopped P3 at its research on 28 Oct. Nothing was built, and no seeds were claimed. Both rounds of the reach arc missed, P2 at its sizing and P3 here, so the arc goes back to research. The band year (P6) is the people track's next item and takes the next round number.
+
+## Round 48 — the band year (pre-registered 28 Oct 2026, 22:05 Oslo, before any test world; sized first)
+
+Next 1, P6; exits 9, 1, 8. Research: `notes/research/band-year.md`: a band's character outlives its founders if newcomers are told.
+
+**The change**, on unless `OFF=norms`: a credit norm in each member's beliefs, formed from answers to songs seen and weighed in their own once held surely. One incumbent, chosen from state, decides whether to tell a newcomer (`OFF=normtell`: acts alone). `ON=normrows` is out of the claim.
+
+**The counter was set after the sizing** (Øystein, 28 Oct): the one-year one cleared by construction (0.75 with telling off). Review: `reports/48-review.md`, no BLOCKS left.
+
+**Sizing** (`reports/48-size.md`, v4: 1,500 worlds from founding, 600 with telling off; 200 page worlds paired):
+
+| | Check | Sized | Stop |
+| --- | --- | --- | --- |
+| 2 | **Counter:** founders' norm against members who joined after the last founder went, five years on; Fisher-z, on − `OFF=normtell` | **0.38 ±0.17** (0.29 against −0.08) | one-sided 95% bound ≤ 0 |
+| 1 | Answers the norm flips | 10.6% | under 5% |
+| 3 | Norm against make-up; matched bands apart | 0.19; 56.5% | over 0.7; under ⅓ |
+| 4 | Tellers a newcomer; norm lines in a top 25; copy share; "did not come to much" | ≤1; 0; −0.09 ±0.21; −0.7 ±2.0 | over 2; any; bound above +0.6; 95% interval above 0 |
+| 5 | Witness knows acts a norm decided, ten present years | 75.5% (40 years: 28.0%) | under 30% |
+
+**Test.**
+- From-founding runs, 40 years (`src/tools/diag/norms.ts found` and `contrast`):
+  - on: **3825–5324**;
+  - `OFF=normtell`: **3825–4424**.
+- Pages paired on against off, 30+10 years: **3825–4024** (fail-ifs 4 and 5).
+- Battery: `round.mjs --id 48 --switches norms`, with train 1501–1520, evaluation **3749–3768** and lives **3769–3792**.
+- Reading first: random **3793–3800** and busiest **3801–3808**, 48 pairs; **3809–3824** if called.
+
+The reading cannot see the mechanism (about one norm-decided act a decade reaches a witness): it guards only.
+
+**Expected** (shrunk by a quarter):
+- counter 0.28: on 0.22, telling off −0.06;
+- gate 8.0%;
+- fail-if 5: 57%;
+- copy share −0.07.
+
+**Kept if:**
+1. `OFF=norms` is identical to main.
+2. **The counter's** one-sided bound is above 0.
+3. Fail-ifs 1, 3, 4 and 5 hold.
+4. `npm test` passes, and the scoreboard is within ±2 off couples.
+5. It **reads no worse**: bound above −0.3.
+
+**Reported:** the one-year counter (0.80); all members at five years (0.52 against 0.39); the partial r; fail-if 5 over 40 years; answers to songs.
+
+**What would change our minds.**
+- **Kept:** switch out in the next neutral change; background odds refit; the rows decision becomes its own round. Next: the page (exit 3).
+- **2 fails:** not kept; telling carries no further than overlap. Norms return to research (a norm that bites, decay). Next: the page.
+- **3 or 5 fails:** not kept, with the cause named; the norms are off for research.
+- **1 or 4 fails:** withdrawn; a fix is written here first.
+
+**`WHY.md`'s warning:** consequences never visible; fail-if 5 would show it.
+
+**Game lens:** told "here a song is everyone's", a newcomer cheers years after the founders left.
