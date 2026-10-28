@@ -9,8 +9,8 @@
 //           and weighed in every member's own answer to a song.
 //   rows    how rows go here. Above 0, a repeated row is answered (a word, an asking to leave); below, it is let go. Formed from what follows
 //           a member's repeated row, and weighed by the member who decides what follows the next one. A separate part: only with ON=normrows.
-// A norm is weighed beside the five strongest considerations, never cut, and when it decides it is the reason, said with the group's name
-// once it is held surely enough to say (two acts of a kind, not one).
+// A norm is weighed beside the five strongest considerations, never cut, once it is held surely enough to say (two acts of a kind, not
+// one), and when it decides it is the reason, said with the group's name.
 //
 // A newcomer is told how things are done by one incumbent: the one most moved to say it, read from each incumbent's own state (how sure they
 // are of how things go, how bold they are, how they like the newcomer). That one decides whether to say it. The newcomer holds the teller's
@@ -83,10 +83,10 @@ const SAID: Record<Norm, [string, string]> = {
   credit: ["a song is everyone's once it is brought in", 'people keep an eye on who gets the credit'],
   rows: ['a row does not go unanswered', 'rows blow over'],
 };
-// The norm as a consideration for one answer: dir 1 weighs it for the answers it favours, −1 against. Absent when the person holds none.
+// The norm as a consideration for one answer: dir 1 weighs it for the answers it favours, −1 against. Absent unless held surely.
 export function normC(w: World, p: Person, g: Group, what: Norm, dir: 1 | -1, k = 5): Consideration | undefined {
   const b = heldNorm(w, p.id, g, what);
-  if (!b || b.n <= 0) return undefined;
+  if (!b || sure(b) < SAY) return undefined; // a norm held too loosely to say is not weighed: nothing to go on, not a neutral
   const m = b.m;
   return {
     id: keyOf(what),
@@ -96,7 +96,6 @@ export function normC(w: World, p: Person, g: Group, what: Norm, dir: 1 | -1, k 
       weight: 1,
       key: keyOf(what),
       who: p.id,
-      ...(sure(b) < SAY ? { mid: true } : {}),
     }),
     input: v => v.state(p, 'close', z01(m), 0.5),
     curve: dir > 0 ? curves.sCurve(k, 0.5) : curves.sFalling(k, 0.5),
