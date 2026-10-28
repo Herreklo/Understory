@@ -8,6 +8,7 @@
 //     n 6              six months on
 //     p                the people you know best, and who plays as far as you know (a band, practising, or what you heard)
 //     i 64             ask person #64 to a rehearsal: with your band, or, if you have none, to start one
+//     f                what you feel toward people: grief, a resentment, guilt, a debt of gratitude, and what each is over
 //     b                the bands in town
 //     l 12             everything you saw or heard in the last twelve months
 //     ?                this help;  q  quit
@@ -16,7 +17,7 @@
 // You see what the witness could know: events they saw or heard, people's names, ages and work, bands and habits (public), and your own
 // feelings toward people. Never anyone's traits. An answer to an invitation gives its reasons as the engine records them.
 import { createInterface } from 'readline';
-import { bondOf, command, createWorld, events, groups, now, person, places, townIds, type Answer } from '../boundary';
+import { bondOf, command, createWorld, events, feelingsHeld, groups, now, person, places, townIds, type Answer } from '../boundary';
 
 const seed = Number(process.argv[2] ?? 4);
 const h = createWorld({ seed });
@@ -56,7 +57,7 @@ const plays = (id: number) => {
     .pop();
   return e ? `you heard: ${say(e.text).replace(/\.$/, '')} (${when(e.t)})` : '';
 };
-const feel = (id: number) => {
+const liking = (id: number) => {
   const b = bondOf(h, me, id);
   const n = name(id);
   if (!b || b.fam < 0.1) return `You barely know ${n}`;
@@ -65,6 +66,15 @@ const feel = (id: number) => {
   if (b.like < -0.25) return `You do not like ${n}`;
   return `You know ${n}`;
 };
+// Liking, and the strongest feeling you hold toward them, if any (yours alone: never what they feel).
+const feel = (id: number) => {
+  const f = feelingsHeld(h, me).find(f => f.toward === id && f.kind !== 'grief');
+  return f ? `${liking(id)}, and you are ${say(f.words)}` : liking(id);
+};
+// Someone you know: the people list's bar.
+const knows = (id: number) => id !== me && (bondOf(h, me, id)?.fam ?? 0) >= 0.1;
+// A strong feeling bringing someone to the one it is about, and the answer to it (feelings.ts): news when you know either of them.
+const meeting = (e: ReturnType<typeof events>[number]) => (e.decision?.trigger ?? '').startsWith('meeting') && e.who.some(knows);
 const line = (id: number) => {
   const p = person(h, id)!;
   const job = p.job != null ? `, works at ${placeName.get(p.job) ?? p.job}` : '';
@@ -87,7 +97,8 @@ function month(from: number) {
   for (let t = from; t <= now(h).t; t++) {
     const all = known(t).filter(e => e.t === t);
     const shown = all.filter(
-      e => !TEXTURE.has(e.type) && (e.who.includes(me) || e.who.some(i => mine.includes(i)) || e.type.startsWith('group:') || e.w >= 1.6),
+      e =>
+        !TEXTURE.has(e.type) && (e.who.includes(me) || e.who.some(i => mine.includes(i)) || e.type.startsWith('group:') || e.w >= 1.6 || meeting(e)),
     );
     console.log(`── ${when(t)} ──`);
     for (const e of shown) console.log('  ' + say(e.text));
@@ -106,6 +117,12 @@ function people() {
   for (const [i] of close) console.log('  ' + line(i));
   console.log('Who plays, as far as you know:');
   for (const i of ids.filter(i => plays(i) && age(i) >= 15)) console.log('  ' + line(i));
+}
+
+function feelings() {
+  const fs = feelingsHeld(h, me);
+  if (!fs.length) return console.log('  Nothing you feel toward anyone is strong enough to weigh on you.');
+  for (const f of fs) console.log(`  You are ${say(f.words)}${f.stands || f.kind === 'grief' ? '' : ', though it has been put right'}.`);
 }
 
 function bands() {
@@ -128,7 +145,9 @@ function told(a: Answer) {
 }
 
 function help() {
-  console.log('  Enter or n: next month   n 6: six months   p: people   i <id>: invite to a rehearsal   b: bands   l 12: all you know   q: quit');
+  console.log(
+    '  Enter or n: next month   n 6: six months   p: people   f: what you feel   i <id>: invite to a rehearsal   b: bands   l 12: all you know   q: quit',
+  );
 }
 
 refresh();
@@ -146,6 +165,7 @@ for await (const raw of rl) {
     month(from);
   } else if (cmd === 'p') people();
   else if (cmd === 'i' && arg) told(command(h, { kind: 'invite', by: me, to: Number(arg), what: 'rehearsal' }));
+  else if (cmd === 'f') feelings();
   else if (cmd === 'b') bands();
   else if (cmd === 'l') for (const e of known(now(h).t - Number(arg ?? 12) + 1)) console.log(`  ${when(e.t)}: ${say(e.text)}`);
   else help();
