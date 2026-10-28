@@ -69,6 +69,9 @@ for (let seed = 1; seed <= 30 && checked < 6; seed++) {
         if (!earlier(wd.t).length) {
           bad++;
           console.log(`seed ${seed} person ${id}: a word with no row or word in the three years before`);
+        } else if (words.some(x => x.t < wd.t && wd.t - x.t <= 36)) {
+          bad++;
+          console.log(`seed ${seed} person ${id}: a second word while the first still stands`);
         }
       for (const a of asked.filter(x => x.t >= w.startPresent)) {
         const e = earlier(a.t);

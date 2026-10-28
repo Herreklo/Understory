@@ -180,7 +180,8 @@ export function tellNewcomer(w: World, g: Group, q: Person) {
 }
 
 // What follows a member's repeated row: the one who would say it (group.ts, from state) decides whether to let it go, have a word or, after
-// a warning or a third row, ask them to leave. The rows they have had and the norm are weighed beside who the speaker is.
+// a warning or a third row, ask them to leave. While a word still stands it has been said: what is left is to ask them or let it go. The
+// rows they have had and the norm are weighed beside who the speaker is.
 export function rowAnswer(
   w: World,
   g: Group,
@@ -188,6 +189,7 @@ export function rowAnswer(
   p: Person,
   rows: number,
   canAsk: boolean,
+  warned: boolean,
 ): { step: 'row' | 'word' | 'asked'; why: Cause[]; rec: any } {
   const feats = new Set<Feature>(['standing', 'pressure']);
   const n = rows + 1;
@@ -199,11 +201,20 @@ export function rowAnswer(
       label: 'let it go',
       considerations: [facetC(speaker, 'forgiveness', feats, 1, 4), bondC(w, speaker, p, 'like', 1), count(-1), ...some(norm(-1))],
     },
-    {
-      id: 'word',
-      label: `have a word with @${p.id}`,
-      considerations: [facetC(speaker, 'socialBoldness', feats, 1, 4), facetC(speaker, 'organisation', feats, 1, 3), count(1), ...some(norm(1))],
-    },
+    ...(warned
+      ? []
+      : [
+          {
+            id: 'word',
+            label: `have a word with @${p.id}`,
+            considerations: [
+              facetC(speaker, 'socialBoldness', feats, 1, 4),
+              facetC(speaker, 'organisation', feats, 1, 3),
+              count(1),
+              ...some(norm(1)),
+            ],
+          },
+        ]),
     ...(canAsk
       ? [
           {

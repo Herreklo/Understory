@@ -897,7 +897,18 @@ export function groupTick(w: World) {
               (a, b) => facet(b, 'socialBoldness') + facet(b, 'organisation') - (facet(a, 'socialBoldness') + facet(a, 'organisation')),
             )[0] ?? enemy;
           // Round 48: the ladder says what is on the table, and the speaker decides (norms.ts). A row let go is the row itself, below.
-          const said = normsOn() ? rowAnswer(w, g, speaker, p, (rows[p.id] ?? []).filter(t => w.t - t <= 36).length, step === 'asked') : undefined;
+          const warnedAt: number | undefined = (g as any)['warned:' + p.id];
+          const said = normsOn()
+            ? rowAnswer(
+                w,
+                g,
+                speaker,
+                p,
+                (rows[p.id] ?? []).filter(t => w.t - t <= 36).length,
+                step === 'asked',
+                warnedAt != null && w.t - warnedAt <= 36,
+              )
+            : undefined;
           if (said) {
             step = said.step;
             seeNorm(w, g, 'rows', step === 'row' ? -0.5 : 1);
