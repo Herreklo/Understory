@@ -1,0 +1,11 @@
+{
+ "switch": "norms",
+ "kind": "OFF",
+ "worlds": [
+  3801,
+  3808
+ ],
+ "perWorld": 3,
+ "pick": "eventful",
+ "commit": "d7d7096a11524b45bccc677969fc87dbdbc140b4"
+}
