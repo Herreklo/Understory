@@ -137,7 +137,8 @@ for (let seed = A; seed <= B; seed++) {
   for (const e of w.events) {
     if (e.t < t0 || !e.who.length) continue;
     const trig = (e.decision?.trigger ?? '').replace(/:.*$/, '');
-    const atWork = WORK_TYPES.has(e.type) || ['deadline', 'work', 'shift', 'boss', 'task'].includes(trig);
+    // A debt called in is not work: it happens wherever the two meet, a pub included (round 46's sizing met one at the Anchor).
+    const atWork = (WORK_TYPES.has(e.type) && trig !== 'collection') || ['deadline', 'work', 'shift', 'boss', 'task'].includes(trig);
     if (!atWork) continue;
     const p = w.byId.get(e.who[0]);
     if (!p) continue;

@@ -23,6 +23,7 @@ import { workTick, skillTick } from './work';
 import { yearly } from './yearly';
 import { aftermathTick } from './aftermath';
 import { feelingsTick } from './feelings';
+import { sidesTick } from './sides';
 
 export function tick(w: World) {
   w.t++;
@@ -78,4 +79,5 @@ export function tick(w: World) {
   scoreRecent(w);
   aftermathTick(w); // what this month's blows will change (round 34): queued for next month's situations; no dice
   feelingsTick(w); // feelings fade, unless their cause renews them (round 44); no dice
+  sidesTick(w); // this month's rifts: who is close to both decides next month (round 46); no dice
 }

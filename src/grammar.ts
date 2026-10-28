@@ -70,6 +70,8 @@ export interface Instance {
   minIntensity?: number;
   only?: Partial<Record<Family, string[]>>; // restrict a family to these expressions
   ownFirst?: boolean; // the situation's own considerations come before the trait wiring, so none of them is cut at five
+  told?: boolean; // decided in private, the act is told about town all the same (round 46: who sided with whom)
+  words?: (expr: Expression) => string | undefined; // the act's words, in place of the expression's own (round 46: by kind of rift)
   where?: string; // where it happened, said at the § in the act's words or at the end of the sentence
   // The reasons the act gives after its cause, in place of the decision's own (round 37: a change after a blow gives what a reader
   // accepts for it). The decision record keeps every consideration either way.
@@ -270,6 +272,7 @@ export function wiringC(p: Person, fam: Family, feats: Set<Feature>, toward?: nu
 }
 
 // ---------- choosing an expression within a family ----------
+const SIDED = new Set(['sideagainst', 'standby', 'keepout']);
 export function pickExpression(w: World, p: Person, fam: Family, inst: Instance, view?: View): Expression {
   const feats = inst.features;
   const cands = BY_FAMILY[fam]
@@ -284,7 +287,8 @@ export function pickExpression(w: World, p: Person, fam: Family, inst: Instance,
         (inst.target || !e.needsTarget),
     );
   const solo = BY_FAMILY[fam].filter(e => e.solo);
-  const pool = cands.length ? cands : inst.target ? BY_FAMILY[fam] : solo.length ? solo : BY_FAMILY[fam];
+  // A fallback never takes an answer whose words need its own situation's filler (taking sides names the other side, round 46).
+  const pool = cands.length ? cands : (inst.target ? BY_FAMILY[fam] : solo.length ? solo : BY_FAMILY[fam]).filter(e => !SIDED.has(e.id));
   const read = view ? (k: string) => view.facet(p, k, inst.target?.id, feats) : (k: string) => facet(p, k, inst.target?.id, feats);
   // A person's style is theirs: the noise here is small, so the same person answers the same way, mostly.
   const scored = pool.map(e => {
@@ -424,7 +428,7 @@ export function run(w: World, inst: Instance): Outcome | null {
     (feats.has('public') && inst.place && ['shout', 'sarcasm', 'dressdown', 'confront', 'walkout', 'speakup', 'rake'].includes(expr.id)
       ? ` in front of everyone at ${inst.place}`
       : '');
-  let said = expr.text(`@${p.id}`, t ? `@${t.id}` : '', inst.thing, self(p), hash(w.seed, p.id, expr.id, w.t));
+  let said = inst.words?.(expr) ?? expr.text(`@${p.id}`, t ? `@${t.id}` : '', inst.thing, self(p), hash(w.seed, p.id, expr.id, w.t));
   // Someone with no job keeps busy rather than burying themselves in work (round 41, words only).
   if (fit() && expr.id === 'work' && p.job == null) said = said.replace(/ buried (\S+) in work/, ' kept $1 busy from morning to night');
   // Not taking money is not a confession (round H25, words only).
@@ -468,7 +472,7 @@ export function run(w: World, inst: Instance): Outcome | null {
         ? ` Nobody was surprised any more: it had been happening since ${year(since)}.`
         : ' Nobody was surprised any more.';
   }
-  const vis: Event['vis'] = expr.secret ? 'private' : feats.has('public') ? 'local' : 'private';
+  const vis: Event['vis'] = expr.secret ? 'private' : feats.has('public') || inst.told ? 'local' : 'private';
   // Circumstance discounts character: the more the visible situation explains the act, the less it says about the person.
   // An observer sees the act, not the person's true trait size, how far circumstance truly drove it, or an if-then at work (round F26):
   // the weight and the discount are the averages over a town (round H25's worlds, 9001–9020), and an if-then's evidence takes the act's
@@ -508,7 +512,8 @@ export function run(w: World, inst: Instance): Outcome | null {
   const again =
     (p.tried['seen:' + expr.id]?.t ?? -99) > w.t - 36 ||
     (sameAsLast && ['risk', 'deadline', 'chance'].includes(inst.type) && (p.tried['last:' + inst.type]?.n ?? 0) > 2);
-  const logged = !expr.quiet && (again ? w.rng.chance(expr.intensity >= 0.6 ? 0.2 : 0.08) : !minor || w.rng.chance(0.5));
+  // Taking sides is news each time: each is a different rift (round 46).
+  const logged = !expr.quiet && (again && !SIDED.has(expr.id) ? w.rng.chance(expr.intensity >= 0.6 ? 0.2 : 0.08) : !minor || w.rng.chance(0.5));
   const e = addEvent(w, {
     type: expr.id,
     who: t && !expr.solo ? [p.id, t.id, ...inst.others.map(o => o.id)] : [p.id, ...inst.others.map(o => o.id)],
@@ -535,15 +540,15 @@ export function run(w: World, inst: Instance): Outcome | null {
     if (p.partner != null) e.knownBy.set(p.partner, 'seen');
     for (const f of p.friends) if (w.rng.chance(0.5)) e.knownBy.set(f, 'seen');
   }
-  broadcast(w, e);
+  broadcast(w, e, inst.told);
   // Effects on the target and on watchers.
   if (t && !expr.solo) {
     const k = 0.5 + expr.intensity * 0.5;
-    remember(w, t, p, e.id, expr.like * k, expr.respect * k, expr.trust * k, shortText(expr, p, t));
+    remember(w, t, p, e.id, expr.like * k, expr.respect * k, expr.trust * k, shortText(expr, p, t, SIDED.has(expr.id) ? inst.thing : undefined));
     if (expr.like < -0.25 && expr.intensity >= 0.45 && !inst.type.startsWith('row')) queueProvocation(w, t, p, e, feats.has('public')); // a row is answered inside the row
   }
   feelAct(w, inst, p, t, fam, expr, e.id);
-  if (vis === 'local' && expr.like !== 0)
+  if (vis === 'local' && expr.like !== 0 && !inst.told)
     for (const [id, how] of e.knownBy)
       if (how === 'seen' && id !== p.id && id !== t?.id) {
         const r = bond(w, id, p.id);
@@ -577,13 +582,15 @@ export function run(w: World, inst: Instance): Outcome | null {
   return { family: fam, expr, event: e };
 }
 // What the target remembers of an act, in their own words ('told people what I had told her in confidence').
-export function shortText(expr: Expression, p: Person, t: Person) {
+export function shortText(expr: Expression, p: Person, t: Person, filler?: string) {
   const A = '\u0001';
   const she = p.sex === 'f' ? 'she' : 'he',
     her = p.sex === 'f' ? 'her' : 'him',
     hers = p.sex === 'f' ? 'hers' : 'his';
   // Round 41: the first to say someone's song was the best thing they had said it of a song.
-  const th = expr.id === 'rake' || expr.id === 'letgo' ? 'the old business' : /song$/.test(expr.id) || (fit() && expr.id === 'cheer') ? 'song' : 'it';
+  const th =
+    filler ??
+    (expr.id === 'rake' || expr.id === 'letgo' ? 'the old business' : /song$/.test(expr.id) || (fit() && expr.id === 'cheer') ? 'song' : 'it');
   return expr
     .text(A, 'me', th, self(p))
     .replace('§', '')

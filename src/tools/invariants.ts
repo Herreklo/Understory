@@ -4,10 +4,14 @@
 //  3. Rows happen only between partners, and a couple's state is kept in one place whoever raises a row (rounds 20, 20b).
 //  4. The consistency audit (round 21, src/audit.ts) finds nothing.
 //  5. Every thread event is on the own list of each person it is about, and no list holds an event twice (round F26).
+//  6. A resentment let go that a new wrong makes stand again cites the new wrong, from now, and never becomes "never forgave" for the old
+//     one; while its cause stands a weaker wrong keeps the stronger cause; the debt and the feeling cite the same wrong (round 46).
 import { buildWorld } from '../build';
 import { tick } from '../life';
 import { pickWitness } from '../witness';
-import { live, age, OFF, ON, type World } from '../world';
+import { live, age, OFF, ON, sidesOn, type World } from '../world';
+import { BY_FAMILY } from '../families';
+import { feelAct, feelingsOf, feelingsOn, feelingsTick, metObject } from '../feelings';
 import { persona, personaTick, QUIRKS } from '../persona';
 import { audit, type Found } from './audit';
 
@@ -88,6 +92,62 @@ for (const [k, v] of found) fail(`${k}: ${v.n} (${v.ex[0]})`);
   console.log(
     `invariants ok: the consistency audit and friendship symmetry hold over 3 worlds × 6 years; rows only between couples; marks fade (${before} held → ${after} thirty quiet years on), faded rules leave the self-story`,
   );
+}
+// A let-go resentment renewed by a new wrong (round 46): it stands on the new wrong, from the month of it. With OFF=sides it keeps its
+// old cause and month, as before the round. Two pairs: one let go by amends (the debt paid), one let go at a meeting, each after a
+// second, weaker wrong that came while the first still stood.
+if (feelingsOn()) {
+  const w = buildWorld(35, 1);
+  pickWitness(w);
+  for (let m = 0; m < 12; m++) tick(w);
+  const adults = live(w).filter(p => age(w, p) >= 20);
+  const inst = { type: 'test', features: new Set() } as any;
+  const all = Object.values(BY_FAMILY).flat();
+  const harm = (x: (typeof all)[number]) => -x.like * (0.5 + x.intensity);
+  const wrongs = all.filter(x => x.like <= -0.25 && x.intensity >= 0.45).sort((a, b) => harm(b) - harm(a));
+  const [hard, soft] = [wrongs[0], wrongs[wrongs.length - 1]];
+  const kind = all.find(x => x.family === 'warmth' && x.like > 0 && !x.solo)!;
+  const letgo = all.find(x => x.id === 'letgo')!;
+  const res = (t: number, o: number) => feelingsOf(w, t).find(f => f.k === 'resentment' && f.o === o);
+  let n = 0;
+  for (const [i, how] of [
+    [0, 'amends'],
+    [2, 'meeting'],
+  ] as const) {
+    const [p, t] = [adults[i], adults[i + 1]];
+    const e1 = w.events.length - 1;
+    feelAct(w, inst, p, t, hard.family, hard, e1);
+    const e2 = e1 - 1;
+    feelAct(w, inst, p, t, soft.family, soft, e2); // overlapping: the first still stands
+    const f = res(t.id, p.id);
+    if (!f) {
+      fail(`world 35: no resentment after ${hard.id}`);
+      continue;
+    }
+    if (f.ev !== e1) fail(`world 35: a weaker wrong while the first stood replaced its cause (${f.ev}, not ${e1})`);
+    if (how === 'amends') feelAct(w, inst, p, t, kind.family, kind, e2);
+    else metObject(w, t, p, 'resentment', letgo);
+    if (f.stands) fail(`world 35: the resentment still stands after ${how}`);
+    const [t1, what1] = [f.t, f.what];
+    w.t += 40; // past the three years after which an unresolved grudge is never forgiven
+    const e3 = e1 - 2;
+    feelAct(w, inst, p, t, soft.family, soft, e3);
+    const g = res(t.id, p.id)!;
+    if (!g.stands) fail(`world 35: a new wrong after ${how} did not make the resentment stand`);
+    if (sidesOn()) {
+      if (g.ev !== e3 || g.t !== w.t || g.what === what1)
+        fail(`world 35: reopened after ${how}, it cites event ${g.ev} of month ${g.t}, not ${e3} of ${w.t}`);
+      if (p.owes?.to === t.id && p.owes.ev !== g.ev) fail(`world 35: the debt cites ${p.owes.ev} and the resentment ${g.ev}`);
+    } else if (g.ev !== e1 || g.t !== t1) fail(`world 35 (OFF=sides): reopened, it no longer keeps its old cause`);
+    feelingsTick(w);
+    if (sidesOn() && t.exceptions.some(x => x.other === p.id && x.key === 'forgiveness' && x.cause === e1))
+      fail(`world 35: "never forgave" for the wrong that had been settled (${how})`);
+    n++;
+  }
+  if (n === 2)
+    console.log(
+      `invariants ok: a resentment reopened after amends or a meeting ${sidesOn() ? 'cites its new cause' : 'keeps its old cause (sides off)'}`,
+    );
 }
 // A quirk may describe a habit, a disposition or a state, never a one-off past act that is not on the record. A pattern that opens with a
 // past-tense verb must rest on something the record holds: someone they lost, an achievement of theirs, or a real grudge.
