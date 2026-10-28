@@ -131,7 +131,7 @@ A world is built by `buildWorld` (founders, families, jobs at year zero) and the
 - `src/tools/diag/sig.ts`: for a change to words only. It hashes behaviour without text, for comparing two trees.
 - `src/tools/diag/ident.ts record`: the full event record of the identity seeds, one canonical JSON line per event, read through the boundary (`out-reference/`). It is what a port of the engine must reproduce line for line; any tag reproduces its own records exactly.
 - `src/tools/boundarytest.ts` (in `npm test`): a world run through the boundary is identical to one run directly, everything it gives back is plain data, a refused command writes nothing, and an invitation is answered alike every time.
-- `src/tools/play.ts`: the slice, a plain-text client that plays the witness through the boundary alone: who is around, what they saw or heard, an invitation to a rehearsal, months going by (how to play in its header).
+- `src/tools/play.ts`: the slice, a plain-text client that plays the witness through the boundary alone: who is around, what they saw or heard, an invitation to a rehearsal, months going by (how to play in its header). A worked example of the front door, not developed further: play is Overstory's.
 - `src/tools/mathtest.ts` (in `npm test`): the engine's own maths functions against JavaScript's, within 4×10⁻¹⁶ over the ranges the engine uses.
 - `src/tools/diag/samerecord.ts`: whether two arms tell the same story, event by event (type, month, who, decision, words), and the largest gap in an option's probability.
 

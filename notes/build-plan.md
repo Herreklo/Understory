@@ -16,7 +16,7 @@ _Third pass, agreed with Øystein on 22 October and written on 26 October, when 
 
 **People are needed in two places, and they play there rather than read.** A cold page of a stranger's life tests none of what a game needs: a player cares about people through a stake of their own (their person, their circle, what their acts led to).
 
-1. **To close exit point 5,** which is people by definition: players come to care about the people around them. Overstory's playtests are the first evidence. The slice (S1) is next: the text client through the front door, played by Øystein and people who know the project, once feelings part one gives a refusal that reads a feeling. What they say they cared about, about whom and why, goes in `reports/`, with no pass mark. H2, five outsiders playing cold at phase C's gate, judges it.
+1. **To close exit point 5,** which is people by definition: players come to care about the people around them. Overstory's playtests and its build are the evidence: the slice, Understory's own text client, could not be played (decision 24). H2, five outsiders playing Overstory's build cold at phase C's gate, judges it.
 2. **Before a reader's taste steers a design.** Selection (G2) decides what the page shows. In round 35, model readers chose the longer page 70% of the time, and judges built on language models are known to prefer longer answers (Zheng et al. 2023; Saito et al. 2023). What players skip and what they ask to see answers it better, so G2 waits for the slice to have been played.
 
 **Everything else needs no person.** Exit points 1, 2, 3, 6, 7 and 8 are judged by counters: decisions flipped, reach and links, faults on the page, the scoreboard, the city's budget and lasting change. Points 4 and 9 are judged by counters too (dead lives; a group's character surviving its founders), and each ends with a reader's clause: saying who four of five people are, or what four of five groups are like, in one sentence. The model readers answer those clauses between rounds, as they did for point 4 in rounds 24a–24c, and H2's players answer them once. **The model reading guards each round against harm, and is never the reason to keep one.** CLAUDE.md forbids keeping a round on "reads better" until people have read; here that means until people have played. The work any game needs regardless is the same work: ties with an inner life, consequences that travel, groups, places and homes, the front door's second part, content as data, the city. Section 4 orders it first.
@@ -33,7 +33,7 @@ _Third pass, agreed with Øystein on 22 October and written on 26 October, when 
 The answer is two tracks of rounds and one of plumbing:
 
 - **People track,** one experiment at a time: feelings part one; feelings meet their object; taking sides; shared hardship; the band year; wants for later life. Secrets with accounts, a third person and feelings' further kinds wait for Overstory's register to ask for them.
-- **Page track,** beside it, on page files only: the wording round; every clause carrying its IDs (N3); particulars and callbacks; then selection, once people have played the slice (S1).
+- **Page track,** beside it, on page files only: the wording round; every clause carrying its IDs (N3); particulars and callbacks; then selection, once people have played Overstory's build.
 - **Neutral jobs** beside both, the measures and the guard first.
 
 Every round has one primary counter, which can fail it. The reading checks "reads no worse".
@@ -123,7 +123,7 @@ At −0.15, a harmless round would pass 80% of the time only at 70 to 200 pairs,
   - #22's first command, an invitation answered by the other person's own decision;
   - a text client in `src/tools/play.ts` that plays one witness through the front door, with the band, rough and end to end;
   - once feelings part one is in, a refusal can read a feeling ("still sore at you"): the first place a player acts on one;
-  - **then people play it** (section 0): Øystein and people who know the project, about an hour each, no credits. Each says whom they came to care about and why, and what they skipped. It is written in `reports/`, with no pass mark.
+  - **played on 28 October, and unplayable** (`reports/s1-slice-2026-10-28.md`): the player's person acts without them, and inviting is the one thing to do. S1 ends here (decision 24).
 - **S2, the front door's part two:** reads by viewer, `eventsAfter` and versions; then branching (an override named by event id, kept on the world); then save and load. Game-facing reads are scoped to a viewer by default; the truth is a separate, privileged read a game asks for by name; a command says whom the caller acts as (the review of `2d696e6`). Each is announced on #60 before it lands.
 - **N5, the front door's checks** (`refactor` for the town, announced on #60): `invite.what` is checked; `advance` takes a positive whole number of months; an unknown kind is refused with its reason; worlds are held in a `WeakMap` behind an opaque handle, not a cast.
 - **N6, hearsay cited where it decided** (`words`): `citeFlip` (`src/telling.ts`) cites a flipped account on any event between the two people that month. First count how often that is not the flipped decision, then key the citation to the decision. Raised by the reviews of `bffdb33` and `2d696e6`.
@@ -142,9 +142,9 @@ Each round claims an effect on how a page reads, so each is an experiment. None 
 - **Primary counter:** unfit reasons cited on the changed lines, on against off. The score cannot see it.
 - **The last round on reasons:** if it stops or is not kept, reasons rest.
 
-**The order:** G1, then N3, then G3, then G2. Selection is the one round whose design a model's taste for length would steer, so it waits until people have played the slice.
+**The order:** G1, then N3, then G3, then G2. Selection is the one round whose design a model's taste for length would steer, so it waits until people have played Overstory's build.
 
-**G2. Selection** (exit 5), after the slice is played.
+**G2. Selection** (exit 5), after people have played Overstory's build.
 
 - **What:** fold the town calendar into one line with its span, and drop the want echoes. They are the most-faulted repeats (4.8 and 5.5 per hundred readings), and the festival alone draws 19% of all repeat faults on file.
 - **Expected:** copies fall from 21% to about 18%.
@@ -230,7 +230,7 @@ Points 6 and 7 are held: the scoreboard gate guards 6, and refitting the city's 
 
 - **The register** from Overstory's paper playtests is coming (#60, 21 October). Each request is placed by its layer: an engine capability joins its round, the front door or export joins S1 or S2, content joins S3. A domain or presentation stays Overstory's.
 - **It may pull one arc forward** by Øystein's choice, never displacing an open round. P7 is likeliest: their panel leads with the paper and a mystery. What we take is recorded in SUMMARY.
-- **H2, the human test, at phase C's gate:** at least five outsiders play cold, as a person in a town of the engine to be built on, through the slice or Overstory's build of the day, by exit point 5's bar. They also give points 4 and 9's sentences about the people and groups they met. Only Øystein can find the players, and they are cold only once. If none are found by phase C's gate, the game is chosen without H2, and exit point 5 stays open.
+- **H2, the human test, at phase C's gate:** at least five outsiders play cold, as a person in a town of the engine to be built on, through Overstory's build of the day, by exit point 5's bar. They also give points 4 and 9's sentences about the people and groups they met. Only Øystein can find the players, and they are cold only once. If none are found by phase C's gate, the game is chosen without H2, and exit point 5 stays open.
 - **Phase C, the first game,** is chosen once the register is in and exit points 1, 2 and 9 are close, or once the stop rule fires, and after H2. Built for it then: the pack format with its Rule 8 closure, the town as `packs/town`, an unlike test pack in CI, and the music domain behind its interface.
 - **Phase D, as games ask:** time and moments, crime, inheritance with homes (#59), fame as reach. Each is an arc of research and at most two rounds.
 
@@ -298,6 +298,10 @@ On 22 October Øystein left the decisions to the lead session ("you do what you 
 **After round 44, 26 October.** Øystein's decision, in chat: "Yes, fold round 44's code into P4 as one round."
 
 23. **Round 44's code folds into P4: one round, one switch (`feelings`), one primary counter.** P1 is not read alone and is not started again. This replaces the branch that let P4 carry P1's code only if P1 read no worse on its own. Round 44 failed its counter and makes no claim of its own: it is P4's ground, not a part of a bundle, and P4 is the arc's first full round. A reading of P1 alone could not have seen it (0.29 lines a busiest page). The counter is the research's (`notes/research/meeting.md`): of held feelings at 0.3 or more, the share that change an act toward their object within a year, 0.9% today, about 4% expected, and a stop under 2.5%. Round 44's own counter is reported beside it. Before P4's sizing, a neutral change runs `npm test`'s demography check on 24 worlds with its bar unchanged: on six, the off arm alone fails one block in four.
+
+**After the slice was played, 28 October.** Øystein's decision, in chat: "record the slice result and leave play to Overstory's build; Understory stops building clients."
+
+24. **Understory builds no clients; play is Overstory's.** Øystein played the slice (`reports/s1-slice-2026-10-28.md`) and stopped within minutes: his person acted without him, and the one thing to do was invite. With no decision of their own a player has no stake, so a better format would not help. Exit point 5's evidence comes from Overstory's playtests and build, and H2 plays that build. `play.ts` stays as a worked example of the front door and is not developed. What a player needs to decide for their person (the answers the engine weighs for the witness, and an override the world carries on from) comes when Overstory asks, and is placed in S2. G2 waits for what players skip in Overstory's build.
 
 **Carried unchanged from the first plan:**
 
