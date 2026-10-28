@@ -34,5 +34,5 @@ for (let seed = A; seed <= B; seed++) {
     drinkerShare: drinkers / months,
     texts: deaths.map(e => e.text.replace(/@\d+/g, '@')),
   };
-  writeFileSync(`out-sides-death/${rule}-${seed}.json`, JSON.stringify(out));
+  writeFileSync(`${process.env.DEATH_OUT ?? 'out-sides-death'}/${rule}-${seed}.json`, JSON.stringify(out));
 }
