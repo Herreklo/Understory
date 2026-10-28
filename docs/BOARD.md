@@ -2647,3 +2647,17 @@ Sized three times on throwaway worlds (`reports/46-size.md`, tool `src/tools/dia
 
 The code stays in, off unless `ON=sides`, with the renewal-cause fix behind it. A fix must come from the person's own state, never from a cap on deciders (the guard). Shared hardship (P3) is next.
 
+
+## Round 47 — shared hardship (stopped at its research 28 Oct 2026, never built or pre-registered)
+
+Next 1, P3; exit 2. Research: `notes/research/environment.md`, refreshed on 28 Oct against main at 10cd4ec (PR #110). A shared condition, such as a power cut, would expose people by its kind. The people around them would help or not.
+
+**What the refresh found.** The 22 Oct estimate of 20% shrank the accident's "leads somewhere" (40–50%), which counts any weighty descendant. On P3's counter (decision 20: a tie begun or ended, a move, money, a want or a turn within three years), today's nearest acts give, on 9001–9020:
+
+- the rescue 28% and freezing 0%, so the accident pools at 15%;
+- a visit after a loss 1.3%, and a friend's absence 14%;
+- the hat 1%.
+
+Help along a tie that exists cannot begin one: only the helped remember an act, and a friendship needs both likes above 0.45. An old or ill adult has a median of 13 ties, and in a town `around` is everyone, so "the people around" would repeat round 46's big casts. The refreshed design takes its casts from state. It is estimated at about 9%, shrunk to **7% (range 5–13%)**, under the 15% stop.
+
+**Outcome.** Øystein stopped P3 at its research on 28 Oct. Nothing was built, and no seeds were claimed. Both rounds of the reach arc missed, P2 at its sizing and P3 here, so the arc goes back to research. The band year (P6) is the people track's next item and takes the next round number.
