@@ -1,0 +1,14 @@
+20 worlds, yearly samples of adults 75+ or ill: 2108 person-years (10.5 a world-year)
+c:acquaintance      12392  per exposed 5.88
+c:colleague           123  per exposed 0.06
+c:friend            11023  per exposed 5.23
+c:household          1113  per exposed 0.53
+c:kin                2153  per exposed 1.02
+exposed              2108  per exposed 1.00
+nf                  12515  per exposed 5.94
+nf:cross0.25         2202  per exposed 1.04
+nf:cross0.45         2759  per exposed 1.31
+nf:helperLikes       3058  per exposed 1.45
+noCloseTie             67  per exposed 0.03
+nobody                 30  per exposed 0.01
+ties per exposed: median 13, p90 23, max 40

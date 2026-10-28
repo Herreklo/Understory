@@ -1,0 +1,27 @@
+20 worlds, 10 present years each; mean town 84 people, 68 adults
+Rates per world-decade, 95% interval over worlds.
+
+Storm months that reached someone: 3.8 ±0.9 a world-decade; harbour workers in a month: mean 5.7 (0 in 0% of months)
+  deciders per storm: mean 5.5; storms where everyone hung back (so "the others went out" is false): 8 of 76 (11%)
+storm: went out (risk, go)                                    8.4 ± 2.1  leads   6%  turn   0%  witness  57%  town knows  22%
+                                                             descendants within 36 months (share of sources): ill 7%, token 5%, chipin 4%, nowallet 2%, visit 1%, allnighter 1%
+storm: hung back (risk, hangback)                            12.4 ± 3.9  leads   0%  turn   0%  witness  58%  town knows  22%
+storm: hurt by the wave (ill citing a go)                     0.6 ± 0.3  leads  62%  turn   0%  witness  92%  town knows  83%
+                                                             descendants within 36 months (share of sources): token 62%, chipin 50%, nowallet 25%, quietgive 12%
+accident at work (danger source)                              1.2 ± 0.4  leads 100%  turn  33%  witness  76%  town knows  83%
+                                                             descendants within 36 months (share of sources): froze 93%, rescue 93%, token 60%, chipin 60%, letgo 47%, visit 40%
+accident: went in (rescue)                                    2.5 ± 0.9  leads  55%  turn  28%  witness  60%  town knows  23%
+                                                             descendants within 36 months (share of sources): visit 28%, friends 28%, pitchin 7%, letgo 7%, swallow 7%, deliver 7%
+accident: froze                                               2.1 ± 0.9  leads  32%  turn   0%  witness  55%  town knows  22%
+                                                             descendants within 36 months (share of sources): letgo 24%, rake 20%, carryon 20%, visit 4%, humour 4%, dislike 4%
+death (for comparison: the one blow that reaches)             7.0 ± 0.7  leads  90%  turn  50%  witness  89%  town knows  83%
+                                                             descendants within 36 months (share of sources): takeup 71%, visit 54%, keepaway 50%, habit:broke 46%, carryon 42%, absent 37%
+any weighty public event                                    150.8 ± 9.1  leads  36%  turn  25%  witness  88%  town knows  81%
+                                                             descendants within 36 months (share of sources): want:achieved 15%, tell 8%, cooled 8%, carryon 7%, pursuit 7%, takeup 6%
+
+Events naming 3+ people: 135.1 ±19.2 a world-decade; commonest kinds: group:work 58.5, group:show 48.5, born 7.3, group:joined 4.7, group:left 3.5, death 3.5, night:good 3.2, scheme:found 1.1
+
+Adults whose portrait names weather: 409 of 1351 (30%); lines by kind: loves "storms, from inside" / "the first snow" 179; proud of "the day in the storm" (a rescue at work) 173; a quirk or habit naming weather 111
+
+Exposed adults at the end (share of adults, mean per world): old 19% (12.7); ill 3% (2.1); alone 36% (24.4); friendless 11% (7.2); aloneFriendless 6% (4.2); aloneOld 10% (6.5); oldOrIll 20% (13.7)
+Old (75+) or ill, the union: 13.7 ±1.7 a world (range 8–23)
