@@ -1,0 +1,33 @@
+Round 46, the builder's local gate run (GitHub Actions refused the jobs: billing). 28 Oct 2026.
+Merge commit 5f4ce8c756bf4efff43c05b76e56c5c7dc7d7cc4 (local, not pushed) of round/46 at d2a316a onto main at 8c74b09.
+Later commits on round/46 (732a6ae) touch only src/tools/diag, reports and docs: no engine file.
+Prettier --check (src, scale) on 732a6ae: all files use Prettier code style.
+The rederiver's second run is due at the merge gate, on the merge commit then.
+
+== check-seeds
+seeds ok: 126 ranges, none reused
+exit 0
+== tsc
+exit 0
+== npm test
+exit 0
+11  0      near-identical names among the living
+12  0      a friendship that ends and restarts with nothing between
+COHERENCE {"seeds":[11,12],"counts":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0}}
+== identity
+## Identity against main
+
+Engine files changed: 10.
+Checked with `OFF=sides`, the switch this PR declares.
+
+```
+on/11: identical
+on/12: identical
+on/13: identical
+```
+
+- Everything identical to main.
+- Behaviour identical to main (words check).
+
+**✓ Identity holds for what this PR says it is.**
+exit 0
