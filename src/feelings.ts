@@ -36,7 +36,7 @@
 import { clamp } from './rng';
 import { pow } from './mathx';
 import { curves, type Consideration, type Know, type Option } from './decide';
-import { OFF, facet, peekBond, bond, year, type World, type Person } from './world';
+import { OFF, sidesOn, facet, peekBond, bond, year, type World, type Person } from './world';
 import { chanceOf } from './considerations';
 import { BY_FAMILY, type Expression, type Family } from './families';
 import type { Instance } from './grammar';
@@ -79,7 +79,11 @@ function feel(w: World, p: Person, k: Kind, o: number, ev: number, v: number, wh
   if (!s.has(p.id)) s.set(p.id, list);
   let f = list.find(x => x.k === k && x.o === o);
   if (f && v < f.v) {
+    (globalThis as any).FEELLOG?.(k, !f.stands); // a sizing tool's log of renewals and reopenings; changes nothing
     f.v = clamp(f.v + 0.3 * v, 0, 1);
+    // A feeling let go that a new cause makes stand again stands on that cause, from now (round 46): its reason, and how long it has
+    // been held unresolved, are the new cause's. One whose cause still stands keeps it.
+    if (!f.stands && sidesOn()) Object.assign(f, { ev, what, t: w.t });
     f.stands = true;
     return f;
   }
@@ -118,6 +122,15 @@ function grieve(w: World, q: Person, o: number, ev: number, v: number, what: str
 }
 
 // ---------- acts between two people (grammar.ts `run`, after the act) ----------
+// Taking sides (round 46, sides.ts): the side not taken resents the one who took the other, as much as the tie they had and as prone to
+// resent as they are; `soft` is less for neither and for a choice given on what the other side did.
+export function sideNotTaken(w: World, n: Person, p: Person, ev: number, what: string, soft: number) {
+  if (!feelingsOn()) return;
+  const stake = clamp(0.4 + (peekBond(w, n.id, p.id)?.like ?? 0), 0.4, 1.2);
+  feel(w, n, 'resentment', p.id, ev, clamp(0.6 * stake * prone(n, p) * soft, 0, 1), what);
+}
+const prone = (t: Person, p: Person) =>
+  clamp(1 - 0.2 * facet(t, 'patience', p.id) - 0.2 * facet(t, 'forgiveness', p.id) - 0.1 * facet(t, 'gentleness', p.id), 0.4, 1.6);
 // A wrong: the acts that provoke an answer (an act that hurt, done hard enough), outside a couple's row, which is answered inside it.
 const isWrong = (inst: Instance, x: Expression) => x.like <= -0.25 && x.intensity >= 0.45 && !inst.type.startsWith('row');
 // Costly help, not owed: a giving act of some weight (not a visit or a coin in the hat), done for someone in need or in danger, and
@@ -192,8 +205,7 @@ function meet(w: World, a: Person, b: Person) {
 // Hurting someone one resents is the resentment answered: it halves, and so does the guilt.
 function wronged(w: World, p: Person, t: Person, fam: Family, x: Expression, ev: number) {
   const harm = clamp(-x.like * (0.5 + x.intensity), 0, 1);
-  const prone = clamp(1 - 0.2 * facet(t, 'patience', p.id) - 0.2 * facet(t, 'forgiveness', p.id) - 0.1 * facet(t, 'gentleness', p.id), 0.4, 1.6);
-  feel(w, t, 'resentment', p.id, ev, clamp(1.4 * harm * prone, 0, 1), WRONG[x.id] ?? `what @${p.id} did`);
+  feel(w, t, 'resentment', p.id, ev, clamp(1.4 * harm * prone(t, p), 0, 1), WRONG[x.id] ?? `what @${p.id} did`);
   p.owes = { to: t.id, ev, t: w.t };
   const back = find(w, p.id, 'resentment', t.id);
   if (back && back.v >= WEIGH && ['severity', 'anger', 'refusal', 'lapse', 'pride', 'disclosure', 'dishonesty'].includes(fam)) back.v *= 0.5;

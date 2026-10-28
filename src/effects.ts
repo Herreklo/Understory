@@ -30,6 +30,7 @@ import { yearlyAsk } from './situations/yearly';
 import { applyAftermath } from './aftermath';
 import { reckoned, answered, reckonCites, carryReset } from './carry';
 import { afterMeeting, afterMeetingAnswer } from './situations/meeting';
+import { afterSides } from './sides';
 
 // Hooks for world effects after specific expressions in specific types.
 export function afterRun(w: World, inst: Instance, out: Outcome) {
@@ -38,6 +39,7 @@ export function afterRun(w: World, inst: Instance, out: Outcome) {
     x = out.expr;
   if (inst.type.startsWith('meeting:')) return afterMeeting(w, inst, out);
   if (inst.type === 'meeting-answer') return afterMeetingAnswer(w, inst, out);
+  if (inst.type === 'sides') return afterSides(w, inst, out);
   switch (inst.type) {
     case SETTING.yearly.id: {
       if (x.id === 'stepup') {

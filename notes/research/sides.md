@@ -73,6 +73,22 @@ After a rift, each friend of both (and, if the sizing shows it adds real conflic
 4. **No one can see it.** Sizing check: the witness knows at least 30% of side-takings. The player-visible line above is reported, and if it is under 0.2 a year as a party, the release says so before the reading.
 5. **It reads as a script: every rift, the same choosing.** Sizing check: the three answers each take at least 15% of choices. The answer differs by kind of rift (a betrayal against a rivalry). Side-taking lines add no template to the top 25. The copy share does not rise (one-sided bound above +0.6, as round 45).
 
+## What the sizing found: big casts (round 46, 28 Oct 2026)
+
+Round 46 built this and stopped at its sizing, on fail-if 5 (`reports/46-size.md`). The cause was traced in world 9058, whose top 25 held four side-taking templates:
+
+- **Who counts as close to both brings big casts.** Close to both means friends of both, kin including partners, and in-laws at a split. In 9058, 13 rifts drew 9, 9, 5, 5, 4, 3, 3, 3, 3, 2, 1, 1 and 1 deciders.
+- **Each decider has a line of their own.** The cut adds two more, one on each page. That world had 15 cuts in ten years.
+- **Asking the same person again is not the cause.** Only 4 of 49 side-takings in 9058 were the same decider asked about the same pair again, and 9078 and 9050 had none.
+
+A fix must come from the person's own state, never from a cap or quota on deciders (`notes/build-plan.md`, section 2, the guard). Candidates:
+
+- who is close enough to both to be torn at all (how close, and how lately in touch);
+- whether the rift reached the person;
+- an answer that leaves no line because nothing changed for the person.
+
+A next round sizes the cast's spread first: the share of rifts with five or more deciders, and the top 25 against cast size.
+
 **The reading.** At 14.9 a world-decade, side-takings touch few pages of a busiest pack. The plan's aimed pack (a rift in both arms) is the reading that can see P2, and the random pack guards the rest.
 
 _Sources: Antal, Krapivsky & Redner 2005 (Phys. Rev. E 72); Leskovec, Huttenlocher & Kleinberg 2010 (CHI; arXiv 1003.2424); Szell, Lambiotte & Thurner 2010 (PNAS 107); Shaw, DeScioli, Barakzai & Kurzban 2017 ("Whoever is not with me is against me: the costs of neutrality among friends", J. Exp. Soc. Psych.); "Standing on principle: how moral principles can excuse disloyalty" (Evol. Hum. Behav. 47, 2026); DeScioli & Kurzban 2009 (PLoS ONE 4); DeScioli & Kimbrough, the side-taking game (J. Exp. Pol. Sci. 6, 2019); Black 1998, The Social Structure of Right and Wrong; Fehr, Gelfand & Nag 2010 (Psych. Bull. 136); Terhell, Broese van Groenou & van Tilburg 2004 (J. Soc. Pers. Rel. 21); McDermott, Fowler & Christakis 2013 (Social Forces 92); Burt 2000 (Social Networks 22); Evans & Short 2014 (Versu); McCoy et al. 2014 (Prom Week); Marsella, Pynadath & Read 2004 (PsychSim); Ryan et al. (Talk of the Town); the Dwarf Fortress wiki, "Tantrum spiral"; the CK3 wiki, "Alliance" and "Faction"._

@@ -2626,3 +2626,24 @@ Reported, not judged:
 - The round's wording was quoted as good 18 times and as unfit 12.
 
 The branch that fires: kept. The switch goes in the next neutral change, with the background's odds refit; resentment's bound is above 0, so P2 does not size its own resentment first. P2 (taking sides) follows, and feelings return to research.
+
+## Round 46 — taking sides (sized 28 Oct 2026; stopped at its sizing 28 Oct 2026, 15:50 Oslo, never pre-registered)
+
+Next 1, P2; exits 1, 2. Research: `notes/research/sides.md`. After a rift (a rivalry, a split or divorce, a betrayal, a scheme found out, a falling-out), each person close to both sides chooses one side, the other or neither. The side not taken resents it, and a friend not taken who forgives little ends the friendship.
+
+Sized three times on throwaway worlds (`reports/46-size.md`, tool `src/tools/diag/sides.ts`), 40 each:
+
+| Fail-if | 9001–9040 | 9041–9080 | 9041–9080 after review | Stop |
+| --- | --- | --- | --- | --- |
+| 1. Counter (a tie or weighty descendant, 3 years) | 27.2 ±4.8 | 33.1 ±5.3 | 35.2 ±6.9 | under 15 |
+| 2. "Neither" by fairness / agreeableness | 1.17× / 1.16×, wrong way | 1.28× / 1.23× | 1.59× / **1.13×** | under 1.3× |
+| 3. Friendships; rows per 1000 adult-years | −2%; +6.6 | −4%; +24.7 ±21.4 | 0%; +25.2 ±18.5 | over 10%; unnamed |
+| 4. The witness knows | **10.3%** | 74.5% | 71.8% | under 30% |
+| 5. Top-25 places; copy share's bound | **54**; **+1.2** | **1**; +0.39 | **5**; **+0.80** | any; above +0.6 |
+
+**Outcome.** The second pass fixed three faults the first named. Fail-ifs 2 and 5 still missed narrowly, and Øystein accepted those two misses on 28 Oct for review. The review (`reports/46-review.md`, Fable 5.1) found three engine faults, all in what the side taken and the side not taken come to feel. They were fixed and the same worlds re-run, and the misses moved: agreeableness fell to 1.13×, and side-taking lines took five top-25 places in two worlds. A final pass was approved with its stop rule, then withdrawn unrun.
+
+**Why it stopped.** The cause is traced in world 9058: big casts. Who counts as close to both brings up to 9 deciders to a rift, each with a line, and the cut adds two page lines. Repeat asking is 4 of 49 side-takings. The review also found that the rise in rows does not run through partners: it is diffuse and not traced.
+
+The code stays in, off unless `ON=sides`, with the renewal-cause fix behind it. A fix must come from the person's own state, never from a cap on deciders (the guard). Shared hardship (P3) is next.
+

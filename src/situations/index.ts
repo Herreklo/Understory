@@ -97,6 +97,7 @@ export function situationsTick(w: World) {
   const pending: Instance[] = w.queue.splice(0, w.queue.length);
   for (const inst of pending) {
     if (inst.actor.status !== 'in') continue;
+    if (inst.type === 'sides' && [inst.target, ...inst.others].some(x => x?.status !== 'in')) continue; // a side who died or left in between (round 46)
     const o = run(w, inst);
     if (o) afterRun(w, inst, o);
   }
