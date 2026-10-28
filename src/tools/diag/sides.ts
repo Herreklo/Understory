@@ -61,6 +61,7 @@ interface Taking {
   witClose: boolean;
   witKnows: boolean;
   principled: boolean;
+  led: string[]; // the types of the descendants that lead somewhere (a side-taking as 'sides:<type>')
 }
 interface WouldBe {
   t: number;
@@ -199,6 +200,7 @@ function runWorld(seed: number, rule: string, years: number): WorldOut {
       witClose: e.who.includes(wit) || e.who.some(closeToWit),
       witKnows: e.knownBy.has(wit) || e.who.includes(wit),
       principled: !!s.rift.said && e.causes.some((c: any) => c.label === s.rift.said),
+      led: [...new Set(somewhere.map(f => ((f.decision as any)?.trigger === 'sides' ? 'sides:' : '') + f.type))],
     });
     void a;
     void b;
