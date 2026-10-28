@@ -1,6 +1,6 @@
 # Understory: where we are
 
-_Updated 28 October 2026, after the band year's outcome (kept; not merged yet). At most 600 words, rewritten at every merge; history is in `docs/BOARD.md` and git._
+_Updated 28 October 2026, after the band year was kept (r48). At most 600 words, rewritten at every merge; history is in `docs/BOARD.md` and git._
 
 ## Where we are going
 
