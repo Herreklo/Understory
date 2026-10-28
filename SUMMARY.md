@@ -17,8 +17,9 @@ People you come to understand from incomplete evidence, who surprise you for rea
 
 One experiment at a time per track (`notes/build-plan.md`). _22 Oct: Øystein left the plan's decisions to the lead (section 6), his to reverse here._ _27 Oct: Øystein accepted round 45's gate reading as holding._
 
-1. **Taking sides** (P2; people; exits 1, 2), on `round/46`: a friend of both sides chooses one, the other or neither; the side not taken carries a resentment that can now seek its object. Sized twice (#105): 33.1% ±5.3 of side-takings lead somewhere (stop under 15%); next, the review, then pre-registration.
-   - _28 Oct: Øystein accepted two narrow sizing misses (fail-ifs 2 and 5, `reports/46-size.md`) and sent round 46 to review, no third pass; the review also traces couples' rows._
+1. **Taking sides** (P2; people; exits 1, 2), on `round/46`: a friend of both sides chooses one, the other or neither; the side not taken carries a resentment that can now seek its object. Sized and reviewed (#105): about a third of side-takings lead somewhere (stop under 15%).
+   - _28 Oct: Øystein accepted two narrow sizing misses (fail-ifs 2 and 5, `reports/46-size.md`) and sent round 46 to review; the review also traces couples' rows._
+   - _28 Oct, later: the review's fixes moved those misses, and one rivalry asked the same deciders at every flare. Øystein allowed one final pass, where a decider answers a pair once per rivalry. It goes on only if fail-if 5 holds and agreeableness reaches 1.2×; otherwise it stops at its sizing._
    - _Kept or not:_ shared hardship follows.
 2. **The page** (exit 3): reasons rest after 43w; N3, then particulars.
 3. **Shared hardship** (P3), judged on its link rate.
@@ -35,4 +36,3 @@ Homes (#59, #22) wait for phase D. Beside any: N5 and N6 (from the outside revie
 ## Latest
 
 - **The slice (28 Oct), unplayable:** your person acts without you, and inviting is the one thing to do. Understory stops building clients; deciding for your person is a front-door capability for S2, when Overstory asks (`reports/s1-slice-2026-10-28.md`).
-- **Round 45 (27 Oct), kept:** feelings meet their object, with round 44's feelings folded in. 4.5% ±1.3 of strong feelings change an act toward their object within a year (0.9% without the meeting; stop 2.5%), every kind on its own. Something follows a meeting within a year in 83%; nothing is crowded out; 48 pairs read no worse (+0.07 ±0.23). #99.
