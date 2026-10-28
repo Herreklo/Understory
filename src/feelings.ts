@@ -36,7 +36,7 @@
 import { clamp } from './rng';
 import { pow } from './mathx';
 import { curves, type Consideration, type Know, type Option } from './decide';
-import { OFF, facet, peekBond, bond, year, type World, type Person } from './world';
+import { OFF, sidesOn, facet, peekBond, bond, year, type World, type Person } from './world';
 import { chanceOf } from './considerations';
 import { BY_FAMILY, type Expression, type Family } from './families';
 import type { Instance } from './grammar';
@@ -80,6 +80,9 @@ function feel(w: World, p: Person, k: Kind, o: number, ev: number, v: number, wh
   let f = list.find(x => x.k === k && x.o === o);
   if (f && v < f.v) {
     f.v = clamp(f.v + 0.3 * v, 0, 1);
+    // A feeling let go that a new cause makes stand again stands on that cause, from now (round 46): its reason, and how long it has
+    // been held unresolved, are the new cause's. One whose cause still stands keeps it.
+    if (!f.stands && sidesOn()) Object.assign(f, { ev, what, t: w.t });
     f.stands = true;
     return f;
   }
