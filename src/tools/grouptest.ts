@@ -4,7 +4,7 @@ import './env'; // OFF= and ON= from the environment, before anything runs
 import { buildWorld, runYears } from '../build';
 import { pickWitness } from '../witness';
 import { escalation } from '../group';
-import { normsOn } from '../world';
+import { normRowsOn } from '../world';
 // Constructed histories first: the rule on its own, at exact dates (months).
 const unit: [number[], number | undefined, number, string][] = [
   [[], undefined, 100, 'row'], // first row ever
@@ -63,7 +63,7 @@ for (let seed = 1; seed <= 30 && checked < 6; seed++) {
     // Rows count from any time (the rule does); only warnings and askings in the present are judged.
     // With ON=norms (round 48) the ladder only says what is on the table and the speaker decides: a word needs an earlier row or word in three
     // years, an asking two of them or a word.
-    if (normsOn()) {
+    if (normRowsOn()) {
       const earlier = (t: number) => l.filter(x => x.kind !== 'asked' && x.t < t && t - x.t <= 36);
       for (const wd of words.filter(x => x.t >= w.startPresent))
         if (!earlier(wd.t).length) {

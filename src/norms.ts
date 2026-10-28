@@ -8,13 +8,14 @@
 //           credit is fought over (resented, claimed). Formed from every answer to a song the member sees in the group (group.ts `work`),
 //           and weighed in every member's own answer to a song.
 //   rows    how rows go here. Above 0, a repeated row is answered (a word, an asking to leave); below, it is let go. Formed from what follows
-//           a member's repeated row, and weighed by the member who decides what follows the next one.
-// A norm is weighed beside the five strongest considerations, never cut, and when it decides it is the reason, said with the group's name.
+//           a member's repeated row, and weighed by the member who decides what follows the next one. A separate part: only with ON=normrows.
+// A norm is weighed beside the five strongest considerations, never cut, and when it decides it is the reason, said with the group's name
+// once it is held surely enough to say (two acts of a kind, not one).
 //
 // A newcomer is told how things are done by one incumbent: the one most moved to say it, read from each incumbent's own state (how sure they
 // are of how things go, how bold they are, how they like the newcomer). That one decides whether to say it. The newcomer holds the teller's
 // version (telling.ts `normVersion`), as sure as they think well of the teller, and goes on learning from what they see. Nothing is held by
-// the group itself, and nothing counts or caps tellings. Off unless ON=norms: with it off nothing here runs and no draw is taken.
+// the group itself, and nothing counts or caps tellings. On unless OFF=norms: with it off nothing here runs and no draw is taken.
 
 import { clamp } from './rng';
 import { curves, z01, type Consideration, type Option } from './decide';
@@ -45,7 +46,7 @@ export type Norm = 'credit' | 'rows';
 const NORMS: Norm[] = ['credit', 'rows'];
 const SEEN = 1; // the noise of one act seen, as a belief about a person takes an act seen (world.ts `observe`, reliability 0.6)
 const REGROW = 0.002; // how fast certainty fades without fresh evidence, as for a trait
-const SAY = 0.2; // how strongly a norm must be held to be worth saying, or to be a reason
+const SAY = 0.3; // how surely a norm must be held to be worth saying, or to be a reason: two acts of a kind, not one
 const some = (c: Consideration | undefined): Consideration[] => (c ? [c] : []);
 
 export const subjectOf = (g: Group) => -1 - g.id;
@@ -95,7 +96,7 @@ export function normC(w: World, p: Person, g: Group, what: Norm, dir: 1 | -1, k 
       weight: 1,
       key: keyOf(what),
       who: p.id,
-      ...(Math.abs(m) < SAY ? { mid: true } : {}),
+      ...(sure(b) < SAY ? { mid: true } : {}),
     }),
     input: v => v.state(p, 'close', z01(m), 0.5),
     curve: dir > 0 ? curves.sCurve(k, 0.5) : curves.sFalling(k, 0.5),
@@ -133,7 +134,7 @@ export function tellNewcomer(w: World, g: Group, q: Person) {
     }
   }
   if (!teller) return;
-  const says = NORMS.filter(n => Math.abs(heldNorm(w, teller!.id, g, n)?.m ?? 0) >= SAY).sort(
+  const says = NORMS.filter(n => sure(heldNorm(w, teller!.id, g, n)) >= SAY).sort(
     (a, b) => sure(heldNorm(w, teller!.id, g, b)) - sure(heldNorm(w, teller!.id, g, a)),
   );
   if (!says.length) return;

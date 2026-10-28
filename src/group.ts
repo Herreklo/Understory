@@ -27,6 +27,7 @@ import {
   year,
   logistic,
   normsOn,
+  normRowsOn,
 } from './world';
 import { seeNorm, creditOf, creditBeside, tellNewcomer, rowAnswer } from './norms';
 import { z01 } from './decide';
@@ -557,7 +558,6 @@ function work(w: World, g: Group, k: Kind) {
         broadcast(w, e2);
         g.events.push(e2.id);
         remember(w, author, m, e2.id, -0.4, -0.3, -0.6, `took credit for "${title}"`);
-        if (normsOn()) seeNorm(w, g, 'credit', -1);
       }
     }
   }
@@ -898,7 +898,7 @@ export function groupTick(w: World) {
             )[0] ?? enemy;
           // Round 48: the ladder says what is on the table, and the speaker decides (norms.ts). A row let go is the row itself, below.
           const warnedAt: number | undefined = (g as any)['warned:' + p.id];
-          const said = normsOn()
+          const said = normRowsOn()
             ? rowAnswer(
                 w,
                 g,

@@ -2,8 +2,11 @@
 //   ./run.sh src/tools/diag/norms.ts found A B [rule]   → out-norms/found-<rule>-<seed>.json: 40 years from the town's founding
 //   ./run.sh src/tools/diag/norms.ts pages A B [rule]   → out-norms/pages-<rule>-<seed>.json: the usual 30-year past and ten present years
 //   ./run.sh src/tools/diag/norms.ts report [rule] [offrule]
-// A rule is 'on' (ON=norms), 'off' (main's model), or 'tellless' (ON=norms with OFF=normtell: norms learned from acts alone). The rule
-// sets the switches itself, so the environment needs none. A stopped run resumes.
+//   ./run.sh src/tools/diag/norms.ts contrast A B           the five-year counter, rule A against rule B (telling's part)
+// A rule is 'on' (the round as built), 'off' (OFF=norms: main's model), 'tellless' (OFF=normtell: norms learned from acts alone) or
+// 'rows' (ON=normrows: the rows decision too). The rule sets the switches itself, so the environment needs none. A stopped run resumes.
+// Five years after the last founder went, the counter is also read on the members who joined after it (who never shared a room with a
+// founder) and as a partial r, the members' norm when the last founder went held constant.
 //
 // The counter: for each band that loses every founding member (the members of its formed event) and goes on, the founders' credit norm in
 // their last year together (the founders in the band, each month, their held norm averaged; a founder who holds none holds 0) against the
@@ -30,8 +33,9 @@ const DUD = /^@ brought a song to .*, "…", and it did not come to much\.$/; //
 function setRule(rule: string) {
   ON.clear();
   OFF.clear();
-  if (rule === 'on' || rule === 'tellless') ON.add('norms');
+  if (rule === 'off') OFF.add('norms');
   if (rule === 'tellless') OFF.add('normtell');
+  if (rule === 'rows') ON.add('normrows');
 }
 const mean = (xs: number[]) => (xs.length ? xs.reduce((s, x) => s + x, 0) / xs.length : 0);
 const credit = (w: World, i: number, g: Group) => heldNorm(w, i, g, 'credit')?.m ?? 0;
@@ -59,6 +63,9 @@ interface Band {
   Mlean: number | null; // the members' mean modesty and sincerity then
   M3: number | null; // the members' three and five years after, for drift
   M5: number | null;
+  M0: number | null; // the members' when the last founder went
+  M5new: number | null; // five years after, the members who joined after the last founder went
+  n5new: number;
   Flean: number | null; // the founders' (those in the last year) mean modesty and sincerity
   after: number; // members a year after
   told: number; // members then who had been told
@@ -156,6 +163,9 @@ function runFound(seed: number, rule: string): FoundOut {
           endLean: null,
           M3: null,
           M5: null,
+          M0: null,
+          M5new: null,
+          n5new: 0,
         };
         bands.set(g.id, b);
       }
@@ -173,9 +183,16 @@ function runFound(seed: number, rule: string): FoundOut {
           const last: number[] = (b as any).lastFin ?? [];
           b.Frows = mean(last.map(i => heldNorm(w, i, g, 'rows')?.m ?? 0));
           b.Flean = mean(last.map(i => lean(w.byId.get(i)!)));
+          b.M0 = mean(g.members.map(i => credit(w, i, g)));
+          (b as any).at0 = [...g.members];
         }
       } else if ((w.t - b.gone === 36 || w.t - b.gone === 60) && !g.ended && g.members.length) {
         b[w.t - b.gone === 36 ? 'M3' : 'M5'] = mean(g.members.map(i => credit(w, i, g)));
+        const fresh = g.members.filter(i => !((b as any).at0 as number[]).includes(i));
+        if (w.t - b.gone === 60 && fresh.length) {
+          b.M5new = mean(fresh.map(i => credit(w, i, g)));
+          b.n5new = fresh.length;
+        }
       } else if (b.M == null && w.t - b.gone === 12 && !g.ended && g.members.length) {
         const ms = g.members;
         b.M = mean(ms.map(i => credit(w, i, g)));
@@ -197,6 +214,7 @@ function runFound(seed: number, rule: string): FoundOut {
       b.endLean = mean(g.members.map(i => lean(w.byId.get(i)!)));
     }
     delete (b as any).lastFin;
+    delete (b as any).at0;
     b.window = [];
   }
   // Authorship answers by expression: read from the events' decision records.
@@ -312,6 +330,51 @@ function meanCI(xs: number[]) {
   return { m, half: (1.96 * sd) / Math.sqrt(Math.max(1, n)), up1: m + (1.645 * sd) / Math.sqrt(Math.max(1, n)), n };
 }
 
+// The five-year counter and its controls, over the bands that lost every founder and were going five years on.
+function fiveYear(W: FoundOut[]) {
+  const bs = W.flatMap(x => x.bands).filter(b => b.F != null && b.M5 != null && b.M0 != null);
+  const all = rCI(
+    bs.map(b => b.F!),
+    bs.map(b => b.M5!),
+  );
+  const hb = bs.filter(b => b.F !== 0 || b.M5 !== 0);
+  const held = rCI(
+    hb.map(b => b.F!),
+    hb.map(b => b.M5!),
+  );
+  const rxz = pearson(
+      bs.map(b => b.F!),
+      bs.map(b => b.M0!),
+    ),
+    ryz = pearson(
+      bs.map(b => b.M5!),
+      bs.map(b => b.M0!),
+    );
+  const pr = (all.r - rxz * ryz) / Math.sqrt((1 - rxz ** 2) * (1 - ryz ** 2));
+  const pse = 1 / Math.sqrt(Math.max(1, bs.length - 4));
+  const partial = { r: pr, n: bs.length, lo: Math.tanh(Math.atanh(pr) - 1.96 * pse), hi: Math.tanh(Math.atanh(pr) + 1.96 * pse) };
+  const fb = bs.filter(b => b.M5new != null);
+  const fresh = rCI(
+    fb.map(b => b.F!),
+    fb.map(b => b.M5new!),
+  );
+  return { all, held, partial, fresh, freshShare: fb.length ? mean(fb.map(b => b.n5new)) / Math.max(1, mean(fb.map(b => b.after))) : 0 };
+}
+// Telling's part: the five-year r on rule A against rule B, as a difference in Fisher z with its one-sided lower bound.
+function contrast(a: string, b: string) {
+  const A = fiveYear(read<FoundOut>('found-' + a)),
+    B = fiveYear(read<FoundOut>('found-' + b));
+  for (const k of ['all', 'held', 'fresh'] as const) {
+    const x = A[k],
+      y = B[k];
+    const d = Math.atanh(x.r) - Math.atanh(y.r),
+      se = Math.sqrt(1 / Math.max(1, x.n - 3) + 1 / Math.max(1, y.n - 3));
+    console.log(
+      `CONTRAST ${k} ${a} r ${f2(x.r)} (n ${x.n}) against ${b} r ${f2(y.r)} (n ${y.n}): z difference ${f2(d)} ±${f2(1.96 * se)}, one-sided lower ${f2(d - 1.645 * se)}; 80% power at this difference needs se ${f2(d / 2.487)}`,
+    );
+  }
+}
+
 function report(rule: string, offRule: string) {
   const W = read<FoundOut>('found-' + rule);
   const out: Record<string, any> = { rule, worlds: W.length };
@@ -359,6 +422,20 @@ function report(rule: string, offRule: string) {
       `  drift: the founders' norm against members' ${k === 'M3' ? 'three' : 'five'} years after: r ${f2(d.r)} [${f2(d.lo)}, ${f2(d.hi)}], n ${d.n}`,
     );
     out['drift' + k] = d;
+  }
+  {
+    const five = fiveYear(W);
+    say(
+      `FIVE YEARS r(founders' norm, members' five years after the last founder went) = ${f2(five.all.r)} [${f2(five.all.lo)}, ${f2(five.all.hi)}], n ${five.all.n}`,
+    );
+    say(`  leaving out bands where neither holds a norm: r ${f2(five.held.r)} [${f2(five.held.lo)}, ${f2(five.held.hi)}], n ${five.held.n}`);
+    say(
+      `  partial, the members' norm when the last founder went held constant: r ${f2(five.partial.r)} [${f2(five.partial.lo)}, ${f2(five.partial.hi)}], n ${five.partial.n}`,
+    );
+    say(
+      `  members who joined after the last founder went: r ${f2(five.fresh.r)} [${f2(five.fresh.lo)}, ${f2(five.fresh.hi)}], n ${five.fresh.n} (${f2(five.freshShare)} of the members)`,
+    );
+    out.five = five;
   }
   out.counter = c;
   out.counterHeld = c2;
@@ -500,4 +577,5 @@ if (cmd === 'found' || cmd === 'pages') {
     console.log(cmd, rule, s);
   }
 } else if (cmd === 'report') report(a ?? 'on', b ?? 'off');
+else if (cmd === 'contrast') contrast(a ?? 'on', b ?? 'tellless');
 else console.log('usage: norms.ts found|pages A B [rule] | report [rule] [offrule]');
