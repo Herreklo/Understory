@@ -146,7 +146,7 @@ if (feelingsOn()) {
   }
   if (n === 2)
     console.log(
-      `invariants ok: a resentment reopened after amends or a meeting ${sidesOn() ? 'cites its new cause' : 'keeps its old cause (OFF=sides)'}`,
+      `invariants ok: a resentment reopened after amends or a meeting ${sidesOn() ? 'cites its new cause' : 'keeps its old cause (sides off)'}`,
     );
 }
 // A quirk may describe a habit, a disposition or a state, never a one-off past act that is not on the record. A pattern that opens with a

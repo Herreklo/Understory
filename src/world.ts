@@ -407,8 +407,9 @@ export const bear = () => ON.has('bear');
 // OFF=wording.
 export const wording = () => !OFF.has('wording');
 // Round 46: taking sides. After a rift, someone close to both sides chooses one, the other or neither (sides.ts), and a let-go feeling
-// that a new cause renews stands on that cause (feelings.ts). On unless OFF=sides.
-export const sidesOn = () => !OFF.has('sides');
+// that a new cause renews stands on that cause (feelings.ts). Stopped at its sizing (big casts put side-taking lines among a town's
+// commonest): off unless ON=sides.
+export const sidesOn = () => ON.has('sides');
 const SMALL = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
 // A span of months as a person would say it: "a few weeks", "five months", "a year", "a year and a half", "three years".
 export function spanWords(months: number): string {

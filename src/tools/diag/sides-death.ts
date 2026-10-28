@@ -3,9 +3,10 @@ import '../env';
 import { writeFileSync } from 'fs';
 import { buildWorld } from '../../build';
 import { tick } from '../../life';
-import { age, OFF } from '../../world';
+import { age, OFF, ON } from '../../world';
 const [A, B, rule] = [+process.argv[2], +process.argv[3], process.argv[4]];
-if (rule !== 'on') OFF.add(rule);
+if (rule === 'on') ON.add('sides');
+else OFF.add(rule);
 for (let seed = A; seed <= B; seed++) {
   const w = buildWorld(seed, 1);
   const t0 = w.startPresent;

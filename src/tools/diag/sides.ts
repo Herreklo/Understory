@@ -1,4 +1,4 @@
-// Round 46's sizing: taking sides (sides.ts), on against off (OFF=sides), paired by world, with the counter and the five fail-ifs of
+// Round 46's sizing: taking sides (sides.ts), on (ON=sides) against off, paired by world, with the counter and the five fail-ifs of
 // notes/research/sides.md.
 //   ./run.sh src/tools/diag/sides.ts run A B [rule] [years]   → out-sides/<rule>-<seed>.json, one world each (a stopped run resumes)
 //   ./run.sh src/tools/diag/sides.ts report [on] [off]          → the checks; a rule is 'on', or switches joined by '+'
@@ -19,7 +19,7 @@ import { hash } from '../../rng';
 import { BY_FAMILY } from '../../families';
 import { riftOf, castOf, type Cast } from '../../sides';
 import { regardPart } from '../../telling';
-import { age, facet, peekBond, OFF, TEXTURE, type Event, type Person, type World } from '../../world';
+import { age, facet, peekBond, OFF, ON, TEXTURE, type Event, type Person, type World } from '../../world';
 import { copies, lineTexts, norm, packPage } from './pages';
 import { reversals } from './story';
 import { countFlips } from './flip';
@@ -293,7 +293,8 @@ if (mode === 'run') {
     B = +(process.argv[4] ?? process.argv[3]),
     rule = process.argv[5] ?? 'on',
     years = +(process.argv[6] ?? 10);
-  if (rule !== 'on') for (const x of rule.split('+')) OFF.add(x);
+  if (rule === 'on') ON.add('sides');
+  else for (const x of rule.split('+')) OFF.add(x);
   mkdirSync(OUT, { recursive: true });
   for (let seed = A; seed <= B; seed++) {
     const f = `${OUT}/${rule}-${seed}.json`;

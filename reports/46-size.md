@@ -3,6 +3,8 @@
 Two passes, each on 40 throwaway worlds, 10 present years, paired by world (`on` against `OFF=sides`), means per world ±95%. Tool:
 `src/tools/diag/sides.ts` (`run A B on|sides 10`, then `report`; `SIDES_OUT` names the folder).
 
+**Stopped at its sizing, 28 Oct 2026** (Øystein). A final pass (a decider answers a pair once per rivalry) was approved with its stop rule, then withdrawn before any run once the trace showed repeated asking carries 4 of 49 side-takings in 9058: the misses come from big casts. It was never run.
+
 **Latest verdict, after the review's fixes (next section):** fail-if 2 misses on agreeableness (1.13×), and fail-if 5 misses on both clauses: side-taking lines take five top-25 places, in two worlds, and the copy share's bound is +0.80. These are not the misses accepted on 28 Oct, so round 46 stops before pre-registration for the lead and Øystein.
 
 **Verdict after the second pass: two fail-ifs still miss, so round 46 stops here for the lead and Øystein to decide.**
@@ -42,7 +44,7 @@ The off arm is the second pass's, unchanged: with `OFF=sides` none of these path
 | Copy share, every adult | **+0.30 ±0.60**, one-sided bound **+0.80** | −0.05 ±0.52, bound +0.39 | bound above +0.6 fails | ✗ |
 | Copy share, random / busiest | +0.33 ±2.64 / −0.81 ±2.57 | +0.25 / −0.42 | | |
 
-**Fail-if 5, world 9058.** A long rivalry asks the same cast again each time it flares. Across every adult's page, the world's top 25 holds four side-taking templates:
+**Fail-if 5, world 9058.** Big casts, not repeated asking (traced 28 Oct, correcting a first guess that a long rivalry asked the same cast at every flare). Its 13 rifts drew 9, 9, 5, 5, 4, 3, 3, 3, 3, 2, 1, 1 and 1 deciders, each with a line of their own, and 15 cuts add two page lines each. Only 4 of its 49 side-takings were the same decider asked about the same pair again; 9078 and 9050 have none. Across every adult's page, the world's top 25 holds four side-taking templates:
 
 - the cut, "X stopped speaking to X after X took X's side.", 29 times;
 - "X, like X, backed X in the rivalry with X.", 23 times;
