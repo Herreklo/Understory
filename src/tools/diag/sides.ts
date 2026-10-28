@@ -31,7 +31,7 @@ const FOLLOW = 36; // followed for three
 const TIES = new Set(['cooled', 'friends', 'madeup', 'mended', 'dating', 'married', 'split', 'divorce', 'betrayed', 'thread:cost']);
 const CHOICES = ['sideagainst', 'standby', 'keepout'] as const;
 const SIDE_LINE =
-  /took .+'s side against|stood by .+ against|kept out of it between|would not take sides between|sided with .+ against|stopped speaking to/;
+  /took .+'s side|sided with|stood by|stuck (by|with)|kept (to|with) |kept out of|would not take sides|stayed (on good terms|friends) with both|backed .+ in the rivalry|stopped speaking to/;
 const WRONGS = new Set(
   Object.values(BY_FAMILY)
     .flat()
@@ -80,6 +80,8 @@ interface WorldOut {
   takings: Taking[];
   would: { n: number; full: number; lost: number; ended: number; byCast: Record<string, number> };
   fairFlips: { weighed: number; flips: number };
+  traitFlips?: { weighed: number; flips: number }; // the decider's fairness as a trait, on keeping out (second pass)
+  fairBoth?: { weighed: number; flips: number }; // both together
   feels: { renewed: number; reopened: number; byKind: Record<string, [number, number]> };
   feuds: { wrongs: number; rows: number; dislikes: number; ended: number };
   paths: Record<string, number>;
@@ -109,6 +111,8 @@ function runWorld(seed: number, rule: string, years: number): WorldOut {
   const wit = pickWitness(w).id;
   const t0 = w.startPresent;
   const fair = countFlips(w, 'sides:fair');
+  const fairT = countFlips(w, 'fairness');
+  const fairB = countFlips(w, '/^(sides:fair|fairness)$/');
   const feels: WorldOut['feels'] = { renewed: 0, reopened: 0, byKind: {} };
   (globalThis as any).FEELLOG = (k: string, reopened: boolean) => {
     if (w.t < t0) return;
@@ -257,6 +261,8 @@ function runWorld(seed: number, rule: string, years: number): WorldOut {
     takings,
     would: wo,
     fairFlips: { weighed: fr.weighed, flips: fr.flips },
+    traitFlips: { weighed: fairT.byTrigger['sides']?.weighed ?? 0, flips: fairT.byTrigger['sides']?.flips ?? 0 },
+    fairBoth: { weighed: fairB.byTrigger['sides']?.weighed ?? 0, flips: fairB.byTrigger['sides']?.flips ?? 0 },
     feels,
     feuds,
     paths,
@@ -449,6 +455,14 @@ if (mode === 'run') {
   console.log(
     `  the fairness consideration flips ${ff.f} of ${ff.w} choices that weigh it (${fmt(pct(ff.f, ff.w))}%), ${fmt(pct(ff.f, nAll))}% of all ${nAll} (≥ 5)`,
   );
+  for (const [k, name] of [
+    ['traitFlips', 'the fairness trait'],
+    ['fairBoth', 'both fairness considerations together'],
+  ] as const) {
+    const f2 = seeds.reduce((s, x) => ({ w: s.w + (A.get(x)![k]?.weighed ?? 0), f: s.f + (A.get(x)![k]?.flips ?? 0) }), { w: 0, f: 0 });
+    console.log(`  ${name} flips ${f2.f} of ${f2.w} choices that weigh it, ${fmt(pct(f2.f, nAll))}% of all ${nAll}`);
+    out['flips_' + k] = +pct(f2.f, nAll).toFixed(2);
+  }
   console.log(`  given on fairness (principled): ${fmt(pct(all.filter(t => t.principled).length, nAll))}%`);
 
   console.log('\n3. No camps: stops, not targets');

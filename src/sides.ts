@@ -17,10 +17,11 @@
 // Rifts are read from the month's events at its end (`sidesTick`, after every system, no dice), and each decision is a queued situation,
 // run with next month's situations, so it displaces nothing. On unless OFF=sides.
 
-import { clamp } from './rng';
+import { clamp, hash } from './rng';
 import { curves, z01, type Consideration } from './decide';
 import type { Feature } from './features';
 import { type Instance, type Outcome, family } from './grammar';
+import type { Expression } from './families';
 import { facetC, traitCause, eventCause, ev, learned } from './considerations';
 import { regardPart } from './telling';
 import { carryReset } from './carry';
@@ -175,6 +176,14 @@ function choice(w: World, p: Person, rift: Rift, cast: Cast): Instance {
           },
         ]
       : [];
+  // Keeping out is the peacemaker's answer and not the fair-minded one's: fairness argues against it, the more so the plainer the wrong;
+  // gentleness and flexibility for it, read together so the situation's own reasons are not cut at five.
+  const peace: Consideration = {
+    id: 'sides:peace',
+    cause: () => traitCause(p, facet(p, 'gentleness') >= facet(p, 'flexibility') ? 'gentleness' : 'flexibility'),
+    input: v => (z01(v.facet(p, 'gentleness', undefined, priv)) + z01(v.facet(p, 'flexibility', undefined, priv))) / 2,
+    curve: curves.sCurve(5, 0.5),
+  };
   return {
     type: 'sides',
     actor: p,
@@ -189,12 +198,60 @@ function choice(w: World, p: Person, rift: Rift, cast: Cast): Instance {
     familyExtra: {
       severity: [closer(o, t)],
       leniency: [closer(t, o)],
-      discretion: [torn, facetC(p, 'socialBoldness', priv, -1, 4)],
+      discretion: [torn, facetC(p, 'socialBoldness', priv, -1, 4), facetC(p, 'fairness', priv, -1, 4 + 3 * rift.wrong), peace],
     },
     ownFirst: true,
+    told: true,
+    words: (x: Expression) => said(w, p, rift, x.id),
     w: 1.2,
     sided: { rift, cast },
   } as Instance & { sided: Sided };
+}
+
+// The words, by kind of rift (@T the side named as doing it, @O the other); a rift's later deciders who answer alike say so.
+const WORDS: Record<string, Record<string, string[]>> = {
+  betrayed: {
+    sideagainst: ["@D took @O's side once it came out that @T had talked", '@D sided with @O: @T should have kept quiet'],
+    standby: ['@D stood by @T, talk or no talk', '@D stuck by @T, whatever @T had let slip about @O'],
+    keepout: ['@D would not take sides over what @T had let slip', '@D kept out of it between @T and @O'],
+  },
+  'scheme:found': {
+    sideagainst: ["@D took @O's side once @T's scheming came out", '@D sided with @O against @T over the running-down'],
+    standby: ['@D stood by @T when the scheming came out', '@D stuck with @T against @O'],
+    keepout: ['@D kept out of the business between @T and @O', '@D would not take sides between @T and @O'],
+  },
+  split: {
+    sideagainst: ["@D took @O's side when @T ended it", '@D sided with @O in the split'],
+    standby: ['@D stood by @T when @T left @O', "@D kept to @T's side of the split"],
+    keepout: ['@D stayed on good terms with both @T and @O through the split', '@D would not take sides in the split'],
+  },
+  divorce: {
+    sideagainst: ["@D took @O's side when @T ended the marriage", '@D sided with @O in the divorce'],
+    standby: ['@D stood by @T through the divorce', "@D kept to @T's side of the divorce"],
+    keepout: ['@D stayed on good terms with both @T and @O through the divorce', '@D would not take sides in the divorce'],
+  },
+  rivals: {
+    sideagainst: ['@D backed @O in the rivalry with @T', "@D took @O's side against @T"],
+    standby: ['@D backed @T in the rivalry with @O', '@D stood by @T against @O'],
+    keepout: ['@D kept out of the rivalry between @T and @O', '@D would not take sides between @T and @O'],
+  },
+  fellout: {
+    sideagainst: ["@D took @O's side in the falling-out with @T", '@D sided with @O after the falling-out with @T'],
+    standby: ['@D stood by @T in the falling-out with @O', '@D kept with @T when @T and @O fell out'],
+    keepout: ['@D would not take sides when @T and @O fell out', '@D stayed friends with both @T and @O after the falling-out'],
+  },
+};
+function said(w: World, p: Person, rift: Rift, expr: string): string | undefined {
+  const ws = WORDS[rift.kind]?.[expr];
+  if (!ws) return undefined;
+  const line = ws[hash(w.seed, p.id, rift.ev) % ws.length].replace(/@D/g, `@${p.id}`).replace(/@T/g, `@${rift.t}`).replace(/@O/g, `@${rift.o}`);
+  // Another of the rift's deciders who answered the same this month.
+  for (let i = w.events.length - 1; i >= 0 && w.events[i].t === w.t; i--) {
+    const e = w.events[i];
+    if (e.type === expr && e.who[0] !== p.id && (e.decision as any)?.sided?.rift.ev === rift.ev)
+      return line.replace(`@${p.id}`, `@${p.id}, like @${e.who[0]},`);
+  }
+  return line;
 }
 
 // After the choice: the other side's memory of it (the target's is the grammar's own), and for each side not taken, a resentment, and

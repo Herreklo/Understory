@@ -70,6 +70,8 @@ export interface Instance {
   minIntensity?: number;
   only?: Partial<Record<Family, string[]>>; // restrict a family to these expressions
   ownFirst?: boolean; // the situation's own considerations come before the trait wiring, so none of them is cut at five
+  told?: boolean; // decided in private, the act is told about town all the same (round 46: who sided with whom)
+  words?: (expr: Expression) => string | undefined; // the act's words, in place of the expression's own (round 46: by kind of rift)
   where?: string; // where it happened, said at the § in the act's words or at the end of the sentence
   // The reasons the act gives after its cause, in place of the decision's own (round 37: a change after a blow gives what a reader
   // accepts for it). The decision record keeps every consideration either way.
@@ -426,7 +428,7 @@ export function run(w: World, inst: Instance): Outcome | null {
     (feats.has('public') && inst.place && ['shout', 'sarcasm', 'dressdown', 'confront', 'walkout', 'speakup', 'rake'].includes(expr.id)
       ? ` in front of everyone at ${inst.place}`
       : '');
-  let said = expr.text(`@${p.id}`, t ? `@${t.id}` : '', inst.thing, self(p), hash(w.seed, p.id, expr.id, w.t));
+  let said = inst.words?.(expr) ?? expr.text(`@${p.id}`, t ? `@${t.id}` : '', inst.thing, self(p), hash(w.seed, p.id, expr.id, w.t));
   // Someone with no job keeps busy rather than burying themselves in work (round 41, words only).
   if (fit() && expr.id === 'work' && p.job == null) said = said.replace(/ buried (\S+) in work/, ' kept $1 busy from morning to night');
   // Not taking money is not a confession (round H25, words only).
@@ -470,7 +472,7 @@ export function run(w: World, inst: Instance): Outcome | null {
         ? ` Nobody was surprised any more: it had been happening since ${year(since)}.`
         : ' Nobody was surprised any more.';
   }
-  const vis: Event['vis'] = expr.secret ? 'private' : feats.has('public') ? 'local' : 'private';
+  const vis: Event['vis'] = expr.secret ? 'private' : feats.has('public') || inst.told ? 'local' : 'private';
   // Circumstance discounts character: the more the visible situation explains the act, the less it says about the person.
   // An observer sees the act, not the person's true trait size, how far circumstance truly drove it, or an if-then at work (round F26):
   // the weight and the discount are the averages over a town (round H25's worlds, 9001–9020), and an if-then's evidence takes the act's
