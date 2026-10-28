@@ -1,0 +1,55 @@
+WARNINGS: ties: 33 of 48 pairs scored the same in both versions by a reader. The reading cannot show what it was meant to.
+pair  on         novelist          player   majority-on
+P01   A            3,3,A           3,3,A   yes
+P02   A            3,3,A           3,3,A   yes
+P03   A            3,3,A           3,3,A   yes
+P04   A            3,2,A           3,2,A   yes
+P05   B            3,3,B           3,3,B   yes
+P06   B            4,3,A           3,3,A   no
+P07   B            3,3,B           3,3,B   yes
+P08   B            3,3,B           3,3,B   yes
+P09   B            3,3,B           3,4,B   yes
+P10   A            3,3,B           3,3,B   no
+P11   B            3,3,A           3,3,A   no
+P12   A            3,3,A           3,3,A   yes
+P13   B            2,3,B           2,3,B   yes
+P14   A            2,3,B           2,3,B   no
+P15   A            3,3,A           3,3,A   yes
+P16   B            3,3,A           2,2,A   no
+P17   B            3,3,B           3,3,A   no
+P18   A            3,2,A           3,2,A   yes
+P19   B            3,2,A           3,2,A   no
+P20   A            3,3,A           3,3,B   no
+P21   B            2,3,B           2,3,B   yes
+P22   B            3,3,B           3,3,A   no
+P23   A            3,3,A           3,3,A   yes
+P24   A            3,3,A           3,2,A   yes
+
+The on arm was version B in 12 of 24 pairs; readers chose B in 19 of 48 single choices.
+Majority preferred the on arm in 15 of 24.
+Paired score difference, on minus off: +0.10 ±0.22 (95%, 24 pairs, mean over 2 readers)
+  novelist       +0.04
+  player         +0.17
+With the order as a term: effect +0.10 ±0.23 (95%); one-sided 90% lower bound -0.04; lean toward the second version -0.02
+One-sided 95% lower bound -0.09: reads no worse (above -0.3) holds.
+ordinal  alpha 0.697  95% [0.344, 0.918]  (2 readers, 48 lives)
+interval alpha 0.675  95% [0.356, 0.900]  (2 readers, 48 lives)
+  novelist     mean 2.90
+  player       mean 2.83
+
+How much happened: 79.4 lines a page on, 76.3 off; on minus off +3.1 a pair (sd 20.4). Where the versions are five or more lines apart, the longer was chosen 15 times and the shorter 15 (18 choices nearer).
+With the order and the difference in lines as terms: effect +0.11 ±0.24 (95%); ten lines more -0.01 ±0.12. Reported beside the effect above, which the round is judged on.
+Kinds of line: 45.5 a page on, 44.3 off; on minus off +1.2 a pair (sd 8.4).
+With the order and the difference in kinds as terms: effect +0.09 ±0.24 (95%); a kind more +0.008 ±0.030.
+faults on: total 480 · repeat 142, unfit reason 135, false line 73, out of nowhere 70, wording 60
+faults off: total 443 · unfit reason 134, repeat 126, false line 77, out of nowhere 69, wording 37
+Faults per ten lines: 1.26 on, 1.21 off. false line 0.19/0.21, out of nowhere 0.18/0.19, repeat 0.37/0.34, unfit reason 0.35/0.37, wording 0.16/0.10
+Faults a page, on minus off, with the order and the difference in lines as terms: +0.41 ±1.89 (95%); ten lines more +1.15 ±0.95.
+Versions given exactly three faults: 1 of 96.
+Severity, and for unfit reasons whether the event shown under them supports them: on awkward 454, source none 109, false 26, source supports 19, source does not 7; off awkward 417, source none 104, false 26, source supports 20, source does not 10
+Faults cited by line: 923; citing a line the version does not have: 0.
+
+Quotes matching the round's wording (on arm): good 0, faults 3 (unfit reasons 1); off arm: good 0, faults 0
+  fault: P14 novelist (unfit reason): 2035: Ben told Larry how it goes in North of Here: a song is everyone's once it is brought in.  [thinks the world of Larry; sure of how things go in North of Here; had heard from Audrey Nash that Larry put a note in the hat for Sarah, and not a small one (2030)]
+  fault: P14 player (false line): 2035: Ben told Larry how it goes in North of Here: a song is everyone's once it is brought in.  [thinks the world of Larry; sure of how things go in North of Here; had heard from Audrey Nash that Larry put a note in the hat for Sarah, and not a small one (2030)]
+  fault: P24 novelist (repeat): 2035: Trevor Waller told Steve Lane how it goes in Red Sky: a song is everyone's once it is brought in.  [thinks the world of Steve Lane]

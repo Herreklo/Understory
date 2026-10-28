@@ -26,7 +26,10 @@ import {
   addEmotion,
   year,
   logistic,
+  normsOn,
+  normRowsOn,
 } from './world';
+import { seeNorm, creditOf, creditBeside, tellNewcomer, rowAnswer } from './norms';
 import { z01 } from './decide';
 import { run, decide, friendsOf, family, unlist } from './grammar';
 import { traitCause, stateCause, eventCause, ev, facetC, bondC, pubC, privC, learned } from './considerations';
@@ -521,6 +524,7 @@ function work(w: World, g: Group, k: Kind) {
       only: { warmth: ['cheer'], humility: ['backsong'], pride: ['resentsong'], dishonesty: ['claimsong'] },
       cause: e.id,
       place: g.name,
+      ...(normsOn() ? { beside: creditBeside(w, m, g) } : {}),
       familyExtra: {
         warmth: [bondC(w, m, author, 'like', 1), facetC(m, 'aesthetic', feats, 1, 3)],
         humility: [bondC(w, m, author, 'respect', 1)],
@@ -537,6 +541,7 @@ function work(w: World, g: Group, k: Kind) {
     });
     if (!o) continue;
     g.events.push(o.event.id);
+    if (normsOn() && creditOf(o.expr.id)) seeNorm(w, g, 'credit', creditOf(o.expr.id));
     if (o.expr.id === 'claimsong') {
       wk.credit[m.id] = (wk.credit[m.id] ?? 0) + 0.3;
       wk.credit[author.id] -= 0.3;
@@ -764,6 +769,7 @@ export function join(w: World, g: Group, k: Kind, q: Person, why: Cause, compare
   });
   broadcast(w, e);
   g.events.push(e.id);
+  if (normsOn()) tellNewcomer(w, g, q);
   return e;
 }
 // Round 38: when two or more wanted the place, those not taken are told so, and answer it as someone passed over for a post does;
@@ -883,20 +889,40 @@ export function groupTick(w: World) {
       if (enemy && w.rng.chance(0.15)) {
         // The group remembers who the rows are about. Second row in three years: someone has a word. Third: they are asked to go.
         const rows: Record<number, number[]> = ((g as any).rows ??= {});
-        const step = escalation(rows[p.id] ?? [], (g as any)['warned:' + p.id], w.t);
+        let step = escalation(rows[p.id] ?? [], (g as any)['warned:' + p.id], w.t);
         if (!OFF.has('respond') && step !== 'row') {
           const others = ms.filter(x => x !== p && x !== enemy);
           const speaker =
             others.sort(
               (a, b) => facet(b, 'socialBoldness') + facet(b, 'organisation') - (facet(a, 'socialBoldness') + facet(a, 'organisation')),
             )[0] ?? enemy;
+          // Round 48: the ladder says what is on the table, and the speaker decides (norms.ts). A row let go is the row itself, below.
+          const warnedAt: number | undefined = (g as any)['warned:' + p.id];
+          const said = normRowsOn()
+            ? rowAnswer(
+                w,
+                g,
+                speaker,
+                p,
+                (rows[p.id] ?? []).filter(t => w.t - t <= 36).length,
+                step === 'asked',
+                warnedAt != null && w.t - warnedAt <= 36,
+              )
+            : undefined;
+          if (said) {
+            step = said.step;
+            seeNorm(w, g, 'rows', step === 'row' ? -0.5 : 1);
+          }
           if (step === 'word') {
             (g as any)['warned:' + p.id] = w.t;
             const e = addEvent(w, {
               type: 'group:word',
               who: [speaker.id, p.id],
               text: `@${speaker.id} took @${p.id} aside after practice: one more row and ${g.name} would be done with ${p.sex === 'f' ? 'her' : 'him'}.`,
-              causes: [stateCause(`@${p.id}'s second row in ${g.name} in three years`, 0.6), traitCause(speaker, 'socialBoldness', 0.4, 1)],
+              causes: said
+                ? said.why.slice(0, 3)
+                : [stateCause(`@${p.id}'s second row in ${g.name} in three years`, 0.6), traitCause(speaker, 'socialBoldness', 0.4, 1)],
+              ...(said ? { decision: said.rec } : {}),
               vis: 'local',
               evidence: [ev(speaker.id, 'socialBoldness', 1, 0.6, 0.7), ev(speaker.id, 'organisation', 1, 0.4, 0.5)],
               w: 1.3,
@@ -908,19 +934,22 @@ export function groupTick(w: World) {
             rows[p.id] = [...(rows[p.id] ?? []), w.t];
             continue;
           }
-          leave(
-            w,
-            g,
-            p,
-            'asked',
-            undefined,
-            `${g.name} asked @${p.id} to go. ${others.length ? `@${others[0].id} said it for the rest of them.` : ''}`.trim(),
-            [stateCause(`three rows in three years, and a warning`, 0.6), traitCause(p, 'patience', 0.3, -1)],
-          );
-          addStress(p, 'thrown', `thrown out of ${g.name}`, 0.14);
-          addEmotion(w, p, 'thrown', 'humiliated', -0.18, 10);
-          for (const q of others) remember(w, p, q, -1, -0.15, -0.05, -0.1, 'threw me out');
-          break;
+          if (step === 'asked') {
+            const voice = said ? (speaker !== enemy ? speaker : undefined) : others[0];
+            leave(
+              w,
+              g,
+              p,
+              'asked',
+              undefined,
+              `${g.name} asked @${p.id} to go. ${voice ? `@${voice.id} said it for the rest of them.` : ''}`.trim(),
+              said ? said.why.slice(0, 3) : [stateCause(`three rows in three years, and a warning`, 0.6), traitCause(p, 'patience', 0.3, -1)],
+            );
+            addStress(p, 'thrown', `thrown out of ${g.name}`, 0.14);
+            addEmotion(w, p, 'thrown', 'humiliated', -0.18, 10);
+            for (const q of others) remember(w, p, q, -1, -0.15, -0.05, -0.1, 'threw me out');
+            break;
+          }
         }
         const o = run(w, {
           type: 'groupstrain',

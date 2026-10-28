@@ -1,0 +1,27 @@
+# Round 48 sizing, rule on: 1500 worlds from the founding (3825–5324)
+bands 5579 (3.72 a world); lost every founder 978 (0.65 a world); scored a year on 769
+COUNTER r(founders' credit norm, members' a year after) = 0.77 [0.74, 0.80], one-sided lower 0.74, n 769
+  holders only: r 0.79 [0.76, 0.82], n 682
+  rows norm beside: r 0.00 [-0.07, 0.07]
+  make-up (modesty and sincerity), founders' against members': r -0.08 [-0.15, -0.01] (selection)
+  F mean 0.08 sd 0.40; M mean 0.06 sd 0.38; members a year on 2.69, told 0.47
+  drift: the founders' norm against members' three years after: r 0.61 [0.56, 0.66], n 626
+  drift: the founders' norm against members' five years after: r 0.53 [0.46, 0.59], n 526
+FIVE YEARS r(founders' norm, members' five years after the last founder went) = 0.53 [0.46, 0.59], n 526
+  leaving out bands where neither holds a norm: r 0.53 [0.46, 0.59], n 508
+  partial, the members' norm when the last founder went held constant: r -0.00 [-0.09, 0.08], n 526
+  members who joined after the last founder went: r 0.28 [0.18, 0.36], n 415 (0.52 of the members)
+  members lean the founders' way: 501 of 618 (81.07%)
+GATE flips 2766 of 27095 weighed (10.21% pooled; 11.54 ±0.72 a world)
+  authorship: 2766 of 27095 (10.21%)
+FAIL-IF 3 members' held norm against their make-up: a year on r 0.22 (n 769); every band alive at the end r 0.22 (n 4684); stop above 0.7
+  bands matched on founders' make-up (within 0.1): 4808; three years in, their founders' norms on opposite sides 2778 (57.78%), apart by 0.5 or more 2400 (49.92%); need a third
+FAIL-IF 4 joins 18072, told 3983 (22.04% of newcomers, one teller each at most); told lines listed 0.66 a world-decade; a teller tells 1.37 newcomers over 40 years (most 8)
+  band lines listed 33.00 a world-decade, 1.88% of listed; "did not come to much" 3.90 a world-decade
+  authorship answers: backsong 20861, resentsong 13725, claimsong 11689, cheer 20447, dressdown 86
+  rows and what followed: stayfor 2980; word 2349; asked 1868; quitgroup 2606
+FAIL-IF 5 the witness knows 739 of 2766 acts a norm decided (26.72%); stop under 30%
+PAGES (200 worlds, 30-year past and ten present years, every adult): copy share 15.21% against 15.23%, difference -0.02 ±0.19, one-sided bound 0.14 (stop above +0.6)
+  norm lines in any world's top 25: 0; lines carrying a norm 3.66 a world; "did not come to much" 22.71 against 21.48 (difference 1.23 ±1.87)
+  the witness knows 114 of 153 present-years acts a norm decided (74.51%); norm weighed in 1614 decisions
+NORMS {"rule":"on","worlds":1500,"driftM3":{"r":0.6135979328678745,"n":626,"lo":0.5622696173749083,"hi":0.6602165261744339,"lo1":0.5708387223275287},"driftM5":{"r":0.5290086187950481,"n":526,"lo":0.46452240522553667,"hi":0.5879140854460724,"lo1":0.4752548790606084},"five":{"all":{"r":0.5290086187950481,"n":526,"lo":0.46452240522553667,"hi":0.5879140854460724,"lo1":0.4752548790606084},"held":{"r":0.5282613713360135,"n":508,"lo":0.4625194165437939,"hi":0.5882261134261344,"lo1":0.4734663999698457},"partial":{"r":-0.0013570159623855944,"n":526,"lo":-0.08692396240797136,"hi":0.0842298064694813},"fresh":{"r":0.27539764594899824,"n":415,"lo":0.1840126863718885,"hi":0.36206238771799354,"lo1":0.19896224964305412},"freshShare":0.5210662080825451},"counter":{"r":0.7682023722482255,"n":769,"lo":0.7375609169826483,"hi":0.7956869147338587,"lo1":0.742707460655301},"counterHeld":{"r":0.7933859828151236,"n":682,"lo":0.7638053284654405,"hi":0.8196408220256276,"lo1":0.7687951368374775},"rows":{"r":0,"n":769,"lo":-0.07069952867320879,"hi":0.07069952867320879,"lo1":-0.0593663751660817},"selection":{"r":-0.0759110236461852,"n":769,"lo":-0.1458279123475104,"hi":-0.005239615326106959,"lo1":-0.13467049782264232},"bands":{"all":5579,"lost":978,"scored":769},"sameSign":[501,618],"gate":{"weighed":27095,"flipped":2766,"pooled":10.208525558221075,"byTrigger":{"authorship":[27095,2766]},"perWorld":{"m":11.542406461694203,"half":0.716861557529661,"up1":12.144058126049455,"n":1409}},"trait":{"yearOn":{"r":0.22341869069199646,"n":769,"lo":0.1551701673128863,"hi":0.2895446884059321,"lo1":0.16625748123980627},"end":{"r":0.22164515707475096,"n":4684,"lo":0.19423848532635166,"hi":0.24870607707223402,"lo1":0.19866485355954744},"pairs":4808,"apart":2778,"far":2400},"telling":{"joins":18072,"told":3983,"listedPerDecade":0.6638333333333334,"bandPerDecade":33.00216666666667,"dudPerDecade":3.8998333333333335},"expr":{"backsong":20861,"resentsong":13725,"claimsong":11689,"cheer":20447,"dressdown":86},"witness":{"known":739,"of":2766},"pagesWitness":{"known":114,"of":153},"pages":{"n":200,"copyDiff":{"m":-0.019669516780308288,"half":0.1866344856210684,"up1":0.13697014079451697,"n":200},"top25Norm":0,"normLines":3.66,"dud":{"m":1.23,"half":1.871924400612386,"up1":2.8010794076568244,"n":200}}}

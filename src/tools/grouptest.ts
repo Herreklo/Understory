@@ -4,6 +4,7 @@ import './env'; // OFF= and ON= from the environment, before anything runs
 import { buildWorld, runYears } from '../build';
 import { pickWitness } from '../witness';
 import { escalation } from '../group';
+import { normRowsOn } from '../world';
 // Constructed histories first: the rule on its own, at exact dates (months).
 const unit: [number[], number | undefined, number, string][] = [
   [[], undefined, 100, 'row'], // first row ever
@@ -60,6 +61,27 @@ for (let seed = 1; seed <= 30 && checked < 6; seed++) {
     checked++;
     // Before the first word there must be exactly one earlier row within three years (the word comes on the second). An asking must follow a word.
     // Rows count from any time (the rule does); only warnings and askings in the present are judged.
+    // With ON=norms (round 48) the ladder only says what is on the table and the speaker decides: a word needs an earlier row or word in three
+    // years, an asking two of them or a word.
+    if (normRowsOn()) {
+      const earlier = (t: number) => l.filter(x => x.kind !== 'asked' && x.t < t && t - x.t <= 36);
+      for (const wd of words.filter(x => x.t >= w.startPresent))
+        if (!earlier(wd.t).length) {
+          bad++;
+          console.log(`seed ${seed} person ${id}: a word with no row or word in the three years before`);
+        } else if (words.some(x => x.t < wd.t && wd.t - x.t <= 36)) {
+          bad++;
+          console.log(`seed ${seed} person ${id}: a second word while the first still stands`);
+        }
+      for (const a of asked.filter(x => x.t >= w.startPresent)) {
+        const e = earlier(a.t);
+        if (e.length < 2 && !e.some(x => x.kind === 'word')) {
+          bad++;
+          console.log(`seed ${seed} person ${id}: asked to leave with ${e.length} rows and no word in the three years before`);
+        }
+      }
+      continue;
+    }
     for (const wd of words.filter(x => x.t >= w.startPresent)) {
       const before = l.filter(x => x.kind === 'row' && x.t < wd.t && wd.t - x.t <= 36).length;
       if (before !== 1) {

@@ -132,7 +132,8 @@ export interface BeliefOut extends Belief {
   key: string;
 }
 
-/** What `holder` believes, about one subject or about everyone, in the order the beliefs were formed. */
+/** What `holder` believes, about one subject or about everyone, in the order the beliefs were formed. A subject below 0 is a group, not a
+ * person: −1 − the group's id, holding how things are done there (`norm:credit`, round 48). */
 export function beliefsHeld(h: WorldHandle, holder: number, subject?: number): BeliefOut[] {
   const held = W(h).beliefs.get(holder);
   if (!held) return [];

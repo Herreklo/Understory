@@ -88,6 +88,14 @@ function bend(w: World, teller: Person, about: number, base: number): number {
   return clamp(b, -1, 1);
 }
 
+// Round 48: how things are done in a group, as a member tells it to a newcomer (norms.ts). The teller says what they hold, bent toward how
+// they would have it done themselves (a member who is modest and straight makes a band sound more generous with credit than it is, one
+// who forgives little makes its rows sound more answered), and one who will say anything lays it on.
+export function normVersion(teller: Person, m: number, lean: number): number {
+  const loose = facet(teller, 'sincerity') < -0.8;
+  return clamp((m + 0.2 * clamp(lean, -1.5, 1.5)) * (loose ? 1.5 : 1), -2, 2);
+}
+
 // Someone else to pin it on: another person in the act, else someone the hearer knows who works with the doer.
 function wrongOne(w: World, e: Event, actor: Person, hearer: Person, teller: Person): Person | undefined {
   for (const id of e.who.slice(1)) {

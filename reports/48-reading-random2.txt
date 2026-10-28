@@ -1,0 +1,55 @@
+WARNINGS: ties: 29 of 48 pairs scored the same in both versions by a reader. The reading cannot show what it was meant to.
+pair  on         novelist          player   majority-on
+P01   B            2,3,B           2,3,B   yes
+P02   B            3,4,B           3,3,B   yes
+P03   B            2,3,B           3,2,A   no
+P04   A            3,3,B           3,3,B   no
+P05   A            3,2,A           3,2,A   yes
+P06   A            2,3,B           2,3,B   no
+P07   A            3,4,B           3,3,B   no
+P08   B            2,2,A           2,2,A   no
+P09   A            3,4,B           4,4,B   no
+P10   A            3,4,B           2,3,B   no
+P11   A            2,3,B           2,3,B   no
+P12   B            3,3,A           3,3,A   no
+P13   A            3,3,A           2,2,A   yes
+P14   B            3,3,A           3,3,A   no
+P15   B            3,3,A           2,2,A   no
+P16   B            3,3,B           3,3,B   yes
+P17   A            3,3,A           3,2,A   yes
+P18   B            3,4,B           3,3,B   yes
+P19   A            3,3,A           3,3,A   yes
+P20   B            2,3,B           2,3,B   yes
+P21   B            3,3,B           3,3,B   yes
+P22   B            3,3,B           3,3,A   no
+P23   A            3,3,A           3,3,B   no
+P24   A            2,2,A           2,2,A   yes
+
+The on arm was version B in 12 of 24 pairs; readers chose B in 27 of 48 single choices.
+Majority preferred the on arm in 11 of 24.
+Paired score difference, on minus off: +0.02 ±0.24 (95%, 24 pairs, mean over 2 readers)
+  novelist       +0.04
+  player         +0.00
+With the order as a term: effect +0.02 ±0.22 (95%); one-sided 90% lower bound -0.12; lean toward the second version +0.23
+One-sided 95% lower bound -0.16: reads no worse (above -0.3) holds.
+ordinal  alpha 0.577  95% [0.335, 0.765]  (2 readers, 48 lives)
+interval alpha 0.560  95% [0.336, 0.738]  (2 readers, 48 lives)
+  novelist     mean 2.90
+  player       mean 2.71
+
+How much happened: 42.8 lines a page on, 42.3 off; on minus off +0.5 a pair (sd 16.8). Where the versions are five or more lines apart, the longer was chosen 19 times and the shorter 13 (16 choices nearer).
+With the order and the difference in lines as terms: effect +0.01 ±0.21 (95%); ten lines more +0.13 ±0.13. Reported beside the effect above, which the round is judged on.
+Kinds of line: 27.5 a page on, 26.8 off; on minus off +0.6 a pair (sd 10.9).
+With the order and the difference in kinds as terms: effect +0.01 ±0.20 (95%); a kind more +0.020 ±0.019.
+faults on: total 243 · unfit reason 63, false line 58, repeat 58, wording 39, out of nowhere 25
+faults off: total 270 · repeat 80, false line 64, unfit reason 57, out of nowhere 39, wording 30
+Faults per ten lines: 1.18 on, 1.33 off. false line 0.28/0.32, out of nowhere 0.12/0.19, repeat 0.28/0.39, unfit reason 0.31/0.28, wording 0.19/0.15
+Faults a page, on minus off, with the order and the difference in lines as terms: -0.65 ±1.24 (95%); ten lines more +1.56 ±0.76.
+Versions given exactly three faults: 16 of 96.
+Severity, and for unfit reasons whether the event shown under them supports them: on awkward 227, source none 57, false 16, source supports 6; off awkward 248, source none 50, false 22, source does not 5, source supports 2
+Faults cited by line: 513; citing a line the version does not have: 0.
+
+Quotes matching the round's wording (on arm): good 1, faults 2 (unfit reasons 0); off arm: good 0, faults 0
+  good: P09 player: 2035: Tilly would not play Greta Fielding's song the way it was written.  [Greta Fielding brought a song to the Lanterns, "The Long Harbour", and it was good.; that is who Tilly is: meant for more than this; in the Lanterns, people keep an eye on who gets the credit]
+  fault: P09 novelist (wording): 2032: Ellen told Greta Fielding how it goes in the Lanterns: people keep an eye on who gets the credit.  [is not one to hang back; is fond of Greta Fielding; had heard from Ken Baker that Greta Fielding put a note in the hat for Ralph Howell, and not a small one, and Ken Baker made the most of it (2030)]
+  fault: P09 player (wording): 2032: Ellen told Greta Fielding how it goes in the Lanterns: people keep an eye on who gets the credit.  [is not one to hang back; is fond of Greta Fielding; had heard from Ken Baker that Greta Fielding put a note in the hat for Ralph Howell, and not a small one, and Ken Baker made the most of it (2030)]

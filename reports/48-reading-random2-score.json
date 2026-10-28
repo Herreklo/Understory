@@ -1,0 +1,224 @@
+{
+ "pairs": 24,
+ "readers": [
+  "novelist",
+  "player"
+ ],
+ "majorityOn": 11,
+ "diff": 0.020833333333333332,
+ "hw95": 0.23694510306226466,
+ "adjusted": {
+  "effect": 0.020833333333333332,
+  "lean": 0.2291666666666667,
+  "hw95": 0.22070497377320775,
+  "lo90": -0.11974104967264905,
+  "se": 0.1064151271809102,
+  "lo95": -0.1618814400362895
+ },
+ "onB": 12,
+ "chooseB": 27,
+ "perReader": {
+  "novelist": 0.041666666666666664,
+  "player": 0
+ },
+ "faults": {
+  "on": {
+   "unfit reason": 63,
+   "false line": 58,
+   "out of nowhere": 25,
+   "wording": 39,
+   "repeat": 58
+  },
+  "off": {
+   "false line": 64,
+   "out of nowhere": 39,
+   "unfit reason": 57,
+   "wording": 30,
+   "repeat": 80
+  }
+ },
+ "quotes": {
+  "good": [
+   "P09 player: 2035: Tilly would not play Greta Fielding's song the way it was written.  [Greta Fielding brought a song to the Lanterns, \"The Long Harbour\", and it was good.; that is who Tilly is: meant for more than this; in the Lanterns, people keep an eye on who gets the credit]"
+  ],
+  "fault": [
+   "P09 novelist (wording): 2032: Ellen told Greta Fielding how it goes in the Lanterns: people keep an eye on who gets the credit.  [is not one to hang back; is fond of Greta Fielding; had heard from Ken Baker that Greta Fielding put a note in the hat for Ralph Howell, and not a small one, and Ken Baker made the most of it (2030)]",
+   "P09 player (wording): 2032: Ellen told Greta Fielding how it goes in the Lanterns: people keep an eye on who gets the credit.  [is not one to hang back; is fond of Greta Fielding; had heard from Ken Baker that Greta Fielding put a note in the hat for Ralph Howell, and not a small one, and Ken Baker made the most of it (2030)]"
+  ],
+  "good_off": [],
+  "fault_off": []
+ },
+ "scores": {
+  "novelist": {
+   "1": 2,
+   "2": 3,
+   "3": 3,
+   "4": 4,
+   "5": 2,
+   "6": 3,
+   "7": 3,
+   "8": 3,
+   "9": 3,
+   "10": 2,
+   "11": 2,
+   "12": 3,
+   "13": 3,
+   "14": 4,
+   "15": 2,
+   "16": 2,
+   "17": 3,
+   "18": 4,
+   "19": 3,
+   "20": 4,
+   "21": 2,
+   "22": 3,
+   "23": 3,
+   "24": 3,
+   "25": 3,
+   "26": 3,
+   "27": 3,
+   "28": 3,
+   "29": 3,
+   "30": 3,
+   "31": 3,
+   "32": 3,
+   "33": 3,
+   "34": 3,
+   "35": 3,
+   "36": 4,
+   "37": 3,
+   "38": 3,
+   "39": 2,
+   "40": 3,
+   "41": 3,
+   "42": 3,
+   "43": 3,
+   "44": 3,
+   "45": 3,
+   "46": 3,
+   "47": 2,
+   "48": 2
+  },
+  "player": {
+   "1": 2,
+   "2": 3,
+   "3": 3,
+   "4": 3,
+   "5": 3,
+   "6": 2,
+   "7": 3,
+   "8": 3,
+   "9": 3,
+   "10": 2,
+   "11": 2,
+   "12": 3,
+   "13": 3,
+   "14": 3,
+   "15": 2,
+   "16": 2,
+   "17": 4,
+   "18": 4,
+   "19": 2,
+   "20": 3,
+   "21": 2,
+   "22": 3,
+   "23": 3,
+   "24": 3,
+   "25": 2,
+   "26": 2,
+   "27": 3,
+   "28": 3,
+   "29": 2,
+   "30": 2,
+   "31": 3,
+   "32": 3,
+   "33": 3,
+   "34": 2,
+   "35": 3,
+   "36": 3,
+   "37": 3,
+   "38": 3,
+   "39": 2,
+   "40": 3,
+   "41": 3,
+   "42": 3,
+   "43": 3,
+   "44": 3,
+   "45": 3,
+   "46": 3,
+   "47": 2,
+   "48": 2
+  }
+ },
+ "lines": {
+  "on": 42.833333333333336,
+  "off": 42.291666666666664,
+  "diff": 0.5416666666666666,
+  "diffSd": 16.766890683379724,
+  "longerChosen": 19,
+  "shorterChosen": 13,
+  "near": 16,
+  "effect": 0.014024426210168958,
+  "hw95": 0.20676029132882212,
+  "perTen": 0.12570290073534232,
+  "perTenHw95": 0.12696568090675545,
+  "kindsOn": 27.458333333333332,
+  "kindsOff": 26.833333333333332,
+  "kindsDiff": 0.625,
+  "kindsDiffSd": 10.850015027038282,
+  "effectKinds": 0.008167162467850392,
+  "hw95Kinds": 0.20491636843382102,
+  "perKind": 0.020265873384772707,
+  "perKindHw95": 0.01932462174066089
+ },
+ "faultRate": {
+  "on": 1.1819066147859922,
+  "off": 1.3300492610837438,
+  "paired": {
+   "effect": -0.6468800382745016,
+   "hw95": 1.2438411225153332,
+   "lean": -0.4814706190769539,
+   "perTenLines": 1.5577853219907987,
+   "perTenLinesHw95": 0.7638078571326123
+  },
+  "perKind": {
+   "on": {
+    "false line": 0.2821011673151751,
+    "out of nowhere": 0.12159533073929961,
+    "repeat": 0.2821011673151751,
+    "unfit reason": 0.30642023346303504,
+    "wording": 0.18968871595330739
+   },
+   "off": {
+    "false line": 0.31527093596059114,
+    "out of nowhere": 0.1921182266009852,
+    "repeat": 0.39408866995073893,
+    "unfit reason": 0.28078817733990147,
+    "wording": 0.1477832512315271
+   }
+  },
+  "capped": 16,
+  "versions": 96,
+  "severity": {
+   "on": {
+    "false": 16,
+    "source none": 57,
+    "awkward": 227,
+    "source supports": 6
+   },
+   "off": {
+    "false": 22,
+    "awkward": 248,
+    "source none": 50,
+    "source does not": 5,
+    "source supports": 2
+   }
+  }
+ },
+ "warnings": [
+  "ties: 29 of 48 pairs scored the same in both versions by a reader"
+ ],
+ "citedLines": 513,
+ "badLines": 0,
+ "planted": null
+}
