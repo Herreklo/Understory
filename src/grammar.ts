@@ -270,6 +270,7 @@ export function wiringC(p: Person, fam: Family, feats: Set<Feature>, toward?: nu
 }
 
 // ---------- choosing an expression within a family ----------
+const SIDED = new Set(['sideagainst', 'standby', 'keepout']);
 export function pickExpression(w: World, p: Person, fam: Family, inst: Instance, view?: View): Expression {
   const feats = inst.features;
   const cands = BY_FAMILY[fam]
@@ -284,7 +285,8 @@ export function pickExpression(w: World, p: Person, fam: Family, inst: Instance,
         (inst.target || !e.needsTarget),
     );
   const solo = BY_FAMILY[fam].filter(e => e.solo);
-  const pool = cands.length ? cands : inst.target ? BY_FAMILY[fam] : solo.length ? solo : BY_FAMILY[fam];
+  // A fallback never takes an answer whose words need its own situation's filler (taking sides names the other side, round 46).
+  const pool = cands.length ? cands : (inst.target ? BY_FAMILY[fam] : solo.length ? solo : BY_FAMILY[fam]).filter(e => !SIDED.has(e.id));
   const read = view ? (k: string) => view.facet(p, k, inst.target?.id, feats) : (k: string) => facet(p, k, inst.target?.id, feats);
   // A person's style is theirs: the noise here is small, so the same person answers the same way, mostly.
   const scored = pool.map(e => {
@@ -508,7 +510,8 @@ export function run(w: World, inst: Instance): Outcome | null {
   const again =
     (p.tried['seen:' + expr.id]?.t ?? -99) > w.t - 36 ||
     (sameAsLast && ['risk', 'deadline', 'chance'].includes(inst.type) && (p.tried['last:' + inst.type]?.n ?? 0) > 2);
-  const logged = !expr.quiet && (again ? w.rng.chance(expr.intensity >= 0.6 ? 0.2 : 0.08) : !minor || w.rng.chance(0.5));
+  // Taking sides is news each time: each is a different rift (round 46).
+  const logged = !expr.quiet && (again && !SIDED.has(expr.id) ? w.rng.chance(expr.intensity >= 0.6 ? 0.2 : 0.08) : !minor || w.rng.chance(0.5));
   const e = addEvent(w, {
     type: expr.id,
     who: t && !expr.solo ? [p.id, t.id, ...inst.others.map(o => o.id)] : [p.id, ...inst.others.map(o => o.id)],
@@ -539,7 +542,7 @@ export function run(w: World, inst: Instance): Outcome | null {
   // Effects on the target and on watchers.
   if (t && !expr.solo) {
     const k = 0.5 + expr.intensity * 0.5;
-    remember(w, t, p, e.id, expr.like * k, expr.respect * k, expr.trust * k, shortText(expr, p, t));
+    remember(w, t, p, e.id, expr.like * k, expr.respect * k, expr.trust * k, shortText(expr, p, t, SIDED.has(expr.id) ? inst.thing : undefined));
     if (expr.like < -0.25 && expr.intensity >= 0.45 && !inst.type.startsWith('row')) queueProvocation(w, t, p, e, feats.has('public')); // a row is answered inside the row
   }
   feelAct(w, inst, p, t, fam, expr, e.id);
@@ -577,13 +580,15 @@ export function run(w: World, inst: Instance): Outcome | null {
   return { family: fam, expr, event: e };
 }
 // What the target remembers of an act, in their own words ('told people what I had told her in confidence').
-export function shortText(expr: Expression, p: Person, t: Person) {
+export function shortText(expr: Expression, p: Person, t: Person, filler?: string) {
   const A = '\u0001';
   const she = p.sex === 'f' ? 'she' : 'he',
     her = p.sex === 'f' ? 'her' : 'him',
     hers = p.sex === 'f' ? 'hers' : 'his';
   // Round 41: the first to say someone's song was the best thing they had said it of a song.
-  const th = expr.id === 'rake' || expr.id === 'letgo' ? 'the old business' : /song$/.test(expr.id) || (fit() && expr.id === 'cheer') ? 'song' : 'it';
+  const th =
+    filler ??
+    (expr.id === 'rake' || expr.id === 'letgo' ? 'the old business' : /song$/.test(expr.id) || (fit() && expr.id === 'cheer') ? 'song' : 'it');
   return expr
     .text(A, 'me', th, self(p))
     .replace('§', '')
