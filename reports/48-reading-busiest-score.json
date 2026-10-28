@@ -1,0 +1,224 @@
+{
+ "pairs": 24,
+ "readers": [
+  "novelist",
+  "player"
+ ],
+ "majorityOn": 15,
+ "diff": 0.10416666666666667,
+ "hw95": 0.224336199723744,
+ "adjusted": {
+  "effect": 0.10416666666666667,
+  "lean": -0.020833333333333332,
+  "hw95": 0.22974780275875273,
+  "lo90": -0.042167396710533114,
+  "se": 0.11077521830219515,
+  "lo95": -0.0860343831582024
+ },
+ "onB": 12,
+ "chooseB": 19,
+ "perReader": {
+  "novelist": 0.041666666666666664,
+  "player": 0.16666666666666666
+ },
+ "faults": {
+  "on": {
+   "unfit reason": 135,
+   "out of nowhere": 70,
+   "repeat": 142,
+   "wording": 60,
+   "false line": 73
+  },
+  "off": {
+   "unfit reason": 134,
+   "out of nowhere": 69,
+   "repeat": 126,
+   "wording": 37,
+   "false line": 77
+  }
+ },
+ "quotes": {
+  "good": [],
+  "fault": [
+   "P14 novelist (unfit reason): 2035: Ben told Larry how it goes in North of Here: a song is everyone's once it is brought in.  [thinks the world of Larry; sure of how things go in North of Here; had heard from Audrey Nash that Larry put a note in the hat for Sarah, and not a small one (2030)]",
+   "P14 player (false line): 2035: Ben told Larry how it goes in North of Here: a song is everyone's once it is brought in.  [thinks the world of Larry; sure of how things go in North of Here; had heard from Audrey Nash that Larry put a note in the hat for Sarah, and not a small one (2030)]",
+   "P24 novelist (repeat): 2035: Trevor Waller told Steve Lane how it goes in Red Sky: a song is everyone's once it is brought in.  [thinks the world of Steve Lane]"
+  ],
+  "good_off": [],
+  "fault_off": []
+ },
+ "scores": {
+  "novelist": {
+   "1": 3,
+   "2": 3,
+   "3": 3,
+   "4": 3,
+   "5": 3,
+   "6": 3,
+   "7": 3,
+   "8": 2,
+   "9": 3,
+   "10": 3,
+   "11": 4,
+   "12": 3,
+   "13": 3,
+   "14": 3,
+   "15": 3,
+   "16": 3,
+   "17": 3,
+   "18": 3,
+   "19": 3,
+   "20": 3,
+   "21": 3,
+   "22": 3,
+   "23": 3,
+   "24": 3,
+   "25": 2,
+   "26": 3,
+   "27": 2,
+   "28": 3,
+   "29": 3,
+   "30": 3,
+   "31": 3,
+   "32": 3,
+   "33": 3,
+   "34": 3,
+   "35": 3,
+   "36": 2,
+   "37": 3,
+   "38": 2,
+   "39": 3,
+   "40": 3,
+   "41": 2,
+   "42": 3,
+   "43": 3,
+   "44": 3,
+   "45": 3,
+   "46": 3,
+   "47": 3,
+   "48": 3
+  },
+  "player": {
+   "1": 3,
+   "2": 3,
+   "3": 3,
+   "4": 3,
+   "5": 3,
+   "6": 3,
+   "7": 3,
+   "8": 2,
+   "9": 3,
+   "10": 3,
+   "11": 3,
+   "12": 3,
+   "13": 3,
+   "14": 3,
+   "15": 3,
+   "16": 3,
+   "17": 3,
+   "18": 4,
+   "19": 3,
+   "20": 3,
+   "21": 3,
+   "22": 3,
+   "23": 3,
+   "24": 3,
+   "25": 2,
+   "26": 3,
+   "27": 2,
+   "28": 3,
+   "29": 3,
+   "30": 3,
+   "31": 2,
+   "32": 2,
+   "33": 3,
+   "34": 3,
+   "35": 3,
+   "36": 2,
+   "37": 3,
+   "38": 2,
+   "39": 3,
+   "40": 3,
+   "41": 2,
+   "42": 3,
+   "43": 3,
+   "44": 3,
+   "45": 3,
+   "46": 3,
+   "47": 3,
+   "48": 2
+  }
+ },
+ "lines": {
+  "on": 79.41666666666667,
+  "off": 76.29166666666667,
+  "diff": 3.125,
+  "diffSd": 20.447839260782118,
+  "longerChosen": 15,
+  "shorterChosen": 15,
+  "near": 18,
+  "effect": 0.10855813893749414,
+  "hw95": 0.23848773176594207,
+  "perTen": -0.014052711266647928,
+  "perTenHw95": 0.12033969490316067,
+  "kindsOn": 45.5,
+  "kindsOff": 44.291666666666664,
+  "kindsDiff": 1.2083333333333333,
+  "kindsDiffSd": 8.444082912423589,
+  "effectKinds": 0.09397590361445787,
+  "hw95Kinds": 0.23686572147442345,
+  "perKind": 0.008433734939759036,
+  "perKindHw95": 0.030442565995129043
+ },
+ "faultRate": {
+  "on": 1.2591815320041972,
+  "off": 1.2097214636810487,
+  "paired": {
+   "effect": 0.41213504504422815,
+   "hw95": 1.8884770238571356,
+   "lean": -0.24611963843734064,
+   "perTenLines": 1.147834522525136,
+   "perTenLinesHw95": 0.9529158887956304
+  },
+  "perKind": {
+   "on": {
+    "false line": 0.19150052465897166,
+    "out of nowhere": 0.18363064008394545,
+    "repeat": 0.372507869884575,
+    "unfit reason": 0.35414480587618047,
+    "wording": 0.15739769150052466
+   },
+   "off": {
+    "false line": 0.21026761332605134,
+    "out of nowhere": 0.1884216275259421,
+    "repeat": 0.3440742763517204,
+    "unfit reason": 0.3659202621518296,
+    "wording": 0.1010376843255052
+   }
+  },
+  "capped": 1,
+  "versions": 96,
+  "severity": {
+   "on": {
+    "awkward": 454,
+    "source none": 109,
+    "source supports": 19,
+    "false": 26,
+    "source does not": 7
+   },
+   "off": {
+    "awkward": 417,
+    "source none": 104,
+    "source supports": 20,
+    "false": 26,
+    "source does not": 10
+   }
+  }
+ },
+ "warnings": [
+  "ties: 33 of 48 pairs scored the same in both versions by a reader"
+ ],
+ "citedLines": 923,
+ "badLines": 0,
+ "planted": null
+}
