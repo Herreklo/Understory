@@ -1,20 +1,83 @@
 # Round 46 sizing: taking sides
 
-Sized 28 Oct 2026 on round/46 at d2a316a, 40 throwaway worlds (9001–9040), 10 present years, paired by world: `on` against `OFF=sides`.
-Tool `src/tools/diag/sides.ts`: `./run.sh src/tools/diag/sides.ts run 9001 9040 on 10`, the same with `sides`, then `report`. A
-re-run with each side-taking's descendants by type (`led`) reproduced every number. Means per world, ±95%.
+Two passes, each on 40 throwaway worlds, 10 present years, paired by world (`on` against `OFF=sides`), means per world ±95%. Tool:
+`src/tools/diag/sides.ts` (`run A B on|sides 10`, then `report`; `SIDES_OUT` names the folder).
 
-**Verdict.** The counter clears with room: **27.2% ±4.8** against the note's ~19% and its stop under 15%. Ties alone are 13.6%. Meetings
-carry an eighth of it, not two thirds. **Three fail-ifs miss:**
+**Verdict after the second pass: two fail-ifs still miss, so round 46 stops here for the lead and Øystein to decide.**
 
-- **2:** "neither" barely differs with fairness or agreeableness.
-- **4:** the witness knows a tenth of side-takings, not 30%.
-- **5:** side-taking lines enter the top 25 and raise the copy share.
+- The counter clears both times: **33.1% ±5.3** on the second pass, beside the first pass's 27.2% ±4.8. The note's estimate was ~19% and its stop is under 15%.
+- Fail-ifs 3 and 4 hold.
+- **Fail-if 2 misses narrowly.** "Neither" differs **1.28×** by fairness and **1.23×** by agreeableness, against a bar of 1.3×, though both now point the right way.
+- **Fail-if 5 misses by the letter.** One world of 40 has one side-taking line in its 25 commonest templates: the cut, "X stopped speaking to X after X took X's side.", 16 times against the 25th template's 15. The copy share no longer rises.
 
-Each miss has a cause in the build that the design names, below. As built, **the round is not ready to pre-register.** Fixing them is
-a design change, re-sized on fresh throwaway seeds (9041–9080), not a tune on these.
+## Second pass (9041–9080), 28 Oct 2026, round/46 at 77366c1
 
-## What it does, how often
+Three fixes, only those the first pass named:
+
+1. **Keeping out reads the person.**
+   - Fairness argues against keeping out, the more so the plainer the wrong (`facetC`, steepness 4 + 3 × wrong).
+   - Gentleness and flexibility argue for it, read together as one consideration (`sides:peace`) so the five-slot cap does not cut the situation's own reasons.
+2. **The choice is told.** It is still decided in private, but the event is told at `local` visibility. This uses a new optional `told` on the instance; grammar.ts reads it beside `public`.
+3. **Words by kind of rift.**
+   - Each of the six kinds has two wordings per answer: "Edward Holmes took Tilly's side once it came out that Sean had talked."
+   - A later decider of the same rift who answers the same says so: "Ken, like Lisa, stuck by Oscar, whatever Oscar had let slip about Rose."
+   - This uses a new optional `words` on the instance.
+
+Nothing else in the mechanism changed.
+
+| Fail-if | Second pass | First pass | Bar |  |
+| --- | --- | --- | --- | --- |
+| **1. Counter** (descent, 3 years) | **33.1 ±5.3** (163/496) | 27.2 ±4.8 | stop under 15 | ✓ |
+| … ties alone; the cut at once | 18.8 ±4.9; 15.9 ±4.9 | 13.6; 12.0 | ties ≥ 5 | ✓ |
+| … only through a meeting | 3.8 ±1.8 | 3.5 | under ⅔ of the counter | ✓ |
+| … friends of both / kin / in-laws | 46.8 ±8.5 / 19.6 ±7.9 / 19.1 ±20.1 | 29.3 / 24.2 / 18.4 | | |
+| … sided against / stood by / kept out | 36.8 / 44.1 / 3.9 | 29.2 / 44.6 / 6.0 | | |
+| Would-be deciders who lose the tie or fall into a rift, on / off | 24.6 / **10.5**, paired +14.1 ±6.2 | 24.6 / 13.7 | | |
+| **2.** Side taken not the one liked more (gap ≥ 0.1) | 31.8% of 403 | 34.6% | ≥ 25 | ✓ |
+| "Neither", fairness: bottom vs top third | 32.5% vs 25.3%, **1.28×** | 28.3% vs 33.0%, 1.17× (wrong way) | ≥ 1.3 | ✗ |
+| "Neither", agreeableness: top vs bottom third | 27.4% vs 22.4%, **1.23×** | 25.2% vs 29.2%, 1.16× (wrong way) | ≥ 1.3 | ✗ |
+| Fairness flips: the act's (`sides:fair`) / the trait / both | 4.2% / 9.8% / **13.1%** of all 711 | 4.5% (the act's only) | ≥ 5 | ✓ on both together |
+| **3.** Friendships per adult at year 10 | 4.66 against 4.87, −0.21 ±0.24 (−4%) | −2% | within 10% | ✓ |
+| Reversals, 90th percentile | 3.10 against 2.98 | 3.17 | ≤ 4 | ✓ |
+| Wrongs / dislikes / friendships ended, paired per 1000 adult-years | −4.2 ±14.2 / −0.1 ±3.6 / +2.9 ±5.3 | | within off's interval | ✓ |
+| Rows, paired per 1000 adult-years | **+24.7 ±21.4** (425 against 401 ±21) | +6.6 ±18.9 | within, or named | named, below |
+| Leaving, moves, partnerships, hires (paired per world-decade) | left −0.1, home +0.6, dating +1.3 ±1.0, married +0.9, split −0.3, divorce +0.4, hired −0.8 | | no claim | none off zero at 95% except dating, at the edge |
+| **4.** The witness knows | **74.5%** | 10.3% | ≥ 30 | ✓ |
+| Witness line: a side or the decider / with friend, partner or kin | 0.17 ±0.10 / 0.89 ±0.30 a year (none for 25 of 40) | 0.24 / 1.44 | reported, not a target | |
+| **5.** Answers | 35.4 / 38.1 / 26.4% | 33.5 / 37.6 / 28.8 | each ≥ 15 | ✓ |
+| By rift | sided against: scheme found 53%, betrayal 42%, rivalry 28% | 38 / 38 / 30 | differs | ✓ |
+| Side-taking lines in a world's top 25 | **1** (the cut, world 9050) | 54 | any | ✗ |
+| Copy share, every adult | −0.05 ±0.52, one-sided bound +0.39 | +0.75, bound +1.2 | bound above +0.6 fails | ✓ |
+| Copy share, three at random / busiest | +0.25 ±1.97 / −0.42 ±2.12 | +3.2 / +1.0 | | |
+| Pages with a side-taking line, busiest / random | 73% / 31% | 78% / 26% | | |
+
+**Rows.** Couples' rows rose by 24.7 ±21.4 per thousand adult-years. The lower bound is just above zero, and this was not traced. The
+likely path is a partner who decides in a rift between their own partner and someone else (the cast `kin` includes partners), whose
+side-taking then gives a resentment inside the couple. It is named here; it was not found.
+
+**Deaths, the watch item, cleared.**
+- In the sizing worlds: −0.4 ±0.9 per world-decade.
+- In the tracer (`sides-death.ts`, `DEATH_OUT=out-sides-death2`): +0.2 ±1.0, with stress (2.0% of adult-months) and drinking (5.0%) unchanged, and deaths under 65 at 16 against 14.
+
+**Renewals and reopenings** per world-decade: renewed 4.7 against 4.4; reopened 0.00 in both arms.
+
+**How often.**
+- 17.8 ±3.0 side-takings a world-decade (first pass 23.9), with 20.7 would-be deciders in the off arm (first pass 22.5). The seeds differ.
+- The counter's between-world sd is 16.7: ±5.3 on 40 worlds, ±7.0 on 24.
+
+**Two misses, and what each would take.**
+- **Fail-if 2** misses 1.3× by 0.02 and 0.07. Both traits now push "neither" the right way, but a third of rifts decide on closeness alone. Moving them past the bar means weighing the two new considerations harder. That would be a tune on a seen result, so it is not done here.
+- **Fail-if 5's** line is the cut's single wording. Only one world repeats it often enough to enter the top 25. Varying it was not among the three fixes.
+
+## First pass (9001–9040), 28 Oct 2026, round/46 at d2a316a
+
+A re-run with each side-taking's descendants by type (`led`) reproduced every number.
+
+**Verdict then.** The counter clears with room: **27.2% ±4.8**. Ties alone are 13.6%. Meetings carry an eighth of it. Three fail-ifs
+missed: 2 ("neither" barely differs with fairness or agreeableness), 4 (the witness knows a tenth of side-takings, not 30%) and 5
+(side-taking lines enter the top 25 and raise the copy share). Each had a cause in the build, named below.
+
+### What it does, how often
 
 | Per world-decade (on)        |                                                                                    |
 | ---------------------------- | ---------------------------------------------------------------------------------- |
@@ -26,7 +89,7 @@ a design change, re-sized on fresh throwaway seeds (9041–9080), not a tune on 
 The research counted 14.9 a world-decade among friends of both. Widening the cast (kin, in-laws) adds 7.8 people who are close to both sides.
 It does not change how often rifts happen.
 
-## 1. The counter
+### 1. The counter
 
 | Of side-takings in the first 7 years, followed 3 (699 pooled)        |                                              |
 | -------------------------------------------------------------------- | -------------------------------------------- |
@@ -54,7 +117,7 @@ except friends of both is less tied to either side.
 **Power.** The between-world sd is 15.0, which gives ±4.8 on 40 worlds and ±6.3 on 24. Forty fresh worlds tell 27% from 15% (a gap of
 12 points against ±4.8). They would tell 19% from 15% only narrowly, as the note said.
 
-## 2. The choice belongs to the person: misses
+### 2. The choice belongs to the person: misses
 
 - The side taken is not the one liked more in **34.6%** of the 468 choices with a gap of 0.1 or more (≥ 25). ✓
 - "Neither", bottom third against top third: fairness **28.3% / 33.0%, 1.17×**; agreeableness **29.2% / 25.2%, 1.16×** (≥ 1.3). ✗
@@ -73,7 +136,7 @@ The fix is a consideration on keeping out:
 - fairness against it, scaled by how plain the wrong was;
 - gentleness and flexibility for it.
 
-## 3. No camps: holds, with one named rise
+### 3. No camps: holds, with one named rise
 
 | Per world (paired)                                  | on            | off           | paired          |
 | --------------------------------------------------- | ------------- | ------------- | --------------- |
@@ -104,7 +167,7 @@ moved. Deaths under 65 were 27 against 18 across all 40 worlds.
 
 No path was found. It is a watch item for the battery, not a claim.
 
-## 4. Someone can see it: misses
+### 4. Someone can see it: misses
 
 - **The witness line**, per witness-year, never a target:
   - the witness is a side or the decider: **0.24 ±0.11** (none in ten years for 16 of 40 witnesses);
@@ -117,7 +180,7 @@ Cause: the decision is built with the feature `private`, so the event is private
 the most public thing about a rift: it is what the town talks about. The fix is to drop `private`, so the event is told at `local`
 visibility as other social acts are.
 
-## 5. Not a script: misses
+### 5. Not a script: misses
 
 | Check | Result | Bar | |
 | --- | --- | --- | --- |
@@ -135,7 +198,7 @@ month.
 The fix is wording by rift kind. "took Ann's side over the money she said Ben owed" is a betrayal's line, not a rivalry's. A rift's
 several deciders also read as one line ("Kate and Ralph both took Peter's side").
 
-## Renewals and reopenings (the renewal-cause fix), per world-decade
+### Renewals and reopenings (the renewal-cause fix), per world-decade
 
 | | on | off | paired |
 | --- | --- | --- | --- |
@@ -147,7 +210,7 @@ A renewal of a feeling already let go happens about once in 300 world-years. The
 invariant (`invariants.ts`, item 6) checks it for wounds and debts. It changes almost nothing in these worlds: it is a correctness fix
 for a path that is rare, not an effect.
 
-## The reading: can 48 pairs resolve it?
+### The reading: can 48 pairs resolve it?
 
 Round 45's 48 pairs gave reads-no-worse at ±0.23. A true difference of zero would bound at about −0.19, which clears the −0.3 guard.
 Side-taking reaches the pages:
@@ -156,7 +219,7 @@ Side-taking reaches the pages:
 
 So the busiest pack sees it, and the random pack guards the rest. The aimed pack (a rift in both arms) is not needed at this coverage.
 
-## The front door: weighed, not changed
+### The front door: weighed, not changed
 
 The note puts the player in the situation: a player who is a friend of both is asked. That would be
 `command({kind: 'side', by, rift, choice})`, answering the queued choice in place of the engine.
@@ -168,7 +231,7 @@ What does change is what the front door returns. A side-taking event's decision 
 `events()` returns as it stands. That is a change to the shape of what Overstory reads. **It must be announced on #60 before the round
 merges.**
 
-## Also in this branch
+### Also in this branch
 
 `src/tools/coherence.ts` no longer reads a debt called in (`collection`) as an act at work. These worlds met one at the Anchor, a pub,
 by someone with no job, and the floor counted it as fault 8. This is a fix to the floor, not the engine. The reviewer should confirm it
