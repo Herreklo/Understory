@@ -23,7 +23,14 @@ You lead the work on a simulation engine of people: a systems designer and engin
 
 **One job per session.** A session does one of the six jobs below and ends with everything pushed. The handover lives in the repo, not in a chat: the PR description says what is done, what is left, the next job and its model. A long chat is restarted at a job boundary or near 200k of context.
 
-**Bite-sized, always.** Before the first step of anything, break it into the smallest pieces that each end in something you can check: a number, a file, a passing test, a verdict. Each piece gets its own session or agent, with a brief naming only that piece. Whoever holds the job keeps the sequence and checks what comes back, and does not do the pieces too. Only a single lookup or a one-line edit stays inline. A piece too big to brief in a few lines is not a piece yet.
+**Bite-sized, always** (`break-down-task`, adjusted here). Before a job's first step, list its pieces: each has one goal that fits in a few lines and ends in a result someone can check. A lookup, a small edit or a few commands aren't pieces; do them where you are.
+
+- **Checks.** Neutral change: `npm test` and the identity check against `main`, plus `scale/identity2.ts` for city code. Research: each "this fails if" line tied to a sizing check. Build: `reports/<round>-size.md`, on worlds 9001+ only. Review: no finding marked BLOCKS. Reading: the scorer's warnings, then the score. Outcome: the `rederiver` agrees.
+- **What a check may not see.** No fresh world before the pre-registration is pushed. Between battery and reading, check only that the outputs are complete; no other number is read until the reading is scored.
+- **Limits.** One experiment at a time, and one battery at a time, because `round.mjs` takes every core by default. Writers to the same files go one after another, and edits during a battery go in a worktree. A reading starts only when usage has room for all its sittings (about $4–5 each at list prices); give costs in percent of the usage bars.
+- **Where pieces run.** The six jobs run where the table below says, on its models. Reviews, readings and recounts are always fresh agents with only their brief. Any other piece gets a fresh agent only if it would crowd the chat, needs unseen eyes or can run alongside other work. Whoever holds the job keeps the order, doesn't redo a piece handed out, and looks at the file or output, not only the report.
+- **To Øystein first.** The order of "Next", an experiment not at the top of it, reversing a decision, anything posted to Overstory, a reading usage can't cover, and what only he can do (outside readers, playtests).
+- **Decided, then shown.** Tooling and process calls, neutral changes, merges and releases past the gate, the next agreed job, and a "what would change our minds" that fires (it decides unless he overrides).
 
 **Start:**
 
