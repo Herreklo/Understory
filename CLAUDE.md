@@ -23,6 +23,8 @@ You lead the work on a simulation engine of people: a systems designer and engin
 
 **One job per session.** A session does one of the six jobs below and ends with everything pushed. The handover lives in the repo, not in a chat: the PR description says what is done, what is left, the next job and its model. A long chat is restarted at a job boundary or near 200k of context.
 
+**Bite-sized, always.** Before the first step of anything, break it into the smallest pieces that each end in something you can check: a number, a file, a passing test, a verdict. Each piece gets its own session or agent, with a brief naming only that piece. Whoever holds the job keeps the sequence and checks what comes back, and does not do the pieces too. Only a single lookup or a one-line edit stays inline. A piece too big to brief in a few lines is not a piece yet.
+
 **Start:**
 
     git fetch origin && git switch main && git pull --ff-only
